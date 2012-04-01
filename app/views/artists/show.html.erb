@@ -1,0 +1,68 @@
+<p id="notice">
+	<%= notice %>
+</p>
+<p>
+	<b>Name:</b>
+	<%= @artist.name %>
+</p>
+<p>
+	<b>Genre:</b>
+	<%= @artist.genre %>
+</p>
+<p>
+	<b>Bio:</b>
+	<%= @artist.bio %>
+</p>
+<p>
+	<b>Hometown:</b>
+	<%= @artist.hometown %>
+</p>
+<p>
+	<b>Booking email:</b>
+	<%= @artist.booking_email %>
+</p>
+<p>
+	<b>Manager email:</b>
+	<%= @artist.manager_email %>
+</p>
+<p>
+	<b>Website:</b>
+	<%= @artist.website %>
+</p>
+<p>
+	<b>Soundcloud:</b>
+	<%= @artist.soundcloud %>
+</p>
+<p>
+	<b>Youtube:</b>
+	<%= @artist.youtube %>
+</p>
+<p>
+	<b>Label:</b>
+	<%= @artist.label_id %>
+</p>
+<h1>Releases</h1>
+<% @artist.releases.each do |release| %>
+<p>
+	<%= release.name %>
+</p>
+<% end %> <h1>Session</h1>
+<% if user_signed_in? %>
+<p>
+	<% if @user.managing? @artist.id %>
+	<%= link_to 'Unmanage', unmanage_artist_path(@artist) %>
+	<% else %>
+	<%= link_to 'Manage', manage_artist_path(@artist) %>
+	<% end %>
+</p>
+<p>
+	<% if @user.following? @artist.id %>
+	<%= link_to 'Untrack', unfollow_artist_path(@artist) %>
+	<% else %>
+	<%= link_to 'Track', follow_artist_path(@artist) %>
+	<% end %>
+</p>
+<% end %>
+
+<%= link_to 'Edit', edit_artist_path(@artist) %> |
+<%= link_to 'Back', artists_path %> 

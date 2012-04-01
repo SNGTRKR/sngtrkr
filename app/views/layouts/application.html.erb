@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>SNGTRKRR</title>
+		<%= stylesheet_link_tag    "application", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<div id="fb-root"></div>
+		<script>
+			window.fbAsyncInit = function() {
+				FB.init({
+					appId : '344989472205984', // App ID
+					channelUrl : '//localhost:3000/channel.html', // Channel File
+					status : true, // check login status
+					cookie : true, // enable cookies to allow the server to access the session
+					xfbml : true  // parse XFBML
+				});
+
+				// Additional initialization code here
+			};
+			// Load the SDK Asynchronously
+			( function(d) {
+				var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+				if(d.getElementById(id)) {
+					return;
+				}
+				js = d.createElement('script');
+				js.id = id;
+				js.async = true;
+				js.src = "//connect.facebook.net/en_US/all.js";
+				ref.parentNode.insertBefore(js, ref);
+			}(document));
+			FB.login(function(response) {
+				if(response.authResponse) {
+					console.log('Welcome!  Fetching your information.... ');
+					FB.api('/me', function(response) {
+						console.log('Good to see you, ' + response.name + '.');
+					});
+				} else {
+					console.log('User cancelled login or did not fully authorize.');
+				}
+			});
+
+		</script>
+		<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
+		chromium.org/developers/how-tos/chrome-frame-getting-started -->
+		<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or
+		<a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+		<div id="wrapper">
+			<div class="wrapper2">
+				<div class="header header-height-small">
+					<!-- IE CSS for sticky footer -->
+					<!--[if !IE 7]>
+					<style type="text/css">
+					#wrap {display:table;height:100%}
+					</style>
+					<![endif]-->
+					<div class="o-button o-pad-big right o-button-big">
+						<% if user_signed_in? %>
+						<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+						<% else %>
+						<%= link_to('Login', new_user_session_path)  %>
+						<% end %> 
+						<span></span>
+					</div>
+					<a href="/users/me"><img id="p-head" src="/assets/images/profile.png"/></a>
+					<div class="mini-search">
+						<form action="/search.php">
+							<input type="text" name="search">
+							<img class="search-25" src="/assets/images/search-25.png"/>
+					</div>
+					</form> <div class="clear"></div>
+					<h2><a href="/"><img id="logo-55" src="/assets/images/logo-55.png" alt="SNGTRKR"/></a></h2>
+				</div>
+				<%= yield %>
+				<div class="login-box"><img id="login-logo-70" src="/assets/images/logo-70.png" />
+					<form method="post" action="" onsubmit="" class="lform">
+						<ul>
+							<li>
+								<label for="Username">Username</label>
+								<input class="ltext" type="text" name="Username" id="Username" />
+							</li>
+							<li>
+								<label for="Password">Password</label>
+								<input class="ltext" type="password" name="Password" id="Password" />
+							</li>
+							<li id="submit-pad-login">
+								<div class="o-button right o-button-small">
+									<input type="submit" name="submit" value="Login" />
+									<span></span>
+								</div>
+							</li>
+						</ul>
+					</form>
+					<div class="clear"></div>
+					<a href=""><div class="fb-login-button"></div></a>
+					<div id="already-signed-login">
+						<strong>Not signed up?</strong><span class="orange-txt"><a href="/u_signup.php"> Sign up here</a></span>
+					</div>
+				</div>
+			</div>
+		</div></div>
+		<div id="footer">
+			<div id="fcontainer">
+				<ul class="footer-menu">
+					<li>
+						<a href="/about.php">What is SNGTRKR?</a>
+					</li>
+					<li>
+						<a href="/blog.php">Blog</a>
+					</li>
+					<li>
+						<a href="/tou.php">Terms of Use</a>
+					</li>
+					<li>
+						<a href="/privacy.php">Privacy Policy</a>
+					</li>
+				</ul>
+				<div id="footer-txt">
+					© Copyright SNGTRKR 2012. All Rights Reserved. Load Time ...
+				</div>
+			</div>
+		</div>
+		<!-- Javascript -->
+		<script type='text/javascript'>
+			window.addEvent('load', function() {
+				new DatePicker('.date-pick', {
+					pickerClass : 'datepicker_jqui',
+					debug : false
+				});
+			});
+
+		</script>
+		<script type="text/javascript">
+			ncjQuery = jQuery.noConflict();
+			ncjQuery(document).ready(function() {
+				ncjQuery('.fancybox').fancybox();
+			});
+
+		</script>
+		<script type="text/javascript">
+			ncjQuery(document).ready(function() {
+				ncjQuery(".cheform").ajaxForm({
+					success : function(responseText) {
+						ncjQuery.fancybox.open({
+							href : '/admin/change-email.php',
+							type : 'iframe',
+							width : 431,
+							height : 286,
+							autoSize : false,
+							closeBtn : false,
+						});
+					}
+				});
+			});
+			ncjQuery(document).ready(function() {
+				ncjQuery(".enform").ajaxForm({
+					success : function(responseText) {
+						ncjQuery.fancybox.open({
+							href : '/admin/email-notify.php',
+							type : 'iframe',
+							width : 431,
+							height : 286,
+							autoSize : false,
+							closeBtn : false,
+						});
+					}
+				});
+			});
+			ncjQuery(document).ready(function() {
+				ncjQuery(".chpform").ajaxForm({
+					success : function(responseText) {
+						ncjQuery.fancybox.open({
+							href : '/admin/change-password.php',
+							type : 'iframe',
+							width : 431,
+							height : 286,
+							autoSize : false,
+							closeBtn : false,
+						});
+					}
+				});
+			});
+			ncjQuery(document).ready(function() {
+				ncjQuery(".rform").ajaxForm({
+					success : function(responseText) {
+						ncjQuery.fancybox.open({
+							href : '/admin/add-release.php',
+							type : 'iframe',
+							width : 431,
+							height : 286,
+							autoSize : false,
+							closeBtn : false,
+						});
+					}
+				});
+			});
+
+		</script>
+	</body>
+</html>

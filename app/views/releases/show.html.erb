@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @release.name %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @release.date %>
+</p>
+
+<p>
+  <b>Cat no:</b>
+  <%= @release.cat_no %>
+</p>
+
+<p>
+  <b>Itunes:</b>
+  <%= @release.itunes %>
+</p>
+
+<p>
+  <b>Sdigital:</b>
+  <%= @release.sdigital %>
+</p>
+
+<p>
+  <b>Amazon:</b>
+  <%= @release.amazon %>
+</p>
+
+<p>
+  <b>Youtube:</b>
+  <%= @release.youtube %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @release.rls_type %>
+</p>
+
+<p>
+  <b>Artist:</b>
+  <%= @release.artist_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_release_path(@release) %> |
+<%= link_to 'Back', releases_path %>

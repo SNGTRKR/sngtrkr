@@ -1,0 +1,39 @@
+<h1>Listing releases</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Date</th>
+    <th>Cat no</th>
+    <th>Itunes</th>
+    <th>Sdigital</th>
+    <th>Amazon</th>
+    <th>Youtube</th>
+    <th>Type</th>
+    <th>Artist</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @releases.each do |release| %>
+  <tr>
+    <td><%= release.name %></td>
+    <td><%= release.date %></td>
+    <td><%= release.cat_no %></td>
+    <td><%= release.itunes %></td>
+    <td><%= release.sdigital %></td>
+    <td><%= release.amazon %></td>
+    <td><%= release.youtube %></td>
+    <td><%= release.type %></td>
+    <td><%= release.artist_id %></td>
+    <td><%= link_to 'Show', release %></td>
+    <td><%= link_to 'Edit', edit_release_path(release) %></td>
+    <td><%= link_to 'Destroy', release, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Release', new_release_path %>

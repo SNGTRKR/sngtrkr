@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  date: 2012-03-31 01:44:46
+  cat_no: MyString
+  itunes: MyString
+  sdigital: MyString
+  amazon: MyString
+  youtube: MyString
+  type: 1
+  artist_id: 1
+
+two:
+  name: MyString
+  date: 2012-03-31 01:44:46
+  cat_no: MyString
+  itunes: MyString
+  sdigital: MyString
+  amazon: MyString
+  youtube: MyString
+  type: 1
+  artist_id: 1
