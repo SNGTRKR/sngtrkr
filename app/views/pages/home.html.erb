@@ -1,0 +1,44 @@
+<div class="content content-pad-bottom">
+	<h1 id="home-white-header">Track your favourite artists and never miss another release...</h1>
+	<div id="big-search">
+		<%= form_tag artists_path , :method => 'get' do %>
+		<%= text_field_tag(:search, params[:search]) %> <img id="search-35" src="/assets/images/search-35.png"></img>
+		<% end %>
+	</div>
+	<div class="clear"></div>
+	<div class="how-to-box">
+		<div class="each-box box-pad">
+			<div class="how-to-txt">
+				Login via facebook to find artists you like.
+			</div><img id="f-people" src="/assets/images/f-people.png"/>
+		</div>
+		<div class="each-box box-pad">
+			<div class="how-to-txt">
+				Follow artists, listen & buy tracks you like, with an easy to use timeline.
+			</div>
+		</div>
+		<div class="each-box">
+			<div class="how-to-txt">
+				Free notifications when artists release new tracks.
+			</div><img id="notify" src="/assets/images/notification.png"/>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<div class="find-out-box">
+		<div class="find-box find-pad">
+			<div class="find-txt">
+				Find out more
+			</div>
+		</div>
+		<div class="find-box find-pad">
+			<div class="find-txt">
+				Find out more
+			</div>
+		</div>
+		<div class="find-box">
+			<div class="find-txt">
+				Find out more
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>

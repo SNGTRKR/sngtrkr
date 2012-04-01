@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  genre: MyString
+  bio: MyText
+  hometown: MyString
+  booking_email: MyString
+  manager_email: MyString
+  website: MyString
+  soundcloud: MyString
+  youtube: MyString
+  label_id: 1
+
+two:
+  name: MyString
+  genre: MyString
+  bio: MyText
+  hometown: MyString
+  booking_email: MyString
+  manager_email: MyString
+  website: MyString
+  soundcloud: MyString
+  youtube: MyString
+  label_id: 1

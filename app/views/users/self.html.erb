@@ -1,0 +1,9 @@
+<h1>Me</h1>
+
+<%= @user.email %>
+
+<% @user.managed_artists.each do |manage| %>
+<p>
+	<%= manage.name %>
+</p>
+<% end %>

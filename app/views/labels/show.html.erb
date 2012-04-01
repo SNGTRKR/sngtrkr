@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @label.name %>
+</p>
+
+<p>
+  <b>Bio:</b>
+  <%= @label.bio %>
+</p>
+
+<p>
+  <b>Website:</b>
+  <%= @label.website %>
+</p>
+
+<p>
+  <b>Twitter:</b>
+  <%= @label.twitter %>
+</p>
+
+<p>
+  <b>Facebook:</b>
+  <%= @label.facebook %>
+</p>
+
+<p>
+  <b>Sdigital:</b>
+  <%= @label.sdigital %>
+</p>
+
+
+<%= link_to 'Edit', edit_label_path(@label) %> |
+<%= link_to 'Back', labels_path %>
