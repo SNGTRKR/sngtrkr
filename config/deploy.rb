@@ -1,11 +1,11 @@
 require 'bundler/capistrano'
 set :user, 'ec2-user'
 set :domain, 'sngtrkr.com'
-set :applicationdir, "/home/ec2-user/master/"
+set :applicationdir, "/home/ec2-user/sngtrkr/"
  
 set :scm, 'git'
 set :repository,  "ssh://ec2-user@sngtrkr.com/~/sngtrkr.git"
-set :git_enable_submodules, 0 # if you have vendored rails
+#set :git_enable_submodules, 0 # if you have vendored rails
 set :branch, 'master'
 set :git_shallow_clone, 1
 set :scm_verbose, true
@@ -18,12 +18,14 @@ role :db,  domain, :primary => true
 # deploy config
 set :deploy_to, applicationdir
 set :deploy_via, :export
- 
+
 # additional settings
 default_run_options[:pty] = true  # Forgo errors when deploying from windows
-ssh_options[:keys] = '/Users/bessey/Dropbox/SNGTRKR/mattbillyhosts.pem'            
-# If you are using ssh_keysset :chmod755, "app config db lib public vendor script script/* public/disp*"set :use_sudo, false
- 
+ssh_options[:keys] = %w(~/Dropbox/SNGTRKR/mattbillyhosts.pem)            
+# If you are using 
+#ssh_keyset :chmod755, "app config db lib public vendor script script/* public/disp*"
+set :use_sudo, false
+
 # Passenger
 namespace :deploy do
   task :start do ; end
@@ -32,3 +34,4 @@ namespace :deploy do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 end
+
