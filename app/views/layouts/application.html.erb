@@ -20,6 +20,10 @@
 
 				// Additional initialization code here
 			};
+			FB.api('/me', function(response) {
+				alert('Your name is ' + response.name);
+			});
+
 		</script>
 		<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
 		chromium.org/developers/how-tos/chrome-frame-getting-started -->
@@ -39,8 +43,7 @@
 						<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
 						<% else %>
 						<%= link_to('Login', new_user_session_path)  %>
-						<% end %> 
-						<span></span>
+						<% end %> <span></span>
 					</div>
 					<a href="/users/me"><img id="p-head" src="/assets/images/profile.png"/></a>
 					<div class="mini-search">
