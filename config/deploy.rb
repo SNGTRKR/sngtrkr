@@ -1,11 +1,11 @@
 require 'bundler/capistrano'
 set :user, 'ec2-user'
 set :domain, 'sngtrkr.com'
-set :applicationdir, ""
+set :applicationdir, "/home/ec2-user/master/"
  
 set :scm, 'git'
 set :repository,  "ssh://ec2-user@sngtrkr.com/~/sngtrkr.git"
-set :git_enable_submodules, 1 # if you have vendored rails
+set :git_enable_submodules, 0 # if you have vendored rails
 set :branch, 'master'
 set :git_shallow_clone, 1
 set :scm_verbose, true
