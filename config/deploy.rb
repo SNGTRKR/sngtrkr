@@ -5,10 +5,21 @@ set :deploy_to, "/var/www/apps/#{application}"
 # The type of Source Code Management system you are using
 set :scm, :git
 # The location of the LOCAL repository relative to the current app
-set :repository,  "."
+#set :repository,  "."
+#set :deploy_via, :copy
+
+#=begin
+set :repository,  "ssh://ec2-user@sngtrkr.com/~/sngtrkr.git"
+#set :git_enable_submodules, 1 # if you have vendored rails
+set :branch, 'master'
+set :git_shallow_clone, 1
+set :scm_verbose, true
+ssh_options[:forward_agent] = true
+set :deploy_via, :export
+#=end
+
 # The way in which files will be transferred from repository to remote host
 # If you were using a hosted github repository this would be slightly different
-set :deploy_via, :copy
 
 # The address of the remote host on EC2 (the Public DNS address)
 set :location, "sngtrkr.com"
