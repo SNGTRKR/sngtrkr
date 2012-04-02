@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
-  before_filter :load, :only => [:manage, :unmanage, :follow, :unfollow, :suggest, :unsuggest, :following?]
+  before_filter :load, :only => [:manage, :unmanage, :follow, :unfollow, :suggest, :unsuggest, :following?, :import_artists]
   def load
     @user = current_user
   end
@@ -130,10 +130,8 @@ class UsersController < ApplicationController
   end
 
   def import_artists
-    if(!@user)
-      return "Error, user is logged in"
-    end
-    @data = @user.import_artists params[:json_response]
+    @user = User.first
+    @data = @user.import_artists params[]
   end
 
 end
