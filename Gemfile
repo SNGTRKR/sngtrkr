@@ -35,6 +35,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'fancybox-rails'
 
 gem "koala", "~> 1.4.0"
 gem 'devise'
