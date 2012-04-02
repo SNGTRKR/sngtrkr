@@ -12,7 +12,7 @@ test
 	<div class="how-to-box">
 		<div class="each-box box-pad">
 			<div class="how-to-txt">
-				Login via facebook to find artists you like.
+				Login through facebook to find artists you like.
 			</div><img id="f-people" src="/assets/images/f-people.png"/>
 		</div>
 		<div class="each-box box-pad">
@@ -44,4 +44,21 @@ test
 			</div>
 		</div>
 	</div>
+	<div class="facebook">
+		Login
+	</div>
+	<div id="result"></div>
+	<script type="text/javascript">
+		$(document).ready($(".facebook").click(function() {
+			FB.login(function(response) {
+				// Successfull login
+				FB.api('/me/music', function(response) {
+					// response contains in 
+					$.post('/users/fbimport.json',{json_response: $.param(response)}, function(data){$( "#result" ).empty().append(data)});
+				});
+			}, {
+				scope : 'email,user_likes'
+			})
+		}))
+	</script>
 	<div class="clear"></div>

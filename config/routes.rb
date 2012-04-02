@@ -3,20 +3,23 @@ SNGTRKRR::Application.routes.draw do
   root :to => "Pages#home"
 
   devise_for :users
+  
+  match 'users/me' => 'users#self'
+  # Use this address through AJAX to import all a user's facebook artists.
+  match 'users/fbimport' => 'users#import_artists'
+  resources :users
 
-  resources :artists
+  # Artist actions
   # Search for an artist by name
   match 'artists/search/:name' => 'artists#search'
 
-  # Artist actions
   match 'artists/:artist_id/manage' => 'users#manage', :as => :manage_artist
   match 'artists/:artist_id/unmanage' => 'users#unmanage', :as => :unmanage_artist
   match 'artists/:artist_id/follow' => 'users#follow', :as => :follow_artist
   match 'artists/:artist_id/unfollow' => 'users#unfollow', :as => :unfollow_artist
   match 'artists/:artist_id/suggest' => 'users#suggest', :as => :suggest_artist
   match 'artists/:artist_id/unsuggest' => 'users#unsuggest', :as => :unsuggest_artist
-
-  match 'users/me' => 'users#self'
+  resources :artists
 
   resources :releases
 
