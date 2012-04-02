@@ -4,4 +4,10 @@ class PagesController < ApplicationController
     @graph = Koala::Facebook::API.new 
     render :layout => 'home'
   end
+  def manage 
+    
+  end
+  def recommended
+    
+  end
 end

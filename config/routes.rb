@@ -1,13 +1,14 @@
 SNGTRKRR::Application.routes.draw do
 
   root :to => "Pages#home"
+  match '/manage' => "Pages#manage"
+  match '/recommended' => "Pages#recommended"
 
   devise_for :users
   
   match 'users/me' => 'users#self'
   # Use this address through AJAX to import all a user's facebook artists.
   match 'users/fbimport' => 'users#import_artists'
-  match 'users/manage' => 'users#manage'
   resources :users
 
   # Artist actions
