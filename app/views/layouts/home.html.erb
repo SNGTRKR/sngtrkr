@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>SNGTRKRR</title>
+		<%= stylesheet_link_tag    "application", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<div id="fb-root"></div>
+		<script src="http://connect.facebook.net/en_US/all.js"></script>
+		<script>
+			window.fbAsyncInit = function() {
+				FB.init({
+					appId : '344989472205984', // App ID
+					status : true, // check login status
+					cookie : true, // enable cookies to allow the server to access the session
+					xfbml : true  // parse XFBML
+				});
+			};
+
+		</script>
+		<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
+		chromium.org/developers/how-tos/chrome-frame-getting-started -->
+		<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or
+		<a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+		<div id="wrapper">
+			<div class="wrapper2">
+                                <div class="header header-height-big">
+                                	<a href=""><img class="facebook-log home-login-nudge" src=assets_path"/assets/images/log-facebook.png"/></a>
+                                    <div class="clear"></div>
+                                    <a href="/"><h1><img src="/assets/images/logo-120.png" alt="SNGTRKR"/></h1></a>
+                            </div>
+				<%= yield %>
+			</div>
+		</div></div>
+		<div id="footer">
+			<div id="fcontainer">
+				<ul class="footer-menu">
+					<li>
+						<a href="/about.php">What is SNGTRKR?</a>
+					</li>
+					<li>
+						<a href="/blog.php">Blog</a>
+					</li>
+					<li>
+						<a href="/tou.php">Terms of Use</a>
+					</li>
+					<li>
+						<a href="/privacy.php">Privacy Policy</a>
+					</li>
+				</ul>
+				<div id="footer-txt">
+					© Copyright SNGTRKR 2012. All Rights Reserved. Load Time ...
+				</div>
+			</div>
+		</div>
+		<!-- Javascript -->
+		<script type='text/javascript'>
+			window.addEvent('load', function() {
+				new DatePicker('.date-pick', {
+					pickerClass : 'datepicker_jqui',
+					debug : false
+				});
+			});
+
+		</script>
+		<script type="text/javascript">
+			ncjQuery = jQuery.noConflict();
+			ncjQuery(document).ready(function() {
+				ncjQuery('.fancybox').fancybox();
+			});
+
+		</script>
+		<script type="text/javascript">
+			ncjQuery(document).ready(function() {
+				ncjQuery(".cheform").ajaxForm({
+					success : function(responseText) {
+						ncjQuery.fancybox.open({
+							href : '/admin/change-email.php',
+							type : 'iframe',
+							width : 431,
+							height : 286,
+							autoSize : false,
+							closeBtn : false,
+						});
+					}
+				});
+			});
+			ncjQuery(document).ready(function() {
+				ncjQuery(".enform").ajaxForm({
+					success : function(responseText) {
+						ncjQuery.fancybox.open({
+							href : '/admin/email-notify.php',
+							type : 'iframe',
+							width : 431,
+							height : 286,
+							autoSize : false,
+							closeBtn : false,
+						});
+					}
+				});
+			});
+			ncjQuery(document).ready(function() {
+				ncjQuery(".chpform").ajaxForm({
+					success : function(responseText) {
+						ncjQuery.fancybox.open({
+							href : '/admin/change-password.php',
+							type : 'iframe',
+							width : 431,
+							height : 286,
+							autoSize : false,
+							closeBtn : false,
+						});
+					}
+				});
+			});
+			ncjQuery(document).ready(function() {
+				ncjQuery(".rform").ajaxForm({
+					success : function(responseText) {
+						ncjQuery.fancybox.open({
+							href : '/admin/add-release.php',
+							type : 'iframe',
+							width : 431,
+							height : 286,
+							autoSize : false,
+							closeBtn : false,
+						});
+					}
+				});
+			});
+
+		</script>
+	</body>
+</html>
