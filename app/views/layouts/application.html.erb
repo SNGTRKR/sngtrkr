@@ -33,8 +33,14 @@
 					</style>
 					<![endif]-->
 				<a href=""><img class="facebook-log norm-login-nudge" src="/assets/images/log-facebook.png"/></a>
+									<div id="mini-search-2">
+                        <%= form_tag artists_path , :method => 'get' do %>
+						<%= text_field_tag(:search, params[:search]) %> <img class="search-25" src="/assets/images/search-25.png"/>
+						<% end %>
+                    </div>
                 <div class="clear"></div>
                 <h2><a href="/"><img src="/assets/images/logo-55.png" alt="SNGTRKR"/></a></h2>
+                
 				</div>
 				<%= yield %>
 			</div>
