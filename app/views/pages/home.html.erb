@@ -48,7 +48,14 @@
 				// Successfull login
 				FB.api('/me/music', function(response) {
 					// response contains in 
-					$.post('/users/fbimport.json',{json_response: $.param(response)}, function(data){$( "#result" ).empty().append(data)});
+					$.ajax({
+						type: 'POST',
+						url: '/users/fbimport.json',
+						data: response,
+						datType: 'json',
+						success: function(response) { console.log(response)},
+						error: function(response) { console.log(response)}
+					})
 				});
 			}, {
 				scope : 'email,user_likes'

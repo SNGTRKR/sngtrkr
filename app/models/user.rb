@@ -78,8 +78,7 @@ class User < ActiveRecord::Base
   end
   
   def import_artists(json_response)
-    fb_data = JSON.parse json_response    
-    return fb_data
+    @fb_data = JSON.parse json_response
   end
 
 end
