@@ -21,13 +21,18 @@ html, body{
     width:100%;
     height:100%;
 }
+@font-face {
+  font-family: "Instruction";
+  src: url("type/instruction.otf");
+  src: local("?"),
+    url("type/instruction.otf") format("opentype");
+}
 body{
     font-family: 'Signika Negative', sans-serif;
     font-size:75%;
     font-weight:400;
     line-height:1.2em;
-    //background-color:$blue;
-    background: url('./images/b-bk.png') no-repeat center center fixed;
+    background: url(../img/b-bk.png) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -39,6 +44,9 @@ body{
 .orange-txt {
     color:$orange; 
 }
+.font-13 {
+  font-size:1.1em;
+}
 .font-15 {
   font-size:1.3em;
 }
@@ -47,6 +55,12 @@ body{
 }
 .font-25 {
   font-size:2.3em;
+}
+.font-35 {
+  font-size:2.8em;
+}
+.font-100 {
+  font-size:9.2em;
 }
 .line-height-1-25 {
   line-height:1.25em;
@@ -73,6 +87,15 @@ table th{
 .left{
     float:left;
     }
+.facebook-log {
+  float:right;
+}
+.home-login-nudge {
+    margin-top:23px;
+}
+.norm-login-nudge {
+  margin-top:28px;
+}
 .form-text {   
        width:158px;
        border:1px solid #999;
@@ -125,83 +148,8 @@ input.dp-applied {
         outline: none;
     }
 }
-.login-box {
-    display:none;
-    width:431px;
-    height:286px;
-    background: url(../js/fancybox/box-bk-431.png) no-repeat;
-    @include border-radius(8px);
-    #login-logo-70 {
-      position:relative;
-      top:18px;
-      left:100px;
-    }
-            .lform {
-            position:relative;
-            width:251px;
-            height:108px;
-            top:22px;
-            left:90px;
-            label { 
-                width:80px; 
-                display:block;
-                float:left;
-                margin-top:6px;
-            }
-            .ltext {   
-                width:158px;
-                border:1px solid #999;
-                -webkit-border-radius: 3px;-khtml-border-radius:3px;-moz-border-radius:3px;border-radius:3px;
-                margin:0;
-                padding:5px;
-                background: #fff;
-                background: -webkit-gradient(linear, left top, left 25, from(#fff), color-stop(6%, #eee), to(#fff));
-                background: -moz-linear-gradient(top, #fff, #eee 2px, #fff 25px);
-                box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
-                -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
-                -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
-            }
-            .ltext:hover, .itext:focus {
-                border-color: #333;
-                background:#fff;
-            }
-            li {
-                padding:0 0 18px 0;
-            }
-            input[type=submit] {
-                margin:5px 0 0 0;
-                background:none;
-                border:0;
-                color:#fff;
-                font-size:1.1em;
-            }
-            #submit-pad-login {
-                margin-right:12px;
-                margin-top:2px;
-            }
-        }
-      #already-signed-login {
-            position:relative;
-            font-size:1.3em;
-            top:50px;
-            left:117px;
-            width:220px;
-            a {
-                color:$orange;
-            }
-        }
-        .fb-login-button {
-          position:absolute;
-          left:156px;
-          top:184px;
-          height:30px;
-          width:97px;
-          background-image: url(./images/f-login.png);
-          font-size:1.1em;
-        }
-      }
 .o-button{
-    background-image: url(./images/header-bk-left.png);
+    background-image: url(../img/header-bk-left.png);
     display:block;
     height:32px;
     line-height:32px;
@@ -216,12 +164,6 @@ input.dp-applied {
         color:white;
     }
 }
-.o-button-big {
-  font-size:1.3em;
-}
-.o-button-small {
-  font-size:1.1em;
-}
 #artist_search_results{
     width:60em;
     margin:3em auto;
@@ -231,7 +173,7 @@ input.dp-applied {
     }
 }
 .o-button span {
-    background-image: url(./images/header-bk-right.png);
+    background-image: url(../img/header-bk-right.png);
     display:block;
     float:left;
     height:32px;
@@ -252,7 +194,7 @@ input.dp-applied {
     height:170px;
 }
 .header-height-small {
-    height:87px;
+    height:105px;
 }
 .header{
     padding:0px 42px 0px 42px;
@@ -298,13 +240,13 @@ input.dp-applied {
     }
     h2{
         position:relative;
-        bottom:63px;
+        bottom:51px;
         width:202px;
         height:55px;
     }
 }
 #footer{
-    background-image: url(./images/footer.png);
+    background-image: url(../img/footer.png);
     *{
         color:white;
     }
@@ -354,7 +296,6 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 .content{
     padding:0px 73px 0px 73px;
     h1 {
-        font-size:2.8em;
         color:#fff;
         -moz-text-shadow: 0px 2.83px 8px rgba(0,0,0,0.28);
         -webkit-text-shadow: 0px 2.83px 8px rgba(0,0,0,0.28);
@@ -363,7 +304,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
         font-weight:400;
         line-height:1.3em;
     }
-    #home-white-header
+    .home-white-header
     {
         position:relative;
         width:540px;
@@ -428,7 +369,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
             width:120px;
             height:35px;
             float:left;
-            background-image: url(./images/find-out.png);
+            
             background-repeat:no-repeat;
             .find-txt
             {
@@ -450,110 +391,8 @@ body:before {/* thanks to Maleika (Kohoutec)*/
             right:12px;
         }
     }
-    #content-left-signup {
-        float:left;
-        width:341px;
-        height:494px;
-        #signup-points-box {
-            position:relative;
-            background:rgba(255,255,255,0.75);
-            @include border-radius(8px);
-            -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
-            -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
-            box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
-            width:341px;
-            height:264px;
-            top:26px;
-            .each-point {
-                width:239px;
-                height:45px;
-                float:left;
-                padding:20px 50px 0 45px;
-                .point-txt {
-                    margin-top:8px;
-                    float:right;
-                    width:158px;
-                    height:45px;
-                }
-            }
-        }
-        #u-signup-header {
-            position:relative;
-            width:340px;
-            
-        }
-          #already-signed {
-            position:relative;
-            font-size:1.3em;
-            top:30px;
-            left:63px;
-            
-            a {
-                color:$orange;
-            }
-        }
-    }
-    #content-right-signup {
-        float:right;
-        width:284px;
-        margin-top:11px;
-        .signup-txt {
-            position:relative;
-            font-weight:bold;
-            font-size:1.3em;
-            line-height:1.3em;
-        }
-        .facebook
-        {
-            margin-top:32px;
-            margin-bottom:22px;
-            text-shadow:0 1px 0 #fff;
-            font-family:"lucida grande",tahoma,verdana,arial,sans-serif;
-            .facebook-signup
-            {
-                background-image: url(./images/fbook-button.png);
-                background-color:#5971AD;
-                color:#fff;
-                border: 1px solid #6C7FAA;
-                white-space:nowrap;
-                font-size:1.5em;
-                padding:5px 10px;
-                padding-left:45px;
-            }
-        }
-        .sform {
-            position:relative;
-            width:284px;
-            height:320px;
-            top:27px;
-            label { 
-                width:110px; 
-                display:block;
-                float:left;
-                margin-top:6px;
-            }
-            li {
-                padding:0 0 18px 0;
-            }
-            .captcha-pad {
-                padding:40px 0 15px 0;
-            }
-            input[type=submit] {
-                margin:5px 0 0 0;
-                background:none;
-                border:0;
-                color:#fff;
-                font-size:1.1em;
-            }
-            #submit-pad {
-                margin-right:14px;
-                margin-top:2px;
-            }
-        }
-    }
     h2 {
-      position:relative;
-      
+      position:relative;  
     }
     #content-left-artist {
       float:left;
@@ -593,6 +432,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
       font-size:1.3em;
       text-transform:uppercase;
       margin-bottom:5px;
+      font-family: "Instruction", Helvetica, Arial, sans-serif;
     }
     #genre-nudge {
       position:relative;
@@ -659,7 +499,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
       position:relative;
       height:80px;
       width:159px;
-      background-image: url(./images/trkrs-button.png);
+      background-image: url(/img/trkrs-button.png);
       margin-bottom:4px;
       #trkrs-button-txt {
         position:relative;
@@ -748,7 +588,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     }
     }
   }
-  #release-header {
+  .release-header {
     position:relative;
     width:340px;
   }
@@ -891,6 +731,40 @@ body:before {/* thanks to Maleika (Kohoutec)*/
             }
         }
 }
+#content-404 {  
+  position:relative;
+  width:526px;
+  height:323px;         
+        #content-404-left {
+        float:left;
+        width:258px;
+        }
+        #content-404-right {
+          float:right;
+          width:267px;
+        }
+}
+#warning-sign {
+  position:relative;
+  left:50px;
+  bottom:7px;
+}
+#manage-artist-txt {
+  position:relative;
+  width:450px;
+  font-weight:bold;
+  left:173px;
+  bottom:88px;
+}
+}
+.content-pad-bottom {
+    padding-bottom:166px;
+}
+.content-pad-160 {
+  padding:4px 160px 0 160px;
+}
+.content-pad-160-bottom {
+    padding:4px 160px 166px 160px;
 }
 .delete-confirm {
     display:none;
@@ -941,27 +815,6 @@ body:before {/* thanks to Maleika (Kohoutec)*/
         font-size:1.1em;
       }
 }
-.manage-confirm {
-    display:none;
-    width:684px;
-    height:397px;
-    background: url(/js/fancybox/box-bk-684.png) no-repeat;
-    @include border-radius(8px);
-    #confirm-warning {
-      position:relative;
-      height:90px;
-      width:93px;
-      top:30px;
-      left:61px;
-    }
-    #manage-txt {
-      position:relative;
-      height:50px;
-      width:450px;
-      left:185px;
-      bottom:51px;
-    }
-}
 .change-email-confirm {
     width:431px;
     height:286px;
@@ -996,14 +849,68 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     top:52px;
     line-height:1.25em;
 }
-.content-pad-bottom {
-    padding-bottom:166px;
-}
-.content-pad-160 {
-  padding:4px 160px 0 160px;
-}
-.content-pad-160-bottom {
-    padding:4px 160px 166px 160px;
+.manage-confirm {
+    display:none;
+    width:431px;
+    height:286px;
+    background: url(/js/fancybox/box-bk-431.png) no-repeat;
+    @include border-radius(8px);
+         .mcform {
+            position:relative;
+            width:284px;
+            height:73px;
+            
+            label { 
+                width:110px; 
+                display:block;
+                float:left;
+                margin-top:6px;
+            }
+            li {
+                padding:0 0 18px 0;
+            }
+            input[type=submit] {
+                margin:5px 0 0 0;
+                background:none;
+                border:0;
+                color:#fff;
+                font-size:1.1em;
+            }
+            #manage-confirm-submit-pad {
+                margin-left:157px;
+                margin-top:50px;
+            }
+        }
+        #manage-confirm-logo-70 {
+          position:relative;
+          left:101px;
+          top:32px;
+        }
+        .manage-confirm-txt-1 {
+          position:relative;
+          text-align:center;
+          width:233px;
+          left:99px;
+          top:42px;
+        }
+        .manage-confirm-txt-2 {
+          position:relative;
+          text-align:center;
+          width:233px;
+          left:99px;
+          top:59px;
+        }
+        .manage-confirm-input {
+          position:relative;
+          top:59px;
+          left:137px;
+        }
+        #manage-confirm-no {
+          position:relative;
+          bottom:18px;
+          right:23px;
+          font-size:1.1em;
+        }
 }
 .button{
     background: $orange;
