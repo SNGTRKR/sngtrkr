@@ -94,7 +94,7 @@ table th{
     margin-top:23px;
 }
 .norm-login-nudge {
-  margin-top:28px;
+  margin-top:29px;
 }
 .form-text {   
        width:158px;
@@ -204,10 +204,31 @@ input.dp-applied {
         position:relative;
         margin:38px 0 0 14px;
     }
-    .mini-search {
+    #mini-search {
         float:right;
         position:relative;
         margin:41px 0 0 0;
+        height:25px;
+        width:158px;
+        background:rgba(255,255,255,0.75);
+        @include border-radius(8px);
+        -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.5);
+        -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.5);
+        box-shadow: 0px 0px 7px rgba(0,0,0,0.5);
+        input{
+            background:transparent;
+            padding:0.6em;
+            border:none;
+            width:10em;
+        }
+        input:focus{
+            outline:none;
+        }
+    }
+    #mini-search-2 {
+        float:right;
+        position:relative;
+        margin:39px 11px 0 0;
         height:25px;
         width:158px;
         background:rgba(255,255,255,0.75);
