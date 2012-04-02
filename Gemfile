@@ -14,6 +14,11 @@ gem 'json'
 gem 'passenger'
 gem 'capistrano'
 
+# SCRAPING GEMS
+
+gem 'rbrainz'
+gem 'scrobbler'
+gem 'itunes-search'
 
 # Gems used only for assets and not required
 # in production environments by default.
