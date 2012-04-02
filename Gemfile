@@ -21,6 +21,7 @@ gem 'scrobbler'
 gem 'itunes-search'
 
 # Gems used only for assets and not required
+gem 'haml'
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

@@ -44,13 +44,14 @@
 	<div class="facebook">
 		Login
 	</div>
+	<div id="result"></div>
 	<script type="text/javascript">
 		$(document).ready($(".facebook").click(function() {
 			FB.login(function(response) {
 				// Successfull login
 				FB.api('/me/music', function(response) {
 					// response contains in 
-					$.post('/users/fbimport',{json_response: $.param(response)}, function(data){console.log(data)}, "json");
+					$.post('/users/fbimport.json',{json_response: $.param(response)}, function(data){$( "#result" ).empty().append(data)});
 				});
 			}, {
 				scope : 'email,user_likes'

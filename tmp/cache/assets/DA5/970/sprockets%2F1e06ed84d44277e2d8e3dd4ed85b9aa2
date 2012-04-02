@@ -1,4 +1,4 @@
-o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value"×{"content_type"application/javascript"
+o: ActiveSupport::Cache::Entry	:@expires_in0:@value"×{"content_type"application/javascript"
 class"ProcessedAsset"dependency_digest"%aaf392caeb7ff47715a422889966e814"
 mtime"2012-03-21T14:15:49+00:00"_version"%aa7d0db7619379e13b08335dee027df2"dependency_paths[{"
 mtime"2012-03-21T14:15:49+00:00"digest"%c39c291b06c749aaed8a75a2cffa42ca"	path"=$root/app/assets/javascripts/fancybox/jquery.fancybox.js"digest"%adff34dfe70277787b8ffa51e4f88cb7"required_paths["=$root/app/assets/javascripts/fancybox/jquery.fancybox.js"pathname"=$root/app/assets/javascripts/fancybox/jquery.fancybox.js"logical_path" fancybox/jquery.fancybox.js"lengthit}"source"t} /*!
@@ -1416,4 +1416,4 @@ mtime"2012-03-21T14:15:49+00:00"digest"%c39c291b06c749aaed8a75a2cffa42ca"	path
 	};
 
 }(window, document, jQuery));
-:@created_atf1333317726.109539 °
+:@compressedF:@created_atf1333392035.9782169 ›
