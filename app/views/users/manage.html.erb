@@ -1,65 +1,51 @@
-<div class="content content-pad-bottom">
-	<h1 class="home-white-header font-35">Track your favourite artists and never miss another release...</h1>
-	<div id="big-search">
-		<%= form_tag artists_path , :method => 'get' do %>
-		<%= text_field_tag(:search, params[:search]) %> <img id="search-35" src="/assets/images/search-35.png"></img>
-		<% end %>
-	</div>
-	<div class="clear"></div>
-	<div class="how-to-box">
-		<div class="each-box box-pad">
-			<div class="how-to-txt">
-				Login through facebook to find artists you like.
-			</div><img id="f-people" src="/assets/images/f-people.png"/>
-		</div>
-		<div class="each-box box-pad">
-			<div class="how-to-txt">
-				Follow artists, listen to & buy tracks you like, with an easy to use timeline.
-			</div>
-		</div>
-		<div class="each-box">
-			<div class="how-to-txt">
-				Free notifications when artists release new tracks.
-			</div><img id="notify" src="/assets/images/notification.png"/>
-		</div>
-	</div>
-	<div class="clear"></div>
-	<div class="find-out-box">
-		<div class="find-box find-pad">
-			<div class="find-txt">
-				Find out more
-			</div>
-		</div>
-		<div class="find-box find-pad">
-			<div class="find-txt">
-				Find out more
-			</div>
-		</div>
-		<div class="find-box">
-			<div class="find-txt">
-				Find out more
-			</div>
-		</div>
-	</div>
-	<div id="result"></div>
-	<script type="text/javascript">
-		$(document).ready($(".facebook").click(function() {
-			FB.login(function(response) {
-				// Successfull login
-				FB.api('/me/music', function(response) {
-					// response contains in 
-					$.ajax({
-						type: 'POST',
-						url: '/users/fbimport.json',
-						data: response,
-						datType: 'json',
-						success: function(response) { console.log(response)},
-						error: function(response) { console.log(response)}
-					})
-				});
-			}, {
-				scope : 'email,user_likes'
-			})
-		}))
-	</script>
-	<div class="clear"></div>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>First name:</b>
+  <%= @user.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @user.last_name %>
+</p>
+
+<p>
+  <b>Password:</b>
+  <%= @user.password %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @user.type %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b>Email frequency:</b>
+  <%= @user.email_frequency %>
+</p>
+
+<p>
+  <b>Last email:</b>
+  <%= @user.last_email %>
+</p>
+
+<p>
+  <b>Username:</b>
+  <%= @user.username %>
+</p>
+
+<p>
+  <b>Role:</b>
+  <%= @user.role %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
+
