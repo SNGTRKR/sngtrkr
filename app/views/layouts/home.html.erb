@@ -10,14 +10,15 @@
 		<div id="fb-root"></div>
 		<script src="http://connect.facebook.net/en_US/all.js"></script>
 		<script>
-			$(document).ready(function() {
+			window.fbAsyncInit = function() {
 				FB.init({
 					appId : '344989472205984', // App ID
 					status : true, // check login status
 					cookie : true, // enable cookies to allow the server to access the session
 					xfbml : true  // parse XFBML
 				});
-			})
+			};
+
 		</script>
 		<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
 		chromium.org/developers/how-tos/chrome-frame-getting-started -->
@@ -25,29 +26,11 @@
 		<a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 		<div id="wrapper">
 			<div class="wrapper2">
-				<div class="header header-height-small">
-					<!-- IE CSS for sticky footer -->
-					<!--[if !IE 7]>
-					<style type="text/css">
-					#wrap {display:table;height:100%}
-					</style>
-					<![endif]-->
-					<div class="o-button o-pad-big right o-button-big">
-						<% if user_signed_in? %>
-						<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-						<% else %>
-						<%= link_to('Login', new_user_session_path)  %>
-						<% end %> <span></span>
-					</div>
-					<a href="/users/me"><img id="p-head" src="/assets/images/profile.png"/></a>
-					<div class="mini-search">
-						<form action="/search.php">
-							<input type="text" name="search">
-							<img class="search-25" src="/assets/images/search-25.png"/>
-					</div>
-					</form> <div class="clear"></div>
-					<h2><a href="/"><img id="logo-55" src="/assets/images/logo-55.png" alt="SNGTRKR"/></a></h2>
-				</div>
+                                <div class="header header-height-big">
+                                	<a href=""><img class="facebook-log home-login-nudge" src=assets_path"/assets/images/log-facebook.png"/></a>
+                                    <div class="clear"></div>
+                                    <a href="/"><h1><img src="/assets/images/logo-120.png" alt="SNGTRKR"/></h1></a>
+                            </div>
 				<%= yield %>
 			</div>
 		</div></div>
