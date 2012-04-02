@@ -41,4 +41,20 @@
 			</div>
 		</div>
 	</div>
+	<div class="facebook">
+		Login
+	</div>
+	<script type="text/javascript">
+		$(document).ready($(".facebook").click(function() {
+			FB.login(function(response) {
+				// Successfull login
+				FB.api('/me/music', function(response) {
+					// response contains in 
+					$.post('/users/fbimport',{json_response: $.param(response)}, function(data){console.log(data)}, "json");
+				});
+			}, {
+				scope : 'email,user_likes'
+			})
+		}))
+	</script>
 	<div class="clear"></div>

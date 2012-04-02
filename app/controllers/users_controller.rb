@@ -103,7 +103,7 @@ class UsersController < ApplicationController
     @user.manage params[:artist_id]
     redir :artist_id
   end
-  
+
   def unmanage
     @user.unmanage params[:artist_id]
     redir :artist_id
@@ -113,7 +113,7 @@ class UsersController < ApplicationController
     @user.unfollow params[:artist_id]
     redir :artist_id
   end
-  
+
   def follow
     @user.follow params[:artist_id]
     redir :artist_id
@@ -123,10 +123,17 @@ class UsersController < ApplicationController
     @user.unsuggest params[:artist_id]
     redir :artist_id
   end
-  
+
   def suggest
     @user.suggest params[:artist_id]
     redir :artist_id
+  end
+
+  def import_artists
+    if(!@user)
+      return "Error, user is logged in"
+    end
+    @data = @user.import_artists params[:json_response]
   end
 
 end
