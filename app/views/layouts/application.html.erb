@@ -10,15 +10,14 @@
 		<div id="fb-root"></div>
 		<script src="http://connect.facebook.net/en_US/all.js"></script>
 		<script>
-			window.fbAsyncInit = function() {
+			$(document).ready(function() {
 				FB.init({
 					appId : '344989472205984', // App ID
 					status : true, // check login status
 					cookie : true, // enable cookies to allow the server to access the session
 					xfbml : true  // parse XFBML
 				});
-			};
-
+			})
 		</script>
 		<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
 		chromium.org/developers/how-tos/chrome-frame-getting-started -->
