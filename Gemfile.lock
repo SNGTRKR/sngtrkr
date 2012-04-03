@@ -1,6 +1,9 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    7digital (0.0.7)
+      peachy (>= 0.3.5)
+      will_paginate (>= 2.3.15)
     actionmailer (3.2.2)
       actionpack (= 3.2.2)
       mail (~> 2.4.0)
@@ -95,12 +98,14 @@ GEM
     net-ssh (2.3.0)
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
+    oauth (0.4.5)
     orm_adapter (0.0.7)
     passenger (3.0.11)
       daemon_controller (>= 0.2.5)
       fastthread (>= 1.0.1)
       rack
       rake (>= 0.8.1)
+    peachy (0.4.1)
     polyglot (0.3.3)
     rack (1.4.1)
     rack-cache (1.2)
@@ -154,11 +159,13 @@ GEM
       multi_json (>= 1.0.2)
     warden (1.1.1)
       rack (>= 1.0)
+    will_paginate (3.0.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  7digital
   capistrano
   coffee-rails (~> 3.2.1)
   compass-rails (~> 1.0.0.rc.2)
@@ -167,6 +174,7 @@ DEPENDENCIES
   jquery-rails
   json
   koala (~> 1.4.0)
+  oauth
   passenger
   rails (= 3.2.2)
   rbrainz
