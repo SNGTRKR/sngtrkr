@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120403180644) do
+ActiveRecord::Schema.define(:version => 20120403224602) do
 
   create_table "artists", :force => true do |t|
     t.string   "name"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20120403180644) do
     t.integer  "label_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.string   "fbid"
   end
 
   create_table "follows", :force => true do |t|

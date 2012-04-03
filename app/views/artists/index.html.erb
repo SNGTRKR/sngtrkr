@@ -1,41 +1,42 @@
 <h1>Listing artists</h1>
-
 <table>
-  <tr>
-    <th>Name</th>
-    <th>Genre</th>
-    <th>Bio</th>
-    <th>Hometown</th>
-    <th>Booking email</th>
-    <th>Manager email</th>
-    <th>Website</th>
-    <th>Soundcloud</th>
-    <th>Youtube</th>
-    <th>Label</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @artists.each do |artist| %>
-  <tr>
-    <td><%= link_to artist.name, artist %></td>
-    <td><%= artist.genre %></td>
-    <td><%= artist.bio.to(100) %>...</td>
-    <td><%= artist.hometown %></td>
-    <td><%= artist.booking_email %></td>
-    <td><%= artist.manager_email %></td>
-    <td><%= artist.website %></td>
-    <td><%= artist.soundcloud %></td>
-    <td><%= artist.youtube %></td>
-    <td><%= artist.label_id %></td>
-    <td><%= link_to 'Show', artist %></td>
-    <td><%= link_to 'Edit', edit_artist_path(artist) %></td>
-    <td><%= link_to 'Destroy', artist, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+	<tr>
+		<th>Name</th>
+		<th>Genre</th>
+		<th>Bio</th>
+		<th>Hometown</th>
+		<th>Booking email</th>
+		<th>Manager email</th>
+		<th>Website</th>
+		<th>Soundcloud</th>
+		<th>Youtube</th>
+		<th>Label</th>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
+	<% @artists.each do |artist| %>
+	<% if(artist.bio)
+      bio = artist.bio.to(100) + "..."
+    else
+      bio = ""
+    end %>
+	<tr>
+		<td><%= link_to artist.name, artist %></td>
+		<td><%= artist.genre %></td>
+		<td><%= bio %></td>
+		<td><%= artist.hometown %></td>
+		<td><%= artist.booking_email %></td>
+		<td><%= artist.manager_email %></td>
+		<td><%= artist.website %></td>
+		<td><%= artist.soundcloud %></td>
+		<td><%= artist.youtube %></td>
+		<td><%= artist.label_id %></td>
+		<td><%= link_to 'Show', artist %></td>
+		<td><%= link_to 'Edit', edit_artist_path(artist) %></td>
+		<td><%= link_to 'Destroy', artist, :confirm => 'Are you sure?', :method => :delete %></td>
+	</tr>
+	<% end %>
 </table>
-
 <br />
-
-<%= link_to 'New Artist', new_artist_path %>
+<%= link_to 'New Artist', new_artist_path %> 
