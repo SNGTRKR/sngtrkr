@@ -78,7 +78,7 @@ class User < ActiveRecord::Base
   end
   
   def import_artists(json_response)
-    ret = JSON.parse json_response.read
+    ret = ActiveSupport::JSON.decode json_response.read
     return ret
   end
 
