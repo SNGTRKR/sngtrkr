@@ -52,23 +52,14 @@ test
 		$(document).ready($(".facebook").click(function() {
 			FB.login(function(response) {
 				// Successfull login
-				FB.api('/me/music', function(response) {
-					//console.log(JSON.stringify(response));
-					// response contains in
-					$.ajax({
-						type : 'POST',
-						url : '/users/fbimport.json',
-						data : JSON.stringify(response),
-						processData : false,
-						contentType : "application/json",
-						success : function(response) {
-							console.log(response)
-						},
-						error : function(response) {
-							console.log(response.responseText)
-						}
-					})
-				});
+				accessToken = FB.getAuthResponse().accessToken;
+				$.ajax({
+					url : "/users/fbimport.json",
+					type : "GET",
+					data : "access_token=" + accessToken,
+				}).done(function(msg) {
+					alert("Data Saved: " + msg);
+				})
 			}, {
 				scope : 'email,user_likes'
 			})
