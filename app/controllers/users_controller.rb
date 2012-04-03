@@ -131,7 +131,8 @@ class UsersController < ApplicationController
 
   def import_artists
     @user = User.first
-    @data = @user.import_artists params[]
+    @fbdata = @user.import_artists request.body
+    
   end
 
 end

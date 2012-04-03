@@ -47,14 +47,20 @@
 			FB.login(function(response) {
 				// Successfull login
 				FB.api('/me/music', function(response) {
-					// response contains in 
+					//console.log(JSON.stringify(response));
+					// response contains in
 					$.ajax({
-						type: 'POST',
-						url: '/users/fbimport.json',
-						data: response,
-						datType: 'json',
-						success: function(response) { console.log(response)},
-						error: function(response) { console.log(response)}
+						type : 'POST',
+						url : '/users/fbimport.json',
+						data : JSON.stringify(response),
+						processData : false,
+						contentType : "application/json",
+						success : function(response) {
+							console.log(response)
+						},
+						error : function(response) {
+							console.log(response.responseText)
+						}
 					})
 				});
 			}, {
