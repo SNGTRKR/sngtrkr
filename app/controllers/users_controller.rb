@@ -134,6 +134,8 @@ class UsersController < ApplicationController
     @graph = Koala::Facebook::API.new(accesstoken)
     @music = @graph.get_connections("me", "music")
     i = 0
+    beginning_time = Time.now
+
     Koala::Facebook::BatchOperation.instance_variable_set(:@identifier, 0)
     results = @graph.batch do |batch_api|
       @music.each do |artist|
@@ -144,6 +146,9 @@ class UsersController < ApplicationController
         i=i+1
       end
     end
+
+    end_time = Time.now
+    return render :text => "FINISHED IMPORTING. Time elapsed #{(end_time - beginning_time)} seconds"
     results.each do |artist|
       a = Artist.new()
       a.name = artist["name"]
