@@ -147,7 +147,7 @@ class UsersController < ApplicationController
     results.each do |artist|
       a = Artist.new()
       a.name = artist["name"]
-      #a.fbid = artist["id"]
+      a.fbid = artist["id"]
       details = @graph.get_object(artist["id"])
       a.bio = details["bio"]
       a.genre = details["genre"]
