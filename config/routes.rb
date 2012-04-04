@@ -1,8 +1,10 @@
 SNGTRKRR::Application.routes.draw do
 
-  root :to => "Pages#home"
+  # root :to => "Pages#home"
+  root :to => "Pages#splash"
   match '/manage' => "Pages#manage"
   match '/recommended' => "Pages#recommended"
+  match '/home' => "Pages#home"
 
   devise_for :users
   

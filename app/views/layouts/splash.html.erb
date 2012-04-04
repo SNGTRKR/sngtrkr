@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>SNGTRKRR</title>
+		<%= stylesheet_link_tag    "application", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<div id="fb-root"></div>
+		<script src="http://connect.facebook.net/en_US/all.js"></script>
+		<script>
+			$(document).ready(function() {
+				FB.init({
+					appId : '344989472205984', // App ID
+					status : true, // check login status
+					cookie : true, // enable cookies to allow the server to access the session
+					xfbml : true  // parse XFBML
+				});
+			})
+		</script>
+		<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
+		chromium.org/developers/how-tos/chrome-frame-getting-started -->
+		<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or
+		<a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+		<div id="wrapper">
+			<div class="wrapper2">
+				<div class="header header-height-small">
+					<!-- IE CSS for sticky footer -->
+					<!--[if !IE 7]>
+					<style type="text/css">
+					#wrap {display:table;height:100%}
+					</style>
+					<![endif]-->
+				</div>
+				<%= yield %>
+			</div>
+		</div></div>
+	</body>
+</html>

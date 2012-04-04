@@ -10,4 +10,7 @@ class PagesController < ApplicationController
   def recommended
     
   end
+  def splash
+  render :layout => 'splash'  
+  end
 end
