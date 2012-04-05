@@ -2,8 +2,9 @@ set :default_environment, {
     'PATH' => "/usr/local/bin:/bin:/usr/bin:/bin:/home/ec2-user/.rvm/gems/ruby-1.9.3-p125/bin",
     'GEM_HOME' => '/home/ec2-user/.rvm/gems/ruby-1.9.3-p125/gems',
     'GEM_PATH' => '/home/ec2-user/.rvm/gems/ruby-1.9.3-p125/gems',
-    'BUNDLE_PATH' => '/home/ec2-user/.rvm/gems/ruby-1.9.3-p125/gems'  
+    'BUNDLE_PATH' => '~/.rvm/gems/ruby-1.9.3-p125/bin/bundle'  
 }
+require "bundler/capistrano"
 
 # The name of your app
 set :application, "sngtrkr"
@@ -43,7 +44,7 @@ ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "id_rsa")]
 # these http://github.com/rails/irs_process_scripts
 set :synchronous_connect, true
 
-before "deploy:assets:precompile", "bundle:install"
+#before "deploy:assets:precompile"
 
 # If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
