@@ -1,5 +1,38 @@
-<h1>New release</h1>
+<!-- ><h1>New release</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', releases_path %>
+<%= link_to 'Back', releases_path %> -->
+            <div class="content content-pad-160-bottom">
+                <div id="content-release-left">
+                    <h1	class="release-header font-35">Easily keep your fans up to date with all your releases, old and new...</h1>
+                    <div id="release-points-box">
+                        <div class="each-point"><img src="/assets/images/tick.png"></img><div class="point-txt">Increase your web presence with an online profile full of useful information.</div></div>
+                        <div class="each-point"><img src="/assets/images/tick.png"></img><div class="point-txt">Add your releases, old and new, to an intuitive personal timeline.</div></div>
+                        <div class="each-point"><img src="/assets/images/tick.png"></img><div class="point-txt">Increase your YouTube fanbase with appropiate links to each release.</div></div>
+                        <div class="each-point"><img src="/assets/images/tick.png"></img><div class="point-txt">Increase record sales with links to the appropiate music outlets for your fans.</div></div>
+                        <div class="each-point"><img src="/assets/images/tick.png"></img><div class="point-txt">Keep your fans up to date with future releases, with regular email notifications.</div></div>
+                    </div>
+                </div>
+                <div id="content-release-right">
+                    <div class="font-15">Publish a new release for <strong>JellyFishBoy</strong></div>
+                    <form action="add_release.php" method="post" enctype="multipart/form-data" class="rform">
+                        <ul>
+                            <li><label for="title">Title</label><input class="form-text" type="text" name="title" id="title" /></li>
+                            <li><label for="date">Release Date</label><input class="form-text date-pick" type="text" name="date" id="date" /></li>
+                            <li><label for="cat_number">Catalogue Number</label><input class="form-text" type="text" name="cat_number" id="cat_number" /></li>
+                            <li><label for="release_type">Type</label><select name="release_type" id="type_dropdown">
+                                    <option value="0">Single</option>
+                                    <option value="1">Album</option>
+                                </select></li>
+                            <li><label for="album_art">Artwork</label><input type="file" name="album_art" id="file_browser"/></li>
+                            <li><label for="label">Label</label><input type="text" name="label" class="form-text" value=""/></li>
+                            <li><label for="itunes">iTunes</label><input class="form-text" type="text" name="itunes" id="itunes" /></li>
+                            <li><label for="7digital">7Digital</label><input class="form-text" type="text" name="7digital" id="7digital" /></li>
+                            <li><label for="amazon">Amazon</label><input class="form-text" type="text" name="amazon" id="amazon" /></li>
+                            <li><label for="youtube">YouTube</label><input class="form-text" type="text" name="youtube" id="youtube" /></li>
+                            <li id="submit-pad"><div class="o-button right font-13"><input type="submit" name="submit" value="Submit" /><span></span></div></li>
+                        </ul>
+                    </form>
+                </div>
+                <div class="clear"></div>

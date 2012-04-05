@@ -1,6 +1,54 @@
-<h1>Editing user</h1>
+<!-- ><h1>Editing user</h1>
 
 <%= render 'form' %>
 
 <%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', users_path %> -->
+<div class="content content-pad-160-bottom">
+<div id="change-email">
+<div class="font-15"><strong>Change Email</strong></div><br/>Your current email address is [ENTER CURRENT EMAIL]</ENTER>.<br/><br/>
+<form method="post" action="change_email.php" onsubmit="" class="cheform">
+<ul>
+<li><label for="change-email">Change Email</label><input class="form-text" type="text" name="change-email" id="change-email" /></li>
+<li id="change-email-submit-pad"><div class="o-button right font-13"><input type="submit" name="submit" value="Change Email" /><span></span></div></li>
+</ul></form>
+</div>
+<div id="email-notify">
+<div class="font-15"><strong>Email Notifications</strong></div><br/>You can change how often you receive emails for new releases, from the options provided below. 
+The default setting is ‘Weekly’.<br/><br/>
+<form method="post" action="email_notify.php" onsubmit="" class="enform">
+<ul>
+<li class="radio-pad"><input class="form-text radio" type="radio" name="e-notify" id="always" /><label for="always">Always</label></li>
+<li class="radio-pad"><input class="form-text radio" type="radio" name="e-notify" id="daily" /><label for="daily">Daily</label></li>
+<li class="radio-pad"><input class="form-text radio" type="radio" name="e-notify" id="weekly" /><label for="weekly">Weekly</label></li>
+<li class="radio-pad"><input class="form-text radio" type="radio" name="e-notify" id="fortnightly" /><label for="fornightly">Fortnightly</label></li>
+<li><input class="form-text radio" type="radio" name="e-notify" id="monthly" /><label for="monthly">Monthly</label></li>
+<div class="clear"></div>
+<div id="save-settings-submit-pad"><div class="o-button right font-13"><input type="submit" name="submit" value="Save Email Settings" /><span></span></div></div>
+</ul></form>
+</div>
+<div class="clear"></div>
+<div id="change-password">
+<div class="font-15"><strong>Change Password</strong></div><br/>
+<form method="post" action="change_password.php" onsubmit="" class="chpform">
+<ul>
+<li><label for="current-pass">Current Password</label><input class="form-text" type="text" name="current-pass" id="current-pass" /></li><br/>
+<li><label for="new-passs">New Password</label><input class="form-text" type="text" name="new-pass" id="new-pass" /></li>
+<li><label for="confirm-pass">Confirm</label><input class="form-text" type="text" name="confirm-pass" id="confirm-pass" /></li>
+<li id="change-password-submit-pad"><div class="o-button right font-13"><input type="submit" name="submit" value="Change Password" /><span></span></div></li>
+</ul></form>
+</div>
+<div id="delete-account">
+<div class="font-15"><strong>Delete Your Account</strong></div><br/>
+            Your account, tracked artists and all personal details will be permanently removed.
+            <div id="delete-submit-pad"><div class="o-button left font-13">
+                    <a class="fancybox" href=".delete-confirm">Delete Account</a><span></span>
+                </div></div>
+        </div>
+        <div class="delete-confirm">
+            <div id="goodbye">Is this goodbye?</div>
+            <div id="delete-txt-1">We are sad to see you leave us, please take a few minutes to say why you’re leaving.</div>
+            <div id="delete-txt-2">Are you sure you want to delete your account? The artists you are tracking and your profile will be gone forever!</div>
+            <div id="delete-account-button"><div class="o-button left font-13">Delete Account<span></span></div></div>
+            <div id="delete-account-cancel"><div class="o-button right font-13"><a href="javascript:parent.ncjQuery.fancybox.close();">Cancel</a><span></span></div></div>
+        </div>

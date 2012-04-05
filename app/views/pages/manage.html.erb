@@ -1,0 +1,17 @@
+<div class="content content-pad-160-bottom">
+    <a href=".manage-confirm" class="fancybox"><img id="warning-sign" src="/assets/images/warning.png" /></a>
+    <div id="manage-artist-txt">
+    	<div class="font-20 line-height-1-25">WARNING</div>
+		<div class="font-15 line-height-1-25">You can only administrate one artist per account. You cannot change, once your artist selection has been confirmed.</div>
+    </div>
+   <div class="manage-confirm">
+   	<img id="manage-confirm-logo-70" src="/assets/images/logo-70.png" />
+   	<div class="manage-confirm-txt-1 font-15">Are you sure you want to manage:</div>
+   	<form method="post" action="change_email.php" onsubmit="" class="mcform">
+	<ul>
+	<li><input class="manage-confirm-input form-text" type="text" name="change-email" id="change-email" /></li>
+	<li class="manage-confirm-txt-2 font-15">You cannot change your choice, once confirmed.</li>
+	<li id="manage-confirm-submit-pad"><div class="o-button left font-13"><input type="submit" name="submit" value="Yes" /><span></span></div></li>
+	<div id="manage-confirm-no"><div class="o-button right font-13"><a href="javascript:parent.ncjQuery.fancybox.close();">No</a><span></span></div></div>
+	</ul></form>
+    </div>

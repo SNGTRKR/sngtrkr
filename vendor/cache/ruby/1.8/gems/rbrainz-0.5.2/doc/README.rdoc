@@ -1,0 +1,103 @@
+= RBrainz - Ruby MusicBrainz library
+RBrainz is a Ruby client library to access the MusicBrainz XML web service,
+which can be used to query the MusicBrainz database.
+
+RBrainz is written in Ruby and follows the design of
+PythonMusicBrainz2[http://musicbrainz.org/doc/PythonMusicBrainz2],
+the reference implementation for a MusicBrainz client library. Developers
+used to PythonMusicBrainz2 should already know most of RBrainz' interface.
+However, RBrainz differs from PythonMusicBrainz2 wherever it makes the
+library more Ruby like or easier to use.
+
+RBrainz supports the MusicBrainz XML Metadata Version 1.4, including support
+for labels, extended release events, release groups and ratings.
+
+== Installation
+=== Installing with RubyGems
+The easiest way to install the latest release of RBrainz is using
+RubyGems[http://rubygems.org] by executing the following command:
+ gem install rbrainz
+ 
+=== Manual installation
+If you downloaded the RBRainz source package or checked out the latest version
+from SVN you can install it with
+ rake install
+ 
+You still need RubyGems for the installation to succeed.
+
+== Basic usage
+The most important classes in this library are the model classes
+MusicBrainz::Model::Artist, MusicBrainz::Model::Release,
+MusicBrainz::Model::Track and MusicBrainz::Model::Label
+together with MusicBrainz::Webservice::Query. The Query class
+provides an easy to use interface to query the MusicBrainz webservice.
+It will always return one of the model classes above or a
+MusicBrainz::Model::ScoredCollection of those classes. The example below
+should make the usage clear:
+
+ require 'rbrainz'
+ include MusicBrainz
+ 
+ # Create an MBID object which represents a MusicBrainz artist ID.
+ mbid = Model::MBID.new('c0b2500e-0cef-4130-869d-732b23ed9df5', :artist)
+
+ # With the ArtistInclude object we can control what kind of information
+ # the MusicBrainz server will include in its answer.
+ artist_includes = Webservice::ArtistIncludes.new(
+   :aliases      => true,
+   :releases     => ['Album', 'Official'],
+   :artist_rels  => true,
+   :release_rels => true,
+   :track_rels   => true,
+   :label_rels   => true,
+   :url_rels     => true
+ )
+ 
+ # Query the webservice for the artist with the above ID. The result
+ # will contain all the information specified in artist_includes.
+ query = Webservice::Query.new
+ artist = query.get_artist_by_id(mbid, artist_includes)
+ 
+ # Display the fetched artist data together with all unique release titles.
+ print <<EOF
+ ID            : #{artist.id.uuid}
+ Name          : #{artist.name}
+ Sort name     : #{artist.sort_name}
+ Disambiguation: #{artist.disambiguation}
+ Type          : #{artist.type}
+ Begin date    : #{artist.begin_date}
+ End date      : #{artist.end_date}
+ Aliases       : #{artist.aliases.to_a.join('; ')}
+ Releases      : #{artist.releases.map{|r| r.title}.uniq.join("\r\n                ")}
+ EOF
+
+== Unicode support
+The MusicBrainz webservice returns all data in UTF-8 encoding. RBrainz does
+not change or modify the encoding. So if you are using RBrainz you should be
+aware that all strings returned by RBrainz are UTF-8 encoded as well.
+Furthermore all strings you pass to RBrainz need to be UTF-8 encoded as well.
+
+== The MusicBrainz webservice
+For more information about the MusicBrainz webservice visit the
+following resources:
+- MusicBrainzXMLWebService[http://musicbrainz.org/doc/XMLWebService]
+- MusicBrainzXMLMetaData[http://musicbrainz.org/doc/MusicBrainzXMLMetaData]
+
+== Contact
+For more information about RBrainz visit http://rbrainz.rubyforge.org.
+
+If you have any questions or suggestions regarding RBrainz please write to
+the rbrainz-user mailinglist[http://rubyforge.org/mail/?group_id=3677].
+If you find bugs or if you have any feature requests please use the
+RBrainz bug tracker[http://rubyforge.org/tracker/?group_id=3677]. 
+
+== Authors
+* Philipp Wolfer
+* Nigel Graham
+
+== License
+RBrainz is Copyright (c) 2007-2011 Philipp Wolfer and 2007 Nigel Graham.
+It is free softare distributed under a BSD style license. See
+LICENSE[link:files/LICENSE.html] for details.
+
+$Id: README.rdoc 322 2011-04-28 20:16:42Z phw $

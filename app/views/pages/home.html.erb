@@ -1,8 +1,5 @@
-<% content_for :head do %>
-test
-<% end %>
 <div class="content content-pad-bottom">
-	<h1 id="home-white-header">Track your favourite artists and never miss another release...</h1>
+	<h1 class="home-white-header font-35">Track your favourite artists and never miss another release...</h1>
 	<div id="big-search">
 		<%= form_tag artists_path , :method => 'get' do %>
 		<%= text_field_tag(:search, params[:search]) %> <img id="search-35" src="/assets/images/search-35.png"></img>
@@ -43,9 +40,6 @@ test
 				Find out more
 			</div>
 		</div>
-	</div>
-	<div class="facebook">
-		Login
 	</div>
 	<div id="result"></div>
 	<script type="text/javascript">
