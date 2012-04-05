@@ -16,8 +16,6 @@ gem 'capistrano'
 
 # SCRAPING GEMS
 
-gem 'oauth'
-gem '7digital'
 gem 'rbrainz'
 gem 'scrobbler'
 gem 'itunes-search'
