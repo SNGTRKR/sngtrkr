@@ -130,39 +130,7 @@ class UsersController < ApplicationController
   end
 
   def import_artists
-    accesstoken = params[:access_token]
-    @graph = Koala::Facebook::API.new(accesstoken)
-    @music = @graph.get_connections("me", "music")
-    i = 0
-    beginning_time = Time.now
-
-    Koala::Facebook::BatchOperation.instance_variable_set(:@identifier, 0)
-    results = @graph.batch do |batch_api|
-      @music.each do |artist|
-        if(i == 50)
-        break
-        end
-        batch_api.get_object(artist["id"])
-        i=i+1
-      end
-    end
-
-    end_time = Time.now
-    return render :text => "FINISHED IMPORTING. Time elapsed #{(end_time - beginning_time)} seconds"
-    results.each do |artist|
-      a = Artist.new()
-      a.name = artist["name"]
-      a.fbid = artist["id"]
-      details = @graph.get_object(artist["id"])
-      a.bio = details["bio"]
-      a.genre = details["genre"]
-      a.booking_email = details["booking_agent"]
-      a.manager_email = details["general_manager"]
-      a.hometown = details["hometown"]
-      a.website = details["website"]
-      a.save
-    end
-
+    @music = Scraper.importFbLikes  params[:access_token]
   end
 
 end
