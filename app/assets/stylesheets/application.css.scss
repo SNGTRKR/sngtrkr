@@ -324,6 +324,25 @@ body:before {/* thanks to Maleika (Kohoutec)*/
         font-weight:400;
         line-height:1.3em;
     }
+   h3{
+        position:relative;
+        height:120px;
+        width:470px;
+    }
+    .splash-white-header {
+      position:relative;
+      text-align:center;
+      left:2px;
+      top:26px;
+    }
+    .splash-email {
+      position:relative;
+      text-align:center;
+      top:55px;
+      * {
+        color:#000;
+      }
+    }
     .home-white-header
     {
         position:relative;
@@ -785,6 +804,9 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 }
 .content-pad-160-bottom {
     padding:4px 160px 166px 160px;
+}
+.content-splash-pad-262-bottom {
+  padding:4px 262px 166px 262px;
 }
 .delete-confirm {
     display:none;
