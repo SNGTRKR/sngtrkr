@@ -1,9 +1,9 @@
-set :default_environment, {
-    'PATH' => "/usr/local/bin:/bin:/usr/bin:/bin:/home/ec2-user/.rvm/gems/ruby-1.9.3-p125/bin",
-    'GEM_HOME' => '/home/ec2-user/.rvm/gems/ruby-1.9.3-p125/gems',
-    'GEM_PATH' => '/home/ec2-user/.rvm/gems/ruby-1.9.3-p125/gems',
-    'BUNDLE_PATH' => '~/.rvm/gems/ruby-1.9.3-p125/bin/bundle'  
-}
+#set :default_environment, {
+#    'PATH' => "/usr/local/bin:/bin:/usr/bin:/bin:/home/ec2-user/.rvm/gems/ruby-1.9.3-p125/bin",
+#    'GEM_HOME' => '/home/ec2-user/.rvm/gems/ruby-1.9.3-p125/gems',
+#    'GEM_PATH' => '/home/ec2-user/.rvm/gems/ruby-1.9.3-p125/gems',
+#    'BUNDLE_PATH' => '~/.rvm/gems/ruby-1.9.3-p125/bin/bundle'  
+#}
 require "bundler/capistrano"
 
 # The name of your app
