@@ -1,0 +1,89 @@
+= Changelog
+== 0.5.2 (2011-04-29)
+* BUG: Fixed HTTP Digest authentication according to RFC 2617
+* BUG: Fixed include parameters user-tags and user-ratings
+* BUG: Fixed parser warning in tests
+* NEW: Support user tags
+* NEW: Added DCC as media format
+
+== 0.5.1 (2009-08-04)
+* BUG: Fixed querying for release groups
+
+== 0.5.0 (2009-06-14)
+* NEW: Support for release groups
+* NEW: Support for ISRCs, including ISRC submission
+* NEW: Support for ratings, including rating submission
+* NEW: Common exception class for all web service errors
+* NEW: Updated language list
+* NEW: Allow exclusion of CD stubs in ReleaseFilter
+* BUG: Added source file encodings for Ruby 1.9 compatibillity
+* BUG: Fixed Release#single_artist_release?
+* BUG: Added all missing include options for artists
+* BUG: Always raise a ConnectionError for unknown errors in the web service
+
+== 0.4.2 (2008-09-04)
+* BUG: Fixed proxy authentication
+* BUG: Fixed raising of ResponseError in Query#get_user_by_name
+
+== 0.4.1 (2008-04-23)
+* BUG: Use CGI.escape instead of URI.escape, since URI.escape does not
+  escape URI special characters (?=&)
+* BUG: Handle socket error exceptions in class Webservice (will now raise a
+  ConnectionError)
+* NEW: Control files for building debian packages
+* NEW: Better documentation
+
+== 0.4.0 (2007-12-16)
+* NEW: Complete tagging (folksonomy) support.
+* NEW: Support release event format.
+* NEW: Support for HTTP proxies
+
+== 0.3.0 (2007-08-11)
+* BUG: Relation end date was not set correctly in MBXML.
+* NEW: Allow release type constants to be passed to include and filter objects.
+* NEW: Methods Utils.add_namespace and Utils.remove_namespace.
+* NEW: Methods Release#earliest_release_event and Release#earliest_release_date
+* NEW: Entity#get_relations allows string with or without namespace for
+  target_type, relation_type and required_attributes
+
+== 0.2.1 (2007-07-24)
+* Erroneous date strings in the XML are ignored. No error is raised and nil
+  is set for the date.
+* MBXML#get_entity_list now returns an ScoredCollection even if no list-element
+  is present in the XML. This is due to the fact that musicbrainz.org always
+  returns an empty result <metadata/> if no matching entities were found.
+* Removed custom eql? and include? methods from Range and added them to
+  IncompleteDate. Those methods changed the behaviour of Range which might lead
+  to unexcpected results in programs using RBrainz.
+* Changed IncompleteDate to include its end value.
+* Added additional examples
+
+== 0.2.0 (2007-07-19)
+* Querying of collections implemented
+* Collection class to store search results (with support for search score and offset)
+* User authentication
+* Querying of user information
+* Support POST in Webservice class to submit information.
+* PUID submission.
+* Made IncompleteDate behave like a range with corresponding equality operations
+* Restructured MBID to use a ducktyping approach
+* Introduced Individual as superclass for Artist and Label
+* Added unique_name method for Artist and Label
+* Label: Renamed founding_date and dissolving_date to begin_date
+  and end_date (to be more consistent with Artist)
+* Support for label aliases
+* Added label type "Unknown"
+* Full text search (lucene search queries).
+* Support entity tags as defined in the MB metadata scheme 1.2. Currently only
+  available on test.musicbrainz.org.
+* New Model::DefaultFactory
+
+== 0.1.1 (2007-05-29)
+* Full support for relations
+* Proper exception handling in Webservice class
+* Minor corrections
+
+== 0.1.0 (2007-05-23)
+* Initial release
+
+$Id: CHANGES 322 2011-04-28 20:16:42Z phw $
