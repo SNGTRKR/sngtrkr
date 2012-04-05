@@ -1,0 +1,19 @@
+= TODO
+
+== 0.5 release
+* Add i18n (nigel)
+* Test all examples
+
+== Short term tasks
+* Add mass submission API for tags and ratings.
+* CD stub submission
+* Support music collection WS.
+* Improve API documentation.
+
+== Longer term tasks
+* Implement a command line tool (+mbquery+) for querying the MusicBrainz
+  database which will serve as a useful example for RBrainz.
+* Support for common extensions (this could be implemented by adding
+  additional extension libraries which extend the existing classes).
+  
+$Id: TODO 277 2009-05-25 19:33:26Z phw $
