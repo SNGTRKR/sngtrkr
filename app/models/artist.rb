@@ -1,5 +1,6 @@
 class Artist < ActiveRecord::Base
   validates :name, :presence => true
+  validates :fbid, :presence => true, :uniqueness => true
 
   has_many :releases
   belongs_to :label
