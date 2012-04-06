@@ -13,7 +13,6 @@ gem 'json'
 # VERSION AND DEPLOYMENT
 gem 'passenger'
 gem 'capistrano'
-gem 'rvm-capistrano'
 
 # SCRAPING GEMS
 
