@@ -7,7 +7,6 @@
 
 require "bundler/capistrano"
 
-
 # The name of your app
 set :application, "sngtrkr"
 # The directory on the EC2 node that will be deployed to
