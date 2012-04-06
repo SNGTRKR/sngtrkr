@@ -14,7 +14,7 @@ doc/app
 doc/plugins 
 doc/*.dot 
 coverage/* 
-db/*.sqlite3 
+#db/*.sqlite3 
 *.tmproj
 *.sw?
 log/*
