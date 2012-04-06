@@ -4,16 +4,8 @@
 #    'GEM_PATH' => '/home/ec2-user/.rvm/gems/ruby-1.9.3-p125/gems',
 #    'BUNDLE_PATH' => '~/.rvm/gems/ruby-1.9.3-p125/bin/bundle'  
 #}
-# Add RVM's lib directory to the load path.
-$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 
-
-set :rvm_ruby_string, '1.9.2'
-set :rvm_type, :user  # Don't use system-wide RVM
 require "bundler/capistrano"
-
-# Load RVM's capistrano plugin.    
-require "rvm/capistrano"
 
 
 # The name of your app
