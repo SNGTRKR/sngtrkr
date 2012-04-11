@@ -6,6 +6,7 @@ config/*.sphinx.conf
 *.log 
 *.pid 
 tmp/**/* 
+tmp/*
 .DS_Store 
 db/cstore/** 
 db/sphinx/** 
