@@ -1,0 +1,42 @@
+# -*- coding: utf-8 -*-
+# $Id: test_label_filter.rb 254 2009-05-13 20:04:36Z phw $
+#
+# Author::    Philipp Wolfer (mailto:phw@rubyforge.org)
+# Copyright:: Copyright (c) 2007, Philipp Wolfer
+# License::   RBrainz is free software distributed under a BSD style license.
+#             See LICENSE[file:../LICENSE.html] for permissions.
+
+require 'test/unit'
+require 'testing_helper'
+require 'rbrainz'
+include MusicBrainz
+
+# Unit test for the LabelFilter class.
+class TestLabelFilter < Test::Unit::TestCase
+
+  def setup
+    @filter_hash = {:name => 'Century Media', :limit => 10, :offset => 20,
+                    :query => 'alias:Century Media OR alias:Century'}
+  end
+
+  def teardown
+  end
+  
+  def test_filter
+    filter = Webservice::LabelFilter.new(@filter_hash)
+    filter_string = filter.to_s
+    assert_not_equal '&', filter_string[0]
+    
+    result_hash = query_string_to_hash filter_string
+    assert_equal @filter_hash[:name], result_hash['name'], filter_string
+    assert_equal @filter_hash[:limit].to_s, result_hash['limit'], filter_string
+    assert_equal @filter_hash[:offset].to_s, result_hash['offset'], filter_string
+    assert_equal @filter_hash[:query].to_s, result_hash['query'], filter_string
+  end
+  
+  def test_empty_filter
+    filter = Webservice::LabelFilter.new({})
+    assert_equal '', filter.to_s
+  end
+  
+end
