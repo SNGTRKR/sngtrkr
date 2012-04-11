@@ -1,12 +1,12 @@
-#config/database.yml 
+config/database.yml 
 config/*.sphinx.conf 
 #config/s3_credentials.yml
 *~ 
 *.cache 
 *.log 
 *.pid 
-tmp/**/* 
-tmp/*
+#tmp/**/* 
+#tmp/*
 .DS_Store 
 db/cstore/** 
 db/sphinx/** 
@@ -20,4 +20,4 @@ coverage/*
 *.sw?
 log/*
 .bundle
-vendor/cache/*
+#vendor/cache/*
