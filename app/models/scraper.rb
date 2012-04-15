@@ -29,39 +29,11 @@ class Scraper
     artist.top_tracks.each { |t| puts "(#{t.reach}) #{t.name}" }
   end
 
-  def self.importFbLikes accesstoken
-    graph = Koala::Facebook::API.new(accesstoken)
-    music = graph.get_connections("me", "music")
-    i = 0
-    beginning_time = Time.now
-
-    Koala::Facebook::BatchOperation.instance_variable_set(:@identifier, 0)
-    results = graph.batch do |batch_api|
-      music.each do |artist|
-        if(i == 50)
-        break
-        end
-        batch_api.get_object(artist["id"])
-        i=i+1
-      end
-    end
-
-    end_time = Time.now
-    results.each do |artist|
-      a = Artist.new()
-      a.name = artist["name"]
-      a.fbid = artist["id"]
-      details = graph.get_object(artist["id"])
-      a.bio = details["bio"]
-      a.genre = details["genre"]
-      a.booking_email = details["booking_agent"]
-      a.manager_email = details["general_manager"]
-      a.hometown = details["hometown"]
-      a.website = details["website"]
-      a.save
-    end
-
-    return results
+  def self.importFbLikes access_token
+    # TODO: pass in user id as well for suggestions 
+    require 'resque'
+    Resque.enqueue(FbJob,access_token)
+    return "Done"
   end
-
+  
 end
