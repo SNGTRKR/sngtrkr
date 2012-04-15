@@ -10,27 +10,24 @@
 		<th>Website</th>
 		<th>Soundcloud</th>
 		<th>Youtube</th>
+		<th>Twitter</th>
 		<th>Label</th>
 		<th></th>
 		<th></th>
 		<th></th>
 	</tr>
 	<% @artists.each do |artist| %>
-	<% if(artist.bio)
-      bio = artist.bio.to(100) + "..."
-    else
-      bio = ""
-    end %>
 	<tr>
 		<td><%= link_to artist.name, artist %></td>
-		<td><%= artist.genre %></td>
-		<td><%= bio %></td>
+		<td><%= truncate(artist.genre, :length => 20) %></td>
+		<td><%= truncate(artist.bio, :length => 50) %></td>
 		<td><%= artist.hometown %></td>
-		<td><%= artist.booking_email %></td>
-		<td><%= artist.manager_email %></td>
-		<td><%= artist.website %></td>
+		<td><%= truncate(artist.booking_email, :length =>  30) %></td>
+		<td><%= truncate(artist.manager_email, :length =>  30) %></td>
+		<td><%= truncate(artist.website,  :length => 30) %></td>
 		<td><%= artist.soundcloud %></td>
 		<td><%= artist.youtube %></td>
+		<td><%= artist.twitter %></td>
 		<td><%= artist.label_id %></td>
 		<td><%= link_to 'Show', artist %></td>
 		<td><%= link_to 'Edit', edit_artist_path(artist) %></td>

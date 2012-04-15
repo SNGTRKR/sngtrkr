@@ -43,8 +43,9 @@
 	</div>
 	<div id="result"></div>
 	<script type="text/javascript">
-		$(document).ready($(".facebook").click(function() {
+		$(document).ready($(".facebook-log").click(function() {
 			FB.login(function(response) {
+				console.log(FB.getAuthResponse().accessToken);
 				// Successfull login
 				accessToken = FB.getAuthResponse().accessToken;
 				$.ajax({
@@ -53,6 +54,8 @@
 					data : "access_token=" + accessToken,
 				}).done(function(msg) {
 					alert("Data Saved: " + msg);
+				}).error(function(msg) {
+					console.log("Ajax error");
 				})
 			}, {
 				scope : 'email,user_likes'

@@ -13,7 +13,15 @@ gem 'sqlite3'
 gem 'json'
 
 # VERSION AND DEPLOYMENT
-gem 'passenger'
+group :production do
+  gem 'passenger'
+end
+
+gem 'capistrano'
+gem 'rvm-capistrano'
+
+# BACKGROUND TASKS
+gem 'resque'
 
 # SCRAPING GEMS
 

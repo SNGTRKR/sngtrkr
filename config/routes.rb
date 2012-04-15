@@ -1,10 +1,15 @@
 SNGTRKRR::Application.routes.draw do
-
-  # root :to => "Pages#home"
-  root :to => "Pages#splash"
+  #require 'resque/server'
+  #mount Resque::Server.new, :at => "/resque"
+  if(Rails.env == "development")
+    root :to => "Pages#home"    
+  else
+    root :to => "Pages#splash"
+  end
   match '/manage' => "Pages#manage"
   match '/recommended' => "Pages#recommended"
   match '/home' => "Pages#home"
+  match '/splash' => "Pages#splash"
 
   devise_for :users
   

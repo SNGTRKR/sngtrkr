@@ -13,6 +13,12 @@ class Artist < ActiveRecord::Base
   has_many :suggested_users, :through => :suggest, :source => :user
   has_many :manager_users, :through => :manage, :source => :user
   
+  after_initialize :default_values
+  def default_values
+    # Don't ignore new artists!
+    self.ignore ||= false
+  end
+  
   def self.search(search)
     if search
       find(:all, :conditions => ['name LIKE ?', "%#{search}%"])

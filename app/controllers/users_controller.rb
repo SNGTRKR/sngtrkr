@@ -130,7 +130,7 @@ class UsersController < ApplicationController
   end
 
   def import_artists
-    @music = Scraper.importFbLikes  params[:access_token]
+    @response = Scraper.importFbLikes  params[:access_token]
   end
 
 end
