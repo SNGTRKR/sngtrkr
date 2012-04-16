@@ -60,6 +60,10 @@ class User < ActiveRecord::Base
     return false
     end
   end
+  
+  def following
+    Follow.user_follows(self.id)
+  end
 
   def managing?(artist_id)
     if Manage.search(self.id, artist_id).count > 0
@@ -68,6 +72,10 @@ class User < ActiveRecord::Base
     return false
     end
   end
+  
+  def managing
+    Manage.user_managing(self.id)
+  end
 
   def suggested?(artist_id)
     if Suggest.search(self.id, artist_id).count > 0
@@ -75,6 +83,10 @@ class User < ActiveRecord::Base
     else
     return false
     end
+  end
+  
+  def suggested
+    Suggest.user_suggested(self.id)
   end
   
   def import_artists(json_response)
