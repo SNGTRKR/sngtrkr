@@ -61,6 +61,8 @@ _cset :asset_env, "RAILS_GROUPS=assets"
 _cset :assets_prefix, "assets"
 _cset :assets_role, [:web]
 
+after "deploy:update_code", "deploy:assets:symlink"
+
 _cset :normalize_asset_timestamps, false
 namespace :deploy do
   namespace :assets do
@@ -80,7 +82,9 @@ namespace :deploy do
     task :clean, :roles => assets_role, :except => { :no_release => true } do
       run "cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assets:clean"
     end
-    symlink
-    precompile
+    task :assets do
+      symlink
+      precompile
+    end
   end
 end
