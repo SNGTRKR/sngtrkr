@@ -56,25 +56,10 @@ end
 #TODO add restarting / starting of resque workers.
 #TODO add starting of resque server.
 
-# Pinched from cap's own recipe
-_cset :asset_env, "RAILS_GROUPS=assets"
-_cset :assets_prefix, "assets"
-_cset :assets_role, [:web]
+load "deploy/assets"
 
-after "deploy:update_code", "deploy:assets:symlink"
-
-_cset :normalize_asset_timestamps, false
 namespace :deploy do
   namespace :assets do
-    task :symlink, :roles => assets_role, :except => { :no_release => true } do
-      run <<-CMD
-        rm -rf #{latest_release}/public/#{assets_prefix} &&
-        mkdir -p #{latest_release}/public &&
-        mkdir -p #{shared_path}/assets &&
-        ln -s #{shared_path}/assets #{latest_release}/public/#{assets_prefix}
-      CMD
-    end
-
     task :precompile, :roles => :web, :except => { :no_release => true } do
       from = source.next_revision(current_revision)
       if capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ | wc -l").to_i > 0
@@ -82,14 +67,6 @@ namespace :deploy do
       else
         logger.info "Skipping asset pre-compilation because there were no asset changes"
       end
-    end
-
-    task :clean, :roles => assets_role, :except => { :no_release => true } do
-      run "cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assets:clean"
-    end
-    task :assets do
-      symlink
-      precompile
     end
   end
 end
