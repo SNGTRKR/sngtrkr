@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120416130145) do
+ActiveRecord::Schema.define(:version => 20120416132350) do
 
   create_table "artists", :force => true do |t|
     t.string   "name"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(:version => 20120416130145) do
     t.text     "label_name"
     t.integer  "label_id"
     t.integer  "scraped"
+    t.text     "sd_id"
   end
 
   create_table "suggests", :force => true do |t|
