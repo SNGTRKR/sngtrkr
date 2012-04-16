@@ -27,8 +27,8 @@ class Artist < ActiveRecord::Base
     end
   end
 
-  def managed?(artist_id)
-    if(Manage.find(:all, :conditions => ["artist_id = #{artist_id}"]) == nill)
+  def self.managed?(artist_id)
+    if(Manage.find(:all, :conditions => ["artist_id = #{artist_id}"]).empty?)
     return false
     else
     return true
