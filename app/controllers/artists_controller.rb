@@ -15,6 +15,7 @@ class ArtistsController < ApplicationController
   def show
     @artist = Artist.find(params[:id])
     @user = current_user
+    @timeline = Timeline.artist(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
