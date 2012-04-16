@@ -18,6 +18,7 @@ group :production do
 end
 
 gem 'capistrano'
+gem 'rvm'
 gem 'rvm-capistrano'
 
 # BACKGROUND TASKS
