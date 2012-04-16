@@ -53,6 +53,9 @@ end
 
 #TODO replace with http://www.bencurtis.com/2011/12/skipping-asset-compilation-with-capistrano/
 
+#TODO add restarting / starting of resque workers.
+#TODO add starting of resque server.
+
 # Pinched from cap's own recipe
 _cset :asset_env, "RAILS_GROUPS=assets"
 _cset :assets_prefix, "assets"

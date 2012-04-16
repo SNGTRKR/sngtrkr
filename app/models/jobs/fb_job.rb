@@ -59,7 +59,7 @@ class FbJob
           end
         end
         a.save
-        Scraper.getReleases a.name
+        Scraper.getReleases a.id
       end
     end
   end
