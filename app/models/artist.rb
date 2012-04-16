@@ -27,12 +27,16 @@ class Artist < ActiveRecord::Base
     end
   end
 
-  def self.managed?(artist_id)
-    if(Manage.find(:all, :conditions => ["artist_id = #{artist_id}"]).empty?)
+  def managed?
+    if(Manage.find(:all, :conditions => ["artist_id = #{self.id}"]).empty?)
     return false
     else
     return true
     end
+  end
+  
+  def followers
+    Follow.find(:all, :conditions => ["artist_id = #{self.id}"]).count
   end
 
 end

@@ -4,7 +4,7 @@ class SevenDigital
   
   def self.perform mode
     if(mode == :releases)
-      search = Artist.find(params[:search]).name
+      search = Artist.find(params[:artist_id]).name
       xml =  Hash.from_xml Net::HTTP.get( URI.parse("http://api.7digital.com/1.2/artist/search?q=#{search}&sort=score%20desc&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB"))
       results = xml["response"]["searchResults"]["searchResult"]
       # Necessary to still return an ID when we have multiple artist possibilities (picks first artist)

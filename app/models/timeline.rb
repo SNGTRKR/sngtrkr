@@ -24,7 +24,7 @@ class Timeline
     self
   end
   
-  def self.page p
+  def page p
     @@releases[@@pagesize*(p-1)..@@pagesize*(p)]
   end
   
