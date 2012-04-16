@@ -10,10 +10,11 @@ class Scraper
     # Gets the top musicbrainz result
     artist = MusicBrainz::Webservice::Query.new.get_artists(search).to_collection[0]
   end
-
-  def self.getReleases search
+  
+  # Fetches an artist on 7digital and adds all their releases to the database. 
+  def self.getReleases artist_id
     require 'resque'
-    Resque.enqueue(SevenDigital, :releases, :search => search)
+    Resque.enqueue(SevenDigital, :releases, :artist_id => artist_id)
     return true
   end
 
