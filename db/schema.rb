@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120415131145) do
+ActiveRecord::Schema.define(:version => 20120416130145) do
 
   create_table "artists", :force => true do |t|
     t.string   "name"
@@ -28,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20120415131145) do
     t.string   "fbid"
     t.boolean  "ignore"
     t.text     "twitter"
+    t.text     "label_name"
   end
 
   create_table "follows", :force => true do |t|
@@ -67,6 +69,9 @@ ActiveRecord::Schema.define(:version => 20120415131145) do
     t.integer  "artist_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.text     "label_name"
+    t.integer  "label_id"
+    t.integer  "scraped"
   end
 
   create_table "suggests", :force => true do |t|

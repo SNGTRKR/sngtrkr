@@ -1,6 +1,7 @@
 class FbJob
   require "rails"
   @queue = :facebook_batches;
+
   def self.perform access_token
     graph = Koala::Facebook::API.new(access_token)
     music = graph.get_connections("me", "music")
@@ -29,6 +30,7 @@ class FbJob
         a.booking_email = details["booking_agent"]
         a.manager_email = details["general_manager"]
         a.hometown = details["hometown"]
+        a.label = details["label"]
         if(details["website"])
           websites = details["website"].split(' ')
         else
@@ -53,6 +55,7 @@ class FbJob
           end
         end
         a.save
+        Scraper.getReleases a.name
       end
     end
   end

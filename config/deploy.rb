@@ -41,7 +41,6 @@ ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "id_rsa")]
  
 set :synchronous_connect, true
 
-#load 'deploy/assets'
 
 # Passenger
 namespace :deploy do
@@ -52,28 +51,33 @@ namespace :deploy do
   end
 end
 
+#TODO replace with http://www.bencurtis.com/2011/12/skipping-asset-compilation-with-capistrano/
+
+# Pinched from cap's own recipe
+_cset :asset_env, "RAILS_GROUPS=assets"
+_cset :assets_prefix, "assets"
+_cset :assets_role, [:web]
+
+_cset :normalize_asset_timestamps, false
 namespace :deploy do
-  task :ln_assets do
-    run <<-CMD
-      rm -rf #{latest_release}/public/assets &&
-      mkdir -p #{shared_path}/assets &&
-      ln -s #{shared_path}/assets #{latest_release}/public/assets
-    CMD
-  end
+  namespace :assets do
+    task :symlink, :roles => assets_role, :except => { :no_release => true } do
+      run <<-CMD
+        rm -rf #{latest_release}/public/#{assets_prefix} &&
+        mkdir -p #{latest_release}/public &&
+        mkdir -p #{shared_path}/assets &&
+        ln -s #{shared_path}/assets #{latest_release}/public/#{assets_prefix}
+      CMD
+    end
 
-  task :assets do
-    update_code
-    ln_assets
-    
-    run_locally "rake assets:precompile"
-    run_locally "cd public; tar -zcvf assets.tar.gz assets"
-    top.upload "public/assets.tar.gz", "#{shared_path}", :via => :scp
-    run "cd #{shared_path}; tar -zxvf assets.tar.gz"
-    run_locally "rm public/assets.tar.gz"
-    run_locally "rm -rf public/assets/*.js public/assets/*.css"
-    
-    create_symlink
-    restart
-  end
+    task :precompile, :roles => assets_role, :except => { :no_release => true } do
+      run "cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assets:precompile"
+    end
 
+    task :clean, :roles => assets_role, :except => { :no_release => true } do
+      run "cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assets:clean"
+    end
+    symlink
+    precompile
+  end
 end
