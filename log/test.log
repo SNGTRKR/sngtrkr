@@ -1,0 +1,493 @@
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+SQLite3::SQLException: table releases has no column named type: INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[35m (0.8ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+SQLite3::SQLException: table releases has no column named type: INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[35m (1.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+SQLite3::SQLException: table releases has no column named type: INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[35m (0.6ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+SQLite3::SQLException: table releases has no column named type: INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[35m (0.8ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+SQLite3::SQLException: table releases has no column named type: INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[35m (0.7ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+SQLite3::SQLException: table releases has no column named type: INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[35m (0.8ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+SQLite3::SQLException: table releases has no column named type: INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[35m (0.9ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+SQLite3::SQLException: table releases has no column named type: INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[35m (0.8ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+SQLite3::SQLException: table releases has no column named type: INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[35m (0.8ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+SQLite3::SQLException: table releases has no column named type: INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[35m (0.8ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+SQLite3::SQLException: table releases has no column named type: INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[35m (0.9ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+SQLite3::SQLException: table releases has no column named type: INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[35m (0.8ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+SQLite3::SQLException: table releases has no column named type: INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[35m (0.7ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+SQLite3::SQLException: table releases has no column named type: INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[35m (0.9ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+SQLite3::SQLException: table releases has no column named type: INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[35m (0.8ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+SQLite3::SQLException: table releases has no column named type: INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[35m (0.8ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+SQLite3::SQLException: table releases has no column named type: INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[35m (0.7ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+SQLite3::SQLException: table releases has no column named type: INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[35m (0.8ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+SQLite3::SQLException: table releases has no column named type: INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[35m (0.7ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+SQLite3::SQLException: table releases has no column named type: INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[35m (0.7ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+SQLite3::SQLException: table releases has no column named type: INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[35m (0.6ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.4ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+SQLite3::SQLException: table releases has no column named type: INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[35m (0.7ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.4ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+SQLite3::SQLException: table releases has no column named type: INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[35m (0.7ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+SQLite3::SQLException: table releases has no column named type: INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[35m (0.8ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.4ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+SQLite3::SQLException: table releases has no column named type: INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[35m (0.7ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+SQLite3::SQLException: table releases has no column named type: INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[35m (0.6ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (1.7ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+SQLite3::SQLException: table releases has no column named type: INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[35m (0.6ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.4ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+SQLite3::SQLException: table releases has no column named type: INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[35m (1.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "artists" ("name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "label_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
+SQLite3::SQLException: table releases has no column named type: INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
+  [1m[35m (1.0ms)[0m  rollback transaction
