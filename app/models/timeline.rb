@@ -1,5 +1,7 @@
 class Timeline 
-  # Not tied to instance as there is no paging
+  @@releases
+  @@pagesize = 10
+
   def self.artist id
     a = Artist.find(:all, id)
     if(!a.empty?) 
@@ -9,13 +11,21 @@ class Timeline
     end
   end
   
-  # Tied to instance to allow paging
-  def self.user id
+  def self.user_init id
     artists = User.find(id).followed_artists
 
     # Gets you all the releases but not sorted in chronological order
-    releases = artists.each do |artist|
+    # TODO Sort in chronological order
+    # FIXME This is a bad implementation, we should only search for the page needed
+    # in SQL, rather than getting all pages and only showing one.
+    @@releases = artists.each do |artist|
       artist.releases
     end
+    self
   end
+  
+  def self.page p
+    @@releases[@@pagesize*(p-1)..@@pagesize*(p)]
+  end
+  
 end
