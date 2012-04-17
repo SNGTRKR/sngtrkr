@@ -7,7 +7,7 @@ God.watch do |w|
   w.dir = File.expand_path(File.join(File.dirname(__FILE__),'..'))
   w.start = "bundle exec rake jobs:work"
   w.start_grace = 10.seconds
-  w.log = File.expand_path(File.join(File.dirname(__FILE__), '..','log','resque-worker.log'))
+  w.log = File.expand_path(File.join(File.dirname(__FILE__), '..','..','log','resque-worker.log'))
 
   # restart if memory gets too high
   w.transition(:up, :restart) do |on|
