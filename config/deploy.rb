@@ -79,6 +79,9 @@ after "deploy:create_symlink", "deploy:restart_workers"
 # http://pastie.org/255489
 # http://geminstallthat.wordpress.com/2008/01/27/rake-tasks-through-capistrano/
 # http://ananelson.com/said/on/2007/12/30/remote-rake-tasks-with-capistrano/
+
+import 'config/resque'
+
 def run_remote_rake(rake_cmd)
   rake_args = ENV['RAKE_ARGS'].to_s.split(',')
 
