@@ -21,7 +21,7 @@ class FbJob
         end
       end
       results.each do |artist|
-        if(Artist.find(:all, :conditions => ["fbid = #{artist["id"]}"]))
+        if(Artist.find(:all, :conditions => ["fbid = '#{artist["id"]}'"]))
           # Skip artists already in the database
           next
         end
