@@ -75,9 +75,9 @@ end
 namespace :deploy do
   desc "Hot-reload God configuration for the Resque worker"
   task :reload_god_config do
-    sudo "god stop resque"
-    sudo "god load #{File.join(deploy_to, 'current', 'config', 'resque-' + rails_env + '.god')}"
-    sudo "god start resque"
+    run " ~/.rvm/gems/ruby-1.9.3-p125/bin/god stop resque"
+    run " ~/.rvm/gems/ruby-1.9.3-p125/bin/god load #{File.join(deploy_to, 'current', 'config', 'god','resque-' + rails_env + '.god')}"
+    run " ~/.rvm/gems/ruby-1.9.3-p125/bin/god start resque"
   end
 end
 
