@@ -81,7 +81,8 @@ after "deploy:symlink", "deploy:restart_workers"
 # http://ananelson.com/said/on/2007/12/30/remote-rake-tasks-with-capistrano/
 def run_remote_rake(rake_cmd)
   rake_args = ENV['RAKE_ARGS'].to_s.split(',')
-  cmd = "cd #{fetch(:latest_release)} && #{fetch(:rake, "rake")} RAILS_ENV=#{fetch(:rails_env, "production")} #{rake_cmd}"
+
+  cmd = "cd #{fetch(:latest_release)} && bundle exec #{fetch(:rake, "rake")} RAILS_ENV=#{fetch(:rails_env, "production")} #{rake_cmd}"
   cmd += "['#{rake_args.join("','")}']" unless rake_args.empty?
   run cmd
   set :rakefile, nil if exists?(:rakefile)
@@ -89,52 +90,7 @@ end
 
 namespace :deploy do
   desc "Restart Resque Workers"
-  task :restart_workers, :roles => :db do
+  task :restart_workers, :roles => :worker do
     run_remote_rake "resque:restart_workers"
-  end
-end
-
-# Start a worker with proper env vars and output redirection
-def run_worker(queue, count = 1)
-  puts "Starting #{count} worker(s) with QUEUE: #{queue}"
-  ops = {:pgroup => true, :err => [(Rails.root + "log/resque_err").to_s, "a"], 
-                          :out => [(Rails.root + "log/resque_stdout").to_s, "a"]}
-  env_vars = {"QUEUE" => queue.to_s}
-  count.times {
-    ## Using Kernel.spawn and Process.detach because regular system() call would
-    ## cause the processes to quit when capistrano finishes
-    pid = spawn(env_vars, "rake resque:work", ops)
-    Process.detach(pid)
-  }
-end
-
-namespace :resque do
-  task :setup => :environment
-
-  desc "Restart running workers"
-  task :restart_workers => :environment do
-    Rake::Task['resque:stop_workers'].invoke
-    Rake::Task['resque:start_workers'].invoke
-  end
-  
-  desc "Quit running workers"
-  task :stop_workers => :environment do
-    pids = Array.new
-    Resque.workers.each do |worker|
-      pids.concat(worker.worker_pids)
-    end
-    if pids.empty?
-      puts "No workers to kill"
-    else
-      syscmd = "kill -s QUIT #{pids.join(' ')}"
-      puts "Running syscmd: #{syscmd}"
-      system(syscmd)
-    end
-  end
-  
-  desc "Start workers"
-  task :start_workers => :environment do
-    run_worker("*", 2)
-    #run_worker("high", 1)
   end
 end
