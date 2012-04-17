@@ -73,28 +73,12 @@ namespace :deploy do
   end
   #run "cd #{latest_release} && #{rake} queue:restart_workers RAILS_ENV=production"
 end
-=begin
-namespace :queue do
-  task :restart_workers => :environment do
-    pids = Array.new
-    
-    Resque.workers.each do |worker|
-      pids << worker.to_s.split(/:/).second
-    end
-    
-    if pids.size > 0
-      run "kill -QUIT #{pids.join(' ')}"
-    end
-    
-    run "rm /var/run/god/resque-1.8.0*.pid"
-  end
-end
-=end
+
 namespace :god do
   desc "Starts god by loading the config path"
   task :start do
     run "god -c #{latest_release}/config/god/resque_redis.god"
-    run "#{try_sudo} god start resque"
+    run "god restart resque"
   end
   
   desc "Stops god by running quit"
@@ -104,9 +88,3 @@ namespace :god do
 end
  
 after "deploy", "god:start"
-
-namespace :resque do
-  task :setup => :environment do
-    
-  end
-end

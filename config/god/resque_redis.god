@@ -22,7 +22,7 @@ end
 God.watch do |w|
   w.name          = "resque-1.8.0"
   w.interval      = 30.seconds
-  w.start         = "cd /var/www/apps/sngtrkr_cap/current && bundle exec rake environment RAILS_ENV=production resque:work QUEUE=*"
+  w.start         = "cd /var/www/apps/sngtrkr_cap/current && bundle exec rake environment RAILS_ENV=production COUNT=5 resque:work QUEUE=*"
   w.start_grace   = 10.seconds
   
   # retart if memory gets too high
