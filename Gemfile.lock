@@ -60,6 +60,7 @@ GEM
       rack (~> 1.1)
     fastthread (1.0.7)
     fssm (0.2.9)
+    god (0.12.1)
     highline (1.6.11)
     hike (1.2.1)
     hpricot (0.8.6)
@@ -174,6 +175,7 @@ DEPENDENCIES
   capistrano
   compass-rails (>= 1.0.0.rc.2)
   devise
+  god
   itunes-search
   jquery-rails
   json

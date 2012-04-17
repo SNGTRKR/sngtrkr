@@ -44,7 +44,9 @@ set :synchronous_connect, true
 
 # Passenger
 namespace :deploy do
-  task :start do ; end
+  task :start do 
+    run ""
+  end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
@@ -68,5 +70,43 @@ namespace :deploy do
         logger.info "Skipping asset pre-compilation because there were no asset changes"
       end
     end
+  end
+  run "cd #{latest_release} && #{rake} queue:restart_workers RAILS_ENV=production"
+end
+
+namespace :queue do
+  task :restart_workers => :environment do
+    pids = Array.new
+    
+    Resque.workers.each do |worker|
+      pids << worker.to_s.split(/:/).second
+    end
+    
+    if pids.size > 0
+      run "kill -QUIT #{pids.join(' ')}"
+    end
+    
+    run "rm /var/run/god/resque-1.8.0*.pid"
+  end
+end
+
+namespace :god do
+  desc "Starts god by loading the config path"
+  task :start do
+    run "god -c #{latest_release}/config/god/resque_redis.god"
+    run "#{try_sudo} god start resque"
+  end
+  
+  desc "Stops god by running quit"
+  task :quit do
+    run "god quit"
+  end
+end
+ 
+after "deploy", "god:start"
+
+namespace :resque do
+  task :setup => :environment do
+    
   end
 end
