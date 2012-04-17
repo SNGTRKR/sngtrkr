@@ -78,7 +78,6 @@ namespace :god do
   desc "Starts god by loading the config path"
   task :start do
     run "god -c #{latest_release}/config/god/resque_redis.god"
-    run "god restart resque"
   end
   
   desc "Stops god by running quit"

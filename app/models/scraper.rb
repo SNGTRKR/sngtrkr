@@ -1,6 +1,8 @@
 class Scraper
   include MusicBrainz
-  @@sevendigital_apikey = "7dufgm34849u";
+  @@sevendigital_apikey = "7dufgm34849u"
+  require 'job/fb_job'
+  require 'job/seven_digital'
   # DOCS FOR ALL THE SCRAPING MODULES
   # Last.fm (Scrobbler) - http://scrobbler.rubyforge.org/docs/
   # MusicBrainz - http://rbrainz.rubyforge.org/api-0.5.2/
