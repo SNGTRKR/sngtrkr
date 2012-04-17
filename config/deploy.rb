@@ -18,7 +18,7 @@ set :scm_verbose, true
 
 role :web, domain                          # Your HTTP server, Apache/etc
 role :app, domain                          # This may be the same as your `Web` server
-role :db,  domain, :primary => true # This is where Rails migrations will run
+role :db,  domain, :primary => true        # This is where Rails migrations will run
 
 # if you want to clean up old releases on each deploy uncomment this:
 set :keep_releases, 3
@@ -53,8 +53,6 @@ namespace :deploy do
   end
 end
 
-#TODO replace with http://www.bencurtis.com/2011/12/skipping-asset-compilation-with-capistrano/
-
 #TODO add restarting / starting of resque workers.
 #TODO add starting of resque server.
 
@@ -74,16 +72,15 @@ namespace :deploy do
   #run "cd #{latest_release} && #{rake} queue:restart_workers RAILS_ENV=production"
 end
 
-namespace :god do
-  desc "Starts god by loading the config path"
-  task :start do
-    run "god -c #{latest_release}/config/god/resque_redis.god"
-  end
-  
-  desc "Stops god by running quit"
-  task :quit do
-    run "god quit"
+namespace :deploy do
+  desc "Hot-reload God configuration for the Resque worker"
+  task :reload_god_config do
+    sudo "god stop resque"
+    sudo "god load #{File.join(deploy_to, 'current', 'config', 'resque-' + rails_env + '.god')}"
+    sudo "god start resque"
   end
 end
- 
-after "deploy", "god:start"
+
+# append to the bottom:
+
+after :deploy, "deploy:reload_god_config"

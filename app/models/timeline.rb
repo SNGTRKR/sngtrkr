@@ -1,5 +1,4 @@
 class Timeline 
-  @@releases
   @@pagesize = 10
 
   def self.artist id
