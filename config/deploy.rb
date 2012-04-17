@@ -71,9 +71,9 @@ namespace :deploy do
       end
     end
   end
-  run "cd #{latest_release} && #{rake} queue:restart_workers RAILS_ENV=production"
+  #run "cd #{latest_release} && #{rake} queue:restart_workers RAILS_ENV=production"
 end
-
+=begin
 namespace :queue do
   task :restart_workers => :environment do
     pids = Array.new
@@ -89,7 +89,7 @@ namespace :queue do
     run "rm /var/run/god/resque-1.8.0*.pid"
   end
 end
-
+=end
 namespace :god do
   desc "Starts god by loading the config path"
   task :start do
