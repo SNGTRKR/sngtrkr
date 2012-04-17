@@ -33,7 +33,7 @@ God.watch do |w|
 
     # failsafe
     on.condition(:tries) do |c|
-      c.times = 5
+      c.times = 1
       c.transition = :start
       c.interval = 5.seconds
     end
