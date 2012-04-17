@@ -2,8 +2,8 @@ God.watch do |w|
   w.name = 'resque'
   w.interval = 30.seconds
   w.env = { 'RAILS_ENV' => 'production', 'QUEUE' => '*' }
-  w.uid = 'ec2-user'
-  w.gid = 'ec2-user'
+#  w.uid = 'ec2-user'
+#  w.gid = 'ec2-user'
   w.dir = File.expand_path(File.join(File.dirname(__FILE__),'..'))
   w.start = "bundle exec rake jobs:work"
   w.start_grace = 10.seconds
