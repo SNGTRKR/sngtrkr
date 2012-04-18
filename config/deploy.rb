@@ -53,9 +53,6 @@ namespace :deploy do
   end
 end
 
-#TODO add restarting / starting of resque workers.
-#TODO add starting of resque server.
-
 load "deploy/assets"
 
 namespace :deploy do
