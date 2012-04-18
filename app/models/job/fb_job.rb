@@ -1,6 +1,4 @@
 class FbJob
-  @queue = :facebook_batches;
-
   def self.perform access_token
     graph = Koala::Facebook::API.new(access_token)
     music = graph.get_connections("me", "music")
