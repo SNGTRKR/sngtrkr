@@ -23,7 +23,6 @@ gem 'rvm-capistrano'
 
 # BACKGROUND TASKS
 gem 'resque'
-gem 'god'
 
 # SCRAPING GEMS
 gem 'rbrainz'
