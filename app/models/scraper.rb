@@ -49,10 +49,6 @@ class Scraper
         end
       end
       results.each do |artist|
-        b = Artist.new()
-        b.name = "TOASTER"
-        b.fbid = "41"
-        b.save
         Rails.logger.info "ARTIST INPUT"
         if(Artist.find(:all, :conditions => ["fbid = '#{artist["id"]}'"]).count > 0)
           # Skip artists already in the database
