@@ -1,7 +1,9 @@
 class FbJob
   def self.perform access_token
+    Rails.logger = Logger.new(STDOUT)
     graph = Koala::Facebook::API.new(access_token)
     music = graph.get_connections("me", "music")
+    i = 0
     artist_ids = music.each do |artist|
       artist["id"]
     end
@@ -56,7 +58,7 @@ class FbJob
           end
         end
         a.save
-        Scraper.getReleases a.id
+        #Scraper.getReleases a.id
       end
     end
   end
