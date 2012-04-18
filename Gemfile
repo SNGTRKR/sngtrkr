@@ -22,7 +22,8 @@ gem 'rvm'
 gem 'rvm-capistrano'
 
 # BACKGROUND TASKS
-gem 'resque'
+gem "delayed_job",  :git => 'git://github.com/collectiveidea/delayed_job.git'
+gem 'delayed_job_active_record'
 
 # SCRAPING GEMS
 gem 'rbrainz'
