@@ -29,8 +29,7 @@ class Scraper
 
   def self.importFbLikes access_token
     # TODO: pass in user id as well for suggestions 
-    require 'resque'
-    Resque.enqueue(FbJob,access_token)
+    FbJob.perform access_token
     return true
   end
   
