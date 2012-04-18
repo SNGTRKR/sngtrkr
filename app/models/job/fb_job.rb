@@ -26,6 +26,7 @@ class FbJob
         end
         a = Artist.new()
         a.name = artist["name"]
+        logger.info 'FbJob artist: ' + a.name
         a.fbid = artist["id"]
         details = graph.get_object(artist["id"])
         a.bio = details["bio"]
@@ -61,5 +62,6 @@ class FbJob
         Scraper.getReleases a.id
       end
     end
+    logger.info 'Finished FbJob'
   end
 end
