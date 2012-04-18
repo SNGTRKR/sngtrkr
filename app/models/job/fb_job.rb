@@ -1,5 +1,4 @@
 class FbJob
-  require "rails"
   @queue = :facebook_batches;
 
   def self.perform access_token
