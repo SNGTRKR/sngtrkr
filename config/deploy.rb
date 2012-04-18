@@ -72,7 +72,7 @@ namespace :deploy do
   #run "cd #{latest_release} && #{rake} queue:restart_workers RAILS_ENV=production"
 end
 
-after "deploy:create_symlink", "deploy:restart_workers"
+#after "deploy:create_symlink", "deploy:restart_workers"
 
 ##
 # Rake helper task.
@@ -93,6 +93,6 @@ end
 namespace :deploy do
   desc "Restart Resque Workers"
   task :restart_workers, :roles => :web do
-    run_remote_rake "resque:restart_workers"
+    run "cd #{latest_release} && #{rake} resque:restart_workers"
   end
 end
