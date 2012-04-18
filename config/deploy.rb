@@ -69,7 +69,7 @@ namespace :deploy do
   #run "cd #{latest_release} && #{rake} queue:restart_workers RAILS_ENV=production"
 end
 
-#after "deploy:create_symlink", "deploy:restart_workers"
+after "deploy:create_symlink", "deploy:restart_workers"
 
 ##
 # Rake helper task.
