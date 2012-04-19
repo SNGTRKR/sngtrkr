@@ -114,7 +114,7 @@ class Scraper
           end
         end
         a.save
-        Scraper.delay.getReleases a.id
+        #Scraper.delay.getReleases a.id
       end
     end
   end
