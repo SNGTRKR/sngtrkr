@@ -177,7 +177,7 @@ DEPENDENCIES
   jquery-rails
   json
   koala (~> 1.4.0)
-  mysql2 (< 0.3)
+  mysql2
   passenger
   rails (= 3.2.2)
   rbrainz
