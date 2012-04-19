@@ -22,14 +22,15 @@ class Scraper
     end
     id = results["artist"]["id"]
     releases =  Hash.from_xml( Net::HTTP.get( URI.parse(
-    "http://api.7digital.com/1.2/artist/releases?artistId=#{id}&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB&imageSize=350")))["response"]["releases"]
+    "http://api.7digital.com/1.2/artist/releases?artistId=#{id}&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB&imageSize=350")))["response"]["releases"]["release"]
 
     releases.each do |release|
-      if(Release.find(:all, :condition => "sd_id = #{sdid}").count > 0)
+      if(Release.find(:all, :conditions => "sd_id = #{release["id"]}").count > 0)
       next
       end
 
       r = Release.new
+      r.artist_id = artist_id
       r.sd_id = release["id"]
       r.name = release["title"]
       r.label_name = release["label"]["name"]
@@ -37,7 +38,7 @@ class Scraper
       r.sdigital = release["url"]
       r.scraped = 1
       r.save
-      release["type"] # Single, Album
+      # r.rls_type = release["type"] # Single, Album
 
       # TODO: Import release artwork
       release["image"]
@@ -78,7 +79,7 @@ class Scraper
         end
       end
       results.each do |artist|
-        # TODO: Import artist image as well.
+      # TODO: Import artist image as well.
         a = Artist.new()
         a.name = artist["name"]
         a.fbid = artist["id"]
@@ -113,7 +114,7 @@ class Scraper
           end
         end
         a.save
-        Scraper.getReleases a.id
+        Scraper.delay.getReleases a.id
       end
     end
   end
