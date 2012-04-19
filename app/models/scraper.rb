@@ -1,8 +1,6 @@
 class Scraper
   include MusicBrainz
   @@sevendigital_apikey = "7dufgm34849u"
-  require 'job/fb_job'
-  require 'job/seven_digital'
   # DOCS FOR ALL THE SCRAPING MODULES
   # Last.fm (Scrobbler) - http://scrobbler.rubyforge.org/docs/
   # MusicBrainz - http://rbrainz.rubyforge.org/api-0.5.2/
@@ -12,12 +10,40 @@ class Scraper
     # Gets the top musicbrainz result
     artist = MusicBrainz::Webservice::Query.new.get_artists(search).to_collection[0]
   end
-  
-  # Fetches an artist on 7digital and adds all their releases to the database. 
+
+  # Fetches an artist on 7digital and adds all their releases to the database.
   def self.getReleases artist_id
-    require 'resque'
-    Resque.enqueue(SevenDigital, :releases, :artist_id => artist_id)
-    return true
+    search = Artist.find(artist_id).name
+    xml =  Hash.from_xml Net::HTTP.get( URI.parse("http://api.7digital.com/1.2/artist/search?q=#{URI.escape(search)}&sort=score%20desc&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB"))
+    results = xml["response"]["searchResults"]["searchResult"]
+    # Necessary to still return an ID when we have multiple artist possibilities (picks first artist)
+    if results.kind_of?(Array)
+    results = results[0]
+    end
+    id = results["artist"]["id"]
+    releases =  Hash.from_xml( Net::HTTP.get( URI.parse(
+    "http://api.7digital.com/1.2/artist/releases?artistId=#{id}&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB&imageSize=350")))["response"]["releases"]
+
+    releases.each do |release|
+      if(Release.find(:all, :condition => "sd_id = #{sdid}").count > 0)
+      next
+      end
+
+      r = Release.new
+      r.sd_id = release["id"]
+      r.name = release["title"]
+      r.label_name = release["label"]["name"]
+      r.date = release["releaseDate"]
+      r.sdigital = release["url"]
+      r.scraped = 1
+      r.save
+      release["type"] # Single, Album
+
+      # TODO: Import release artwork
+      release["image"]
+
+    end
+
   end
 
   def self.lastFmSearch search
@@ -28,8 +54,7 @@ class Scraper
   end
 
   def self.importFbLikes access_token
-    # TODO: pass in user id as well for suggestions 
-    Rails.logger = Logger.new(STDOUT)
+    # TODO: pass in user id as well for suggestions
     graph = Koala::Facebook::API.new(access_token)
     music = graph.get_connections("me", "music")
     i = 0
@@ -44,16 +69,16 @@ class Scraper
           if(artist == nil)
           break
           end
+          if(Artist.find(:all, :conditions => ["fbid = '#{artist["id"]}'"]).count > 0)
+          # Skip artists already in the database
+          next
+          end
           batch_api.get_object(artist["id"])
           i=i+1
         end
       end
       results.each do |artist|
-        Rails.logger.info "ARTIST INPUT"
-        if(Artist.find(:all, :conditions => ["fbid = '#{artist["id"]}'"]).count > 0)
-          # Skip artists already in the database
-          next
-        end
+        # TODO: Import artist image as well.
         a = Artist.new()
         a.name = artist["name"]
         a.fbid = artist["id"]
@@ -88,9 +113,9 @@ class Scraper
           end
         end
         a.save
-        #Scraper.getReleases a.id
+        Scraper.getReleases a.id
       end
     end
   end
-  
+
 end
