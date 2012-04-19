@@ -19,7 +19,10 @@ test:
   timeout: 5000
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
+  adapter: mysql  # Rails 3.x uses the mysql2 adapter
+  encoding: utf8
+  database: sngtrkr_db
   pool: 5
-  timeout: 5000
+  username: root
+  password: nepGtwtxFlUodrX1SYD87dTm2U62ud
+  socket: /var/run/mysqld/mysqld.sock
