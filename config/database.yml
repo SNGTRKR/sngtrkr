@@ -19,7 +19,7 @@ test:
   timeout: 5000
 
 production:
-  adapter: mysql  # Rails 3.x uses the mysql2 adapter
+  adapter: mysql2  # Rails 3.x uses the mysql2 adapter
   encoding: utf8
   database: sngtrkr_db
   host: localhost 
