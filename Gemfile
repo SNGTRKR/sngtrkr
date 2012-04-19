@@ -14,7 +14,7 @@ gem 'json'
 # VERSION AND DEPLOYMENT
 group :production do
   gem 'passenger'
-  gem 'mysql2'
+  gem 'mysql2', '< 0.3'
   #gem 'activerecord-mysql-adapter'
 end
 
