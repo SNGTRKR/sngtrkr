@@ -68,7 +68,7 @@ namespace :deploy do
   end
 end
 
-#after "deploy:restart", "delayed_job:restart"
+after "deploy:restart", "delayed_job:restart"
 
 namespace :delayed_job do 
     desc "Restart the delayed_job process"
