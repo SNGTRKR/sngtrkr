@@ -15,6 +15,7 @@ gem 'json'
 group :production do
   gem 'passenger'
   gem 'mysql2'
+  gem 'activerecord-mysql-adapter'
 end
 
 group :development do
