@@ -2,8 +2,8 @@ class Timeline
   @@pagesize = 10
 
   def self.artist id
-    a = Artist.find(:all, id)
-    if(!a.empty?) 
+    a = Artist.find(id)
+    if(a != nil) 
       a.releases
     else
       []

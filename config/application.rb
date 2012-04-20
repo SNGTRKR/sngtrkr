@@ -1,12 +1,21 @@
 require File.expand_path('../boot', __FILE__)
-
 require 'rails/all'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
   Bundler.require(*Rails.groups(:assets => %w(development test)))
-  # If you want your assets lazily compiled in production, use this line
-  # Bundler.require(:default, :assets, Rails.env)
+# If you want your assets lazily compiled in production, use this line
+# Bundler.require(:default, :assets, Rails.env)
+end
+
+ActionDispatch::Callbacks.after do
+  # Reload the factories
+  return unless (Rails.env.development? || Rails.env.test?)
+
+  unless FactoryGirl.factories.blank? # first init will load factories, this should only run on subsequent reloads
+    FactoryGirl.factories.clear
+    FactoryGirl.find_definitions
+  end
 end
 
 module SNGTRKRR
@@ -55,5 +64,7 @@ module SNGTRKRR
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
   end
 end
+

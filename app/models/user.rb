@@ -2,10 +2,10 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :fbid, :first_name, :last_name
 
   has_many :follow
   has_many :suggest
@@ -17,6 +17,24 @@ class User < ActiveRecord::Base
   has_many :suggested_artists, :through => :suggest, :source => :artist
 
   has_many :labels, :through => :super_manage
+  def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
+    data = access_token.extra.raw_info
+    if user = self.find_by_email(data.email)
+    user
+    else # Create a user with a stub password.
+      self.create!(:email => data.email, :password => Devise.friendly_token[0,20], :fbid => data.id)
+      Scraper.delay.importFbLikes(access_token.credentials.token)
+    end
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+        user.email = data["email"]
+      end
+    end
+  end
+
   def manage(artist_id)
     m = Manage.new(:user_id => self.id, :artist_id => artist_id)
     m.save
@@ -60,7 +78,7 @@ class User < ActiveRecord::Base
     return false
     end
   end
-  
+
   def following
     Follow.user_follows(self.id)
   end
@@ -72,7 +90,7 @@ class User < ActiveRecord::Base
     return false
     end
   end
-  
+
   def managing
     Manage.user_managing(self.id)
   end
@@ -84,14 +102,23 @@ class User < ActiveRecord::Base
     return false
     end
   end
-  
+
   def suggested
     Suggest.user_suggested(self.id)
   end
-  
+
   def import_artists(json_response)
     ret = ActiveSupport::JSON.decode json_response.read
     return ret
+  end
+
+  def self.fb_logged_in?
+    session
+    if(session.has_key?("fb"))
+    false
+    else
+    true
+    end
   end
 
 end

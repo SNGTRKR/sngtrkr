@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120418164747) do
+ActiveRecord::Schema.define(:version => 20120419231558) do
 
   create_table "artists", :force => true do |t|
     t.string   "name"
@@ -134,6 +134,7 @@ ActiveRecord::Schema.define(:version => 20120418164747) do
     t.datetime "last_email"
     t.string   "username"
     t.integer  "role"
+    t.text     "fbid"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
