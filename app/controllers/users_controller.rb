@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   before_filter :load, :only => [:manage, :unmanage, :follow, :unfollow, :suggest, :unsuggest, :following?, :import_artists]
+
   def load
     @user = current_user
   end
@@ -25,9 +26,9 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    # TODO: authentication; you (probably) shouldn't see another user's timeline 
+    # TODO: authentication; you (probably) shouldn't see another user's timeline
     @timeline = Timeline.user(params[:id])
-    
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @user }
@@ -130,9 +131,4 @@ class UsersController < ApplicationController
     @user.suggest params[:artist_id]
     redir :artist_id
   end
-
-  def import_artists
-    @response = Scraper.delay.importFbLikes  params[:access_token]
-  end
-
 end

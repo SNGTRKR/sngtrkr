@@ -42,24 +42,4 @@
 		</div>
 	</div>
 	<div id="result"></div>
-	<script type="text/javascript">
-		$(document).ready($(".facebook-log").click(function() {
-			FB.login(function(response) {
-				console.log(FB.getAuthResponse().accessToken);
-				// Successfull login
-				accessToken = FB.getAuthResponse().accessToken;
-				$.ajax({
-					url : "/users/fbimport.json",
-					type : "GET",
-					data : "access_token=" + accessToken,
-				}).done(function(msg) {
-					alert("Data Saved: " + msg);
-				}).error(function(msg) {
-					console.log("Ajax error");
-				})
-			}, {
-				scope : 'email,user_likes'
-			})
-		}))
-	</script>
 	<div class="clear"></div>

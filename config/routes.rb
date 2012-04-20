@@ -11,11 +11,10 @@ SNGTRKRR::Application.routes.draw do
   match '/home' => "Pages#home"
   match '/splash' => "Pages#splash"
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users_controller/omniauth_callbacks" }
   
   match 'users/me' => 'users#self'
   # Use this address through AJAX to import all a user's facebook artists.
-  match 'users/fbimport' => 'users#import_artists'
   resources :users
 
   # Artist actions
