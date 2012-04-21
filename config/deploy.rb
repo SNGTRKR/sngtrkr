@@ -23,7 +23,6 @@ role :db,  domain, :primary => true        # This is where Rails migrations will
 # if you want to clean up old releases on each deploy uncomment this:
 set :keep_releases, 3
 after "deploy:restart", "deploy:cleanup"
-
 require "bundler/capistrano"
 #$:.unshift("#{ENV["HOME"]}/.rvm/lib")
 set :rvm_type, :system  # Copy the exact line. I really mean :system here
@@ -53,8 +52,6 @@ namespace :deploy do
   end
 end
 
-load "deploy/assets"
-
 namespace :deploy do
   namespace :assets do
     task :precompile, :roles => :web, :except => { :no_release => true } do
@@ -64,6 +61,9 @@ namespace :deploy do
       else
         logger.info "Skipping asset pre-compilation because there were no asset changes"
       end
+    end
+    task :precompilef do
+      run %Q{cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assets:precompile}
     end
   end
 end

@@ -20,6 +20,7 @@ end
 
 group :development do
   gem 'sqlite3'
+  gem 'rails-precompile2git'
 end
 
 gem 'capistrano'
