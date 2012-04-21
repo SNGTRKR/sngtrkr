@@ -80,6 +80,7 @@ GEM
       rack (~> 1.1)
     fastthread (1.0.7)
     fssm (0.2.9)
+    git (1.2.5)
     haml (3.1.4)
     hashie (1.2.0)
     highline (1.6.11)
@@ -156,6 +157,8 @@ GEM
       activesupport (= 3.2.2)
       bundler (~> 1.0)
       railties (= 3.2.2)
+    rails-precompile2git (1.0.5)
+      git (= 1.2.5)
     rails_admin (0.0.1)
       bbenezech-nested_form (~> 0.0.6)
       bootstrap-sass (~> 2.0)
@@ -229,6 +232,7 @@ DEPENDENCIES
   omniauth-facebook
   passenger
   rails (= 3.2.2)
+  rails-precompile2git
   rails_admin
   rbrainz
   rvm
