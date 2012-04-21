@@ -54,7 +54,7 @@ class Scraper
     artist.top_tracks.each { |t| puts "(#{t.reach}) #{t.name}" }
   end
 
-  def self.importFbLikes access_token
+  def self.importFbLikes access_token, user_id
     # TODO: pass in user id as well for suggestions
     graph = Koala::Facebook::API.new(access_token)
     music = graph.get_connections("me", "music")
@@ -70,8 +70,10 @@ class Scraper
           if(artist == nil)
           break
           end
-          if(Artist.find(:all, :conditions => ["fbid = '#{artist["id"]}'"]).count > 0)
+          tmp = Artist.find(:all, :conditions => ["fbid = '#{artist["id"]}'"]).first
+          if(tmp != nil)
           # Skip artists already in the database
+          User.find(user_id).suggest(tmp.id)
           next
           end
           batch_api.get_object(artist["id"])
@@ -114,6 +116,7 @@ class Scraper
           end
         end
         a.save
+        User.find(user_id).suggest a.id
         Scraper.delay.getReleases a.id
       end
     end
