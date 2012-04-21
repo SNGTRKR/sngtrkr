@@ -37,7 +37,7 @@ gem 'scrobbler'
 gem 'itunes-search'
 
 # ADMIN
-#gem 'rails_admin'
+gem 'rails_admin'
 
 
 # in production environments by default.
