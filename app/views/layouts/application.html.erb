@@ -7,28 +7,7 @@
 		<%= csrf_meta_tags %>
 	</head>
 	<body>
-		<div id="fb-root"></div>
-		<script src="http://connect.facebook.net/en_US/all.js"></script>
-		<script>
-			window.fbAsyncInit = function() {
-FB.init({
-appId : '<%= FB_APP_ID %>', // App ID
-	status : true, // check login status
-	cookie : true, // enable cookies to allow the server to access the session
-	xfbml : true  // parse XFBML
-	});
-	};
-
-	// Load the SDK Asynchronously
-	(function(d){
-	var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-	if (d.getElementById(id)) {return;}
-	js = d.createElement('script'); js.id = id; js.async = true;
-	js.src = "//connect.facebook.net/en_US/all.js";
-	ref.parentNode.insertBefore(js, ref);
-	}(document));
-
-		</script>
+		<%= render 'shared/fb_async' %>
 		<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
 		chromium.org/developers/how-tos/chrome-frame-getting-started -->
 		<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or
@@ -42,7 +21,7 @@ appId : '<%= FB_APP_ID %>', // App ID
 					#wrap {display:table;height:100%}
 					</style>
 					<![endif]-->
-					<img class="facebook-log norm-login-nudge" src="/assets/images/log-facebook.png"/>
+					<%= render 'shared/login' %>
 					<div id="mini-search-2">
 						<%= form_tag artists_path , :method => 'get' do %>
 						<%= text_field_tag(:search, params[:search]) %> <img class="search-25" src="/assets/images/search-25.png"/>
