@@ -112,13 +112,4 @@ class User < ActiveRecord::Base
     return ret
   end
 
-  def self.fb_logged_in?
-    session
-    if(session.has_key?("fb"))
-    false
-    else
-    true
-    end
-  end
-
 end

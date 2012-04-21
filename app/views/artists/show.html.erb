@@ -7,6 +7,10 @@
 	<%= @artist.name %>
 </p>
 <p>
+	<b>TRKRs</b>
+	<%= @artist.followers %>
+</p>
+<p>
 	<b>Genre:</b>
 	<%= @artist.genre %>
 </p>
@@ -48,7 +52,7 @@
 	<%= release.name %>
 </p>
 <% end %> 
-<h1>Session</h1>
+
 <% if user_signed_in? %>
 <p>
 	<% if @user.managing? @artist.id %>

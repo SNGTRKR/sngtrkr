@@ -36,6 +36,10 @@ gem 'rbrainz'
 gem 'scrobbler'
 gem 'itunes-search'
 
+# ADMIN
+#gem 'rails_admin'
+
+
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '>= 3.2.3'
