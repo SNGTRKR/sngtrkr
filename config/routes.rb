@@ -11,10 +11,12 @@ SNGTRKRR::Application.routes.draw do
   match '/recommended' => "Pages#recommended"
   match '/home' => "Pages#home"
   match '/splash' => "Pages#splash"
-#  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin' # Feel free to change '/admin' to any namespace you need.
+  #  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin' # Feel free to change '/admin' to any namespace you need.
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users_controller/omniauth_callbacks" }
-
+  devise_scope :user do
+    get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
+  end
   match 'users/me' => 'users#self'
   # Use this address through AJAX to import all a user's facebook artists.
   resources :users
