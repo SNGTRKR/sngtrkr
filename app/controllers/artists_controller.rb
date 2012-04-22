@@ -16,7 +16,6 @@ class ArtistsController < ApplicationController
     @artist = Artist.find(params[:id])
     @user = current_user
     @timeline = Timeline.artist(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @artist }
