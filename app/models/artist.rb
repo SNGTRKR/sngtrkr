@@ -17,6 +17,7 @@ class Artist < ActiveRecord::Base
   def default_values
     # Don't ignore new artists!
     self.ignore ||= false
+    self.save
   end
 
   def self.search(search)
@@ -34,7 +35,7 @@ class Artist < ActiveRecord::Base
     return true
     end
   end
-  
+
   def followers
     Follow.find(:all, :conditions => ["artist_id = #{self.id}"]).count
   end

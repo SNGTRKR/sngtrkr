@@ -2,3 +2,10 @@ vendor/cache/*
 tmp/cache/*
 log/development.log
 db/production.sqlite3
+tmp/**/*
+tmp/*
+doc/api
+doc/app
+*.swp
+*~
+.DS_Store

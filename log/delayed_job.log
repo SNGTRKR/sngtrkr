@@ -956,3 +956,167 @@
 2012-04-21T23:09:09+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] 1 jobs processed at 0.8129 j/s, 0 failed ...
 2012-04-21T23:11:05+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#importFbLikes completed after 1.3096
 2012-04-21T23:11:05+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] 1 jobs processed at 0.7591 j/s, 0 failed ...
+2012-04-21T23:16:47+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 6 failed attempts
+2012-04-21T23:16:48+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 6 failed attempts
+2012-04-21T23:16:49+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with NoMethodError: undefined method `[]' for nil:NilClass - 6 failed attempts
+2012-04-21T23:16:50+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 6 failed attempts
+2012-04-21T23:16:51+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 6 failed attempts
+2012-04-21T23:16:51+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with NoMethodError: undefined method `[]' for nil:NilClass - 6 failed attempts
+2012-04-21T23:16:52+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with NoMethodError: undefined method `[]' for nil:NilClass - 6 failed attempts
+2012-04-21T23:16:53+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 6 failed attempts
+2012-04-21T23:16:54+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 6 failed attempts
+2012-04-21T23:16:54+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with NoMethodError: undefined method `[]' for nil:NilClass - 6 failed attempts
+2012-04-21T23:16:55+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 6 failed attempts
+2012-04-21T23:16:57+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 6 failed attempts
+2012-04-21T23:16:58+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 6 failed attempts
+2012-04-21T23:16:59+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 6 failed attempts
+2012-04-21T23:16:59+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 6 failed attempts
+2012-04-21T23:17:01+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 6 failed attempts
+2012-04-21T23:17:02+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 6 failed attempts
+2012-04-21T23:17:03+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 6 failed attempts
+2012-04-21T23:17:04+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 6 failed attempts
+2012-04-21T23:17:05+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 6 failed attempts
+2012-04-21T23:17:06+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 7 failed attempts
+2012-04-21T23:17:06+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 7 failed attempts
+2012-04-21T23:17:07+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with NoMethodError: undefined method `[]' for nil:NilClass - 7 failed attempts
+2012-04-21T23:17:07+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 7 failed attempts
+2012-04-21T23:17:08+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 7 failed attempts
+2012-04-21T23:17:08+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with NoMethodError: undefined method `[]' for nil:NilClass - 7 failed attempts
+2012-04-21T23:17:09+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with NoMethodError: undefined method `[]' for nil:NilClass - 7 failed attempts
+2012-04-21T23:17:10+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 7 failed attempts
+2012-04-21T23:17:10+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 7 failed attempts
+2012-04-21T23:17:11+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with NoMethodError: undefined method `[]' for nil:NilClass - 7 failed attempts
+2012-04-21T23:17:11+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 7 failed attempts
+2012-04-21T23:17:12+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 7 failed attempts
+2012-04-21T23:17:13+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 7 failed attempts
+2012-04-21T23:17:13+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 7 failed attempts
+2012-04-21T23:17:14+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 7 failed attempts
+2012-04-21T23:17:15+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 7 failed attempts
+2012-04-21T23:17:16+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 7 failed attempts
+2012-04-21T23:17:17+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 7 failed attempts
+2012-04-21T23:17:18+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 7 failed attempts
+2012-04-21T23:17:19+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 7 failed attempts
+2012-04-21T23:17:19+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] 40 jobs processed at 1.0470 j/s, 40 failed ...
+2012-04-22T00:25:34+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 8 failed attempts
+2012-04-22T00:25:34+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 8 failed attempts
+2012-04-22T00:25:35+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with NoMethodError: undefined method `[]' for nil:NilClass - 8 failed attempts
+2012-04-22T00:25:36+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 8 failed attempts
+2012-04-22T00:25:37+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 8 failed attempts
+2012-04-22T00:25:37+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with NoMethodError: undefined method `[]' for nil:NilClass - 8 failed attempts
+2012-04-22T00:25:37+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with NoMethodError: undefined method `[]' for nil:NilClass - 8 failed attempts
+2012-04-22T00:25:38+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 8 failed attempts
+2012-04-22T00:25:39+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 8 failed attempts
+2012-04-22T00:25:40+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with NoMethodError: undefined method `[]' for nil:NilClass - 8 failed attempts
+2012-04-22T00:25:41+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 8 failed attempts
+2012-04-22T00:25:42+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 8 failed attempts
+2012-04-22T00:25:42+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 8 failed attempts
+2012-04-22T00:25:43+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 8 failed attempts
+2012-04-22T00:25:44+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 8 failed attempts
+2012-04-22T00:25:45+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 8 failed attempts
+2012-04-22T00:25:46+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 8 failed attempts
+2012-04-22T00:25:48+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 8 failed attempts
+2012-04-22T00:25:49+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 8 failed attempts
+2012-04-22T00:25:50+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 8 failed attempts
+2012-04-22T00:25:50+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 9 failed attempts
+2012-04-22T00:25:51+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 9 failed attempts
+2012-04-22T00:25:52+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with NoMethodError: undefined method `[]' for nil:NilClass - 9 failed attempts
+2012-04-22T00:25:52+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 9 failed attempts
+2012-04-22T00:25:53+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 9 failed attempts
+2012-04-22T00:25:54+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with NoMethodError: undefined method `[]' for nil:NilClass - 9 failed attempts
+2012-04-22T00:25:54+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with NoMethodError: undefined method `[]' for nil:NilClass - 9 failed attempts
+2012-04-22T00:25:55+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 9 failed attempts
+2012-04-22T00:25:55+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 9 failed attempts
+2012-04-22T00:25:56+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with NoMethodError: undefined method `[]' for nil:NilClass - 9 failed attempts
+2012-04-22T00:25:56+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 9 failed attempts
+2012-04-22T00:25:57+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 9 failed attempts
+2012-04-22T00:25:58+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 9 failed attempts
+2012-04-22T00:25:59+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 9 failed attempts
+2012-04-22T00:25:59+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 9 failed attempts
+2012-04-22T00:26:00+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 9 failed attempts
+2012-04-22T00:26:02+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 9 failed attempts
+2012-04-22T00:26:03+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 9 failed attempts
+2012-04-22T00:26:04+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 9 failed attempts
+2012-04-22T00:26:04+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 9 failed attempts
+2012-04-22T00:26:04+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] 40 jobs processed at 1.2113 j/s, 40 failed ...
+2012-04-22T03:12:38+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 10 failed attempts
+2012-04-22T03:12:41+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 10 failed attempts
+2012-04-22T03:12:41+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with NoMethodError: undefined method `[]' for nil:NilClass - 10 failed attempts
+2012-04-22T03:12:42+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 10 failed attempts
+2012-04-22T03:12:43+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 10 failed attempts
+2012-04-22T03:12:43+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with NoMethodError: undefined method `[]' for nil:NilClass - 10 failed attempts
+2012-04-22T03:12:43+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with NoMethodError: undefined method `[]' for nil:NilClass - 10 failed attempts
+2012-04-22T03:12:44+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 10 failed attempts
+2012-04-22T03:12:45+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 10 failed attempts
+2012-04-22T03:12:45+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with NoMethodError: undefined method `[]' for nil:NilClass - 10 failed attempts
+2012-04-22T03:12:46+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 10 failed attempts
+2012-04-22T03:12:47+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 10 failed attempts
+2012-04-22T03:12:48+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 10 failed attempts
+2012-04-22T03:12:49+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 10 failed attempts
+2012-04-22T03:12:50+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 10 failed attempts
+2012-04-22T03:12:51+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 10 failed attempts
+2012-04-22T03:12:52+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 10 failed attempts
+2012-04-22T03:12:53+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 10 failed attempts
+2012-04-22T03:12:54+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 10 failed attempts
+2012-04-22T03:12:55+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 10 failed attempts
+2012-04-22T03:12:55+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 11 failed attempts
+2012-04-22T03:12:56+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 11 failed attempts
+2012-04-22T03:12:56+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with NoMethodError: undefined method `[]' for nil:NilClass - 11 failed attempts
+2012-04-22T03:12:57+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 11 failed attempts
+2012-04-22T03:12:58+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 11 failed attempts
+2012-04-22T03:12:58+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with NoMethodError: undefined method `[]' for nil:NilClass - 11 failed attempts
+2012-04-22T03:12:58+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with NoMethodError: undefined method `[]' for nil:NilClass - 11 failed attempts
+2012-04-22T03:12:59+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 11 failed attempts
+2012-04-22T03:13:00+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 11 failed attempts
+2012-04-22T03:13:00+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with NoMethodError: undefined method `[]' for nil:NilClass - 11 failed attempts
+2012-04-22T03:13:01+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 11 failed attempts
+2012-04-22T03:13:01+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 11 failed attempts
+2012-04-22T03:13:02+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 11 failed attempts
+2012-04-22T03:13:03+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 11 failed attempts
+2012-04-22T03:13:03+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 11 failed attempts
+2012-04-22T03:13:04+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 11 failed attempts
+2012-04-22T03:13:05+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 11 failed attempts
+2012-04-22T03:13:06+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 11 failed attempts
+2012-04-22T03:13:07+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 11 failed attempts
+2012-04-22T03:13:08+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with TypeError: can't convert String into Integer - 11 failed attempts
+2012-04-22T03:13:08+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] 40 jobs processed at 1.2459 j/s, 40 failed ...
+2012-04-22T09:08:55+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 12 failed attempts
+2012-04-22T09:08:57+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 12 failed attempts
+2012-04-22T09:08:59+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 12 failed attempts
+2012-04-22T09:09:00+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 12 failed attempts
+2012-04-22T09:09:35+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 12 failed attempts
+2012-04-22T09:09:35+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 12 failed attempts
+2012-04-22T09:09:35+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 12 failed attempts
+2012-04-22T09:09:35+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 12 failed attempts
+2012-04-22T09:09:35+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 12 failed attempts
+2012-04-22T09:09:35+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 12 failed attempts
+2012-04-22T09:09:35+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 12 failed attempts
+2012-04-22T09:09:35+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 12 failed attempts
+2012-04-22T09:09:35+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 12 failed attempts
+2012-04-22T09:09:36+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 12 failed attempts
+2012-04-22T09:09:36+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 12 failed attempts
+2012-04-22T09:09:36+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 12 failed attempts
+2012-04-22T09:09:36+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 12 failed attempts
+2012-04-22T09:09:36+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 12 failed attempts
+2012-04-22T09:09:36+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 12 failed attempts
+2012-04-22T09:09:36+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 12 failed attempts
+2012-04-22T09:09:36+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 13 failed attempts
+2012-04-22T09:09:36+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 13 failed attempts
+2012-04-22T09:09:36+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 13 failed attempts
+2012-04-22T09:09:36+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 13 failed attempts
+2012-04-22T09:09:36+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 13 failed attempts
+2012-04-22T09:09:36+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 13 failed attempts
+2012-04-22T09:09:36+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 13 failed attempts
+2012-04-22T09:09:36+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 13 failed attempts
+2012-04-22T09:09:36+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 13 failed attempts
+2012-04-22T09:09:36+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 13 failed attempts
+2012-04-22T09:09:36+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 13 failed attempts
+2012-04-22T09:09:36+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 13 failed attempts
+2012-04-22T09:09:36+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 13 failed attempts
+2012-04-22T09:09:36+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 13 failed attempts
+2012-04-22T09:09:36+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 13 failed attempts
+2012-04-22T09:09:36+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 13 failed attempts
+2012-04-22T09:09:36+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 13 failed attempts
+2012-04-22T09:09:36+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 13 failed attempts
+2012-04-22T09:09:36+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 13 failed attempts
+2012-04-22T09:09:36+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] Class#getReleases failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 13 failed attempts
+2012-04-22T09:09:36+0100: [Worker(delayed_job host:Matts-Laptop.local pid:73107)] 40 jobs processed at 0.9334 j/s, 40 failed ...

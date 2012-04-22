@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
     else # Create a user with a stub password.
       user = self.create!(:email => data.email, :password => Devise.friendly_token[0,20], :fbid => data.id, :first_name => data.first_name, :last_name => data.last_name)
     end
-  Scraper.delay.importFbLikes(access_token.credentials.token, user.id)
+    Scraper.delay.importFbLikes(access_token.credentials.token, user.id)
     return user
   end
 
@@ -61,14 +61,15 @@ class User < ActiveRecord::Base
   end
 
   def suggest(artist_id)
-    t = Suggest. new(:user_id => self.id, :artist_id => artist_id)
+    t = Suggest.new(:user_id => self.id, :artist_id => artist_id)
     t.save
     return t.id
   end
 
   def unsuggest(artist_id)
-    Suggest.find(:all, :conditions => ["user_id = '#{self.id}' AND artist_id = '#{artist_id}'"]).each do |f|
-      f.destroy
+    Suggest.find(:all, :conditions => ["user_id = '#{self.id}' AND artist_id = '#{artist_id}' AND ignore != 1"]).each do |f|
+      f.ignore = 1
+      f.save
     end
   end
 
@@ -105,7 +106,8 @@ class User < ActiveRecord::Base
   end
 
   def suggested
-    Suggest.user_suggested(self.id)
+    #TODO fix suggested artists.
+    self.suggested_artists.find(:all,:conditions => ["suggests.ignore = ?",false])
   end
 
   def import_artists(json_response)
