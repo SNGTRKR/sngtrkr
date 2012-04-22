@@ -5,7 +5,7 @@ class Suggest < ActiveRecord::Base
   validates :artist_id, :presence => true
   validates :user_id, :uniqueness => {:scope => :artist_id}
 
-  after_initialize :default_values
+  before_save :default_values
   def default_values
     # Don't ignore new suggestions
     self.ignore ||= false
