@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   before_filter :load, :only => [:manage, :unmanage, :follow, :unfollow, :suggest, :unsuggest, :following?, :import_artists]
-
   def load
     @user = current_user
   end
@@ -133,5 +132,16 @@ class UsersController < ApplicationController
   def suggest
     @user.suggest params[:artist_id]
     redir :artist_id
+  end
+
+  # This page contains a list of all the Artist page's the logged in user controls.
+  def managing
+    api = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
+    @artists = []
+    api.get_object("me/accounts").each do |page|
+      if page["category"] == "Musician/band"
+      @artists.push page
+      end
+    end
   end
 end
