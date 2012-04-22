@@ -57,3 +57,9 @@
 2012-04-22T12:21:20+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74995)] Class#importFbLikes failed with ActiveRecord::RecordNotFound: Couldn't find User with id=757635703 - 3 failed attempts
 2012-04-22T12:21:22+0100: [Worker(delayed_job host:Matts-Laptop.local pid:75015)] Starting job worker
 2012-04-22T12:23:48+0100: [Worker(delayed_job host:Matts-Laptop.local pid:75015)] Class#importFbLikes completed after 130.0749
+2012-04-22T12:25:44+0100: [Worker(delayed_job host:Matts-Laptop.local pid:75015)] Exiting...
+2012-04-22T12:25:47+0100: [Worker(delayed_job host:Matts-Laptop.local pid:75015)] Class#importFbLikes completed after 119.6419
+2012-04-22T12:25:53+0100: [Worker(delayed_job host:Matts-Laptop.local pid:75067)] Starting job worker
+2012-04-22T12:26:00+0100: [Worker(delayed_job host:Matts-Laptop.local pid:75067)] Class#importFbLikes failed with ActiveRecord::RecordNotFound: Couldn't find User with id=757635703 - 4 failed attempts
+2012-04-22T12:26:07+0100: [Worker(delayed_job host:Matts-Laptop.local pid:75067)] Class#importFbLikes failed with ActiveRecord::RecordNotFound: Couldn't find User with id=757635703 - 5 failed attempts
+2012-04-22T12:26:07+0100: [Worker(delayed_job host:Matts-Laptop.local pid:75067)] 2 jobs processed at 0.1427 j/s, 2 failed ...
