@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
-	<head>
+	<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# sngtrkr: http://ogp.me/ns/fb/sngtrkr#">
+		<meta property="fb:app_id"        content="344989472205984" />
+		<meta property="og:type"          content="sngtrkr_local:artist" />
+		<meta property="og:url"           content="<%= yield :og_url %>" />
+		<meta property="og:title"         content="<%= yield :og_name %>" />
+		<meta property="og:description"   content="<%= yield :og_description %>" />
+		<meta property="og:image"         content="https://s-static.ak.fbcdn.net/images/devsite/attachment_blank.png" />
+		<meta property="sngtrkr:id" content="<%= yield :og_id %>" />
 		<title>SNGTRKRR</title>
 		<%= stylesheet_link_tag    "application", :media => "all" %>
 		<%= javascript_include_tag "application" %>
@@ -55,80 +62,80 @@
 				</div>
 			</div>
 		</div>
-		<!-- Javascript 
+		<!-- Javascript
 		<script type='text/javascript'>
-			window.addEvent('load', function() {
-				new DatePicker('.date-pick', {
-					pickerClass : 'datepicker_jqui',
-					debug : false
-				});
-			});
+		window.addEvent('load', function() {
+		new DatePicker('.date-pick', {
+		pickerClass : 'datepicker_jqui',
+		debug : false
+		});
+		});
 
 		</script>
 		<script type="text/javascript">
-			ncjQuery = jQuery.noConflict();
-			ncjQuery(document).ready(function() {
-				ncjQuery('.fancybox').fancybox();
-			});
+		ncjQuery = jQuery.noConflict();
+		ncjQuery(document).ready(function() {
+		ncjQuery('.fancybox').fancybox();
+		});
 
 		</script>
 		<script type="text/javascript">
-			ncjQuery(document).ready(function() {
-				ncjQuery(".cheform").ajaxForm({
-					success : function(responseText) {
-						ncjQuery.fancybox.open({
-							href : '/admin/change-email.php',
-							type : 'iframe',
-							width : 431,
-							height : 286,
-							autoSize : false,
-							closeBtn : false,
-						});
-					}
-				});
-			});
-			ncjQuery(document).ready(function() {
-				ncjQuery(".enform").ajaxForm({
-					success : function(responseText) {
-						ncjQuery.fancybox.open({
-							href : '/admin/email-notify.php',
-							type : 'iframe',
-							width : 431,
-							height : 286,
-							autoSize : false,
-							closeBtn : false,
-						});
-					}
-				});
-			});
-			ncjQuery(document).ready(function() {
-				ncjQuery(".chpform").ajaxForm({
-					success : function(responseText) {
-						ncjQuery.fancybox.open({
-							href : '/admin/change-password.php',
-							type : 'iframe',
-							width : 431,
-							height : 286,
-							autoSize : false,
-							closeBtn : false,
-						});
-					}
-				});
-			});
-			ncjQuery(document).ready(function() {
-				ncjQuery(".rform").ajaxForm({
-					success : function(responseText) {
-						ncjQuery.fancybox.open({
-							href : '/admin/add-release.php',
-							type : 'iframe',
-							width : 431,
-							height : 286,
-							autoSize : false,
-							closeBtn : false,
-						});
-					}
-				});
-			});
+		ncjQuery(document).ready(function() {
+		ncjQuery(".cheform").ajaxForm({
+		success : function(responseText) {
+		ncjQuery.fancybox.open({
+		href : '/admin/change-email.php',
+		type : 'iframe',
+		width : 431,
+		height : 286,
+		autoSize : false,
+		closeBtn : false,
+		});
+		}
+		});
+		});
+		ncjQuery(document).ready(function() {
+		ncjQuery(".enform").ajaxForm({
+		success : function(responseText) {
+		ncjQuery.fancybox.open({
+		href : '/admin/email-notify.php',
+		type : 'iframe',
+		width : 431,
+		height : 286,
+		autoSize : false,
+		closeBtn : false,
+		});
+		}
+		});
+		});
+		ncjQuery(document).ready(function() {
+		ncjQuery(".chpform").ajaxForm({
+		success : function(responseText) {
+		ncjQuery.fancybox.open({
+		href : '/admin/change-password.php',
+		type : 'iframe',
+		width : 431,
+		height : 286,
+		autoSize : false,
+		closeBtn : false,
+		});
+		}
+		});
+		});
+		ncjQuery(document).ready(function() {
+		ncjQuery(".rform").ajaxForm({
+		success : function(responseText) {
+		ncjQuery.fancybox.open({
+		href : '/admin/add-release.php',
+		type : 'iframe',
+		width : 431,
+		height : 286,
+		autoSize : false,
+		closeBtn : false,
+		});
+		}
+		});
+		});
 
 		</script>
 		-->

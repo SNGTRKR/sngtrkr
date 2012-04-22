@@ -229,6 +229,6 @@ Devise.setup do |config|
   end
 
   require "omniauth-facebook"
-  config.omniauth :facebook, app_id, app_secret, :scope => 'email,user_likes', :display => 'popup'
+  config.omniauth :facebook, app_id, app_secret, :scope => 'email,user_likes,publish_actions', :display => 'popup'
 
 end

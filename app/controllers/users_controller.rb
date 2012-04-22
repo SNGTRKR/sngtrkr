@@ -119,6 +119,8 @@ class UsersController < ApplicationController
   def follow
     @user.follow params[:artist_id]
     @user.unsuggest params[:artist_id]
+    api = Koala::Facebook::API.new(request.env["omniauth.auth"].credentials.token)
+    api.put_connections("me", "sngtrkr:track", :object => url_for(Artist.find(params[:artist_id]), :only_path => false ))
     redir :artist_id
   end
 
