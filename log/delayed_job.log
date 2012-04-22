@@ -1682,3 +1682,8 @@
 2012-04-22T16:52:48+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases failed with TypeError: can't convert String into Integer - 9 failed attempts
 2012-04-22T16:52:49+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases failed with TypeError: can't convert String into Integer - 9 failed attempts
 2012-04-22T16:52:50+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases failed with TypeError: can't convert String into Integer - 9 failed attempts
+2012-04-22T16:52:52+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases failed with TypeError: can't convert String into Integer - 9 failed attempts
+2012-04-22T16:52:53+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases failed with TypeError: can't convert String into Integer - 9 failed attempts
+2012-04-22T16:52:55+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases failed with TypeError: can't convert String into Integer - 9 failed attempts
+2012-04-22T16:52:59+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases failed with TypeError: can't convert String into Integer - 9 failed attempts
+2012-04-22T16:52:59+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] 36 jobs processed at 0.4569 j/s, 36 failed ...
