@@ -19,6 +19,7 @@ SNGTRKRR::Application.routes.draw do
   end
   match 'users/me' => 'users#self'
   # Use this address through AJAX to import all a user's facebook artists.
+  match 'users/managing' => 'users#managing'
   resources :users
 
   # Artist actions
