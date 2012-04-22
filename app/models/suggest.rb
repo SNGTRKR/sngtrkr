@@ -9,7 +9,6 @@ class Suggest < ActiveRecord::Base
   def default_values
     # Don't ignore new suggestions
     self.ignore ||= false
-    self.save
   end
 
   def self.search(user_id, artist_id)
