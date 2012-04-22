@@ -67,8 +67,8 @@ class User < ActiveRecord::Base
   end
 
   def unsuggest(artist_id)
-    Suggest.find(:all, :conditions => ["user_id = '#{self.id}' AND artist_id = '#{artist_id}' AND ignore != 1"]).each do |f|
-      f.ignore = 1
+    Suggest.find(:all, :conditions => ["user_id = '#{self.id}' AND artist_id = '#{artist_id}'"]).each do |f|
+      f.ignore = true
       f.save
     end
   end
