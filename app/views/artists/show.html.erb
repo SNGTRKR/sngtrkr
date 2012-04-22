@@ -1,9 +1,8 @@
 <% content_for :og_name, @artist.name 
 content_for :og_url, request.url
-content_for :og_image, "Ar" 
+content_for :og_image, "" 
 content_for :og_description, truncate(@artist.bio,:length => 30)
 content_for :og_id, @artist.id.to_s
-content_for :og_image, "" 
 
 %>
 <div class="content content-pad-160-bottom">
