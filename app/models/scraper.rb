@@ -91,7 +91,6 @@ class Scraper
         a.manager_email = details["general_manager"]
         a.hometown = details["hometown"]
         a.label = details["label"]
-        a.ignore = false
         if(details["website"])
           websites = details["website"].split(' ')
         else
@@ -117,7 +116,9 @@ class Scraper
         end
         a.save
         User.find(user_id).suggest a.id
-        Scraper.delay.getReleases a.id
+        if a.id != nil
+          Scraper.delay.getReleases a.id
+        end
       end
     end
 

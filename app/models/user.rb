@@ -24,6 +24,8 @@ class User < ActiveRecord::Base
     else # Create a user with a stub password.
       user = self.create!(:email => data.email, :password => Devise.friendly_token[0,20], :fbid => data.id, :first_name => data.first_name, :last_name => data.last_name)
     end
+    Scraper.delay.importFbLikes(access_token.credentials.token, user.id)
+    user
   end
 
   def self.new_with_session(params, session)
