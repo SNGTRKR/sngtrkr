@@ -25,6 +25,7 @@ SNGTRKRR::Application.routes.draw do
   # Search for an artist by name
   match 'artists/search/:name' => 'artists#search'
 
+  
   match 'artists/:artist_id/manage' => 'users#manage', :as => :manage_artist
   match 'artists/:artist_id/unmanage' => 'users#unmanage', :as => :unmanage_artist
   match 'artists/:artist_id/follow' => 'users#follow', :as => :follow_artist
