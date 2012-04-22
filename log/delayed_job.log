@@ -1687,3 +1687,9 @@
 2012-04-22T16:52:55+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases failed with TypeError: can't convert String into Integer - 9 failed attempts
 2012-04-22T16:52:59+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases failed with TypeError: can't convert String into Integer - 9 failed attempts
 2012-04-22T16:52:59+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] 36 jobs processed at 0.4569 j/s, 36 failed ...
+2012-04-22T17:18:47+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#importFbLikes failed with ActiveRecord::RecordNotFound: Couldn't find User with id=757635703 - 9 failed attempts
+2012-04-22T17:18:48+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#importFbLikes failed with ActiveRecord::RecordNotFound: Couldn't find User with id=757635703 - 10 failed attempts
+2012-04-22T17:18:48+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] 2 jobs processed at 0.7382 j/s, 2 failed ...
+2012-04-22T17:29:03+0100: [Worker(delayed_job host:matts-laptop.local pid:1074)] Class#importFbLikes failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 9 failed attempts
+2012-04-22T17:29:03+0100: [Worker(delayed_job host:matts-laptop.local pid:1074)] Class#importFbLikes failed with SocketError: getaddrinfo: nodename nor servname provided, or not known - 10 failed attempts
+2012-04-22T17:29:03+0100: [Worker(delayed_job host:matts-laptop.local pid:1074)] 2 jobs processed at 64.6725 j/s, 2 failed ...
