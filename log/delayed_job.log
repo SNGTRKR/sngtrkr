@@ -1,65 +1,59 @@
-2012-04-22T12:07:32+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74831)] Class#importFbLikes failed with SystemStackError: stack level too deep - 2 failed attempts
-2012-04-22T12:07:37+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74831)] Class#importFbLikes failed with SystemStackError: stack level too deep - 3 failed attempts
-2012-04-22T12:07:42+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74831)] Class#importFbLikes failed with SystemStackError: stack level too deep - 0 failed attempts
-2012-04-22T12:07:47+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74831)] Class#importFbLikes failed with SystemStackError: stack level too deep - 1 failed attempts
-2012-04-22T12:07:47+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74831)] 4 jobs processed at 0.2066 j/s, 4 failed ...
-2012-04-22T12:08:18+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74831)] Class#importFbLikes failed with SystemStackError: stack level too deep - 2 failed attempts
-2012-04-22T12:08:22+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74831)] Class#importFbLikes failed with SystemStackError: stack level too deep - 3 failed attempts
-2012-04-22T12:08:22+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74831)] 2 jobs processed at 0.1896 j/s, 2 failed ...
-2012-04-22T12:12:08+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74831)] Class#importFbLikes failed with SystemStackError: stack level too deep - 4 failed attempts
-2012-04-22T12:12:14+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74831)] Class#importFbLikes failed with SystemStackError: stack level too deep - 5 failed attempts
-2012-04-22T12:12:14+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74831)] 2 jobs processed at 0.1714 j/s, 2 failed ...
-2012-04-22T12:12:15+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74831)] Exiting...
-2012-04-22T12:12:22+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74885)] Starting job worker
-2012-04-22T12:12:43+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74885)] Class#importFbLikes failed with SystemStackError: stack level too deep - 0 failed attempts
-2012-04-22T12:12:48+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74885)] Class#importFbLikes failed with SystemStackError: stack level too deep - 1 failed attempts
-2012-04-22T12:12:53+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74885)] Class#importFbLikes failed with SystemStackError: stack level too deep - 4 failed attempts
-2012-04-22T12:12:58+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74885)] Class#importFbLikes failed with SystemStackError: stack level too deep - 5 failed attempts
-2012-04-22T12:12:58+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74885)] 4 jobs processed at 0.1895 j/s, 4 failed ...
-2012-04-22T12:13:19+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74885)] Class#importFbLikes failed with SystemStackError: stack level too deep - 2 failed attempts
-2012-04-22T12:13:24+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74885)] Class#importFbLikes failed with SystemStackError: stack level too deep - 3 failed attempts
-2012-04-22T12:13:24+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74885)] 2 jobs processed at 0.1812 j/s, 2 failed ...
-2012-04-22T12:15:04+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74885)] Exiting...
-2012-04-22T12:15:07+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74914)] Starting job worker
-2012-04-22T12:15:37+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74914)] Class#importFbLikes failed with SystemStackError: stack level too deep - 0 failed attempts
-2012-04-22T12:15:43+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74914)] Class#importFbLikes failed with SystemStackError: stack level too deep - 1 failed attempts
-2012-04-22T12:15:43+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74914)] 2 jobs processed at 0.1739 j/s, 2 failed ...
-2012-04-22T12:16:14+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74914)] Class#importFbLikes failed with SystemStackError: stack level too deep - 2 failed attempts
-2012-04-22T12:16:19+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74914)] Class#importFbLikes failed with SystemStackError: stack level too deep - 3 failed attempts
-2012-04-22T12:16:19+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74914)] 2 jobs processed at 0.1851 j/s, 2 failed ...
-2012-04-22T12:16:28+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74914)] Exiting...
-2012-04-22T12:16:31+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74939)] Starting job worker
-2012-04-22T12:16:42+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74939)] Class#importFbLikes completed after 0.0150
-2012-04-22T12:16:42+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74939)] 1 jobs processed at 5.8260 j/s, 0 failed ...
-2012-04-22T12:17:24+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74939)] Exiting...
-2012-04-22T12:17:29+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74954)] Starting job worker
-2012-04-22T12:17:39+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74954)] Class#importFbLikes failed with SystemStackError: stack level too deep - 0 failed attempts
-2012-04-22T12:17:45+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74954)] Class#importFbLikes failed with SystemStackError: stack level too deep - 1 failed attempts
-2012-04-22T12:17:50+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74954)] Class#importFbLikes failed with SystemStackError: stack level too deep - 4 failed attempts
-2012-04-22T12:17:55+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74954)] Class#importFbLikes failed with SystemStackError: stack level too deep - 5 failed attempts
-2012-04-22T12:17:55+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74954)] 4 jobs processed at 0.1928 j/s, 4 failed ...
-2012-04-22T12:18:15+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74954)] Class#importFbLikes failed with SystemStackError: stack level too deep - 2 failed attempts
-2012-04-22T12:18:20+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74954)] Class#importFbLikes failed with SystemStackError: stack level too deep - 3 failed attempts
-2012-04-22T12:18:20+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74954)] 2 jobs processed at 0.1975 j/s, 2 failed ...
-2012-04-22T12:18:30+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74954)] Exiting...
-2012-04-22T12:18:38+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74973)] Starting job worker
-2012-04-22T12:18:56+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74973)] Class#importFbLikes completed after 8.2647
-2012-04-22T12:18:56+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74973)] 1 jobs processed at 0.1204 j/s, 0 failed ...
-2012-04-22T12:20:03+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74973)] Exiting...
-2012-04-22T12:20:08+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74995)] Starting job worker
-2012-04-22T12:20:38+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74995)] Class#importFbLikes failed with ActiveRecord::RecordNotFound: Couldn't find User with id=757635703 - 0 failed attempts
-2012-04-22T12:20:43+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74995)] Class#importFbLikes failed with ActiveRecord::RecordNotFound: Couldn't find User with id=757635703 - 1 failed attempts
-2012-04-22T12:20:48+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74995)] Class#importFbLikes failed with ActiveRecord::RecordNotFound: Couldn't find User with id=757635703 - 4 failed attempts
-2012-04-22T12:20:53+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74995)] Class#importFbLikes failed with ActiveRecord::RecordNotFound: Couldn't find User with id=757635703 - 5 failed attempts
-2012-04-22T12:20:53+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74995)] 4 jobs processed at 0.2038 j/s, 4 failed ...
-2012-04-22T12:21:14+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74995)] Class#importFbLikes failed with ActiveRecord::RecordNotFound: Couldn't find User with id=757635703 - 2 failed attempts
-2012-04-22T12:21:20+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74995)] Exiting...
-2012-04-22T12:21:20+0100: [Worker(delayed_job host:Matts-Laptop.local pid:74995)] Class#importFbLikes failed with ActiveRecord::RecordNotFound: Couldn't find User with id=757635703 - 3 failed attempts
-2012-04-22T12:21:22+0100: [Worker(delayed_job host:Matts-Laptop.local pid:75015)] Starting job worker
-2012-04-22T12:23:48+0100: [Worker(delayed_job host:Matts-Laptop.local pid:75015)] Class#importFbLikes completed after 130.0749
-2012-04-22T12:25:44+0100: [Worker(delayed_job host:Matts-Laptop.local pid:75015)] Exiting...
-2012-04-22T12:25:47+0100: [Worker(delayed_job host:Matts-Laptop.local pid:75015)] Class#importFbLikes completed after 119.6419
-2012-04-22T12:25:53+0100: [Worker(delayed_job host:Matts-Laptop.local pid:75067)] Starting job worker
-2012-04-22T12:26:00+0100: [Worker(delayed_job host:Matts-Laptop.local pid:75067)] Class#importFbLikes failed with ActiveRecord::RecordNotFound: Couldn't find User with id=757635703 - 4 failed attempts
-2012-04-22T12:26:07+0100: [Worker(delayed_job host:Matts-Laptop.local pid:75067)] Class#importFbLikes failed with ActiveRecord::RecordNotFound: Couldn't find User with id=757635703 - 5 failed attempts
-2012-04-22T12:26:07+0100: [Worker(delayed_job host:Matts-Laptop.local pid:75067)] 2 jobs processed at 0.1427 j/s, 2 failed ...
+2012-04-22T15:03:58+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#importFbLikes completed after 138.0536
+2012-04-22T15:04:00+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 1.9408
+2012-04-22T15:04:00+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases failed with NoMethodError: undefined method `[]' for nil:NilClass - 0 failed attempts
+2012-04-22T15:04:01+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 1.0465
+2012-04-22T15:04:03+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 1.5713
+2012-04-22T15:04:04+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 1.4399
+2012-04-22T15:04:05+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 1.1349
+2012-04-22T15:04:07+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 1.8072
+2012-04-22T15:04:09+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 2.2048
+2012-04-22T15:04:11+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 1.1599
+2012-04-22T15:04:12+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 1.5130
+2012-04-22T15:04:13+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 1.1719
+2012-04-22T15:04:15+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 1.7527
+2012-04-22T15:04:16+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 1.1466
+2012-04-22T15:04:18+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#importFbLikes completed after 1.5432
+2012-04-22T15:04:19+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 0.8742
+2012-04-22T15:04:20+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 1.3528
+2012-04-22T15:04:21+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases failed with TypeError: can't convert String into Integer - 0 failed attempts
+2012-04-22T15:04:23+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 1.6208
+2012-04-22T15:04:24+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 1.1041
+2012-04-22T15:04:25+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases failed with TypeError: can't convert String into Integer - 0 failed attempts
+2012-04-22T15:04:27+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 1.2621
+2012-04-22T15:04:28+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 0.9977
+2012-04-22T15:04:29+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 1.1978
+2012-04-22T15:04:30+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 0.9683
+2012-04-22T15:04:31+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 1.3373
+2012-04-22T15:04:32+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 1.1334
+2012-04-22T15:04:34+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 1.3403
+2012-04-22T15:04:35+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases failed with NoMethodError: undefined method `[]' for nil:NilClass - 0 failed attempts
+2012-04-22T15:04:35+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases failed with NoMethodError: undefined method `[]' for nil:NilClass - 0 failed attempts
+2012-04-22T15:04:37+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases failed with TypeError: can't convert String into Integer - 0 failed attempts
+2012-04-22T15:04:38+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases failed with TypeError: can't convert String into Integer - 0 failed attempts
+2012-04-22T15:04:40+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 1.6263
+2012-04-22T15:04:41+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 1.7187
+2012-04-22T15:04:44+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 2.7600
+2012-04-22T15:04:47+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 3.1074
+2012-04-22T15:04:48+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases failed with NoMethodError: undefined method `[]' for nil:NilClass - 0 failed attempts
+2012-04-22T15:04:50+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 2.4118
+2012-04-22T15:04:52+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 1.2989
+2012-04-22T15:04:53+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 1.8684
+2012-04-22T15:04:54+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 0.9398
+2012-04-22T15:04:58+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 3.4709
+2012-04-22T15:04:59+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 1.0492
+2012-04-22T15:05:01+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 1.5970
+2012-04-22T15:05:02+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 1.4741
+2012-04-22T15:05:03+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases failed with TypeError: can't convert String into Integer - 0 failed attempts
+2012-04-22T15:05:05+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 1.3232
+2012-04-22T15:05:07+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 1.9229
+2012-04-22T15:05:09+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 2.0870
+2012-04-22T15:05:10+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases failed with TypeError: can't convert String into Integer - 0 failed attempts
+2012-04-22T15:05:11+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases failed with TypeError: can't convert String into Integer - 0 failed attempts
+2012-04-22T15:05:12+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 1.1753
+2012-04-22T15:05:13+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases failed with TypeError: can't convert String into Integer - 0 failed attempts
+2012-04-22T15:05:16+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 2.3885
+2012-04-22T15:05:17+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 1.2324
+2012-04-22T15:05:18+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases failed with TypeError: can't convert String into Integer - 0 failed attempts
+2012-04-22T15:05:19+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 1.3783
+2012-04-22T15:05:21+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 1.3217
+2012-04-22T15:05:22+0100: [Worker(delayed_job host:Matts-Laptop.local pid:1074)] Class#getReleases completed after 0.9786

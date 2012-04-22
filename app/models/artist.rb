@@ -17,6 +17,7 @@ class Artist < ActiveRecord::Base
   def default_values
     # Don't ignore new artists!
     self.ignore ||= false
+    true
   end
 
   def self.search(search)
