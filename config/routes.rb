@@ -1,22 +1,32 @@
 SNGTRKRR::Application.routes.draw do
 
-  # root :to => "Pages#home"
-  root :to => "Pages#splash"
+#require 'resque/server'
+#mount Resque::Server.new, :at => "/resque"
+  if(Rails.env == "development")
+    root :to => "Pages#home"
+  else
+    root :to => "Pages#splash"
+  end
   match '/manage' => "Pages#manage"
   match '/recommended' => "Pages#recommended"
   match '/home' => "Pages#home"
+  match '/splash' => "Pages#splash"
+  #  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin' # Feel free to change '/admin' to any namespace you need.
 
-  devise_for :users
-  
+  devise_for :users, :controllers => { :omniauth_callbacks => "users_controller/omniauth_callbacks" }
+  devise_scope :user do
+    get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
+  end
   match 'users/me' => 'users#self'
   # Use this address through AJAX to import all a user's facebook artists.
-  match 'users/fbimport' => 'users#import_artists'
+  match 'users/managing' => 'users#managing'
   resources :users
 
   # Artist actions
   # Search for an artist by name
   match 'artists/search/:name' => 'artists#search'
 
+  
   match 'artists/:artist_id/manage' => 'users#manage', :as => :manage_artist
   match 'artists/:artist_id/unmanage' => 'users#unmanage', :as => :unmanage_artist
   match 'artists/:artist_id/follow' => 'users#follow', :as => :follow_artist

@@ -1,24 +1,19 @@
 <!DOCTYPE html>
 <html>
-	<head>
+	<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# sngtrkr: http://ogp.me/ns/fb/sngtrkr#">
+		<meta property="fb:app_id"        content="344989472205984" />
+		<meta property="og:type"          content="sngtrkr:artist" />
+		<meta property="og:url"           content="<%= yield :og_url %>" />
+		<meta property="og:title"         content="<%= yield :og_name %>" />
+		<meta property="og:description"   content="<%= yield :og_description %>" />
+		<meta property="sngtrkr:id" content="<%= yield :og_id %>" />
 		<title>SNGTRKRR</title>
 		<%= stylesheet_link_tag    "application", :media => "all" %>
 		<%= javascript_include_tag "application" %>
 		<%= csrf_meta_tags %>
 	</head>
 	<body>
-		<div id="fb-root"></div>
-		<script src="http://connect.facebook.net/en_US/all.js"></script>
-		<script>
-			$(document).ready(function() {
-				FB.init({
-					appId : '344989472205984', // App ID
-					status : true, // check login status
-					cookie : true, // enable cookies to allow the server to access the session
-					xfbml : true  // parse XFBML
-				});
-			})
-		</script>
+		<%= render 'shared/fb_async' %>
 		<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
 		chromium.org/developers/how-tos/chrome-frame-getting-started -->
 		<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or
@@ -32,15 +27,15 @@
 					#wrap {display:table;height:100%}
 					</style>
 					<![endif]-->
-				<a href=""><img class="facebook-log norm-login-nudge" src="/assets/images/log-facebook.png"/></a>
-									<div id="mini-search-2">
-                        <%= form_tag artists_path , :method => 'get' do %>
+					<%= render 'shared/login' %>
+					<div id="mini-search-2">
+						<%= form_tag artists_path , :method => 'get' do %>
 						<%= text_field_tag(:search, params[:search]) %> <img class="search-25" src="/assets/images/search-25.png"/>
 						<% end %>
-                    </div>
-                <div class="clear"></div>
-                <h2><a href="/"><img src="/assets/images/logo-55.png" alt="SNGTRKR"/></a></h2>
-                
+					</div>
+					<div class="clear"></div>
+					<h2><a href="/"><img src="/assets/images/logo-55.png" alt="SNGTRKR"/></a></h2>
+
 				</div>
 				<%= yield %>
 			</div>
@@ -66,81 +61,104 @@
 				</div>
 			</div>
 		</div>
-		<!-- Javascript -->
+		<!-- Javascript
 		<script type='text/javascript'>
-			window.addEvent('load', function() {
-				new DatePicker('.date-pick', {
-					pickerClass : 'datepicker_jqui',
-					debug : false
-				});
-			});
+		window.addEvent('load', function() {
+		new DatePicker('.date-pick', {
+		pickerClass : 'datepicker_jqui',
+		debug : false
+		});
+		});
 
 		</script>
 		<script type="text/javascript">
-			ncjQuery = jQuery.noConflict();
-			ncjQuery(document).ready(function() {
-				ncjQuery('.fancybox').fancybox();
-			});
+		ncjQuery = jQuery.noConflict();
+		ncjQuery(document).ready(function() {
+		ncjQuery('.fancybox').fancybox();
+		});
 
 		</script>
 		<script type="text/javascript">
-			ncjQuery(document).ready(function() {
-				ncjQuery(".cheform").ajaxForm({
-					success : function(responseText) {
-						ncjQuery.fancybox.open({
-							href : '/admin/change-email.php',
-							type : 'iframe',
-							width : 431,
-							height : 286,
-							autoSize : false,
-							closeBtn : false,
-						});
-					}
-				});
-			});
-			ncjQuery(document).ready(function() {
-				ncjQuery(".enform").ajaxForm({
-					success : function(responseText) {
-						ncjQuery.fancybox.open({
-							href : '/admin/email-notify.php',
-							type : 'iframe',
-							width : 431,
-							height : 286,
-							autoSize : false,
-							closeBtn : false,
-						});
-					}
-				});
-			});
-			ncjQuery(document).ready(function() {
-				ncjQuery(".chpform").ajaxForm({
-					success : function(responseText) {
-						ncjQuery.fancybox.open({
-							href : '/admin/change-password.php',
-							type : 'iframe',
-							width : 431,
-							height : 286,
-							autoSize : false,
-							closeBtn : false,
-						});
-					}
-				});
-			});
-			ncjQuery(document).ready(function() {
-				ncjQuery(".rform").ajaxForm({
-					success : function(responseText) {
-						ncjQuery.fancybox.open({
-							href : '/admin/add-release.php',
-							type : 'iframe',
-							width : 431,
-							height : 286,
-							autoSize : false,
-							closeBtn : false,
-						});
-					}
-				});
-			});
+		ncjQuery(document).ready(function() {
+		ncjQuery(".cheform").ajaxForm({
+		success : function(responseText) {
+		ncjQuery.fancybox.open({
+		href : '/admin/change-email.php',
+		type : 'iframe',
+		width : 431,
+		height : 286,
+		autoSize : false,
+		closeBtn : false,
+		});
+		}
+		});
+		});
+		ncjQuery(document).ready(function() {
+		ncjQuery(".enform").ajaxForm({
+		success : function(responseText) {
+		ncjQuery.fancybox.open({
+		href : '/admin/email-notify.php',
+		type : 'iframe',
+		width : 431,
+		height : 286,
+		autoSize : false,
+		closeBtn : false,
+		});
+		}
+		});
+		});
+		ncjQuery(document).ready(function() {
+		ncjQuery(".chpform").ajaxForm({
+		success : function(responseText) {
+		ncjQuery.fancybox.open({
+		href : '/admin/change-password.php',
+		type : 'iframe',
+		width : 431,
+		height : 286,
+		autoSize : false,
+		closeBtn : false,
+		});
+		}
+		});
+		});
+		ncjQuery(document).ready(function() {
+		ncjQuery(".rform").ajaxForm({
+		success : function(responseText) {
+		ncjQuery.fancybox.open({
+		href : '/admin/add-release.php',
+		type : 'iframe',
+		width : 431,
+		height : 286,
+		autoSize : false,
+		closeBtn : false,
+		});
+		}
+		});
+		});
 
+		</script>
+		-->
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$(".facebook-log").click(function() {
+					FB.login(function(response) {
+						console.log(FB.getAuthResponse().accessToken);
+						// Successfull login
+						accessToken = FB.getAuthResponse().accessToken;
+						$.ajax({
+							url : "/users/fblogin.json",
+							type : "GET",
+							data : "access_token=" + accessToken,
+						}).done(function(msg) {
+							alert("Data Saved: " + msg);
+						}).error(function(msg) {
+							console.log("Ajax error");
+						})
+					}, {
+						scope : 'email,user_likes'
+					})
+				})
+			})
 		</script>
 	</body>
 </html>

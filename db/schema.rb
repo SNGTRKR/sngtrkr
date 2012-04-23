@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120331040111) do
+ActiveRecord::Schema.define(:version => 20120419231558) do
 
   create_table "artists", :force => true do |t|
     t.string   "name"
@@ -25,7 +26,27 @@ ActiveRecord::Schema.define(:version => 20120331040111) do
     t.integer  "label_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.string   "fbid"
+    t.boolean  "ignore"
+    t.text     "twitter"
+    t.text     "label_name"
   end
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "follows", :force => true do |t|
     t.integer  "user_id"
@@ -64,6 +85,10 @@ ActiveRecord::Schema.define(:version => 20120331040111) do
     t.integer  "artist_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.text     "label_name"
+    t.integer  "label_id"
+    t.integer  "scraped"
+    t.text     "sd_id"
   end
 
   create_table "suggests", :force => true do |t|
@@ -102,6 +127,14 @@ ActiveRecord::Schema.define(:version => 20120331040111) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "type"
+    t.integer  "email_frequency"
+    t.datetime "last_email"
+    t.string   "username"
+    t.integer  "role"
+    t.text     "fbid"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

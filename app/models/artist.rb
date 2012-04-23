@@ -1,5 +1,6 @@
 class Artist < ActiveRecord::Base
   validates :name, :presence => true
+  validates :fbid, :presence => true, :uniqueness => true
 
   has_many :releases
   belongs_to :label
@@ -11,12 +12,32 @@ class Artist < ActiveRecord::Base
   has_many :followed_users, :through => :follow, :source => :user
   has_many :suggested_users, :through => :suggest, :source => :user
   has_many :manager_users, :through => :manage, :source => :user
-  
+
+  before_save :default_values
+  def default_values
+    # Don't ignore new artists!
+    self.ignore ||= false
+    true
+  end
+
   def self.search(search)
     if search
-      find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+      #find(:all, :conditions => ["name LIKE '%%#{search}%%'"])
     else
-      find(:all)
+      self.all
     end
   end
+
+  def managed?
+    if(Manage.find(:all, :conditions => ["artist_id = #{self.id}"]).empty?)
+    return false
+    else
+    return true
+    end
+  end
+
+  def followers
+    Follow.find(:all, :conditions => ["artist_id = #{self.id}"]).count
+  end
+
 end

@@ -1,9 +1,21 @@
+<% content_for :og_name, @artist.name 
+content_for :og_url, request.url
+content_for :og_image, "" 
+content_for :og_description, @artist.name + " is available now on SNGTRKR"
+content_for :og_id, @artist.id.to_s
+
+%>
+<div class="content content-pad-160-bottom">
 <p id="notice">
 	<%= notice %>
 </p>
 <p>
 	<b>Name:</b>
 	<%= @artist.name %>
+</p>
+<p>
+	<b>TRKRs</b>
+	<%= @artist.followers %>
 </p>
 <p>
 	<b>Genre:</b>
@@ -46,15 +58,9 @@
 <p>
 	<%= release.name %>
 </p>
-<% end %> <h1>Session</h1>
+<% end %> 
+
 <% if user_signed_in? %>
-<p>
-	<% if @user.managing? @artist.id %>
-	<%= link_to 'Unmanage', unmanage_artist_path(@artist) %>
-	<% else %>
-	<%= link_to 'Manage', manage_artist_path(@artist) %>
-	<% end %>
-</p>
 <p>
 	<% if @user.following? @artist.id %>
 	<%= link_to 'Untrack', unfollow_artist_path(@artist) %>
@@ -62,7 +68,12 @@
 	<%= link_to 'Track', follow_artist_path(@artist) %>
 	<% end %>
 </p>
+<p>
+	<% if @user.managing? @artist.id %>
+	<%= link_to 'Edit', edit_artist_path(@artist) %> | 
+	<%= link_to 'New Release', new_release_path(:artist_id => @artist.id) %>
+	<% end %>
+</p>
 <% end %>
 
-<%= link_to 'Edit', edit_artist_path(@artist) %> |
 <%= link_to 'Back', artists_path %> 

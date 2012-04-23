@@ -1,49 +1,83 @@
-# The name of your app
-set :application, "sngtrkr"
-# The directory on the EC2 node that will be deployed to
-set :deploy_to, "/var/www/apps/#{application}"
-# The type of Source Code Management system you are using
-set :scm, :git
-# The location of the LOCAL repository relative to the current app
-#set :repository,  "."
-#set :deploy_via, :copy
+set :default_environment, {
+  'PATH' => "/home/ec2-user/.rvm/gems/ruby-1.9.3-p125/bin:/home/ec2-user/.rvm/gems/ruby-1.9.3-p125@global/bin:/home/ec2-user/.rvm/rubies/ruby-1.9.3-p125/bin:/home/ec2-user/.rvm/bin:$PATH",
+  'RUBY_VERSION' => 'ruby 1.9.3',
+  'GEM_HOME'     => '/home/ec2-user/.rvm/gems/ruby-1.9.3-p125',
+  'GEM_PATH'     => '/home/ec2-user/.rvm/gems/ruby-1.9.3-p125:/home/ec2-user/.rvm/gems/ruby-1.9.3-p125@global',
+  'BUNDLE_PATH'  => '/home/ec2-user/.rvm/gems/ruby-1.9.3-p125@global/bin'  # If you are using bundler.
+}
 
-#=begin
-set :repository,  "ssh://ec2-user@sngtrkr.com/~/sngtrkr.git"
-#set :git_enable_submodules, 1 # if you have vendored rails
-set :branch, 'master'
-set :git_shallow_clone, 1
-set :scm_verbose, true
-ssh_options[:forward_agent] = true
-set :deploy_via, :export
-#=end
-
-# The way in which files will be transferred from repository to remote host
-# If you were using a hosted github repository this would be slightly different
-
-# The address of the remote host on EC2 (the Public DNS address)
-set :location, "sngtrkr.com"
-# setup some Capistrano roles
-role :app, location
-role :web, location
-role :db,  location, :primary => true
-
-# Set up SSH so it can connect to the EC2 node - assumes your SSH key is in ~/.ssh/id_rsa
+set :application, "sngtrkr_cap"
 set :user, "ec2-user"
-ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "id_rsa")]
+set :domain, 'sngtrkr.com'
+set :applicationdir, "/var/www/apps/#{application}"
 
-# if you're still using the script/reaper helper you will need
-# these http://github.com/rails/irs_process_scripts
+set :scm, 'git'
+set :repository,  "ssh://ec2-user@sngtrkr.com/~/sngtrkr.git"
+set :branch, 'master'
+set :scm_verbose, true
+
+role :web, domain                          # Your HTTP server, Apache/etc
+role :app, domain                          # This may be the same as your `Web` server
+role :db,  domain, :primary => true        # This is where Rails migrations will run
+
+# if you want to clean up old releases on each deploy uncomment this:
+set :keep_releases, 3
+after "deploy:restart", "deploy:cleanup"
+require "bundler/capistrano"
+#$:.unshift("#{ENV["HOME"]}/.rvm/lib")
+set :rvm_type, :system  # Copy the exact line. I really mean :system here
+
+# deploy config
+set :deploy_to, applicationdir
+set :deploy_via, :remote_cache
+
+# additional settings
+default_run_options[:pty] = true  # Forgo errors when deploying from windows
+ssh_options[:forward_agent] = true
+ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "id_rsa")]
+#ssh_options[:keys] = '/Users/bessey/Dropbox/SNGTRKR/mattbillyhosts.pem'            
+# If you are using ssh_keysset :chmod755, "app config db lib public vendor script script/* public/disp*"set :use_sudo, false
+ 
 set :synchronous_connect, true
 
-before "deploy:assets:precompile", "bundle:install"
 
-# If you are using Passenger mod_rails uncomment this:
+# Passenger
 namespace :deploy do
-  task :start do ; end
+  task :start do 
+    run ""
+  end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 end
 
+load 'deploy/assets'
+
+namespace :deploy do
+  namespace :assets do
+    task :precompile, :roles => :web, :except => { :no_release => true } do
+      from = source.next_revision(current_revision)
+      if capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ | wc -l").to_i > 0
+        run %Q{cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assets:precompile}
+      else
+        logger.info "Skipping asset pre-compilation because there were no asset changes"
+      end
+    end
+    task :precompilef do
+      run %Q{cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assets:precompile}
+    end
+  end
+end
+
+#after "deploy:restart", "delayed_job:restart"
+
+namespace :delayed_job do 
+    desc "Restart the delayed_job process"
+    task :restart, :roles => :app do
+        run "cd #{current_path}; RAILS_ENV=#{rails_env} script/delayed_job restart"
+    end
+    task :stop, :roles => :app do
+        run "cd #{current_path}; RAILS_ENV=#{rails_env} script/delayed_job stop"
+    end
+end
