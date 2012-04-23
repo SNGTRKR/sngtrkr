@@ -1,0 +1,9 @@
+<h1> Your Artists </h1>
+
+<% @artists.each do |artist| 
+db_artist = Artist.find(:all, :conditions => ["fbid = ?", artist["id"]]).first
+%>
+<p><%= link_to artist["name"], manage_artist_path(:artist_id => db_artist.id) %></p>
+<p><%= artist["access_token"] %></p>
+<p><%= artist["id"] %></p>
+<% end %>

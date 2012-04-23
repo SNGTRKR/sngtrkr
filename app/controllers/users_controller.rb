@@ -25,7 +25,6 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @user }
@@ -33,7 +32,9 @@ class UsersController < ApplicationController
   end
 
   def self
-    @user = User.find(1)
+    @user = User.find(current_user.id)
+    @timeline = Timeline.user(current_user.id)
+
     respond_to do |format|
       format.html # show.html.erb
     end
@@ -116,6 +117,10 @@ class UsersController < ApplicationController
 
   def follow
     @user.follow params[:artist_id]
+    @user.unsuggest params[:artist_id]
+    api = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
+    artist = Artist.find(params[:artist_id]);
+    api.put_connections("me", "sngtrkr:track", :artist => url_for(artist))
     redir :artist_id
   end
 
@@ -129,10 +134,14 @@ class UsersController < ApplicationController
     redir :artist_id
   end
 
-  def import_artists
-    @user = User.first
-    @fbdata = @user.import_artists request.body
-    
+  # This page contains a list of all the Artist page's the logged in user controls.
+  def managing
+    api = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
+    @artists = []
+    api.get_object("me/accounts").each do |page|
+      if page["category"] == "Musician/band"
+      @artists.push page
+      end
+    end
   end
-
 end

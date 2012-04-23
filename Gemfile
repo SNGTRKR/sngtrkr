@@ -3,29 +3,50 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.2'
 
 # JS
-gem 'therubyracer'
+group :production do
+  gem 'therubyracer'
+end
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
 gem 'json'
 
 # VERSION AND DEPLOYMENT
-gem 'passenger'
+group :production do
+  gem 'mysql2'
+  gem 'passenger'
+  #gem 'activerecord-mysql-adapter'
+end
+
+group :development do
+  gem 'sqlite3'
+#  gem 'rails-precompile2git'
+end
+
 gem 'capistrano'
+gem 'rvm'
+gem 'rvm-capistrano'
+
+# BACKGROUND TASKS
+gem 'daemons'
+gem "delayed_job",  :git => 'git://github.com/collectiveidea/delayed_job.git'
+gem 'delayed_job_active_record'
 
 # SCRAPING GEMS
-
 gem 'rbrainz'
 gem 'scrobbler'
 gem 'itunes-search'
 
+# ADMIN
+#gem 'rails_admin'
+
+
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'compass-rails', '~> 1.0.0.rc.2'
-  
+  gem 'sass-rails',   '>= 3.2.3'
+  #gem 'coffee-rails', '~> 3.2.1'
+  gem 'compass-rails', '>= 1.0.0.rc.2'
+
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer'
 
@@ -36,6 +57,7 @@ gem 'jquery-rails'
 
 gem "koala", "~> 1.4.0"
 gem 'devise'
+gem "omniauth-facebook"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

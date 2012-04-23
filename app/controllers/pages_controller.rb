@@ -1,16 +1,19 @@
 class PagesController < ApplicationController
   def home
     require 'koala'
-    @graph = Koala::Facebook::API.new 
+    @graph = Koala::Facebook::API.new
     render :layout => 'home'
   end
-  def manage 
-    
+
+  def manage
+
   end
+
   def recommended
-    
+
   end
+
   def splash
-  render :layout => 'splash'  
+    render :layout => 'splash'
   end
 end

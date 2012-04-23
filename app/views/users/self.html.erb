@@ -1,63 +1,101 @@
-<!-- <h1>Me</h1>
+<div class="content content-pad-160-bottom">
+	<div id="content-profile-top">
+		<div class="profile-menu">
+			<ul>
+				<!-- <li class="profile-menu-button-nudge-2"><div id="trkrs-button"><div id="trkrs-button-txt"><div class="font-25"></div><br/><div class="font-15">TRKR'S</div></div></div></li> -->
 
-<%= @user.email %>
+				<li class="profile-menu-button-nudge">
+					<div class="o-button menu-width font-13">
+						<a href="/users/edit">Profile Settings</a><span></span>
+					</div>
+				</li>
 
-<% @user.managed_artists.each do |manage| %>
-<p>
-	<%= manage.name %>
-</p>
-<% end %> -->
- <div class="content content-pad-160-bottom">
-        <div id="content-profile-top">
-            <div class="profile-menu">
-                <ul>
-                       <!-- <li class="profile-menu-button-nudge-2"><div id="trkrs-button"><div id="trkrs-button-txt"><div class="font-25"></div><br/><div class="font-15">TRKR'S</div></div></div></li> -->
-                        
-                    <li class="profile-menu-button-nudge"><div class="o-button menu-width font-13"><a href="/users/edit">Profile Settings</a><span></span></div></li>
-                    
-                       <!-- <li class="profile-menu-button-nudge"><div class="o-button menu-width font-13"><a href="/admin/new_release.php">Add Release</a><span></span></div></li> -->
+				<!-- <li class="profile-menu-button-nudge"><div class="o-button menu-width font-13"><a href="/admin/new_release.php">Add Release</a><span></span></div></li> -->
 
-					<li class="profile-menu-button-nudge"><div class="o-button menu-width font-13"><a class="fancybox" href=".manage-confirm">Manage Artist</a><span></span></div></li>
+				<li class="profile-menu-button-nudge">
+					<div class="o-button menu-width font-13">
+						<a class="fancybox" href=".manage-confirm">Manage Artist</a><span></span>
+					</div>
+				</li>
 
-                    <li class="profile-menu-button-nudge"><div class="o-button menu-width font-13"><a href="/help.php">FAQ/Help</a><span></span></div></li>
-                </ul></div>
-            <div class="profile-welcome">
+				<li class="profile-menu-button-nudge">
+					<div class="o-button menu-width font-13">
+						<a href="/help.php">FAQ/Help</a><span></span>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="profile-welcome">
 
-               <!-- <div class="artist-text-nudge"><div class="font-15">Welcome to your profile, <strong>JellyFishBoy</strong>!</div><br/>
-                Here you will be able to view how many of your fans are tracking you, along with adding releases, new and old, to your personalized artist timeline. 
-                Your interactive timeline will enable you to edit and delete releases you have already added.<br/><br/>Even as an artist, you still want to keep up to 
-                date with artists releasing content, old and new.  Below you will find  a list of the artists you are currently tracking, alongside recommended 
-                artists we think you will find interesting. Navigate to the home page, where you will able to view your personalized timeline of releases.<br/><br/>If you need further 
-                help with anything, including your artist profile, then be sure to visit our Help and FAQ page.</div> -->
-                <div class="font-15">Welcome to your profile, <strong>Billy Dallimore</strong>!</div><br/>
-                Here you will be able to change the settings of your profile, manage any Facebook artists you control and view the list of artists you are currently tracking.<br/><br/>  
-                If you need further help with anything, then be sure to visit our Help and Frequently Asked Questions page.
-            </div></div>
-            <div class="clear"></div>
-        <div id="tracked-artists">
-        
-        </div>
-        <div class="content-top recommend-text-nudge">
-            <h1 class="top-header font-35">Here are a few artists we have recommended for you...</h1>	
-            <div class="content-top-right">
-                We noticed you’ve already liked a few artists on Facebook, so decided to recommend some you might want to track. 
-                With one simple click, it’s easy to add and remove artists to your tracking timeline.<br/><br/>Navigate to the home page, where you will able to view your personalized 
-                timeline of releases, new and old...
-            </div>	
-        </div>
-        <div class="clear"></div>
-        <div id="recommended-artists-outer">
-        <div class="recommended-artists">
-        </div>
-        </div>
-           <div class="manage-confirm">
-   	<img id="manage-confirm-logo-70" src="/img/logo-70.png" />
-   	<div class="manage-confirm-txt-1 font-15">Are you sure you want to manage:</div>
-   	<form method="post" action="change_email.php" onsubmit="" class="mcform">
-	<ul>
-	<li><input class="manage-confirm-input form-text" type="text" name="change-email" id="change-email" /></li>
-	<li class="manage-confirm-txt-2 font-15">You cannot change your choice, once confirmed.</li>
-	<li id="manage-confirm-submit-pad"><div class="o-button left font-13"><input type="submit" name="submit" value="Yes" /><span></span></div></li>
-	<div id="manage-confirm-no"><div class="o-button right font-13"><a href="javascript:parent.ncjQuery.fancybox.close();">No</a><span></span></div></div>
-	</ul></form>
-    </div>
+			<!-- <div class="artist-text-nudge"><div class="font-15">Welcome to your profile, <strong>JellyFishBoy</strong>!</div><br/>
+			Here you will be able to view how many of your fans are tracking you, along with adding releases, new and old, to your personalized artist timeline.
+			Your interactive timeline will enable you to edit and delete releases you have already added.<br/><br/>Even as an artist, you still want to keep up to
+			date with artists releasing content, old and new.  Below you will find  a list of the artists you are currently tracking, alongside recommended
+			artists we think you will find interesting. Navigate to the home page, where you will able to view your personalized timeline of releases.<br/><br/>If you need further
+			help with anything, including your artist profile, then be sure to visit our Help and FAQ page.</div> -->
+			<div class="font-15">
+				Welcome to your profile, <strong><%= @user.first_name %> <%= @user.last_name %></strong>!
+			</div>
+			<br/>
+			Here you will be able to change the settings of your profile, manage any Facebook artists you control and view the list of artists you are currently tracking.
+			<br/>
+			<br/>
+			If you need further help with anything, then be sure to visit our Help and Frequently Asked Questions page.
+		</div>
+	</div>
+	<div class="clear"></div>
+	<div id="tracked-artists">
+		<% @timeline.page(1).each do |release| %>
+		<p>
+
+			<%= link_to release.name, release.sdigital %>
+			<%= release.date.strftime("%d/%m/%Y")%>
+		</p>
+		<% end %>
+	</div>
+	<div class="content-top recommend-text-nudge">
+		<h1 class="top-header font-35">Here are a few artists we have recommended for you...</h1>
+		<div class="content-top-right">
+			We noticed you’ve already liked a few artists on Facebook, so decided to recommend some you might want to track.
+			With one simple click, it’s easy to add and remove artists to your tracking timeline.
+			<br/>
+			<br/>
+			Navigate to the home page, where you will able to view your personalized
+			timeline of releases, new and old...
+		</div>
+	</div>
+	<div class="clear"></div>
+	<div id="recommended-artists-outer">
+		<div class="recommended-artists">
+			<% @user.suggested.each do |sug| %>
+			<span> <%= link_to sug.name, follow_artist_path(sug) %> </span>
+			<% end %>
+		</div>
+	</div>
+	<div class="manage-confirm">
+		<img id="manage-confirm-logo-70" src="/img/logo-70.png" />
+		<div class="manage-confirm-txt-1 font-15">
+			Are you sure you want to manage:
+		</div>
+		<form method="post" action="change_email.php" onsubmit="" class="mcform">
+			<ul>
+				<li>
+					<input class="manage-confirm-input form-text" type="text" name="change-email" id="change-email" />
+				</li>
+				<li class="manage-confirm-txt-2 font-15">
+					You cannot change your choice, once confirmed.
+				</li>
+				<li id="manage-confirm-submit-pad">
+					<div class="o-button left font-13">
+						<input type="submit" name="submit" value="Yes" />
+						<span></span>
+					</div>
+				</li>
+				<div id="manage-confirm-no">
+					<div class="o-button right font-13">
+						<a href="javascript:parent.ncjQuery.fancybox.close();">No</a><span></span>
+					</div>
+				</div>
+			</ul>
+		</form>
+	</div>

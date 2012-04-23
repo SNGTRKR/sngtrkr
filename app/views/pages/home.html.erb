@@ -42,30 +42,4 @@
 		</div>
 	</div>
 	<div id="result"></div>
-	<script type="text/javascript">
-		$(document).ready($(".facebook").click(function() {
-			FB.login(function(response) {
-				// Successfull login
-				FB.api('/me/music', function(response) {
-					//console.log(JSON.stringify(response));
-					// response contains in
-					$.ajax({
-						type : 'POST',
-						url : '/users/fbimport.json',
-						data : JSON.stringify(response),
-						processData : false,
-						contentType : "application/json",
-						success : function(response) {
-							console.log(response)
-						},
-						error : function(response) {
-							console.log(response.responseText)
-						}
-					})
-				});
-			}, {
-				scope : 'email,user_likes'
-			})
-		}))
-	</script>
 	<div class="clear"></div>
