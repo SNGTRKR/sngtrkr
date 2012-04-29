@@ -40,7 +40,6 @@ ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "id_rsa")]
  
 set :synchronous_connect, true
 
-
 # Passenger
 namespace :deploy do
   task :start do 
@@ -49,24 +48,6 @@ namespace :deploy do
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-  end
-end
-
-load 'deploy/assets'
-
-namespace :deploy do
-  namespace :assets do
-    task :precompile, :roles => :web, :except => { :no_release => true } do
-      from = source.next_revision(current_revision)
-      if capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ | wc -l").to_i > 0
-        run %Q{cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assets:precompile}
-      else
-        logger.info "Skipping asset pre-compilation because there were no asset changes"
-      end
-    end
-    task :precompilef do
-      run %Q{cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assets:precompile}
-    end
   end
 end
 
