@@ -12,8 +12,20 @@ class PagesController < ApplicationController
   def recommended
 
   end
-
+  
+  def about
+  
+  end
+  
+  def privacy
+  
+  end
+  
+  def terms
+  
+  end
+  
   def splash
     render :layout => 'splash'
-  end
+  end 
 end
