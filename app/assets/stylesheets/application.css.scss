@@ -21,27 +21,24 @@ html, body{
     height:100%;
 }
 @font-face {
-  font-family: "MyriadPro";
+  font-family: "Instruction";
   src: url("/assets/font/instruction.otf");
   src: local("?"),
     url("/assets/font/instruction.otf") format("opentype");
 }
-@font-face {
-  font-family: "MyriadPro";
-  src: url("/assets/font/MyriadPro.otf");
-  src: local("?"),
-    url("/assets/font/MyriadPro.otf") format("opentype");
-}
 body{
-    font-family: "MyriadPro", Helvetica, Arial, sans-serif;
+    font-family: 'helvetica neue', helvetica, sans-serif;
     font-size:75%;
     font-weight:400;
-    line-height:1.2em;
+    line-height:1.4em;
     background: url(/assets/images/b-bk.png) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;    
+}
+.italic {
+  font-style:italic;
 }
 .clear {
     clear:both;
@@ -385,9 +382,10 @@ body:before {/* thanks to Maleika (Kohoutec)*/
             -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
             box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
             color:#00;
-            font-size:1.3em;
+            font-size:1.208em;
             text-align:center;
             line-height:1.4em;
+            font-weight:500;
             .how-to-txt
             {
                 padding:15px 35px 15px 35px;
@@ -792,6 +790,10 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   font-weight:bold;
   left:173px;
   bottom:88px;
+}
+#about-txt{
+  position:relative;
+  top:7px;
 }
 }
 .content-pad-bottom {
