@@ -1,7 +1,0 @@
-precompile2git:
-  uncompiled_branch: pending
-  compiled_branch: master
-  user_name: ec2-user
-  user_email: bessey@gmail.com
-  rails_env: production
-  commands_log_file: "/dev/null"
