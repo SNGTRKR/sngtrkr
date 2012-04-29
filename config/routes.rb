@@ -7,10 +7,15 @@ SNGTRKRR::Application.routes.draw do
   else
     root :to => "Pages#splash"
   end
+  match '/splash' => "Pages#splash"
+  match '/home' => "Pages#home"
+  match '/about' => "Pages#about"
+  match '/terms' => "Pages#terms"
+  match '/privacy' => "Pages#terms"
   match '/manage' => "Pages#manage"
   match '/recommended' => "Pages#recommended"
-  match '/home' => "Pages#home"
-  match '/splash' => "Pages#splash"
+  
+  
   #  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin' # Feel free to change '/admin' to any namespace you need.
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users_controller/omniauth_callbacks" }

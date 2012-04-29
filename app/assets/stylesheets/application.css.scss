@@ -21,13 +21,19 @@ html, body{
     height:100%;
 }
 @font-face {
-  font-family: "Instruction";
-  src: url("type/instruction.otf");
+  font-family: "MyriadPro";
+  src: url("/assets/font/instruction.otf");
   src: local("?"),
-    url("type/instruction.otf") format("opentype");
+    url("/assets/font/instruction.otf") format("opentype");
+}
+@font-face {
+  font-family: "MyriadPro";
+  src: url("/assets/font/MyriadPro.otf");
+  src: local("?"),
+    url("/assets/font/MyriadPro.otf") format("opentype");
 }
 body{
-    font-family: 'Signika Negative', sans-serif;
+    font-family: "MyriadPro", Helvetica, Arial, sans-serif;
     font-size:75%;
     font-weight:400;
     line-height:1.2em;
@@ -86,14 +92,8 @@ table th{
 .left{
     float:left;
     }
-.facebook-log {
-  float:right;
-}
-.home-login-nudge {
-    margin-top:23px;
-}
-.norm-login-nudge {
-  margin-top:29px;
+.fb-login-nudge {
+    margin-top:27px;
 }
 .form-text {   
        width:158px;
@@ -226,7 +226,6 @@ input.dp-applied {
     }
     #mini-search-2 {
         float:right;
-        position:relative;
         margin:39px 11px 0 0;
         height:25px;
         width:158px;
@@ -256,7 +255,7 @@ input.dp-applied {
         left:218px;
         height:120px;
         width:470px;
-        bottom:10px;
+        top:11px;
     }
     h2{
         position:relative;
@@ -349,11 +348,11 @@ body:before {/* thanks to Maleika (Kohoutec)*/
         width:540px;
         text-align:center;
         left:147px;
-        top:31px;
+        top:56px;
     }
     #big-search {
         position:relative;
-        top:55px;
+        top:95px;
         left:139px;
         height:35px;
         width:555px;
@@ -374,8 +373,8 @@ body:before {/* thanks to Maleika (Kohoutec)*/
         position:relative;
         width:834px;
         left:1px;
-        top:110px;
-        height:175px;
+        top:147px;
+        height:353px;
         .each-box {
             width:254px;
             height:175px;
@@ -393,12 +392,16 @@ body:before {/* thanks to Maleika (Kohoutec)*/
             {
                 padding:15px 35px 15px 35px;
             }
+            .how-image-nudge {
+            position:relative;
+            bottom:5px;
+        }
         }
         .box-pad {
             margin: 0 35px 0 0;
         }
     }
-    .find-out-box {
+/*    .find-out-box {
         position:relative;
         width:705px;
         top:127px;
@@ -419,17 +422,12 @@ body:before {/* thanks to Maleika (Kohoutec)*/
         .find-pad {
             padding:0 169px 0 0;
         }
-        #f-people {
-            position:absolute;
-            bottom:27px;
-            left:-18px;
-        }
         #notify {
             position:absolute;
             bottom:27px;
             right:12px;
         }
-    }
+} */
     h2 {
       position:relative;  
     }

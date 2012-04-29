@@ -2,6 +2,5 @@
 <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
 <%= link_to('Me','/users/me')%>
 <% elsif %>
-<a href="<%= user_omniauth_authorize_path(:facebook) %>"><img class="facebook-log home-login-nudge" src="/assets/images/log-facebook.png"/></a>
+<a href="<%= user_omniauth_authorize_path(:facebook) %>"><img class="right fb-login-nudge" src="/assets/images/log-facebook.png"/></a>
 <% end %>
-<div class="clear"></div>
