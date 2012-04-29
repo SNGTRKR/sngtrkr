@@ -53,7 +53,16 @@ namespace :deploy do
 end
 
 load 'deploy/assets'
-
+Rake::Task['assets:precompile:all'].clear
+namespace :assets do
+  namespace :precompile do
+    task :all do
+      Rake::Task['assets:precompile:primary'].invoke
+      # ruby_rake_task("assets:precompile:nondigest", false) if Rails.application.config.assets.digest
+    end
+  end
+end
+=begin
 namespace :deploy do
   namespace :assets do
     task :precompile, :roles => :web, :except => { :no_release => true } do
@@ -69,6 +78,7 @@ namespace :deploy do
     end
   end
 end
+=end
 
 #after "deploy:restart", "delayed_job:restart"
 
