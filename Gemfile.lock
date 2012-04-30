@@ -46,6 +46,7 @@ GEM
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
     chunky_png (1.2.5)
+    cocaine (0.2.1)
     compass (0.12.1)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
@@ -115,6 +116,12 @@ GEM
       oauth2 (~> 0.6.0)
       omniauth (~> 1.0)
     orm_adapter (0.0.7)
+    paperclip (3.0.2)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (>= 0.0.2)
+      mime-types
     passenger (3.0.12)
       daemon_controller (>= 0.2.5)
       fastthread (>= 1.0.1)
@@ -193,6 +200,7 @@ DEPENDENCIES
   koala (~> 1.4.0)
   mysql2
   omniauth-facebook
+  paperclip (~> 3.0)
   passenger
   rails (= 3.2.2)
   rbrainz

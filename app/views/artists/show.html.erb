@@ -9,6 +9,7 @@ content_for :og_id, @artist.id.to_s
 <p id="notice">
 	<%= notice %>
 </p>
+<%= image_tag @artist.image.url %>
 <p>
 	<b>Name:</b>
 	<%= @artist.name %>

@@ -23,6 +23,7 @@ group :development do
 #  gem 'rails-precompile2git'
 end
 
+
 gem 'capistrano'
 gem 'rvm'
 gem 'rvm-capistrano'
@@ -34,6 +35,7 @@ gem 'delayed_job_active_record'
 
 # SCRAPING GEMS
 gem 'rbrainz'
+gem "paperclip", "~> 3.0"
 gem 'scrobbler'
 gem 'itunes-search'
 
