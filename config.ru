@@ -3,4 +3,5 @@
 require ::File.expand_path('../config/environment',  __FILE__)
 #run SNGTRKRR::Application
 run Rack::URLMap.new \
-  "/"       => SNGTRKRR::Application
+  "/"       => SNGTRKRR::Application,
+  "/resque" => Resque::Server.new
