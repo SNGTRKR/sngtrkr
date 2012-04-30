@@ -7,7 +7,7 @@
 		<meta property="og:title"         content="<%= yield :og_name %>" />
 		<meta property="og:description"   content="<%= yield :og_description %>" />
 		<meta property="sngtrkr:id" content="<%= yield :og_id %>" />
-		<title>SNGTRKRR</title>
+		<title>SNGTRKRR - Track your favourite artists and never miss another release</title>
 		<link rel="icon" type="image/ico" href="/assets/images/icon.png" >
 		<%= stylesheet_link_tag    "application", :media => "all" %>
 		<%= javascript_include_tag "application" %>
@@ -29,11 +29,19 @@
 					</style>
 					<![endif]-->
 					<%= render 'shared/login' %>
-					<div id="mini-search-2">
+					<% if(user_signed_in?) %>
+					<div id="mini-search">
 						<%= form_tag artists_path , :method => 'get' do %>
 						<%= text_field_tag(:search, params[:search]) %> <img class="search-25" src="/assets/images/search-25.png"/>
 						<% end %>
 					</div>
+					<% elsif %>
+					<div id="mini-search-2">
+						<%= form_tag artists_path , :method => 'get' do %>
+						<%= text_field_tag(:search, params[:search]) %><img class="search-25" src="/assets/images/search-25.png"/>
+						<% end %>
+					</div>
+					<% end %>
 					<div class="clear"></div>
 					<h2><a href="/"><img src="/assets/images/logo-55.png" alt="SNGTRKR"/></a></h2>
 

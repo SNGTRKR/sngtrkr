@@ -161,6 +161,7 @@ input.dp-applied {
     z-index:10;
     font-family: 'Signika Negative', sans-serif;
     color:#fff;
+    
     *{
         color:white;
     }
@@ -186,7 +187,7 @@ input.dp-applied {
     width:11px;
 }
 .o-pad-big {
-    margin:39px 16px 0 11px;
+    margin:36px 16px 0 11px;
 }
 .o-pad-small {
     margin:26px 16px 0 11px;
@@ -203,12 +204,11 @@ input.dp-applied {
     {
         float:right;
         position:relative;
-        margin:38px 0 0 14px;
+        margin:36px 0 0 14px;
     }
     #mini-search {
         float:right;
-        position:relative;
-        margin:41px 0 0 0;
+        margin:39px 0px 0 0;
         height:25px;
         width:158px;
         background:rgba(255,255,255,0.75);
@@ -844,7 +844,33 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     display:none;
   }
 }
+#privacy-txt{
+  position:relative;
+  top:7px;
+  padding:0 0 18px 0;
+  ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom:16px;
+  }
+  a
+  {
+    color:#F15A24;
+  }
+  a:hover {
+    color:#000;
+  }
+  a:active {
+    color:#F15A24;
+  }
+  a:visited {
+    color:#F15A24;
+  }
+  p {
+  margin-bottom:16px;
 }
+}
+} /* END OF CONTENT */
 .content-pad-bottom {
     padding-bottom:166px;
 }
