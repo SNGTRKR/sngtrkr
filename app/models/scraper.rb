@@ -123,7 +123,7 @@ class Scraper
         a.save
         User.find(user_id).suggest a.id
         if a.id != nil
-          Scraper.delay.getReleases a.id
+          Scraper.getReleases a.id
         end
       end
       if Rails.env.development?
