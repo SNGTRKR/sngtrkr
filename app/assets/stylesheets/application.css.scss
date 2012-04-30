@@ -6,6 +6,7 @@
 @import "compass/css3/border-radius";
 @import "compass/css3/opacity";
 @import "compass/css3/box-shadow";
+@import "compass/utilities/links/link-colors";
 
 $blue:#45ADD2;
 $orange:#F15A24;
@@ -39,6 +40,10 @@ body{
 }
 .italic {
   font-style:italic;
+}
+.tab-indent {
+  padding-left: 2em;
+
 }
 .clear {
     clear:both;
@@ -309,7 +314,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     margin:0 auto;
     min-height:100%;
 }
-.content{
+.content {
     padding:0px 73px 0px 73px;
     h1 {
         color:#fff;
@@ -794,6 +799,50 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 #about-txt{
   position:relative;
   top:7px;
+}
+#terms-txt{
+  position:relative;
+  top:7px;
+  padding:0 0 18px 0;
+  ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom:16px;
+  }
+  ol {
+    list-style-type:decimal;
+    margin-left: 20px;
+     margin-bottom:16px;
+  }
+  a
+  {
+    color:#F15A24;
+  }
+  a:hover {
+    color:#000;
+  }
+  a:active {
+    color:#F15A24;
+  }
+  a:visited {
+    color:#F15A24;
+  }
+  p {
+  margin-bottom:16px;
+}
+}
+#social-media-about {
+  position:relative;
+  width:394px;
+  top:36px;
+  height:151px;
+  left:133px;
+  .sm-pad {
+    margin-right:66px;
+  }
+  .fbp, .twitp, .goop {
+    display:none;
+  }
 }
 }
 .content-pad-bottom {
