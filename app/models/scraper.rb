@@ -23,11 +23,14 @@ class Scraper
     id = results["artist"]["id"]
     releases =  Hash.from_xml( Net::HTTP.get( URI.parse(
     "http://api.7digital.com/1.2/artist/releases?artistId=#{id}&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB&imageSize=350")))["response"]["releases"]["release"]
-
     releases.each do |release|
-      if(Release.find(:all, :conditions => "sd_id = #{release["id"]}").count > 0)
+      if(Release.find(:all, :conditions => ["sd_id = ?",release["id"]]).count > 0)
       next
       end
+
+      require 'open-uri'
+      require 'net/http'
+      file = open release["image"]
 
       r = Release.new
       r.artist_id = artist_id
@@ -37,11 +40,10 @@ class Scraper
       r.date = release["releaseDate"]
       r.sdigital = release["url"]
       r.scraped = 1
-      r.save
-      # r.rls_type = release["type"] # Single, Album
+      r.image = file
 
-      # TODO: Import release artwork
-      release["image"]
+      r.save
+    # r.rls_type = release["type"] # Single, Album
 
     end
 
@@ -114,11 +116,19 @@ class Scraper
           a.website = website
           end
         end
+        require 'open-uri'
+        require 'net/http'
+        file = open details["picture"]
+        a.image = file
         a.save
         User.find(user_id).suggest a.id
         if a.id != nil
           Scraper.delay.getReleases a.id
         end
+      end
+      if Rails.env.development?
+      # Limits the intake of artists to 50 when developing.
+      break
       end
     end
 

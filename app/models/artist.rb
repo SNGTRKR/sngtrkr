@@ -5,6 +5,8 @@ class Artist < ActiveRecord::Base
   has_many :releases
   belongs_to :label
 
+  has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+
   has_many :follow
   has_many :suggest
   has_many :manage
