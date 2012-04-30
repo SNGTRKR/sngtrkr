@@ -5,8 +5,41 @@ content_for :og_description, @artist.name + " is available now on SNGTRKR"
 content_for :og_id, @artist.id.to_s
 
 %>
-<div class="content content-pad-160-bottom">
-<p id="notice">
+<div class="content content-pad-188">
+	<div id="content-artist">
+        <div id="artist-image"><img src="/assets/images/skream.png" />
+        	<div id="outer-button">
+        		<div class="inner-button">
+        			<% if(user_signed_in?) %>
+        			<% if @user.following? @artist.id %>
+					<div class="o-button artist-remove-o-pad left"><%= link_to 'REMOVE TRKR', unfollow_artist_path(@artist) %><span></span></div>
+					<% else %>
+					<div class="o-button artist-add-o-pad left"><%= link_to 'ADD TRKR', follow_artist_path(@artist) %><span></span></div>
+					<% end %>
+					<% elsif %>
+					<div class="o-button artist-login-o-pad left"><a href="<%= user_omniauth_authorize_path(:facebook) %>">LOGIN TO TRK</a><span></span></div>
+					<% end %>
+        			</div>
+        		</div>
+        </div>
+        <div id="artist-info">
+        	<h2 class="font-18"><%= @artist.name %></h2>
+        	<img src="/assets/images/record-label.png"><span class="genre-logo-nudge">Tempa</span>
+        	<span id="genre-nudge"><img src="/assets/images/genre.png"><span class="genre-logo-nudge"><%= @artist.genre %></span></span>
+        	<div id="artist-bio"><%= @artist.bio.truncate(590) %> <strong>Continue Reading</strong></div>
+        	<ul>
+        		<li class="social-spacing"><img src="/assets/images/a-fb.png"></li>
+				<li class="social-spacing"><img src="/assets/images/a-twit.png"></li>
+				<li class="social-spacing"><a href="<%= @artist.soundcloud %>" target="_blank"><img src="/assets/images/a-sc.png"></a></li>
+				<li class="social-spacing"><a href="<%= @artist.website %>" target="_blank"><img src="/assets/images/a-web.png"></a></li>
+				<li class="social-spacing"><a href="<%= @artist.youtube %>" target="_blank"><img src="/assets/images/a-yt.png"></a></li>
+				<li class="social-spacing"><img src="/assets/images/a-it.png"></li>
+				<li class="social-spacing"><img src="/assets/images/a-amaz.png"></li>
+				<li><img src="/assets/images/a-7d.png"></li>
+        	</ul>
+        	</div>
+        </div>
+<!-- <p id="notice">
 	<%= notice %>
 </p>
 <p>
@@ -22,8 +55,7 @@ content_for :og_id, @artist.id.to_s
 	<%= @artist.genre %>
 </p>
 <p>
-	<b>Bio:</b>
-	<%= @artist.bio %>
+
 </p>
 <p>
 	<b>Hometown:</b>
@@ -76,4 +108,4 @@ content_for :og_id, @artist.id.to_s
 </p>
 <% end %>
 
-<%= link_to 'Back', artists_path %> 
+<%= link_to 'Back', artists_path %> -->

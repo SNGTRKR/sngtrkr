@@ -57,6 +57,9 @@ body{
 .font-15 {
   font-size:1.3em;
 }
+.font-18 {
+  font-size:1.6em;
+}
 .font-20 {
   font-size:1.8em;
 }
@@ -166,14 +169,6 @@ input.dp-applied {
         color:white;
     }
 }
-#artist_search_results{
-    width:60em;
-    margin:3em auto;
-    font-size:1.1em;
-    td, th{
-        padding:0.5em;
-    }
-}
 .o-button span {
     background-image: url(/assets/images/header-bk-right-2.png);
     display:block;
@@ -188,6 +183,23 @@ input.dp-applied {
 }
 .o-pad {
     margin:33px 16px 0 5px;
+}
+.artist-add-o-pad {
+    margin:33px 16px 0 6px;
+}
+.artist-remove-o-pad {
+    margin:33px 16px 0 -6px;
+}
+.artist-login-o-pad {
+    margin:33px 16px 0 -5px;
+}
+#artist_search_results{
+    width:60em;
+    margin:3em auto;
+    font-size:1.1em;
+    td, th{
+        padding:0.5em;
+    }
 }
 .header-height-big {
     height:170px;
@@ -313,7 +325,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 }
 .content {
     padding:0px 73px 0px 73px;
-    h1 {
+    h1 { /* white text - signikia */
         color:#fff;
         -moz-text-shadow: 0px 2.83px 8px rgba(0,0,0,0.28);
         -webkit-text-shadow: 0px 2.83px 8px rgba(0,0,0,0.28);
@@ -321,6 +333,15 @@ body:before {/* thanks to Maleika (Kohoutec)*/
         font-family: 'Signika Negative', sans-serif;
         font-weight:400;
         line-height:1.3em;
+    }
+    h2 { /* Artist name - Instruction font */
+      position:relative;
+      width:200px;
+      display:block;
+      text-transform:uppercase;
+      font-family: "Instruction", Helvetica, Arial, sans-serif;
+      margin-top:-2px;
+      padding:0 0 14px 0;
     }
    h3{
         position:relative;
@@ -428,77 +449,64 @@ body:before {/* thanks to Maleika (Kohoutec)*/
             right:12px;
         }
 } */
-    h2 {
-      position:relative;  
-    }
-    #content-left-artist {
-      float:left;
-      width:582px;
-      height:264px;
+
+  #content-artist {
+    position:relative;
+    width:604px;
+    height:272px;
       #artist-image {
         float:left;
-        width:219px;
-        height:264px;
-        #artist-trkr-remove {
-          position:relative;
-          bottom:16px;
-          right:54px;
-        }
-        #artist-trkr-add {
-          position:relative;
-          bottom:16px;
-          right:71px;
-        }
-        #artist-image-shadow{
-          position:relative;
+        width:239px;
+        height:272px;
+        margin:-10px 0 0 -10px;
+        #outer-button {
+          position:absolute;
+          top:0px;
+          left:0px;
+          width:100%;
           width:219px;
-          height:254px;
-          -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
-          -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
-          box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+          height:252px;
+          .inner-button {
+            position:relative;
+            width:50%;
+            margin:0px auto;
+            top:199px;
+          }
         }
       }
-    #artist-bio {
+    #artist-info {
      float:right;
-     width:336px;
+     width:365px;
      height:264px;
-    h2 {
-      position:relative;
-      width:200px;
-      display:block;
-      font-size:1.3em;
-      text-transform:uppercase;
-      margin-bottom:5px;
-      font-family: "Instruction", Helvetica, Arial, sans-serif;
-    }
     #genre-nudge {
       position:relative;
       left:20px;
-    }
-    #artist-description {
-      position:relative;
-      width:318px;
-      height:215px;
-      overflow:auto;
-      margin-top:5px;
     }
     .genre-logo-nudge {
       position:relative;
       left:3px;
       bottom:9px;
     }
+    #artist-bio {
+      position:relative;
+      padding:7px 0 0 0;
     }
-    }
-    #content-right-artist {
-      float:right;
-      width:71px;
-      height:264px;
-      #social-links {
-        position:relative;
-        height:264px;
-        bottom:2px;
+    ul {
+      position:relative;
+      top:14px;
+      list-style-type:none;
+      margin-left:-5px;
+      li {
+        height:47px;
+        width:48px;
+        display:inline;
+      }
+      .social-spacing {
+        margin-right:-5px;
       }
     }
+    }
+  }
     .content-top {
   position:relative;
   width:659px;
@@ -921,8 +929,14 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 .content-pad-160 {
   padding:4px 160px 0 160px;
 }
+.content-pad-188 {
+  padding:4px 188px 0 188px;
+}
 .content-pad-160-bottom {
     padding:4px 160px 166px 160px;
+}
+.content-pad-188-bottom {
+  padding:4px 188px 166px 188px;
 }
 .content-splash-pad-262-bottom {
   padding:4px 262px 166px 262px;
