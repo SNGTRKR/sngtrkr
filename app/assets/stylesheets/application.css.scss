@@ -867,6 +867,53 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   margin-bottom:16px;
 }
 }
+#team-txt{
+  position:relative;
+  top:7px;
+  a
+  {
+    color:#F15A24;
+  }
+  a:hover {
+    color:#000;
+  }
+  a:active {
+    color:#F15A24;
+  }
+  a:visited {
+    color:#F15A24;
+  }
+  p {
+  margin-bottom:16px;
+}
+}
+#team {
+  position:relative;
+  padding:0 0 22px 0;
+.team-members {
+  position:relative;
+  width:668px;  
+  padding:20px 0 0 0;
+.team-pic-left {
+  width:168px;
+  height:153px;
+  margin-left:-10px;
+}
+.team-pic-right {
+  width:168px;
+  height:153px;
+  margin-right:-2px;
+}
+.team-desc {
+  width:490px;
+  height:133px;
+  padding:13px 0 0 0;
+}
+  .desc-align {
+    text-align:right;
+  }
+}
+}
 } /* END OF CONTENT */
 .content-pad-bottom {
     padding-bottom:166px;
