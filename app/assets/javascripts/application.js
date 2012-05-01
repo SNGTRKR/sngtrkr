@@ -12,3 +12,5 @@
 //
 //= require jquery.min
 //= require jquery_ujs
+//= require jquery
+//= require fancybox

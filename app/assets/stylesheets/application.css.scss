@@ -2,6 +2,11 @@
 * In this file you should write your main styles. (or centralize your imports)
 * Import this file using the following HTML or equivalent:
 * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/*
+ *= require_self
+ *= require fancybox
+ *= require_tree .
+ */
 @import "compass/reset";
 @import "compass/css3/border-radius";
 @import "compass/css3/opacity";
@@ -468,7 +473,8 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   #content-artist {
     position:relative;
     width:597px;
-    height:272px;
+    height:460px;
+    margin-top:5px;
       #artist-image {
         float:left;
         width:219px;
@@ -497,6 +503,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
      float:right;
      width:365px;
      height:264px;
+     margin-right:-7px;
     #genre-nudge {
       position:relative;
       left:20px;
@@ -1043,7 +1050,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     top:52px;
     line-height:1.25em;
 }
-.manage-confirm {
+#manage-confirm {
     display:none;
     width:431px;
     height:286px;

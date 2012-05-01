@@ -14,7 +14,6 @@ SNGTRKRR::Application.routes.draw do
   match '/team' => "Pages#team"
   match '/privacy' => "Pages#privacy"
   match '/help' => "Pages#help"
-  match '/manage' => "Pages#manage"
   match '/recommended' => "Pages#recommended"
   
   

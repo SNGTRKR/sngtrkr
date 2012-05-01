@@ -73,20 +73,20 @@
 				</div>
 			</div>
 		</div>
-		<!-- Javascript
+		
+		<script type="text/javascript">
+		ncjQuery = jQuery.noConflict();
+		ncjQuery(document).ready(function() {
+		ncjQuery('.fancybox').fancybox();
+		});
+
+		</script>
 		<script type='text/javascript'>
 		window.addEvent('load', function() {
 		new DatePicker('.date-pick', {
 		pickerClass : 'datepicker_jqui',
 		debug : false
 		});
-		});
-
-		</script>
-		<script type="text/javascript">
-		ncjQuery = jQuery.noConflict();
-		ncjQuery(document).ready(function() {
-		ncjQuery('.fancybox').fancybox();
 		});
 
 		</script>
@@ -149,7 +149,6 @@
 		});
 
 		</script>
-		-->
 		<script type="text/javascript">
 			$(document).ready(function() {
 				$(".facebook-log").click(function() {
