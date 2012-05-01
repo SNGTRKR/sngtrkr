@@ -8,7 +8,7 @@
 		<meta property="og:title"         content="<%= yield :og_name %>" />
 		<meta property="og:description"   content="<%= yield :og_description %>" />
 		<meta property="sngtrkr:id" content="<%= yield :og_id %>" />
-		<title>SNGTRKRR - Track your favourite artists and never miss another release</title>
+		<h1><title>SNGTRKRR - Track your favourite artists and never miss another release</title></h1>
 		<link rel="icon" type="image/ico" href="/assets/images/icon.png" >
 		<%= stylesheet_link_tag    "application", :media => "all" %>
 		<%= javascript_include_tag "application" %>
@@ -44,7 +44,7 @@
 					</div>
 					<% end %>
 					<div class="clear"></div>
-					<h2><a href="/"><img src="/assets/images/logo-55.png" alt="SNGTRKR"/></a></h2>
+					<a href="/"><div class="small-logo-home"><img src="/assets/images/logo-55.png" alt="SNGTRKR"/></div></a>
 
 				</div>
 				<%= yield %>
@@ -176,7 +176,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>SNGTRKRR - Track your favourite artists and never miss another release</title>
+		<h1><title>SNGTRKRR - Track your favourite artists and never miss another release</title></h1>
 		<link rel="icon" type="image/ico" href="/assets/images/icon.png" >
 		<%= stylesheet_link_tag    "application", :media => "all" %>
 		<%= javascript_include_tag "application" %>
@@ -219,7 +219,7 @@
 					<![endif]-->
 					<%= render "shared/login" %>
 					<div class="clear"></div>
-					<a href="/"><h1><img src="/assets/images/logo-120.png" alt="SNGTRKR"/></h1></a>
+					<div class="big-logo-home"><img src="/assets/images/logo-120.png" alt="SNGTRKR"/></div>
 				</div>
 				<%= yield %>
 			</div>

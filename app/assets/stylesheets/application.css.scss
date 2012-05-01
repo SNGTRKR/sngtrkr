@@ -72,6 +72,12 @@ body{
 .font-100 {
   font-size:9.2em;
 }
+.instruct-font {
+  font-family: "Instruction", Helvetica, Arial, sans-serif;
+}
+.signika-font {
+  font-family: 'Signika Negative', sans-serif;
+}
 .line-height-1-25 {
   line-height:1.25em;
 }
@@ -98,7 +104,7 @@ table th{
     float:left;
     }
 .fb-login-nudge {
-    margin-top:27px;
+    margin-top:28px;
 }
 .form-text {   
        width:158px;
@@ -156,13 +162,10 @@ input.dp-applied {
     background-image: url(/assets/images/header-bk-left-2.png);
     display:block;
     height:37px;
-    line-height:37px;
-    padding:1px 3px 5px 16px;
     background-repeat:no-repeat;   
     position:relative;
     white-space:nowrap;
     z-index:10;
-    font-family: 'Signika Negative', sans-serif;
     color:#fff;
     font-size:1.208em;
     *{
@@ -183,15 +186,32 @@ input.dp-applied {
 }
 .o-pad {
     margin:33px 16px 0 5px;
+    line-height:37px;
+    padding:1px 3px 5px 18px;
+}
+.profile-menu-o-pad {
+    line-height:37px;
+    padding:1px 3px 5px 20px;
+}
+.new-release-o-pad {
+  margin:-4px 0px 0 6px;
+    line-height:37px;
+    padding:2px 3px 5px 20px;
 }
 .artist-add-o-pad {
-    margin:33px 16px 0 6px;
+    margin:33px 16px 0 3px;
+    line-height:32px;
+    padding:1px 3px 5px 21px;
 }
 .artist-remove-o-pad {
-    margin:33px 16px 0 -6px;
+    margin:33px 16px 0 -10px;
+    line-height:32px;
+    padding:1px 3px 5px 21px;
 }
 .artist-login-o-pad {
-    margin:33px 16px 0 -5px;
+    margin:33px 16px 0 -13px;
+    line-height:32px;
+    padding:1px 3px 5px 21px;
 }
 #artist_search_results{
     width:60em;
@@ -222,9 +242,9 @@ input.dp-applied {
         width:158px;
         background:rgba(255,255,255,0.75);
         @include border-radius(8px);
-        -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.5);
-        -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.5);
-        box-shadow: 0px 0px 7px rgba(0,0,0,0.5);
+        -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
+        -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
+        box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
         input{
             background:transparent;
             padding:0.6em;
@@ -242,9 +262,9 @@ input.dp-applied {
         width:158px;
         background:rgba(255,255,255,0.75);
         @include border-radius(8px);
-        -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.5);
-        -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.5);
-        box-shadow: 0px 0px 7px rgba(0,0,0,0.5);
+        -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
+        -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
+        box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
         input{
             background:transparent;
             padding:0.6em;
@@ -261,14 +281,14 @@ input.dp-applied {
         height:25px;
         margin-right:5px;
     }
-    h1{
+    .big-logo-home{
         position:relative;
         left:218px;
         height:120px;
         width:470px;
         top:11px;
     }
-    h2{
+    .small-logo-home{
         position:relative;
         bottom:51px;
         width:202px;
@@ -325,7 +345,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 }
 .content {
     padding:0px 73px 0px 73px;
-    h1 { /* white text - signikia */
+    .signika-txt { /* white text - signikia */
         color:#fff;
         -moz-text-shadow: 0px 2.83px 8px rgba(0,0,0,0.28);
         -webkit-text-shadow: 0px 2.83px 8px rgba(0,0,0,0.28);
@@ -334,7 +354,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
         font-weight:400;
         line-height:1.3em;
     }
-    h2 { /* Artist name - Instruction font */
+    .artist-name { /* Artist name - Instruction font */
       position:relative;
       width:200px;
       display:block;
@@ -342,11 +362,6 @@ body:before {/* thanks to Maleika (Kohoutec)*/
       font-family: "Instruction", Helvetica, Arial, sans-serif;
       margin-top:-2px;
       padding:0 0 14px 0;
-    }
-   h3{
-        position:relative;
-        height:120px;
-        width:470px;
     }
     .splash-white-header {
       position:relative;
@@ -378,9 +393,9 @@ body:before {/* thanks to Maleika (Kohoutec)*/
         width:555px;
         background:rgba(255,255,255,0.75);
         @include border-radius(8px);
-        -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
-        -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
-        box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+        -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+        -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+        box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
     }
     #search-35
     {
@@ -401,9 +416,9 @@ body:before {/* thanks to Maleika (Kohoutec)*/
             float:left;
             background:rgba(255,255,255,0.75);
             @include border-radius(8px);
-            -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
-            -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
-            box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+            -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+            -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+            box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
             color:#00;
             font-size:1.208em;
             text-align:center;
@@ -452,13 +467,17 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 
   #content-artist {
     position:relative;
-    width:604px;
+    width:597px;
     height:272px;
       #artist-image {
         float:left;
-        width:239px;
-        height:272px;
-        margin:-10px 0 0 -10px;
+        width:219px;
+        height:251px;
+        @include border-radius(8px);
+        -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+        -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+        box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+        
         #outer-button {
           position:absolute;
           top:0px;
@@ -491,11 +510,13 @@ body:before {/* thanks to Maleika (Kohoutec)*/
       position:relative;
       padding:7px 0 0 0;
     }
-    ul {
-      position:relative;
-      top:14px;
+    }
+        ul {
+      position:absolute;
+      width:370px;
+      top:221px;
+      left:234px;
       list-style-type:none;
-      margin-left:-5px;
       li {
         height:47px;
         width:48px;
@@ -504,7 +525,6 @@ body:before {/* thanks to Maleika (Kohoutec)*/
       .social-spacing {
         margin-right:-5px;
       }
-    }
     }
   }
     .content-top {
@@ -571,9 +591,9 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   height:186px;
   background:rgba(255,255,255,0.75);
   @include border-radius(8px);
-  -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
-  -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
-  box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+  -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+  box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
   padding:20px 0 0 20px; 
 }
 .recommend-text-nudge {
@@ -589,9 +609,9 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   height:410px;
   background:rgba(255,255,255,0.75);
   @include border-radius(8px);
-  -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
-  -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
-  box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+  -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+  box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
 }
 }
 #delete-account {
@@ -614,9 +634,9 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     position:relative;
     background:rgba(255,255,255,0.75);
     @include border-radius(8px);
-    -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
-    -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
-    box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+    box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
     width:341px;
     height:363px;
     top:29px;
@@ -661,8 +681,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
                 background:none;
                 border:0;
                 color:#fff;
-                font-size:1.1em;
-            }
+                font-size:1.1em            }
             #submit-pad {
                 margin-right:14px;
                 margin-top:2px;
@@ -929,14 +948,14 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 .content-pad-160 {
   padding:4px 160px 0 160px;
 }
-.content-pad-188 {
-  padding:4px 188px 0 188px;
+.content-pad-191 {
+  padding:4px 191px 0 191px;
 }
 .content-pad-160-bottom {
     padding:4px 160px 166px 160px;
 }
-.content-pad-188-bottom {
-  padding:4px 188px 166px 188px;
+.content-pad-191-bottom {
+  padding:4px 191px 166px 191px;
 }
 .content-splash-pad-262-bottom {
   padding:4px 262px 166px 262px;

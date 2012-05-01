@@ -5,7 +5,7 @@
 				<!-- <li class="profile-menu-button-nudge-2"><div id="trkrs-button"><div id="trkrs-button-txt"><div class="font-25"></div><br/><div class="font-15">TRKR'S</div></div></div></li> -->
 
 				<li class="profile-menu-button-nudge">
-					<div class="o-button menu-width font-13">
+					<div class="o-button menu-width profile-menu-o-pad font-13 signika-font">
 						<a href="/users/edit">Profile Settings</a><span></span>
 					</div>
 				</li>
@@ -13,13 +13,13 @@
 				<!-- <li class="profile-menu-button-nudge"><div class="o-button menu-width font-13"><a href="/admin/new_release.php">Add Release</a><span></span></div></li> -->
 
 				<li class="profile-menu-button-nudge">
-					<div class="o-button menu-width font-13">
+					<div class="o-button menu-width profile-menu-o-pad font-13 signika-font">
 						<a class="fancybox" href=".manage-confirm">Manage Artist</a><span></span>
 					</div>
 				</li>
 
 				<li class="profile-menu-button-nudge">
-					<div class="o-button menu-width font-13">
+					<div class="o-button menu-width profile-menu-o-pad font-13 signika-font">
 						<a href="/help">FAQ/Help</a><span></span>
 					</div>
 				</li>
@@ -33,9 +33,7 @@
 			date with artists releasing content, old and new.  Below you will find  a list of the artists you are currently tracking, alongside recommended
 			artists we think you will find interesting. Navigate to the home page, where you will able to view your personalized timeline of releases.<br/><br/>If you need further
 			help with anything, including your artist profile, then be sure to visit our Help and FAQ page.</div> -->
-			<div class="font-15">
-				Welcome to your profile, <strong><%= @user.first_name %> <%= @user.last_name %></strong>!
-			</div>
+			<h2><div class="font-15">Welcome to your profile, <strong><%= @user.first_name %> <%= @user.last_name %></strong>!</div></h2>
 			<br/>
 			Here you will be able to change the settings of your profile, manage any Facebook artists you control and view the list of artists you are currently tracking.
 			<br/>
@@ -54,7 +52,7 @@
 		<% end %>
 	</div>
 	<div class="content-top recommend-text-nudge">
-		<h1 class="top-header font-35">Here are a few artists we have recommended for you...</h1>
+		<h3 class="signika-txt top-header font-35">Here are a few artists we have recommended for you...</h3>
 		<div class="content-top-right">
 			We noticed you’ve already liked a few artists on Facebook, so decided to recommend some you might want to track.
 			With one simple click, it’s easy to add and remove artists to your tracking timeline.
