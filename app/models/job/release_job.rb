@@ -32,5 +32,6 @@ class ReleaseJob
       r.save
     # r.rls_type = release["type"] # Single, Album
 
+    end
   end
 end
