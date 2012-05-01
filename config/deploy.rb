@@ -51,11 +51,6 @@ namespace :deploy do
   end
 end
 
-#after "deploy:restart", "delayed_job:restart"
-
-#after "deploy:symlink", "deploy:restart_workers"
-#after "deploy:restart_workers", "deploy:restart_scheduler"
-
 ##
 # Rake helper task.
 # http://pastie.org/255489
@@ -69,6 +64,8 @@ def run_remote_rake(rake_cmd)
   set :rakefile, nil if exists?(:rakefile)
 end
 
+after "deploy:restart", "deploy:restart_workers"
+
 namespace :deploy do
   desc "Restart Resque Workers"
   task :restart_workers, :roles => :db do
@@ -80,15 +77,3 @@ namespace :deploy do
     run_remote_rake "resque:restart_scheduler"
   end
 end
-
-=begin
-namespace :delayed_job do 
-    desc "Restart the delayed_job process"
-    task :restart, :roles => :app do
-        run "cd #{current_path}; RAILS_ENV=#{rails_env} script/delayed_job restart"
-    end
-    task :stop, :roles => :app do
-        run "cd #{current_path}; RAILS_ENV=#{rails_env} script/delayed_job stop"
-    end
-end
-=end
