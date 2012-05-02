@@ -1,39 +1,14 @@
-<div class="content content-pad-160-bottom">
-<h1>Listing artists</h1>
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Genre</th>
-		<th>Bio</th>
-		<th>Hometown</th>
-		<th>Booking email</th>
-		<th>Manager email</th>
-		<th>Website</th>
-		<th>Soundcloud</th>
-		<th>Youtube</th>
-		<th>Twitter</th>
-		<th>Label</th>
-		<th></th>
-		<th></th>
-		<th></th>
-	</tr>
+<div class="content content-pad-191-bottom">
+<h2 class="signika-txt top-header font-35">Search Results</h2>
+<div id="artist-search">
 	<% @artists.each do |artist| %>
-	<tr>
-		<td><%= link_to artist.name, artist %></td>
+	<div class="artist-search-row">
+		<h3 class="font-15 instruct-font artist-name"><%= link_to artist.name, artist %></h3>
+		<%= truncate(artist.genre, :length => 20) %>
+		</div>
+<!--		<td><%= link_to artist.name, artist %></td>
 		<td><%= truncate(artist.genre, :length => 20) %></td>
-		<td><%= truncate(artist.bio, :length => 50) %></td>
-		<td><%= artist.hometown %></td>
-		<td><%= truncate(artist.booking_email, :length =>  30) %></td>
-		<td><%= truncate(artist.manager_email, :length =>  30) %></td>
-		<td><%= truncate(artist.website,  :length => 30) %></td>
-		<td><%= artist.soundcloud %></td>
-		<td><%= artist.youtube %></td>
-		<td><%= artist.twitter %></td>
-		<td><%= artist.label_id %></td>
-		<td><%= link_to 'Show', artist %></td>
-		<td><%= link_to 'Edit', edit_artist_path(artist) %></td>
-		<td><%= link_to 'Destroy', artist, :confirm => 'Are you sure?', :method => :delete %></td>
-	</tr>
+		<td><%= link_to 'Show', artist %></td> -->
+
 	<% end %>
-</table>
-<br />
+	</div>

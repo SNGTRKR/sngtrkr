@@ -60,6 +60,8 @@ gem "koala", "~> 1.4.0"
 gem 'devise'
 gem "omniauth-facebook"
 
+gem 'will_paginate', '~> 3.0.beta'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
