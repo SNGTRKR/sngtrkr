@@ -5,14 +5,17 @@
 <%= link_to 'Show', @user %> |
 <%= link_to 'Back', users_path %> -->
 <div class="content content-pad-160-bottom">
+<h2 class="signika-txt top-header font-35">Profile Settings</h2>
+<div id="p-settings">
 <div id="change-email">
-<div class="font-15"><strong>Change Email</strong></div><br/>Your current email address is [ENTER CURRENT EMAIL]</ENTER>.<br/><br/>
+<div class="font-15"><strong>Change Email</strong></div><br/>Your current email address is <strong><%= @user.email %></strong></ENTER>.<br/><br/>
 <form method="post" action="change_email.php" onsubmit="" class="cheform">
 <ul>
 <li><label for="change-email">Change Email</label><input class="form-text" type="text" name="change-email" id="change-email" /></li>
-<li id="change-email-submit-pad"><div class="o-button right font-13"><input type="submit" name="submit" value="Change Email" /><span></span></div></li>
+<li id="change-email-submit-pad"><div class="o-button left p-settings-o-pad signika-font"><input type="submit" name="submit" value="Change Email" /><span></span></div></li>
 </ul></form>
 </div>
+<div class="clear"></div>
 <div id="email-notify">
 <div class="font-15"><strong>Email Notifications</strong></div><br/>You can change how often you receive emails for new releases, from the options provided below. 
 The default setting is ‘Weekly’.<br/><br/>
@@ -24,7 +27,7 @@ The default setting is ‘Weekly’.<br/><br/>
 <li class="radio-pad"><input class="form-text radio" type="radio" name="e-notify" id="fortnightly" /><label for="fornightly">Fortnightly</label></li>
 <li><input class="form-text radio" type="radio" name="e-notify" id="monthly" /><label for="monthly">Monthly</label></li>
 <div class="clear"></div>
-<div id="save-settings-submit-pad"><div class="o-button right font-13"><input type="submit" name="submit" value="Save Email Settings" /><span></span></div></div>
+<div id="save-settings-submit-pad"><div class="o-button left p-settings-o-pad signika-font"><input type="submit" name="submit" value="Save Email Settings" /><span></span></div></div>
 </ul></form>
 </div>
 <div class="clear"></div>
@@ -35,16 +38,18 @@ The default setting is ‘Weekly’.<br/><br/>
 <li><label for="current-pass">Current Password</label><input class="form-text" type="text" name="current-pass" id="current-pass" /></li><br/>
 <li><label for="new-passs">New Password</label><input class="form-text" type="text" name="new-pass" id="new-pass" /></li>
 <li><label for="confirm-pass">Confirm</label><input class="form-text" type="text" name="confirm-pass" id="confirm-pass" /></li>
-<li id="change-password-submit-pad"><div class="o-button right font-13"><input type="submit" name="submit" value="Change Password" /><span></span></div></li>
+<li id="change-password-submit-pad"><div class="o-button left p-settings-o-pad signika-font"><input type="submit" name="submit" value="Change Password" /><span></span></div></li>
 </ul></form>
 </div>
+<div class="clear"></div>
 <div id="delete-account">
 <div class="font-15"><strong>Delete Your Account</strong></div><br/>
             Your account, tracked artists and all personal details will be permanently removed.
-            <div id="delete-submit-pad"><div class="o-button left font-13">
+            <div id="delete-submit-pad"><div class="o-button del-account-o-pad left signika-font">
                     <a class="fancybox" href=".delete-confirm">Delete Account</a><span></span>
                 </div></div>
         </div>
+</div>
         <div class="delete-confirm">
             <div id="goodbye">Is this goodbye?</div>
             <div id="delete-txt-1">We are sad to see you leave us, please take a few minutes to say why you’re leaving.</div>
