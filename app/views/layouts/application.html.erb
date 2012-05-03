@@ -30,15 +30,15 @@
 					<![endif]-->
 					<%= render 'shared/login' %>
 					<% if(user_signed_in?) %>
-					<div id="mini-search">
+					<div class="mini-search right">
 						<%= form_tag artists_path , :method => 'get' do %>
-						<%= text_field_tag(:search, params[:search]) %> <img class="search-25" src="/assets/images/search-25.png"/>
+						<%= text_field_tag(:search, params[:search]) %> <img class="search-25 right" src="/assets/images/search-25.png"/>
 						<% end %>
 					</div>
 					<% elsif %>
-					<div id="mini-search-2">
+					<div class="mini-search-2 right">
 						<%= form_tag artists_path , :method => 'get' do %>
-						<%= text_field_tag(:search, params[:search]) %><img class="search-25" src="/assets/images/search-25.png"/>
+						<%= text_field_tag(:search, params[:search]) %><img class="search-25 right" src="/assets/images/search-25.png"/>
 						<% end %>
 					</div>
 					<% end %>

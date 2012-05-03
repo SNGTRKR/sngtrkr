@@ -77,6 +77,9 @@ body{
 .font-100 {
   font-size:9.2em;
 }
+.font-logout {
+  font-size:1.208em;
+}
 .instruct-font {
   font-family: "Instruction", Helvetica, Arial, sans-serif;
 }
@@ -172,7 +175,6 @@ input.dp-applied {
     white-space:nowrap;
     z-index:10;
     color:#fff;
-    font-size:1.208em;
     *{
         color:white;
     }
@@ -199,24 +201,34 @@ input.dp-applied {
     padding:1px 3px 5px 20px;
 }
 .new-release-o-pad {
-  margin:-4px 0px 0 6px;
-    line-height:37px;
-    padding:2px 3px 5px 20px;
+  margin:-4px 0 0 0;
+  line-height:37px;
+  padding:1px 3px 5px 20px;
 }
 .artist-add-o-pad {
-    margin:33px 16px 0 3px;
+    margin:0 0 0 7px;
     line-height:32px;
     padding:1px 3px 5px 21px;
 }
 .artist-remove-o-pad {
-    margin:33px 16px 0 -10px;
+    margin:0 0 0 -4px;
     line-height:32px;
     padding:1px 3px 5px 21px;
 }
 .artist-login-o-pad {
-    margin:33px 16px 0 -13px;
+    margin:0 0 0 -8px;
     line-height:32px;
     padding:1px 3px 5px 21px;
+}
+.p-settings-o-pad {
+  margin:0 0 0 -5px;
+  line-height:37px;
+  padding:1px 3px 5px 18px;
+}
+.del-account-o-pad {
+  margin:0 0 0 -2px;
+  line-height:37px;
+  padding:1px 3px 5px 18px;
 }
 #artist_search_results{
     width:60em;
@@ -234,14 +246,13 @@ input.dp-applied {
 }
 .header{
     padding:0px 42px 0px 42px;
-    #p-head
+    .p-head
     {
-        float:right;
+        
         position:relative;
         margin:33px 0 0 11px;
     }
-    #mini-search {
-        float:right;
+    .mini-search {
         margin:39px 0px 0 0;
         height:25px;
         width:158px;
@@ -260,8 +271,7 @@ input.dp-applied {
             outline:none;
         }
     }
-    #mini-search-2 {
-        float:right;
+    .mini-search-2 {
         margin:39px 11px 0 0;
         height:25px;
         width:158px;
@@ -281,7 +291,6 @@ input.dp-applied {
         }
     }
     .search-25 {
-        float:right;
         width:25px;
         height:25px;
         margin-right:5px;
@@ -401,9 +410,8 @@ body:before {/* thanks to Maleika (Kohoutec)*/
         -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
         box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
     }
-    #search-35
+    .search-35
     {
-        float:right;
         height:35px;
         width:35px;
         margin-right:5px;
@@ -417,7 +425,6 @@ body:before {/* thanks to Maleika (Kohoutec)*/
         .each-box {
             width:254px;
             height:175px;
-            float:left;
             background:rgba(255,255,255,0.75);
             @include border-radius(8px);
             -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
@@ -474,8 +481,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     width:597px;
     height:460px;
     margin-top:5px;
-      #artist-image {
-        float:left;
+      .artist-image {
         width:219px;
         height:251px;
         @include border-radius(8px);
@@ -494,12 +500,11 @@ body:before {/* thanks to Maleika (Kohoutec)*/
             position:relative;
             width:50%;
             margin:0px auto;
-            top:199px;
+            top:232px;
           }
         }
       }
-    #artist-info {
-     float:right;
+    .artist-info {
      width:365px;
      height:264px;
      margin-right:-7px;
@@ -620,18 +625,6 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
 }
 }
-#delete-account {
-  position:relative;
-  top:111px;
-  height:221px;
-  width:660px;  
-  font-size:1.1em;
-  #delete-submit-pad {
-  position:absolute;
-  top:58px;
-  left:-4px;
-}
-}
 #content-release-left {
   float:left;
   width:341px;
@@ -687,7 +680,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
                 background:none;
                 border:0;
                 color:#fff;
-                font-size:1.1em            }
+                font-size:1.0em            }
             #submit-pad {
                 margin-right:14px;
                 margin-top:2px;
@@ -703,6 +696,8 @@ body:before {/* thanks to Maleika (Kohoutec)*/
             }
         }
 }
+#p-settings {
+  margin:16px 0 0 0;
 #change-email {
   position:relative;
      .cheform {
@@ -724,7 +719,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
                 background:none;
                 border:0;
                 color:#fff;
-                font-size:1.1em;
+                font-size:1.0em;
             }
             #change-email-submit-pad {
                 margin-right:168px;
@@ -763,7 +758,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
                 background:none;
                 border:0;
                 color:#fff;
-                font-size:1.1em;
+                font-size:1.0em;
             }
             #save-settings-submit-pad {
                 margin-right:511px;
@@ -793,13 +788,26 @@ body:before {/* thanks to Maleika (Kohoutec)*/
                 background:none;
                 border:0;
                 color:#fff;
-                font-size:1.1em;
+                font-size:1.0em;
             }
             #change-password-submit-pad {
                 margin-right:141px;
                 margin-top:1px;
             }
         }
+}
+#delete-account {
+  position:relative;
+  top:111px;
+  height:221px;
+  width:660px;  
+  font-size:1.1em;
+  #delete-submit-pad {
+  position:absolute;
+  top:58px;
+  left:-4px;
+}
+}
 }
 #content-404 {  
   position:relative;
@@ -846,16 +854,16 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   }
   a
   {
-    color:#F15A24;
+    color:$orange;
   }
   a:hover {
     color:#000;
   }
   a:active {
-    color:#F15A24;
+    color:$orange;
   }
   a:visited {
-    color:#F15A24;
+    color:$orange;
   }
   p {
   margin-bottom:16px;
@@ -885,16 +893,16 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   }
   a
   {
-    color:#F15A24;
+    color:$orange;
   }
   a:hover {
     color:#000;
   }
   a:active {
-    color:#F15A24;
+    color:$orange;
   }
   a:visited {
-    color:#F15A24;
+    color:$orange;
   }
   p {
   margin-bottom:16px;
@@ -905,16 +913,16 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   top:7px;
   a
   {
-    color:#F15A24;
+    color:$orange;
   }
   a:hover {
     color:#000;
   }
   a:active {
-    color:#F15A24;
+    color:$orange;
   }
   a:visited {
-    color:#F15A24;
+    color:$orange;
   }
   p {
   margin-bottom:16px;
@@ -948,7 +956,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 }
 }
 #artist-search {
-   margin:20px 0 0 0;
+   margin:20px 0 32px 0;
 .artist-search-row {
   width:554px;
   height:53px;
@@ -959,19 +967,31 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
      -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
      box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-  .artist-name {
+    .artist-search-image {
+      position:relative;
+    background-color:#000;
+    height:53px;
+    width:47px;
+  }
+     .artist-search-info {
+       position:relative;
+       left:64px;
+       bottom:52px;
+  .artist-search-name {
+    margin:0 0 2px 0;
       a
   {
     color:#000;
   }
   a:hover {
-    color:#F15A24;
+    color:#000;
   }
   a:active {
     color:#000;
   }
   a:visited {
     color:#000;
+  }
   }
   }
 }

@@ -12,7 +12,7 @@ content_for :og_id, @artist.id.to_s
 </style>
 <div class="content content-pad-191">
 	<div id="content-artist">
-        <div id="artist-image" style="">
+        <div class="artist-image left">
         	<div id="outer-button">
         		<div class="inner-button">
         			<% if(user_signed_in?) %>
@@ -27,7 +27,7 @@ content_for :og_id, @artist.id.to_s
         			</div>
         		</div>
         </div>
-        <div id="artist-info">
+        <div class="artist-info right">
         	<h2 class="font-18 artist-name instruct-font"><%= @artist.name %></h2>
         	<img src="/assets/images/record-label.png"><span class="genre-logo-nudge">Tempa</span>
         	<span id="genre-nudge"><img src="/assets/images/genre.png"><span class="genre-logo-nudge"><%= @artist.genre %></span></span>

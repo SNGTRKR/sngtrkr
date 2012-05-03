@@ -1,7 +1,7 @@
 <% if(user_signed_in?) %>
-<div class="o-button o-pad right signika-font"><%= link_to('Log Out', destroy_user_session_path, :method => :delete) %><span></span></div>
+<div class="o-button o-pad right signika-font font-logout"><%= link_to('Log Out', destroy_user_session_path, :method => :delete) %><span></span></div>
 <!-- <%= link_to('Me','/users/me')%>-->
-<a href="/users/me"><img id="p-head" src="/assets/images/profile.png"/></a>
+<a href="/users/me"><img class="p-head right" src="/assets/images/profile.png"/></a>
 <% elsif %>
 <a href="<%= user_omniauth_authorize_path(:facebook) %>"><img class="right fb-login-nudge" src="/assets/images/log-facebook.png"/></a>
 <% end %>
