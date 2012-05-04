@@ -45,7 +45,7 @@
 	<div id="tracked-artists">
 		<% @timeline.page(1).each do |release| %>
 		<p>
-
+			<%= image_tag release.image.url :thumb %>
 			<%= link_to release.name, release.sdigital %>
 			<%= release.date.strftime("%d/%m/%Y")%>
 		</p>
