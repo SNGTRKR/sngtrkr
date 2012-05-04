@@ -973,7 +973,6 @@ body:before {/* thanks to Maleika (Kohoutec)*/
       position:absolute;
       @include border-top-left-radius(8px);
       @include border-bottom-left-radius(8px);
-      background-color:#000;
       top:0px;
       left:0px;
       height:75px;
@@ -982,7 +981,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
      .artist-search-info {
        position:relative;
        left:64px;
-       bottom:0px;
+       top:2px;
   .artist-search-name {
     margin:0 0 2px 0;
       a
