@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120428182531) do
+ActiveRecord::Schema.define(:version => 20120430004132) do
 
   create_table "artists", :force => true do |t|
     t.string   "name"
@@ -24,12 +24,16 @@ ActiveRecord::Schema.define(:version => 20120428182531) do
     t.string   "soundcloud"
     t.string   "youtube"
     t.integer  "label_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.string   "fbid"
     t.boolean  "ignore"
     t.text     "twitter"
     t.text     "label_name"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "delayed_jobs", :force => true do |t|
@@ -83,12 +87,16 @@ ActiveRecord::Schema.define(:version => 20120428182531) do
     t.string   "youtube"
     t.integer  "rls_type"
     t.integer  "artist_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.text     "label_name"
     t.integer  "label_id"
     t.integer  "scraped"
     t.text     "sd_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "sessions", :force => true do |t|

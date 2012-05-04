@@ -1,7 +1,7 @@
 vendor/cache/*
 tmp/cache/*
 log/development.log
-db/production.sqlite3
+db/*
 tmp/**/*
 tmp/*
 doc/api
@@ -9,4 +9,4 @@ doc/app
 *.swp
 *~
 .DS_Store
-public/assets/images/artist/*
+public/system/*

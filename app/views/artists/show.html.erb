@@ -7,12 +7,14 @@ content_for :og_id, @artist.id.to_s
 %>
 <style type="text/css">
 .artist-image {
-	
+	background-image:url(<%= image_tag @artist.image.url %>);
+	background-repeat:none;
 }
 </style>
 <div class="content content-pad-191">
 	<div id="content-artist">
         <div class="artist-image left">
+        	
         	<div id="outer-button">
         		<div class="inner-button">
         			<% if(user_signed_in?) %>
@@ -47,6 +49,7 @@ content_for :og_id, @artist.id.to_s
 <!-- <p id="notice">
 	<%= notice %>
 </p>
+<%= image_tag @artist.image.url %>
 <p>
 	<b>Name:</b>
 	<%= @artist.name %>
