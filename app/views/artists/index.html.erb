@@ -1,14 +1,14 @@
-<style type="text/css">
-.artist-search-image {
-	background-image:url(/assets/images/drumsound.png);
-	background-repeat:none;
-	background-position:center;bun
-}
-</style>
 <div class="content content-pad-191-bottom">
 <h2 class="signika-txt top-header font-35">Search Results</h2>
 <div id="artist-search">
 	<% @artists.each do |artist| %>
+		<style type="text/css">
+.artist-search-image {
+	background-image:url(<%= artist.image.url :thumb %>);
+	background-repeat:none;
+	background-position:center;
+}
+</style>
 	<div class="artist-search-row">
 		<div class="artist-search-image"></div>
 		<div class="artist-search-info">
