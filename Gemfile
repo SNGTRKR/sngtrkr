@@ -25,8 +25,7 @@ end
 
 
 gem 'capistrano'
-gem 'rvm'
-gem 'rvm-capistrano'
+# gem 'rvm-capistrano'  -- THIS MUST BE INSTALLED LOCALLY, IT WILL NOT WORK IN A GEMFILE.
 
 # BACKGROUND TASKS
 #gem 'daemons'
