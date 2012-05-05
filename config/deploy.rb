@@ -1,18 +1,18 @@
-set :default_environment, {
-  'PATH' => "/home/ec2-user/.rvm/gems/ruby-1.9.3-p125/bin:/home/ec2-user/.rvm/gems/ruby-1.9.3-p125@global/bin:/home/ec2-user/.rvm/rubies/ruby-1.9.3-p125/bin:/home/ec2-user/.rvm/bin:$PATH",
-  'RUBY_VERSION' => 'ruby 1.9.3',
-  'GEM_HOME'     => '/home/ec2-user/.rvm/gems/ruby-1.9.3-p125',
-  'GEM_PATH'     => '/home/ec2-user/.rvm/gems/ruby-1.9.3-p125:/home/ec2-user/.rvm/gems/ruby-1.9.3-p125@global',
-  'BUNDLE_PATH'  => '/home/ec2-user/.rvm/gems/ruby-1.9.3-p125@global/bin'  # If you are using bundler.
-}
+#set :default_environment, {
+#  'RUBY_VERSION' => 'ruby 1.9.3',
+#  'PATH' => "/home/ec2-user/.rvm/gems/ruby-1.9.3-p125/bin:/home/ec2-user/.rvm/gems/ruby-1.9.3-p125@global/bin:/home/ec2-user/.rvm/rubies/ruby-1.9.3-p125/bin:/home/ec2-user/.rvm/bin:$PATH",
+#  'GEM_HOME'     => '/home/ec2-user/.rvm/gems/ruby-1.9.3-p125',
+#  'GEM_PATH'     => '/home/ec2-user/.rvm/gems/ruby-1.9.3-p125:/home/ec2-user/.rvm/gems/ruby-1.9.3-p125@global',
+#  'BUNDLE_PATH'  => '/home/ec2-user/.rvm/gems/ruby-1.9.3-p125@global/bin'  # If you are using bundler.
+#}
 
 set :application, "sngtrkr_cap"
-set :user, "ec2-user"
-set :domain, 'sngtrkr.com'
+set :user, "ubuntu"
+set :domain, 'ec2-176-34-160-217.eu-west-1.compute.amazonaws.com'
 set :applicationdir, "/var/www/apps/#{application}"
 
 set :scm, 'git'
-set :repository,  "ssh://ec2-user@sngtrkr.com/~/sngtrkr.git"
+set :repository,  "ssh://ubuntu@ec2-176-34-160-217.eu-west-1.compute.amazonaws.com/~/repo"
 set :branch, 'master'
 set :scm_verbose, true
 
@@ -25,7 +25,11 @@ set :keep_releases, 3
 after "deploy:restart", "deploy:cleanup"
 require "bundler/capistrano"
 #$:.unshift("#{ENV["HOME"]}/.rvm/lib")
-set :rvm_type, :system  # Copy the exact line. I really mean :system here
+# Load RVM's capistrano plugin.    
+require "rvm/capistrano"
+
+set :rvm_ruby_string, '1.9.3'
+set :rvm_type, :user  # Copy the exact line. I really mean :system here
 
 # deploy config
 set :deploy_to, applicationdir
