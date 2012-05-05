@@ -15,12 +15,10 @@ gem 'json'
 group :production do
   gem 'mysql2'
   gem 'passenger'
-  #gem 'activerecord-mysql-adapter'
 end
 
 group :development do
   gem 'sqlite3'
-#  gem 'rails-precompile2git'
 end
 
 
@@ -28,10 +26,6 @@ gem 'capistrano'
 # gem 'rvm-capistrano'  -- THIS MUST BE INSTALLED LOCALLY, IT WILL NOT WORK IN A GEMFILE.
 
 # BACKGROUND TASKS
-#gem 'daemons'
-#gem "delayed_job",  :git => 'git://github.com/collectiveidea/delayed_job.git'
-#gem 'delayed_job_active_record'
-
 gem 'resque'
 
 # SCRAPING GEMS
@@ -47,7 +41,6 @@ gem 'itunes-search'
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '>= 3.2.3'
-  #gem 'coffee-rails', '~> 3.2.1'
   gem 'compass-rails', '>= 1.0.0.rc.2'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
