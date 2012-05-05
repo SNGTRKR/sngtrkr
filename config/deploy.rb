@@ -1,11 +1,3 @@
-#set :default_environment, {
-#  'RUBY_VERSION' => 'ruby 1.9.3',
-#  'PATH' => "/home/ec2-user/.rvm/gems/ruby-1.9.3-p125/bin:/home/ec2-user/.rvm/gems/ruby-1.9.3-p125@global/bin:/home/ec2-user/.rvm/rubies/ruby-1.9.3-p125/bin:/home/ec2-user/.rvm/bin:$PATH",
-#  'GEM_HOME'     => '/home/ec2-user/.rvm/gems/ruby-1.9.3-p125',
-#  'GEM_PATH'     => '/home/ec2-user/.rvm/gems/ruby-1.9.3-p125:/home/ec2-user/.rvm/gems/ruby-1.9.3-p125@global',
-#  'BUNDLE_PATH'  => '/home/ec2-user/.rvm/gems/ruby-1.9.3-p125@global/bin'  # If you are using bundler.
-#}
-
 set :application, "sngtrkr_cap"
 set :user, "ec2-user"
 set :domain, 'ec2-46-137-41-112.eu-west-1.compute.amazonaws.com'
