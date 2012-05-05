@@ -32,7 +32,7 @@ gem 'capistrano'
 #gem "delayed_job",  :git => 'git://github.com/collectiveidea/delayed_job.git'
 #gem 'delayed_job_active_record'
 
-gem 'resque'
+#gem 'resque'
 
 # SCRAPING GEMS
 gem 'rbrainz'
