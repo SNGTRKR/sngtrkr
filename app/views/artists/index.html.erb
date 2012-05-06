@@ -2,15 +2,10 @@
 <h2 class="signika-txt top-header font-35">Search Results</h2>
 <div id="artist-search">
 	<% @artists.each do |artist| %>
-		<style type="text/css">
-.artist-search-image {
-	background-image:url(<%= artist.image.url :thumb %>);
-	background-repeat:none;
-	background-position:center;
-}
-</style>
 	<div class="artist-search-row">
-		<div class="artist-search-image"></div>
+		<div class="artist-search-image" style="background-image:url(<%= artist.image.url :thumb %>);
+	background-repeat:no-repeat;
+	background-position:center;"></div>
 		<div class="artist-search-info">
 		<h3 class="font-15 instruct-font artist-search-name"><%= link_to artist.name, artist %></h3>
 		<div class="instruct-font orange-txt"><%= artist.followers %> TRKR'S</div>
