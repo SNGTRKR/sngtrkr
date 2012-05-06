@@ -45,12 +45,12 @@ SNGTRKRR::Application.routes.draw do
 
   resources :labels
 #  Use this line for production
-#  unless Rails.application.config.consider_all_requests_local
-#    match '*not_found', to: 'errors#error_404'
-#  end
+  unless Rails.application.config.consider_all_requests_local
+    match '*not_found', to: 'errors#error_404'
+  end
 
 # Use this line to view error in development
-match '*not_found', to: 'errors#error_404'
+# match '*not_found', to: 'errors#error_404'
 
 # The priority is based upon order of creation:
 # first created -> highest priority.
