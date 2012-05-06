@@ -60,8 +60,8 @@ def run_remote_rake(rake_cmd)
   set :rakefile, nil if exists?(:rakefile)
 end
 
-after "deploy:restart", "deploy:restart_workers" 
-after "deploy:restart_workers", "deploy:restart_scheduler"
+#after "deploy:restart", "deploy:restart_workers" 
+#after "deploy:restart_workers", "deploy:restart_scheduler"
 
 namespace :deploy do
   desc "Restart Resque Workers"
