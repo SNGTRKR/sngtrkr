@@ -1,4 +1,6 @@
 # Start a worker with proper env vars and output redirection
+require 'resque/tasks'
+
 def run_worker(queue, count = 1)
   puts "Starting #{count} worker(s) with QUEUE: #{queue}"
   ops = {:pgroup => true, :err => [(Rails.root + "log/workers_error.log").to_s, "a"], 

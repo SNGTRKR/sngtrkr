@@ -27,6 +27,7 @@ gem 'capistrano'
 
 # BACKGROUND TASKS
 gem 'resque'
+#gem 'resque-scheduler' , :require => 'resque_scheduler'
 
 # SCRAPING GEMS
 gem 'rbrainz'
