@@ -32,6 +32,31 @@ background-position:center;
 						<a href="<%= user_omniauth_authorize_path(:facebook) %>">LOGIN TO TRK</a><span></span>
 					</div>
 					<% end %>
+<<<<<<< HEAD
+        			</div>
+        		</div>
+        </div>
+        <div class="artist-info right">
+        	<h2 class="font-18 artist-name instruct-font"><%= @artist.name %></h2>
+        	<img src="/assets/images/record-label.png"><span class="genre-logo-nudge"><%= @artist.label_id %></span>
+        	<span id="genre-nudge"><img src="/assets/images/genre.png"><span class="genre-logo-nudge"><%= @artist.genre %></span></span>
+        	<div id="artist-bio"><%= 
+        	# The || "" means, if artist.bio is false / nil, replace with an empty string.
+        	truncate((@artist.bio || "" ), :length => 550) %> <strong>Continue Reading</strong></div>
+        	</div>
+        	        	<ul>
+        		<li class="social-spacing"><img src="/assets/images/a-fb.png"></li>
+				<% if @artist.twitter? %><li class="social-spacing"><img src="/assets/images/a-twit.png"></li><% else %><% end %>
+				<% if @artist.soundcloud? %><li class="social-spacing"><a href="http://www.soundcloud.com/<%= @artist.soundcloud %>" target="_blank"><img src="/assets/images/a-sc.png"></a></li><% else %><% end %>
+				<% if @artist.website? %><li class="social-spacing"><a href="<%= @artist.website %>" target="_blank"><img src="/assets/images/a-web.png"></a></li><% else %><% end %>
+				<% if @artist.youtube? %><li class="social-spacing"><a href="http://www.youtube.com/<%= @artist.youtube %>" target="_blank"><img src="/assets/images/a-yt.png"></a></li><% else %><% end %>
+				<li class="social-spacing"><img src="/assets/images/a-it.png"></li>
+				<li class="social-spacing"><img src="/assets/images/a-amaz.png"></li>
+				<li><img src="/assets/images/a-7d.png"></li>
+        	</ul>
+        </div>
+<!-- <p id="notice">
+=======
 				</div>
 			</div>
 		</div>
@@ -83,6 +108,7 @@ background-position:center;
 	<% end %>
 
 	<!-- <p id="notice">
+>>>>>>> 1e65480ef957efe4062a3b18a71b83f63349a9af
 	<%= notice %>
 	</p>
 	<%= image_tag @artist.image.url %>
