@@ -1,4 +1,5 @@
 class ArtistJob
+  @queue = :artistjob
   def self.perform access_token, user_id
     graph = Koala::Facebook::API.new(access_token)
     music = graph.get_connections("me", "music")

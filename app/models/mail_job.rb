@@ -1,5 +1,5 @@
 class MailJob
-  @queue = :mail;
+  @queue = :mailjob;
   def self.perform 
     # Send emails to users.
   end

@@ -16,7 +16,7 @@ role :db,  domain, :primary => true        # This is where Rails migrations will
 set :keep_releases, 3
 after "deploy:restart", "deploy:cleanup"
 require "bundler/capistrano"
-#$:.unshift("#{ENV["HOME"]}/.rvm/lib")
+
 # Load RVM's capistrano plugin.    
 require "rvm/capistrano"
 
@@ -31,7 +31,7 @@ set :deploy_via, :remote_cache
 default_run_options[:pty] = true  # Forgo errors when deploying from windows
 ssh_options[:forward_agent] = true
 ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "id_rsa")]
-#ssh_options[:keys] = '/Users/bessey/Dropbox/SNGTRKR/mattbillyhosts.pem'            
+
 # If you are using ssh_keysset :chmod755, "app config db lib public vendor script script/* public/disp*"set :use_sudo, false
  
 set :synchronous_connect, true

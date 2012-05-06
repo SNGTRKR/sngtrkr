@@ -1,4 +1,5 @@
 class ReleaseJob
+  @queue = :releasejob
   def self.perform artist_id
     search = Artist.find(artist_id).name
     xml =  Hash.from_xml Net::HTTP.get( URI.parse("http://api.7digital.com/1.2/artist/search?q=#{URI.escape(search)}&sort=score%20desc&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB"))
