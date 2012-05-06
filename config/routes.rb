@@ -1,7 +1,5 @@
 SNGTRKRR::Application.routes.draw do
 
-#require 'resque/server'
-#mount Resque::Server.new, :at => "/resque"
   if(Rails.env == "development")
     root :to => "Pages#home"
   else
@@ -17,7 +15,7 @@ SNGTRKRR::Application.routes.draw do
   match '/recommended' => "Pages#recommended"
   
   
-  #  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin' # Feel free to change '/admin' to any namespace you need.
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin' # Feel free to change '/admin' to any namespace you need.
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users_controller/omniauth_callbacks" }
   devise_scope :user do
