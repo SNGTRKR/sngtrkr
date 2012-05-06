@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 
-unless Rails.application.config.consider_all_requests_local
+# Comment out the below condition to view error 404 in development
+ unless Rails.application.config.consider_all_requests_local
     rescue_from Exception, with: :render_500
     rescue_from ActionController::RoutingError, with: :render_404
     rescue_from ActionController::UnknownController, with: :render_404
