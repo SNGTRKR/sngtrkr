@@ -26,14 +26,14 @@ class Artist < ActiveRecord::Base
 
   def self.search(search)
     if search
-      find(:all, :conditions => ["name LIKE '%%#{search}%%'"])
+      where("name LIKE ?","%#{search}%").page
     else
-    self.all
+    self.page.all
     end
   end
 
   def managed?
-    if(Manage.find(:all, :conditions => ["artist_id = #{self.id}"]).empty?)
+    if(Manage.where("artist_id = ?", "#{self.id}").empty?)
     return false
     else
     return true
@@ -41,7 +41,7 @@ class Artist < ActiveRecord::Base
   end
 
   def followers
-    Follow.find(:all, :conditions => ["artist_id = #{self.id}"]).count
+    Follow.where("artist_id = ?", "#{self.id}").count
   end
 
   def youtube?
