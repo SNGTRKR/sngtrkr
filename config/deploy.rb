@@ -1,11 +1,3 @@
-set :default_environment, {
-  'PATH' => "/home/ec2-user/.rvm/gems/ruby-1.9.3-p125/bin:/home/ec2-user/.rvm/gems/ruby-1.9.3-p125@global/bin:/home/ec2-user/.rvm/rubies/ruby-1.9.3-p125/bin:/home/ec2-user/.rvm/bin:$PATH",
-  'RUBY_VERSION' => 'ruby 1.9.3',
-  'GEM_HOME'     => '/home/ec2-user/.rvm/gems/ruby-1.9.3-p125',
-  'GEM_PATH'     => '/home/ec2-user/.rvm/gems/ruby-1.9.3-p125:/home/ec2-user/.rvm/gems/ruby-1.9.3-p125@global',
-  'BUNDLE_PATH'  => '/home/ec2-user/.rvm/gems/ruby-1.9.3-p125@global/bin'  # If you are using bundler.
-}
-
 set :application, "sngtrkr_cap"
 set :user, "ec2-user"
 set :domain, 'sngtrkr.com'
@@ -24,8 +16,12 @@ role :db,  domain, :primary => true        # This is where Rails migrations will
 set :keep_releases, 3
 after "deploy:restart", "deploy:cleanup"
 require "bundler/capistrano"
-#$:.unshift("#{ENV["HOME"]}/.rvm/lib")
-set :rvm_type, :system  # Copy the exact line. I really mean :system here
+
+# Load RVM's capistrano plugin.    
+require "rvm/capistrano"
+
+set :rvm_ruby_string, '1.9.3'
+set :rvm_type, :user  # Copy the exact line. I really mean :system here
 
 # deploy config
 set :deploy_to, applicationdir
@@ -35,7 +31,7 @@ set :deploy_via, :remote_cache
 default_run_options[:pty] = true  # Forgo errors when deploying from windows
 ssh_options[:forward_agent] = true
 ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "id_rsa")]
-#ssh_options[:keys] = '/Users/bessey/Dropbox/SNGTRKR/mattbillyhosts.pem'            
+
 # If you are using ssh_keysset :chmod755, "app config db lib public vendor script script/* public/disp*"set :use_sudo, false
  
 set :synchronous_connect, true
@@ -64,7 +60,8 @@ def run_remote_rake(rake_cmd)
   set :rakefile, nil if exists?(:rakefile)
 end
 
-after "deploy:restart", "deploy:restart_workers"
+#after "deploy:restart", "deploy:restart_workers" 
+#after "deploy:restart_workers", "deploy:restart_scheduler"
 
 namespace :deploy do
   desc "Restart Resque Workers"

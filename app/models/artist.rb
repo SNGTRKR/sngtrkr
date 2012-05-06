@@ -26,7 +26,7 @@ class Artist < ActiveRecord::Base
     if search
       find(:all, :conditions => ["name LIKE '%%#{search}%%'"])
     else
-      self.all
+    self.all
     end
   end
 
@@ -42,4 +42,36 @@ class Artist < ActiveRecord::Base
     Follow.find(:all, :conditions => ["artist_id = #{self.id}"]).count
   end
 
+  def youtube?
+    if(Artist(self.id).youtube == "")
+    false
+    else
+    true
+    end
+  end
+
+  def soundcloud?
+    if(Artist(self.id).soundcloud == "")
+    false
+    else
+    true
+    end
+  end
+  
+
+  def twitter?
+    if(Artist(self.id).twitter == "")
+    false
+    else
+    true
+    end
+  end  
+  
+  def website?
+    if(Artist(self.id).website == "")
+    false
+    else
+    true
+    end
+  end
 end

@@ -1,12 +1,23 @@
 class ArtistsController < ApplicationController
-
   # GET /artists
   # GET /artists.json
   def index
     @artists = Artist.search(params[:search])
+    if(params[:search] == nil)
+      @artists = Artist.all
+    elsif @artists.empty?
+      return render "no_results"
+    else
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render :json => @artists }
+      end
+    end
+  end
+
+  def no_results
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @artists }
+      format.html
     end
   end
 
