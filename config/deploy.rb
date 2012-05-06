@@ -1,10 +1,10 @@
 set :application, "sngtrkr_cap"
 set :user, "ec2-user"
-set :domain, 'ec2-46-137-41-112.eu-west-1.compute.amazonaws.com'
+set :domain, 'sngtrkr.com'
 set :applicationdir, "/var/www/apps/#{application}"
 
 set :scm, 'git'
-set :repository,  "ssh://ec2-user@ec2-46-137-41-112.eu-west-1.compute.amazonaws.com/~/sngtrkr.git"
+set :repository,  "ssh://ec2-user@sngtrkr.com/~/sngtrkr.git"
 set :branch, 'master'
 set :scm_verbose, true
 
