@@ -53,7 +53,6 @@ namespace :resque do
   desc "Start workers"
   task :start_workers => :environment do
     run_worker("*", 2)
-    run_worker("high", 1)
   end
 
   desc "Restart scheduler"
