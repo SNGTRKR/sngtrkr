@@ -1,0 +1,5 @@
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/resque-1.20.0/lib/resque/helpers.rb:5:in `<top (required)>': [DEPRECATION] MultiJson.engine is deprecated and will be removed in the next major version. Use MultiJson.adapter instead.
+rake aborted!
+Don't know how to build task 'resque:scheduler'
+
+(See full trace by running task with --trace)

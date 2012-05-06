@@ -1,4 +1,6 @@
 # Start a worker with proper env vars and output redirection
+require 'resque/tasks'
+
 def run_worker(queue, count = 1)
   puts "Starting #{count} worker(s) with QUEUE: #{queue}"
   ops = {:pgroup => true, :err => [(Rails.root + "log/workers_error.log").to_s, "a"], 
@@ -52,8 +54,7 @@ namespace :resque do
   
   desc "Start workers"
   task :start_workers => :environment do
-    run_worker("*", 2)
-    run_worker("high", 1)
+    run_worker("*", 1)
   end
 
   desc "Restart scheduler"
