@@ -16,17 +16,42 @@ class Scraper
     Resque.enqueue(ReleaseJob, artist_id)
   end
 
-  def self.lastFmArtistImage search
-    search = URI.encode(search)
-    artist = Hash.from_xml( Net::HTTP.get( URI.parse("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=#{search}&api_key=6541dc514e866d40539bfe4eddde211c")))
+  def self.new artist_name
+    search = URI.encode artist_name
+    @artist_info = Hash.from_xml( Net::HTTP.get( URI.parse("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=#{search}&api_key=6541dc514e866d40539bfe4eddde211c&autocorrect")))
+    @artist_name = artist_name
+    self
+  end
+
+  def self.lastFmArtistImage
     begin
-      image = artist["lfm"]["artist"]["image"].last
+      image = @artist_info["lfm"]["artist"]["image"].last
       if !image.is_a? String
-        return false
+      return false
       end
       return image
     rescue
     return false
+    end
+  end
+
+  def self.real_artist?
+    begin
+      if @artist_info["lfm"]["artist"]["bio"]["summary"] =~ /is not an artist/
+      true
+      else
+      false
+      end
+    rescue
+    false
+    end
+  end
+
+  def self.real_name
+    begin
+      @artist_info["lfm"]["artist"]["name"]
+    rescue
+    @artist_name
     end
   end
 

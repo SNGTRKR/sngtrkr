@@ -5,7 +5,7 @@ class Artist < ActiveRecord::Base
   has_many :releases
   belongs_to :label
 
-  has_attached_file :image, :styles => { 
+  has_attached_file :image, :styles => {
     :large => "220x252#",
     :thumb => "76x76#" }
 
@@ -45,7 +45,7 @@ class Artist < ActiveRecord::Base
   end
 
   def youtube?
-    if(Artist(self.id).youtube == "")
+    if(self.youtube == "")
     false
     else
     true
@@ -53,24 +53,31 @@ class Artist < ActiveRecord::Base
   end
 
   def soundcloud?
-    if(Artist(self.id).soundcloud == "")
+    if(self.soundcloud == "")
     false
     else
     true
     end
   end
-  
+
+  def label?
+    if(self.label.nil? and self.label_id.nil?)
+    true
+    else
+    false
+    end
+  end
 
   def twitter?
-    if(Artist(self.id).twitter == "")
+    if(self.twitter == "")
     false
     else
     true
     end
-  end  
-  
+  end
+
   def website?
-    if(Artist(self.id).website == "")
+    if(self.website == "")
     false
     else
     true

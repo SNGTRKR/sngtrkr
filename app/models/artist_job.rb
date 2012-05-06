@@ -26,9 +26,13 @@ class ArtistJob
         end
       end
       results.each do |artist|
-      # TODO: Import artist image as well.
+        s = Scraper.new artist["name"]
+        if s.real_artist?
+          # Skip artists that last.fm does not believe are real artists.
+          next
+        end
         a = Artist.new()
-        a.name = artist["name"]
+        a.name = s.real_name
         a.fbid = artist["id"]
         details = graph.get_object(artist["id"])
         a.bio = details["bio"]
@@ -60,7 +64,7 @@ class ArtistJob
           a.website = website
           end
         end
-        image = Scraper.lastFmArtistImage a.name
+        image = s.lastFmArtistImage
         if image != false
           require 'open-uri'
           require 'net/http'
@@ -70,7 +74,7 @@ class ArtistJob
         a.save
         User.find(user_id).suggest a.id
         if a.id != nil
-          #Scraper.getReleases a.id
+          Scraper.getReleases a.id
         end
       end
       if Rails.env.development?
