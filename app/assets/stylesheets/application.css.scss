@@ -1019,6 +1019,9 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 .content-pad-191-bottom {
   padding:4px 191px 166px 191px;
 }
+.content-error-pad-220-bottom {
+  padding:4px 208px 166px 232px;
+}
 .content-splash-pad-262-bottom {
   padding:4px 262px 166px 262px;
 }
@@ -1167,6 +1170,25 @@ body:before {/* thanks to Maleika (Kohoutec)*/
           right:23px;
           font-size:1.1em;
         }
+}
+#content-error-left {
+  float:left;
+  margin-top:34px;
+.error-txt {
+  text-align:center;
+  width:258px;
+  line-height:1.4em;
+}
+.error-404-txt {
+  color:red;
+  width:258px;
+  text-align:center;
+  line-height:1.4em;
+  }
+}
+#content-error-right {
+  float:right;
+  margin-bottom:11px;
 }
 .button{
     background: $orange;
