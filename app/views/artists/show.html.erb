@@ -1,121 +1,155 @@
-<% content_for :og_name, @artist.name 
+<% content_for :og_name, @artist.name
 content_for :og_url, request.url
-content_for :og_image, "" 
+content_for :og_image, ""
 content_for :og_description, @artist.name + " is available now on SNGTRKR"
 content_for :og_id, @artist.id.to_s
 %>
 <% content_for :title do %><%= @artist.name %> information and releases 2012<% end %>
 <style type="text/css">
 .artist-image {
-	background-image:url(<%= @artist.image.url :large %>);
-	background-repeat:no-repeat;
-	background-position:center;
+background-image:url(<%= @artist.image.url :large %>);
+background-repeat:no-repeat;
+background-position:center;
 }
 </style>
 <div class="content content-pad-191">
 	<div id="content-artist">
-        <div class="artist-image left">
-        	<div id="outer-button">
-        		<div class="inner-button">
-        			<% if(user_signed_in?) %>
-        			<% if @user.following? @artist.id %>
-					<div class="o-button artist-remove-o-pad left instruct-font"><%= link_to 'REMOVE TRKR', unfollow_artist_path(@artist) %><span></span></div>
+		<div class="artist-image left">
+			<div id="outer-button">
+				<div class="inner-button">
+					<% if(user_signed_in?) %>
+					<% if @user.following? @artist.id %>
+					<div class="o-button artist-remove-o-pad left instruct-font">
+						<%= link_to 'REMOVE TRKR', unfollow_artist_path(@artist) %><span></span>
+					</div>
 					<% else %>
-					<div class="o-button artist-add-o-pad left instruct-font"><%= link_to 'ADD TRKR', follow_artist_path(@artist) %><span></span></div>
+					<div class="o-button artist-add-o-pad left instruct-font">
+						<%= link_to 'ADD TRKR', follow_artist_path(@artist) %><span></span>
+					</div>
 					<% end %>
 					<% elsif %>
-					<div class="o-button artist-login-o-pad left instruct-font"><a href="<%= user_omniauth_authorize_path(:facebook) %>">LOGIN TO TRK</a><span></span></div>
+					<div class="o-button artist-login-o-pad left instruct-font">
+						<a href="<%= user_omniauth_authorize_path(:facebook) %>">LOGIN TO TRK</a><span></span>
+					</div>
 					<% end %>
-        			</div>
-        		</div>
-        </div>
-        <div class="artist-info right">
-        	<h2 class="font-18 artist-name instruct-font"><%= @artist.name %></h2>
-        	<img src="/assets/images/record-label.png"><span class="genre-logo-nudge">Tempa</span>
-        	<span id="genre-nudge"><img src="/assets/images/genre.png"><span class="genre-logo-nudge"><%= @artist.genre %></span></span>
-        	<div id="artist-bio"><%= 
-        	# The || "" means, if artist.bio is false / nil, replace with an empty string.
-        	truncate((@artist.bio || "" ), :length => 550) %> <strong>Continue Reading</strong></div>
-        	</div>
-        	        	<ul>
-        		<li class="social-spacing"><img src="/assets/images/a-fb.png"></li>
-				<li class="social-spacing"><img src="/assets/images/a-twit.png"></li>
-				<li class="social-spacing"><a href="http://www.soundcloud.com/<%= @artist.soundcloud %>" target="_blank"><img src="/assets/images/a-sc.png"></a></li>
-				<li class="social-spacing"><a href="<%= @artist.website %>" target="_blank"><img src="/assets/images/a-web.png"></a></li>
-				<li class="social-spacing"><a href="http://www.youtube.com/<%= @artist.youtube %>" target="_blank"><img src="/assets/images/a-yt.png"></a></li>
-				<li class="social-spacing"><img src="/assets/images/a-it.png"></li>
-				<li class="social-spacing"><img src="/assets/images/a-amaz.png"></li>
-				<li><img src="/assets/images/a-7d.png"></li>
-        	</ul>
-        </div>
-<!-- <p id="notice">
+				</div>
+			</div>
+		</div>
+		<div class="artist-info right">
+			<h2 class="font-18 artist-name instruct-font"><%= @artist.name %></h2>
+			<img src="/assets/images/record-label.png"><span class="genre-logo-nudge">Tempa</span>
+			<span id="genre-nudge"><img src="/assets/images/genre.png"><span class="genre-logo-nudge"><%= @artist.genre %></span></span>
+			<div id="artist-bio">
+				<%=
+ # The || "" means, if artist.bio is false / nil, replace with an empty string.
+          truncate((@artist.bio || "" ), :length => 550) %> <strong>Continue Reading</strong>
+			</div>
+		</div>
+		<ul>
+			<li class="social-spacing"><img src="/assets/images/a-fb.png">
+			</li>
+			<li class="social-spacing"><img src="/assets/images/a-twit.png">
+			</li>
+			<li class="social-spacing">
+				<a href="http://www.soundcloud.com/<%= @artist.soundcloud %>" target="_blank"><img src="/assets/images/a-sc.png"></a>
+			</li>
+			<li class="social-spacing">
+				<a href="<%= @artist.website %>" target="_blank"><img src="/assets/images/a-web.png"></a>
+			</li>
+			<li class="social-spacing">
+				<a href="http://www.youtube.com/<%= @artist.youtube %>" target="_blank"><img src="/assets/images/a-yt.png"></a>
+			</li>
+			<li class="social-spacing"><img src="/assets/images/a-it.png">
+			</li>
+			<li class="social-spacing"><img src="/assets/images/a-amaz.png">
+			</li>
+			<li><img src="/assets/images/a-7d.png">
+			</li>
+		</ul>
+	</div>
+	<h1>Releases</h1>
+	<% @artist.releases.each do |release| %>
+	<p>
+		<%= release.name %>
+	</p>
+	<% end %>
+	<% if user_signed_in? %>
+	<p>
+	<% if @user.managing? @artist.id %>
+	<%= link_to 'Edit', edit_artist_path(@artist) %> |
+	<%= link_to 'New Release', new_release_path(:artist_id => @artist.id) %>
+	<% end %>
+	</p>
+	<% end %>
+
+	<!-- <p id="notice">
 	<%= notice %>
-</p>
-<%= image_tag @artist.image.url %>
-<p>
+	</p>
+	<%= image_tag @artist.image.url %>
+	<p>
 	<b>Name:</b>
 	<%= @artist.name %>
-</p>
-<p>
+	</p>
+	<p>
 	<b>TRKRs</b>
 	<%= @artist.followers %>
-</p>
-<p>
+	</p>
+	<p>
 	<b>Genre:</b>
 	<%= @artist.genre %>
-</p>
-<p>
+	</p>
+	<p>
 
-</p>
-<p>
+	</p>
+	<p>
 	<b>Hometown:</b>
 	<%= @artist.hometown %>
-</p>
-<p>
+	</p>
+	<p>
 	<b>Booking email:</b>
 	<%= @artist.booking_email %>
-</p>
-<p>
+	</p>
+	<p>
 	<b>Manager email:</b>
 	<%= @artist.manager_email %>
-</p>
-<p>
+	</p>
+	<p>
 	<b>Website:</b>
 	<%= @artist.website %>
-</p>
-<p>
+	</p>
+	<p>
 	<b>Soundcloud:</b>
 	<%= @artist.soundcloud %>
-</p>
-<p>
+	</p>
+	<p>
 	<b>Youtube:</b>
 	<%= @artist.youtube %>
-</p>
-<p>
+	</p>
+	<p>
 	<b>Label:</b>
 	<%= @artist.label_id %>
-</p>
-<h1>Releases</h1>
-<% @artist.releases.each do |release| %>
-<p>
+	</p>
+	<h1>Releases</h1>
+	<% @artist.releases.each do |release| %>
+	<p>
 	<%= release.name %>
-</p>
-<% end %> 
+	</p>
+	<% end %>
 
-<% if user_signed_in? %>
-<p>
+	<% if user_signed_in? %>
+	<p>
 	<% if @user.following? @artist.id %>
 	<%= link_to 'Untrack', unfollow_artist_path(@artist) %>
 	<% else %>
 	<%= link_to 'Track', follow_artist_path(@artist) %>
 	<% end %>
-</p>
-<p>
+	</p>
+	<p>
 	<% if @user.managing? @artist.id %>
-	<%= link_to 'Edit', edit_artist_path(@artist) %> | 
+	<%= link_to 'Edit', edit_artist_path(@artist) %> |
 	<%= link_to 'New Release', new_release_path(:artist_id => @artist.id) %>
 	<% end %>
-</p>
-<% end %>
+	</p>
+	<% end %>
 
-<%= link_to 'Back', artists_path %> -->
+	<%= link_to 'Back', artists_path %> -->
