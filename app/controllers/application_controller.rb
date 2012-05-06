@@ -1,3 +1,5 @@
+class Error404 < StandardError; end
+
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
