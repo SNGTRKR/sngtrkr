@@ -4,7 +4,7 @@ class ArtistsController < ApplicationController
   def index
     @artists = Artist.search(params[:search])
     if(params[:search] == nil)
-      @artists = Artist.all
+      @artists = Artist.page params[:page]
     elsif @artists.empty?
       @search = params[:search]
       return render "no_results"
