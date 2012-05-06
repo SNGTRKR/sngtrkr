@@ -28,14 +28,17 @@ class ArtistJob
       results.each do |artist|
         s = Scraper.new artist["name"]
         if s.real_artist?
-          # Skip artists that last.fm does not believe are real artists.
-          next
+        # Skip artists that last.fm does not believe are real artists.
+        next
         end
         a = Artist.new()
         a.name = s.real_name
         a.fbid = artist["id"]
         details = graph.get_object(artist["id"])
-        a.bio = details["bio"]
+        a.bio = s.bio
+        if s.bio.nil?
+          a.bio = details["bio"]
+        end
         a.genre = details["genre"]
         a.booking_email = details["booking_agent"]
         a.manager_email = details["general_manager"]
@@ -69,7 +72,7 @@ class ArtistJob
           require 'open-uri'
           require 'net/http'
           file = open(image)
-          a.image = file
+        a.image = file
         end
         a.save
         User.find(user_id).suggest a.id

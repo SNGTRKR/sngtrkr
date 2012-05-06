@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
-# Comment out the below condition to view error 404 in development
- unless Rails.application.config.consider_all_requests_local
+  # Comment out the below condition to view error 404 in development
+  unless Rails.application.config.consider_all_requests_local
     rescue_from Exception, with: :render_500
     rescue_from ActionController::RoutingError, with: :render_404
     rescue_from ActionController::UnknownController, with: :render_404
@@ -9,7 +9,12 @@ class ApplicationController < ActionController::Base
     rescue_from ActiveRecord::RecordNotFound, with: :render_404
   end
 
+  def after_sign_in_path_for(resource)
+    (session[:"user.return_to"].nil?) ? "/" : session[:"user.return_to"].to_s
+  end
+
   private
+
   def render_404(exception)
     @not_found_path = exception.message
     respond_to do |format|
