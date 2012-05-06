@@ -61,6 +61,7 @@ def run_remote_rake(rake_cmd)
 end
 
 after "deploy:restart", "deploy:restart_workers" 
+after "deploy:restart_workers", "deploy:restart_scheduler"
 
 namespace :deploy do
   desc "Restart Resque Workers"
