@@ -62,7 +62,7 @@ class ArtistJob
         end
         require 'open-uri'
         require 'net/http'
-        file = open details["picture"]
+        file = open(Scraper.lastFmArtistImage a.name)
         a.image = file
         a.save
         User.find(user_id).suggest a.id

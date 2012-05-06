@@ -16,11 +16,10 @@ class Scraper
     Resque.enqueue(ReleaseJob, artist_id)
   end
 
-  def self.lastFmSearch search
-    artist = Scrobbler::Artist.new(search)
-    puts 'Top Tracks'
-    puts "=" * 10
-    artist.top_tracks.each { |t| puts "(#{t.reach}) #{t.name}" }
+  def self.lastFmArtistImage search
+    search = URI.encode(search)
+    artist = Hash.from_xml( Net::HTTP.get( URI.parse("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=#{search}&api_key=6541dc514e866d40539bfe4eddde211c")))
+    artist["lfm"]["artist"]["image"].last
   end
 
   def self.importFbLikes access_token, user_id
