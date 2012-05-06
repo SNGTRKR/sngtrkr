@@ -61,10 +61,10 @@ class Artist < ActiveRecord::Base
   end
 
   def label?
-    if(self.label.nil? and self.label_id.nil?)
-    true
+    if(self.label_name.nil? and self.label_id.nil?)
+    return false
     else
-    false
+    return true
     end
   end
 

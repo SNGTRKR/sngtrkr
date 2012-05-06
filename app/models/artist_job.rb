@@ -43,7 +43,7 @@ class ArtistJob
         a.booking_email = details["booking_agent"]
         a.manager_email = details["general_manager"]
         a.hometown = details["hometown"]
-        a.label = details["label"]
+        a.label_name = details["record_label"]
         if(details["website"])
           websites = details["website"].split(' ')
         else

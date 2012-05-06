@@ -37,17 +37,17 @@ background-position:center;
         </div>
         <div class="artist-info right">
         	<h2 class="font-18 artist-name instruct-font"><%= @artist.name %></h2>
-        	<img src="/assets/images/record-label.png"><span class="genre-logo-nudge"><%= @artist.label_id %></span>
+        	<% if @artist.label? %><img src="/assets/images/record-label.png"><span class="genre-logo-nudge"><%= @artist.label_name %></span><% end %>
         	<span id="genre-nudge"><img src="/assets/images/genre.png"><span class="genre-logo-nudge"><%= @artist.genre %></span></span>
         	<div id="artist-bio"><%= 
         	# The || "" means, if artist.bio is false / nil, replace with an empty string.
         	truncate((strip_tags @artist.bio || "" ), :length => 550) %> <strong>Continue Reading</strong></div>
         	</div>
         	        	<ul>
-        		<li class="social-spacing"><img src="/assets/images/a-fb.png"></li>
-				<% if @artist.twitter? %><li class="social-spacing"><img src="/assets/images/a-twit.png"></li><% else %><% end %>
+        		<li class="social-spacing"><a href="http://www.facebook.com/<%= @artist.fbid %>" target="_blank"><img src="/assets/images/a-fb.png"></a></li>
+				<% if @artist.twitter? %><li class="social-spacing"><a href="http://www.twitter.com/<%= @artist.twitter %>" target="_blank"><img src="/assets/images/a-twit.png"></a></li><% else %><% end %>
 				<% if @artist.soundcloud? %><li class="social-spacing"><a href="http://www.soundcloud.com/<%= @artist.soundcloud %>" target="_blank"><img src="/assets/images/a-sc.png"></a></li><% else %><% end %>
-				<% if @artist.website? %><li class="social-spacing"><a href="<%= @artist.website %>" target="_blank"><img src="/assets/images/a-web.png"></a></li><% else %><% end %>
+				<% if @artist.website? %><li class="social-spacing"><a href="http://<%= @artist.website %>" target="_blank"><img src="/assets/images/a-web.png"></a></li><% else %><% end %>
 				<% if @artist.youtube? %><li class="social-spacing"><a href="http://www.youtube.com/<%= @artist.youtube %>" target="_blank"><img src="/assets/images/a-yt.png"></a></li><% else %><% end %>
 				<li class="social-spacing"><img src="/assets/images/a-it.png"></li>
 				<li class="social-spacing"><img src="/assets/images/a-amaz.png"></li>
