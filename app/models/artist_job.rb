@@ -60,14 +60,17 @@ class ArtistJob
           a.website = website
           end
         end
-        require 'open-uri'
-        require 'net/http'
-        file = open(Scraper.lastFmArtistImage a.name)
-        a.image = file
+        image = Scraper.lastFmArtistImage a.name
+        if image != false
+          require 'open-uri'
+          require 'net/http'
+          file = open(image)
+          a.image = file
+        end
         a.save
         User.find(user_id).suggest a.id
         if a.id != nil
-          Scraper.getReleases a.id
+          #Scraper.getReleases a.id
         end
       end
       if Rails.env.development?

@@ -19,7 +19,15 @@ class Scraper
   def self.lastFmArtistImage search
     search = URI.encode(search)
     artist = Hash.from_xml( Net::HTTP.get( URI.parse("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=#{search}&api_key=6541dc514e866d40539bfe4eddde211c")))
-    artist["lfm"]["artist"]["image"].last
+    begin
+      image = artist["lfm"]["artist"]["image"].last
+      Rails.logger.info "Last.fm artist image for #{artist.name} - #{image}"
+      if image.instance_of(Hash)
+      return false
+      end
+    rescue
+    return false
+    end
   end
 
   def self.importFbLikes access_token, user_id
