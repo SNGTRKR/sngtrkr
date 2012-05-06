@@ -21,10 +21,10 @@ class Scraper
     artist = Hash.from_xml( Net::HTTP.get( URI.parse("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=#{search}&api_key=6541dc514e866d40539bfe4eddde211c")))
     begin
       image = artist["lfm"]["artist"]["image"].last
-      Rails.logger.info "Last.fm artist image for #{artist.name} - #{image}"
-      if image.instance_of(Hash)
-      return false
+      if !image.is_a? String
+        return false
       end
+      return image
     rescue
     return false
     end
