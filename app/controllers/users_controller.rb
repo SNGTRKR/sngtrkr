@@ -102,28 +102,41 @@ class UsersController < ApplicationController
 
   def manage
     @user.manage params[:artist_id]
-    redir :artist_id
+    respond_to do |format|
+      format.html { redir :artist_id }
+      format.json { render :json => { :response => :success } }
+    end
   end
 
   def unmanage
     @user.unmanage params[:artist_id]
-    redir :artist_id
+    respond_to do |format|
+      format.html { redir :artist_id }
+      format.json { render :json => { :response => :success } }
+    end
   end
 
   def unfollow
     @user.unfollow params[:artist_id]
-    redir :artist_id
+    respond_to do |format|
+      format.html { redir :artist_id }
+      format.json { render :json => { :response => :success } }
+    end
   end
 
   def follow
     @user.follow params[:artist_id]
     @user.unsuggest params[:artist_id]
+    # Post to facebook graph api if in production.
     if Rails.env.production?
-    api = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
-    artist = Artist.find(params[:artist_id]);
-    api.put_connections("me", "sngtrkr:track", :artist => url_for(artist))
+      api = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
+      artist = Artist.find(params[:artist_id]);
+      api.put_connections("me", "sngtrkr:track", :artist => url_for(artist))
     end
-    redir :artist_id
+    respond_to do |format|
+      format.html { redir :artist_id }
+      format.json { render :json => { :response => :success } }
+    end
   end
 
   def unsuggest
