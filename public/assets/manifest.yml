@@ -10,6 +10,7 @@ datepicker/frame.png: datepicker/frame-0b547ef1e804e46a81a86e29cf755927.png
 datepicker/jquery.ui.core.js: datepicker/jquery.ui.core-344a71f077fa45f81cb8b72641d2042f.js
 datepicker/jquery.ui.datepicker.js: datepicker/jquery.ui.datepicker-dad031a446a1be783fa3a21a4f878ae2.js
 datepicker/jquery.ui.widget.js: datepicker/jquery.ui.widget-47ee7e0cbe7665763ac52c31ce62a5f8.js
+errors.js: errors-eff3b777780f1289971eacf808d83488.js
 fancybox/blank.gif: fancybox/blank-75c65513c681388365ed93c0abfdc098.gif
 fancybox/box-bk-431.png: fancybox/box-bk-431-5c255e763ab79fcb46ee1b858bd12df3.png
 fancybox/box-bk-684.png: fancybox/box-bk-684-294de3be86a445c55e6d8f7b7ca9f859.png
@@ -22,6 +23,7 @@ libs/modernizr-2.5.3.min.js: libs/modernizr-2.5.3.min-05bf7fed22f01ded23271d6493
 plugins.js: plugins-043cc4cd2d6936b804049097e8a1c570.js
 timers/jquery.timers.js: timers/jquery.timers-49e67e8768c8622a6140a6047983be76.js
 application.css: application-8147712ce1f238ce1b108653740ab016.css
+errors.css: errors-95bd4fe1de99c1cd91ec8e6f348a44bd.css
 blank.gif: blank-75c65513c681388365ed93c0abfdc098.gif
 fancy_close.png: fancy_close-9e864c00ecc13eb859c274b03682477b.png
 fancy_loading.png: fancy_loading-082f176f486823271f054f772de67b7e.png
