@@ -6,6 +6,7 @@ class ArtistsController < ApplicationController
     if(params[:search] == nil)
       @artists = Artist.all
     elsif @artists.empty?
+      @search = params[:search]
       return render "no_results"
     else
       respond_to do |format|
