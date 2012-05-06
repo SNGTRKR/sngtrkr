@@ -26,7 +26,7 @@ gem 'capistrano'
 # gem 'rvm-capistrano'  -- THIS MUST BE INSTALLED LOCALLY, IT WILL NOT WORK IN A GEMFILE.
 
 # BACKGROUND TASKS
-#gem 'resque'
+gem 'resque'
 
 # SCRAPING GEMS
 gem 'rbrainz'
