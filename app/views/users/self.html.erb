@@ -44,13 +44,14 @@
 	</div>
 	<div class="clear"></div>
 	<div id="tracked-artists">
-		<% @timeline.page(1).each do |release| %>
-		<p>
+		<% @timeline.each do |release| %>
+		<p style="float:left">
 			<%= image_tag release.image.url :thumb %>
 			<%= link_to release.name, release.sdigital %>
 			<%= release.date.strftime("%d/%m/%Y")%>
 		</p>
 		<% end %>
+		<%= paginate @timeline %>
 	</div>
 	<div class="content-top recommend-text-nudge">
 		<h3 class="signika-txt top-header font-35 left">Here are a few artists we have recommended for you...</h3>

@@ -33,8 +33,8 @@ class UsersController < ApplicationController
 
   def self
     @user = User.find(current_user.id)
-    @timeline = Timeline.user(current_user.id)
-
+    tl = Timeline.new(current_user.id)
+    @timeline = tl.user.page params[:page]
     respond_to do |format|
       format.html # show.html.erb
     end

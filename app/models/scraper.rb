@@ -55,6 +55,15 @@ class Scraper
     end
   end
 
+  def self.bio
+    begin
+      #ActionView::Helpers::SanitizeHelper.strip_tags(         )
+      @artist_info["lfm"]["artist"]["bio"]["summary"].to_s
+    rescue
+    false
+    end
+  end
+
   def self.importFbLikes access_token, user_id
     Resque.enqueue(ArtistJob,access_token,user_id)
   end

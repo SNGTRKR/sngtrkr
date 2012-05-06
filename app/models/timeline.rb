@@ -1,5 +1,4 @@
 class Timeline
-  @@pagesize = 10
   def self.artist id
     a = Artist.find(id)
     if(a != nil)
@@ -9,13 +8,13 @@ class Timeline
     end
   end
 
-  def self.user id
+  def self.new id
     @@artists = User.find(id).followed_artists.collect(&:id)
     self
   end
 
-  def self.page p
-    Release.joins(:artist).order("date DESC").limit(@@pagesize).offset(@@pagesize*(p-1)).find(:all, :conditions => ["artist_id in (?)",@@artists])
+  def self.user
+    Release.joins(:artist).order("date DESC").where("artist_id in (?)",@@artists)
   end
 
 end
