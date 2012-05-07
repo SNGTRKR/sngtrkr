@@ -1,6 +1,6 @@
-		<div id="fb-root"></div>
-		<script>
-			window.fbAsyncInit = function() {
+<div id="fb-root"></div>
+<script>
+	window.fbAsyncInit = function() {
 FB.init({
 appId : '<%= FB_APP_ID %>', // App ID
 	status : true, // check login status
@@ -8,7 +8,10 @@ appId : '<%= FB_APP_ID %>', // App ID
 	xfbml : true  // parse XFBML
 	});
 	};
-
+    // *** here is my code ***
+    if (typeof facebookInit == 'function') {
+        facebookInit();
+    }
 	// Load the SDK Asynchronously
 	(function(d){
 	var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
@@ -18,4 +21,4 @@ appId : '<%= FB_APP_ID %>', // App ID
 	ref.parentNode.insertBefore(js, ref);
 	}(document));
 
-		</script>
+</script>

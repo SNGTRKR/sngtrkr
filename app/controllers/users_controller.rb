@@ -32,12 +32,28 @@ class UsersController < ApplicationController
   end
 
   def self
-    @user = User.find(current_user.id)
+    @user = current_user
     tl = Timeline.new(current_user.id)
     @timeline = tl.user.page params[:page]
     respond_to do |format|
       format.html # show.html.erb
     end
+  end
+
+  def friends
+    api = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
+    @user = current_user
+    friends = api.get_connections("me","friends/?fields=installed")
+    @app_friends = []
+    friends.each do |friend|
+      if friend["installed"]
+        u = User.where("fbid = ? ","#{friend["id"]}").first
+        if !u.nil?
+        @app_friends.push u
+        end
+      end
+    end
+
   end
 
   # GET /users/new

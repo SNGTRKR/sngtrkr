@@ -1,0 +1,7 @@
+<% content_for :title do %><%= @user.first_name %>'s friends on SNGTRKR<% end %>
+<div class="content content-pad-160-bottom">
+	<h1>Friends test page</h1>
+
+<% @app_friends.each do |friend| %>
+<%= url_for friend.name friend %>
+<% end %>
