@@ -14,7 +14,6 @@
 		<%= csrf_meta_tags %>
 	</head>
 	<body>
-		<%= render 'shared/fb_async' %>
 		<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
 		chromium.org/developers/how-tos/chrome-frame-getting-started -->
 		<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or
@@ -43,7 +42,9 @@
 					</div>
 					<% end %>
 					<div class="clear"></div>
-					<div class="small-logo-home"><a href="/"><img src="/assets/images/logo-55.png" alt="SNGTRKR"/></a></div>
+					<div class="small-logo-home">
+						<a href="/"><img src="/assets/images/logo-55.png" alt="SNGTRKR"/></a>
+					</div>
 
 				</div>
 				<%= yield %>
@@ -73,103 +74,81 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<script type="text/javascript">
-		ncjQuery = jQuery.noConflict();
-		ncjQuery(document).ready(function() {
-		ncjQuery('.fancybox').fancybox();
-		});
+			ncjQuery = jQuery.noConflict();
+			ncjQuery(document).ready(function() {
+				ncjQuery('.fancybox').fancybox();
+			});
 
 		</script>
 		<script type='text/javascript'>
-		window.addEvent('load', function() {
-		new DatePicker('.date-pick', {
-		pickerClass : 'datepicker_jqui',
-		debug : false
-		});
-		});
+			window.addEvent('load', function() {
+				new DatePicker('.date-pick', {
+					pickerClass : 'datepicker_jqui',
+					debug : false
+				});
+			});
 
 		</script>
 		<script type="text/javascript">
-		ncjQuery(document).ready(function() {
-		ncjQuery(".cheform").ajaxForm({
-		success : function(responseText) {
-		ncjQuery.fancybox.open({
-		href : '/admin/change-email.php',
-		type : 'iframe',
-		width : 431,
-		height : 286,
-		autoSize : false,
-		closeBtn : false,
-		});
-		}
-		});
-		});
-		ncjQuery(document).ready(function() {
-		ncjQuery(".enform").ajaxForm({
-		success : function(responseText) {
-		ncjQuery.fancybox.open({
-		href : '/admin/email-notify.php',
-		type : 'iframe',
-		width : 431,
-		height : 286,
-		autoSize : false,
-		closeBtn : false,
-		});
-		}
-		});
-		});
-		ncjQuery(document).ready(function() {
-		ncjQuery(".chpform").ajaxForm({
-		success : function(responseText) {
-		ncjQuery.fancybox.open({
-		href : '/admin/change-password.php',
-		type : 'iframe',
-		width : 431,
-		height : 286,
-		autoSize : false,
-		closeBtn : false,
-		});
-		}
-		});
-		});
-		ncjQuery(document).ready(function() {
-		ncjQuery(".rform").ajaxForm({
-		success : function(responseText) {
-		ncjQuery.fancybox.open({
-		href : '/admin/add-release.php',
-		type : 'iframe',
-		width : 431,
-		height : 286,
-		autoSize : false,
-		closeBtn : false,
-		});
-		}
-		});
-		});
+			ncjQuery(document).ready(function() {
+				ncjQuery(".cheform").ajaxForm({
+					success : function(responseText) {
+						ncjQuery.fancybox.open({
+							href : '/admin/change-email.php',
+							type : 'iframe',
+							width : 431,
+							height : 286,
+							autoSize : false,
+							closeBtn : false,
+						});
+					}
+				});
+			});
+			ncjQuery(document).ready(function() {
+				ncjQuery(".enform").ajaxForm({
+					success : function(responseText) {
+						ncjQuery.fancybox.open({
+							href : '/admin/email-notify.php',
+							type : 'iframe',
+							width : 431,
+							height : 286,
+							autoSize : false,
+							closeBtn : false,
+						});
+					}
+				});
+			});
+			ncjQuery(document).ready(function() {
+				ncjQuery(".chpform").ajaxForm({
+					success : function(responseText) {
+						ncjQuery.fancybox.open({
+							href : '/admin/change-password.php',
+							type : 'iframe',
+							width : 431,
+							height : 286,
+							autoSize : false,
+							closeBtn : false,
+						});
+					}
+				});
+			});
+			ncjQuery(document).ready(function() {
+				ncjQuery(".rform").ajaxForm({
+					success : function(responseText) {
+						ncjQuery.fancybox.open({
+							href : '/admin/add-release.php',
+							type : 'iframe',
+							width : 431,
+							height : 286,
+							autoSize : false,
+							closeBtn : false,
+						});
+					}
+				});
+			});
 
-		</script>
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$(".facebook-log").click(function() {
-					FB.login(function(response) {
-						console.log(FB.getAuthResponse().accessToken);
-						// Successfull login
-						accessToken = FB.getAuthResponse().accessToken;
-						$.ajax({
-							url : "/users/fblogin.json",
-							type : "GET",
-							data : "access_token=" + accessToken,
-						}).done(function(msg) {
-							alert("Data Saved: " + msg);
-						}).error(function(msg) {
-							console.log("Ajax error");
-						})
-					}, {
-						scope : 'email,user_likes'
-					})
-				})
-			})
 		</script>
 	</body>
 </html>
