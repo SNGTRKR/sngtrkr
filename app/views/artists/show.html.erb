@@ -37,7 +37,7 @@ background-position:center;
         </div>
         <div class="artist-info right">
         	<h2 class="font-18 artist-name instruct-font"><%= @artist.name %></h2>
-        	<% if @artist.label? %><img src="/assets/images/record-label.png"><span class="genre-logo-nudge"><%= @artist.label_name %></span><% end %>
+        	<% if @artist.label? %><img src="/assets/images/record-label.png"><span class="genre-logo-nudge"><%= @artist.label_name %></span><% else %><% end %>
         	<span id="genre-nudge"><img src="/assets/images/genre.png"><span class="genre-logo-nudge"><%= @artist.genre %></span></span>
         	<div id="artist-bio"><%= 
         	# The || "" means, if artist.bio is false / nil, replace with an empty string.
