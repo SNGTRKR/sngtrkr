@@ -178,4 +178,7 @@ class UsersController < ApplicationController
   def manage_confirm 
     render :layout => false
   end
+    def delete_confirm 
+    render :layout => false
+  end
 end
