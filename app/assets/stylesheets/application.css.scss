@@ -230,6 +230,11 @@ input.dp-applied {
   line-height:37px;
   padding:1px 3px 5px 18px;
 }
+.confirm-o-pad
+{
+    line-height:37px;
+    padding:1px 3px 1px 18px;
+}
 #artist_search_results{
     width:60em;
     margin:3em auto;
@@ -1026,7 +1031,6 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   padding:4px 262px 166px 262px;
 }
 .delete-confirm {
-    display:none;
     width:431px;
     height:286px;
     background: url(/assets/fancybox/box-bk-431.png) no-repeat;
@@ -1128,7 +1132,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
                 padding:0 0 18px 0;
             }
             input[type=submit] {
-                margin:5px 0 0 0;
+                margin:9px 0 0 0;
                 background:none;
                 border:0;
                 color:#fff;

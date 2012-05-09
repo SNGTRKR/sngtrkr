@@ -26,6 +26,7 @@ SNGTRKRR::Application.routes.draw do
   # Use this address through AJAX to import all a user's facebook artists.
   match 'users/managing' => 'users#managing'
   match 'users/manage_confirm' => 'users#manage_confirm'
+  match 'users/delete_confirm' => 'users#delete_confirm'
   resources :users
 
   # Artist actions

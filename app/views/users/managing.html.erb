@@ -5,5 +5,11 @@
     	<div class="font-20 line-height-1-25">WARNING</div>
 		<div class="font-13 line-height-1-25">You can only administrate one artist per account. You cannot change, once your artist selection has been confirmed.</div>
     </div>
-
+<!-- <% @artists.each do |artist| 
+db_artist = Artist.find(:all, :conditions => ["fbid = ?", artist["id"]]).first
+%>
+<p><%= link_to artist["name"], manage_artist_path(:artist_id => db_artist.id) %></p>
+<p><%= artist["access_token"] %></p>
+<p><%= artist["id"] %></p>
+<% end %> -->
 

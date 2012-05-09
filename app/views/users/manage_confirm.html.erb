@@ -1,12 +1,12 @@
 <%= stylesheet_link_tag    "application", :media => "all" %>
    <div id="manage-confirm">
    	<img id="manage-confirm-logo-70" src="/assets/images/logo-70.png" />
-   	<div class="manage-confirm-txt-1 font-15">Are you sure you want to manage:</div>
+   	<div class="manage-confirm-txt-1">Are you sure you want to manage:</div>
    	<form method="post" action="change_email.php" onsubmit="" class="mcform">
 	<ul>
 	<li><input class="manage-confirm-input form-text" type="text" name="change-email" id="change-email" /></li>
-	<li class="manage-confirm-txt-2 font-15">You cannot change your choice, once confirmed.</li>
-	<li id="manage-confirm-submit-pad"><div class="o-button left font-13"><input type="submit" name="submit" value="Yes" /><span></span></div></li>
-	<div id="manage-confirm-no"><div class="o-button right font-13"><a href="javascript:parent.ncjQuery.fancybox.close();">No</a><span></span></div></div>
+	<li class="manage-confirm-txt-2">You cannot change your choice, once confirmed.</li>
+	<li id="manage-confirm-submit-pad"><div class="o-button confirm-o-pad left signika-font"><input type="submit" name="submit" value="Yes" /><span></span></div></li>
+	<div id="manage-confirm-no"><div class="o-button confirm-o-pad right signika-font"><a href="javascript:parent.ncjQuery.fancybox.close();">No</a><span></span></div></div>
 	</ul></form>
     </div>
