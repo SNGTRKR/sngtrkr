@@ -32,6 +32,7 @@ class UsersController < ApplicationController
   end
 
   def self
+    api = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
     @user = current_user
     tl = Timeline.new(current_user.id)
     @timeline = tl.user.page params[:page]
@@ -168,17 +169,25 @@ class UsersController < ApplicationController
   # This page contains a list of all the Artist page's the logged in user controls.
   def managing
     api = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
-    @artists = []
+    @manageable = []
+    @managing = []
     api.get_object("me/accounts").each do |page|
       if page["category"] == "Musician/band"
-      @artists.push page
+        page["db_id"] = Artist.where("fbid = ?", page["id"]).first.id
+        if current_user.managing.first.artist_id == page["db_id"]
+        @managing.push page
+        else
+        @manageable.push page
+        end
       end
     end
   end
-  def manage_confirm 
+
+  def manage_confirm
     render :layout => false
   end
-    def delete_confirm 
+
+  def delete_confirm
     render :layout => false
   end
 end
