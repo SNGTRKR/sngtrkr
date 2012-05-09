@@ -37,8 +37,8 @@ background-position:center;
         </div>
         <div class="artist-info right">
         	<h2 class="font-18 artist-name instruct-font"><%= @artist.name %></h2>
-        	<% if @artist.label? %><img src="/assets/images/record-label.png"><span class="genre-logo-nudge"><%= @artist.label_name %></span><% else %><% end %>
-        	<span id="genre-nudge"><img src="/assets/images/genre.png"><span class="genre-logo-nudge"><%= @artist.genre %></span></span>
+        	<span id="label-nudge"><img src="/assets/images/record-label.png"><span class="info-icon-logo-nudge"></span><%= @artist.label_name %></span>
+        	<img src="/assets/images/genre.png"><span class="info-icon-logo-nudge"><%= @artist.genre %></span>
         	<div id="artist-bio"><%= 
         	# The || "" means, if artist.bio is false / nil, replace with an empty string.
         	truncate((strip_tags @artist.bio || "" ), :length => 550) %> <strong>Continue Reading</strong></div>

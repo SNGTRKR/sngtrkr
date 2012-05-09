@@ -8,7 +8,8 @@ class ApplicationController < ActionController::Base
   #  rescue_from ActionController::UnknownAction, with: :render_404
   #  rescue_from ActiveRecord::RecordNotFound, with: :render_404
   #end
-
+  
+  
   def after_sign_in_path_for(resource)
     (session[:"user.return_to"].nil?) ? "/" : session[:"user.return_to"].to_s
   end

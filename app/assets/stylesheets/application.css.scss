@@ -508,11 +508,11 @@ body:before {/* thanks to Maleika (Kohoutec)*/
      width:365px;
      height:264px;
      margin-right:-7px;
-    #genre-nudge {
+    #label-nudge {
       position:relative;
-      left:20px;
+      padding:0 20px 0 0;
     }
-    .genre-logo-nudge {
+    .info-icon-logo-nudge {
       position:relative;
       left:3px;
       bottom:9px;
@@ -1109,7 +1109,6 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     line-height:1.25em;
 }
 #manage-confirm {
-    display:none;
     width:431px;
     height:286px;
     background: url(/assets/fancybox/box-bk-431.png) no-repeat;

@@ -25,6 +25,7 @@ SNGTRKRR::Application.routes.draw do
   match 'users/friends' => 'users#friends'
   # Use this address through AJAX to import all a user's facebook artists.
   match 'users/managing' => 'users#managing'
+  match 'users/manage_confirm' => 'users#manage_confirm'
   resources :users
 
   # Artist actions
@@ -49,7 +50,7 @@ SNGTRKRR::Application.routes.draw do
 #  end
 
 # Use this line to view error in development
-# match '*not_found', to: 'errors#error_404'
+ match '*not_found', to: 'errors#error_404'
 
 # The priority is based upon order of creation:
 # first created -> highest priority.
