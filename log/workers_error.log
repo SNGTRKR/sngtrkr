@@ -55,4 +55,12 @@ convert: Corrupt JPEG data: premature end of data segment `/var/folders/ds/3bff3
 /Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/resque-1.20.0/lib/resque/helpers.rb:5:in `<top (required)>': [DEPRECATION] MultiJson.engine is deprecated and will be removed in the next major version. Use MultiJson.adapter instead.
 /Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/resque-1.20.0/lib/resque/helpers.rb:5:in `<top (required)>': [DEPRECATION] MultiJson.engine is deprecated and will be removed in the next major version. Use MultiJson.adapter instead.
 /Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/resque-1.20.0/lib/resque/helpers.rb:5:in `<top (required)>': [DEPRECATION] MultiJson.engine is deprecated and will be removed in the next major version. Use MultiJson.adapter instead.
+<<<<<<< HEAD
 /Users/tomdallimore/Dropbox/SNGTRKR-Repo/sngtrkr/vendor/cache/ruby/1.9.1/gems/resque-1.20.0/lib/resque/helpers.rb:5:in `<top (required)>': [DEPRECATION] MultiJson.engine is deprecated and will be removed in the next major version. Use MultiJson.adapter instead.
+=======
+rake aborted!
+Connection refused - Unable to connect to Redis on 127.0.0.1:6379
+
+Tasks: TOP => resque:work
+(See full trace by running task with --trace)
+>>>>>>> 00ed0cd389da28a5cc17ae24b375c0f569b1d27b

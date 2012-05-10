@@ -26,6 +26,13 @@ class ArtistsController < ApplicationController
   # GET /artists/1.json
   def show
     @artist = Artist.find(params[:id])
+    @itunes = ItunesSearch::Base.new
+    begin
+    @itunes_artist_url = @itunes.search("term"=>@artist.name, "country" => "gb").results.first.artistViewUrl
+    rescue
+    @itunes_artist_url = nil
+    end
+    @amazon_artist = Amazon::Ecs.item_search(@artist.name, :search_index => 'Music')
     @user = current_user
     @timeline = Timeline.artist(params[:id])
     respond_to do |format|
