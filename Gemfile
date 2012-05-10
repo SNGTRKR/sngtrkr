@@ -42,9 +42,9 @@ gem 'rails_admin'
 
 
 # in production environments by default.
+gem 'compass-rails', '>= 1.0.0.rc.2'
 group :assets do
   gem 'sass-rails',   '>= 3.2.3'
-  gem 'compass-rails', '>= 1.0.0.rc.2'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer'
