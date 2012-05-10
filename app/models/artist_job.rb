@@ -15,19 +15,20 @@ class ArtistJob
           if(artist == nil)
           break
           end
-          tmp = Artist.find(:all, :conditions => ["fbid = ?",artist["id"]]).first
-          if(tmp != nil)
-            # Skip artists already in the database
-            User.find(user_id).suggest(tmp.id)
-          next
-          end
+          # TODO: DISABLE FOR PRODUCTION
+          #tmp = Artist.find(:all, :conditions => ["fbid = ?",artist["id"]]).first
+          #if(tmp != nil)
+          #  # Skip artists already in the database
+          #  User.find(user_id).suggest(tmp.id)
+          #next
+          #end
           batch_api.get_object(artist["id"])
           i=i+1
         end
       end
       results.each do |artist|
         s = Scraper.new artist["name"]
-        if s.real_artist?
+        if !s.real_artist?
         # Skip artists that last.fm does not believe are real artists.
         next
         end
