@@ -69,9 +69,11 @@ background-position:center;
 				<a href="http://www.youtube.com/<%= @artist.youtube %>" target="_blank"><img src="/assets/images/a-yt.png"></a>
 			</li>
 			<% else %><% end %>
+			<% if @artist.itunes? %>
 			<li class="social-spacing">
-				<a href="<%= @itunes_artist_url  %>" tager="_blank"><img src="/assets/images/a-it.png"></a>
+				<a href="<%= @artist.itunes  %>" tager="_blank"><img src="/assets/images/a-it.png"></a>
 			</li>
+			<% end %>
 			<li class="social-spacing"><img src="/assets/images/a-amaz.png">
 			</li>
 			<li><img src="/assets/images/a-7d.png">

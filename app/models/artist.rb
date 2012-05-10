@@ -60,6 +60,14 @@ class Artist < ActiveRecord::Base
     end
   end
 
+  def itunes?
+    if(self.itunes == "")
+    false
+    else
+    true
+    end
+  end
+
   def label?
     if(self.label_name.nil? and self.label_id.nil?)
     return false
