@@ -27,13 +27,15 @@ gem 'capistrano'
 
 # BACKGROUND TASKS
 gem 'resque'
-#gem 'resque-scheduler' , :require => 'resque_scheduler'
+
+gem "paperclip", "~> 3.0"
+
 
 # SCRAPING GEMS
 gem 'rbrainz'
-gem "paperclip", "~> 3.0"
 gem 'scrobbler'
 gem 'itunes-search'
+gem 'amazon-ecs'
 
 # ADMIN
 gem 'rails_admin'
