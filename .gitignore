@@ -3,6 +3,7 @@ tmp/cache/*
 log/development.log
 tmp/**/*
 tmp/*
+db/development.sqlite3
 doc/api
 doc/app
 *.swp
