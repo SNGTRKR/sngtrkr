@@ -1,7 +1,6 @@
 vendor/cache/*
 tmp/cache/*
 log/development.log
-db/*
 tmp/**/*
 tmp/*
 doc/api
