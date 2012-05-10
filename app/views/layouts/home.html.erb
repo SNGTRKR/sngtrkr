@@ -2,18 +2,12 @@
 <!DOCTYPE html>
 <html>
 	<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# sngtrkr: http://ogp.me/ns/fb/sngtrkr#">
-		<meta property="fb:app_id"        content="344989472205984" />
-		<meta property="og:type"          content="sngtrkr:artist" />
-		<meta property="og:url"           content="<%= yield :og_url %>" />
-		<meta property="og:title"         content="<%= yield :og_name %>" />
-		<meta property="og:description"   content="<%= yield :og_description %>" />
-		<meta property="sngtrkr:id" content="<%= yield :og_id %>" />
 		<h1><title>SNGTRKR - <%= yield :title %></title></h1>
 		<link rel="icon" type="image/ico" href="/assets/images/icon.png" >
 		<%= stylesheet_link_tag    "application", :media => "all" %>
 		<%= javascript_include_tag "application" %>
-		<%= stylesheet_link_tag "reset", "application", "facebox" %>
-  		<%= javascript_include_tag :defaults, "facebox" %>
+		<!--<%= stylesheet_link_tag "reset", "application", "facebox" %>-->
+  		<!--<%= javascript_include_tag :defaults, "facebox" %>-->
 		<%= csrf_meta_tags %>
 	</head>
 	<body>
@@ -153,46 +147,18 @@
 
 		</script>
 		-->
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$(".facebook-log").click(function() {
-					FB.login(function(response) {
-						console.log(FB.getAuthResponse().accessToken);
-						// Successfull login
-						accessToken = FB.getAuthResponse().accessToken;
-						$.ajax({
-							url : "/users/fblogin.json",
-							type : "GET",
-							data : "access_token=" + accessToken,
-						}).done(function(msg) {
-							alert("Data Saved: " + msg);
-						}).error(function(msg) {
-							console.log("Ajax error");
-						})
-					}, {
-						scope : 'email,user_likes'
-					})
-				})
-			})
-		</script>
 	</body>
 </html>
 <% elsif %>
 <!DOCTYPE html>
 <html>
 	<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# sngtrkr: http://ogp.me/ns/fb/sngtrkr#">
-		<meta property="fb:app_id"        content="344989472205984" />
-		<meta property="og:type"          content="sngtrkr:artist" />
-		<meta property="og:url"           content="<%= yield :og_url %>" />
-		<meta property="og:title"         content="<%= yield :og_name %>" />
-		<meta property="og:description"   content="<%= yield :og_description %>" />
-		<meta property="sngtrkr:id" content="<%= yield :og_id %>" />
 		<h1><title>SNGTRKR - <%= yield :title %></title></h1>
 		<link rel="icon" type="image/ico" href="/assets/images/icon.png" >
 		<%= stylesheet_link_tag    "application", :media => "all" %>
 		<%= javascript_include_tag "application" %>
-		<%= stylesheet_link_tag "reset", "application", "facebox" %>
-  		<%= javascript_include_tag :defaults, "facebox" %>
+		<!--<%= stylesheet_link_tag "reset", "application", "facebox" %>-->
+  		<!--<%= javascript_include_tag :defaults, "facebox" %>-->
 		<%= csrf_meta_tags %>
 	</head>
 	<body>
@@ -338,27 +304,6 @@
 			 });
 			 });
 			 */
-		</script>
-
-		<script type="text/javascript">
-			$(document).ready($(".facebook-log").click(function() {
-				FB.login(function(response) {
-					console.log(FB.getAuthResponse().accessToken);
-					// Successfull login
-					accessToken = FB.getAuthResponse().accessToken;
-					$.ajax({
-						url : "/users/fblogin.json",
-						type : "GET",
-						data : "access_token=" + accessToken,
-					}).done(function(msg) {
-						alert("Data Saved: " + msg);
-					}).error(function(msg) {
-						console.log("Ajax error");
-					})
-				}, {
-					scope : 'email,user_likes'
-				})
-			}))
 		</script>
 	</body>
 </html>
