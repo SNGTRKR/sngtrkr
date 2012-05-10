@@ -43,6 +43,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  def manager?
+    if self.managing.count > 0
+    true
+    else
+    false
+    end
+  end
+
   def manage(artist_id)
     m = Manage.new(:user_id => self.id, :artist_id => artist_id)
     m.save
