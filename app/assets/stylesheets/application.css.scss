@@ -2,11 +2,6 @@
 * In this file you should write your main styles. (or centralize your imports)
 * Import this file using the following HTML or equivalent:
 * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/*
- *= require_self
- *= require fancybox
- *= require_tree .
- */
 @import "compass/reset";
 @import "compass/css3/border-radius";
 @import "compass/css3/opacity";
@@ -1074,7 +1069,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
       #delete-account-cancel {
         position:absolute;
         left:247px;
-        top:226px;
+        top:227px;
         font-size:1.1em;
       }
 }
@@ -1116,6 +1111,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     width:431px;
     height:286px;
     background: url(/assets/fancybox/box-bk-431.png) no-repeat;
+    
     @include border-radius(8px);
          .mcform {
             position:relative;
@@ -1147,6 +1143,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
           position:relative;
           left:101px;
           top:32px;
+          width:233px;
         }
         .manage-confirm-txt-1 {
           position:relative;
