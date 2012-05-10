@@ -13,7 +13,6 @@
 //= require jquery.min
 //= require jquery_ujs
 //= require jquery
-//= require fancybox
 ncjQuery = jQuery.noConflict();
 ncjQuery(document).ready(function() {
 	ncjQuery(".iframe").fancybox({
