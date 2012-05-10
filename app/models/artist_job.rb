@@ -53,6 +53,12 @@ class ArtistJob
         a.youtube = ""
         a.soundcloud =""
         a.website = ""
+        itunes = ItunesSearch::Base.new
+        begin
+          a.itunes = itunes.search("term"=>@artist.name, "country" => "gb").results.first.artistViewUrl
+        rescue
+          a.itunes = ""
+        end
         websites.each do |website|
           if(website.length < 5)
           next
