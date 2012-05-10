@@ -1,6 +1,6 @@
 class ArtistAddItunes < ActiveRecord::Migration
   def up
-    alter_table :artists do |t|
+    change_table :artists do |t|
       t.string :itunes
     end
   end
