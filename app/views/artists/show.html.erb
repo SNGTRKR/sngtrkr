@@ -69,7 +69,8 @@ background-position:center;
 				<a href="http://www.youtube.com/<%= @artist.youtube %>" target="_blank"><img src="/assets/images/a-yt.png"></a>
 			</li>
 			<% else %><% end %>
-			<li class="social-spacing"><a href="<%= @itunes_artist_url  %>" tager="_blank"><img src="/assets/images/a-it.png"></a>
+			<li class="social-spacing">
+				<a href="<%= @itunes_artist_url  %>" tager="_blank"><img src="/assets/images/a-it.png"></a>
 			</li>
 			<li class="social-spacing"><img src="/assets/images/a-amaz.png">
 			</li>
@@ -77,8 +78,17 @@ background-position:center;
 			</li>
 		</ul>
 	</div>
+	
+	<!-- AMAZON RELEASE INFORMATION
+	<% @amazon_artist.items.each do |item| %>
 	<p>
+		<% item_attributes = item.get_element('ItemAttributes') %>
+		<%= item_attributes.get('Title') %>
 	</p>
+	<% end %>
+	-->
+	
+	
 	<!-- <p id="notice">
 	=======
 	</div>
