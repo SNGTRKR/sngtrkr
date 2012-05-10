@@ -38,9 +38,9 @@ class Scraper
   def self.real_artist?
     begin
       if @artist_info["lfm"]["artist"]["bio"]["summary"] =~ /is not an artist/
-      true
-      else
       false
+      else
+      true
       end
     rescue
     false
