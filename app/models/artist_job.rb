@@ -32,7 +32,11 @@ class ArtistJob
         # Skip artists that last.fm does not believe are real artists.
         next
         end
-        a = Artist.new()
+        #a = Artist.new()
+        a = Artist.where("fbid = ?",artist["id"]).first;
+        if a == []
+          a = Artist.new()
+        end
         a.name = s.real_name
         a.fbid = artist["id"]
         details = graph.get_object(artist["id"])
@@ -56,7 +60,7 @@ class ArtistJob
         a.website = ""
         itunes = ItunesSearch::Base.new
         begin
-          a.itunes = itunes.search("term"=>@artist.name, "country" => "gb").results.first.artistViewUrl
+          a.itunes = itunes.search("term"=>a.name, "country" => "gb").results.first.artistViewUrl
         rescue
           a.itunes = ""
         end
