@@ -3,5 +3,5 @@
 	<h1>Friends test page</h1>
 
 <% @app_friends.each do |friend| %>
-<%= url_for friend.name friend %>
+<%= link_to (friend.first_name + " " + friend.last_name), friend %>
 <% end %>

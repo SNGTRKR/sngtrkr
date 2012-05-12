@@ -67,5 +67,9 @@ class Scraper
   def self.importFbLikes access_token, user_id
     Resque.enqueue(ArtistJob,access_token,user_id)
   end
+  
+  def self.find_release_info url
+    # Will eventually take an iTunes / 7digital / Amazon url and get information on the release automatically.
+  end
 
 end
