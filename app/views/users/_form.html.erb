@@ -1,49 +1,124 @@
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<div id="p-settings">
+	<div id="change-email">
+		<div class="font-15">
+			<strong>Change Email</strong>
+		</div>
+		<br/>
+		Your current email address is <strong><%= @user.email %></strong></ENTER>.
+		<br/>
+		<br/>
+		<%= form_for(@user) do |f| %>
+		<% if @user.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.text_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :email_frequency %><br />
-    <%= f.number_field :email_frequency %>
-  </div>
-  <div class="field">
-    <%= f.label :last_email %><br />
-    <%= f.datetime_select :last_email %>
-  </div>
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
-  </div>
-  <div class="field">
-    <%= f.label :role %><br />
-    <%= f.number_field :role %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+			<ul>
+				<% @user.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+		<ul>
+			<li>
+				<%= f.label :email %>
+				<%= f.text_field :email %>
+			</li>
+			<li id="change-email-submit-pad">
+				<div class="o-button left p-settings-o-pad signika-font">
+					<%= f.submit "Change Email" %>
+					<span></span>
+				</div>
+			</li>
+		</ul></form>
+	</div>
+	<div class="clear"></div>
+	<div id="email-notify">
+		<div class="font-15">
+			<strong>Email Notifications</strong>
+		</div>
+		<br/>
+		You can change how often you receive emails for new releases, from the options provided below.
+		The default setting is ‘Weekly’.
+		<br/>
+		<br/>
+		<!--<form method="post" action="email_notify.php" onsubmit="" class="enform">-->
+		<ul>
+			<li class="radio-pad">
+				<%= f.radio_button :email_frequency, :always %>
+				<%= f.label :always %>
+			</li>
+			<li class="radio-pad">
+				<%= f.radio_button :email_frequency, :daily %>
+				<%= f.label :daily %>
+			</li>
+			<li class="radio-pad">
+				<%= f.radio_button :email_frequency, :weekly %>
+				<%= f.label :weekly %>
+			</li>
+			<li class="radio-pad">
+				<%= f.radio_button :email_frequency, :fortnightly %>
+				<%= f.label :fortnightly %>
+			</li>
+			<li>
+				<!-- left so you have a frame of reference for what it used to be	<input class="form-text radio" type="radio" name="e-notify" id="monthly" />
+				<label for="monthly">Monthly</label>-->
+				<%= f.radio_button :email_frequency, :monthly %>
+				<%= f.label :monthly %>
+			</li>
+			<div class="clear"></div>
+			<div id="save-settings-submit-pad">
+				<div class="o-button left p-settings-o-pad signika-font">
+					<input type="submit" name="submit" value="Save Email Settings" />
+					<span></span>
+				</div>
+			</div>
+		</ul>
+		</form>
+	</div>
+	<div class="clear"></div>
+	<div id="change-password">
+		<div class="font-15">
+			<strong>Change Password</strong>
+		</div>
+		<br/>
+		<form method="post" action="change_password.php" onsubmit="" class="chpform">
+			<ul>
+				<li>
+					<label for="current-pass">Current Password</label>
+					<input class="form-text" type="text" name="current-pass" id="current-pass" />
+				</li>
+				<br/>
+				<li>
+					<label for="new-passs">New Password</label>
+					<input class="form-text" type="text" name="new-pass" id="new-pass" />
+				</li>
+				<li>
+					<label for="confirm-pass">Confirm</label>
+					<input class="form-text" type="text" name="confirm-pass" id="confirm-pass" />
+				</li>
+				<li id="change-password-submit-pad">
+					<div class="o-button left p-settings-o-pad signika-font">
+						<input type="submit" name="submit" value="Change Password" />
+						<span></span>
+					</div>
+				</li>
+			</ul>
+			<% end %>
+	</div>
+	<div class="clear"></div>
+	<div id="delete-account">
+		<div class="font-15">
+			<strong>Delete Your Account</strong>
+		</div>
+		<br/>
+		Your account, tracked artists and all personal details will be permanently removed.
+		<div id="delete-submit-pad">
+			<div class="o-button del-account-o-pad left signika-font">
+				<a href="/users/delete_confirm" class="iframe">Delete Account</a><span></span>
+			</div>
+		</div>
+	</div>
+</div>

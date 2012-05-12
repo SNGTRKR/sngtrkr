@@ -13,7 +13,7 @@ SNGTRKRR::Application.routes.draw do
   match '/privacy' => "Pages#privacy"
   match '/help' => "Pages#help"
   match '/recommended' => "Pages#recommended"
-  
+
   
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin' # Feel free to change '/admin' to any namespace you need.
 
