@@ -45,6 +45,7 @@ class UsersController < ApplicationController
 
   def friends
     @app_friends = session["friends"]
+    @app_friends |= []
   end
 
   # GET /users/new
