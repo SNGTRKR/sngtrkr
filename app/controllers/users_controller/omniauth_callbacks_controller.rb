@@ -4,6 +4,21 @@ class UsersController::OmniauthCallbacksController < Devise::OmniauthCallbacksCo
     access_token = request.env["omniauth.auth"]
     @user = User.find_for_facebook_oauth(access_token, current_user)
     session["facebook_access_token"] = access_token
+    api = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
+    friends = api.get_connections("me","friends/?fields=installed")
+    app_friends = []
+    app_friend_ids = []
+    friends.each do |friend|
+      if friend["installed"]
+        u = User.where("fbid = ? ","#{friend["id"]}").first
+        if !u.nil?
+        app_friends << u
+        app_friend_ids << u.fbid
+        end
+      end
+    end
+    session["friends"] = app_friends
+    session["friend_ids"] = app_friend_ids
     if @user.persisted?
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Facebook"
       sign_in_and_redirect @user, :event => :authentication
