@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
-  before_filter :load, :only => [:manage, :unmanage, :follow, :unfollow, :suggest, :unsuggest, :following?, :import_artists]
+  before_filter :load, :only => [:manage, :unmanage, :follow, :unfollow, :suggest, :unsuggest, :following?, :import_artists,:friends]
   def load
     @user = current_user
   end
@@ -14,7 +14,6 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @users }
@@ -24,10 +23,13 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(params[:id])
+    @friend = User.find(params[:id])
+    if !current_user.friends_with? @friend, session["friend_ids"]
+      flash[:error] = "You do not have permissions to view this user"
+      return redirect_to "/"
+    end
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render :json => @user }
     end
   end
 
@@ -42,19 +44,7 @@ class UsersController < ApplicationController
   end
 
   def friends
-    api = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
-    @user = current_user
-    friends = api.get_connections("me","friends/?fields=installed")
-    @app_friends = []
-    friends.each do |friend|
-      if friend["installed"]
-        u = User.where("fbid = ? ","#{friend["id"]}").first
-        if !u.nil?
-        @app_friends.push u
-        end
-      end
-    end
-
+    @app_friends = session["friends"]
   end
 
   # GET /users/new

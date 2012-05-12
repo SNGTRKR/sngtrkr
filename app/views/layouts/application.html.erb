@@ -13,7 +13,7 @@
 		<%= stylesheet_link_tag    "application", :media => "all" %>
 		<%= javascript_include_tag "application" %>
 		<link rel="stylesheet" type="text/css" href="/assets/fancy-box/jquery.fancybox.css" media="screen" />
-        <script type="text/javascript" src="/assets/fancy-box/jquery.fancybox.js"></script>
+		<script type="text/javascript" src="/assets/fancy-box/jquery.fancybox.js"></script>
 		<%= csrf_meta_tags %>
 	</head>
 	<body>
@@ -50,6 +50,16 @@
 					</div>
 
 				</div>
+				<% if flash[:notice] %>
+				<p class="notice">
+					<%= flash[:notice] %>
+				</p>
+				<% end %>
+				<% if flash[:error] %>
+				<p class="error">
+					<%= flash[:error] %>
+				</p>
+				<% end %>
 				<%= yield %>
 			</div>
 		</div></div>
@@ -77,72 +87,72 @@
 				</div>
 			</div>
 		</div>
-<!--		<script type='text/javascript'>
-			window.addEvent('load', function() {
-				new DatePicker('.date-pick', {
-					pickerClass : 'datepicker_jqui',
-					debug : false
-				});
-			});
+		<!--		<script type='text/javascript'>
+		window.addEvent('load', function() {
+		new DatePicker('.date-pick', {
+		pickerClass : 'datepicker_jqui',
+		debug : false
+		});
+		});
 
 		</script>
 		<script type="text/javascript">
-			ncjQuery(document).ready(function() {
-				ncjQuery(".cheform").ajaxForm({
-					success : function(responseText) {
-						ncjQuery.fancybox.open({
-							href : '/admin/change-email.php',
-							type : 'iframe',
-							width : 431,
-							height : 286,
-							autoSize : false,
-							closeBtn : false,
-						});
-					}
-				});
-			});
-			ncjQuery(document).ready(function() {
-				ncjQuery(".enform").ajaxForm({
-					success : function(responseText) {
-						ncjQuery.fancybox.open({
-							href : '/admin/email-notify.php',
-							type : 'iframe',
-							width : 431,
-							height : 286,
-							autoSize : false,
-							closeBtn : false,
-						});
-					}
-				});
-			});
-			ncjQuery(document).ready(function() {
-				ncjQuery(".chpform").ajaxForm({
-					success : function(responseText) {
-						ncjQuery.fancybox.open({
-							href : '/admin/change-password.php',
-							type : 'iframe',
-							width : 431,
-							height : 286,
-							autoSize : false,
-							closeBtn : false,
-						});
-					}
-				});
-			});
-			ncjQuery(document).ready(function() {
-				ncjQuery(".rform").ajaxForm({
-					success : function(responseText) {
-						ncjQuery.fancybox.open({
-							href : '/admin/add-release.php',
-							type : 'iframe',
-							width : 431,
-							height : 286,
-							autoSize : false,
-							closeBtn : false,
-						});
-					}
-				});
-			});
+		ncjQuery(document).ready(function() {
+		ncjQuery(".cheform").ajaxForm({
+		success : function(responseText) {
+		ncjQuery.fancybox.open({
+		href : '/admin/change-email.php',
+		type : 'iframe',
+		width : 431,
+		height : 286,
+		autoSize : false,
+		closeBtn : false,
+		});
+		}
+		});
+		});
+		ncjQuery(document).ready(function() {
+		ncjQuery(".enform").ajaxForm({
+		success : function(responseText) {
+		ncjQuery.fancybox.open({
+		href : '/admin/email-notify.php',
+		type : 'iframe',
+		width : 431,
+		height : 286,
+		autoSize : false,
+		closeBtn : false,
+		});
+		}
+		});
+		});
+		ncjQuery(document).ready(function() {
+		ncjQuery(".chpform").ajaxForm({
+		success : function(responseText) {
+		ncjQuery.fancybox.open({
+		href : '/admin/change-password.php',
+		type : 'iframe',
+		width : 431,
+		height : 286,
+		autoSize : false,
+		closeBtn : false,
+		});
+		}
+		});
+		});
+		ncjQuery(document).ready(function() {
+		ncjQuery(".rform").ajaxForm({
+		success : function(responseText) {
+		ncjQuery.fancybox.open({
+		href : '/admin/add-release.php',
+		type : 'iframe',
+		width : 431,
+		height : 286,
+		autoSize : false,
+		closeBtn : false,
+		});
+		}
+		});
+		});
 
 		</script> -->
 	</body>

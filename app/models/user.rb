@@ -35,6 +35,14 @@ class User < ActiveRecord::Base
       end
     end
   end
+  
+  def friends_with? user, friends
+    if friends.include? user.fbid 
+      true
+    else
+      false
+    end
+  end
 
   def manager?
     if self.managing.count > 0
