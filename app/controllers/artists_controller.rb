@@ -1,6 +1,9 @@
 class ArtistsController < ApplicationController
   # GET /artists
   # GET /artists.json
+
+  before_filter :authenticate_user!, :except => [:show]
+
   def index
     @artists = Artist.search(params[:search])
     if(params[:search] == nil)
