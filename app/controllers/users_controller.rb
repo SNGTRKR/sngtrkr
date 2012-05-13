@@ -139,7 +139,11 @@ class UsersController < ApplicationController
     if Rails.env.production?
       api = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
       artist = Artist.find(params[:artist_id]);
+      begin
       api.put_connections("me", "sngtrkr:track", :artist => url_for(artist))
+      rescue 
+      logger.warning "Failed to track #{artist.name} for #{@user.id}"
+      end
     end
     respond_to do |format|
       format.html { redir :artist_id }
