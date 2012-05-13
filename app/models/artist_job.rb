@@ -81,9 +81,12 @@ class ArtistJob
         image = s.lastFmArtistImage
         if image != false
           require 'open-uri'
-          require 'net/http'
-          file = open(image)
-        a.image = file
+          io = open(URI.escape(image))
+          if io
+            def io.original_filename; base_uri.path.split('/').last; end
+            io.original_filename.blank? ? nil : io
+            a.image = io
+          end
         end
         a.save
         User.find(user_id).suggest a.id
