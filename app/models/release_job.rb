@@ -25,13 +25,8 @@ class ReleaseJob
     releases.each do |release|
       r = Release.where("sd_id = ?",release["id"]).first
       if(r == [])
-      r = Release.new
+        r = Release.new
       end
-
-      require 'open-uri'
-      require 'net/http'
-      file = open release["image"]
-
       r.artist_id = artist_id
       r.sd_id = release["id"]
       r.name = release["title"]
@@ -39,7 +34,13 @@ class ReleaseJob
       r.date = release["releaseDate"]
       r.sdigital = release["url"]
       r.scraped = 1
-      r.image = file
+      require 'open-uri'
+      io = open(URI.escape(release["image"]))
+      if io
+        def io.original_filename; base_uri.path.split('/').last; end
+        io.original_filename.blank? ? nil : io
+      r.image = io
+      end
 
       r.save
     # r.rls_type = release["type"] # Single, Album
