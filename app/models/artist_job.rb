@@ -1,6 +1,7 @@
 class ArtistJob
   @queue = :artistjob
   def self.perform access_token, user_id
+    require 'open-uri'
     graph = Koala::Facebook::API.new(access_token)
     music = graph.get_connections("me", "music")
     i = 0
@@ -34,7 +35,7 @@ class ArtistJob
         end
         #a = Artist.new()
         a = Artist.where("fbid = ?",artist["id"]).first;
-        if a == []
+        if a.nil?
           a = Artist.new()
         end
         a.name = s.real_name
@@ -80,7 +81,6 @@ class ArtistJob
         end
         image = s.lastFmArtistImage
         if image != false
-          require 'open-uri'
           io = open(URI.escape(image))
           if io
             def io.original_filename; base_uri.path.split('/').last; end
