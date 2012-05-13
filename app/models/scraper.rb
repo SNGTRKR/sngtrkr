@@ -11,11 +11,6 @@ class Scraper
     artist = MusicBrainz::Webservice::Query.new.get_artists(search).to_collection[0]
   end
 
-  # Fetches an artist on 7digital and adds all their releases to the database.
-  def self.getReleases artist_id
-    Resque.enqueue(ReleaseJob, artist_id)
-  end
-
   def self.new artist_name
     search = URI.encode artist_name
     @artist_info = Hash.from_xml( Net::HTTP.get( URI.parse("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=#{search}&api_key=6541dc514e866d40539bfe4eddde211c&autocorrect")))
@@ -57,7 +52,7 @@ class Scraper
 
   def self.bio
     begin
-      #ActionView::Helpers::SanitizeHelper.strip_tags(         )
+    #ActionView::Helpers::SanitizeHelper.strip_tags(         )
       @artist_info["lfm"]["artist"]["bio"]["summary"].to_s
     rescue
     false
@@ -67,7 +62,24 @@ class Scraper
   def self.importFbLikes access_token, user_id
     Resque.enqueue(ArtistJob,access_token,user_id)
   end
-  
+
+  def self.artist_sevendigital artist_name
+    xml =  Hash.from_xml Net::HTTP.get( URI.parse("http://api.7digital.com/1.2/artist/search?q=#{URI.escape(artist_name)}&sort=score%20desc&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB"))
+    results = xml["response"]["searchResults"]["searchResult"]
+    # Necessary to still return an ID when we have multiple artist possibilities (picks first artist)
+    if results.kind_of?(Array)
+    results = results[0]
+    end
+    begin
+      id = results["artist"]["id"]
+      url = results["artist"]["url"]
+      return [id,url]
+    rescue
+      logger.error("7digital for ID of '#{artist_name}'")
+    return nil
+    end
+  end
+
   def self.find_release_info url
     # Will eventually take an iTunes / 7digital / Amazon url and get information on the release automatically.
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120510230241) do
+ActiveRecord::Schema.define(:version => 20120513211059) do
 
   create_table "artists", :force => true do |t|
     t.string   "name"
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(:version => 20120510230241) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.string   "itunes"
+    t.text     "sdid"
+    t.text     "sd"
   end
 
   create_table "delayed_jobs", :force => true do |t|

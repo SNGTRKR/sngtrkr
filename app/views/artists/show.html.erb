@@ -37,8 +37,12 @@ background-position:center;
 		</div>
 		<div class="artist-info right">
 			<h2 class="font-18 artist-name instruct-font"><%= @artist.name %></h2>
+			<% if @artist.label? %>
 			<span id="label-nudge"><img src="/assets/images/record-label.png"><span class="info-icon-logo-nudge"><%= @artist.label_name %></span></span>
+			<% end %>
+			<% if !@artist.genre.blank? %>
 			<img src="/assets/images/genre.png"><span class="info-icon-logo-nudge"><%= @artist.genre %></span>
+			<% end %>
 			<div id="artist-bio">
 				<%=
  # The || "" means, if artist.bio is false / nil, replace with an empty string.
@@ -74,10 +78,14 @@ background-position:center;
 				<a href="<%= @artist.itunes  %>" tager="_blank"><img src="/assets/images/a-it.png"></a>
 			</li>
 			<% end %>
+			<!--
 			<li class="social-spacing"><img src="/assets/images/a-amaz.png">
 			</li>
-			<li><img src="/assets/images/a-7d.png">
+			-->
+			<% if @artist.sdigital? %>
+			<li><a href="<%= @artist.sd %>"><img src="/assets/images/a-7d.png"></a>
 			</li>
+			<% end %>
 		</ul>
 	</div>
 	

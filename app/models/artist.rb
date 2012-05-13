@@ -26,14 +26,14 @@ class Artist < ActiveRecord::Base
 
   def self.search(search)
     if search
-      where("name LIKE ?","%#{search}%").page
+      where("name LIKE ?",search).page
     else
     self.page.all
     end
   end
 
   def managed?
-    if(Manage.where("artist_id = ?", "#{self.id}").empty?)
+    if(Manage.where("artist_id = ?",self.id).empty?)
     return false
     else
     return true
@@ -41,11 +41,11 @@ class Artist < ActiveRecord::Base
   end
 
   def followers
-    Follow.where("artist_id = ?", "#{self.id}").count
+    Follow.where("artist_id = ?",self.id).count
   end
 
   def youtube?
-    if(self.youtube == "")
+    if(self.youtube.blank?)
     false
     else
     true
@@ -53,15 +53,23 @@ class Artist < ActiveRecord::Base
   end
 
   def soundcloud?
-    if(self.soundcloud == "")
+    if(self.soundcloud.blank?)
     false
     else
     true
     end
   end
 
+  def sdigital?
+    if(self.sdid.blank?)
+    false
+    else
+    true
+    end
+  end
+  
   def itunes?
-    if(self.itunes == "")
+    if(self.itunes.blank?)
     false
     else
     true
@@ -69,7 +77,7 @@ class Artist < ActiveRecord::Base
   end
 
   def label?
-    if(self.label_name.nil? and self.label_id.nil?)
+    if(self.label_name.blank? and self.label_id.blank?)
     return false
     else
     return true
@@ -77,7 +85,7 @@ class Artist < ActiveRecord::Base
   end
 
   def twitter?
-    if(self.twitter == "")
+    if(self.twitter.blank?)
     false
     else
     true
@@ -85,7 +93,7 @@ class Artist < ActiveRecord::Base
   end
 
   def website?
-    if(self.website == "")
+    if(self.website.blank?)
     false
     else
     true

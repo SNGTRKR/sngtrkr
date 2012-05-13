@@ -18,7 +18,7 @@ class ArtistJob
           end
           # TODO: DISABLE FOR PRODUCTION
           tmp = Artist.where("fbid = ?",artist["id"]).first
-          if !tmp.nil? and rails_env.production?
+          if !tmp.nil? and Rails.env.production?
             # Skip artists already in the database
             User.find(user_id).suggest(tmp.id)
           next
@@ -37,7 +37,7 @@ class ArtistJob
         a = Artist.where("fbid = ?",artist["id"]).first;
         if a.nil?
           a = Artist.new()
-        elsif rails_env.production?
+        elsif Rails.env.production?
         next
         end
         a.name = s.real_name
@@ -57,16 +57,14 @@ class ArtistJob
         else
           websites = Array("");
         end
-        a.twitter = ""
-        a.youtube = ""
-        a.soundcloud =""
-        a.website = ""
         itunes = ItunesSearch::Base.new
         begin
           a.itunes = itunes.search("term"=>a.name, "country" => "gb").results.first.artistViewUrl
         rescue
-          a.itunes = ""
         end
+        sd_info = Scraper.artist_sevendigital a.name
+        a.sdid = sd_info[0]
+        a.sd = sd_info[1]
         websites.each do |website|
           if(website.length < 5)
           next
@@ -92,8 +90,8 @@ class ArtistJob
         end
         a.save
         User.find(user_id).suggest a.id
-        if a.id != nil
-          Scraper.getReleases a.id
+        if !a.sdid.nil?
+          Resque.enqueue(ReleaseJob, a)
         end
       end
       if Rails.env.development?
