@@ -75,7 +75,7 @@ class Scraper
       url = results["artist"]["url"]
       return [id,url]
     rescue
-      logger.error("7digital for ID of '#{artist_name}'")
+      Rails.logger.error("7digital for ID of '#{artist_name}'")
     return nil
     end
   end

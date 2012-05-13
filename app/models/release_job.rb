@@ -7,7 +7,7 @@ class ReleaseJob
       releases =  Hash.from_xml( Net::HTTP.get( URI.parse(
       "http://api.7digital.com/1.2/artist/releases?artistId=#{artist.sdid}&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB&imageSize=350")))["response"]["releases"]["release"]
     rescue
-      Rails.logger.error("7digital scrape failed for release by '#{search}'")
+      Rails.logger.error("7digital scrape failed for release")
     return false
     end
     releases.each do |release|

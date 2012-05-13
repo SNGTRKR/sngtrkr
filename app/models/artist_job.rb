@@ -28,7 +28,12 @@ class ArtistJob
         end
       end
       results.each do |artist|
-        s = Scraper.new artist["name"]
+        begin
+          s = Scraper.new artist["name"]
+        rescue
+        # Basically checks that we actually have a name for this artist.
+        next
+        end
         if !s.real_artist?
         # Skip artists that last.fm does not believe are real artists.
         next
@@ -63,8 +68,10 @@ class ArtistJob
         rescue
         end
         sd_info = Scraper.artist_sevendigital a.name
+        if !sd_info.nil?
         a.sdid = sd_info[0]
         a.sd = sd_info[1]
+        end
         websites.each do |website|
           if(website.length < 5)
           next
