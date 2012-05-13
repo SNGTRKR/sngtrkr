@@ -2,6 +2,7 @@ class ReleaseJob
   @queue = :releasejob
   @@sevendigital_apikey = "7dufgm34849u"
   def self.perform artist_id
+    require 'open-uri'
     search = Artist.find(artist_id).name
     xml =  Hash.from_xml Net::HTTP.get( URI.parse("http://api.7digital.com/1.2/artist/search?q=#{URI.escape(search)}&sort=score%20desc&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB"))
     results = xml["response"]["searchResults"]["searchResult"]
@@ -24,7 +25,7 @@ class ReleaseJob
     end
     releases.each do |release|
       r = Release.where("sd_id = ?",release["id"]).first
-      if(r == [])
+      if r.nil?
         r = Release.new
       end
       r.artist_id = artist_id
@@ -34,17 +35,13 @@ class ReleaseJob
       r.date = release["releaseDate"]
       r.sdigital = release["url"]
       r.scraped = 1
-      require 'open-uri'
       io = open(URI.escape(release["image"]))
       if io
         def io.original_filename; base_uri.path.split('/').last; end
         io.original_filename.blank? ? nil : io
       r.image = io
       end
-
       r.save
-    # r.rls_type = release["type"] # Single, Album
-
     end
   end
 end
