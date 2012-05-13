@@ -27,7 +27,10 @@ class ReleaseJob
       r = Release.where("sd_id = ?",release["id"]).first
       if r.nil?
         r = Release.new
+      elsif rails_env.production?
+      next
       end
+
       r.artist_id = artist_id
       r.sd_id = release["id"]
       r.name = release["title"]

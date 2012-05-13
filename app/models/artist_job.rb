@@ -17,12 +17,12 @@ class ArtistJob
           break
           end
           # TODO: DISABLE FOR PRODUCTION
-          #tmp = Artist.find(:all, :conditions => ["fbid = ?",artist["id"]]).first
-          #if(tmp != nil)
-          #  # Skip artists already in the database
-          #  User.find(user_id).suggest(tmp.id)
-          #next
-          #end
+          tmp = Artist.where("fbid = ?",artist["id"]).first
+          if !tmp.nil? and rails_env.production?
+            # Skip artists already in the database
+            User.find(user_id).suggest(tmp.id)
+          next
+          end
           batch_api.get_object(artist["id"])
           i=i+1
         end
@@ -37,6 +37,8 @@ class ArtistJob
         a = Artist.where("fbid = ?",artist["id"]).first;
         if a.nil?
           a = Artist.new()
+        elsif rails_env.production?
+        next
         end
         a.name = s.real_name
         a.fbid = artist["id"]
@@ -85,7 +87,7 @@ class ArtistJob
           if io
             def io.original_filename; base_uri.path.split('/').last; end
             io.original_filename.blank? ? nil : io
-            a.image = io
+          a.image = io
           end
         end
         a.save
