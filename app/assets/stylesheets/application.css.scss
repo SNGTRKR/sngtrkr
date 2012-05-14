@@ -1016,6 +1016,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
         height:25px;
         width:208px;
         background:$orange;
+        color:#fff;
         @include border-radius(8px);
         -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
         -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
