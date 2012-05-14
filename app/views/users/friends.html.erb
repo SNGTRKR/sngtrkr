@@ -5,12 +5,12 @@
 	<div class="friends-search"><input type="text" id="filter"/><img class="white-search-25 right" src="/assets/images/white-search.png"/></div>
 	<ul>
 		<% @app_friends.each do |friend| %>
-		<li class="left"><div class="friends-image"></div><div class="friends-info"><span class="font-13 name"><strong><%= link_to (friend.first_name + " " + friend.last_name), friend %></strong></span><br/>Bristol, UK<br/><span class="orange-txt instruct-font"><%= @user.following.count %> TRKINGS</span></div></li>
-		<li class="left"><div class="friends-image"></div><div class="friends-info"><span class="font-13 name"><strong>Bob Higgins</strong></span><br/>Bristol, UK<br/><span class="orange-txt instruct-font">83 TRKINGS</span></div></li>
-		<li class="left"><div class="friends-image"></div><div class="friends-info"><span class="font-13 name"><strong>Jerry Charlston</strong></span><br/>Bristol, UK<br/><span class="orange-txt instruct-font">239 TRKINGS</span></div></li>
-		<li class="left"><div class="friends-image"></div><div class="friends-info"><span class="font-13 name"><strong>Celena Gomez</strong></span><br/>Bristol, UK<br/><span class="orange-txt instruct-font">12 TRKINGS</span></div></li>
-		<li class="left"><div class="friends-image"></div><div class="friends-info"><span class="font-13 name"><strong>Harry Tubor</strong></span><br/>Bristol, UK<br/><span class="orange-txt instruct-font">93 TRKINGS</span></div></li>
-		<li class="left"><div class="friends-image"></div><div class="friends-info"><span class="font-13 name"><strong>Sam Hartwright</strong></span><br/>Bristol, UK<br/><span class="orange-txt instruct-font">834 TRKINGS</span></div></li>
+		<li class="left"><div class="friends-image"></div><div class="friends-info"><strong><%= link_to(friend) do %><span class="font-13 name"><%= friend.first_name + " " + friend.last_name %></span><% end %></strong><br/>Bristol, UK<br/><span class="orange-txt instruct-font"><%= @user.following.count %> TRKINGS</span></div></li>
+		<li class="left"><div class="friends-image"></div><div class="friends-info"><strong><span class="font-13 name">Jessica Jane Moffatt</span></strong><br/>Bristol, UK<br/><span class="orange-txt instruct-font">83 TRKINGS</span></div></li>
+		<li class="left"><div class="friends-image"></div><div class="friends-info"><strong><span class="font-13 name">Jerry Charlston</span></strong><br/>Bristol, UK<br/><span class="orange-txt instruct-font">239 TRKINGS</span></div></li>
+		<li class="left"><div class="friends-image"></div><div class="friends-info"><strong><span class="font-13 name">Celena Gomez</span></strong><br/>Bristol, UK<br/><span class="orange-txt instruct-font">12 TRKINGS</span></div></li>
+		<li class="left"><div class="friends-image"></div><div class="friends-info"><strong><span class="font-13 name">Harry Tubor</span></strong><br/>Bristol, UK<br/><span class="orange-txt instruct-font">93 TRKINGS</span></div></li>
+		<li class="left"><div class="friends-image"></div><div class="friends-info"><strong><span class="font-13 name">Sam Hartwright</span></strong><br/>Bristol, UK<br/><span class="orange-txt instruct-font">834 TRKINGS</span></div></li>
 </ul> 
 
 	</div>
