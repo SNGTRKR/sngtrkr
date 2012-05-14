@@ -964,6 +964,9 @@ body:before {/* thanks to Maleika (Kohoutec)*/
       left:0px;
       height:75px;
       width:75px;
+      border-style:solid;
+      border-right-width:3px;
+      border-right-color:$orange;
   }
      .artist-search-info {
        position:relative;
@@ -988,6 +991,79 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   }
 }
 }
+#friends-list {
+  position:relative;
+  width:667px;
+  top:14px;
+  ul {
+    list-style-type:none;
+    margin-left:-20px;
+    position:relative;
+    li {
+      width:199px;
+      height:38px;
+      padding:26px 10px 26px 0px;
+      margin:0 0 20px 20px;
+      background:rgba(255,255,255,0.75);
+      @include border-radius(8px);
+      -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+      -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+      box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+      
+    }
+    .friends-image {
+      position:relative;
+      @include border-top-left-radius(8px);
+      @include border-bottom-left-radius(8px);
+      bottom:26px;
+      left:0px;
+      height:90px;
+      width:80px;
+      border-style:solid;
+      border-right-width:3px;
+      border-right-color:$orange;
+      background:#000;
+    }
+    .friends-info {
+      position:relative;
+      left:92px;
+      bottom:96px;
+      width:105px;
+    }
+    a {
+      color:#000;
+    }
+    a:hover {
+      color:#000;
+    }
+  }
+        .friends-search {
+        position:absolute;
+        left:459px;
+        bottom:21px;
+        height:25px;
+        width:208px;
+        background:$orange;
+        @include border-radius(8px);
+        -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
+        -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
+        box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
+        input{
+            background:transparent;
+            padding:0.6em;
+            border:none;
+            width:10em;
+        }
+        input:focus{
+            outline:none;
+        }
+    }
+}
+        .white-search-25 {
+        width:25px;
+        height:25px;
+        margin-right:5px;
+    }
 } /* END OF CONTENT */
 .content-pad-bottom {
     padding-bottom:166px;
