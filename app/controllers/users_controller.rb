@@ -36,6 +36,10 @@ class UsersController < ApplicationController
   def self
     api = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
     @user = current_user
+    @following = []
+    @user.following.each do |artist|
+      @following << Artist.find(artist.artist_id)
+    end
     tl = Timeline.new(current_user.id)
     @timeline = tl.user.page params[:page]
     respond_to do |format|
