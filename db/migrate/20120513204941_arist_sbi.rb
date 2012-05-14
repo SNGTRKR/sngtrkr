@@ -1,6 +1,6 @@
 class AristSbi < ActiveRecord::Migration
   def up
-    alter_table :artists do |t|
+    change_table :artists do |t|
       t.text :sdid
     end
   end
