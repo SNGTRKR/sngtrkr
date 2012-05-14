@@ -1015,8 +1015,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
         bottom:21px;
         height:25px;
         width:208px;
-        background:$orange;
-        color:#fff;
+        background:$orange; 
         @include border-radius(8px);
         -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
         -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
@@ -1026,6 +1025,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
             padding:0.6em;
             border:none;
             width:10em;
+            color:#fff;
         }
         input:focus{
             outline:none;
