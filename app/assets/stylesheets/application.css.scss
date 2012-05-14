@@ -109,7 +109,23 @@ table th{
 .fb-login-nudge {
     margin-top:28px;
 }
-
+.form-text {   
+       width:158px;
+       border:1px solid #999;
+       -webkit-border-radius: 3px;-khtml-border-radius:3px;-moz-border-radius:3px;border-radius:3px;
+       margin:0;
+       padding:5px;
+       background: #fff;
+       background: -webkit-gradient(linear, left top, left 25, from(#fff), color-stop(6%, #eee), to(#fff));
+       background: -moz-linear-gradient(top, #fff, #eee 2px, #fff 25px);
+       box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+       -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+       -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+            }
+.form-text:hover, .itext:focus {
+       border-color: #333;
+       background:#fff;
+            }
 a.dp-choose-date {
   float: left;
   width: 16px;
@@ -685,11 +701,6 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   margin:16px 0 0 0;
 #change-email {
   position:relative;
-     .cheform {
-            position:relative;
-            width:284px;
-            height:73px;
-            
             label { 
                 width:110px; 
                 display:block;
@@ -708,23 +719,18 @@ body:before {/* thanks to Maleika (Kohoutec)*/
             }
             #change-email-submit-pad {
                 margin-right:168px;
-                margin-top:1px;
+                margin-top:2px;
             }
-        }
 }
 #email-notify {
   position:relative;
-  top:38px;
-               .enform {
-            position:relative;
-            width:667px;
-            height:64px;
-            top:0px;
+  top:30px;
+
             label { 
                 width:110px; 
                 display:block;
                 position:relative;
-                bottom:13px;
+                bottom:15px;
                 left:30px;
             }
             li {
@@ -735,9 +741,6 @@ body:before {/* thanks to Maleika (Kohoutec)*/
             .radio-pad {
               padding:0 52px 0 0;
             }
-            .radio {
-              float:left;
-            }
             input[type=submit] {
                 margin:5px 0 0 0;
                 background:none;
@@ -747,49 +750,18 @@ body:before {/* thanks to Maleika (Kohoutec)*/
             }
             #save-settings-submit-pad {
                 margin-right:511px;
-                margin-top:6px;
+                margin-top:4px;
             }
-        }
-}
-#change-password {
-  position:relative;
-  top:76px;
-     .chpform {
-            position:relative;
-            width:284px;
-            height:184px;
-            
-            label { 
-                width:110px; 
-                display:block;
-                float:left;
-                margin-top:6px;
-            }
-            li {
-                padding:0 0 18px 0;
-            }
-            input[type=submit] {
-                margin:5px 0 0 0;
-                background:none;
-                border:0;
-                color:#fff;
-                font-size:1.0em;
-            }
-            #change-password-submit-pad {
-                margin-right:141px;
-                margin-top:1px;
-            }
-        }
 }
 #delete-account {
   position:relative;
-  top:111px;
-  height:221px;
+  top:60px;
+  height:180px;
   width:660px;  
   font-size:1.1em;
   #delete-submit-pad {
   position:absolute;
-  top:58px;
+  top:65px;
   left:-4px;
 }
 }
@@ -1064,6 +1036,23 @@ body:before {/* thanks to Maleika (Kohoutec)*/
         height:25px;
         margin-right:5px;
     }
+.pagination {
+  position:relative;
+  text-align:center;
+  bottom:7px;
+  height:38px;
+  left:15px;
+    .page-numbers {
+      padding:0 25px 0 0;
+      color:$orange;
+      a {
+        color:#000;
+      }
+      a:hover {
+        color:$orange;
+      }
+    }
+  }
 } /* END OF CONTENT */
 .content-pad-bottom {
     padding-bottom:166px;
@@ -1140,11 +1129,6 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     background: url(/assets/fancybox/box-bk-431.png) no-repeat;
 }
 .email-notify-confirm {
-    width:431px;
-    height:286px;
-    background: url(/assets/fancybox/box-bk-431.png) no-repeat;
-}
-.change-password-confirm {
     width:431px;
     height:286px;
     background: url(/assets/fancybox/box-bk-431.png) no-repeat;

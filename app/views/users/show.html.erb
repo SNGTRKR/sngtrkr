@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+<% content_for :title do %>Friend: <%= @friend.first_name %> <%= @friend.last_name %><% end %>
+<div class="content content-pad-160-bottom">
+	 <p id="notice"><%= notice %></p>
 
 <p>
   <b>First name:</b>
