@@ -194,6 +194,7 @@ input.dp-applied {
 .profile-menu-o-pad {
     line-height:37px;
     padding:1px 3px 5px 20px;
+    margin-left:-2px;
 }
 .new-release-o-pad {
   margin:-4px 0 0 0;
@@ -565,6 +566,9 @@ body:before {/* thanks to Maleika (Kohoutec)*/
       width:121px;
       text-align:center;
     }
+    .artist-menu-pad{
+      margin-top:-3px;
+    }
     .profile-menu-button-nudge {
       margin-left:-5px;
     }
@@ -577,7 +581,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
       width:159px;
       background-image: url(/assets/images/trkrs-button.png);
       margin-bottom:4px;
-      #trkrs-button-txt {
+      .trkrs-button-txt {
         position:relative;
         text-align:center;
         color:#fff;
