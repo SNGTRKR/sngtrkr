@@ -1,7 +1,11 @@
 <% content_for :title do %><%= @user.first_name %>'s friends on SNGTRKR<% end %>
 <div class="content content-pad-160-bottom">
-	<h1>Friends test page</h1>
-
-<% @app_friends.each do |friend| %>
-<%= link_to (friend.first_name + " " + friend.last_name), friend %>
+	<h2 class="signika-txt top-header font-35">Friends ()</h2>
+<div id="friends-list">
+	<div class="friends-search"><img class="white-search-25 right" src="/assets/images/white-search.png"/></div>
+	<ul>
+		<% @app_friends.each do |friend| %>
+		<li class="left"><div class="friends-image"></div><div class="friends-info"><span class="font-13"><strong><%= link_to (friend.first_name + " " + friend.last_name), friend %></strong></span><br/>Bristol, UK<br/><span class="orange-txt instruct-font"><%= @user.following.count %> TRKINGS</span></div></li>
+	</ul>
+	</div>
 <% end %>
