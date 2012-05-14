@@ -1,6 +1,6 @@
 class ArtistSd < ActiveRecord::Migration
   def up
-    alter_table :artists do |t|
+    change_table :artists do |t|
       t.text :sd
     end
   end
