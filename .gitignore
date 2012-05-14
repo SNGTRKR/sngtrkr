@@ -4,6 +4,7 @@ log/development.log
 tmp/**/*
 tmp/*
 db/development.sqlite3
+db/test.sqlite3
 doc/api
 doc/app
 *.swp
