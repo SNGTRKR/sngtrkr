@@ -14,7 +14,6 @@ SNGTRKRR::Application.routes.draw do
   match '/help' => "Pages#help"
   match '/recommended' => "Pages#recommended"
 
-  
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin' # Feel free to change '/admin' to any namespace you need.
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users_controller/omniauth_callbacks" }
@@ -22,36 +21,44 @@ SNGTRKRR::Application.routes.draw do
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   end
   match 'users/me' => 'users#self'
-  match 'users/friends' => 'users#friends'
-  # Use this address through AJAX to import all a user's facebook artists.
-  match 'users/managing' => 'users#managing'
-  match 'users/manage_confirm' => 'users#manage_confirm'
-  match 'users/delete_confirm' => 'users#delete_confirm'
-  resources :users
 
-  # Artist actions
+  resources :users do
+    member do
+      get 'destroy_confirm'
+      get 'manage_confirm'
+      get 'managing'
+      get 'friends'
+    end
+  end
+
   # Search for an artist by name
   match 'artists/search/:name' => 'artists#search'
 
-  
-  match 'artists/:artist_id/manage' => 'users#manage', :as => :manage_artist
-  match 'artists/:artist_id/unmanage' => 'users#unmanage', :as => :unmanage_artist
-  match 'artists/:artist_id/follow' => 'users#follow', :as => :follow_artist
-  match 'artists/:artist_id/unfollow' => 'users#unfollow', :as => :unfollow_artist
-  match 'artists/:artist_id/suggest' => 'users#suggest', :as => :suggest_artist
-  match 'artists/:artist_id/unsuggest' => 'users#unsuggest', :as => :unsuggest_artist
   resources :artists
+  
+  # Allows us to have intuitive /artist/1/follow URLs that actually deal with the
+  # user controller
+  resources :artists, :controller => 'users' do
+    member do
+      get 'manage'
+      get 'unmanage'
+      get 'follow'
+      get 'unfollow'
+      get 'suggest'
+      get 'unsuggest'
+    end
+  end
 
   resources :releases
 
   resources :labels
-#  Use this line for production
- # unless Rails.application.config.consider_all_requests_local
- #   match '*not_found', to: 'errors#error_404'
-#  end
+  #  Use this line for production
+  # unless Rails.application.config.consider_all_requests_local
+  #   match '*not_found', to: 'errors#error_404'
+  #  end
 
-# Use this line to view error in development
- match '*not_found', to: 'errors#error_404'
+  # Use this line to view error in development
+  match '*not_found', to: 'errors#error_404'
 
 # The priority is based upon order of creation:
 # first created -> highest priority.
