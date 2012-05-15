@@ -37,19 +37,15 @@
 					</div>
 				</li>
 				<% end %>
-				<% if @user.manager? %>
 				<li class="profile-menu-button-nudge">
+					<% if @user.manager? %>
 					<div class="o-button menu-width profile-menu-o-pad font-13 signika-font artist-menu-pad">
-						<%= link_to "Profile Settings", edit_user_path(@user) %><span></span>
-					</div>
-				</li>
-				<% else %>
-				<li class="profile-menu-button-nudge">
+						<% else %>
 					<div class="o-button menu-width profile-menu-o-pad font-13 signika-font">
+						<% end %>
 						<%= link_to "Profile Settings", edit_user_path(@user) %><span></span>
 					</div>
 				</li>
-				<% end %>
 			</ul>
 		</div>
 		<div class="profile-welcome">
