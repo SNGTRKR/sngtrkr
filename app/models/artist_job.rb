@@ -4,7 +4,7 @@ class ArtistJob
     start_time = Time.now
     require 'open-uri'
     graph = Koala::Facebook::API.new(access_token)
-    music = graph.get_connections("me", "music")
+    music = graph.get_connections("me", "music?fields=name")
     i = 0
     artist_ids = music.each do |artist|
       artist["id"]
@@ -14,7 +14,7 @@ class ArtistJob
       i=0
       results = graph.batch do |batch_api|
         for artist in artists do
-          if(artist == nil)
+          if(artist.nil?)
           break
           end
           # TODO: DISABLE FOR PRODUCTION
@@ -24,7 +24,7 @@ class ArtistJob
             User.find(user_id).suggest(tmp.id)
           next
           end
-          batch_api.get_object(artist["id"])
+          batch_api.get_object(artist["id"]+'?fields=name,general_manager,booking_agent,record_label,genre,hometown,website,bio')
           i=i+1
         end
       end
@@ -48,25 +48,25 @@ class ArtistJob
         end
         a.name = s.real_name
         a.fbid = artist["id"]
-        details = graph.get_object(artist["id"])
         a.bio = s.bio
         if s.bio.nil?
-          a.bio = details["bio"]
+          a.bio = artist["bio"]
         end
-        a.genre = details["genre"]
-        a.booking_email = details["booking_agent"]
-        a.manager_email = details["general_manager"]
-        a.hometown = details["hometown"]
-        a.label_name = details["record_label"]
-        if(details["website"])
-          websites = details["website"].split(' ')
+        a.genre = artist["genre"]
+        a.booking_email = artist["booking_agent"]
+        a.manager_email = artist["general_manager"]
+        a.hometown = artist["hometown"]
+        a.label_name = artist["record_label"]
+        if(artist["website"])
+          websites = artist["website"].split(' ')
         else
-          websites = Array("");
+          websites = [];
         end
         itunes = ItunesSearch::Base.new
         begin
           a.itunes = itunes.search("term"=>a.name, "country" => "gb").results.first.artistViewUrl
         rescue
+          a.itunes = nil
         end
         sd_info = Scraper.artist_sevendigital a.name
         if !sd_info.nil?
@@ -99,7 +99,7 @@ class ArtistJob
         a.save
         User.find(user_id).suggest a.id
         if !a.sdid.nil?
-          Resque.enqueue(ReleaseJob, a)
+          Resque.enqueue(ReleaseJob, a.id)
         end
       end
       if Rails.env.development?

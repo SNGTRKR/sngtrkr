@@ -19,6 +19,14 @@ class UsersController < ApplicationController
       format.json { render :json => @users }
     end
   end
+  
+  def timeline
+    tl = Timeline.new(current_user.id)
+    @timeline = tl.user.page params[:page]
+    respond_to do |format|
+      format.html # index.html.erb
+    end
+  end
 
   # GET /users/1
   # GET /users/1.json
@@ -44,8 +52,6 @@ class UsersController < ApplicationController
     @user.following.each do |artist|
       @following << Artist.find(artist.artist_id)
     end
-    tl = Timeline.new(current_user.id)
-    @timeline = tl.user.page params[:page]
     respond_to do |format|
       format.html # show.html.erb
     end
