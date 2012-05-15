@@ -10,11 +10,14 @@ class ArtistsController < ApplicationController
       @artists = Artist.page params[:page]
     elsif @artists.empty?
       @search = params[:search]
-      return render "no_results"
+      respond_to do |format|
+        format.html { render 'no_results'}# index.html.erb
+        format.json { render :json => ActiveSupport::JSON.encode(["failure"]) }
+      end
     else
       respond_to do |format|
         format.html # index.html.erb
-        format.json { render :json => @artists }
+        format.json { render :json => ["success", @artists[0..5]] }
       end
     end
   end
