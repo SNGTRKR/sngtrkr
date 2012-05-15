@@ -125,7 +125,6 @@ class User < ActiveRecord::Base
   end
 
   def suggested
-    #TODO fix suggested artists.
     self.suggested_artists.find(:all,:conditions => ["suggests.ignore = ?",false])
   end
 
