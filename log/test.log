@@ -1226,3 +1226,160 @@ Processing by ArtistsController#show as HTML
   Parameters: {"id"=>"1"}
   Rendered shared/_login.html.erb (0.9ms)
 Completed 200 OK in 470ms (Views: 32.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 14:02:39 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered artists/show.html.erb within layouts/application (80.5ms)
+  Rendered shared/_login.html.erb (0.7ms)
+Completed 200 OK in 213ms (Views: 105.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 14:02:40 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered shared/_login.html.erb (0.2ms)
+Completed 200 OK in 9ms (Views: 6.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 14:02:40 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered shared/_login.html.erb (0.1ms)
+Completed 200 OK in 7ms (Views: 4.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 14:02:40 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered shared/_login.html.erb (0.1ms)
+Completed 200 OK in 6ms (Views: 4.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 14:02:40 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered shared/_login.html.erb (0.2ms)
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 14:02:40 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered shared/_login.html.erb (0.2ms)
+Completed 200 OK in 9ms (Views: 6.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 14:02:40 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered shared/_login.html.erb (0.4ms)
+Completed 200 OK in 10ms (Views: 7.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 14:02:40 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered shared/_login.html.erb (0.2ms)
+Completed 200 OK in 9ms (Views: 5.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 14:02:40 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered shared/_login.html.erb (0.2ms)
+Completed 200 OK in 8ms (Views: 5.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 14:02:40 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered shared/_login.html.erb (0.2ms)
+Completed 200 OK in 12ms (Views: 8.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 14:02:40 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered shared/_login.html.erb (0.6ms)
+Completed 200 OK in 14ms (Views: 11.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 14:02:41 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered shared/_login.html.erb (0.3ms)
+Completed 200 OK in 11ms (Views: 8.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 14:02:41 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered shared/_login.html.erb (0.2ms)
+Completed 200 OK in 8ms (Views: 5.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 14:02:41 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 74ms (Views: 73.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 14:02:41 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 14:02:41 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 14:02:41 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 14:02:41 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 1ms (Views: 1.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 14:02:41 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 14:02:41 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 1ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 14:02:41 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 14:02:41 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 14:02:41 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 3ms (Views: 3.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 14:02:42 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 1ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 14:02:42 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 14:02:42 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)

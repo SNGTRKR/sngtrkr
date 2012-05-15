@@ -29,7 +29,6 @@ class ArtistsController < ApplicationController
   # GET /artists/1.json
   def show
     @artist = Artist.find(params[:id])
-    @amazon_artist = Amazon::Ecs.item_search(@artist.name, :search_index => 'Music')
     @user = current_user
     @timeline = Timeline.artist(params[:id])
     respond_to do |format|
