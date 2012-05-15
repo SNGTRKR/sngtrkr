@@ -9,4 +9,7 @@ class BrowsingTest < ActionDispatch::PerformanceTest
   def test_homepage
     get '/'
   end
+  def test_artist
+    get '/artists/1'
+  end
 end
