@@ -37,6 +37,9 @@ class UsersController < ApplicationController
     api = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
     @user = current_user
     @following = []
+    if @user.managing.count > 0
+      @trackers = Artist.find(@user.managing.first.artist_id).followed_users.count
+    end
     @user.following.each do |artist|
       @following << Artist.find(artist.artist_id)
     end
