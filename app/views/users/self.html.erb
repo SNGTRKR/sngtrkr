@@ -74,8 +74,23 @@
 	<div class="clear"></div>
 	<div id="recommended-artists-outer">
 		<div class="recommended-artists">
-			<% @user.suggested.each do |sug| %>
-			<span> <%= link_to sug.name, follow_artist_path(sug) %> </span>
-			<% end %>
+			<ul>
+				<% @user.suggested[0, 6].each do |sug| %>
+				<li class="left" style="background-image:url(<%= sug.image.url :recommend %>);background-repeat:no-repeat;background-position:center;">
+					<div class="each-recommend">
+					<div class="instruct-font font-20 recommend-info"><%= link_to sug.name, sug  %></div>
+					<div class="outer-button">
+				<div class="inner-button">
+					<div class="o-button artist-add-o-pad left instruct-font">
+						ADD TRKR<span></span>
+					</div>
+					</div></div>
+					</div>
+				</li>
+				<% end %>
+				</ul>
+			<!-- <% @user.suggested.each do |sug| %>
+			<span> <%= link_to sug.name, sug  %><%= link_to 'ADD TRKR', follow_artist_path(sug) %></span>
+			<% end %> -->
 		</div>
 	</div>

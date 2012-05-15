@@ -202,9 +202,9 @@ input.dp-applied {
   padding:1px 3px 5px 20px;
 }
 .artist-add-o-pad {
-    margin:0 0 0 7px;
+    margin:0 0 0 3px;
     line-height:32px;
-    padding:1px 3px 5px 21px;
+    padding:2px 3px 5px 21px;
 }
 .artist-remove-o-pad {
     margin:0 0 0 -4px;
@@ -541,7 +541,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   }
     .content-top {
   position:relative;
-  width:659px;
+  width:666px;
   height:128px;
   .top-header {
     float:left;
@@ -555,7 +555,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 }
 #content-profile-top {
   position:relative;
-  width:660px;
+  width:666px;
   height:114px;
   .profile-menu {
     float:left;
@@ -591,7 +591,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   }
   .profile-welcome {
     float:right;
-    width:489px;
+    width:494px;
     margin-top:4px;
     margin-left:14px;
   }
@@ -602,7 +602,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 #tracked-artists {
   position:relative;
   top:23px;
-  width:640px;
+  width:646px;
   height:186px;
   background:rgba(255,255,255,0.75);
   @include border-radius(8px);
@@ -620,13 +620,58 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   .recommended-artists {
   position:relative;
   top:73px;
-  width:660px;
-  height:410px;
-  background:rgba(255,255,255,0.75);
-  @include border-radius(8px);
-  -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-  -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-  box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+  width:667px;
+  height:410px; 
+  ul {
+    list-style-type:none;
+    margin-left:-30px;
+    li {
+      width:202px;
+      height:178px;
+      margin:0 0 42px 30px;
+      @include border-radius(8px);
+      -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+      -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+       box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+       background:rgba(255,255,255,0.75);
+               .outer-button {
+          position:absolute;
+          top:0px;
+          left:0px;
+          width:100%;
+          width:202px;
+          height:178px;
+          z-index:1;
+          .inner-button {
+            position:relative;
+            width:50%;
+            margin:0px auto;
+            top:159px;
+          }
+        }
+        .each-recommend {
+          position:relative;
+          height:178px;
+          width:202px;
+          @include border-radius(8px);
+          background:rgba(0,0,0,0.5);
+          .recommend-info {
+            position:absolute;
+            text-align:center;
+            line-height:1.4em;
+            z-index:2;
+            width:202px;
+            top:5px;
+            a {
+              color:#fff;
+            }
+            a:hover {
+              color:#fff;
+            }
+          }
+        }
+    }
+  }
 }
 }
 #content-release-left {
