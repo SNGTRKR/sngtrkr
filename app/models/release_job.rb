@@ -2,6 +2,8 @@ class ReleaseJob
   @queue = :releasejob
   @@sevendigital_apikey = "7dufgm34849u"
   def self.perform artist
+    start_time = Time.now
+
     require 'open-uri'
     begin
       releases =  Hash.from_xml( Net::HTTP.get( URI.parse(
@@ -33,5 +35,9 @@ class ReleaseJob
       end
       r.save
     end
+    end_time = Time.now
+    elapsed_time = end_time - start_time
+    Rails.logger.info "Finished release import delayed job after #{elapsed_time}"
+    return true
   end
 end
