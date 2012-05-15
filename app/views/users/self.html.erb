@@ -3,43 +3,55 @@
 	<div id="content-profile-top">
 		<div class="profile-menu">
 			<ul>
-				<!-- <li class="profile-menu-button-nudge-2"><div id="trkrs-button"><div id="trkrs-button-txt"><div class="font-25"></div><br/><div class="font-15">TRKR'S</div></div></div></li> -->
-
+				<% if @user.manager? %>
+				<li class="profile-menu-button-nudge-2"><div id="trkrs-button"><div class="trkrs-button-txt instruct-font"><div class="font-25"></div><br/><div class="font-15 instruct-font">TRKR'S</div></div></div></li>
+				<% else %>
+				<% end %>
 				<li class="profile-menu-button-nudge">
 					<div class="o-button menu-width profile-menu-o-pad font-13 signika-font">
 						<%= link_to 'Friends', friends_user_path(@user) %><span></span>
 					</div>
 				</li>
-
-				<!-- <li class="profile-menu-button-nudge"><div class="o-button menu-width font-13"><a href="/admin/new_release.php">Add Release</a><span></span></div></li> -->
-
-				<li class="profile-menu-button-nudge">
+				<% if @user.manager? %>
+				<li class="profile-menu-button-nudge"><div class="o-button menu-width profile-menu-o-pad font-13 signika-font artist-menu-pad"><a href="/admin/new_release.php">Add Release</a><span></span></div></li>
+				<% else %>
+				 <li class="profile-menu-button-nudge">
 					<div class="o-button menu-width profile-menu-o-pad font-13 signika-font">
 						<%= link_to 'Manage Artist', managing_user_path(@user) %><span></span>
 					</div>
 				</li>
-
+				<% end %>
+				<% if @user.manager? %>
+								<li class="profile-menu-button-nudge">
+					<div class="o-button menu-width profile-menu-o-pad font-13 signika-font artist-menu-pad">
+						<%= link_to "Profile Settings", edit_user_path(@user) %><span></span>
+					</div>
+				</li>
+				<% else %>
 				<li class="profile-menu-button-nudge">
 					<div class="o-button menu-width profile-menu-o-pad font-13 signika-font">
 						<%= link_to "Profile Settings", edit_user_path(@user) %><span></span>
 					</div>
 				</li>
+				<% end %>
 			</ul>
 		</div>
 		<div class="profile-welcome">
-
-			<!-- <div class="artist-text-nudge"><div class="font-15">Welcome to your profile, <strong>JellyFishBoy</strong>!</div><br/>
-			Here you will be able to view how many of your fans are tracking you, along with adding releases, new and old, to your personalized artist timeline.
+			<% if @user.manager? %>
+			<h2><div class="font-15">Welcome to your profile, <strong>JellyFishBoy</strong>!</div></h2><br/>
+			Here you will be able to view how many of your fans are TRKing you, along with adding releases, new and old, to your personalized artist timeline.
 			Your interactive timeline will enable you to edit and delete releases you have already added.<br/><br/>Even as an artist, you still want to keep up to
 			date with artists releasing content, old and new.  Below you will find  a list of the artists you are currently tracking, alongside recommended
-			artists we think you will find interesting. Navigate to the home page, where you will able to view your personalized timeline of releases.<br/><br/>If you need further
-			help with anything, including your artist profile, then be sure to visit our Help and FAQ page.</div> -->
+			artists we think you will find interesting.<br/><br/>If you need further
+			help with anything, including your artist profile, then be sure to visit our Help and FAQ page.
+			<% else %>
 			<h2><div class="font-15">Welcome to your profile, <strong><%= @user.first_name %> <%= @user.last_name %></strong>!</div></h2>
 			<br/>
 			Here you will be able to change the settings of your profile, manage any Facebook artists you control and view the list of artists you are currently tracking.
 			<br/>
 			<br/>
 			If you need further help with anything, then be sure to visit our Help and Frequently Asked Questions page.
+			<% end %>
 		</div>
 	</div>
 	<div class="clear"></div>
