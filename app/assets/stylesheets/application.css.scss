@@ -51,6 +51,9 @@ body{
 .orange-txt {
     color:$orange; 
 }
+.font-11 {
+  font-size:0.9em;
+}
 .font-13 {
   font-size:1.1em;
 }
@@ -614,9 +617,10 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 .recommend-text-nudge {
   top:46px;
 }
-#recommended-artists-outer {
+.recommended-artists-outer {
   position:relative;
   height:515px;
+  margin-top:-7px;
   .recommended-artists {
   position:relative;
   top:73px;
@@ -665,12 +669,13 @@ body:before {/* thanks to Maleika (Kohoutec)*/
             line-height:1.4em;
             z-index:2;
             width:202px;
-            top:35px;
+            display:block;
+            bottom:20px;
             a {
               color:#fff;
             }
             a:hover {
-              color:#fff;
+              color:$orange;
             }
           }
         }
@@ -1084,6 +1089,72 @@ body:before {/* thanks to Maleika (Kohoutec)*/
             outline:none;
         }
     }
+}
+#friend-info-top {
+  position:relative;
+  height:128px;
+  width:666px;
+  margin:5px 0 0 0;
+  .friend-info {
+   height:128px;
+   width:434px;
+         background:rgba(255,255,255,0.75);
+      @include border-radius(8px);
+      -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+      -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+      box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+      #friend-image {
+        position:absolute;
+        top:0px;
+        left:0px;
+        width:107px;
+        height:128px;
+        border-style:solid;
+      border-right-width:3px;
+      border-right-color:$orange;
+      background:#000;
+      @include border-top-left-radius(8px);
+      @include border-bottom-left-radius(8px);
+      }
+      #f-info {
+        position:relative;
+        left:125px;
+        top:9px;
+        width:283px;
+        .status-nudge {
+          position:relative;
+          top:5px;
+        }
+      }
+  }
+  #friend-trkr-search {
+        position:absolute;
+        left:465px;
+        bottom:0px;
+        height:25px;
+        width:201px;
+        background:$orange; 
+        @include border-radius(8px);
+        -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
+        -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
+        box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
+                input{
+            background:transparent;
+            padding:0.6em;
+            border:none;
+            width:10em;
+            color:#fff;
+        }
+        input:focus{
+            outline:none;
+        }
+  }
+}
+.friend-recommend-nudge {
+  margin-top:-46px;
+}
+.other-recommend-nudge {
+  margin-top:-53px;
 }
         .white-search-25 {
         width:25px;
