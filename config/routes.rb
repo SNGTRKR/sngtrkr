@@ -14,13 +14,12 @@ SNGTRKRR::Application.routes.draw do
   match '/help' => "Pages#help"
   match '/recommended' => "Pages#recommended"
 
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin' # Feel free to change '/admin' to any namespace you need.
+  #mount RailsAdmin::Engine => '/admin', :as => 'rails_admin' # Feel free to change '/admin' to any namespace you need.
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users_controller/omniauth_callbacks" }
   devise_scope :user do
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   end
-  match 'users/me' => 'users#self'
 
   resources :users do
     member do
@@ -29,13 +28,13 @@ SNGTRKRR::Application.routes.draw do
       get 'managing'
       get 'friends'
     end
+    collection do
+      get 'me', :action => 'self'
+    end
   end
 
-  # Search for an artist by name
-  match 'artists/search/:name' => 'artists#search'
-
   resources :artists
-  
+
   # Allows us to have intuitive /artist/1/follow URLs that actually deal with the
   # user controller
   resources :artists, :controller => 'users' do
@@ -47,9 +46,9 @@ SNGTRKRR::Application.routes.draw do
       get 'suggest'
       get 'unsuggest'
     end
+    resources :releases
   end
 
-  resources :releases
 
   resources :labels
   #  Use this line for production

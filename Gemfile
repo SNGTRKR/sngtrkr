@@ -38,7 +38,7 @@ gem 'itunes-search'
 gem 'amazon-ecs'
 
 # ADMIN
-gem 'rails_admin'
+#gem 'rails_admin'
 
 
 # in production environments by default.
