@@ -620,6 +620,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 .recommended-artists-outer {
   position:relative;
   height:515px;
+  margin-top:-7px;
   .recommended-artists {
   position:relative;
   top:73px;
@@ -1150,7 +1151,10 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   }
 }
 .friend-recommend-nudge {
-  margin-top:-52px;
+  margin-top:-46px;
+}
+.other-recommend-nudge {
+  margin-top:-53px;
 }
         .white-search-25 {
         width:25px;
