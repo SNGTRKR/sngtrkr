@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def redir (artist_id)
     respond_to do |format|
-      format.html { redirect_to artist_url(params[:artist_id]) }
+      format.html { redirect_to artist_url(params[:id]) }
     end
   end
 
@@ -102,6 +102,15 @@ class UsersController < ApplicationController
 
   # DELETE /users/1
   # DELETE /users/1.json
+  
+  def destroy_confirm
+    respond_to do |format|
+      format.html { render :delete_confirm }
+      format.json { head :no_content }
+    end
+    
+  end
+  
   def destroy
     @user = User.find(params[:id])
     @user.destroy
@@ -113,36 +122,36 @@ class UsersController < ApplicationController
   end
 
   def manage
-    @user.manage params[:artist_id]
+    @user.manage params[:id]
     respond_to do |format|
-      format.html { redir :artist_id }
+      format.html { redir :id }
       format.json { render :json => { :response => :success } }
     end
   end
 
   def unmanage
-    @user.unmanage params[:artist_id]
+    @user.unmanage params[:id]
     respond_to do |format|
-      format.html { redir :artist_id }
+      format.html { redir :id }
       format.json { render :json => { :response => :success } }
     end
   end
 
   def unfollow
-    @user.unfollow params[:artist_id]
+    @user.unfollow params[:id]
     respond_to do |format|
-      format.html { redir :artist_id }
+      format.html { redir :id }
       format.json { render :json => { :response => :success } }
     end
   end
 
   def follow
-    @user.follow params[:artist_id]
-    @user.unsuggest params[:artist_id]
+    @user.follow params[:id]
+    @user.unsuggest params[:id]
     # Post to facebook graph api if in production.
     if Rails.env.production?
       api = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
-      artist = Artist.find(params[:artist_id]);
+      artist = Artist.find(params[:id]);
       begin
       api.put_connections("me", "sngtrkr:track", :artist => url_for(artist))
       rescue 
@@ -150,19 +159,19 @@ class UsersController < ApplicationController
       end
     end
     respond_to do |format|
-      format.html { redir :artist_id }
+      format.html { redir :id }
       format.json { render :json => { :response => :success } }
     end
   end
 
   def unsuggest
-    @user.unsuggest params[:artist_id]
-    redir :artist_id
+    @user.unsuggest params[:id]
+    redir :id
   end
 
   def suggest
-    @user.suggest params[:artist_id]
-    redir :artist_id
+    @user.suggest params[:id]
+    redir :id
   end
 
   # This page contains a list of all the Artist page's the logged in user controls.
