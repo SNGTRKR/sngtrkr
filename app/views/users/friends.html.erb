@@ -1,46 +1,113 @@
 <% content_for :title do %><%= @user.first_name %>'s friends on SNGTRKR<% end %>
 <div class="content content-pad-160-bottom">
 	<h2 class="signika-txt top-header font-35">Friends (<%= @app_friends.count %>)</h2>
-<div id="friends-list">
-	<div class="friends-search"><input type="text" id="filter"/><img class="white-search-25 right" src="/assets/images/white-search.png"/></div>
-	<ul>
-		<% @app_friends.each do |friend| %>
-		<li class="left"><div class="friends-image"></div><div class="friends-info"><h3><strong><%= link_to(friend) do %><span class="font-13 name"><%= friend.first_name + " " + friend.last_name %></span><% end %></strong></h3>Bristol, UK<br/><span class="orange-txt instruct-font"><%= @user.following.count %> TRKINGS</span></div></li>
-		<li class="left"><div class="friends-image"></div><div class="friends-info"><h3><strong><span class="font-13 name">Bob Higgins</span></strong></h3>Bristol, UK<br/><span class="orange-txt instruct-font">83 TRKINGS</span></div></li>
-		<li class="left"><div class="friends-image"></div><div class="friends-info"><h3><strong><span class="font-13 name">Jerry Charlston</span></strong></h3>Bristol, UK<br/><span class="orange-txt instruct-font">239 TRKINGS</span></div></li>
-		<li class="left"><div class="friends-image"></div><div class="friends-info"><h3><strong><span class="font-13 name">Celena Gomez</span></strong></h3>Bristol, UK<br/><span class="orange-txt instruct-font">12 TRKINGS</span></div></li>
-		<li class="left"><div class="friends-image"></div><div class="friends-info"><h3><strong><span class="font-13 name">Harry Tubor</span></strong></h3>Bristol, UK<br/><span class="orange-txt instruct-font">93 TRKINGS</span></div></li>
-		<li class="left"><div class="friends-image"></div><div class="friends-info"><h3><strong><span class="font-13 name">Sam Hartwright</span></strong></h3>Bristol, UK<br/><span class="orange-txt instruct-font">834 TRKINGS</span></div></li>
-		<% end %>
-</ul> 
+	<div id="friends-list">
+		<div class="friends-search">
+			<input type="text" id="filter"/>
+			<img class="white-search-25 right" src="/assets/images/white-search.png"/>
+		</div>
+		<ul>
+			<% @app_friends.each do |friend| %>
+			<li class="left">
+				<div class="friends-image"></div>
+				<div class="friends-info">
+					<h3><strong><%= link_to(friend) do %><span class="font-13 name"><%= friend.first_name + " " + friend.last_name %></span><% end %></strong></h3>Bristol, UK
+					<br/>
+					<span class="orange-txt instruct-font"><%= @user.following.count %> TRKINGS</span>
+				</div>
+			</li>
+			<li class="left">
+				<div class="friends-image"></div>
+				<div class="friends-info">
+					<h3><strong><span class="font-13 name">Bob Higgins</span></strong></h3>Bristol, UK
+					<br/>
+					<span class="orange-txt instruct-font">83 TRKINGS</span>
+				</div>
+			</li>
+			<li class="left">
+				<div class="friends-image"></div>
+				<div class="friends-info">
+					<h3><strong><span class="font-13 name">Jerry Charlston</span></strong></h3>Bristol, UK
+					<br/>
+					<span class="orange-txt instruct-font">239 TRKINGS</span>
+				</div>
+			</li>
+			<li class="left">
+				<div class="friends-image"></div>
+				<div class="friends-info">
+					<h3><strong><span class="font-13 name">Celena Gomez</span></strong></h3>Bristol, UK
+					<br/>
+					<span class="orange-txt instruct-font">12 TRKINGS</span>
+				</div>
+			</li>
+			<li class="left">
+				<div class="friends-image"></div>
+				<div class="friends-info">
+					<h3><strong><span class="font-13 name">Harry Tubor</span></strong></h3>Bristol, UK
+					<br/>
+					<span class="orange-txt instruct-font">93 TRKINGS</span>
+				</div>
+			</li>
+			<li class="left">
+				<div class="friends-image"></div>
+				<div class="friends-info">
+					<h3><strong><span class="font-13 name">Sam Hartwright</span></strong></h3>Bristol, UK
+					<br/>
+					<span class="orange-txt instruct-font">834 TRKINGS</span>
+				</div>
+			</li>
+			<% end %>
+		</ul>
 
 	</div>
 	<div class="clear"></div>
-<div id="fb-root"></div>
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '<%= FB_APP_ID %>', // App ID
-      channelUrl : '//localhost/channel.html', // Channel File
-      status     : true, // check login status
-      cookie     : true, // enable cookies to allow the server to access the session
-      xfbml      : true  // parse XFBML
-    });
+	<div id="fb-root"></div>
+	<script>
+		window.fbAsyncInit = function() {
+FB.init({
+appId      : <%= '\''+FB_APP_ID+'\'' %>
+	, // App ID
+	channelUrl : '//localhost/channel.html', // Channel File
+	status     : true, // check login status
+	cookie     : true, // enable cookies to allow the server to access the session
+	xfbml      : true  // parse XFBML
+	});
 
-    // Additional initialization code here
-   FB.login();
-   FB.api('/me/friends/?fields=installed',function(response){
-   	//console.log(response);
-   	// Handle list of friends
-   });
-  };
+	// Additional initialization code here
+	FB.getLoginStatus(function(response) {
+		if(response.status === 'connected') {
+			// the user is logged in and has authenticated your
+			// app, and response.authResponse supplies
+			// the user's ID, a valid access token, a signed
+			// request, and the time the access token
+			// and signed request each expire
+			var uid = response.authResponse.userID;
+			var accessToken = response.authResponse.accessToken;
+		} else if(response.status === 'not_authorized') {
+			// the user is logged in to Facebook,
+			// but has not authenticated your app
+			FB.login();
+		} else {
+			// the user isn't logged in to Facebook.
+			FB.login();
+		}
+	});
+	FB.api('/me/friends/?fields=installed', function(response) {
+		//console.log(response);
+		// Handle list of friends
+	});
+	};
 
-  // Load the SDK Asynchronously
-  (function(d){
-     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement('script'); js.id = id; js.async = true;
-     js.src = "//connect.facebook.net/en_US/all.js";
-     ref.parentNode.insertBefore(js, ref);
-   }(document));
-</script>
+	// Load the SDK Asynchronously
+	( function(d) {
+			var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+			if(d.getElementById(id)) {
+				return;
+			}
+			js = d.createElement('script');
+			js.id = id;
+			js.async = true;
+			js.src = "//connect.facebook.net/en_US/all.js";
+			ref.parentNode.insertBefore(js, ref);
+		}(document));
+	</script>

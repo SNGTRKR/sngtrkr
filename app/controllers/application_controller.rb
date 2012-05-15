@@ -1,15 +1,22 @@
 class ApplicationController < ActionController::Base
 
   # Comment out the below condition to view error 404 in development
- # unless Rails.application.config.consider_all_requests_local
+  # unless Rails.application.config.consider_all_requests_local
   #  rescue_from Exception, with: :render_500
- #   rescue_from ActionController::RoutingError, with: :render_404
- #   rescue_from ActionController::UnknownController, with: :render_404
+  #   rescue_from ActionController::RoutingError, with: :render_404
+  #   rescue_from ActionController::UnknownController, with: :render_404
   #  rescue_from ActionController::UnknownAction, with: :render_404
   #  rescue_from ActiveRecord::RecordNotFound, with: :render_404
   #end
-   before_filter :authenticate_user!, :except => [:splash] 
-  
+  before_filter :authenticate_user!, :except => [:splash]
+  def default_url_options
+    if Rails.env.production?
+      {:host => "sngtrkr.com"}
+    else
+      {}
+    end
+  end
+
   def after_sign_in_path_for(resource)
     (session[:"user.return_to"].nil?) ? "/" : session[:"user.return_to"].to_s
   end
