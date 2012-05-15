@@ -605,14 +605,35 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 #tracked-artists {
   position:relative;
   top:23px;
-  width:646px;
-  height:186px;
-  background:rgba(255,255,255,0.75);
-  @include border-radius(8px);
-  -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-  -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-  box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-  padding:20px 0 0 20px; 
+  width:666px;
+      ul {
+      list-style-type:none;
+      margin-left:-15px;
+  li {
+    width:155px;
+    height:28px;
+    padding:12px 0 17px 0;
+    background:rgba(255,255,255,0.75);
+    @include border-radius(8px);
+    -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
+    box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
+    margin:0 0 15px 15px;
+      .each-artist-outer {
+    position:relative;
+    width:155px;
+    height:57px;
+    text-align:center;
+    .remove-artist-button {
+      position:absolute;
+      height:15px;
+      width:15px;
+      top:-10px;
+      right:3px;
+    }
+  }
+  }
+  }
 }
 .recommend-text-nudge {
   top:46px;
