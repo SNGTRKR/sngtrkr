@@ -78,6 +78,7 @@
 				<% @user.suggested[0, 6].each do |sug| %>
 				<li class="left" style="background-image:url(<%= sug.image.url :recommend %>);background-repeat:no-repeat;background-position:center;">
 					<div class="each-recommend">
+					<div class="black-tint"></div>
 					<div class="instruct-font font-20 recommend-info"><%= link_to sug.name, sug  %></div>
 					<div class="outer-button">
 				<div class="inner-button">

@@ -652,15 +652,20 @@ body:before {/* thanks to Maleika (Kohoutec)*/
           position:relative;
           height:178px;
           width:202px;
+          .black-tint {
+            position:relative;
+            background:rgba(0,0,0,0.5);
+            height:178px;
+          width:202px;
           @include border-radius(8px);
-          background:rgba(0,0,0,0.5);
+          }
           .recommend-info {
             position:absolute;
             text-align:center;
             line-height:1.4em;
             z-index:2;
             width:202px;
-            top:5px;
+            top:95px;
             a {
               color:#fff;
             }
