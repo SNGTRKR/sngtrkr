@@ -491,3 +491,738 @@ SQLite3::SQLException: table releases has no column named type: INSERT INTO "rel
   [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)[0m
 SQLite3::SQLException: table releases has no column named type: INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "type", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 1, '2012-04-15 19:22:57', '2012-04-15 19:22:57', 980190962)
   [1m[35m (1.0ms)[0m  rollback transaction
+Unable to load track, underlying cause No such file to load -- track 
+
+ /Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activesupport-3.2.2/lib/active_support/dependencies.rb:317:in `rescue in depend_on'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activesupport-3.2.2/lib/active_support/dependencies.rb:312:in `depend_on'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activesupport-3.2.2/lib/active_support/dependencies.rb:225:in `require_dependency'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activerecord-3.2.2/lib/active_record/fixtures.rb:751:in `try_to_load_dependency'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activerecord-3.2.2/lib/active_record/fixtures.rb:766:in `block in require_fixture_classes'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activerecord-3.2.2/lib/active_record/fixtures.rb:763:in `each'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activerecord-3.2.2/lib/active_record/fixtures.rb:763:in `require_fixture_classes'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activerecord-3.2.2/lib/active_record/fixtures.rb:746:in `fixtures'
+/Users/bessey/Repos/sngtrkr/test/test_helper.rb:10:in `<class:TestCase>'
+/Users/bessey/Repos/sngtrkr/test/test_helper.rb:5:in `<top (required)>'
+/Users/bessey/Repos/sngtrkr/test/performance/browsing_test.rb:1:in `require'
+/Users/bessey/Repos/sngtrkr/test/performance/browsing_test.rb:1:in `<top (required)>'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:10:in `require'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:10:in `block (2 levels) in <main>'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:9:in `each'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:9:in `block in <main>'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:4:in `select'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:4:in `<main>'
+Unable to load track, underlying cause No such file to load -- track 
+
+ /Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activesupport-3.2.2/lib/active_support/dependencies.rb:317:in `rescue in depend_on'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activesupport-3.2.2/lib/active_support/dependencies.rb:312:in `depend_on'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activesupport-3.2.2/lib/active_support/dependencies.rb:225:in `require_dependency'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activerecord-3.2.2/lib/active_record/fixtures.rb:751:in `try_to_load_dependency'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activerecord-3.2.2/lib/active_record/fixtures.rb:766:in `block in require_fixture_classes'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activerecord-3.2.2/lib/active_record/fixtures.rb:763:in `each'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activerecord-3.2.2/lib/active_record/fixtures.rb:763:in `require_fixture_classes'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activerecord-3.2.2/lib/active_record/fixtures.rb:746:in `fixtures'
+/Users/bessey/Repos/sngtrkr/test/test_helper.rb:10:in `<class:TestCase>'
+/Users/bessey/Repos/sngtrkr/test/test_helper.rb:5:in `<top (required)>'
+/Users/bessey/Repos/sngtrkr/test/performance/browsing_test.rb:1:in `require'
+/Users/bessey/Repos/sngtrkr/test/performance/browsing_test.rb:1:in `<top (required)>'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:10:in `require'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:10:in `block (2 levels) in <main>'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:9:in `each'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:9:in `block in <main>'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:4:in `select'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:4:in `<main>'
+Unable to load track, underlying cause No such file to load -- track 
+
+ /Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activesupport-3.2.2/lib/active_support/dependencies.rb:317:in `rescue in depend_on'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activesupport-3.2.2/lib/active_support/dependencies.rb:312:in `depend_on'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activesupport-3.2.2/lib/active_support/dependencies.rb:225:in `require_dependency'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activerecord-3.2.2/lib/active_record/fixtures.rb:751:in `try_to_load_dependency'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activerecord-3.2.2/lib/active_record/fixtures.rb:766:in `block in require_fixture_classes'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activerecord-3.2.2/lib/active_record/fixtures.rb:763:in `each'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activerecord-3.2.2/lib/active_record/fixtures.rb:763:in `require_fixture_classes'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activerecord-3.2.2/lib/active_record/fixtures.rb:746:in `fixtures'
+/Users/bessey/Repos/sngtrkr/test/test_helper.rb:10:in `<class:TestCase>'
+/Users/bessey/Repos/sngtrkr/test/test_helper.rb:5:in `<top (required)>'
+/Users/bessey/Repos/sngtrkr/test/performance/browsing_test.rb:1:in `require'
+/Users/bessey/Repos/sngtrkr/test/performance/browsing_test.rb:1:in `<top (required)>'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:10:in `require'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:10:in `block (2 levels) in <main>'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:9:in `each'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:9:in `block in <main>'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:4:in `select'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:4:in `<main>'
+Unable to load track, underlying cause No such file to load -- track 
+
+ /Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activesupport-3.2.2/lib/active_support/dependencies.rb:317:in `rescue in depend_on'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activesupport-3.2.2/lib/active_support/dependencies.rb:312:in `depend_on'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activesupport-3.2.2/lib/active_support/dependencies.rb:225:in `require_dependency'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activerecord-3.2.2/lib/active_record/fixtures.rb:751:in `try_to_load_dependency'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activerecord-3.2.2/lib/active_record/fixtures.rb:766:in `block in require_fixture_classes'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activerecord-3.2.2/lib/active_record/fixtures.rb:763:in `each'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activerecord-3.2.2/lib/active_record/fixtures.rb:763:in `require_fixture_classes'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activerecord-3.2.2/lib/active_record/fixtures.rb:746:in `fixtures'
+/Users/bessey/Repos/sngtrkr/test/test_helper.rb:10:in `<class:TestCase>'
+/Users/bessey/Repos/sngtrkr/test/test_helper.rb:5:in `<top (required)>'
+/Users/bessey/Repos/sngtrkr/test/performance/browsing_test.rb:1:in `require'
+/Users/bessey/Repos/sngtrkr/test/performance/browsing_test.rb:1:in `<top (required)>'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:10:in `require'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:10:in `block (2 levels) in <main>'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:9:in `each'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:9:in `block in <main>'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:4:in `select'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:4:in `<main>'
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:51:43 +0100
+Processing by PagesController#splash as HTML
+  Rendered pages/splash.html.erb within layouts/splash (56.7ms)
+Completed 200 OK in 94ms (Views: 94.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:51:44 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:52:20 +0100
+Processing by PagesController#splash as HTML
+  Rendered pages/splash.html.erb within layouts/splash (57.5ms)
+Completed 200 OK in 74ms (Views: 73.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:52:20 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 1ms (Views: 1.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:52:20 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:52:20 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:52:20 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:52:20 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 1ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:52:20 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:52:20 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 1ms (Views: 1.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:52:20 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:52:21 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:52:21 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:52:21 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 1ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:52:21 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 01:53:22 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 3ms
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 01:53:22 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 1ms
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 01:53:22 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 1ms
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 01:53:22 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 1ms
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 01:53:22 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 1ms
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 01:53:22 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 1ms
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 01:53:22 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 1ms
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 01:53:22 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 1ms
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 01:53:22 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 1ms
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 01:53:22 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 1ms
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 01:53:22 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 1ms
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 01:53:22 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 1ms
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 01:53:22 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 1ms
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:53:23 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 36ms (Views: 35.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:53:23 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:53:23 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:53:23 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 1ms (Views: 1.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:53:23 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:53:23 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:53:23 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 1ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:53:23 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:53:23 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:53:23 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 1ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:53:23 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:53:23 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:53:23 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:54:24 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 104ms (Views: 103.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:54:25 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:54:25 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:54:25 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:54:25 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:54:25 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:54:25 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:54:25 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:54:25 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:54:25 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:54:25 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:54:25 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 01:54:25 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 1ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+Unable to load datum, underlying cause No such file to load -- datum 
+
+ /Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activesupport-3.2.2/lib/active_support/dependencies.rb:317:in `rescue in depend_on'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activesupport-3.2.2/lib/active_support/dependencies.rb:312:in `depend_on'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activesupport-3.2.2/lib/active_support/dependencies.rb:225:in `require_dependency'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activerecord-3.2.2/lib/active_record/fixtures.rb:751:in `try_to_load_dependency'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activerecord-3.2.2/lib/active_record/fixtures.rb:766:in `block in require_fixture_classes'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activerecord-3.2.2/lib/active_record/fixtures.rb:763:in `each'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activerecord-3.2.2/lib/active_record/fixtures.rb:763:in `require_fixture_classes'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activerecord-3.2.2/lib/active_record/fixtures.rb:746:in `fixtures'
+/Users/bessey/Repos/sngtrkr/test/test_helper.rb:10:in `<class:TestCase>'
+/Users/bessey/Repos/sngtrkr/test/test_helper.rb:5:in `<top (required)>'
+/Users/bessey/Repos/sngtrkr/test/performance/browsing_test.rb:1:in `require'
+/Users/bessey/Repos/sngtrkr/test/performance/browsing_test.rb:1:in `<top (required)>'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:10:in `require'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:10:in `block (2 levels) in <main>'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:9:in `each'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:9:in `block in <main>'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:4:in `select'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:4:in `<main>'
+Unable to load track, underlying cause No such file to load -- track 
+
+ /Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activesupport-3.2.2/lib/active_support/dependencies.rb:317:in `rescue in depend_on'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activesupport-3.2.2/lib/active_support/dependencies.rb:312:in `depend_on'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activesupport-3.2.2/lib/active_support/dependencies.rb:225:in `require_dependency'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activerecord-3.2.2/lib/active_record/fixtures.rb:751:in `try_to_load_dependency'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activerecord-3.2.2/lib/active_record/fixtures.rb:766:in `block in require_fixture_classes'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activerecord-3.2.2/lib/active_record/fixtures.rb:763:in `each'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activerecord-3.2.2/lib/active_record/fixtures.rb:763:in `require_fixture_classes'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/activerecord-3.2.2/lib/active_record/fixtures.rb:746:in `fixtures'
+/Users/bessey/Repos/sngtrkr/test/test_helper.rb:10:in `<class:TestCase>'
+/Users/bessey/Repos/sngtrkr/test/test_helper.rb:5:in `<top (required)>'
+/Users/bessey/Repos/sngtrkr/test/performance/browsing_test.rb:1:in `require'
+/Users/bessey/Repos/sngtrkr/test/performance/browsing_test.rb:1:in `<top (required)>'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:10:in `require'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:10:in `block (2 levels) in <main>'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:9:in `each'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:9:in `block in <main>'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:4:in `select'
+/Users/bessey/Repos/sngtrkr/vendor/cache/ruby/1.9.1/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:4:in `<main>'
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 02:30:30 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 3ms
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 02:30:30 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 1ms
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 02:30:30 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 1ms
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 02:30:30 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 2ms
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 02:30:31 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 1ms
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 02:30:31 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 1ms
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 02:30:31 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 1ms
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 02:30:31 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 1ms
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 02:30:31 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 1ms
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 02:30:31 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 1ms
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 02:30:31 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 1ms
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 02:30:31 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 1ms
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 02:30:31 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 1ms
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 02:30:31 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 44ms (Views: 43.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 02:30:31 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 02:30:31 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 02:30:31 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 02:30:32 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 02:30:32 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 02:30:32 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 1ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 02:30:32 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 1ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 02:30:32 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 02:30:32 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 02:30:32 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 02:30:32 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 02:30:32 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 1ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 02:31:48 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered artists/show.html.erb within layouts/application (103.7ms)
+  Rendered shared/_login.html.erb (0.7ms)
+Completed 200 OK in 676ms (Views: 128.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 02:31:49 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered shared/_login.html.erb (0.1ms)
+Completed 200 OK in 363ms (Views: 8.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 02:31:50 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered shared/_login.html.erb (0.2ms)
+Completed 200 OK in 403ms (Views: 7.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 02:31:50 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered shared/_login.html.erb (0.1ms)
+Completed 200 OK in 404ms (Views: 7.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 02:31:51 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered shared/_login.html.erb (0.1ms)
+Completed 200 OK in 348ms (Views: 7.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 02:31:51 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered shared/_login.html.erb (0.2ms)
+Completed 200 OK in 315ms (Views: 14.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 02:31:52 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered shared/_login.html.erb (0.2ms)
+Completed 200 OK in 353ms (Views: 11.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 02:31:52 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered shared/_login.html.erb (0.2ms)
+Completed 200 OK in 494ms (Views: 12.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 02:31:53 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered shared/_login.html.erb (0.1ms)
+Completed 200 OK in 316ms (Views: 8.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 02:31:53 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered shared/_login.html.erb (0.3ms)
+Completed 200 OK in 328ms (Views: 10.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 02:31:54 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered shared/_login.html.erb (0.2ms)
+Completed 200 OK in 336ms (Views: 9.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 02:31:54 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered shared/_login.html.erb (0.2ms)
+Completed 200 OK in 357ms (Views: 8.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 02:31:54 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered shared/_login.html.erb (0.1ms)
+Completed 200 OK in 313ms (Views: 8.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 02:31:55 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 6ms (Views: 5.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 02:31:55 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 02:31:55 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 1ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 02:31:55 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 02:31:55 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 02:31:55 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 02:31:55 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 1ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 02:31:55 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 1ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 02:31:55 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 02:31:56 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 1ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 02:31:56 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 02:31:56 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-15 02:31:56 +0100
+Processing by PagesController#splash as HTML
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 02:32:29 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered artists/show.html.erb within layouts/application (104.6ms)
+  Rendered shared/_login.html.erb (0.7ms)
+Completed 200 OK in 948ms (Views: 130.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 02:32:30 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered shared/_login.html.erb (0.9ms)
+Completed 200 OK in 620ms (Views: 30.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 02:38:12 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered artists/show.html.erb within layouts/application (104.8ms)
+  Rendered shared/_login.html.erb (0.9ms)
+Completed 200 OK in 689ms (Views: 130.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2012-05-15 02:38:12 +0100
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered shared/_login.html.erb (0.9ms)
+Completed 200 OK in 470ms (Views: 32.4ms | ActiveRecord: 1.0ms)

@@ -17,10 +17,13 @@ group :production do
   gem 'passenger'
 end
 
-group :development do
+group :development, :test do
   gem 'sqlite3'
 end
 
+group :test do
+  gem 'ruby-prof'
+end
 
 gem 'capistrano'
 # gem 'rvm-capistrano'  -- THIS MUST BE INSTALLED LOCALLY, IT WILL NOT WORK IN A GEMFILE.
@@ -30,7 +33,6 @@ gem 'resque'
 
 gem "paperclip", "~> 3.0"
 
-
 # SCRAPING GEMS
 gem 'rbrainz'
 gem 'scrobbler'
@@ -39,7 +41,6 @@ gem 'amazon-ecs'
 
 # ADMIN
 #gem 'rails_admin'
-
 
 # in production environments by default.
 gem 'compass-rails', '>= 1.0.0.rc.2'

@@ -1,6 +1,7 @@
 class ArtistJob
   @queue = :artistjob
   def self.perform access_token, user_id
+    start_time = Time.now
     require 'open-uri'
     graph = Koala::Facebook::API.new(access_token)
     music = graph.get_connections("me", "music")
@@ -106,5 +107,9 @@ class ArtistJob
       break
       end
     end
+    end_time = Time.now
+    elapsed_time = end_time - start_time
+    Rails.logger.info "Finished artist import delayed job after #{elapsed_time}"
+    return true
   end
 end

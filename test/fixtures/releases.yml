@@ -8,7 +8,6 @@ one:
   sdigital: MyString
   amazon: MyString
   youtube: MyString
-  type: 1
   artist_id: 1
 
 two:
@@ -19,5 +18,4 @@ two:
   sdigital: MyString
   amazon: MyString
   youtube: MyString
-  type: 1
   artist_id: 1
