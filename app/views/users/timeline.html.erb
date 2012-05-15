@@ -1,11 +1,19 @@
 <div class="content content-pad-160-bottom">
-<h1>
-	User timeline
-</h1>
-<% @timeline.each do |release| %>
-<p>
-	<%= release.name %><br>
-	<%= release.date %><br>
-	<%= image_tag release.image :thumb %>
-</p>
-<% end %>
+	<h1> User timeline </h1>
+	<% @timeline.joins(:artist).each do |release| %>
+	<p>
+		<%= link_to release.artist.name, release.artist %>
+		<%= release.name %>
+		<br>
+		<%= release.date %>
+		<br>
+		<%= link_to '7digital', release.sdigital %>
+		<%= if !release.itunes.blank?
+        link_to 'iTunes', release.itunes
+      end  %>
+		<%= if !release.amazon.blank?
+        link_to 'Amazon', release.amazon
+      end  %>
+		<%= image_tag release.image :thumb %>
+	</p>
+	<% end %>
