@@ -27,7 +27,7 @@ class Artist < ActiveRecord::Base
 
   def self.search(search)
     if search
-      where("name LIKE ?",search).page
+      where("name LIKE ?","%#{search}%").page
     else
     self.page.all
     end
