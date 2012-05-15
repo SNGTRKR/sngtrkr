@@ -9,7 +9,6 @@
 		<%= csrf_meta_tags %>
 	</head>
 	<body>
-		<%= render 'shared/fb_async' %>
 		<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
 		chromium.org/developers/how-tos/chrome-frame-getting-started -->
 		<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or
@@ -92,27 +91,6 @@
 		<%= csrf_meta_tags %>
 	</head>
 	<body>
-		<div id="fb-root"></div>
-		<script>
-						window.fbAsyncInit = function() {
-			FB.init({
-			appId : '<%= @fb_app_id %>
-				', // App ID
-				status : true, // check login status
-				cookie : true, // enable cookies to allow the server to access the session
-				xfbml : true  // parse XFBML
-				});
-				};
-
-				// Load the SDK Asynchronously
-				(function(d){
-				var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-				if (d.getElementById(id)) {return;}
-				js = d.createElement('script'); js.id = id; js.async = true;
-				js.src = "//connect.facebook.net/en_US/all.js";
-				ref.parentNode.insertBefore(js, ref);
-				}(document));
-		</script>
 		<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
 		chromium.org/developers/how-tos/chrome-frame-getting-started -->
 		<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or
