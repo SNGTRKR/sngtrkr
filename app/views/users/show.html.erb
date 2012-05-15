@@ -1,6 +1,99 @@
 <% content_for :title do %>Friend: <%= @friend.first_name %> <%= @friend.last_name %><% end %>
 <div class="content content-pad-160-bottom">
-	 <p id="notice"><%= notice %></p>
+<div id="friend-info-top">
+	<div class="left friend-info">
+		<div id="friend-image"></div>
+		<div id="f-info">
+			<div class="font-15"><strong><%= @friend.first_name + " " + @friend.last_name %></strong></div>
+			Bristol, UK
+			<div class="orange-txt instruct-font">234 TRKINGS</div>
+			<div class="italic status-nudge font-11">“Live now with Matt Bessey blaring dubstep tunes. Special guest in the studio for Buttery Bristol Bass on Burst | Fridays 9pm, Crazy D!!!!!”</div>
+		</div>
+	</div>
+	<div id="friend-trkr-search"><input type="text" id="filter"/><img class="white-search-25 right" src="/assets/images/white-search.png"/></div>
+</div>
+<div class="clear"></div>
+	<div class="recommended-artists-outer friend-recommend-nudge">
+		<div class="recommended-artists">
+			<ul>
+				<li class="left new-recommend" style="background-image:url(/images/recommend/missing.png);background-repeat:no-repeat;background-position:center;">
+					<div class="each-recommend">
+					<div class="black-tint"></div>
+					<div class="instruct-font font-20 recommend-info">DREAM</div>
+					<div class="outer-button">
+				<div class="inner-button">
+					<div class="o-button artist-add-o-pad left instruct-font">
+						ADD TRKR<span></span>
+					</div>
+					</div></div>
+					</div>
+				</li>
+								<li class="left new-recommend" style="background-image:url(/images/recommend/missing.png);background-repeat:no-repeat;background-position:center;">
+					<div class="each-recommend">
+					<div class="black-tint"></div>
+					<div class="instruct-font font-20 recommend-info">DREAM</div>
+					<div class="outer-button">
+				<div class="inner-button">
+					<div class="o-button artist-add-o-pad left instruct-font">
+						ADD TRKR<span></span>
+					</div>
+					</div></div>
+					</div>
+				</li>
+								<li class="left new-recommend" style="background-image:url(/images/recommend/missing.png);background-repeat:no-repeat;background-position:center;">
+					<div class="each-recommend">
+					<div class="black-tint"></div>
+					<div class="instruct-font font-20 recommend-info">DREAM</div>
+					<div class="outer-button">
+				<div class="inner-button">
+					<div class="o-button artist-add-o-pad left instruct-font">
+						ADD TRKR<span></span>
+					</div>
+					</div></div>
+					</div>
+				</li>
+								<li class="left new-recommend" style="background-image:url(/images/recommend/missing.png);background-repeat:no-repeat;background-position:center;">
+					<div class="each-recommend">
+					<div class="black-tint"></div>
+					<div class="instruct-font font-20 recommend-info">DREAM</div>
+					<div class="outer-button">
+				<div class="inner-button">
+					<div class="o-button artist-add-o-pad left instruct-font">
+						ADD TRKR<span></span>
+					</div>
+					</div></div>
+					</div>
+				</li>
+									<li class="left new-recommend" style="background-image:url(/images/recommend/missing.png);background-repeat:no-repeat;background-position:center;">
+					<div class="each-recommend">
+					<div class="black-tint"></div>
+					<div class="instruct-font font-20 recommend-info">DREAM</div>
+					<div class="outer-button">
+				<div class="inner-button">
+					<div class="o-button artist-add-o-pad left instruct-font">
+						ADD TRKR<span></span>
+					</div>
+					</div></div>
+					</div>
+				</li>
+									<li class="left new-recommend" style="background-image:url(/images/recommend/missing.png);background-repeat:no-repeat;background-position:center;">
+					<div class="each-recommend">
+					<div class="black-tint"></div>
+					<div class="instruct-font font-20 recommend-info">DREAM</div>
+					<div class="outer-button">
+				<div class="inner-button">
+					<div class="o-button artist-add-o-pad left instruct-font">
+						ADD TRKR<span></span>
+					</div>
+					</div></div>
+					</div>
+				</li>
+				</ul>
+		</div></div>
+
+
+
+<!--	 <p id="notice"><%= notice %></p>
 
 <p>
   <b>First name:</b>
@@ -45,4 +138,4 @@
 <p>
   <b>Role:</b>
   <%= @friend.role %>
-</p>
+</p> -->

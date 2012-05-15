@@ -26,8 +26,8 @@
 				<% if @user.manager? %>
 				<li class="profile-menu-button-nudge">
 					<div class="o-button menu-width profile-menu-o-pad font-13 signika-font artist-menu-pad">
-						<%= link_to 'Add Release' #releases_new_release_path 
-						%>
+						<%= link_to 'Add Release' #releases_new_release_path
+%>
 						<span></span>
 					</div>
 				</li>
@@ -57,7 +57,7 @@
 			<% if @user.manager? %>
 			<h2>
 			<div class="font-15">
-				Welcome to your profile, <strong>JellyFishBoy</strong>!
+				Welcome to your profile, <strong><%= @artist.name %></strong>!
 			</div></h2>
 			<br/>
 			Here you will be able to view how many of your fans are TRKing you, along with adding releases, new and old, to your personalized artist timeline.
@@ -102,12 +102,13 @@
 		</div>
 	</div>
 	<div class="clear"></div>
-	<div id="recommended-artists-outer">
+	<div class="recommended-artists-outer">
 		<div class="recommended-artists">
 			<ul>
 				<% @user.suggested[0, 6].each do |sug| %>
-				<li class="left" style="background-image:url(<%= sug.image.url :recommend %>);background-repeat:no-repeat;background-position:center;">
+				<li class="left new-recommend" style="background-image:url(<%= sug.image.url :recommend %>);background-repeat:no-repeat;background-position:center;">
 					<div class="each-recommend">
+
 						<div class="black-tint"></div>
 						<div class="instruct-font font-20 recommend-info">
 							<%= link_to sug.name, sug  %>
@@ -115,7 +116,7 @@
 						<div class="outer-button">
 							<div class="inner-button">
 								<div class="o-button artist-add-o-pad left instruct-font">
-									<%= link_to "ADD TRKR", follow_artist_path(sug), :remote => true, "data-type" => "json" %><span></span>
+									<%= link_to "ADD TRKR", follow_artist_path(sug), :remote => true, "data-type" => "json", :id => "recommend-trk" %><span></span>
 								</div>
 							</div>
 						</div>
@@ -123,8 +124,5 @@
 				</li>
 				<% end %>
 			</ul>
-			<!-- <% @user.suggested.each do |sug| %>
-			<span> <%= link_to sug.name, sug  %><%= link_to 'ADD TRKR', follow_artist_path(sug) %></span>
-			<% end %> -->
 		</div>
 	</div>

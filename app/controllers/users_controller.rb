@@ -38,7 +38,8 @@ class UsersController < ApplicationController
     @user = current_user
     @following = []
     if @user.managing.count > 0
-      @trackers = Artist.find(@user.managing.first.artist_id).followed_users.count
+      @artist = Artist.find(@user.managing.first.artist_id)
+      @trackers = @artist.followed_users.count
     end
     @user.following.each do |artist|
       @following << Artist.find(artist.artist_id)
@@ -105,15 +106,15 @@ class UsersController < ApplicationController
 
   # DELETE /users/1
   # DELETE /users/1.json
-  
+
   def destroy_confirm
     respond_to do |format|
       format.html { render :delete_confirm }
       format.json { head :no_content }
     end
-    
+
   end
-  
+
   def destroy
     @user = User.find(params[:id])
     @user.destroy
@@ -156,9 +157,9 @@ class UsersController < ApplicationController
       api = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
       artist = Artist.find(params[:id]);
       begin
-      api.put_connections("me", "sngtrkr:track", :artist => url_for(artist))
-      rescue 
-      logger.warning "Failed to track #{artist.name} for #{@user.id}"
+        api.put_connections("me", "sngtrkr:track", :artist => url_for(artist))
+      rescue
+        logger.warning "Failed to track #{artist.name} for #{@user.id}"
       end
     end
     @artist = Artist.find(@user.suggested[6].id)

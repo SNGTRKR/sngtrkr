@@ -22,4 +22,9 @@ ncjQuery(document).ready(function() {
 		closeClick	: false,
 		type		: 'iframe'
 	});
+	ncjQuery('#recommend-trk').bind("ajax:sucess", function(evt, data, status, xhr) {
+		var $rec = $(this);
+		$rec.find('div.new-recommend').html();
+	})
 });
+
