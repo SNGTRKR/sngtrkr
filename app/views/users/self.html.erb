@@ -81,10 +81,19 @@
 	</div>
 	<div class="clear"></div>
 	<div id="tracked-artists">
+		<ul>
 		<% @following.each do |artist| %>
-		<%= link_to artist.name, unfollow_artist_path(artist), :remote => true, "data-type" => "json" %>
+		<li class="left">
+			<div class="each-artist-outer">
+				<div class="font-13"><strong><%= truncate(artist.name, :length => 20) %></strong></div>
+					<div class="instruct-font orange-txt">2,810 TRKR's</div>
+					<%= link_to unfollow_artist_path(artist), :remote => true, "data-type" => "json" do %><img class="remove-artist-button" src="/assets/images/x.png"/><% end %>
+					</div>
+			</li>
 		<% end %>
-	</div>
+		</ul>
+		</div>
+		<div class="clear"></div>
 	<div class="content-top recommend-text-nudge">
 		<h3 class="signika-txt top-header font-35 left">Here are a few artists we have recommended for you...</h3>
 		<div class="content-top-right">
