@@ -158,7 +158,7 @@ class UsersController < ApplicationController
       logger.warning "Failed to track #{artist.name} for #{@user.id}"
       end
     end
-    @artist = Artist.find(@user.suggested.first.id)
+    @artist = Artist.find(@user.suggested[6].id)
     respond_to do |format|
       format.html { redir :id }
       format.json { render("artists/show.json") }
