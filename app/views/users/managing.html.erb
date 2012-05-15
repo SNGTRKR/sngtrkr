@@ -6,9 +6,9 @@
 		<div class="font-13 line-height-1-25">You can only administrate one artist per account. You cannot change, once your artist selection has been confirmed.</div>
     </div>
 <% @manageable.each do |artist| %>
-<p>Manage <%= link_to artist["name"], manage_artist_path(:artist_id => artist["db_id"]) %></p>
+<p>Manage <%= link_to artist["name"], manage_artist_path(artist) %></p>
 <% end %>
 
 <% @managing.each do |artist| %>
-<p>Stop managing <%= link_to artist["name"], unmanage_artist_path(:artist_id => artist["db_id"]) %></p>
+<p>Stop managing <%= link_to artist["name"], unmanage_artist_path(artist) %></p>
 <% end %>
