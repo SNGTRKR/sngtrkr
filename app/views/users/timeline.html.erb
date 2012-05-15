@@ -1,0 +1,11 @@
+<div class="content content-pad-160-bottom">
+<h1>
+	User timeline
+</h1>
+<% @timeline.each do |release| %>
+<p>
+	<%= release.name %><br>
+	<%= release.date %><br>
+	<%= image_tag release.image :thumb %>
+</p>
+<% end %>

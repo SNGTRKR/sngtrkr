@@ -21,6 +21,7 @@ SNGTRKRR::Application.routes.draw do
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   end
 
+  match '/timeline' => "Users#timeline"
   resources :users do
     member do
       get 'destroy_confirm'
