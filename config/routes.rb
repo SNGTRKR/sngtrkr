@@ -34,7 +34,9 @@ SNGTRKRR::Application.routes.draw do
     end
   end
 
-  resources :artists
+  resources :artists do
+    resources :releases
+  end
 
   # Allows us to have intuitive /artist/1/follow URLs that actually deal with the
   # user controller
