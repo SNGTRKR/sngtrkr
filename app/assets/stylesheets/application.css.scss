@@ -602,25 +602,77 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     margin-top:3px;
   }
 }
+#track-num-search {
+  position:relative;
+  top:17px;
+  margin-bottom:6px;
+  .no-trk {
+    position:relative;
+    bottom:-1px;
+  }
+          .artist-trkr-list-search {
+        position:absolute;
+        left:510px;
+        bottom:0px;
+        height:25px;
+        width:155px;
+        background:$orange; 
+        @include border-radius(8px);
+        -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
+        -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
+        box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
+        input{
+            background:transparent;
+            padding:0.6em;
+            border:none;
+            width:10em;
+            color:#fff;
+        }
+        input:focus{
+            outline:none;
+        }
+    }
+}
 #tracked-artists {
   position:relative;
-  top:23px;
-  width:646px;
-  height:186px;
-  background:rgba(255,255,255,0.75);
-  @include border-radius(8px);
-  -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-  -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-  box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-  padding:20px 0 0 20px; 
+  top:28px;
+  width:666px;
+      ul {
+      list-style-type:none;
+      margin-left:-15px;
+  li {
+    width:155px;
+    height:28px;
+    padding:12px 0 17px 0;
+    background:rgba(255,255,255,0.75);
+    @include border-radius(8px);
+    -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
+    box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
+    margin:0 0 15px 15px;
+      .each-artist-outer {
+    position:relative;
+    width:155px;
+    height:57px;
+    text-align:center;
+    .remove-artist-button {
+      position:absolute;
+      height:15px;
+      width:15px;
+      top:-10px;
+      right:3px;
+    }
+  }
+  }
+  }
 }
 .recommend-text-nudge {
-  top:46px;
+  top:38px;
 }
 .recommended-artists-outer {
   position:relative;
   height:515px;
-  margin-top:-7px;
+  margin-top:-16px;
   .recommended-artists {
   position:relative;
   top:73px;
@@ -1151,10 +1203,10 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   }
 }
 .friend-recommend-nudge {
-  margin-top:-46px;
+  margin-top:-37px;
 }
 .other-recommend-nudge {
-  margin-top:-53px;
+  margin-top:-54px;
 }
         .white-search-25 {
         width:25px;
