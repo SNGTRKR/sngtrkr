@@ -2,7 +2,7 @@
 <div class="content content-pad-160-bottom">
 	<div id="friend-info-top">
 		<div class="left friend-info">
-			<div id="friend-image"></div>
+			<div id="friend-image"  style="overflow:hidden"><%= image_tag "//graph.facebook.com/"+@friend.fbid+"/picture?type=large" %></div>
 			<div id="f-info">
 				<div class="font-15">
 					<strong><%= @friend.first_name + " " + @friend.last_name %></strong>

@@ -9,7 +9,7 @@
 		<ul>
 			<% @app_friends.each do |friend| %>
 			<li class="left">
-				<div class="friends-image"></div>
+				<div class="friends-image" style="overflow:hidden"><%= image_tag "//graph.facebook.com/"+friend.fbid+"/picture?type=normal" %></div>
 				<div class="friends-info">
 					<h3><strong><%= link_to(friend) do %><span class="font-13 name"><%= friend.first_name + " " + friend.last_name %></span><% end %></strong></h3>Bristol, UK
 					<br/>
