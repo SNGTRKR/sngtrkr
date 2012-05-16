@@ -11,3 +11,6 @@ else
   FB_APP_ID = '294743537267038'
   FB_APP_SECRET = '1b0a8ec279073577928e87c37c7be342'
 end
+
+# Specify wether or not in development mode imported artists are reimported on every launch or not
+IMPORT_REPLACE = true

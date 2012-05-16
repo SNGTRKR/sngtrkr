@@ -19,7 +19,7 @@ class ArtistJob
           end
           # TODO: DISABLE FOR PRODUCTION
           tmp = Artist.where("fbid = ?",artist["id"]).first
-          if !tmp.nil? and Rails.env.production?
+          if !tmp.nil? and (Rails.env.production? or !IMPORT_REPLACE)
             # Skip artists already in the database
             User.find(user_id).suggest(tmp.id)
           next
@@ -40,23 +40,24 @@ class ArtistJob
         next
         end
         #a = Artist.new()
-        a = Artist.where("fbid = ?",artist["id"]).first;
+        a = Artist.where("fbid = ?",artist["id"]).first
         if a.nil?
           a = Artist.new()
         elsif Rails.env.production?
         next
         end
+        split_regexp = /[,\/|+\.]/
         a.name = s.real_name
         a.fbid = artist["id"]
         a.bio = s.bio
         if s.bio.nil?
           a.bio = artist["bio"]
         end
-        a.genre = artist["genre"]
+        a.genre = artist["genre"].split(split_regexp).first rescue nil
         a.booking_email = artist["booking_agent"]
         a.manager_email = artist["general_manager"]
         a.hometown = artist["hometown"]
-        a.label_name = artist["record_label"]
+        a.label_name = artist["record_label"].split(split_regexp).first  rescue nil
         if(artist["website"])
           websites = artist["website"].split(' ')
         else
