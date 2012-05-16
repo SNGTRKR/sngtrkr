@@ -119,18 +119,14 @@
 				<% @user.suggested[0, 6].each do |sug| %>
 				<li class="left new-recommend" style="background-image:url(<%= sug.image.url :recommend %>);background-repeat:no-repeat;background-position:center;">
 					<div class="each-recommend">
-
 						<div class="black-tint"></div>
 						<div class="instruct-font font-20 recommend-info">
 							<%= link_to sug.name, sug  %>
 						</div>
-						<div class="outer-button">
-							<div class="inner-button">
-								<div class="o-button artist-add-o-pad left instruct-font">
+								<div class="o-button artist-add-o-pad left instruct-font recommend-trk-button">
 									<%= link_to "ADD TRKR", follow_artist_path(sug), :remote => true, "data-type" => "json", :id => "recommend-trk" %><span></span>
 								</div>
-							</div>
-						</div>
+								<img class="ignore-button" src="/assets/images/ignore.png"/>
 					</div>
 				</li>
 				<% end %>

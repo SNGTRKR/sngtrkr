@@ -205,19 +205,8 @@ input.dp-applied {
   padding:1px 3px 5px 20px;
 }
 .artist-add-o-pad {
-    margin:0 0 0 3px;
     line-height:32px;
     padding:2px 3px 5px 21px;
-}
-.artist-remove-o-pad {
-    margin:0 0 0 -4px;
-    line-height:32px;
-    padding:1px 3px 5px 21px;
-}
-.artist-login-o-pad {
-    margin:0 0 0 -8px;
-    line-height:32px;
-    padding:1px 3px 5px 21px;
 }
 .p-settings-o-pad {
   margin:0 0 0 -5px;
@@ -689,21 +678,6 @@ body:before {/* thanks to Maleika (Kohoutec)*/
       -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
       -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
        box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-               .outer-button {
-          position:absolute;
-          top:0px;
-          left:0px;
-          width:100%;
-          width:202px;
-          height:178px;
-          z-index:1;
-          .inner-button {
-            position:relative;
-            width:50%;
-            margin:0px auto;
-            top:159px;
-          }
-        }
         .each-recommend {
           position:relative;
           height:178px;
@@ -729,6 +703,14 @@ body:before {/* thanks to Maleika (Kohoutec)*/
             a:hover {
               color:$orange;
             }
+          }
+          .recommend-trkr-button {
+            position:absolute;
+            left:25px;
+            top:-20px;
+          }
+          .ignore-button {
+            position:absolute;
           }
         }
     }
