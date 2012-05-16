@@ -82,6 +82,7 @@
 	<div class="clear"></div>
 	<div id="track-num-search">
 		<div class="font-15 no-trk">
+			<img class="p-bulge-t" src="/assets/images/p-bulge-top.png"/>
 			<strong><%= @user.following.count %> TRKed Artists</strong>
 		</div>
 		<div class="artist-trkr-list-search">
@@ -96,7 +97,7 @@
 				<div class="each-artist-outer">
 					<strong>
 					<div class="font-13 name">
-						<%= truncate(artist.name, :length => 20) %>
+						<%= link_to truncate(artist.name, :length => 20), artist %>
 					</div></strong>
 					<div class="instruct-font orange-txt">
 						<%= artist.followers %> TRKR's
@@ -106,6 +107,7 @@
 			</li>
 			<% end %>
 		</ul>
+		<img class="p-bulge-b" src="/assets/images/p-bulge-bot.png"/>
 	</div>
 	<div class="clear"></div>
 	<div class="content-top recommend-text-nudge">
