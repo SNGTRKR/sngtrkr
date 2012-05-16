@@ -82,7 +82,7 @@
 	<div class="clear"></div>
 	<div id="track-num-search">
 		<div class="font-15 no-trk">
-			<strong>839 TRKed Artists</strong>
+			<strong><%= @user.following.count %> TRKed Artists</strong>
 		</div>
 		<div class="artist-trkr-list-search">
 			<input type="text" id="filter"/>
@@ -99,7 +99,7 @@
 						<%= truncate(artist.name, :length => 20) %>
 					</div></strong>
 					<div class="instruct-font orange-txt">
-						2,810 TRKR's
+						<%= artist.followers %> TRKR's
 					</div>
 					<%= link_to unfollow_artist_path(artist), :remote => true, "data-type" => "json" do %><img class="remove-artist-button" src="/assets/images/x.png"/><% end %>
 				</div>
