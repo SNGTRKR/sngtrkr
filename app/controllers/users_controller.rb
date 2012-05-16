@@ -119,7 +119,7 @@ class UsersController < ApplicationController
       format.html { render :delete_confirm }
       format.json { head :no_content }
     end
-
+render :layout => false
   end
 
   def destroy
@@ -204,10 +204,6 @@ class UsersController < ApplicationController
   end
 
   def manage_confirm
-    render :layout => false
-  end
-
-  def delete_confirm
     render :layout => false
   end
 end

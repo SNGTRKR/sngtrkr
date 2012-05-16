@@ -11,8 +11,7 @@
 			<li class="left">
 				<div class="friends-image" style="background-image:url(<%= "//graph.facebook.com/"+friend.fbid+"/picture?type=normal" %>);background-repeat:no-repeat;background-position:center;"></div>
 				<div class="friends-info">
-					<h3><strong><%= link_to(friend) do %><span class="font-13 name"><%= friend.first_name + " " + friend.last_name %></span><% end %></strong></h3>Bristol, UK
-					<br/>
+					<h3><strong><%= link_to(friend) do %><span class="font-13 name"><%= friend.first_name + " " + friend.last_name %></span><% end %></strong></h3>
 					<span class="orange-txt instruct-font"><%= friend.following.count %> TRKINGS</span>
 				</div>
 			</li>

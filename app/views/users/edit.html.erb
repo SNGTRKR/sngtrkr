@@ -91,10 +91,10 @@
 			<br/>
 			Your account, tracked artists and all personal details will be permanently removed.
 			<div id="delete-submit-pad">
-				<a href="/users/delete_confirm" class="iframe"><div class="o-button del-account-o-pad left signika-font">
-					<%= link_to 'Delete Account',  destroy_confirm_user_path(@user) %>
+				<div class="o-button del-account-o-pad left signika-font">
+					<%= link_to 'Delete Account',  destroy_confirm_user_path(@user), :class => 'iframe' %>
 					<span></span>
-				</div></a>
+				</div>
 			</div>
 		</div>
 	</div>
