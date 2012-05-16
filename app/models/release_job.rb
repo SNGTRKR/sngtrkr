@@ -16,7 +16,7 @@ class ReleaseJob
       r = Release.where("sd_id = ?",release["id"]).first
       if r.nil?
         r = Release.new
-      elsif rails_env.production?
+      elsif rails_env.production? or !IMPORT_REPLACE
       next
       end
 
