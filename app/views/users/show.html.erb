@@ -29,7 +29,7 @@
 				<p>It seems <%= @friend.first_name %> isn't tracking any artists yet...</p>
 				<% end %>
 				<% @artists.each do |artist| %>
-				<li class="left new-recommend" style="background-image:url(/images/recommend/missing.png);background-repeat:no-repeat;background-position:center;">
+				<li class="left new-recommend" style="background-image:url(<%= artist.image.url %>);background-repeat:no-repeat;background-position:center;">
 					<div class="each-recommend">
 						<div class="black-tint"></div>
 						<div class="instruct-font font-20 recommend-info">
