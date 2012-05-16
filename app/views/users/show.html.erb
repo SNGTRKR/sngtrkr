@@ -2,7 +2,7 @@
 <div class="content content-pad-160-bottom">
 	<div id="friend-info-top">
 		<div class="left friend-info">
-			<div id="friend-image"  style="overflow:hidden"><%= image_tag "//graph.facebook.com/"+@friend.fbid+"/picture?type=large" %></div>
+			<div id="friend-image"  style="background-image:url(<%= "//graph.facebook.com/"+@friend.fbid+"/picture?type=large" %>);background-repeat:no-repeat;background-position:center;"></div>
 			<div id="f-info">
 				<div class="font-15">
 					<strong><%= @friend.first_name + " " + @friend.last_name %></strong>
@@ -35,13 +35,10 @@
 						<div class="instruct-font font-20 recommend-info">
 							<%= artist.name %>
 						</div>
-						<div class="outer-button">
-							<div class="inner-button">
-								<div class="o-button artist-add-o-pad left instruct-font">
-									<%= link_to "ADD TRKR", follow_artist_path(artist) %><span></span>
-								</div>
-							</div>
+						<div class="o-button artist-add-o-pad left instruct-font recommend-trkr-button">
+							<%= link_to "ADD TRKR", follow_artist_path(sug), :remote => true, "data-type" => "json", :id => "recommend-trk" %><span></span>
 						</div>
+						<%= link_to (image_tag '/assets/images/ignore.png'), unsuggest_artist_path(sug), :remote => true, "data-type" => "json", :class => 'ignore-button' %>
 					</div>
 				</li>
 				<% end %>
