@@ -593,16 +593,16 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 }
 #track-num-search {
   position:relative;
-  top:17px;
+  top:-6px;
   margin-bottom:6px;
   .no-trk {
     position:relative;
-    bottom:-1px;
+    bottom:-28px;
   }
           .artist-trkr-list-search {
         position:absolute;
         left:510px;
-        bottom:0px;
+        bottom:-26px;
         height:25px;
         width:155px;
         background:$orange; 
@@ -620,6 +620,11 @@ body:before {/* thanks to Maleika (Kohoutec)*/
         input:focus{
             outline:none;
         }
+    }
+    .p-bulge-t {
+      position:relative;
+      bottom:25px;
+      left:12px;
     }
 }
 #tracked-artists {
@@ -644,6 +649,12 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     width:155px;
     height:57px;
     text-align:center;
+    a {
+      color:#000;
+    }
+    a:hover {
+      color:#000;
+    }
     .remove-artist-button {
       position:absolute;
       height:15px;
@@ -654,14 +665,18 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   }
   }
   }
+      .p-bulge-b {
+      position:relative;
+      left:12px;
+    }
 }
 .recommend-text-nudge {
-  top:38px;
+  top:18px;
 }
 .recommended-artists-outer {
   position:relative;
   height:515px;
-  margin-top:-16px;
+  margin-top:-36px;
   .recommended-artists {
   position:relative;
   top:73px;
