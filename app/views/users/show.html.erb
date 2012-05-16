@@ -1,141 +1,175 @@
 <% content_for :title do %>Friend: <%= @friend.first_name %> <%= @friend.last_name %><% end %>
 <div class="content content-pad-160-bottom">
-<div id="friend-info-top">
-	<div class="left friend-info">
-		<div id="friend-image"></div>
-		<div id="f-info">
-			<div class="font-15"><strong><%= @friend.first_name + " " + @friend.last_name %></strong></div>
-			Bristol, UK
-			<div class="orange-txt instruct-font">234 TRKINGS</div>
-			<div class="italic status-nudge font-11">“Live now with Matt Bessey blaring dubstep tunes. Special guest in the studio for Buttery Bristol Bass on Burst | Fridays 9pm, Crazy D!!!!!”</div>
+	<div id="friend-info-top">
+		<div class="left friend-info">
+			<div id="friend-image"></div>
+			<div id="f-info">
+				<div class="font-15">
+					<strong><%= @friend.first_name + " " + @friend.last_name %></strong>
+				</div>
+				Bristol, UK
+				<div class="orange-txt instruct-font">
+					<%= @friend.following.count %> TRKINGS
+				</div>
+				<div class="italic status-nudge font-11">
+					“Live now with Matt Bessey blaring dubstep tunes. Special guest in the studio for Buttery Bristol Bass on Burst | Fridays 9pm, Crazy D!!!!!”
+				</div>
+			</div>
+		</div>
+		<div id="friend-trkr-search">
+			<input type="text" id="filter"/>
+			<img class="white-search-25 right" src="/assets/images/white-search.png"/>
 		</div>
 	</div>
-	<div id="friend-trkr-search"><input type="text" id="filter"/><img class="white-search-25 right" src="/assets/images/white-search.png"/></div>
-</div>
-<div class="clear"></div>
+	<div class="clear"></div>
 	<div class="recommended-artists-outer friend-recommend-nudge">
 		<div class="recommended-artists">
 			<ul>
+				<% if @artists.none? %>
+				<p>It seems <%= @friend.first_name %> isn't tracking any artists yet...</p>
+				<% end %>
+				<% @artists.each do |artist| %>
 				<li class="left new-recommend" style="background-image:url(/images/recommend/missing.png);background-repeat:no-repeat;background-position:center;">
 					<div class="each-recommend">
-					<div class="black-tint"></div>
-					<div class="instruct-font font-20 recommend-info">DREAM</div>
-					<div class="outer-button">
-				<div class="inner-button">
-					<div class="o-button artist-add-o-pad left instruct-font">
-						ADD TRKR<span></span>
-					</div>
-					</div></div>
+						<div class="black-tint"></div>
+						<div class="instruct-font font-20 recommend-info">
+							<%= artist.name %>
+						</div>
+						<div class="outer-button">
+							<div class="inner-button">
+								<div class="o-button artist-add-o-pad left instruct-font">
+									<%= link_to "ADD TRKR", follow_artist_path(artist) %><span></span>
+								</div>
+							</div>
+						</div>
 					</div>
 				</li>
-								<li class="left new-recommend" style="background-image:url(/images/recommend/missing.png);background-repeat:no-repeat;background-position:center;">
+				<% end %>
+				<!--
+				<li class="left new-recommend" style="background-image:url(/images/recommend/missing.png);background-repeat:no-repeat;background-position:center;">
 					<div class="each-recommend">
-					<div class="black-tint"></div>
-					<div class="instruct-font font-20 recommend-info">DREAM</div>
-					<div class="outer-button">
-				<div class="inner-button">
-					<div class="o-button artist-add-o-pad left instruct-font">
-						ADD TRKR<span></span>
-					</div>
-					</div></div>
+						<div class="black-tint"></div>
+						<div class="instruct-font font-20 recommend-info">
+							DREAM
+						</div>
+						<div class="outer-button">
+							<div class="inner-button">
+								<div class="o-button artist-add-o-pad left instruct-font">
+									ADD TRKR<span></span>
+								</div>
+							</div>
+						</div>
 					</div>
 				</li>
-								<li class="left new-recommend" style="background-image:url(/images/recommend/missing.png);background-repeat:no-repeat;background-position:center;">
+				<li class="left new-recommend" style="background-image:url(/images/recommend/missing.png);background-repeat:no-repeat;background-position:center;">
 					<div class="each-recommend">
-					<div class="black-tint"></div>
-					<div class="instruct-font font-20 recommend-info">DREAM</div>
-					<div class="outer-button">
-				<div class="inner-button">
-					<div class="o-button artist-add-o-pad left instruct-font">
-						ADD TRKR<span></span>
-					</div>
-					</div></div>
+						<div class="black-tint"></div>
+						<div class="instruct-font font-20 recommend-info">
+							DREAM
+						</div>
+						<div class="outer-button">
+							<div class="inner-button">
+								<div class="o-button artist-add-o-pad left instruct-font">
+									ADD TRKR<span></span>
+								</div>
+							</div>
+						</div>
 					</div>
 				</li>
-								<li class="left new-recommend" style="background-image:url(/images/recommend/missing.png);background-repeat:no-repeat;background-position:center;">
+				<li class="left new-recommend" style="background-image:url(/images/recommend/missing.png);background-repeat:no-repeat;background-position:center;">
 					<div class="each-recommend">
-					<div class="black-tint"></div>
-					<div class="instruct-font font-20 recommend-info">DREAM</div>
-					<div class="outer-button">
-				<div class="inner-button">
-					<div class="o-button artist-add-o-pad left instruct-font">
-						ADD TRKR<span></span>
-					</div>
-					</div></div>
+						<div class="black-tint"></div>
+						<div class="instruct-font font-20 recommend-info">
+							DREAM
+						</div>
+						<div class="outer-button">
+							<div class="inner-button">
+								<div class="o-button artist-add-o-pad left instruct-font">
+									ADD TRKR<span></span>
+								</div>
+							</div>
+						</div>
 					</div>
 				</li>
-									<li class="left new-recommend" style="background-image:url(/images/recommend/missing.png);background-repeat:no-repeat;background-position:center;">
+				<li class="left new-recommend" style="background-image:url(/images/recommend/missing.png);background-repeat:no-repeat;background-position:center;">
 					<div class="each-recommend">
-					<div class="black-tint"></div>
-					<div class="instruct-font font-20 recommend-info">DREAM</div>
-					<div class="outer-button">
-				<div class="inner-button">
-					<div class="o-button artist-add-o-pad left instruct-font">
-						ADD TRKR<span></span>
-					</div>
-					</div></div>
+						<div class="black-tint"></div>
+						<div class="instruct-font font-20 recommend-info">
+							DREAM
+						</div>
+						<div class="outer-button">
+							<div class="inner-button">
+								<div class="o-button artist-add-o-pad left instruct-font">
+									ADD TRKR<span></span>
+								</div>
+							</div>
+						</div>
 					</div>
 				</li>
-									<li class="left new-recommend" style="background-image:url(/images/recommend/missing.png);background-repeat:no-repeat;background-position:center;">
+				<li class="left new-recommend" style="background-image:url(/images/recommend/missing.png);background-repeat:no-repeat;background-position:center;">
 					<div class="each-recommend">
-					<div class="black-tint"></div>
-					<div class="instruct-font font-20 recommend-info">DREAM</div>
-					<div class="outer-button">
-				<div class="inner-button">
-					<div class="o-button artist-add-o-pad left instruct-font">
-						ADD TRKR<span></span>
-					</div>
-					</div></div>
+						<div class="black-tint"></div>
+						<div class="instruct-font font-20 recommend-info">
+							DREAM
+						</div>
+						<div class="outer-button">
+							<div class="inner-button">
+								<div class="o-button artist-add-o-pad left instruct-font">
+									ADD TRKR<span></span>
+								</div>
+							</div>
+						</div>
 					</div>
 				</li>
-				</ul>
-		</div></div>
+				-->
+			</ul>
+		</div>
+	</div>
+	<script>
+		window.fbAsyncInit = function() {
+FB.init({
+appId      : <%= '\''+FB_APP_ID+'\'' %>
+	, // App ID
+	channelUrl : '//localhost/channel.html', // Channel File
+	status     : true, // check login status
+	cookie     : true, // enable cookies to allow the server to access the session
+	xfbml      : true  // parse XFBML
+	});
 
+	// Additional initialization code here
+	FB.getLoginStatus(function(response) {
+		if(response.status === 'connected') {
+			// the user is logged in and has authenticated your
+			// app, and response.authResponse supplies
+			// the user's ID, a valid access token, a signed
+			// request, and the time the access token
+			// and signed request each expire
+			var uid = response.authResponse.userID;
+			var accessToken = response.authResponse.accessToken;
+		} else if(response.status === 'not_authorized') {
+			// the user is logged in to Facebook,
+			// but has not authenticated your app
+			FB.login();
+		} else {
+			// the user isn't logged in to Facebook.
+			FB.login();
+		}
+	});
+	FB.api(<%= '\''+@friend.fbid+'/picture?type=large\'' %>, function(response) {
+		// The response will literally just be the URL to the friend's profile picture
+	});
+	};
 
-
-<!--	 <p id="notice"><%= notice %></p>
-
-<p>
-  <b>First name:</b>
-  <%= @friend.first_name %>
-</p>
-
-<p>
-  <b>Last name:</b>
-  <%= @friend.last_name %>
-</p>
-
-<p>
-  <b>Password:</b>
-  <%= @friend.password %>
-</p>
-
-<p>
-  <b>Type:</b>
-  <%= @friend.type %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @friend.email %>
-</p>
-
-<p>
-  <b>Email frequency:</b>
-  <%= @friend.email_frequency %>
-</p>
-
-<p>
-  <b>Last email:</b>
-  <%= @friend.last_email %>
-</p>
-
-<p>
-  <b>Username:</b>
-  <%= @friend.username %>
-</p>
-
-<p>
-  <b>Role:</b>
-  <%= @friend.role %>
-</p> -->
+	// Load the SDK Asynchronously
+	( function(d) {
+			var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+			if(d.getElementById(id)) {
+				return;
+			}
+			js = d.createElement('script');
+			js.id = id;
+			js.async = true;
+			js.src = "//connect.facebook.net/en_US/all.js";
+			ref.parentNode.insertBefore(js, ref);
+		}(document));
+	</script>
