@@ -47,7 +47,6 @@ SNGTRKRR::Application.routes.draw do
       get 'suggest'
       get 'unsuggest'
     end
-    resources :releases
   end
 
 
