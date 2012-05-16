@@ -96,9 +96,10 @@
 			<li class="left">
 				<div class="each-artist-outer">
 					<strong>
+						<%= link_to artist do %>
 					<div class="font-13 name">
-						<%= link_to truncate(artist.name, :length => 20), artist %>
-					</div></strong>
+						<%= truncate(artist.name, :length => 20) %>
+					</div><% end %></strong>
 					<div class="instruct-font orange-txt">
 						<%= artist.followers %> TRKR's
 					</div>
