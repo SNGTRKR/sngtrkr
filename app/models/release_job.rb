@@ -13,7 +13,7 @@ class ReleaseJob
     return false
     end
     releases.each do |release|
-      r = Release.where("sd_id = ?",release["id"]).first
+      r = Release.where("sd_id = ?",release["id"]).first rescue next
       if r.nil?
         r = Release.new
       elsif Rails.env.production? or !IMPORT_REPLACE
