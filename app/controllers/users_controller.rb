@@ -32,6 +32,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @friend = User.find(params[:id])
+    @artists = @friend.following.joins(:artist) rescue []
     if !current_user.friends_with? @friend, session["friend_ids"]
       flash[:error] = "You do not have permissions to view this user"
       return redirect_to "/"

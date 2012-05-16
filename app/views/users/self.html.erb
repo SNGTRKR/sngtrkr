@@ -41,10 +41,10 @@
 					<% if @user.manager? %>
 					<div class="o-button menu-width profile-menu-o-pad font-13 signika-font artist-menu-pad">
 						<% else %>
-					<div class="o-button menu-width profile-menu-o-pad font-13 signika-font">
-						<% end %>
-						<%= link_to "Profile Settings", edit_user_path(@user) %><span></span>
-					</div>
+						<div class="o-button menu-width profile-menu-o-pad font-13 signika-font">
+							<% end %>
+							<%= link_to "Profile Settings", edit_user_path(@user) %><span></span>
+						</div>
 				</li>
 			</ul>
 		</div>
@@ -81,26 +81,33 @@
 	</div>
 	<div class="clear"></div>
 	<div id="track-num-search">
-		<div class="font-15 no-trk"><strong>839 TRKed Artists</strong></div>
-			<div class="artist-trkr-list-search">
+		<div class="font-15 no-trk">
+			<strong><%= @following.count %> TRKed Artists</strong>
+		</div>
+		<div class="artist-trkr-list-search">
 			<input type="text" id="filter"/>
 			<img class="white-search-25 right" src="/assets/images/white-search.png"/>
 		</div>
-		</div>
+	</div>
 	<div id="tracked-artists">
 		<ul>
-		<% @following.each do |artist| %>
-		<li class="left">
-			<div class="each-artist-outer">
-				<strong><div class="font-13 name"><%= truncate(artist.name, :length => 20) %></div></strong>
-					<div class="instruct-font orange-txt">2,810 TRKR's</div>
-					<%= link_to unfollow_artist_path(artist), :remote => true, "data-type" => "json" do %><img class="remove-artist-button" src="/assets/images/x.png"/><% end %>
+			<% @following.each do |artist| %>
+			<li class="left">
+				<div class="each-artist-outer">
+					<strong>
+					<div class="font-13 name">
+						<%= truncate(artist.name, :length => 20) %>
+					</div></strong>
+					<div class="instruct-font orange-txt">
+						2,810 TRKR's
 					</div>
+					<%= link_to unfollow_artist_path(artist), :remote => true, "data-type" => "json" do %><img class="remove-artist-button" src="/assets/images/x.png"/><% end %>
+				</div>
 			</li>
-		<% end %>
+			<% end %>
 		</ul>
-		</div>
-		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
 	<div class="content-top recommend-text-nudge">
 		<h3 class="signika-txt top-header font-35 left">Here are a few artists we have recommended for you...</h3>
 		<div class="content-top-right">
@@ -127,7 +134,8 @@
 						<div class="outer-button">
 							<div class="inner-button">
 								<div class="o-button artist-add-o-pad left instruct-font">
-									<%= link_to "ADD TRKR", follow_artist_path(sug), :remote => true, "data-type" => "json", :id => "recommend-trk" %><span></span>
+									<%= link_to "ADD TRKR", follow_artist_path(sug), :remote => true, "data-type" => "json", :id => "recommend-trk" %> |<%= link_to "X", unsuggest_artist_path(sug), :remote => true, "data-type" => "json", :id => "recommend-trk" %>
+									<span></span>
 								</div>
 							</div>
 						</div>
