@@ -706,11 +706,13 @@ body:before {/* thanks to Maleika (Kohoutec)*/
           }
           .recommend-trkr-button {
             position:absolute;
-            left:25px;
-            top:-20px;
+            left:28px;
+            bottom:-25px;
           }
           .ignore-button {
             position:absolute;
+            left:128px;
+            bottom:-18px;
           }
         }
     }
