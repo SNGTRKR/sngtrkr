@@ -10,6 +10,7 @@
 		<h3 class="font-15 instruct-font artist-search-name"><%= link_to artist.name, artist %></h3>
 		<div class="instruct-font orange-txt"><%= artist.followers %> TRKR'S</div>
 		<%= truncate(artist.genre, :length => 50) %>
+		<%= render :partial => 'shared/trk_artist', :object => artist %>
 		</div>
 		</div>
 	<% end %>
