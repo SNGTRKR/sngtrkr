@@ -192,26 +192,20 @@ input.dp-applied {
     top:0px;
     width:11px;
 }
-.o-pad {
-    margin:33px 16px 0 5px;
+.norm-o-pad {
     line-height:37px;
     padding:1px 3px 5px 18px;
 }
-.profile-menu-o-pad {
+/*.profile-menu-o-pad {
     line-height:37px;
     padding:1px 3px 5px 20px;
     margin-left:-2px;
-}
-.new-release-o-pad {
-  margin:-4px 0 0 0;
-  line-height:37px;
-  padding:1px 3px 5px 20px;
-}
-.artist-add-o-pad {
+} */
+.trkr-o-pad {
     line-height:32px;
     padding:2px 3px 5px 21px;
 }
-.p-settings-o-pad {
+/* .p-settings-o-pad {
   margin:0 0 0 -5px;
   line-height:37px;
   padding:1px 3px 5px 18px;
@@ -225,7 +219,7 @@ input.dp-applied {
 {
     line-height:37px;
     padding:1px 3px 1px 18px;
-}
+} */
 #artist_search_results{
     width:60em;
     margin:3em auto;
@@ -560,6 +554,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
       display:block;
       width:121px;
       text-align:center;
+      margin-left:-2px;
     }
     .artist-menu-pad{
       margin-top:-3px;
@@ -671,6 +666,9 @@ body:before {/* thanks to Maleika (Kohoutec)*/
       .p-bulge-b {
       position:relative;
       left:12px;
+    }
+    .no-trk-notify {
+      margin-bottom:12px;
     }
 }
 .recommend-text-nudge {
@@ -1072,6 +1070,11 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     color:#000;
   }
   }
+  }
+  .search-trkr-button {
+    position:relative;
+    right:11px;
+    bottom:25px;
   }
 }
 }
