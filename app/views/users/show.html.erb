@@ -2,16 +2,13 @@
 <div class="content content-pad-160-bottom">
 	<div id="friend-info-top">
 		<div class="left friend-info">
-			<div id="friend-image"  style="background-image:url(<%= "//graph.facebook.com/"+@friend.fbid+"/picture?type=large" %>);background-repeat:no-repeat;background-position:center;"></div>
+			<div id="friend-image"  style="background-image:url(<%= "//graph.facebook.com/"+@friend.fbid+"/picture?type=normal" %>);background-repeat:no-repeat;background-position:center;"></div>
 			<div id="f-info">
 				<h2><div class="font-15"><strong><%= @friend.first_name + " " + @friend.last_name %></strong></div></h2>
-				Bristol, UK
 				<div class="orange-txt instruct-font">
 					<%= @friend.following.count %> TRKINGS
 				</div>
-				<div class="italic status-nudge font-11">
-					“Live now with Matt Bessey blaring dubstep tunes. Special guest in the studio for Buttery Bristol Bass on Burst | Fridays 9pm, Crazy D!!!!!”
-				</div>
+				Last login: 
 			</div>
 		</div>
 		<div id="friend-trkr-search">
