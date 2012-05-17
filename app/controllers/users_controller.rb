@@ -116,10 +116,9 @@ class UsersController < ApplicationController
 
   def destroy_confirm
     respond_to do |format|
-      format.html { render :delete_confirm }
+      format.html { render :delete_confirm, :layout => false }
       format.json { head :no_content }
     end
-render :layout => false
   end
 
   def destroy
