@@ -19,29 +19,29 @@
 				<% else %>
 				<% end %>
 				<li class="profile-menu-button-nudge">
-					<div class="o-button menu-width profile-menu-o-pad font-13 signika-font">
+					<div class="o-button menu-width norm-o-pad font-13 signika-font">
 						<%= link_to 'Friends', friends_user_path(@user) %><span></span>
 					</div>
 				</li>
 				<% if @user.manager? %>
 				<li class="profile-menu-button-nudge">
-					<div class="o-button menu-width profile-menu-o-pad font-13 signika-font artist-menu-pad">
+					<div class="o-button menu-width norm-o-pad font-13 signika-font artist-menu-pad">
 						<%= link_to 'Add Release', new_artist_release_path(@artist) %>
 						<span></span>
 					</div>
 				</li>
 				<% else %>
 				<li class="profile-menu-button-nudge">
-					<div class="o-button menu-width profile-menu-o-pad font-13 signika-font">
+					<div class="o-button menu-width norm-o-pad font-13 signika-font">
 						<%= link_to 'Manage Artist', managing_user_path(@user) %><span></span>
 					</div>
 				</li>
 				<% end %>
 				<li class="profile-menu-button-nudge">
 					<% if @user.manager? %>
-					<div class="o-button menu-width profile-menu-o-pad font-13 signika-font artist-menu-pad">
+					<div class="o-button menu-width norm-o-pad font-13 signika-font artist-menu-pad">
 						<% else %>
-						<div class="o-button menu-width profile-menu-o-pad font-13 signika-font">
+						<div class="o-button menu-width norm-o-pad font-13 signika-font">
 							<% end %>
 							<%= link_to "Profile Settings", edit_user_path(@user) %><span></span>
 						</div>
@@ -90,10 +90,11 @@
 			<img class="white-search-25 right" src="/assets/images/white-search.png"/>
 		</div>
 	</div>
-	<% if @user.following.count.zero? %>
-	<p>You are not following anyone yet.</p>
-	<% else %>
+	
 	<div id="tracked-artists">
+		<% if @user.following.count.zero? %>
+	<div class="no-trk-notify">You are not TRKing anyone yet.</div>
+	<% else %>
 		<ul>
 			<% @following.each do |artist| %>
 			<li class="left">
@@ -110,9 +111,10 @@
 			</li>
 			<% end %>
 		</ul>
+		<% end %>
 		<img class="p-bulge-b" src="/assets/images/p-bulge-bot.png"/>
 	</div>
-	<% end %>
+	
 	<div class="clear"></div>
 	<div class="content-top recommend-text-nudge">
 		<h3 class="signika-txt top-header font-35 left">Here are a few artists we have recommended for you...</h3>
