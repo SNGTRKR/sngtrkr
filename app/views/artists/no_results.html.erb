@@ -1,71 +1,35 @@
-<% content_for :title do %>Sorry we found no results for "<%= params[:search] %>"<% end %>
+<% content_for :title do %>Sorry we found no results for "<%= @search %>"<% end %>
 <div class="content content-pad-160-bottom">
-<div class="content-top">
-<h2 class="signika-txt top-header font-35">Sorry, we couldn’t find  what you’re looking for...</h2>	
-<div class="content-top-right">
-<h3><div class="font-13"><strong>Sorry we found no results for “<%= params[:search] %>”..</strong><br/><br/></div></h3>
-Please make sure the artist name is spelt correctly.<br/><br/>
-If you are not sure which artists to track, then take a look at some recommended artists below.
-</div>	
-</div>
-<div class="clear"></div>
+	<div class="content-top">
+		<h2 class="signika-txt top-header font-35">Sorry, we couldn’t find  what you’re looking for...</h2>
+		<div class="content-top-right">
+			<h3>
+			<div class="font-13">
+				<strong>Sorry we found no results for “<%= @search %>”..</strong>
+				<br/>
+				<br/>
+			</div></h3>
+			Please make sure the artist name is spelt correctly.
+			<br/>
+			<br/>
+			If you are not sure which artists to track, then take a look at some recommended artists below.
+		</div>
+	</div>
+	<div class="clear"></div>
 	<div class="recommended-artists-outer other-recommend-nudge">
 		<div class="recommended-artists">
 			<ul>
+				<% @artists.each do |artist| %>
 				<li class="left new-recommend" style="background-image:url(/images/recommend/missing.png);background-repeat:no-repeat;background-position:center;">
 					<div class="each-recommend">
-					<div class="black-tint"></div>
-					<div class="instruct-font font-20 recommend-info">DREAM</div>
-					<div class="o-button artist-add-o-pad left instruct-font recommend-trkr-button">
-							ADD TRKR<span></span>
+						<div class="black-tint"></div>
+						<div class="instruct-font font-20 recommend-info">
+							<%= artist.name %>
 						</div>
-						
+						<%= render :partial => 'shared/trk_artist', :object => artist %>
 					</div>
 				</li>
-								<li class="left new-recommend" style="background-image:url(/images/recommend/missing.png);background-repeat:no-repeat;background-position:center;">
-					<div class="each-recommend">
-					<div class="black-tint"></div>
-					<div class="instruct-font font-20 recommend-info">DREAM</div>
-					<div class="o-button artist-add-o-pad left instruct-font recommend-trkr-button">
-							ADD TRKR<span></span>
-						</div>
-					</div>
-				</li>
-								<li class="left new-recommend" style="background-image:url(/images/recommend/missing.png);background-repeat:no-repeat;background-position:center;">
-					<div class="each-recommend">
-					<div class="black-tint"></div>
-					<div class="instruct-font font-20 recommend-info">DREAM</div>
-					<div class="o-button artist-add-o-pad left instruct-font recommend-trkr-button">
-							ADD TRKR<span></span>
-						</div>
-					</div>
-				</li>
-								<li class="left new-recommend" style="background-image:url(/images/recommend/missing.png);background-repeat:no-repeat;background-position:center;">
-					<div class="each-recommend">
-					<div class="black-tint"></div>
-					<div class="instruct-font font-20 recommend-info">DREAM</div>
-					<div class="o-button artist-add-o-pad left instruct-font recommend-trkr-button">
-							ADD TRKR<span></span>
-						</div>
-					</div>
-				</li>
-									<li class="left new-recommend" style="background-image:url(/images/recommend/missing.png);background-repeat:no-repeat;background-position:center;">
-					<div class="each-recommend">
-					<div class="black-tint"></div>
-					<div class="instruct-font font-20 recommend-info">DREAM</div>
-					<div class="o-button artist-add-o-pad left instruct-font recommend-trkr-button">
-							ADD TRKR<span></span>
-						</div>
-					</div>
-				</li>
-									<li class="left new-recommend" style="background-image:url(/images/recommend/missing.png);background-repeat:no-repeat;background-position:center;">
-					<div class="each-recommend">
-					<div class="black-tint"></div>
-					<div class="instruct-font font-20 recommend-info">DREAM</div>
-					<div class="o-button artist-add-o-pad left instruct-font recommend-trkr-button">
-							ADD TRKR<span></span>
-						</div>
-					</div>
-				</li>
-				</ul>
-		</div></div>
+				<% end %>
+			</ul>
+		</div>
+	</div>

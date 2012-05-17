@@ -33,9 +33,7 @@
 						<div class="instruct-font font-20 recommend-info">
 							<h3><%= artist.name %></h3>
 						</div>
-						<div class="o-button artist-add-o-pad left instruct-font recommend-trkr-button">
-							<%= link_to "ADD TRKR", follow_artist_path(sug), :remote => true, "data-type" => "json", :id => "recommend-trk" %><span></span>
-						</div>
+						<%= render :partial => 'shared/trk_artist', :object => artist %>
 						<%= link_to (image_tag '/assets/images/ignore.png'), unsuggest_artist_path(sug), :remote => true, "data-type" => "json", :class => 'ignore-button' %>
 					</div>
 				</li>
