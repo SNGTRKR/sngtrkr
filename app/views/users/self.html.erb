@@ -81,8 +81,8 @@
 	</div>
 	<div class="clear"></div>
 	<div id="track-num-search">
-	<img class="p-bulge-t" src="/assets/images/p-bulge-top.png"/>
-		<div class="font-15 no-trk">	
+		<img class="p-bulge-t" src="/assets/images/p-bulge-top.png"/>
+		<div class="font-15 no-trk">
 			<strong><%= @user.following.count %> TRKed Artists</strong>
 		</div>
 		<div class="artist-trkr-list-search">
@@ -90,13 +90,15 @@
 			<img class="white-search-25 right" src="/assets/images/white-search.png"/>
 		</div>
 	</div>
+	<% if @user.following.count.zero? %>
+	<p>You are not following anyone yet.</p>
+	<% else %>
 	<div id="tracked-artists">
 		<ul>
 			<% @following.each do |artist| %>
 			<li class="left">
 				<div class="each-artist-outer">
-					<strong>
-						<%= link_to artist do %>
+					<strong> <%= link_to artist do %>
 					<div class="font-13 name">
 						<%= truncate(artist.name, :length => 20) %>
 					</div><% end %></strong>
@@ -110,6 +112,7 @@
 		</ul>
 		<img class="p-bulge-b" src="/assets/images/p-bulge-bot.png"/>
 	</div>
+	<% end %>
 	<div class="clear"></div>
 	<div class="content-top recommend-text-nudge">
 		<h3 class="signika-txt top-header font-35 left">Here are a few artists we have recommended for you...</h3>
