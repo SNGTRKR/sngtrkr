@@ -16,9 +16,6 @@ class User < ActiveRecord::Base
   has_many :managed_artists, :through => :manage, :source => :artist
   has_many :suggested_artists, :through => :suggest, :source => :artist
   
-  has_attached_file :image, :styles => {
-    :recommend => "202x178#" }
-
   has_many :labels, :through => :super_manage
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
