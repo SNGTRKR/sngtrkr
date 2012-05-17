@@ -109,6 +109,9 @@ table th{
 .left{
     float:left;
     }
+.center-txt {
+  text-align:center;
+}
 .fb-login-nudge {
     margin-top:28px;
 }
@@ -597,12 +600,12 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   margin-bottom:6px;
   .no-trk {
     position:relative;
-    bottom:-28px;
+    bottom:-25px;
   }
           .artist-trkr-list-search {
         position:absolute;
         left:510px;
-        bottom:-26px;
+        bottom:-23px;
         height:25px;
         width:155px;
         background:$orange; 
@@ -623,13 +626,13 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     }
     .p-bulge-t {
       position:relative;
-      bottom:25px;
+      bottom:0px;
       left:12px;
     }
 }
 #tracked-artists {
   position:relative;
-  top:28px;
+  top:25px;
   width:666px;
       ul {
       list-style-type:none;
@@ -671,12 +674,12 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     }
 }
 .recommend-text-nudge {
-  top:18px;
+  top:13px;
 }
 .recommended-artists-outer {
   position:relative;
   height:515px;
-  margin-top:-36px;
+  margin-top:-41px;
   .recommended-artists {
   position:relative;
   top:73px;
@@ -1071,6 +1074,28 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   }
   }
 }
+}
+.share-bank {
+  position:relative;
+  height:95px;
+  width:400px;
+  top:34px;
+  left:140px;
+  ul {
+    list-style-type:none;
+    margin-left:-30px;
+    li {
+      margin:0 0 0 30px;
+    }
+  }
+}
+.share-warning {
+  position:relative;
+  width:378px;
+  left:141px;
+  top:62px;
+  text-align:center;
+  height:121px;
 }
 #friends-list {
   position:relative;

@@ -1,9 +1,21 @@
 <% content_for :title do %><%= @user.first_name %>'s friends on SNGTRKR<% end %>
 
-<div class="content content-pad-160-bottom">
-	<h2 class="signika-txt top-header font-35">Friends (<%= @app_friends.count %>)</h2>
+<div class="content content-pad-160-bottom">	
 	<% if !@app_friends.empty? %>
-	<div id="friends-list">
+	<h2 class="signika-txt font-35 center-txt">Sharing is caring</h2><br/>
+	<div class="font-15 center-txt"><strong>None of your friends are using SNGTRKR.<br/>Get them involved now by sharing:</strong></div>
+	<div class="share-bank">
+		<ul>
+			<li class="left"><img src="/assets/images/share-fb.png"/></li>
+			<li class="left"><img src="/assets/images/share-twit.png"/></li>
+			<li class="left"><img src="/assets/images/share-goo.png"/></li>
+			</ul>
+	</div>
+	<div class="clear"></div>
+		<div class="font-11 share-warning">Please note, SNGTRKR is not held responsible for anything posted on third party sites. See our Terms of Use for more information.</div>
+	<% else %>
+	<h2 class="signika-txt top-header font-35">Friends (<%= @app_friends.count %>)</h2>
+		<div id="friends-list">
 		<div class="friends-search">
 			<input type="text" id="filter"/>
 			<img class="white-search-25 right" src="/assets/images/white-search.png"/>
@@ -21,8 +33,5 @@
 		</ul>
 
 	</div>
-	<% # If the user has no friends... 
-	else %>
-	<p>No friends!</p>
 	<% end %>
 	<div class="clear"></div>
