@@ -10,21 +10,15 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery.min
 //= require jquery_ujs
 //= require jquery
-ncjQuery = jQuery.noConflict();
-ncjQuery(document).ready(function() {
-	ncjQuery(".iframe").fancybox({
+$(document).ready(function() {
+	$("#delete-account a").fancybox({
 		width : 431,
 		height : 286,
 		autoSize	: false,
 		closeClick	: false,
 		type		: 'iframe'
 	});
-	ncjQuery('#recommend-trk').bind("ajax:sucess", function(evt, data, status, xhr) {
-		var $rec = $(this);
-		$rec.find('div.new-recommend').html();
-	})
 });
 
