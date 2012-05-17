@@ -202,8 +202,7 @@ input.dp-applied {
 }
 .logout-button {
   position:relative;
-  top:32px;
-  margin-right:11px;
+  margin:-21px 11px 0 0;
 }
 #artist_search_results{
     width:60em;
@@ -223,13 +222,12 @@ input.dp-applied {
     padding:0px 42px 0px 42px;
     .p-head
     {
-        
         position:relative;
-        margin:33px 0 0 11px;
+        margin:0 4px 0 11px;
     }
     .mini-search {
-        margin:39px 0px 0 0;
-        height:25px;
+      margin-top:6px;
+        height:24px;
         width:158px;
         background:rgba(255,255,255,0.75);
         @include border-radius(8px);
@@ -248,7 +246,7 @@ input.dp-applied {
     }
     .mini-search-2 {
         margin:39px 11px 0 0;
-        height:25px;
+        height:24px;
         width:158px;
         background:rgba(255,255,255,0.75);
         @include border-radius(8px);
@@ -279,7 +277,7 @@ input.dp-applied {
     }
     .small-logo-home{
         position:relative;
-        bottom:51px;
+        top:25px;
         width:202px;
         height:55px;
     }
