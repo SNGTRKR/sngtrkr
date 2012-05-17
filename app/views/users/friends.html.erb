@@ -2,18 +2,6 @@
 
 <div class="content content-pad-160-bottom">	
 	<% if !@app_friends.empty? %>
-	<h2 class="signika-txt font-35 center-txt">Sharing is caring</h2><br/>
-	<div class="font-15 center-txt"><strong>None of your friends are using SNGTRKR.<br/>Get them involved now by sharing:</strong></div>
-	<div class="share-bank">
-		<ul>
-			<li class="left"><img src="/assets/images/share-fb.png"/></li>
-			<li class="left"><img src="/assets/images/share-twit.png"/></li>
-			<li class="left"><img src="/assets/images/share-goo.png"/></li>
-			</ul>
-	</div>
-	<div class="clear"></div>
-		<div class="font-11 share-warning">Please note, SNGTRKR is not held responsible for anything posted on third party sites. See our Terms of Use for more information.</div>
-	<% else %>
 	<h2 class="signika-txt top-header font-35">Friends (<%= @app_friends.count %>)</h2>
 		<div id="friends-list">
 		<div class="friends-search">
@@ -33,5 +21,17 @@
 		</ul>
 
 	</div>
+	<% else %>
+		<h2 class="signika-txt font-35 center-txt">Sharing is caring</h2><br/>
+	<div class="font-15 center-txt"><strong>None of your friends are using SNGTRKR.<br/>Get them involved now by sharing:</strong></div>
+	<div class="share-bank">
+		<ul>
+			<a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com%2F&t=SNGTRKR','Share SNGTRKR on Facebook','scrollbars=no,width=620,height=340'); return false;"><li class="left"><img src="/assets/images/share-fb.png"/></li></a>
+			<a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.sngtrkr.com&text=I%27m+currently+using+SNGTRKR+to+track+artist+releases.+Come+get+involved+at+&url=http%3A%2F%2Fwww.sngtrkr.com&via=SNGTRKR','Share SNGTRKR on Facebook','scrollbars=no,width=620,height=340'); return false;"><li class="left"><img src="/assets/images/share-twit.png"/></li></a>
+			<a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com','Share SNGTRKR on Facebook','scrollbars=no,width=620,height=340'); return false;"><li class="left"><img src="/assets/images/share-goo.png"/></li></a>
+			</ul>
+	</div>
+	<div class="clear"></div>
+		<div class="font-11 share-warning">Please note, SNGTRKR is not held responsible for anything posted on third party sites. See our Terms of Use for more information.</div>
 	<% end %>
 	<div class="clear"></div>
