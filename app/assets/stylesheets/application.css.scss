@@ -894,11 +894,11 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 }
 #about-txt{
   position:relative;
-  top:7px;
+  top:16px;
 }
 #terms-txt{
   position:relative;
-  top:7px;
+  top:16px;
   padding:0 0 18px 0;
   ul {
     list-style-type: disc;
@@ -942,7 +942,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 }
 #privacy-txt{
   position:relative;
-  top:7px;
+  top:16px;
   padding:0 0 18px 0;
   ul {
     list-style-type: disc;
@@ -968,7 +968,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 }
 #team-txt{
   position:relative;
-  top:7px;
+  top:16px;
   a
   {
     color:$orange;
@@ -1186,14 +1186,14 @@ body:before {/* thanks to Maleika (Kohoutec)*/
       }
       #f-info {
         position:relative;
-        left:125px;
+        left:116px;
         top:9px;
         width:283px;
       }
   }
   #friend-trkr-search {
         position:absolute;
-        right:0px;
+        right:6px;
         bottom:28px;
         height:25px;
         width:201px;
