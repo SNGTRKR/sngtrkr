@@ -1,3 +1,15 @@
+<% if(user_signed_in?) %>
+<% if current_user.following? trk_artist.id %>
+<div class="o-button artist-add-o-pad artist-remove-o-pad left instruct-font">
+	<%= link_to 'REMOVE TRKR', unfollow_artist_path(trk_artist) %><span></span>
+</div>
+<% else %>
 <div class="o-button artist-add-o-pad left instruct-font">
 	<%= link_to 'ADD TRKR', follow_artist_path(trk_artist) %><span></span>
 </div>
+<% end %>
+<% elsif %>
+<div class="o-button artist-login-o-pad left instruct-font">
+	<a href="<%= user_omniauth_authorize_path(:facebook) %>">LOGIN TO TRK</a><span></span>
+</div>
+<% end %>

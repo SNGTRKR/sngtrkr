@@ -17,21 +17,7 @@ background-position:center;
 		<div class="artist-image left">
 			<div id="outer-button">
 				<div class="inner-button">
-					<% if(user_signed_in?) %>
-					<% if @user.following? @artist.id %>
-					<div class="o-button artist-remove-o-pad left instruct-font">
-						<%= link_to 'REMOVE TRKR', unfollow_artist_path(@artist) %><span></span>
-					</div>
-					<% else %>
-					<div class="o-button artist-add-o-pad left instruct-font">
-						<%= link_to 'ADD TRKR', follow_artist_path(@artist) %><span></span>
-					</div>
-					<% end %>
-					<% elsif %>
-					<div class="o-button artist-login-o-pad left instruct-font">
-						<a href="<%= user_omniauth_authorize_path(:facebook) %>">LOGIN TO TRK</a><span></span>
-					</div>
-					<% end %>
+					<%= render :partial => 'shared/trk_artist', :object => @artist %>
 				</div>
 			</div>
 		</div>
@@ -83,7 +69,8 @@ background-position:center;
 			</li>
 			-->
 			<% if @artist.sdigital? %>
-			<li><a href="<%= @artist.sd %>"><img src="/assets/images/a-7d.png"></a>
+			<li>
+				<a href="<%= @artist.sd %>"><img src="/assets/images/a-7d.png"></a>
 			</li>
 			<% end %>
 		</ul>
