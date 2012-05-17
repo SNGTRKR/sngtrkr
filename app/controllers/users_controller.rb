@@ -19,8 +19,15 @@ class UsersController < ApplicationController
       format.json { render :json => @users }
     end
   end
-  
+
   def timeline
+    # FIXME: This works, but it shouldn't really be in this 
+    if(current_user.sign_in_count == 1)
+      current_user.sign_in_count = 2
+      current_user.save
+      return redirect_to recommend_user_path(current_user)
+    end
+
     tl = Timeline.new(current_user.id)
     @timeline = tl.user.page params[:page]
     respond_to do |format|
@@ -205,4 +212,13 @@ class UsersController < ApplicationController
   def manage_confirm
     render :layout => false
   end
+
+  def recommend
+    @user = current_user
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
 end

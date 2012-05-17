@@ -28,6 +28,7 @@ SNGTRKRR::Application.routes.draw do
       get 'manage_confirm'
       get 'managing'
       get 'friends'
+      get 'recommend'
     end
     collection do
       get 'me', :action => 'self'
