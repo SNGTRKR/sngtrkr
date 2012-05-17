@@ -12,15 +12,15 @@ where you will able to view your personalized timeline of releases, new and old.
 	<div class="recommended-artists-outer other-recommend-nudge">
 		<div class="recommended-artists">
 			<ul>
-				<% @user.suggested.each do |suggest| %>
+				<% @user.suggested[0, 6].each do |suggest| %>
 				<li class="left new-recommend" style="background-image:url(<%= suggest.image :large %>);background-repeat:no-repeat;background-position:center;">
 					<div class="each-recommend">
 					<div class="black-tint"></div>
-					<div class="instruct-font font-20 recommend-info"><%= suggest.name %></div>
+					<h3><div class="instruct-font font-20 recommend-info"><%= link_to suggest.name, suggest %></div></h3>
 					<div class="o-button artist-add-o-pad left instruct-font recommend-trkr-button">
 							<%= link_to 'ADD TRKR', follow_artist_path(suggest.id) %><span></span>
 						</div>
-						
+						<%= link_to (image_tag '/assets/images/ignore.png'), unsuggest_artist_path(suggest), :remote => true, "data-type" => "json", :class => 'ignore-button' %>
 					</div>
 				</li>
 				<% end %>
