@@ -1,5 +1,5 @@
 <% if(user_signed_in?) %>
-<div class="o-button o-pad right signika-font font-logout"><%= link_to('Log Out', destroy_user_session_path, :method => :delete) %><span></span></div>
+<div class="logout-button"><div class="o-button norm-o-pad right signika-font font-logout"><%= link_to('Log Out', destroy_user_session_path, :method => :delete) %><span></span></div></div>
 <!-- <%= link_to('Me','/users/me')%>-->
 <a href="/users/me"><img class="p-head right" src="/assets/images/profile.png"/></a>
 <% elsif %>

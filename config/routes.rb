@@ -36,6 +36,9 @@ SNGTRKRR::Application.routes.draw do
   end
 
   resources :artists do
+    collection do
+      get 'no_results', :action => 'no_results'
+    end
     resources :releases
   end
 
@@ -51,7 +54,6 @@ SNGTRKRR::Application.routes.draw do
       get 'unsuggest'
     end
   end
-
 
   resources :labels
   #  Use this line for production

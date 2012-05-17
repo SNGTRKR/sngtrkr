@@ -196,30 +196,15 @@ input.dp-applied {
     line-height:37px;
     padding:1px 3px 5px 18px;
 }
-/*.profile-menu-o-pad {
-    line-height:37px;
-    padding:1px 3px 5px 20px;
-    margin-left:-2px;
-} */
 .trkr-o-pad {
     line-height:32px;
     padding:2px 3px 5px 21px;
 }
-/* .p-settings-o-pad {
-  margin:0 0 0 -5px;
-  line-height:37px;
-  padding:1px 3px 5px 18px;
+.logout-button {
+  position:relative;
+  top:32px;
+  margin-right:11px;
 }
-.del-account-o-pad {
-  margin:0 0 0 -1px;
-  line-height:37px;
-  padding:1px 3px 5px 18px;
-}
-.confirm-o-pad
-{
-    line-height:37px;
-    padding:1px 3px 1px 18px;
-} */
 #artist_search_results{
     width:60em;
     margin:3em auto;
@@ -828,7 +813,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
                 font-size:1.0em;
             }
             #change-email-submit-pad {
-                margin-right:168px;
+                margin-left:-5px;
                 margin-top:2px;
             }
 }
@@ -859,7 +844,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
                 font-size:1.0em;
             }
             #save-settings-submit-pad {
-                margin-right:511px;
+                margin-left:-5px;
                 margin-top:4px;
             }
 }
@@ -872,7 +857,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   #delete-submit-pad {
   position:absolute;
   top:65px;
-  left:-4px;
+  left:-5px;
 }
 }
 }

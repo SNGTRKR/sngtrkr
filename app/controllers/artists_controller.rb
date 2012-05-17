@@ -3,15 +3,13 @@ class ArtistsController < ApplicationController
   # GET /artists.json
 
   before_filter :authenticate_user!, :except => [:show]
-
   def index
     @artists = Artist.search(params[:search])
     if(params[:search] == nil)
       @artists = Artist.page params[:page]
     elsif @artists.empty?
-      @search = params[:search]
       respond_to do |format|
-        format.html { render 'no_results'}# index.html.erb
+        format.html { redirect_to no_results_artists_url, :search => params[:search]}# index.html.erb
         format.json { render :json => ActiveSupport::JSON.encode(["failure"]) }
       end
     else
@@ -23,7 +21,10 @@ class ArtistsController < ApplicationController
   end
 
   def no_results
+    @search = params[:search]
     @user = current_user
+    @artists = current_user.suggested
+    @artists |= []
     respond_to do |format|
       format.html
     end
