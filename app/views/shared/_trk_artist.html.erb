@@ -1,12 +1,21 @@
 <% if user_signed_in?
 %>
 <% if current_user.following? trk_artist.id %>
+<<<<<<< HEAD
 <div class="o-button trkr-o-pad artist-remove-o-pad right instruct-font">
 	<%= link_to 'REMOVE TRKR', unfollow_artist_path(trk_artist) %><span></span>
 </div>
 <% else %>
 <div class="o-button trkr-o-pad right instruct-font">
 	<%= link_to 'ADD TRKR', follow_artist_path(trk_artist) %><span></span>
+=======
+<div class="o-button artist-add-o-pad artist-remove-o-pad left instruct-font">
+	<%= link_to 'REMOVE TRKR', unfollow_artist_path(trk_artist), :remote => true %><span></span>
+</div>
+<% else %>
+<div class="o-button artist-add-o-pad left instruct-font">
+	<%= link_to 'ADD TRKR', follow_artist_path(trk_artist), :remote => true %><span></span>
+>>>>>>> f488f0fc02f85956e678d76e93e09f05068f9f46
 </div>
 <% end %>
 <% elsif %>

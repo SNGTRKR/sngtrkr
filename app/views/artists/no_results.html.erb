@@ -18,18 +18,8 @@
 	<div class="clear"></div>
 	<div class="recommended-artists-outer other-recommend-nudge">
 		<div class="recommended-artists">
-			<ul>
-				<% @artists.each do |artist| %>
-				<li class="left new-recommend" style="background-image:url(/images/recommend/missing.png);background-repeat:no-repeat;background-position:center;">
-					<div class="each-recommend">
-						<div class="black-tint"></div>
-						<div class="instruct-font font-20 recommend-info">
-							<%= artist.name %>
-						</div>
-						<%= render :partial => 'shared/trk_artist', :object => artist %>
-					</div>
-				</li>
-				<% end %>
+			<ul>				
+				<%= render :partial => 'shared/artist_suggestion', :collection => @artists %>
 			</ul>
 		</div>
 	</div>
