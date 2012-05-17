@@ -1,0 +1,10 @@
+<li class="left new-recommend" style="background-image:url(<%= artist_suggestion.image.url :recommend %>);background-repeat:no-repeat;background-position:center;">
+	<div class="each-recommend">
+		<div class="black-tint"></div>
+		<div class="instruct-font font-20 recommend-info">
+			<%= link_to artist_suggestion.name, artist_suggestion  %>
+		</div>
+		<%= render :partial => 'shared/trk_artist', :object => artist_suggestion %>
+		<%= link_to (image_tag '/assets/images/ignore.png'), unsuggest_artist_path(artist_suggestion), :remote => true, "data-type" => "json", :class => 'ignore-button' %>
+	</div>
+</li>

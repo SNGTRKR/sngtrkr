@@ -91,7 +91,9 @@
 		</div>
 	</div>
 	<% if @user.following.count.zero? %>
-	<p>You are not following anyone yet.</p>
+	<p>
+		You are not following anyone yet.
+	</p>
 	<% else %>
 	<div id="tracked-artists">
 		<ul>
@@ -129,20 +131,7 @@
 	<div class="recommended-artists-outer">
 		<div class="recommended-artists">
 			<ul>
-				<% @user.suggested[0, 6].each do |sug| %>
-				<li class="left new-recommend" style="background-image:url(<%= sug.image.url :recommend %>);background-repeat:no-repeat;background-position:center;">
-					<div class="each-recommend">
-						<div class="black-tint"></div>
-						<div class="instruct-font font-20 recommend-info">
-							<%= link_to sug.name, sug  %>
-						</div>
-						<div class="o-button artist-add-o-pad left instruct-font recommend-trkr-button">
-							<%= link_to "ADD TRKR", follow_artist_path(sug), :remote => true, "data-type" => "json", :id => "recommend-trk" %><span></span>
-						</div>
-						<%= link_to (image_tag '/assets/images/ignore.png'), unsuggest_artist_path(sug), :remote => true, "data-type" => "json", :class => 'ignore-button' %>
-					</div>
-				</li>
-				<% end %>
+				<%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 6] %>
 			</ul>
 		</div>
 	</div>
