@@ -23,6 +23,7 @@ class ArtistsController < ApplicationController
   end
 
   def no_results
+    @user = current_user
     respond_to do |format|
       format.html
     end
