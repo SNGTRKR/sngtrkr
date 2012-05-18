@@ -894,13 +894,31 @@ margin:14px 0 25px 0;
 }
 .step-back {
   margin:5px 5px 5px 5px;
-  width:605px;
+  width:545px;
   background:rgba(255,255,255,0.75);
     @include border-radius(8px);
     -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
     -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
     box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-    height:222px;
+    height:134px;
+    padding:44px 30px 44px 30px;
+    position:relative;
+    .step-left {
+      width:285px;
+    }
+    .step-right {
+      width:226px;
+      padding:0 0 0 30px;
+    }
+    #artist-line {
+      position:absolute;
+      height:191px;
+      border-style:solid;
+      border-right-width:1px;
+      border-right-color:$orange;
+      top:16px;
+      left:333px;
+    }
 }
 }
 #steps form fieldset{
@@ -932,7 +950,7 @@ margin:14px 0 25px 0;
     color:#fff;
   }
 } 
-/* .white-tint {
+ .white-tint {
     position:absolute;
     top:6px;
     left:6px;
@@ -940,7 +958,8 @@ margin:14px 0 25px 0;
     height:24px;
     width:125px;
     @include border-radius(7px);
-} */
+    z-index:2;
+} 
 }
 span.checked{
     background:transparent url(/assets/images/checkedn.png) no-repeat top left;
@@ -949,6 +968,7 @@ span.checked{
     left:5px;
     width:20px;
     height:20px;
+    z-index:1;
 }
 span.error{
     background:transparent url(/assets/images/errorn.png) no-repeat top left;
@@ -957,6 +977,7 @@ span.error{
     left:5px;
     width:20px;
     height:20px;
+    z-index:1;
 }
 }
 #progress-bar {

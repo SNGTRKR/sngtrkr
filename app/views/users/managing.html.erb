@@ -6,14 +6,19 @@
                     <form id="formElem" name="formElem" action="" method="post">
                         <fieldset class="step">
                         	<div class="step-back manage-artist-step">
- 					<label for="cutline">Cutline</label>
+                        		<div class="step-left left">
                                 <input  type="radio" id="cutline" name="artist-pick" />
-                                <label for="aname">Skream</label>
-                                <input  type="radio" id=""cutline"skream" name="artist-pick" />
+                                <label for="cutline">Cutline</label><br/></br/>
+                                <input  type="radio" id="skream" name="artist-pick" />
+                                <label for="aname">Skream</label><br/></br/>
+                                <input  type="radio" id="benga" name="artist-pick" />
                                 <label for="aname">Benga</label>
-                                <input  type="radio" id="benga" name="artist-pick" /><br/>
+                                </div>
+                                <div class="step-right right">
                                 Please select the artist you wish to manage on SNGTRKR. We will then attempt to grab as much information from your Facebook fan page as possible.<br/><br/>
                                 <strong>At least one field is required.</strong>
+                                </div>
+                                <div id="artist-line"></div>
                                </div>
                         </fieldset>
                         <fieldset class="step">
@@ -79,16 +84,16 @@
                 <div id="navigation" style="display:none;">
                     <ul>
                         <li class="selected signika-font">
-                            <a href="#" class="manage-artist">1. Artist</a>
+                            <h3><a href="#" class="manage-artist">1. Artist<div class="white-tint"></div></a></h3>
                         </li>
                         <li class="signika-font">
-                            <a href="#" class="manage-details">2. Details</a>
+                            <h3><a href="#" class="manage-details">2. Details</a></h3>
                         </li>
                         <li class="signika-font">
-                            <a href="#" class="manage-picture">3. Picture</a>
+                            <h3><a href="#" class="manage-picture">3. Picture</a></h3>
                         </li>
                         <li class="signika-font">
-                            <a href="#" class="manage-summary">4. Summary</a>
+                            <h3><a href="#" class="manage-summary">4. Summary</a></h3>
                         </li>
                     </ul>
                 </div>
