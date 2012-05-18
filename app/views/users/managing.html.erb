@@ -1,11 +1,11 @@
 <% content_for :title do %>Manage an artist<% end %>
-<div class="content content-manage-pad-191-bottom">
+<div class="content content-pad-191-bottom">
 	<h2 class="signika-txt top-header font-35">Manage an Artist</h2>
 	<div id="manage-form">
                 <div id="steps">
                     <form id="formElem" name="formElem" action="" method="post">
-                        <fieldset class="step manage-arist-stage">
-                        	<div class="step-back">
+                        <fieldset class="step">
+                        	<div class="step-back manage-artist-step">
  					<label for="cutline">Cutline</label>
                                 <input  type="radio" id="cutline" name="artist-pick" />
                                 <label for="aname">Skream</label>
@@ -16,8 +16,8 @@
                                 <strong>At least one field is required.</strong>
                                </div>
                         </fieldset>
-                        <fieldset class="step manage-details-step">
-                        	<div class="step-back">                      
+                        <fieldset class="step">
+                        	<div class="step-back manage-details-step">                      
 							 <p><label for="aname">Artist Name*</label>
                                 <input id="aname" name="aname" type="text"/>
                             </p>
@@ -51,16 +51,16 @@
                             </p>
                            </div>
                         </fieldset>
-                        <fieldset class="step manage-picture-step">
-                        	<div class="step-back">
+                        <fieldset class="step ">
+                        	<div class="step-back manage-picture-step">
                             <p>
                             <label for="file-browser">Picture</label>
 							<input type="file" id="file-browser" name="file-browser"/> 
 							</p>
 							</div>
                         </fieldset>
-                        <fieldset class="step manage-summary-step">
-                            <div class="step-back">
+                        <fieldset class="step">
+                            <div class="step-back manage-summary-step">
                         	<p>
 								Everything in the form was correctly filled 
 								if all the steps have a green checkmark icon.
@@ -78,27 +78,24 @@
                 </div>
                 <div id="navigation" style="display:none;">
                     <ul>
-                        <li class="selected">
+                        <li class="selected signika-font">
                             <a href="#" class="manage-artist">1. Artist</a>
                         </li>
-                        <li>
+                        <li class="signika-font">
                             <a href="#" class="manage-details">2. Details</a>
                         </li>
-                        <li>
+                        <li class="signika-font">
                             <a href="#" class="manage-picture">3. Picture</a>
                         </li>
-                        <li>
+                        <li class="signika-font">
                             <a href="#" class="manage-summary">4. Summary</a>
                         </li>
                     </ul>
                 </div>
-                                <div id="progress-bar">
+                  <div id="progress-bar">
                 	<div id="progress">
-                		<div id="percent">
-                			25%
-                		</div>
-                	</div>
-                </div><br/>
+                		<div class="percent instruct-font">25%</div>
+                		</div></div>
             </div>
 
 	<!--		<% @manageable.each do |artist| %>
