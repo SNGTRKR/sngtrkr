@@ -113,7 +113,7 @@ table th{
   text-align:center;
 }
 .fb-login-nudge {
-    margin-top:28px;
+    margin:-26px -5px 0 0;
 }
 .form-text {   
        width:158px;
@@ -202,8 +202,7 @@ input.dp-applied {
 }
 .logout-button {
   position:relative;
-  top:32px;
-  margin-right:11px;
+  margin:-21px 11px 0 0;
 }
 #artist_search_results{
     width:60em;
@@ -223,13 +222,12 @@ input.dp-applied {
     padding:0px 42px 0px 42px;
     .p-head
     {
-        
         position:relative;
-        margin:33px 0 0 11px;
+        margin:0 4px 0 11px;
     }
     .mini-search {
-        margin:39px 0px 0 0;
-        height:25px;
+      margin-top:6px;
+        height:24px;
         width:158px;
         background:rgba(255,255,255,0.75);
         @include border-radius(8px);
@@ -247,8 +245,8 @@ input.dp-applied {
         }
     }
     .mini-search-2 {
-        margin:39px 11px 0 0;
-        height:25px;
+        margin:-14px 11px 0 0;
+        height:24px;
         width:158px;
         background:rgba(255,255,255,0.75);
         @include border-radius(8px);
@@ -279,7 +277,7 @@ input.dp-applied {
     }
     .small-logo-home{
         position:relative;
-        bottom:51px;
+        top:25px;
         width:202px;
         height:55px;
     }
@@ -720,6 +718,12 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   }
 }
 }
+.recommend-continue {
+  position:relative;
+  right:3px;
+  bottom:1px;
+  height:61px;
+}
 #content-release-left {
   float:left;
   width:341px;
@@ -890,11 +894,11 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 }
 #about-txt{
   position:relative;
-  top:7px;
+  top:16px;
 }
 #terms-txt{
   position:relative;
-  top:7px;
+  top:16px;
   padding:0 0 18px 0;
   ul {
     list-style-type: disc;
@@ -938,7 +942,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 }
 #privacy-txt{
   position:relative;
-  top:7px;
+  top:16px;
   padding:0 0 18px 0;
   ul {
     list-style-type: disc;
@@ -964,7 +968,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 }
 #team-txt{
   position:relative;
-  top:7px;
+  top:16px;
   a
   {
     color:$orange;
@@ -1182,14 +1186,14 @@ body:before {/* thanks to Maleika (Kohoutec)*/
       }
       #f-info {
         position:relative;
-        left:125px;
+        left:116px;
         top:9px;
         width:283px;
       }
   }
   #friend-trkr-search {
         position:absolute;
-        right:0px;
+        right:6px;
         bottom:28px;
         height:25px;
         width:201px;

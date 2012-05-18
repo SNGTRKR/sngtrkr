@@ -19,7 +19,7 @@
 	<div class="recommended-artists-outer other-recommend-nudge">
 		<div class="recommended-artists">
 			<ul>				
-				<%= render :partial => 'shared/artist_suggestion', :collection => @artists %>
+				<%= render :partial => 'shared/artist_suggestion', :collection => @artists[0, 6] %>
 			</ul>
 		</div>
 	</div>
