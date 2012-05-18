@@ -19,11 +19,11 @@
 	<div class="clear"></div>
 	<div class="recommended-artists-outer friend-recommend-nudge">
 		<div class="recommended-artists">
-			<% if @artists.none? %>
+			<% if @friend.following.none? %>
 				<div class="center-txt"><strong>It seems <%= @friend.first_name %> isn't tracking any artists yet...</strong></div>
 				<% end %>
 			<ul>
-				<% @artists.each do |artist| %>
+				<% @friend.following.each do |artist| %>
 				<li class="left new-recommend" style="background-image:url(<%= artist.image.url %>);background-repeat:no-repeat;background-position:center;">
 					<div class="each-recommend">
 						<div class="black-tint"></div>
