@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120513211059) do
+ActiveRecord::Schema.define(:version => 20120518211059) do
 
   create_table "artists", :force => true do |t|
     t.string   "name"
@@ -38,6 +38,22 @@ ActiveRecord::Schema.define(:version => 20120513211059) do
     t.text     "sdid"
     t.text     "sd"
   end
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "follows", :force => true do |t|
     t.integer  "user_id"
