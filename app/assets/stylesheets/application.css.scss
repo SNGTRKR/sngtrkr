@@ -878,19 +878,46 @@ body:before {/* thanks to Maleika (Kohoutec)*/
           width:267px;
         }
 }
+#warning {
+  position:relative;
+  top:15px;
 #warning-sign {
   position:relative;
-  left:50px;
+  left:0px;
   bottom:3px;
   
 }
 #manage-artist-txt {
   position:relative;
-  width:450px;
+  width:405px;
   font-weight:bold;
-  left:173px;
+  left:111px;
   bottom:86px;
   margin:4px 0 0 0 ;
+}
+}
+#managed-artists {
+  position:relative;
+  width:524px;
+  margin-top:-30px;
+  ul {
+    list-style-type:none;
+    margin-left:-44px;
+    li {
+      width:144px;
+      height:191px;
+       @include border-radius(8px);
+        -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+        -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+        box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+        margin:0 0 40px 44px;
+        .manage-button {
+          position:relative;
+          right:46px;
+          top:173px;
+        }
+    }
+  }
 }
 #about-txt{
   position:relative;
@@ -1266,6 +1293,9 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 }
 .content-splash-pad-262-bottom {
   padding:4px 262px 166px 262px;
+}
+.content-manage-pad-230-bottom {
+  padding:4px 230px 166px 230px;
 }
 .delete-confirm {
     width:431px;
