@@ -878,47 +878,90 @@ body:before {/* thanks to Maleika (Kohoutec)*/
           width:267px;
         }
 }
-#warning {
-  position:relative;
-  top:15px;
-#warning-sign {
-  position:relative;
-  left:0px;
-  bottom:3px;
-  
+#manage-form{
+    width:620px;
+    overflow:hidden;
+
+#steps{
+    width:620px;
+  /*height:320px;*/
+    overflow:hidden;
+.step{
+    float:left;
+    width:620px;
+  /*height:320px;*/
+  height:222px;
 }
-#manage-artist-txt {
+.step-back {
+  margin:5px 5px 5px 5px;
+  width:605px;
+  background:rgba(255,255,255,0.75);
+    border-radius:8px;
+    -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+    box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+    height:222px;
+}
+span.checked{
+    background:transparent url(../images/checked.png) no-repeat top left;
+    position:absolute;
+    top:0px;
+    left:1px;
+    width:20px;
+    height:20px;
+}
+span.error{
+    background:transparent url(../images/error.png) no-repeat top left;
+    position:absolute;
+    top:0px;
+    left:1px;
+    width:20px;
+    height:20px;
+}
+}
+#steps form fieldset{
+    border:none;
+    padding-bottom:20px;
+}
+#navigation{
+    height:45px;
+ ul{
+    list-style:none;
+  float:left;
+  margin-left:22px;
+ li{
+  float:left;
+    position:relative;
+  margin:0px 2px;
+} 
+}
+}
+#progress-bar {
+  left:50px;
   position:relative;
-  width:405px;
-  font-weight:bold;
-  left:111px;
-  bottom:86px;
-  margin:4px 0 0 0 ;
+  width:264px;
+  height:20px;
+  background:rgba(255,255,255,0.75);
+  border-radius:12px;
+  -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
+    box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
+#progress {
+  background-image: url(/assets/images/progress.png);
+  background-repeat:no-repeat;
+  width:66px;
+  height:20px;
+  border-radius:12px;
+  margin-left:-1px;
+}
+#percent {
+  text-align:center;
+  line-height:20px;
+  color:#fff;
 }
 }
-#managed-artists {
-  position:relative;
-  width:524px;
-  margin-top:-30px;
-  ul {
-    list-style-type:none;
-    margin-left:-44px;
-    li {
-      width:144px;
-      height:191px;
-       @include border-radius(8px);
-        -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-        -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-        box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-        margin:0 0 40px 44px;
-        .manage-button {
-          position:relative;
-          right:46px;
-          top:173px;
-        }
-    }
-  }
 }
+
 #about-txt{
   position:relative;
   top:16px;
@@ -1293,9 +1336,6 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 }
 .content-splash-pad-262-bottom {
   padding:4px 262px 166px 262px;
-}
-.content-manage-pad-230-bottom {
-  padding:4px 230px 166px 230px;
 }
 .delete-confirm {
     width:431px;
