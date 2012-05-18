@@ -20,5 +20,30 @@ $(document).ready(function() {
 		closeClick	: false,
 		type		: 'iframe'
 	});
+    		$(".manage-artist").click(function(){
+  			 $(".step-back").animate({height:222},"slow");
+  			 $(".step").animate({height:222},"slow");	
+  			 $("#progress").animate({width:65},"slow");
+  			 $('#percent').html('25%');	  
 });
+$(".manage-details").click(function(){
+  			 $(".step-back").animate({height:485},"slow");
+  			 $(".step").animate({height:485},"slow");
+  			 $("#progress").animate({width:130},"slow");
+  			 $('#percent').html('50%');
+
+});
+$(".manage-picture").click(function(){
+  			 $(".step-back").animate({height:275},"slow");
+  			 $(".step").animate({height:275},"slow");
+  			 $("#progress").animate({width:195},"slow");
+  			 $('#percent').html('75%');
+});
+$(".manage-summary").click(function(){
+  			 $(".step-back").animate({height:316},"slow");
+  			 $(".step").animate({height:316},"slow");
+  			 $("#progress").animate({width:265},"slow");
+  			 $('#percent').html('100%');
+});
+    	});
 
