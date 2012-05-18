@@ -10,11 +10,11 @@
 		<meta property="sngtrkr:id" content="<%= yield :og_id %>" />
 		<h1><title>SNGTRKR - <%= yield :title %></title></h1>
 		<link rel="icon" type="image/ico" href="/assets/images/icon.png" >
-		<%= stylesheet_link_tag    "application", :media => "all" %>
+		<%= stylesheet_link_tag "application", :media => "all" %>
 		<%= javascript_include_tag "application" %>
-		<link rel="stylesheet" type="text/css" href="/assets/fancy-box/jquery.fancybox.css" media="screen" />
-		<script type="text/javascript" src="/assets/fancy-box/jquery.fancybox.js"></script>
-		<script type="text/javascript" src="/assets/instant-search/instant-search.js"></script>
+		<%= stylesheet_link_tag "fancy-box/jquery.fancybox.css", :media => "screen" %>
+		<%= javascript_include_tag "fancy-box/jquery.fancybox" %>
+		<%= javascript_include_tag "instant-search/instant-search.js" %>
 		<%= csrf_meta_tags %>
 	</head>
 	<body>
