@@ -39,7 +39,6 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @friend = User.find(params[:id])
-    @artists = @friend.following
     if !current_user.friends_with? @friend, session["friend_ids"]
       flash[:error] = "You do not have permissions to view this user"
       return redirect_to "/"
@@ -52,14 +51,11 @@ class UsersController < ApplicationController
   def self
     api = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
     @user = current_user
-    @following = []
     if @user.managing.count > 0
       @artist = Artist.find(@user.managing.first.artist_id)
       @trackers = @artist.followed_users.count
     end
-    @user.following.each do |artist|
-      @following << Artist.find(artist.artist_id)
-    end
+    @following = @user.following
     respond_to do |format|
       format.html # show.html.erb
     end

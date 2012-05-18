@@ -12,8 +12,8 @@ class User < ActiveRecord::Base
   has_many :manage
   has_many :super_manage
 
-  has_many :followed_artists, :through => :follow, :source => :artist
-  has_many :managed_artists, :through => :manage, :source => :artist
+  has_many :following, :through => :follow, :source => :artist
+  has_many :managing, :through => :manage, :source => :artist
   has_many :suggested_artists, :through => :suggest, :source => :artist
   
   has_many :labels, :through => :super_manage
@@ -97,10 +97,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def following
-    Follow.user_follows(self.id)
-  end
-
   def managing?(artist_id)
     if Manage.search(self.id, artist_id).count > 0
     return true
@@ -108,11 +104,7 @@ class User < ActiveRecord::Base
     return false
     end
   end
-
-  def managing
-    Manage.user_managing(self.id)
-  end
-
+  
   def suggested?(artist_id)
     if Suggest.search(self.id, artist_id).count > 0
     return true
