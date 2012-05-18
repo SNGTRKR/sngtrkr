@@ -1,14 +1,20 @@
 <% content_for :title do %>Manage an artist<% end %>
-<div class="content content-pad-160-bottom">
+<div class="content content-manage-pad-230-bottom">
+	<h2 class="signika-txt top-header font-35">Manage an Artist</h2>
+	<div id="warning">
     <a href="/users/manage_confirm" class="iframe"><img id="warning-sign" src="/assets/images/warning.png" /></a>
     <div id="manage-artist-txt">
     	<div class="font-20 line-height-1-25">WARNING</div>
 		<div class="font-13 line-height-1-25">You can only administrate one artist per account. You cannot change, once your artist selection has been confirmed.</div>
-    </div>
+    </div></div>
+    <div id="managed-artists">
+    <ul>
 <% @manageable.each do |artist| %>
-<p>Manage <%= link_to artist["name"], manage_artist_path(artist) %></p>
+<li class="left"><div class="manage-button"><div class="o-button norm-o-pad right signika-font font-logout"><%= (link_to 'Manage', manage_artist_path(artist)) rescue (debug artist) %><span></span></div></div></li>
 <% end %>
-
 <% @managing.each do |artist| %>
-<p>Stop managing <%= link_to artist["name"], unmanage_artist_path(artist) %></p>
+<li class="left">Stop managing <%= link_to artist["name"], unmanage_artist_path(artist) %></li>
 <% end %>
+</ul>
+</div>
+<div class="clear"></div>
