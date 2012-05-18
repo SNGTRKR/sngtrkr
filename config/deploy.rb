@@ -1,7 +1,7 @@
-set :application, "sngtrkr_cap"
+set :application, "sngtrkr"
 set :user, "ec2-user"
 set :domain, 'sngtrkr.com'
-set :applicationdir, "/var/www/apps/#{application}"
+set :applicationdir, "/var/www/#{application}"
 
 set :scm, 'git'
 set :repository,  "ssh://ec2-user@sngtrkr.com/~/sngtrkr.git"
