@@ -24,26 +24,43 @@ $(document).ready(function() {
   			 $(".step-back").animate({height:222},"slow");
   			 $(".step").animate({height:222},"slow");	
   			 $("#progress").animate({width:65},"slow");
-  			 $('#percent').html('25%');	  
+  			 $('.percent').html('25%');	 
+  			 $('.manage-artist-step').show();
+  			 $('.manage-details-step').hide();
+  			 $('.manage-picture-step').hide();
+  			 $('.manage-summary-step').hide();
+  			 
 });
 $(".manage-details").click(function(){
   			 $(".step-back").animate({height:485},"slow");
   			 $(".step").animate({height:485},"slow");
   			 $("#progress").animate({width:130},"slow");
-  			 $('#percent').html('50%');
+  			 $('.percent').html('50%');
+  			 $('.manage-details-step').show();
+  			 $('.manage-artist-step').hide();
+  			 $('.manage-picture-step').hide();
+  			 $('.manage-summary-step').hide();
 
 });
 $(".manage-picture").click(function(){
   			 $(".step-back").animate({height:275},"slow");
   			 $(".step").animate({height:275},"slow");
   			 $("#progress").animate({width:195},"slow");
-  			 $('#percent').html('75%');
+  			 $('.percent').html('75%');
+  			 $('.manage-picture-step').show();
+  			 $('.manage-details-step').hide();
+  			 $('.manage-artist-step').hide();
+  			 $('.manage-summary-step').hide();
 });
 $(".manage-summary").click(function(){
   			 $(".step-back").animate({height:316},"slow");
   			 $(".step").animate({height:316},"slow");
   			 $("#progress").animate({width:265},"slow");
-  			 $('#percent').html('100%');
+  			 $('.percent').html('100%');
+  			 $('.manage-summary-step').show();
+  			 $('.manage-details-step').hide();
+  			 $('.manage-picture-step').hide();
+  			 $('.manage-artist-step').hide();
 });
     	});
 
