@@ -9,6 +9,12 @@ class ApplicationController < ActionController::Base
   #  rescue_from ActiveRecord::RecordNotFound, with: :render_404
   #end
   before_filter :authenticate_user!, :except => [:splash]
+  before_filter :timer_start
+  
+  def timer_start
+    @start_time = Time.now
+  end
+  
   def default_url_options
     if Rails.env.production?
       {:host => "sngtrkr.com"}
