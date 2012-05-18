@@ -31,6 +31,9 @@
 					#wrap {display:table;height:100%}
 					</style>
 					<![endif]-->
+					<div class="small-logo-home">
+						<a href="/"><img src="/assets/images/logo-55.png" alt="SNGTRKR"/></a>
+					</div>
 					<%= render 'shared/login' %>
 					<% if(user_signed_in?) %>
 					<div class="mini-search right">
@@ -46,10 +49,6 @@
 					</div>
 					<% end %>
 					<div class="clear"></div>
-					<div class="small-logo-home">
-						<a href="/"><img src="/assets/images/logo-55.png" alt="SNGTRKR"/></a>
-					</div>
-
 				</div>
 				<% if flash[:notice] %>
 				<p class="notice">
