@@ -72,7 +72,18 @@ $(function() {
 	clicking on the tab (on the last input of each fieldset), makes the form
 	slide to the next step
 	*/
-
+	$('#formElem > fieldset').each(function(){
+		var $fieldset = $(this);
+		$fieldset.children(':last').find(':li').keydown(function(e){
+			if (e.which == 9){
+				$('#navigation li:nth-child(' + (parseInt(current)+1) + ') a').click();
+				/* force the blur for validation */
+				$(this).blur();
+				e.preventDefault();
+			}
+		});
+	});
+	
 	/*
 	validates errors on all the fieldsets
 	records if the Form has errors in $('#formElem').data()
