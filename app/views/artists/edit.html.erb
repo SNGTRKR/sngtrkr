@@ -13,7 +13,7 @@
 				</li>
 				<li>
 					<%= f.label "Label*" %>
-					<%= f.text_field :label, :class => 'form-text' %>
+					<%= f.text_field :label_name, :class => 'form-text' %>
 				</li>
 				<li>
 					<%= f.label "Bio" %>
@@ -58,10 +58,11 @@
 <fieldset class="step">
 	<div class="step-back manage-picture-step">
 		<div class="step-left left">
-			<label for="file-browser"><strong>Picture</strong></label>
-			<input type="file" id="file-browser" name="file-browser"/>
+			<%= f.label :picture %>
+			<%= f.file_field 'image' %>
 		</div>
 		<div class="step-right right">
+			<%= image_tag (@artist.image :large) %>
 			Please upload a picture which would best represent you as an artist.
 			<br/>
 			</br/>
@@ -77,53 +78,10 @@
 		<div id="picture-line"></div>
 	</div>
 </fieldset>
-<fieldset class="step">
-	<div class="step-back manage-summary-step">
-		<div class="step-left left">
-			<ul>
-				<li>
-					<strong>Artist Name:</strong>
-				</li>
-				<li>
-					<strong>Genre:</strong>
-				</li>
-				<li>
-					<strong>Label:</strong>
-				</li>
-				<li>
-					<strong>Bio:</strong>
-				</li>
-				<br/>
-				</br/>
-				<li>
-					<strong>Website:</strong>
-				</li>
-				<li>
-					<strong>Twitter:</strong>
-				</li>
-				<li>
-					<strong>Soundcloud:</strong>
-				</li>
-				<li>
-					<strong>Youtube:</strong>
-				</li>
-			</ul>
-		</div>
-		<div class="step-right right">
-			Here is a summary of all the information you have entered for your artist profile. Please read over and check everything.
-			<br/>
-			<br/>
-			If you wish to change anything, please use the menu below to return to previous stages. Once you are happy with your artist profile settings,  click the submit button below.
-			<br/>
-			<br/>
-			<strong>If you would like information on how to get started with using your artist timeline, and adding new releases, then head on over to our help page.</strong>
-			<div id="submit-pad">
-				<div class="o-button right norm-o-pad signika-font">
-					<input type="submit" name="submit" value="Submit" />
-					<span></span>
-				</div>
-</fieldset>
 
+<div id="testing-only">
+	<%= f.submit "Test" %>
+</div>
 <% end %>
 <script>
 	$(document).ready(function() {
