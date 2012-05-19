@@ -52,7 +52,7 @@ class UsersController < ApplicationController
     api = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
     @user = current_user
     if @user.managing.count > 0
-      @artist = Artist.find(@user.managing.first.artist_id)
+      @artist = Artist.find(@user.manage.first.artist_id)
       @trackers = @artist.followed_users.count
     end
     @following = @user.following
@@ -190,6 +190,9 @@ class UsersController < ApplicationController
 
   # This page contains a list of all the Artist page's the logged in user controls.
   def managing
+    if current_user.managing.count > 0
+      return redirect_to :action => 'self', :controller => 'users'
+    end
     api = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
     @manageable = []
     @managing = []
@@ -199,7 +202,7 @@ class UsersController < ApplicationController
         if artist.nil? 
           next
         end
-        if current_user.managing.count > 0 and current_user.managing.first.artist_id == page["db_id"]
+        if current_user.managing.count > 0 and current_user.manage.first.artist_id == page["db_id"]
         @managing.push artist
         else
         @manageable.push artist

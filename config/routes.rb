@@ -23,6 +23,7 @@ SNGTRKRR::Application.routes.draw do
 
   match '/timeline' => "Users#timeline"
   resources :users do
+    resources :manages
     member do
       get 'destroy_confirm'
       get 'manage_confirm'

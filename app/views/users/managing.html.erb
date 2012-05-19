@@ -2,119 +2,190 @@
 <div class="content content-pad-191-bottom">
 	<h2 class="signika-txt top-header font-35">Manage an Artist</h2>
 
-            <div id="manage-form">
-                <div id="steps">
-                    <form id="formElem" name="formElem" action="" method="post">
-                        <fieldset class="step">
-                        	<div class="step-back manage-artist-step">
- 								<div class="step-left left">
-                                <input  type="radio" id="cutline" name="artist-pick" />
-                                <label for="cutline">Cutline</label><br/></br/>
-                                <input  type="radio" id="skream" name="artist-pick" />
-                                <label for="aname">Skream</label><br/></br/>
-                                <input  type="radio" id="benga" name="artist-pick" />
-                                <label for="aname">Benga</label>
-                                </div>
-                                <div class="step-right right">
-                                Please select the artist you wish to manage on SNGTRKR. We will then attempt to grab as much information from your Facebook fan page as possible.<br/><br/>
-                                <strong>At least one field is required.</strong>
-                                </div>
-                                <div id="artist-line"></div>
-                                <div class="clear"></div>
-                               </div>
-                        </fieldset>
-                        <fieldset class="step">
-                        	<div class="step-back manage-details-step">
-                        		<div class="step-left left">       
-                        		<ul>               
-							 <li><label for="aname"><strong>Artist Name*</strong></label><input id="aname" name="aname" type="text" class="form-text"/></li>
-                             <li><label for="genre"><strong>Genre*</strong></label><input id="genre" name="genre" type="text" class="form-text"/></li>
-                             <li><label for="label"><strong>Label*</strong></label><input id="label" name="label" type="text" class="form-text"/></li>
-                             <li><label for="bio"><strong>Bio*</strong></label><textarea name="bio" id="bio" rows="8" cols="20" class="form-text"></textarea></li>
-                             <li><label for="website"><strong>Website</strong></label><input id="website" name="website" type="text" class="form-text"/></li>
-                             <li><label for="twitter"><strong>Twitter</strong></label><input id="twitter" name="twitter" type="text" class="form-text"/></li>
-                             <li><label for="soundcloud"><strong>Soundcloud</strong></label><input id="soundcloud" name="soundcloud" type="text" class="form-text"/></li>
-                             <li><label for="youtube"><strong>Youtube</strong></label><input id="youtube" name="youtube" type="text" class="form-text"/></li>
-                            </ul>
-                            </div>
-                            <div class="step-right right">
-                            	Here is the information we have managed to gather from your Facebook fan page. Please check this information, by completing any missing or incorrect fields.<br/><br/>
-								We recommend a maximum of 330 characters for the biography, making it short but sweet.<br/><br/>
-								Furthermore, please only enter your username for the Twitter, Soundcloud and Youtube fields.<br/><br/> 
-								Please be aware, all of this information will be available to the public.<br/><br/>
-								<strong>* Required fields.</strong>
-                            	</div>
-                            <div id="details-line"></div>
-                           </div>
-                        </fieldset>
-                        <fieldset class="step">
-                        	<div class="step-back manage-picture-step">
-                        		<div class="step-left left">   
-                            <label for="file-browser"><strong>Picture</strong></label>
-							<input type="file" id="file-browser" name="file-browser"/> 
-							</div>
-							<div class="step-right right">
-								Please upload a picture which would best represent you as an artist.<br/></br/>
-								The artwork needs to be at least 365px width and 300px with. The file size can be no bigger than 1MB.<br/></br/>
-								<div id="default-button"><div class="o-button norm-o-pad right signika-font">Restore to default<span></span></div></div>
-								</div>
-								<div id="picture-line"></div>
-							</div>
-                        </fieldset>
-                        <fieldset class="step">
-                            <div class="step-back manage-summary-step">
-                            	<div class="step-left left">
-                            		<ul>
-                            			<li><strong>Artist Name:</strong></li>
-                            			<li><strong>Genre:</strong></li>
-                            			<li><strong>Label:</strong></li>
-                            			<li><strong>Bio:</strong></li><br/></br/>
-                            			<li><strong>Website:</strong></li>
-                            			<li><strong>Twitter:</strong></li>
-                            			<li><strong>Soundcloud:</strong></li>
-                            			<li><strong>Youtube:</strong></li>
-                            		</ul>
-                            		</div>
-                            		<div class="step-right right">
-                            			Here is a summary of all the information you have entered for your artist profile. Please read over and check everything.<br/><br/>
-									If you wish to change anything, please use the menu below to return to previous stages. Once you are happy with your artist profile settings,  click the submit button below.<br/><br/>
-									<strong>If you would like information on how to get started with using your artist timeline, and adding new releases, then head on over to our help page.</strong>
-                            		<div id="submit-pad"><div class="o-button right norm-o-pad signika-font"><input type="submit" name="submit" value="Submit" /><span></span></div></div>
-                            </div>
-                            <div id="summary-line"></div>
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
-                <div id="navigation" style="display:none;">
-                    <ul>
-                        <li class="selected signika-font">
-                            <a href="#" class="manage-artist"><h3><h3>1. Artist</h3></a>
-                        </li>
-                        <li class="signika-font">
-                            <a href="#" class="manage-details"><h3>2. Details</h3></a>
-                        </li>
-                        <li class="signika-font">
-                            <a href="#" class="manage-picture"><h3>3. Picture</h3></a>
-                        </li>
-                        <li class="signika-font">
-                            <a href="#" class="manage-summary"><h3>4. Summary</h3></a>
-                        </li>
-                    </ul>
-                </div>
-                                <div id="progress-bar">
-                	<div id="progress">
-                		<div class="percent instruct-font">
-                			25%
-                		</div>
-                	</div>
-                </div>
-                </div>
-	<!--		<% @manageable.each do |artist| %>
-			<%= "//graph.facebook.com/"+artist.fbid+"/picture?type=large" %>
-
-						<%= (link_to 'Manage', manage_artist_path(artist)) rescue (debug artist) %>
+	<div id="manage-form">
+		<div id="steps">
+			<%= form_for [current_user, Manage.new], :remote => true do |f| %>
+			<fieldset class="step">
+				<div class="step-back manage-artist-step">
+					<div class="step-left left">
+						<% @manageable.each do |artist| %>
+						<%= f.radio_button(:artist_id, artist.id) %>
+						<%= f.label(:artist_id, artist.name) %>
+						<!-- <%= image_tag ("//graph.facebook.com/"+artist.fbid+"/picture?type=small") %> -->
+						<br/>
+						<%= f.submit "Manage" %>
+						<% end %>
+					</div>
+					<div class="step-right right">
+						Please select the artist you wish to manage on SNGTRKR. We will then attempt to grab as much information from your Facebook fan page as possible.
+						<br/>
+						<br/>
+						<strong>At least one field is required.</strong>
+					</div>
+					<div id="artist-line"></div>
+					<div class="clear"></div>
+				</div>
+			</fieldset>
 			<% end %>
-			<% @managing.each do |artist| %>
-				Stop managing <%= link_to artist["name"], unmanage_artist_path(artist) %>
-			<% end %> -->
+			<%= form_for [Artist.new] do |f| %>
+			<fieldset class="step">
+				<div class="step-back manage-details-step">
+					<div class="step-left left">
+						<ul>
+							<li>
+								<label for="aname"><strong>Artist Name*</strong></label>
+								<input id="aname" name="aname" type="text" class="form-text"/>
+							</li>
+							<li>
+								<label for="genre"><strong>Genre*</strong></label>
+								<input id="genre" name="genre" type="text" class="form-text"/>
+							</li>
+							<li>
+								<label for="label"><strong>Label*</strong></label>
+								<input id="label" name="label" type="text" class="form-text"/>
+							</li>
+							<li>
+								<label for="bio"><strong>Bio*</strong></label>								<textarea name="bio" id="bio" rows="8" cols="20" class="form-text"></textarea>
+							</li>
+							<li>
+								<label for="website"><strong>Website</strong></label>
+								<input id="website" name="website" type="text" class="form-text"/>
+							</li>
+							<li>
+								<label for="twitter"><strong>Twitter</strong></label>
+								<input id="twitter" name="twitter" type="text" class="form-text"/>
+							</li>
+							<li>
+								<label for="soundcloud"><strong>Soundcloud</strong></label>
+								<input id="soundcloud" name="soundcloud" type="text" class="form-text"/>
+							</li>
+							<li>
+								<label for="youtube"><strong>Youtube</strong></label>
+								<input id="youtube" name="youtube" type="text" class="form-text"/>
+							</li>
+						</ul>
+					</div>
+					<div class="step-right right">
+						Here is the information we have managed to gather from your Facebook fan page. Please check this information, by completing any missing or incorrect fields.
+						<br/>
+						<br/>
+						We recommend a maximum of 330 characters for the biography, making it short but sweet.
+						<br/>
+						<br/>
+						Furthermore, please only enter your username for the Twitter, Soundcloud and Youtube fields.
+						<br/>
+						<br/>
+						Please be aware, all of this information will be available to the public.
+						<br/>
+						<br/>
+						<strong>* Required fields.</strong>
+					</div>
+					<div id="details-line"></div>
+				</div>
+			</fieldset>
+			<fieldset class="step">
+				<div class="step-back manage-picture-step">
+					<div class="step-left left">
+						<label for="file-browser"><strong>Picture</strong></label>
+						<input type="file" id="file-browser" name="file-browser"/>
+					</div>
+					<div class="step-right right">
+						Please upload a picture which would best represent you as an artist.
+						<br/>
+						</br/>
+						The artwork needs to be at least 365px width and 300px with. The file size can be no bigger than 1MB.
+						<br/>
+						</br/>
+						<div id="default-button">
+							<div class="o-button norm-o-pad right signika-font">
+								Restore to default<span></span>
+							</div>
+						</div>
+					</div>
+					<div id="picture-line"></div>
+				</div>
+			</fieldset>
+			<fieldset class="step">
+				<div class="step-back manage-summary-step">
+					<div class="step-left left">
+						<ul>
+							<li>
+								<strong>Artist Name:</strong>
+							</li>
+							<li>
+								<strong>Genre:</strong>
+							</li>
+							<li>
+								<strong>Label:</strong>
+							</li>
+							<li>
+								<strong>Bio:</strong>
+							</li>
+							<br/>
+							</br/>
+							<li>
+								<strong>Website:</strong>
+							</li>
+							<li>
+								<strong>Twitter:</strong>
+							</li>
+							<li>
+								<strong>Soundcloud:</strong>
+							</li>
+							<li>
+								<strong>Youtube:</strong>
+							</li>
+						</ul>
+					</div>
+					<div class="step-right right">
+						Here is a summary of all the information you have entered for your artist profile. Please read over and check everything.
+						<br/>
+						<br/>
+						If you wish to change anything, please use the menu below to return to previous stages. Once you are happy with your artist profile settings,  click the submit button below.
+						<br/>
+						<br/>
+						<strong>If you would like information on how to get started with using your artist timeline, and adding new releases, then head on over to our help page.</strong>
+						<div id="submit-pad">
+							<div class="o-button right norm-o-pad signika-font">
+								<input type="submit" name="submit" value="Submit" />
+								<span></span>
+							</div>
+						</div>
+					</div>
+					<div id="summary-line"></div>
+				</div>
+			</fieldset>
+			<% end %>
+		</div>
+		<div id="navigation" style="display:none;">
+			<ul>
+				<li class="selected signika-font">
+					<a href="#" class="manage-artist"><h3><h3>1. Artist</h3></a>
+				</li>
+				<li class="signika-font">
+					<a href="#" class="manage-details"><h3>2. Details</h3></a>
+				</li>
+				<li class="signika-font">
+					<a href="#" class="manage-picture"><h3>3. Picture</h3></a>
+				</li>
+				<li class="signika-font">
+					<a href="#" class="manage-summary"><h3>4. Summary</h3></a>
+				</li>
+			</ul>
+		</div>
+		<div id="progress-bar">
+			<div id="progress">
+				<div class="percent instruct-font">
+					25%
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--		<% @manageable.each do |artist| %>
+	<%= "//graph.facebook.com/"+artist.fbid+"/picture?type=large" %>
+
+	<%= (link_to 'Manage', manage_artist_path(artist)) rescue (debug artist) %>
+	<% end %>
+	<% @managing.each do |artist| %>
+	Stop managing <%= link_to artist["name"], unmanage_artist_path(artist) %>
+	<% end %> -->
