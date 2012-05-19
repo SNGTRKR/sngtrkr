@@ -83,6 +83,6 @@ class ArtistSubJob
     end
     end_time = Time.now
     elapsed_time = end_time - start_time
-    Rails.logger.info "J002: Release import for #{artist.name} finished after #{elapsed_time}"
+    Rails.logger.info "J002: Release import for #{a.name} finished after #{elapsed_time}"
   end
 end
