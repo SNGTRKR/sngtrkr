@@ -884,12 +884,10 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 margin:14px 0 25px 0;
 #steps{
     width:620px;
-  /*height:320px;*/
     overflow:hidden;
 .step{
     float:left;
     width:620px;
-  /*height:320px;*/
   height:222px;
 }
 .step-back {
@@ -903,12 +901,28 @@ margin:14px 0 25px 0;
     height:134px;
     padding:44px 30px 44px 30px;
     position:relative;
+    label { 
+                width:118px; 
+                display:block;
+                float:left;
+                margin-top:1px;
+            }
+            li {
+                padding:0 0 18px 0;
+            }
+            input[type="file"] {
+              margin-left:-67px;
+               background:transparent;
+            }
+     textarea {
+       resize:none;
+     }
     .step-left {
-      width:285px;
+      width:290px;
     }
     .step-right {
       width:226px;
-      padding:0 0 0 30px;
+      margin-top:-2px;
     }
     #artist-line {
       position:absolute;
@@ -918,6 +932,37 @@ margin:14px 0 25px 0;
       border-right-color:$orange;
       top:16px;
       left:333px;
+    }
+    #details-line {
+      position:absolute;
+      height:477px;
+      border-style:solid;
+      border-right-width:1px;
+      border-right-color:$orange;
+      top:16px;
+      left:333px;
+    }
+    #picture-line {
+      position:absolute;
+      height:243px;
+      border-style:solid;
+      border-right-width:1px;
+      border-right-color:$orange;
+      top:16px;
+      left:333px;
+    }
+    #summary-line {
+       position:absolute;
+      height:324px;
+      border-style:solid;
+      border-right-width:1px;
+      border-right-color:$orange;
+      top:16px;
+      left:333px;
+    }
+    #default-button {
+      position:relative;
+      left:-66px;
     }
 }
 }
