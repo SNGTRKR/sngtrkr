@@ -196,6 +196,9 @@ class UsersController < ApplicationController
     api.get_object("me/accounts").each do |page|
       if page["category"] == "Musician/band"
         artist = Artist.where("fbid = ?", page["id"]).first
+        if artist.nil? 
+          next
+        end
         if current_user.managing.count > 0 and current_user.managing.first.artist_id == page["db_id"]
         @managing.push artist
         else
