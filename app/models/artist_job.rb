@@ -21,7 +21,7 @@ class ArtistJob
           tmp = Artist.where("fbid = ?",artist["id"]).first
           if !tmp.nil? and (Rails.env.production? or !IMPORT_REPLACE)
             # Skip artists already in the database
-            User.find(user_id).suggest(tmp.id)
+            User.find(user_id).suggest_artist(tmp.id)
           next
           end
           batch_api.get_object(artist["id"]+'?fields=name,general_manager,booking_agent,record_label,genre,hometown,website,bio')
@@ -98,7 +98,7 @@ class ArtistJob
           end
         end
         a.save
-        User.find(user_id).suggest a.id
+        User.find(user_id).suggest_artist a.id
         if !a.sdid.nil?
           Resque.enqueue(ReleaseJob, a.id)
         end
