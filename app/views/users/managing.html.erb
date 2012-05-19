@@ -14,8 +14,6 @@
 		<ul>
 	<% @manageable.each do |artist| %>
 	<li class="left" style='background-image:url(<%= "//graph.facebook.com/"+artist.fbid+"/picture?type=large" %>);background-repeat:no-repeat;background-position:center;'><div class="manage-select"><div class="o-button norm-o-pad right signika-font font-13"><%= (link_to 'Manage', manage_artist_path(artist)) rescue (debug artist) %><span></span></div></div></li>
-	<li class="left"></li>
-	<li class="left"></li>
 	<% end %>
 	</ul>
 		</div>
@@ -49,9 +47,6 @@
 				<div class="percent instruct-font">
 					25%</div></div></div>
 	</div>
-	
-	
-
 	<script>
 		$('#steps').load('/artists/1/edit')
 	</script>
