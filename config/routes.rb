@@ -33,6 +33,7 @@ SNGTRKRR::Application.routes.draw do
     collection do
       get 'me', :action => 'self'
     end
+    resources :manages
   end
 
   resources :artists do

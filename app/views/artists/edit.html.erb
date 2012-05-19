@@ -123,72 +123,10 @@
 					<span></span>
 				</div>
 </fieldset>
-<fieldset class="step">
-	<div class="step-back manage-summary-step">
-		<div class="step-left left">
-			<ul>
-				<li>
-					<strong>Artist Name:</strong>
-				</li>
-				<li>
-					<strong>Genre:</strong>
-				</li>
-				<li>
-					<strong>Label:</strong>
-				</li>
-				<li>
-					<strong>Bio:</strong>
-				</li>
-				<br/>
-				</br/>
-				<li>
-					<strong>Website:</strong>
-				</li>
-				<li>
-					<strong>Twitter:</strong>
-				</li>
-				<li>
-					<strong>Soundcloud:</strong>
-				</li>
-				<li>
-					<strong>Youtube:</strong>
-				</li>
-			</ul>
-		</div>
-		<div class="step-right right">
-			Here is a summary of all the information you have entered for your artist profile. Please read over and check everything.
-			<br/>
-			<br/>
-			If you wish to change anything, please use the menu below to return to previous stages. Once you are happy with your artist profile settings,  click the submit button below.
-			<br/>
-			<br/>
-			<strong>If you would like information on how to get started with using your artist timeline, and adding new releases, then head on over to our help page.</strong>
-			<div id="submit-pad">
-				<div class="o-button right norm-o-pad signika-font">
-					<input type="submit" name="submit" value="Submit" />
-					<span></span>
-				</div>
-			</div>
-		</div>
-		<div id="summary-line"></div>
-	</div>
-</fieldset>
+
 <% end %>
 <script>
 	$(document).ready(function() {
-		$(".manage-artist").click(function() {
-			$(".step-back").animate({
-				height : 134
-			}, "slow");
-			$(".step").animate({
-				height : 222
-			}, "slow");
-			$("#progress").animate({
-				width : 65
-			}, "slow");
-			$('.percent').html('25%');
-
-		});
 		$(".manage-details").click(function() {
 			$(".step-back").animate({
 				height : 421
@@ -212,18 +150,6 @@
 				width : 195
 			}, "slow");
 			$('.percent').html('75%');
-		});
-		$(".manage-summary").click(function() {
-			$(".step-back").animate({
-				height : 283
-			}, "slow");
-			$(".step").animate({
-				height : 371
-			}, "slow");
-			$("#progress").animate({
-				width : 265
-			}, "slow");
-			$('.percent').html('100%');
 		});
 	}); 
 </script>
