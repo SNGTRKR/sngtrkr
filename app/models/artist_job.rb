@@ -16,13 +16,14 @@ class ArtistJob
       results = graph.batch do |batch_api|
         for artist in artists do
           if(artist.nil?)
+          Rails.logger.error "J001: Failed, batch api request returned nil."
           break
           end
           # TODO: DISABLE FOR PRODUCTION
           tmp = Artist.where("fbid = ?",artist["id"]).first
           if !tmp.nil? and (Rails.env.production? or !IMPORT_REPLACE)
             # Skip artists already in the database
-            User.find(user_id).suggest_artist(tmp.id)
+            User.find(user_id).suggest_artist(tmp.id)            
           next
           end
           batch_api.get_object(artist["id"]+'?fields=name,general_manager,booking_agent,record_label,genre,hometown,website,bio')
