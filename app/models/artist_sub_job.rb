@@ -14,7 +14,7 @@ class ArtistSubJob
     end
     if !s.real_artist?
       # Skip artists that last.fm does not believe are real artists.
-      Rails.logger.error "J002: Failed, last.fm did not believe '#{a.name}' is a real artist"
+      Rails.logger.error "J002: Failed, last.fm did not believe '#{artist["name"]}' is a real artist"
     return false
     end
     #a = Artist.new()
