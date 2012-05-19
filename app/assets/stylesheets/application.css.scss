@@ -881,6 +881,76 @@ body:before {/* thanks to Maleika (Kohoutec)*/
           width:267px;
         }
 }
+#manage-choice {
+  margin-bottom:58px;
+      .content-top {
+  position:relative;
+  width:605px;
+  height:128px;
+  .top-header {
+    float:left;
+    width:302px;
+  }
+  .content-top-right {
+    float:right;
+    width:267px;
+    margin-top:9px;
+  }
+}
+#artist-choice {
+  position:relative;
+  width:605px;
+  top:20px;     
+  ul {
+    list-style-type:none;
+    margin-left:-50px;
+    left:34px;
+    position:relative;
+    li {
+     width:144px;
+     height:191px; 
+         @include border-radius(8px);
+    -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+    box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+    margin:0 0 36px 50px;
+    .manage-select {
+      position:relative;
+      right:47px;
+      top:172px;
+    }
+    }
+  }
+}
+#manage-points {
+    width:605px;
+  height:181px;
+           @include border-radius(8px);
+    -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+    box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+     background:rgba(255,255,255,0.75);
+     top:27px;
+     position:relative;
+     ul {
+       list-style-type:none;
+       width:605px;
+       top:10px;
+       position:relative;
+       left:-12px;
+     li {
+      width:239px;
+      height:45px;
+      margin:20px 0 0 50px;
+      .point-txt {
+      margin-top:8px;
+      width:158px;
+      height:45px;
+    }
+}
+}
+}
+}
 #manage-form{
     width:620px;
     overflow:hidden;
