@@ -962,7 +962,7 @@ margin:14px 0 25px 0;
 .step{
     float:left;
     width:620px;
-  height:222px;
+  height:505px;
 }
 .step-back {
   margin:5px 5px 5px 5px;
@@ -1528,8 +1528,9 @@ span.error{
 .delete-confirm {
     width:431px;
     height:286px;
-    background: url(/assets/fancybox/box-bk-431.png) no-repeat;
+    background: url(/assets/images/box-bk-431.png) no-repeat;
     @include border-radius(8px);
+    color:#000;
     #goodbye {
         font-size:2.8em;
         color:#fff;

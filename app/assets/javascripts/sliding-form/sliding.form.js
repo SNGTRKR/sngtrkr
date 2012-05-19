@@ -2,7 +2,7 @@ $(function() {
 	/*
 	number of fieldsets
 	*/
-	var fieldsetCount = $('#new_manage').children().length;
+	var fieldsetCount = $('.edit_artist').children().length;
 	
 	/*
 	current position of fieldset / navigation link
@@ -25,7 +25,7 @@ $(function() {
 	/*
 	to avoid problems in IE, focus the first input of the form
 	*/
-	$('#new_manage').children(':first').find(':input:first').focus();	
+	$('.edit_artist').children(':first').find(':input:first').focus();	
 	
 	/*
 	show the navigation bar
@@ -63,7 +63,7 @@ $(function() {
 				validateSteps();
 			else
 				validateStep(prev);
-			$('#new_manage').children(':nth-child('+ parseInt(current) +')').find(':input:first').focus();	
+			$('.edit_artist').children(':nth-child('+ parseInt(current) +')').find(':input:first').focus();	
 		});
         e.preventDefault();
     });
@@ -72,7 +72,7 @@ $(function() {
 	clicking on the tab (on the last input of each fieldset), makes the form
 	slide to the next step
 	*/
-	$('#new_manage > fieldset').each(function(){
+	$('.edit_artist > fieldset').each(function(){
 		var $fieldset = $(this);
 		$fieldset.children(':last').find(':li').keydown(function(e){
 			if (e.which == 9){
@@ -95,7 +95,7 @@ $(function() {
 			if(error == -1)
 				FormErrors = true;
 		}
-		$('#formElem').data('errors',FormErrors);	
+		$('.edit_artist').data('errors',FormErrors);	
 	}
 	
 	/*
@@ -107,7 +107,7 @@ $(function() {
 		
 		var error = 1;
 		var hasError = false;
-		$('#new_manage').children(':nth-child('+ parseInt(step) +')').find(':input:not(button)').each(function(){
+		$('.edit_artist').children(':nth-child('+ parseInt(step) +')').find(':input:not(button)').each(function(){
 			var $this 		= $(this);
 			var valueLength = jQuery.trim($this.val()).length;
 			
@@ -135,7 +135,7 @@ $(function() {
 	if there are errors don't allow the user to submit
 	*/
 	$('#registerButton').bind('click',function(){
-		if($('#new_manage').data('errors')){
+		if($('.edit_artist').data('errors')){
 			alert('Please correct the errors in the Form');
 			return false;
 		}	
