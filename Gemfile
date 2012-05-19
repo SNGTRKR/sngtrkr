@@ -40,7 +40,7 @@ gem 'itunes-search'
 gem 'amazon-ecs'
 
 # ADMIN
-#gem 'rails_admin'
+gem 'rails_admin'
 
 # in production environments by default.
 gem 'compass-rails', '>= 1.0.0.rc.2'
