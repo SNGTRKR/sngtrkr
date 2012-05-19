@@ -52,8 +52,8 @@ $(".manage-picture").click(function(){
   			 $('.manage-summary-step').hide();
 });
 $(".manage-summary").click(function(){
-  			 $(".step-back").animate({height:268},"slow");
-  			 $(".step").animate({height:356},"slow");
+  			 $(".step-back").animate({height:283},"slow");
+  			 $(".step").animate({height:371},"slow");
   			 $("#progress").animate({width:265},"slow");
   			 $('.percent').html('100%');
   			 $('.manage-summary-step').show();

@@ -914,6 +914,17 @@ margin:14px 0 25px 0;
               margin-left:-67px;
                background:transparent;
             }
+            input[type=submit] {
+                background:none;
+                border:0;
+                color:#fff;
+                font-size:1.0em            
+            }
+            #submit-pad {
+              position:relative;
+              top:16px;
+              left:-90px;
+            }
      textarea {
        resize:none;
      }
