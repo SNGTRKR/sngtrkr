@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   def home
     if(user_signed_in?)
-      return redirect_to '/timeline'
+      return redirect_to '/home'
     end
     require 'koala'
     @graph = Koala::Facebook::API.new
@@ -29,6 +29,9 @@ class PagesController < ApplicationController
   end
   
   def splash
+    if(user_signed_in?)
+      return redirect_to '/home'
+    end
     render :layout => 'splash'
   end 
 end
