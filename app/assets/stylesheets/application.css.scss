@@ -112,6 +112,9 @@ table th{
 .center-txt {
   text-align:center;
 }
+.red-txt {
+  color:red;
+}
 .fb-login-nudge {
     margin:-26px -5px 0 0;
 }
@@ -1007,6 +1010,7 @@ margin:14px 0 25px 0;
   }
 } 
  .white-tint {
+   display:none;
     position:absolute;
     top:6px;
     left:6px;
@@ -1016,6 +1020,16 @@ margin:14px 0 25px 0;
     @include border-radius(7px);
     z-index:2;
 } 
+.white-tint-2, .white-tint-3, .white-tint-4 {
+  position:absolute;
+    top:6px;
+    left:6px;
+    background:rgba(255,255,255,0.4);
+    height:24px;
+    width:125px;
+    @include border-radius(7px);
+    z-index:2;
+}
 }
 span.checked{
     background:transparent url(/assets/images/checkedn.png) no-repeat top left;
