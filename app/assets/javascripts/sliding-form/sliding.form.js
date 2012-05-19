@@ -74,7 +74,7 @@ $(function() {
 	*/
 	$('#formElem > fieldset').each(function(){
 		var $fieldset = $(this);
-		$fieldset.children(':last').find(':input').keydown(function(e){
+		$fieldset.children(':last').find(':li').keydown(function(e){
 			if (e.which == 9){
 				$('#navigation li:nth-child(' + (parseInt(current)+1) + ') a').click();
 				/* force the blur for validation */

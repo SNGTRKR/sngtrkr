@@ -23,7 +23,6 @@ SNGTRKRR::Application.routes.draw do
 
   match '/timeline' => "Users#timeline"
   resources :users do
-    resources :manages
     member do
       get 'destroy_confirm'
       get 'manage_confirm'
@@ -41,6 +40,7 @@ SNGTRKRR::Application.routes.draw do
       get 'no_results', :action => 'no_results'
     end
     resources :releases
+    resources :manages
   end
 
   # Allows us to have intuitive /artist/1/follow URLs that actually deal with the
