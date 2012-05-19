@@ -14,9 +14,9 @@ class User < ActiveRecord::Base
 
   has_many :following, :through => :follow, :source => :artist
   has_many :managing, :through => :manage, :source => :artist
-  has_many :suggested_artists, :through => :suggest, :source => :artist
-
+  has_many :suggested_all, :through => :suggest, :source => :artist
   has_many :labels, :through => :super_manage
+  
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
     if user = self.find_by_email(data.email)
@@ -45,76 +45,70 @@ class User < ActiveRecord::Base
   end
 
   def manager?
-    if self.managing.count > 0
+    if managing.count > 0
     true
     else
     false
     end
   end
 
-#  def manage(artist_id)
-#    m = Manage.new(:user_id => self.id, :artist_id => artist_id)
-#    m.save
-#    return m.id
-#  end
-
-  def unmanage(artist_id)
-    Manage.find(:all, :conditions => ["user_id = '#{self.id}' AND artist_id = '#{artist_id}'"]).each do |f|
-      f.destroy
-    end
-  end
-
-  def follow_artist(artist_id)
-    t = Follow.new(:user_id => self.id, :artist_id => artist_id)
+  def manage_artist artist_id
+    t = manage.create(:artist_id => artist_id)
     t.save
     return t.id
   end
 
-  def unfollow artist_id
-    Follow.find(:all, :conditions => ["user_id = '#{self.id}' AND artist_id = '#{artist_id}'"]).each do |f|
-      f.destroy
-    end
+  def unmanage_artist artist_id
+    manage.delete(manage.where(:user_id => self.id, :artist_id => artist_id))
   end
 
-  def suggest_artist(artist_id)
-    t = Suggest.new(:user_id => self.id, :artist_id => artist_id)
-    t.save
+  def follow_artist artist_id
+    t = follow.create(:artist_id => artist_id)
     return t.id
   end
 
-  def unsuggest(artist_id)
-    Suggest.find(:all, :conditions => ["user_id = '#{self.id}' AND artist_id = '#{artist_id}'"]).each do |f|
+  def unfollow_artist artist_id
+    follow.delete(follow.where(:user_id => self.id, :artist_id => artist_id))
+  end
+
+  def suggest_artist artist_id
+    t = suggest.create(:artist_id => artist_id)
+    return t.id
+  end
+
+  def unsuggest_artist(artist_id)
+    suggest.where(:artist_id => artist_id).each do |f|
       f.ignore = true
       f.save
     end
   end
 
   def following?(artist_id)
-    if Follow.search(self.id, artist_id).count > 0
-    return true
+    if !Follow.where(:artist_id => artist_id, :user_id => id).empty?
+    true
     else
-    return false
+    false
     end
   end
 
   def managing?(artist_id)
-    if Manage.search(self.id, artist_id).count > 0
-    return true
+    if !Manage.where(:artist_id => artist_id, :user_id => id).empty?
+    true
     else
-    return false
-    end
-  end
-
-  def suggested?(artist_id)
-    if Suggest.search(self.id, artist_id).count > 0
-    return true
-    else
-    return false
+    false
     end
   end
 
   def suggested
-    self.suggested_artists.find(:all,:conditions => ["suggests.ignore = ?",false])
+    suggested_all.where("suggests.ignore = ?",false)
+  end
+
+  def suggested?(artist_id)
+    if !Suggest.where(:artist_id => artist_id, :user_id => id).empty?
+    true
+    else
+    false
+    end
   end
 
   after_create :send_welcome_email

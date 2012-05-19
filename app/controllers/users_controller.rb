@@ -135,7 +135,7 @@ class UsersController < ApplicationController
   end
 
   def manage
-    @user.manage params[:id]
+    @user.manage_artist params[:id]
     respond_to do |format|
       format.html { redir :id }
       format.json { render :json => { :response => :success } }
@@ -143,7 +143,7 @@ class UsersController < ApplicationController
   end
 
   def unmanage
-    @user.unmanage params[:id]
+    @user.unmanage_artist params[:id]
     respond_to do |format|
       format.html { redir :id }
       format.json { render :json => { :response => :success } }
@@ -151,7 +151,7 @@ class UsersController < ApplicationController
   end
 
   def unfollow
-    @user.unfollow params[:id]
+    @user.unfollow_artist params[:id]
     respond_to do |format|
       format.html { redir :id }
       format.json { render :json => { :response => :success } }
@@ -159,8 +159,8 @@ class UsersController < ApplicationController
   end
 
   def follow
-    @user.follow params[:id]
-    @user.unsuggest params[:id]
+    @user.follow_artist params[:id]
+    @user.unsuggest_artist params[:id]
     # Post to facebook graph api if in production.
     if Rails.env.production?
       api = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
@@ -171,7 +171,7 @@ class UsersController < ApplicationController
         logger.warning "Failed to track #{artist.name} for #{@user.id}"
       end
     end
-    @artist = Artist.find(@user.suggested[6].id)
+    @artist = Artist.find(@user.suggested[6].id) rescue nil
     respond_to do |format|
       format.html { redir :id }
       format.json { render("artists/show.json") }
@@ -179,12 +179,12 @@ class UsersController < ApplicationController
   end
 
   def unsuggest
-    @user.unsuggest params[:id]
+    @user.unsuggest_artist params[:id]
     redir :id
   end
 
   def suggest
-    @user.suggest params[:id]
+    @user.suggest_artist params[:id]
     redir :id
   end
 
