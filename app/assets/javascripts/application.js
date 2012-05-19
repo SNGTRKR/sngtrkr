@@ -12,6 +12,12 @@
 //
 //= require jquery.min
 //= require jquery_ujs
+//= require fancy-box/jquery.fancybox.pack
+//= require instant-search/instant-search
+//= require libs/modernizr-2.5.3.min
+//= require sliding-form/sliding.form
+//= require timers/jquery.timers
+
 $(document).ready(function() {
 	$("#delete-account a").fancybox({
 		width : 431,
