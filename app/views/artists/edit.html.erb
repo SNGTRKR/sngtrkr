@@ -4,35 +4,36 @@
 		<div class="step-left left">
 			<ul>
 				<li>
-					<label for="aname"><strong>Artist Name*</strong></label>
-					<input id="aname" name="aname" type="text" class="form-text"/>
+					<%= f.label "Artist Name*" %>
+					<%= f.text_field :name, :class => 'form-text' %>
 				</li>
 				<li>
-					<label for="genre"><strong>Genre*</strong></label>
-					<input id="genre" name="genre" type="text" class="form-text"/>
+					<%= f.label "Genre*" %>
+					<%= f.text_field :genre, :class => 'form-text' %>
 				</li>
 				<li>
-					<label for="label"><strong>Label*</strong></label>
-					<input id="label" name="label" type="text" class="form-text"/>
+					<%= f.label "Label*" %>
+					<%= f.text_field :label, :class => 'form-text' %>
 				</li>
 				<li>
-					<label for="bio"><strong>Bio*</strong></label>					<textarea name="bio" id="bio" rows="8" cols="20" class="form-text"></textarea>
+					<%= f.label "Bio" %>
+					<%= f.text_area :bio %>
 				</li>
 				<li>
-					<label for="website"><strong>Website</strong></label>
-					<input id="website" name="website" type="text" class="form-text"/>
+					<%= f.label "Website" %>
+					<%= f.text_field :website, :class => 'form-text' %>
 				</li>
 				<li>
-					<label for="twitter"><strong>Twitter</strong></label>
-					<input id="twitter" name="twitter" type="text" class="form-text"/>
+					<%= f.label "Twitter" %>
+					<%= f.text_field :website, :class => 'twitter' %>
 				</li>
 				<li>
-					<label for="soundcloud"><strong>Soundcloud</strong></label>
-					<input id="soundcloud" name="soundcloud" type="text" class="form-text"/>
+					<%= f.label "Soundcloud" %>
+					<%= f.text_field :soundcloud, :class => 'form-text' %>
 				</li>
 				<li>
-					<label for="youtube"><strong>Youtube</strong></label>
-					<input id="youtube" name="youtube" type="text" class="form-text"/>
+					<%= f.label "Youtube" %>
+					<%= f.text_field :youtube, :class => 'form-text' %>
 				</li>
 			</ul>
 		</div>
