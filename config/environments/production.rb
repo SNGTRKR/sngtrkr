@@ -68,7 +68,7 @@ SNGTRKRR::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-  config.assets.precompile += %w(rails_admin/rails_admin.css rails_admin/rails_admin.js)
+  config.assets.precompile += %w(rails_admin/rails_admin.css rails_admin/rails_admin.js resque/*.css resque/*.js)
 
     ActionMailer::Base.smtp_settings = {
     :address        => 'localhost',

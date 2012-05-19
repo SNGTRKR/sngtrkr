@@ -2,32 +2,61 @@
 <div class="content content-pad-191-bottom">
 	<div id="manage-choice">
 		<div class="content-top">
-		<h2 class="signika-txt top-header font-35">Join now and build a closer relationship to your fans...</h2>
-		<div class="content-top-right">
-			Joining SNGTRKR as an artist, could not be any easier.
-			We do all the hard work for you, from gathering your artist information, to filling your personal timeline with past and current releases.<br/></br/>
-			<h3><strong>Get started now by selecting an artist you want to manage:<br/></br/></strong></h3>
+			<h2 class="signika-txt top-header font-35">Join now and build a closer relationship to your fans...</h2>
+			<div class="content-top-right">
+				Joining SNGTRKR as an artist, could not be any easier.
+				We do all the hard work for you, from gathering your artist information, to filling your personal timeline with past and current releases.
+				<br/>
+				</br/>
+				<h3><strong>Get started now by selecting an artist you want to manage:
+				<br/>
+				</br/></strong></h3>
+			</div>
 		</div>
-	</div>
-	<div class="clear"></div>
-	<div id="artist-choice">
-		<ul>
-	<% @manageable.each do |artist| %>
-	<li class="left" style='background-image:url(<%= "//graph.facebook.com/"+artist.fbid+"/picture?type=large" %>);background-repeat:no-repeat;background-position:center;'><div class="manage-select"><div class="o-button norm-o-pad right signika-font font-13"><%= (link_to 'Manage', manage_artist_path(artist)) rescue (debug artist) %><span></span></div></div></li>
-	<% end %>
-	</ul>
+		<div class="clear"></div>
+		<div id="artist-choice">
+			<ul>
+				<% @manageable.each do |artist| %>
+				<li class="left" style='background-image:url(<%= "//graph.facebook.com/"+artist.fbid+"/picture?type=large" %>);background-repeat:no-repeat;background-position:center;'>
+					<div class="manage-select">
+						<div class="o-button norm-o-pad right signika-font font-13">
+							<%= (link_to 'Manage', manage_artist_path(artist)) rescue (debug artist) %><span></span>
+						</div>
+					</div>
+				</li>
+				<li class="left"></li>
+				<li class="left"></li>
+				<% end %>
+			</ul>
 		</div>
 		<div class="clear"></div>
 		<div id="manage-points">
 			<ul>
-						<li class="left"><img src="/assets/images/tick.png"></img><div class="point-txt right">Increase your web presence with an online profile full of useful information.</div></li>
-                        <li class="left"><img src="/assets/images/tick.png"></img><div class="point-txt right">Add your releases, old and new, to an intuitive personal timeline.</div></li>      
-                        <li class="left"><img src="/assets/images/tick.png"></img><div class="point-txt right">Keep your fans up to date with future releases, with regular email notifications.</div></li>
-                        <li class="left"><img src="/assets/images/tick.png"></img><div class="point-txt right">Increase record sales with links to the appropiate music outlets for your fans.</div></li>
+				<li class="left"><img src="/assets/images/tick.png"></img>
+					<div class="point-txt right">
+						Increase your web presence with an online profile full of useful information.
+					</div>
+				</li>
+				<li class="left"><img src="/assets/images/tick.png"></img>
+					<div class="point-txt right">
+						Add your releases, old and new, to an intuitive personal timeline.
+					</div>
+				</li>
+				<li class="left"><img src="/assets/images/tick.png"></img>
+					<div class="point-txt right">
+						Keep your fans up to date with future releases, with regular email notifications.
+					</div>
+				</li>
+				<li class="left"><img src="/assets/images/tick.png"></img>
+					<div class="point-txt right">
+						Increase record sales with links to the appropiate music outlets for your fans.
+					</div>
+				</li>
 			</ul>
 			</div>
 </div>
-<!-- <div id="manage-form">
+<!-- 
+	<div id="manage-form">
 		<div id="steps"></div>
 		<div id="navigation" style="display:none;">
 			<ul>
@@ -45,10 +74,12 @@
 		<div id="progress-bar">
 			<div id="progress">
 				<div class="percent instruct-font">
-					25%</div></div></div>
+					25%
+				</div>
+			</div>
+		</div>
 	</div>
 	<script>
 		$('#steps').load('/artists/1/edit')
 	</script> -->
-
 
