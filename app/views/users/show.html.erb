@@ -8,7 +8,7 @@
 				<div class="orange-txt instruct-font">
 					<%= @friend.following.count %> TRKINGS
 				</div><br/>
-				Last login: <%= @friend.last_sign_in_at %>
+				Last logged in <%= time_ago_in_words @friend.last_sign_in_at %> ago
 			</div>
 		</div>
 		<div id="friend-trkr-search">
