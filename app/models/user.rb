@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :fbid, :first_name, :last_name
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :fbid, :first_name, :last_name, :last_sign_in_at
 
   has_many :follow
   has_many :suggest
@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   has_many :following, :through => :follow, :source => :artist
   has_many :managing, :through => :manage, :source => :artist
   has_many :suggested_artists, :through => :suggest, :source => :artist
-  
+
   has_many :labels, :through => :super_manage
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
@@ -35,12 +35,12 @@ class User < ActiveRecord::Base
       end
     end
   end
-  
+
   def friends_with? user, friends
-    if friends.include? user.fbid 
-      true
+    if friends.include? user.fbid
+    true
     else
-      false
+    false
     end
   end
 
@@ -104,7 +104,7 @@ class User < ActiveRecord::Base
     return false
     end
   end
-  
+
   def suggested?(artist_id)
     if Suggest.search(self.id, artist_id).count > 0
     return true
@@ -115,6 +115,14 @@ class User < ActiveRecord::Base
 
   def suggested
     self.suggested_artists.find(:all,:conditions => ["suggests.ignore = ?",false])
+  end
+
+  after_create :send_welcome_email
+
+  private
+
+  def send_welcome_email
+    UserMailer.welcome_email(self).deliver
   end
 
 end

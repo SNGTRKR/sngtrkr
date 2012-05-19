@@ -17,8 +17,8 @@ $(document).ready(function() {
 		width : 431,
 		height : 286,
 		autoSize	: false,
-		closeClick	: false,
-		type		: 'iframe'
+		closeClick	: false
+//		type		: 'iframe'
 	});
     		$(".manage-artist").click(function(){
   			 $(".step-back").animate({height:222},"slow");
