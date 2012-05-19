@@ -13,7 +13,6 @@
 				</br/></strong></h3>
 			</div>
 		</div>
-<<<<<<< HEAD
 		<div class="clear"></div>
 		<div id="artist-choice">
 			<ul>
@@ -29,16 +28,6 @@
 				<li class="left"></li>
 				<% end %>
 			</ul>
-=======
-	</div>
-	<div class="clear"></div>
-	<div id="artist-choice">
-		<ul>
-	<% @manageable.each do |artist| %>
-	<li class="left" style='background-image:url(<%= "//graph.facebook.com/"+artist.fbid+"/picture?type=large" %>);background-repeat:no-repeat;background-position:center;'><div class="manage-select"><div class="o-button norm-o-pad right signika-font font-13"><%= (link_to 'Manage', manage_artist_path(artist)) rescue (debug artist) %><span></span></div></div></li>
-	<% end %>
-	</ul>
->>>>>>> ff48dc12d026028b3da0a5334f8707fcdab69718
 		</div>
 		<div class="clear"></div>
 		<div id="manage-points">
@@ -89,10 +78,6 @@
 			</div>
 		</div>
 	</div>
-<<<<<<< HEAD
-
-=======
->>>>>>> ff48dc12d026028b3da0a5334f8707fcdab69718
 	<script>
 		$('#steps').load('/artists/1/edit')
 	</script>
