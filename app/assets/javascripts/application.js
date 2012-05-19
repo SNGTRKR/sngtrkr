@@ -18,10 +18,9 @@ $(document).ready(function() {
 		height : 286,
 		autoSize	: false,
 		closeClick	: false
-//		type		: 'iframe'
 	});
     		$(".manage-artist").click(function(){
-  			 $(".step-back").animate({height:222},"slow");
+  			 $(".step-back").animate({height:134},"slow");
   			 $(".step").animate({height:222},"slow");	
   			 $("#progress").animate({width:65},"slow");
   			 $('.percent').html('25%');	 
@@ -32,8 +31,8 @@ $(document).ready(function() {
   			 
 });
 $(".manage-details").click(function(){
-  			 $(".step-back").animate({height:485},"slow");
-  			 $(".step").animate({height:485},"slow");
+  			 $(".step-back").animate({height:421},"slow");
+  			 $(".step").animate({height:505},"slow");
   			 $("#progress").animate({width:130},"slow");
   			 $('.percent').html('50%');
   			 $('.manage-details-step').show();
@@ -43,7 +42,7 @@ $(".manage-details").click(function(){
 
 });
 $(".manage-picture").click(function(){
-  			 $(".step-back").animate({height:275},"slow");
+  			 $(".step-back").animate({height:187},"slow");
   			 $(".step").animate({height:275},"slow");
   			 $("#progress").animate({width:195},"slow");
   			 $('.percent').html('75%');
@@ -53,8 +52,8 @@ $(".manage-picture").click(function(){
   			 $('.manage-summary-step').hide();
 });
 $(".manage-summary").click(function(){
-  			 $(".step-back").animate({height:316},"slow");
-  			 $(".step").animate({height:316},"slow");
+  			 $(".step-back").animate({height:283},"slow");
+  			 $(".step").animate({height:371},"slow");
   			 $("#progress").animate({width:265},"slow");
   			 $('.percent').html('100%');
   			 $('.manage-summary-step').show();
@@ -63,4 +62,5 @@ $(".manage-summary").click(function(){
   			 $('.manage-artist-step').hide();
 });
     	});
+    	
 
