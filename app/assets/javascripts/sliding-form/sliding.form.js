@@ -2,7 +2,7 @@ $(function() {
 	/*
 	number of fieldsets
 	*/
-	var fieldsetCount = $('#formElem').children().length;
+	var fieldsetCount = $('#new_manage').children().length;
 	
 	/*
 	current position of fieldset / navigation link
@@ -25,7 +25,7 @@ $(function() {
 	/*
 	to avoid problems in IE, focus the first input of the form
 	*/
-	$('#formElem').children(':first').find(':input:first').focus();	
+	$('#new_manage').children(':first').find(':input:first').focus();	
 	
 	/*
 	show the navigation bar
@@ -63,7 +63,7 @@ $(function() {
 				validateSteps();
 			else
 				validateStep(prev);
-			$('#formElem').children(':nth-child('+ parseInt(current) +')').find(':input:first').focus();	
+			$('#new_manage').children(':nth-child('+ parseInt(current) +')').find(':input:first').focus();	
 		});
         e.preventDefault();
     });
@@ -72,7 +72,7 @@ $(function() {
 	clicking on the tab (on the last input of each fieldset), makes the form
 	slide to the next step
 	*/
-	$('#formElem > fieldset').each(function(){
+	$('#new_manage > fieldset').each(function(){
 		var $fieldset = $(this);
 		$fieldset.children(':last').find(':li').keydown(function(e){
 			if (e.which == 9){
@@ -107,7 +107,7 @@ $(function() {
 		
 		var error = 1;
 		var hasError = false;
-		$('#formElem').children(':nth-child('+ parseInt(step) +')').find(':input:not(button)').each(function(){
+		$('#new_manage').children(':nth-child('+ parseInt(step) +')').find(':input:not(button)').each(function(){
 			var $this 		= $(this);
 			var valueLength = jQuery.trim($this.val()).length;
 			
@@ -135,7 +135,7 @@ $(function() {
 	if there are errors don't allow the user to submit
 	*/
 	$('#registerButton').bind('click',function(){
-		if($('#formElem').data('errors')){
+		if($('#new_manage').data('errors')){
 			alert('Please correct the errors in the Form');
 			return false;
 		}	
