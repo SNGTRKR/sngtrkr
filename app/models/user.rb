@@ -52,11 +52,11 @@ class User < ActiveRecord::Base
     end
   end
 
-  def manage(artist_id)
-    m = Manage.new(:user_id => self.id, :artist_id => artist_id)
-    m.save
-    return m.id
-  end
+#  def manage(artist_id)
+#    m = Manage.new(:user_id => self.id, :artist_id => artist_id)
+#    m.save
+#    return m.id
+#  end
 
   def unmanage(artist_id)
     Manage.find(:all, :conditions => ["user_id = '#{self.id}' AND artist_id = '#{artist_id}'"]).each do |f|
@@ -64,7 +64,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def follow(artist_id)
+  def follow_artist(artist_id)
     t = Follow.new(:user_id => self.id, :artist_id => artist_id)
     t.save
     return t.id
@@ -76,7 +76,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def suggest(artist_id)
+  def suggest_artist(artist_id)
     t = Suggest.new(:user_id => self.id, :artist_id => artist_id)
     t.save
     return t.id
