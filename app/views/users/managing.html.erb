@@ -29,6 +29,33 @@
 			</ul>
 			</div>
 </div>
+<div id="manage-form">
+		<div id="steps">
+			<%= form_for [current_user, Manage.new], :remote => true do |f| %>
+				<div id="ajax-form"></div>
+			<% end %>
+		</div>
+		<div id="navigation" style="display:none;">
+			<ul>
+				<li class="selected signika-font">
+					<a href="#" class="manage-details"><h3>1. Details</h3></a>
+				</li>
+				<li class="signika-font">
+					<a href="#" class="manage-picture"><h3>2. Picture</h3></a>
+				</li>
+				<li class="signika-font">
+					<a href="#" class="manage-summary"><h3>3. Summary</h3></a>
+				</li>
+			</ul>
+		</div>
+		<div id="progress-bar">
+			<div id="progress">
+				<div class="percent instruct-font">
+					25%
+				</div>
+			</div>
+		</div>
+	</div>
 	
 	
 
