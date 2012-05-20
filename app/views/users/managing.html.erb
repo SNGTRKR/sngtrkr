@@ -1,6 +1,6 @@
 <% content_for :title do %>Manage an artist<% end %>
 <div class="content content-pad-191-bottom">
-	<div id="manage-choice">
+	<div id="manage-header">
 		<div class="content-top">
 			<h2 class="signika-txt top-header font-35">Join now and build a closer relationship to your fans...</h2>
 			<div class="content-top-right">
@@ -13,24 +13,10 @@
 				</br/></strong></h3>
 			</div>
 		</div>
-		<div class="clear"></div>
-		<div id="artist-choice">
-			<ul>
-				<% @manageable.each do |artist| %>
-				<li class="left" style='background-image:url(<%= "//graph.facebook.com/"+artist.fbid+"/picture?type=large" %>);background-repeat:no-repeat;background-position:center;'>
-					<div class="manage-select">
-						<div class="o-button norm-o-pad right signika-font font-13">
-							<%= (link_to 'Manage', manage_artist_path(artist)) rescue (debug artist) %><span></span>
-						</div>
-					</div>
-				</li>
-				<li class="left"></li>
-				<li class="left"></li>
-				<% end %>
-			</ul>
 		</div>
 		<div class="clear"></div>
-		<div id="manage-points">
+		<div id="manage-choice">
+		<div class="left manage-points">
 			<ul>
 				<li class="left"><img src="/assets/images/tick.png"></img>
 					<div class="point-txt right">
@@ -54,7 +40,25 @@
 				</li>
 			</ul>
 			</div>
+			<div class="right artist-choice">
+				<%= form_for [current_user, Manage.new], :remote => true do |f| %>
+			<ul>
+				<% @manageable.each do |artist| %>		
+				<li class="left">
+					<div class="a-image" style='background-image:url(<%= "//graph.facebook.com/"+artist.fbid+"/picture?type=normal" %>);background-repeat:no-repeat;background-position:center;'></div>
+					<div class="artists-info">
+					<h3><strong><span class="font-13 name"><%= f.label(:artist_id, artist.name) %></span></span></strong></h3>
+					Dubstep
+				</div>
+				<div class="artist-radio"><%= f.radio_button(:artist_id, artist.id) %></div>
+				</li>
+			</ul>
+			<div id="manage-choice-submit"><div class="o-button norm-o-pad right signika-font"><%= f.submit "Manage" %><span></span></div></div>
+			<% end %>
+			<% end %>
+		</div>
 </div>
+<div class="clear"></div>
 <!-- 
 	<div id="manage-form">
 		<div id="steps"></div>
