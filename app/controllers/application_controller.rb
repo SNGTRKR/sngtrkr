@@ -15,6 +15,9 @@ class ApplicationController < ActionController::Base
     @start_time = Time.now
   end
   
+  def admin_auth
+  end
+
   def default_url_options
     if Rails.env.production?
       {:host => "sngtrkr.com"}
