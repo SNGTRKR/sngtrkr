@@ -235,9 +235,9 @@ input.dp-applied {
         width:158px;
         background:rgba(255,255,255,0.75);
         @include border-radius(8px);
-        -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
-        -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
-        box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
+        -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
         input{
             background:transparent;
             padding:0.6em;
@@ -254,9 +254,9 @@ input.dp-applied {
         width:158px;
         background:rgba(255,255,255,0.75);
         @include border-radius(8px);
-        -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
-        -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
-        box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
+        -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
         input{
             background:transparent;
             padding:0.6em;
@@ -383,9 +383,9 @@ body:before {/* thanks to Maleika (Kohoutec)*/
         width:555px;
         background:rgba(255,255,255,0.75);
         @include border-radius(8px);
-        -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-        -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-        box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+        -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
     }
     .search-35
     {
@@ -404,9 +404,9 @@ body:before {/* thanks to Maleika (Kohoutec)*/
             height:175px;
             background:rgba(255,255,255,0.75);
             @include border-radius(8px);
-            -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-            -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-            box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+            -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+            -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+            box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
             color:#00;
             font-size:1.208em;
             text-align:center;
@@ -462,9 +462,9 @@ body:before {/* thanks to Maleika (Kohoutec)*/
         width:219px;
         height:251px;
         @include border-radius(8px);
-        -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-        -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-        box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+        -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
         
         #outer-button {
           position:absolute;
@@ -592,9 +592,9 @@ body:before {/* thanks to Maleika (Kohoutec)*/
         width:155px;
         background:$orange; 
         @include border-radius(8px);
-        -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
-        -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
-        box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
+        -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
         input{
             background:transparent;
             padding:0.6em;
@@ -625,9 +625,9 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     padding:12px 0 17px 0;
     background:rgba(255,255,255,0.75);
     @include border-radius(8px);
-    -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
-    -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
-    box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
+    -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
     margin:0 0 15px 15px;
       .each-artist-outer {
     position:relative;
@@ -678,9 +678,9 @@ body:before {/* thanks to Maleika (Kohoutec)*/
       height:178px;
       margin:0 0 42px 30px;
       @include border-radius(8px);
-      -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-      -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-       box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+      -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+      -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+       box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
         .each-recommend {
           position:relative;
           height:178px;
@@ -736,9 +736,9 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     position:relative;
     background:rgba(255,255,255,0.75);
     @include border-radius(8px);
-    -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-    -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-    box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+    -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
     width:341px;
     height:363px;
     top:29px;
@@ -783,7 +783,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
                 background:none;
                 border:0;
                 color:#fff;
-                font-size:1.0em            
+                font-size:1em            
             }
             #submit-pad {
                 margin-right:14px;
@@ -818,7 +818,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
                 background:none;
                 border:0;
                 color:#fff;
-                font-size:1.0em;
+                font-size:1em;
             }
             #change-email-submit-pad {
                 margin-left:-5px;
@@ -849,7 +849,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
                 background:none;
                 border:0;
                 color:#fff;
-                font-size:1.0em;
+                font-size:1em;
             }
             #save-settings-submit-pad {
                 margin-left:-5px;
@@ -861,7 +861,6 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   top:60px;
   height:180px;
   width:660px;  
-  font-size:1.1em;
   #delete-submit-pad {
   position:absolute;
   top:65px;
@@ -882,8 +881,8 @@ body:before {/* thanks to Maleika (Kohoutec)*/
           width:267px;
         }
 }
-#manage-choice {
-  margin-bottom:58px;
+#manage-header {
+  margin-bottom:20px;
       .content-top {
   position:relative;
   width:605px;
@@ -898,57 +897,93 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     margin-top:9px;
   }
 }
-#artist-choice {
+}
+#manage-choice {
   position:relative;
   width:605px;
-  top:20px;     
+  height:320px;
+  margin:0 0 30px 0;
+  .artist-choice {
+  width:265px;
+  height:320px;     
   ul {
     list-style-type:none;
-    margin-left:-50px;
-    left:34px;
-    position:relative;
+    width:263px;
     li {
-     width:144px;
-     height:191px; 
+     width:263px;
+     height:75px; 
          @include border-radius(8px);
-    -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-    -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-    box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-    margin:0 0 36px 50px;
-    .manage-select {
+    -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+    position:relative;
+    margin:0 0 20px 0;
+    background:rgba(255,255,255,0.75);
+    .a-image {
+      position:absolute;
+      @include border-top-left-radius(8px);
+      @include border-bottom-left-radius(8px);
+      top:0px;
+      left:0px;
+      height:75px;
+      width:75px;
+      border-style:solid;
+      border-right-width:3px;
+      border-right-color:$orange;
+      background:#000;
+    }
+    .artists-info {
       position:relative;
-      right:47px;
-      top:172px;
+      left:90px;
+      top:21px;
+      width:120px;
+    }
+    .artist-radio {
+      position:relative;
+      left:230px;
+      bottom:3px;
     }
     }
   }
-}
-#manage-points {
-    width:605px;
-  height:181px;
+      input[type=submit] {
+                background:none;
+                border:0;
+                color:#fff;
+                font-size:1em            
+            }
+   #manage-choice-submit {
+          position:relative;
+          margin-top:4px;    
+          right:11px;
+            }
+} 
+.manage-points { 
+    width:302px;
+  height:319px;
            @include border-radius(8px);
-    -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-    -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-    box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+    -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
      background:rgba(255,255,255,0.75);
-     top:27px;
      position:relative;
      ul {
        list-style-type:none;
-       width:605px;
+       width:302px;
        top:10px;
        position:relative;
        left:-12px;
-     li {
+    li {
       width:239px;
       height:45px;
-      margin:20px 0 0 50px;
+      float:left;
+      padding:20px 50px 0 45px;
       .point-txt {
       margin-top:8px;
+      float:right;
       width:158px;
       height:45px;
     }
-}
+  }
 }
 }
 }
@@ -969,9 +1004,9 @@ margin:14px 0 25px 0;
   width:545px;
   background:rgba(255,255,255,0.75);
     @include border-radius(8px);
-    -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-    -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-    box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+    -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
     height:134px;
     padding:44px 30px 44px 30px;
     position:relative;
@@ -992,7 +1027,7 @@ margin:14px 0 25px 0;
                 background:none;
                 border:0;
                 color:#fff;
-                font-size:1.0em            
+                font-size:1em            
             }
             #submit-pad {
               position:relative;
@@ -1128,9 +1163,9 @@ span.error{
   height:20px;
   background:rgba(255,255,255,0.75);
   @include border-radius(12px);
-  -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
-    -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
-    box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
+  -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
     top:19px;
     margin-bottom:25px;
 #progress {
@@ -1282,9 +1317,9 @@ span.error{
   margin:0 0 17px 0;
   background:rgba(255,255,255,0.75);
   @include border-radius(8px);
-  -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-     -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-     box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+  -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+     -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+     box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
     .artist-search-image {
       position:absolute;
       @include border-top-left-radius(8px);
@@ -1362,9 +1397,9 @@ span.error{
       margin:0 0 20px 20px;
       background:rgba(255,255,255,0.75);
       @include border-radius(8px);
-      -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-      -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-      box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+      -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+      -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+      box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
       
     }
     .friends-image {
@@ -1401,9 +1436,9 @@ span.error{
         width:208px;
         background:$orange; 
         @include border-radius(8px);
-        -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
-        -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
-        box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
+        -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
         input{
             background:transparent;
             padding:0.6em;
@@ -1426,9 +1461,9 @@ span.error{
    width:434px;
          background:rgba(255,255,255,0.75);
       @include border-radius(8px);
-      -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-      -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-      box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+      -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+      -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+      box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
       #friend-image {
         position:absolute;
         top:0px;
@@ -1457,9 +1492,9 @@ span.error{
         width:201px;
         background:$orange; 
         @include border-radius(8px);
-        -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
-        -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
-        box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
+        -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
                 input{
             background:transparent;
             padding:0.6em;
@@ -1561,17 +1596,15 @@ span.error{
         left:97px;
         top:97px;
       }
-      #delete-account-button {
+      .delete-account-button {
         position:absolute;
         left:108px;
         top:227px;
-        font-size:1.1em;
       }
-      #delete-account-cancel {
+      .delete-account-cancel {
         position:absolute;
         left:247px;
         top:227px;
-        font-size:1.1em;
       }
 }
 .change-email-confirm {
