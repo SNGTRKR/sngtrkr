@@ -69,6 +69,7 @@ SNGTRKRR::Application.configure do
   config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   config.assets.precompile += %w(rails_admin/rails_admin.css rails_admin/rails_admin.js resque/*.css resque/*.js)
+  config.assets.paths << "#{Rails.root}/app/assets/fonts"
 
     ActionMailer::Base.smtp_settings = {
     :address        => 'localhost',
