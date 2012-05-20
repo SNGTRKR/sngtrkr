@@ -22,7 +22,7 @@
 			<% if @friend.following.none? %>
 				<div class="center-txt"><strong>It seems <%= @friend.first_name %> isn't tracking any artists yet...</strong></div>
 				<% end %>
-			<ul>
+				<ul>
 				<% @friend.following.each do |artist| %>
 				<li class="left new-recommend" style="background-image:url(<%= artist.image.url %>);background-repeat:no-repeat;background-position:center;">
 					<div class="each-recommend">
@@ -31,6 +31,13 @@
 							<h3><%= artist.name %></h3>
 						</div>
 						<%= render :partial => 'shared/trk_artist', :object => artist %>
+						<!-- ADD TRKR + IGNORE BUTTON HTML
+						<div class="recommend-trkr-button"><div class="o-button trkr-o-pad right instruct-font">ADD TRKR<span></span></div></div>
+						<img src="/assets/images/ignore.png" class="ignore-button"/>
+						-->
+						<!-- REMOVE TRKR BUTTON HTML
+						<div class="remove-recommend-trkr-button"><div class="o-button trkr-o-pad right instruct-font">REMOVE TRKR<span></span></div></div>
+						-->
 					</div>
 				</li>
 				<% end %>
