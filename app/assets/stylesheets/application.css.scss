@@ -8,7 +8,6 @@
 @import "compass/css3/opacity";
 @import "compass/css3/box-shadow";
 @import "compass/utilities/links/link-colors";
-
 $blue:#45ADD2;
 $orange:#F15A24;
 $gray:#333333;
@@ -34,6 +33,7 @@ body{
     font-weight:400;
     line-height:1.4em;
     background: url("/assets/images/b-bk.png") no-repeat center center fixed;
+    background-color:$blue;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -1123,26 +1123,138 @@ margin:14px 0 25px 0;
     color:#fff;
   }
 } 
- .white-tint {
-   display:none;
-    position:absolute;
-    top:6px;
-    left:6px;
-    background:rgba(255,255,255,0.4);
-    height:24px;
-    width:125px;
-    @include border-radius(7px);
-    z-index:2;
+}
+}
+}
+#new-release-form{
+    width:620px;
+    overflow:hidden;
+margin:14px 0 25px -3px;
+#steps{
+    width:620px;
+    overflow:hidden;
+.step{
+    float:left;
+    width:620px;
+  height:227px;
+}
+.step-back {
+  margin:5px 5px 5px 5px;
+  width:545px;
+  background:rgba(255,255,255,0.75);
+    @include border-radius(8px);
+    -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+    height:139px;
+    padding:44px 30px 44px 30px;
+    position:relative;
+    label { 
+                width:118px; 
+                display:block;
+                float:left;
+                margin-top:1px;
+            }
+            li {
+                padding:0 0 18px 0;
+            }
+            input[type="file"] {
+              position:relative;
+               background:transparent;
+            }
+            input[type=submit] {
+                background:none;
+                border:0;
+                color:#fff;
+                font-size:1em            
+            }
+            #submit-pad {
+              position:relative;
+              top:16px;
+              left:-90px;
+            }
+     textarea {
+       resize:none;
+     }
+    .step-left {
+      width:290px;
+    }
+    .step-right {
+      width:226px;
+      margin-top:-2px;
+    }
+    #avail-line {
+      position:absolute;
+      height:196px;
+      border-style:solid;
+      border-right-width:1px;
+      border-right-color:$orange;
+      top:16px;
+      left:333px;
+    }
+    #details-line {
+      position:absolute;
+      height:272px;
+      border-style:solid;
+      border-right-width:1px;
+      border-right-color:$orange;
+      top:16px;
+      left:333px;
+    }
+    #artwork-line {
+      position:absolute;
+      height:244px;
+      border-style:solid;
+      border-right-width:1px;
+      border-right-color:$orange;
+      top:16px;
+      left:333px;
+    }
+    #summary-line {
+       position:absolute;
+      height:284px;
+      border-style:solid;
+      border-right-width:1px;
+      border-right-color:$orange;
+      top:16px;
+      left:333px;
+    }
+    #default-button {
+      position:relative;
+      left:-66px;
+    }
+}
+}
+#steps form fieldset{
+    border:none;
+    padding-bottom:20px;
+}
+#navigation{
+    height:45px;
+ ul{
+    list-style:none;
+    position:relative;
+    left:13px;
+    top:-5px;
+ li{
+  float:left;
+  position:relative;
+  margin-right:14px;
+  text-align:center;
+  line-height:38px;
+  background-image: url(/assets/images/form-button.png);
+  background-repeat:no-repeat;
+  height:38px;
+  width:137px;
+  font-size:1.1em;
+  a {
+    color:#fff;
+  }
+  a:hover {
+    color:#fff;
+  }
 } 
-.white-tint-2, .white-tint-3, .white-tint-4 {
-  position:absolute;
-    top:6px;
-    left:6px;
-    background:rgba(255,255,255,0.4);
-    height:24px;
-    width:125px;
-    @include border-radius(7px);
-    z-index:2;
+}
 }
 }
 span.checked{
@@ -1163,6 +1275,26 @@ span.error{
     height:20px;
     z-index:1;
 }
+ .white-tint {
+   display:none;
+    position:absolute;
+    top:6px;
+    left:6px;
+    background:rgba(255,255,255,0.4);
+    height:24px;
+    width:125px;
+    @include border-radius(7px);
+    z-index:2;
+} 
+.white-tint-2, .white-tint-3, .white-tint-4 {
+  position:absolute;
+    top:6px;
+    left:6px;
+    background:rgba(255,255,255,0.4);
+    height:24px;
+    width:125px;
+    @include border-radius(7px);
+    z-index:2;
 }
 #progress-bar {
   left:175px;
@@ -1191,8 +1323,6 @@ span.error{
   font-size:1.1em;
 }
 }
-}
-
 #about-txt{
   position:relative;
   top:16px;
