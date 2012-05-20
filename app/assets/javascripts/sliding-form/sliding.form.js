@@ -2,7 +2,7 @@ $(function() {
 	/*
 	number of fieldsets
 	*/
-	var fieldsetCount = $('.edit_artist').children().length;
+	var fieldsetCount = $('.edit_artist .new_release').children().length;
 	
 	/*
 	current position of fieldset / navigation link
@@ -25,7 +25,7 @@ $(function() {
 	/*
 	to avoid problems in IE, focus the first input of the form
 	*/
-	$('.edit_artist').children(':first').find(':input:first').focus();	
+	$('.edit_artist .new_release').children(':first').find(':input:first').focus();	
 	
 	/*
 	show the navigation bar
@@ -63,7 +63,7 @@ $(function() {
 				validateSteps();
 			else
 				validateStep(prev);
-			$('.edit_artist').children(':nth-child('+ parseInt(current) +')').find(':input:first').focus();	
+			$('.edit_artist .new_release').children(':nth-child('+ parseInt(current) +')').find(':input:first').focus();	
 		});
         e.preventDefault();
     });
@@ -72,7 +72,7 @@ $(function() {
 	clicking on the tab (on the last input of each fieldset), makes the form
 	slide to the next step
 	*/
-	$('.edit_artist > fieldset').each(function(){
+	$('.edit_artist .new_release > fieldset').each(function(){
 		var $fieldset = $(this);
 		$fieldset.children(':last').find(':li').keydown(function(e){
 			if (e.which == 9){
@@ -95,7 +95,7 @@ $(function() {
 			if(error == -1)
 				FormErrors = true;
 		}
-		$('.edit_artist').data('errors',FormErrors);	
+		$('.edit_artist .new_release').data('errors',FormErrors);	
 	}
 	
 	/*
@@ -107,7 +107,7 @@ $(function() {
 		
 		var error = 1;
 		var hasError = false;
-		$('.edit_artist').children(':nth-child('+ parseInt(step) +')').find(':input:not(button)').each(function(){
+		$('.edit_artist .new_release').children(':nth-child('+ parseInt(step) +')').find(':input:not(button)').each(function(){
 			var $this 		= $(this);
 			var valueLength = jQuery.trim($this.val()).length;
 			
@@ -135,7 +135,7 @@ $(function() {
 	if there are errors don't allow the user to submit
 	*/
 	$('#registerButton').bind('click',function(){
-		if($('.edit_artist').data('errors')){
+		if($('.edit_artist .new_release').data('errors')){
 			alert('Please correct the errors in the Form');
 			return false;
 		}	

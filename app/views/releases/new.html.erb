@@ -1,6 +1,6 @@
 <% content_for :title do %>New release for JellyFishBoy<% end %>
             <div class="content content-pad-160-bottom">
-                <div id="content-release-left">
+           <!--     <div id="content-release-left">
                     <h2	class="signika-txt release-header font-35">Easily keep your fans up to date with all your releases, old and new...</h2>
                     <div id="release-points-box">
                         <div class="each-point"><img src="/assets/images/tick.png"></img><div class="point-txt">Increase your web presence with an online profile full of useful information.</div></div>
@@ -31,4 +31,172 @@
                         </ul>
                     </form>
                 </div>
-                <div class="clear"></div>
+                <div class="clear"></div> -->
+                <h2 class="signika-txt top-header font-35">Add new release</h2>	
+                <div id="new-release-form">
+		<div id="steps">
+			<form class="new_release"  action="" method="post">
+			<fieldset class="step">
+				<div class="step-back new-avail-step">
+					<div class="step-left left">
+						hello
+					</div>
+					<div class="step-right right">
+						Add the purchase URLs for your release, then we will work our magic and try to get as much info on the release from these sources.<br/><br/>
+						<strong>If your track has yet to be released on these music outlets, or you are not planning to, then please select the ‘Not available’ option.</strong>
+					</div>
+					<div id="avail-line"></div>
+					<div class="clear"></div>
+				</div>
+			</fieldset>
+			<fieldset class="step">
+				<div class="step-back new-details-step">
+					<div class="step-left left">
+					<ul>
+					<li>
+					<label for="t-name"><strong>Track Name*</strong></label>
+                    <input id="t-name" name="t-name" type="text" class="form-text" />
+                    </li>
+					</ul>
+					</div>
+					<div class="step-right right">
+					Here is the information we have managed to gather from the links you supplied. Please check this information, by completing any missing or incorrect fields.<br/><br/>
+					If you wish to submit an album release, further options will be made available once you specify the release type.<br/><br/>
+					<strong>* Required fields.</strong>
+					</div>
+					<div id="details-line"></div>
+					<div class="clear"></div>
+					</div>
+			</fieldset>
+			<fieldset class="step">
+				<div class="step-back new-artwork-step">
+					<div class="step-left left">
+					<label for="file_browser"><strong>Artwork:</strong></label><br/><br/>
+					<input type="file" name="file_browser"/>
+					</div>
+					<div class="step-right right">
+					Please upload the artwork related to the release you are submitting.<br/><br/>
+					The artwork needs to be at least 350px height/width and can be no bigger than 1MB in file size.<br/><br/>
+					</div>
+					<div id="artwork-line"></div>
+					<div class="clear"></div>
+					</div>
+			</fieldset>
+			<fieldset class="step">
+				<div class="step-back new-summary-step">
+					<div class="step-left left">
+						<ul>
+							<li>
+								<strong>Track Name:</strong>
+							</li>
+							<li>
+								<strong>Release Date:</strong>
+							</li>
+							<li>
+								<strong>Catalogue Number:</strong>
+							</li>
+							<li>
+								<strong>Type:</strong>
+							</li>
+							<li>
+								<strong>Label:</strong>
+							</li>
+							<li>
+								<strong>iTunes Link:</strong>
+							</li>
+							<li>
+								<strong>Amazon Link:</strong>
+							</li>
+							<li>
+								<strong>7Digital Link:</strong>
+							</li>
+						</ul>
+					</div>
+					<div class="step-right right">
+						Here is a summary of all the information you have entered for your release. Please read over and check everything.<br/><br/>
+						If you wish to change anything, please use the menu below to return to previous stages. You will still be able to edit the information on your release, 
+						even after you submit it.<br/><br/>
+						<strong>If you would like more information on how to mange your releases, please visit our help page.</strong><br/><br/>
+					</div>
+				<div id="summary-line"></div>
+				</div>
+			</fieldset>
+		</div>
+		<div id="navigation" style="display:none;">
+			<ul>
+				<li class="selected signika-font">
+					<a href="#" class="new-avail"><h3>1. Availability</h3><div class="white-tint"></div></a>
+				</li>
+				<li class="signika-font">
+					<a href="#" class="new-details"><h3>2. Details</h3><div class="white-tint-2"></div></a>
+				</li>
+				<li class="signika-font">
+					<a href="#" class="new-artwork"><h3>3. Artwork</h3><div class="white-tint-3"></div></a>
+				</li>
+				<li class="signika-font">
+					<a href="#" class="new-summary"><h3>4. Summary</h3><div class="white-tint-4"></div></a>
+				</li>
+			</ul>
+		</div>
+		<div id="progress-bar">
+			<div id="progress">
+				<div class="percent instruct-font">
+					25%
+				</div>
+			</div>
+			</form>
+		</div>
+	</div>
+<script>
+	$(document).ready(function() {
+$(".new-avail").click(function(){
+  			 $(".step-back").animate({height:139},"slow");
+  			 $(".step").animate({height:227},"slow");
+  			 $("#progress").animate({width:130},"slow");
+  			 $('.percent').html('25%');
+  			 $('.white-tint').hide();
+  			 $('.white-tint-2').show();
+  			 $('.white-tint-3').show();
+  			 $('.white-tint-4').show();
+});
+$(".new-details").click(function(){
+  			 $(".step-back").animate({height:216},"slow");
+  			 $(".step").animate({height:304},"slow");
+  			 $("#progress").animate({width:130},"slow");
+  			 $('.percent').html('50%');
+  			 $('.white-tint-2').hide();
+  			 $('.white-tint').show();
+  			 $('.white-tint-3').show();
+  			 $('.white-tint-4').show();
+});
+$(".new-artwork").click(function(){
+  			 $(".step-back").animate({height:187},"slow");
+  			 $(".step").animate({height:275},"slow");
+  			 $("#progress").animate({width:195},"slow");
+  			 $('.percent').html('75%');
+  			 $('.white-tint-3').hide();
+  			 $('.white-tint-2').show();
+  			 $('.white-tint').show();
+  			 $('.white-tint-4').show();
+});
+$(".new-summary").click(function(){
+  			 $(".step-back").animate({height:250},"slow");
+  			 $(".step").animate({height:338},"slow");
+  			 $("#progress").animate({width:265},"slow");
+  			 $('.percent').html('100%');
+  			 $('.white-tint-4').hide();
+  			 $('.white-tint-2').show();
+  			 $('.white-tint').show();
+  			 $('.white-tint-3').show();
+});
+	}); 
+</script>		
+				
+				
+				
+	
+	
+
+
+
+
