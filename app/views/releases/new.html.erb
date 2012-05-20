@@ -39,7 +39,24 @@
 			<fieldset class="step">
 				<div class="step-back new-avail-step">
 					<div class="step-left left">
-						hello
+						<ul>
+						<li>
+					<label for="itunes"><strong>iTunes link</strong></label>
+                    <input id="itunes" name="itunes" type="text" class="form-text" />
+                    </li>
+                    <li>
+					<label for="amazon"><strong>Amazon link</strong></label>
+                    <input id="amazon" name="amazon" type="text" class="form-text" />
+                    </li>
+                    <li>
+					<label for="7digi"><strong>7Digital link</strong></label>
+                    <input id="7digi" name="7digi" type="text" class="form-text" />
+                    </li>
+                    <li>
+					<label for="not-a"><strong>Not available</strong></label>
+                    <input id="not-a" name="not-a" type="radio" class="form-text" />
+                    </li>
+                    </ul>
 					</div>
 					<div class="step-right right">
 						Add the purchase URLs for your release, then we will work our magic and try to get as much info on the release from these sources.<br/><br/>
@@ -56,6 +73,25 @@
 					<li>
 					<label for="t-name"><strong>Track Name*</strong></label>
                     <input id="t-name" name="t-name" type="text" class="form-text" />
+                    </li>
+                    <li>
+					<label for="r-date"><strong>Release Date*</strong></label>
+                    <input id="r-date" name="r-date" type="text" class="form-text" />
+                    </li>
+                    <li>
+					<label for="cat-no"><strong>Catalogue Number</strong></label>
+                    <input id="cat-no" name="cat-no" type="text" class="form-text" />
+                    </li>
+                    <li>
+					<label for="r-type"><strong>Type*</strong></label>
+                    <select name="r-type" id="r-type">
+                                    <option value="0">Single</option>
+                                    <option value="1">Album</option>
+                                </select>
+                    </li>
+                    <li>
+					<label for="label"><strong>Label</strong></label>
+                    <input id="label" name="label" type="text" class="form-text" />
                     </li>
 					</ul>
 					</div>
@@ -150,9 +186,9 @@
 <script>
 	$(document).ready(function() {
 $(".new-avail").click(function(){
-  			 $(".step-back").animate({height:139},"slow");
-  			 $(".step").animate({height:227},"slow");
-  			 $("#progress").animate({width:130},"slow");
+  			 $(".step-back").animate({height:144},"slow");
+  			 $(".step").animate({height:232},"slow");
+  			 $("#progress").animate({width:65},"slow");
   			 $('.percent').html('25%');
   			 $('.white-tint').hide();
   			 $('.white-tint-2').show();
@@ -160,8 +196,8 @@ $(".new-avail").click(function(){
   			 $('.white-tint-4').show();
 });
 $(".new-details").click(function(){
-  			 $(".step-back").animate({height:216},"slow");
-  			 $(".step").animate({height:304},"slow");
+  			 $(".step-back").animate({height:190},"slow");
+  			 $(".step").animate({height:278},"slow");
   			 $("#progress").animate({width:130},"slow");
   			 $('.percent').html('50%');
   			 $('.white-tint-2').hide();
