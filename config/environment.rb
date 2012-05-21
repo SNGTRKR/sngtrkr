@@ -2,7 +2,7 @@
 require File.expand_path('../application', __FILE__)
 
 # Initialize the rails application
-SNGTRKRR::Application.initialize!
+SNGTRKR::Application.initialize!
 
 if Rails.env.production?
   FB_APP_ID = '344989472205984'
