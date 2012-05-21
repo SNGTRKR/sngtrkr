@@ -70,6 +70,6 @@ SNGTRKR::Application.configure do
 
   config.assets.precompile += %w(rails_admin/rails_admin.css rails_admin/rails_admin.js)
 
-config.action_mailer.delivery_method = :ses
+  config.action_mailer.delivery_method = :ses
 
 end

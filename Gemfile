@@ -39,6 +39,8 @@ gem 'scrobbler'
 gem 'itunes-search'
 gem 'amazon-ecs'
 
+gem 'aws-ses', :require => 'aws/ses'
+
 # ADMIN
 gem 'rails_admin'
 
