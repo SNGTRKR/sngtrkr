@@ -378,6 +378,9 @@ body:before {/* thanks to Maleika (Kohoutec)*/
         left:147px;
         top:56px;
     }
+    .add-release-header {
+      margin-left:19px;
+    }
     #big-search {
         position:relative;
         top:95px;
@@ -1126,20 +1129,23 @@ margin:14px 0 25px 0;
 }
 }
 }
+#master-form-wrapper {
+  position:relative;
 #new-release-form{
-    width:620px;
+    width:649px;
     overflow:hidden;
 margin:14px 0 25px -3px;
+position:relative;
 #steps{
-    width:620px;
+    width:649px;
     overflow:hidden;
 .step{
     float:left;
-    width:620px;
+    width:649px;
   height:232px;
 }
 .step-back {
-  margin:5px 5px 5px 5px;
+  margin:5px 22px 5px 22px;
   width:545px;
   background:rgba(255,255,255,0.75);
     @include border-radius(8px);
@@ -1255,6 +1261,19 @@ margin:14px 0 25px -3px;
   }
 } 
 }
+}
+}
+#bulge-left {
+  position:absolute;
+  height:329px;
+  top:5px;
+  left:-10px;
+}
+#bulge-right {
+  position:absolute;
+  height:329px;
+  top:7px;
+  right:-2px;
 }
 }
 span.checked{
@@ -1688,6 +1707,9 @@ span.error{
 }
 .content-pad-160-bottom {
     padding:4px 160px 166px 160px;
+}
+.content-pad-165-bottom {
+  padding:4px 165px 166px 165px;
 }
 .content-pad-191-bottom {
   padding:4px 191px 166px 191px;

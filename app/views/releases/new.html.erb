@@ -1,5 +1,5 @@
 <% content_for :title do %>New release for JellyFishBoy<% end %>
-            <div class="content content-pad-160-bottom">
+            <div class="content content-pad-165-bottom">
            <!--     <div id="content-release-left">
                     <h2	class="signika-txt release-header font-35">Easily keep your fans up to date with all your releases, old and new...</h2>
                     <div id="release-points-box">
@@ -32,7 +32,8 @@
                     </form>
                 </div>
                 <div class="clear"></div> -->
-                <h2 class="signika-txt top-header font-35">Add new release</h2>	
+                <div id="master-form-wrapper">
+                <h2 class="signika-txt top-header font-35 add-release-header">Add new release</h2>	
                 <div id="new-release-form">
 		<div id="steps">
 			<form class="new_release"  action="" method="post">
@@ -182,6 +183,10 @@
 			</div>
 			</form>
 		</div>
+		
+	</div>
+	<img id="bulge-left" src="/assets/images/f-bulge-left.png">
+	<img id="bulge-right" src="/assets/images/f-bulge-right.png">
 	</div>
 <script>
 	$(document).ready(function() {
@@ -189,6 +194,10 @@ $(".new-avail").click(function(){
   			 $(".step-back").animate({height:144},"slow");
   			 $(".step").animate({height:232},"slow");
   			 $("#progress").animate({width:65},"slow");
+  			 $('#bulge-left').animate({height:329}, "slow");
+  			 $('#bulge-left').animate({width:27}, 10);
+  			 $('#bulge-right').animate({height:329}, "slow");
+  			 $('#bulge-right').animate({width:27}, 10);
   			 $('.percent').html('25%');
   			 $('.white-tint').hide();
   			 $('.white-tint-2').show();
@@ -199,6 +208,10 @@ $(".new-details").click(function(){
   			 $(".step-back").animate({height:190},"slow");
   			 $(".step").animate({height:278},"slow");
   			 $("#progress").animate({width:130},"slow");
+  			 $('#bulge-left').animate({height:372}, "slow");
+  			 $('#bulge-left').animate({width:27}, 10);
+  			 $('#bulge-right').animate({height:372}, "slow");
+  			 $('#bulge-right').animate({width:27}, 10);
   			 $('.percent').html('50%');
   			 $('.white-tint-2').hide();
   			 $('.white-tint').show();
@@ -219,6 +232,10 @@ $(".new-summary").click(function(){
   			 $(".step-back").animate({height:250},"slow");
   			 $(".step").animate({height:338},"slow");
   			 $("#progress").animate({width:265},"slow");
+  			 $('#bulge-left').animate({height:434}, "slow");
+  			 $('#bulge-left').animate({width:27}, 10);
+  			 $('#bulge-right').animate({height:434}, "slow");
+  			 $('#bulge-right').animate({width:27}, 10);
   			 $('.percent').html('100%');
   			 $('.white-tint-4').hide();
   			 $('.white-tint-2').show();
