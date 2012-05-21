@@ -5,11 +5,6 @@ SNGTRKR::Application.routes.draw do
   else
     root :to => "Pages#splash"
   end
-  match '/splash' => "Pages#splash"
-  if(Rails.env == "development")
-  match '/home' => "Pages#home"
-  else 
-  end
   match '/about' => "Pages#about"
   match '/terms' => "Pages#terms"
   match '/team' => "Pages#team"
