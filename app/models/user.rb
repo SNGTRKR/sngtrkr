@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
     user
     else # Create a user with a stub password.
       user = self.create!(:email => data.email, :password => Devise.friendly_token[0,20], :fbid => data.id, :first_name => data.first_name, :last_name => data.last_name)
+      UserMailer.welcome_email(self).deliver
     end
     Scraper.importFbLikes(access_token.credentials.token, user.id)
     user
@@ -113,14 +114,6 @@ class User < ActiveRecord::Base
     else
     false
     end
-  end
-
-  after_create :send_welcome_email
-
-  private
-
-  def send_welcome_email
-    UserMailer.welcome_email(self).deliver
   end
 
 end
