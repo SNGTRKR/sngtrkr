@@ -23,21 +23,21 @@ ActiveRecord::Schema.define(:version => 20120521100159) do
     t.string   "website"
     t.string   "soundcloud"
     t.string   "youtube"
+    t.string   "itunes"
+    t.text     "sdid"
+    t.text     "sd"
+    t.text     "juno"
     t.integer  "label_id"
+    t.text     "label_name"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.string   "fbid"
     t.boolean  "ignore"
     t.text     "twitter"
-    t.text     "label_name"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.string   "itunes"
-    t.text     "sdid"
-    t.text     "sd"
-    t.text     "juno"
   end
 
   create_table "delayed_jobs", :force => true do |t|
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(:version => 20120521100159) do
     t.string   "itunes"
     t.string   "sdigital"
     t.string   "amazon"
+    t.text     "juno"
     t.string   "youtube"
     t.integer  "rls_type"
     t.integer  "artist_id"
@@ -101,7 +102,6 @@ ActiveRecord::Schema.define(:version => 20120521100159) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.text     "juno"
   end
 
   create_table "roles", :force => true do |t|
