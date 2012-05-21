@@ -363,6 +363,12 @@ body:before {/* thanks to Maleika (Kohoutec)*/
       left:2px;
       top:26px;
     }
+    .beta-white-header {
+      position:relative;
+      text-align:center;
+      left:2px;
+      top:19px;
+    }
     .splash-email {
       position:relative;
       text-align:center;
@@ -370,6 +376,13 @@ body:before {/* thanks to Maleika (Kohoutec)*/
       * {
         color:#000;
       }
+    }
+    .beta-info {
+      position:relative;
+      text-align:center;
+      top:35px;
+      width:368px;
+      left:46px;
     }
     .home-white-header
     {

@@ -34,4 +34,8 @@ class PagesController < ApplicationController
     end
     render :layout => 'splash'
   end 
+  def beta
+    
+    render :layout => 'splash'
+  end 
 end
