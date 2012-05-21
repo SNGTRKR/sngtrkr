@@ -1,8 +1,8 @@
 # Load the rails application
 require File.expand_path('../application', __FILE__)
 
-ENV['AMAZON_ACCESS_KEY'] = 'AKIAINYRF3QIYA5YXXYQ'
-ENV['AMAZON_SECRET_KEY'] = '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'
+ENV['AMAZON_ACCESS_KEY'] = 'AKIAIEBWHRBGTD5XBYMA'
+ENV['AMAZON_SECRET_KEY'] = '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'
 
 # Initialize the rails application
 SNGTRKR::Application.initialize!
