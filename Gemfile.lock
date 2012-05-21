@@ -88,6 +88,7 @@ GEM
     jquery-ui-rails (0.2.2)
       jquery-rails
       railties (>= 3.1.0)
+    jquery_datepicker (0.3.4)
     json (1.7.3)
     kaminari (0.13.0)
       actionpack (>= 3.0.0)
@@ -236,6 +237,7 @@ DEPENDENCIES
   devise
   itunes-search
   jquery-rails
+  jquery_datepicker
   json
   kaminari
   koala (~> 1.4.0)

@@ -54,6 +54,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'jquery_datepicker'
 
 gem "koala", "~> 1.4.0"
 gem 'devise'
