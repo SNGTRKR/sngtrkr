@@ -3,6 +3,7 @@
 * Import this file using the following HTML or equivalent:
 * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 //= require fancybox/jquery.fancybox
+
 @import "compass/reset";
 @import "compass/css3/border-radius";
 @import "compass/css3/opacity";
@@ -1091,10 +1092,6 @@ margin:14px 0 25px 0;
       top:16px;
       left:333px;
     }
-    #default-button {
-      position:relative;
-      left:-66px;
-    }
 }
 }
 #steps form fieldset{
@@ -1225,10 +1222,6 @@ position:relative;
       top:16px;
       left:333px;
     }
-    #default-button {
-      position:relative;
-      left:-66px;
-    }
 }
 }
 #steps form fieldset{
@@ -1275,6 +1268,10 @@ position:relative;
   top:7px;
   right:-2px;
 }
+}
+.default-button {
+      position:relative;
+      left:-66px;
 }
 span.checked{
     background:transparent url(/assets/images/checkedn.png) no-repeat top left;

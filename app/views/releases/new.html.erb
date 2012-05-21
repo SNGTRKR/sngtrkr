@@ -1,37 +1,5 @@
 <% content_for :title do %>New release for JellyFishBoy<% end %>
             <div class="content content-pad-165-bottom">
-           <!--     <div id="content-release-left">
-                    <h2	class="signika-txt release-header font-35">Easily keep your fans up to date with all your releases, old and new...</h2>
-                    <div id="release-points-box">
-                        <div class="each-point"><img src="/assets/images/tick.png"></img><div class="point-txt">Increase your web presence with an online profile full of useful information.</div></div>
-                        <div class="each-point"><img src="/assets/images/tick.png"></img><div class="point-txt">Add your releases, old and new, to an intuitive personal timeline.</div></div>
-                        <div class="each-point"><img src="/assets/images/tick.png"></img><div class="point-txt">Increase your YouTube fanbase with appropiate links to each release.</div></div>
-                        <div class="each-point"><img src="/assets/images/tick.png"></img><div class="point-txt">Increase record sales with links to the appropiate music outlets for your fans.</div></div>
-                        <div class="each-point"><img src="/assets/images/tick.png"></img><div class="point-txt">Keep your fans up to date with future releases, with regular email notifications.</div></div>
-                    </div>
-                </div>
-                <div id="content-release-right">
-                    <h3><div class="font-15">Publish a new release for <strong>JellyFishBoy</strong></div></h3>
-                    <form action="add_release.php" method="post" enctype="multipart/form-data" class="rform">
-                        <ul>
-                            <li><label for="title">Title</label><input class="form-text" type="text" name="title" id="title" /></li>
-                            <li><label for="date">Release Date</label><input class="form-text date-pick" type="text" name="date" id="date" /></li>
-                            <li><label for="cat_number">Catalogue Number</label><input class="form-text" type="text" name="cat_number" id="cat_number" /></li>
-                            <li><label for="release_type">Type</label><select name="release_type" id="type_dropdown">
-                                    <option value="0">Single</option>
-                                    <option value="1">Album</option>
-                                </select></li>
-                            <li><label for="album_art">Artwork</label><input type="file" name="album_art" id="file_browser"/></li>
-                            <li><label for="label">Label</label><input type="text" name="label" class="form-text" value=""/></li>
-                            <li><label for="itunes">iTunes</label><input class="form-text" type="text" name="itunes" id="itunes" /></li>
-                            <li><label for="7digital">7Digital</label><input class="form-text" type="text" name="7digital" id="7digital" /></li>
-                            <li><label for="amazon">Amazon</label><input class="form-text" type="text" name="amazon" id="amazon" /></li>
-                            <li><label for="youtube">YouTube</label><input class="form-text" type="text" name="youtube" id="youtube" /></li>
-                            <li id="submit-pad"><div class="o-button right new-release-o-pad signika-font"><input type="submit" name="submit" value="Submit" /><span></span></div></li>
-                        </ul>
-                    </form>
-                </div>
-                <div class="clear"></div> -->
                 <div id="master-form-wrapper">
                 <h2 class="signika-txt top-header font-35 add-release-header">Add new release</h2>	
                 <div id="new-release-form">
@@ -114,6 +82,7 @@
 					<div class="step-right right">
 					Please upload the artwork related to the release you are submitting.<br/><br/>
 					The artwork needs to be at least 350px height/width and can be no bigger than 1MB in file size.<br/><br/>
+					<div class="default-button"><div class="o-button norm-o-pad right signika-font font-logout">Restore to default<span></span></div></div>
 					</div>
 					<div id="artwork-line"></div>
 					<div class="clear"></div>
@@ -243,13 +212,147 @@ $(".new-summary").click(function(){
   			 $('.white-tint-3').show();
 });
 	}); 
+	$(function() {
+	/*
+	number of fieldsets
+	*/
+	var fieldsetCount = $('.new_release').children().length;
+	
+	/*
+	current position of fieldset / navigation link
+	*/
+	var current 	= 1;
+    
+	/*
+	sum and save the widths of each one of the fieldsets
+	set the final sum as the total width of the steps element
+	*/
+	var stepsWidth	= 0;
+    var widths 		= new Array();
+	$('#steps .step').each(function(i){
+        var $step 		= $(this);
+		widths[i]  		= stepsWidth;
+        stepsWidth	 	+= $step.width();
+    });
+	$('#steps').width(stepsWidth);
+	
+	/*
+	to avoid problems in IE, focus the first input of the form
+	*/
+	$('.new_release').children(':first').find(':input:first').focus();	
+	
+	/*
+	show the navigation bar
+	*/
+	$('#navigation').show();
+	
+	/*
+	when clicking on a navigation link 
+	the form slides to the corresponding fieldset
+	*/
+    $('#navigation a').bind('click',function(e){
+		var $this	= $(this);
+		var prev	= current;
+		$this.closest('ul').find('li').removeClass('selected');
+        $this.parent().addClass('selected');
+		/*
+		we store the position of the link
+		in the current variable	
+		*/
+		current = $this.parent().index() + 1;
+		/*
+		animate / slide to the next or to the corresponding
+		fieldset. The order of the links in the navigation
+		is the order of the fieldsets.
+		Also, after sliding, we trigger the focus on the first 
+		input element of the new fieldset
+		If we clicked on the last link (confirmation), then we validate
+		all the fieldsets, otherwise we validate the previous one
+		before the form slided
+		*/
+        $('#steps').stop().animate({
+            marginLeft: '-' + widths[current-1] + 'px'
+        },500,function(){
+			if(current == fieldsetCount)
+				validateSteps();
+			else
+				validateStep(prev);
+			$('.new_release').children(':nth-child('+ parseInt(current) +')').find(':input:first').focus();	
+		});
+        e.preventDefault();
+    });
+	
+	/*
+	clicking on the tab (on the last input of each fieldset), makes the form
+	slide to the next step
+	*/
+	$('.new_release > fieldset').each(function(){
+		var $fieldset = $(this);
+		$fieldset.children(':last').find(':li').keydown(function(e){
+			if (e.which == 9){
+				$('#navigation li:nth-child(' + (parseInt(current)+1) + ') a').click();
+				/* force the blur for validation */
+				$(this).blur();
+				e.preventDefault();
+			}
+		});
+	});
+	
+	/*
+	validates errors on all the fieldsets
+	records if the Form has errors in $('#formElem').data()
+	*/
+	function validateSteps(){
+		var FormErrors = false;
+		for(var i = 1; i < fieldsetCount; ++i){
+			var error = validateStep(i);
+			if(error == -1)
+				FormErrors = true;
+		}
+		$('.new_release').data('errors',FormErrors);	
+	}
+	
+	/*
+	validates one fieldset
+	and returns -1 if errors found, or 1 if not
+	*/
+	function validateStep(step){
+		if(step == fieldsetCount) return;
+		
+		var error = 1;
+		var hasError = false;
+		$('.new_release').children(':nth-child('+ parseInt(step) +')').find(':input:not(button)').each(function(){
+			var $this 		= $(this);
+			var valueLength = jQuery.trim($this.val()).length;
+			
+			if(valueLength == ''){
+				hasError = true;
+				$this.css('background-color','#FFEDEF');
+			}
+			else
+				$this.css('background-color','#FFFFFF');	
+		});
+		var $link = $('#navigation li:nth-child(' + parseInt(step) + ') a');
+		$link.parent().find('.error,.checked').remove();
+		
+		var valclass = 'checked';
+		if(hasError){
+			error = -1;
+			valclass = 'error';
+		}
+		$('<span class="'+valclass+'"></span>').insertAfter($link);
+		
+		return error;
+	}
+	
+	/*
+	if there are errors don't allow the user to submit
+	*/
+	$('#registerButton').bind('click',function(){
+		if($('.new_release').data('errors')){
+			alert('Please correct the errors in the Form');
+			return false;
+		}	
+	});
+});
 </script>		
-				
-				
-				
-	
-	
-
-
-
-
