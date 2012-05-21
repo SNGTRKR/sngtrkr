@@ -1,4 +1,4 @@
-SNGTRKRR::Application.routes.draw do
+SNGTRKR::Application.routes.draw do
 
   if(Rails.env == "development")
     root :to => "Pages#home"
