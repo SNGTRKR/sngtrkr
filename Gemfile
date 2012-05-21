@@ -56,7 +56,10 @@ end
 gem 'jquery-rails'
 
 gem "koala", "~> 1.4.0"
+
+# Authentication
 gem 'devise'
+gem 'cancan'
 gem "omniauth-facebook"
 
 gem 'kaminari'
