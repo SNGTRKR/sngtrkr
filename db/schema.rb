@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120520011005) do
+ActiveRecord::Schema.define(:version => 20120521100159) do
 
   create_table "artists", :force => true do |t|
     t.string   "name"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20120520011005) do
     t.string   "itunes"
     t.text     "sdid"
     t.text     "sd"
+    t.text     "juno"
   end
 
   create_table "delayed_jobs", :force => true do |t|
@@ -100,6 +101,18 @@ ActiveRecord::Schema.define(:version => 20120520011005) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.text     "juno"
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "roles_users", :id => false, :force => true do |t|
+    t.integer "role_id"
+    t.integer "user_id"
   end
 
   create_table "sessions", :force => true do |t|
@@ -136,8 +149,8 @@ ActiveRecord::Schema.define(:version => 20120520011005) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "",    :null => false
-    t.string   "encrypted_password",     :default => "",    :null => false
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -146,8 +159,8 @@ ActiveRecord::Schema.define(:version => 20120520011005) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "type"
@@ -156,7 +169,6 @@ ActiveRecord::Schema.define(:version => 20120520011005) do
     t.string   "username"
     t.integer  "role"
     t.text     "fbid"
-    t.boolean  "admin",                  :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

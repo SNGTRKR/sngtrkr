@@ -1,4 +1,4 @@
-SNGTRKRR::Application.routes.draw do
+SNGTRKR::Application.routes.draw do
 
   if(Rails.env == "development")
     root :to => "Pages#home"
@@ -19,7 +19,7 @@ SNGTRKRR::Application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin' # Feel free to change '/admin' to any namespace you need.
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users_controller/omniauth_callbacks" }
+  devise_for :users, :controllers => { :registrations => "users/registrations", :omniauth_callbacks => "users_controller/omniauth_callbacks" }
   devise_scope :user do
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   end
@@ -61,6 +61,12 @@ SNGTRKRR::Application.routes.draw do
   end
 
   resources :labels
+
+  require 'resque/server'
+  constraints CanAccessResque do
+    mount Resque::Server, at: 'resque'
+  end
+
   #  Use this line for production
   # unless Rails.application.config.consider_all_requests_local
   #   match '*not_found', to: 'errors#error_404'

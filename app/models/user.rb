@@ -5,18 +5,18 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :fbid, :first_name, :last_name, :last_sign_in_at, :admin
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :fbid, :first_name, :last_name, :last_sign_in_at
 
   has_many :follow
   has_many :suggest
   has_many :manage
   has_many :super_manage
+  has_and_belongs_to_many :roles
 
   has_many :following, :through => :follow, :source => :artist
   has_many :managing, :through => :manage, :source => :artist
   has_many :suggested_all, :through => :suggest, :source => :artist
   has_many :labels, :through => :super_manage
-  
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
     if user = self.find_by_email(data.email)
@@ -34,6 +34,10 @@ class User < ActiveRecord::Base
         user.email = data["email"]
       end
     end
+  end
+
+  def role?(role)
+    return !!self.roles.find_by_name(role.to_s.camelize)
   end
 
   def friends_with? user, friends
