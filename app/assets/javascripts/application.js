@@ -13,7 +13,7 @@
 //= require jquery.min
 //= require jquery_ujs
 //= require jquery-ui
-//= require fancy-box/jquery.fancybox.pack
+//= require fancy-box/jquery.fancybox
 //= require instant-search/instant-search
 //= require libs/modernizr-2.5.3.min
 //= require sliding-form/sliding.form
