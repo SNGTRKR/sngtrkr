@@ -1,6 +1,9 @@
 # Load the rails application
 require File.expand_path('../application', __FILE__)
 
+ENV['AMAZON_ACCESS_KEY'] = 'AKIAINYRF3QIYA5YXXYQ'
+ENV['AMAZON_SECRET_KEY'] = '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'
+
 # Initialize the rails application
 SNGTRKR::Application.initialize!
 
@@ -15,5 +18,3 @@ end
 # Specify wether or not in development mode imported artists are reimported on every launch or not
 IMPORT_REPLACE = true
 
-ENV['AMAZON_ACCESS_KEY'] = 'AKIAINYRF3QIYA5YXXYQ'
-ENV['AMAZON_SECRET_KEY'] = 'JjHOlNgKVSTOK7vu9IjeHG/cRvqyFr4rT82LcAas'
