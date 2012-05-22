@@ -21,7 +21,7 @@ SNGTRKR::Application.routes.draw do
   end
 
   match '/timeline' => "Users#timeline"
-  resources :users do
+  resources :users, :except =>[:index] do
     member do
       get 'destroy_confirm'
       get 'manage_confirm'
@@ -39,7 +39,7 @@ SNGTRKR::Application.routes.draw do
     collection do
       get 'no_results', :action => 'no_results'
     end
-    resources :releases
+    resources :releases, :only => [:show]
     resources :manages
   end
 
@@ -56,7 +56,7 @@ SNGTRKR::Application.routes.draw do
     end
   end
 
-  resources :labels
+  #resources :labels, :only => [:show] # Not implemented in v1 so no access to it
 
   require 'resque/server'
   constraints CanAccessResque do

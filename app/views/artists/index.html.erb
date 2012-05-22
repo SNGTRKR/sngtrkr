@@ -1,7 +1,11 @@
 <% content_for :title do %>Search results for "<%= params[:search] %>"<% end %>
 <div class="content content-pad-191-bottom">
 	<h2 class="signika-txt top-header font-35">Search Results</h2>
-	<!-- JSON URL: <%= url_for artists_url(:search => params[:search], :format => :json)  %> -->
+	<% if flash[:message] %>
+	<p>
+		<%= flash[:message] %>
+	</p>
+	<% end %> <!-- JSON URL: <%= url_for artists_url(:search => params[:search], :format => :json)  %> -->
 	<div id="artist-search">
 		<% @artists.each do |artist| %>
 		<div class="artist-search-row">
@@ -12,8 +16,12 @@
 					<%= artist.followers %> TRKR'S
 				</div>
 			</div>
-			<div class="search-trkr-button"><%= render :partial => 'shared/trk_artist', :object => artist %></div>
+			<div class="search-trkr-button">
+				<%= render :partial => 'shared/trk_artist', :object => artist %>
+			</div>
 		</div>
 		<% end %>
 	</div>
-	<%= paginate @artists %>
+	<%= if !@artists.empty?
+      paginate @artists
+    end %>

@@ -1,20 +1,17 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
-  before_filter :load, :only => [:manage, :unmanage, :follow, :unfollow, :suggest, :unsuggest, :following?, :import_artists,:friends]
-
-  def load
+  before_filter :self_only, :only => [:edit, :manage, :managing, :unmanage, :friends]
+  # This action is to ensure a user cannot simply hack a URL to view another user's area
+  def self_only
     @user = current_user
-  end
-
-  def redir (artist_id)
-    respond_to do |format|
-      format.html { redirect_to artist_url(params[:id]) }
+    if(params[:id].to_i != current_user.id)
+      redirect_to :root, :error => "You should not try to tamper with other users things..."
     end
   end
 
   def index
-    @users = User.all
+    @users = User.limit(50).all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @users }
@@ -41,8 +38,7 @@ class UsersController < ApplicationController
   def show
     @friend = User.find(params[:id])
     if !current_user.friends_with? @friend, session["friend_ids"]
-      flash[:error] = "You do not have permissions to view this user"
-      return redirect_to "/"
+      return redirect_to :root, :error => "You do not have permissions to view this user"
     end
     respond_to do |format|
       format.html # show.html.erb
@@ -136,32 +132,32 @@ class UsersController < ApplicationController
   end
 
   def manage
-    @user.manage_artist params[:id]
+    current_user.manage_artist params[:id]
     respond_to do |format|
-      format.html { redir :id }
+      format.html { redirect_to artist_path(params[:id])}
       format.json { render :json => { :response => :success } }
     end
   end
 
   def unmanage
-    @user.unmanage_artist params[:id]
+    current_user.unmanage_artist params[:id]
     respond_to do |format|
-      format.html { redir :id }
+      format.html { redirect_to artist_path(params[:id])}
       format.json { render :json => { :response => :success } }
     end
   end
 
   def unfollow
-    @user.unfollow_artist params[:id]
+    current_user.unfollow_artist params[:id]
     respond_to do |format|
-      format.html { redir :id }
+      format.html { redirect_to artist_path(params[:id])}
       format.json { render :json => { :response => :success } }
     end
   end
 
   def follow
-    @user.follow_artist params[:id]
-    @user.unsuggest_artist params[:id]
+    current_user.follow_artist params[:id]
+    current_user.unsuggest_artist params[:id]
     # Post to facebook graph api if in production.
     if Rails.env.production?
       api = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
@@ -172,20 +168,20 @@ class UsersController < ApplicationController
         logger.warning "Failed to track #{artist.name} for #{@user.id}"
       end
     end
-    @artist = Artist.find(@user.suggested[6].id) rescue nil
+    @artist = Artist.find(current_user.suggested[6].id) rescue nil
     respond_to do |format|
-      format.html { redir :id }
+      format.html { redirect_to artist_path(params[:id])}
       format.json { render("artists/show.json") }
     end
   end
 
   def unsuggest
-    @user.unsuggest_artist params[:id]
+    current_user.unsuggest_artist params[:id]
     redir :id
   end
 
   def suggest
-    @user.suggest_artist params[:id]
+    current_user.suggest_artist params[:id]
     redir :id
   end
 
@@ -200,8 +196,8 @@ class UsersController < ApplicationController
     api.get_object("me/accounts").each do |page|
       if page["category"] == "Musician/band"
         artist = Artist.where("fbid = ?", page["id"]).first
-        if artist.nil? 
-          next
+        if artist.nil?
+        next
         end
         if current_user.managing.count > 0 and current_user.manage.first.artist_id == page["db_id"]
         @managing.push artist
