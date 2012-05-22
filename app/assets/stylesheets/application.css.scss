@@ -366,7 +366,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     .beta-white-header {
       position:relative;
       text-align:center;
-      left:2px;
+      left:1px;
       top:19px;
     }
     .splash-email {
@@ -383,6 +383,25 @@ body:before {/* thanks to Maleika (Kohoutec)*/
       top:35px;
       width:368px;
       left:46px;
+    }
+    #mc_embed_signup {
+      position:relative;
+      top:50px;
+      left:146px;
+      #beta-submit {
+        position:relative;
+        left:17px;
+        top:14px;
+      input[type=submit] {
+                margin:5px 0 0 0;
+                background:none;
+                border:0;
+                color:#fff;
+                font-size:1em;
+                top:14px;
+                left:17px;         
+            }
+          }
     }
     .home-white-header
     {
