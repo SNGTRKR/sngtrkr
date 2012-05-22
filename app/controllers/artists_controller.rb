@@ -5,11 +5,12 @@ class ArtistsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
   def index
     @artists = Artist.search(params[:search])
-    if(params[:search] == nil)
-      @artists = Artist.page params[:page]
+    if(params[:search].length < 2)
+      flash.now[:message] = "Please enter at least 2 characters into the search box"
+      @artists = [];
     elsif @artists.empty?
       respond_to do |format|
-        format.html { redirect_to no_results_artists_url, :search => params[:search]}# index.html.erb
+        format.html { redirect_to no_results_artists_path(:search => params[:search])}# index.html.erb
         format.json { render :json => ActiveSupport::JSON.encode(["failure"]) }
       end
     else
