@@ -10,18 +10,23 @@ class ArtistJob
     end
     Koala::Facebook::BatchOperation.instance_variable_set(:@identifier, 0)
     results = []
-    artist_ids.in_groups_of(50) do |artists|
+    if Rails.env.development?
+    batch_size = 10
+    else
+    batch_size = 50
+    end
+    artist_ids.in_groups_of(batch_size) do |artists|
       tmp_results = graph.batch do |batch_api|
         for artist in artists do
           if(artist.nil?)
-          Rails.logger.error "J001: Failed, batch api request returned nil."
+            Rails.logger.error "J001: Failed, batch api request returned nil."
           next
           end
           # TODO: DISABLE FOR PRODUCTION
           tmp = Artist.where("fbid = ?",artist["id"]).first
           if !tmp.nil? and (Rails.env.production? or !IMPORT_REPLACE)
             # Skip artists already in the database
-            User.find(user_id).suggest_artist(tmp.id)            
+            User.find(user_id).suggest_artist(tmp.id)
           next
           end
           batch_api.get_object(artist["id"]+'?fields=name,general_manager,booking_agent,record_label,genre,hometown,website,bio')
@@ -29,7 +34,7 @@ class ArtistJob
       end
       results = results | tmp_results
       if Rails.env.development?
-      # Limits the intake of artists to 50 when developing.
+      # Limits the intake of artists to one batch when developing.
       break
       end
     end

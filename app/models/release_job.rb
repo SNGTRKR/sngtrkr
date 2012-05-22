@@ -34,6 +34,19 @@ class ReleaseJob
       r.image = io
       end
       r.save
+
+      # Now get the track ID's for preview URLS
+      begin
+        tracks = Hash.from_xml( open( URI.parse("http://api.7digital.com/1.2/release/tracks?releaseid=#{r.sd_id}&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB")))["response"]["tracks"]["track"]
+      rescue
+        Rails.logger.error("J003: Track scrape failed for release #{r.name} by #{artist.name}")
+      end
+      i = 1
+      tracks.each do |track|
+        t = Track.create(:release_id => r.id, :number => i, :name => track["title"], :sd_id => track["id"])
+        i = i+1
+      end
+
     end
     end_time = Time.now
     elapsed_time = end_time - start_time

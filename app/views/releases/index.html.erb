@@ -27,9 +27,9 @@
     <td><%= release.youtube %></td>
     <td><%= release.rls_type %></td>
     <td><%= release.artist_id %></td>
-    <td><%= link_to 'Show', release %></td>
-    <td><%= link_to 'Edit', edit_release_path(release) %></td>
-    <td><%= link_to 'Destroy', release, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', artist_release_path(@artist,release) %></td>
+    <td><%= link_to 'Edit', edit_artist_release_path(@artist,release) %></td>
+    <td><%= link_to 'Destroy',  artist_release_path(@artist,release), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
