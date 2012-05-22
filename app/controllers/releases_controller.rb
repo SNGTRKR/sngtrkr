@@ -16,11 +16,6 @@ class ReleasesController < ApplicationController
   def show
     @artist = Artist.find(params[:artist_id])
     @release = Release.find(params[:id])
-    require 'open-uri'
-    @track_urls = []
-    @release.tracks.each do |track|
-      @track_urls << Hash.from_xml( open( URI.parse("http://api.7digital.com/1.2/track/preview?trackid=#{track.sd_id}&oauth_consumer_key=7dufgm34849u&redirect=false")))["response"]["url"]
-    end
 
     respond_to do |format|
       format.html # show.html.erb
