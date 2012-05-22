@@ -47,9 +47,9 @@
 	<%= @release.artist_id %>
 </p>
 
-<% @track_urls.each do |t| %>
+<% @release.tracks.each do |t| %>
 <p>
-	<%= t %>
+	<%= link_to t.name, t.preview %>
 </p>
 <% end %>
 
