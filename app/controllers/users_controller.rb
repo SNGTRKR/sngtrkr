@@ -172,6 +172,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to artist_path(params[:id])}
       format.json { render("artists/show.json") }
+      format.js { render("artists/show.js") }
     end
   end
 

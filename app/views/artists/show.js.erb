@@ -1,0 +1,2 @@
+<% fade_time = 300%>
+$('.recommended-artists ul').append($("<%=j render :partial => 'shared/artist_suggestion', :object => @artist %>").hide().delay(<%= fade_time %>).fadeIn(<%= fade_time %>));
