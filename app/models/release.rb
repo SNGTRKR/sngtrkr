@@ -3,7 +3,8 @@ class Release < ActiveRecord::Base
   validates :date, :presence => true
 
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }
-    
+
   has_many :tracks
   belongs_to :artist
+
 end

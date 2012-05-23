@@ -1,8 +1,14 @@
 # Load the rails application
 require File.expand_path('../application', __FILE__)
 
+ENV['AMAZON_ACCESS_KEY'] = 'AKIAIEBWHRBGTD5XBYMA'
+ENV['AMAZON_SECRET_KEY'] = '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'
+
+ENV['MATT_AMAZON_ACCESS_KEY'] = 'AKIAINYRF3QIYA5YXXYQ'
+ENV['MATT_AMAZON_SECRET_KEY'] = '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'
+
 # Initialize the rails application
-SNGTRKRR::Application.initialize!
+SNGTRKR::Application.initialize!
 
 if Rails.env.production?
   FB_APP_ID = '344989472205984'
@@ -14,3 +20,4 @@ end
 
 # Specify wether or not in development mode imported artists are reimported on every launch or not
 IMPORT_REPLACE = true
+

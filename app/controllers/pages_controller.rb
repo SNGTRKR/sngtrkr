@@ -29,6 +29,13 @@ class PagesController < ApplicationController
   end
   
   def splash
+    if(user_signed_in?)
+      return redirect_to '/timeline'
+    end
+    render :layout => 'splash'
+  end 
+  def beta
+    
     render :layout => 'splash'
   end 
 end

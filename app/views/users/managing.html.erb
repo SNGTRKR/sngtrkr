@@ -1,14 +1,89 @@
 <% content_for :title do %>Manage an artist<% end %>
-<div class="content content-pad-160-bottom">
-    <a href="/users/manage_confirm" class="iframe"><img id="warning-sign" src="/assets/images/warning.png" /></a>
-    <div id="manage-artist-txt">
-    	<div class="font-20 line-height-1-25">WARNING</div>
-		<div class="font-13 line-height-1-25">You can only administrate one artist per account. You cannot change, once your artist selection has been confirmed.</div>
-    </div>
-<% @manageable.each do |artist| %>
-<p>Manage <%= link_to artist["name"], manage_artist_path(artist) %></p>
-<% end %>
+<div class="content content-pad-191-bottom">
+	<div id="manage-header">
+		<div class="content-top">
+			<h2 class="signika-txt top-header font-35">Join now and build a closer relationship to your fans...</h2>
+			<div class="content-top-right">
+				Joining SNGTRKR as an artist, could not be any easier.
+				We do all the hard work for you, from gathering your artist information, to filling your personal timeline with past and current releases.
+				<br/>
+				</br/>
+				<h3><strong>Get started now by selecting an artist you want to manage:
+				<br/>
+				</br/></strong></h3>
+			</div>
+		</div>
+		</div>
+		<div class="clear"></div>
+		<div id="manage-choice">
+		<div class="left manage-points">
+			<ul>
+				<li class="left"><img src="/assets/images/tick.png"></img>
+					<div class="point-txt right">
+						Increase your web presence with an online profile full of useful information.
+					</div>
+				</li>
+				<li class="left"><img src="/assets/images/tick.png"></img>
+					<div class="point-txt right">
+						Add your releases, old and new, to an intuitive personal timeline.
+					</div>
+				</li>
+				<li class="left"><img src="/assets/images/tick.png"></img>
+					<div class="point-txt right">
+						Keep your fans up to date with future releases, with regular email notifications.
+					</div>
+				</li>
+				<li class="left"><img src="/assets/images/tick.png"></img>
+					<div class="point-txt right">
+						Increase record sales with links to the appropiate music outlets for your fans.
+					</div>
+				</li>
+			</ul>
+			</div>
+			<div class="right artist-choice">
+				<%= form_for [current_user, Manage.new], :remote => true do |f| %>
+			<ul>
+				<% @manageable.each do |artist| %>		
+				<li class="left">
+					<div class="a-image" style='background-image:url(<%= "//graph.facebook.com/"+artist.fbid+"/picture?type=normal" %>);background-repeat:no-repeat;background-position:center;'></div>
+					<div class="artists-info">
+					<h3><strong><span class="font-13 name"><%= f.label(:artist_id, artist.name) %></span></span></strong></h3>
+					Dubstep
+				</div>
+				<div class="artist-radio"><%= f.radio_button(:artist_id, artist.id) %></div>
+				</li>
+			</ul>
+			<div id="manage-choice-submit"><div class="o-button norm-o-pad right signika-font"><%= f.submit "Manage" %><span></span></div></div>
+			<% end %>
+			<% end %>
+		</div>
+</div>
+<div class="clear"></div>
+<!-- 
+	<div id="manage-form">
+		<div id="steps"></div>
+		<div id="navigation" style="display:none;">
+			<ul>
+				<li class="selected signika-font">
+					<a href="#" class="manage-details"><h3>1. Details</h3><div class=".white-tint"></div></a>
+				</li>
+				<li class="signika-font">
+					<a href="#" class="manage-picture"><h3>2. Picture</h3><div class=".white-tint-2"></div></a>
+				</li>
+				<li class="signika-font">
+					<a href="#" class="manage-summary"><h3>3. Summary</h3><div class=".white-tint-3"></div></a>
+				</li>
+			</ul>
+		</div>
+		<div id="progress-bar">
+			<div id="progress">
+				<div class="percent instruct-font">
+					33%
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		$('#steps').load('/artists/1/edit')
+	</script> -->
 
-<% @managing.each do |artist| %>
-<p>Stop managing <%= link_to artist["name"], unmanage_artist_path(artist) %></p>
-<% end %>

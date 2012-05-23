@@ -7,8 +7,8 @@
 				<h2><div class="font-15"><strong><%= @friend.first_name + " " + @friend.last_name %></strong></div></h2>
 				<div class="orange-txt instruct-font">
 					<%= @friend.following.count %> TRKINGS
-				</div>
-				Last login: <%= @friend.last_sign_in_at %>
+				</div><br/>
+				Last logged in <%= (time_ago_in_words @friend.last_sign_in_at) rescue @friend.last_sign_in_at %> ago
 			</div>
 		</div>
 		<div id="friend-trkr-search">
@@ -19,11 +19,11 @@
 	<div class="clear"></div>
 	<div class="recommended-artists-outer friend-recommend-nudge">
 		<div class="recommended-artists">
-			<% if @artists.none? %>
+			<% if @friend.following.none? %>
 				<div class="center-txt"><strong>It seems <%= @friend.first_name %> isn't tracking any artists yet...</strong></div>
 				<% end %>
-			<ul>
-				<% @artists.each do |artist| %>
+				<ul>
+				<% @friend.following.each do |artist| %>
 				<li class="left new-recommend" style="background-image:url(<%= artist.image.url %>);background-repeat:no-repeat;background-position:center;">
 					<div class="each-recommend">
 						<div class="black-tint"></div>
@@ -31,7 +31,13 @@
 							<h3><%= artist.name %></h3>
 						</div>
 						<%= render :partial => 'shared/trk_artist', :object => artist %>
-						<%= link_to (image_tag '/assets/images/ignore.png'), unsuggest_artist_path(sug), :remote => true, "data-type" => "json", :class => 'ignore-button' %>
+						<!-- ADD TRKR + IGNORE BUTTON HTML
+						<div class="recommend-trkr-button"><div class="o-button trkr-o-pad right instruct-font">ADD TRKR<span></span></div></div>
+						<img src="/assets/images/ignore.png" class="ignore-button"/>
+						-->
+						<!-- REMOVE TRKR BUTTON HTML
+						<div class="remove-recommend-trkr-button"><div class="o-button trkr-o-pad right instruct-font">REMOVE TRKR<span></span></div></div>
+						-->
 					</div>
 				</li>
 				<% end %>

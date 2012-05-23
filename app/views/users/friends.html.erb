@@ -1,5 +1,6 @@
 <% content_for :title do %><%= @user.first_name %>'s friends on SNGTRKR<% end %>
 
+
 <div class="content content-pad-160-bottom">	
 	<% if !@app_friends.empty? %>
 	<h2 class="signika-txt top-header font-35">Friends (<%= @app_friends.count %>)</h2>
@@ -14,7 +15,7 @@
 				<div class="friends-image" style="background-image:url(<%= "//graph.facebook.com/"+friend.fbid+"/picture?type=normal" %>);background-repeat:no-repeat;background-position:center;"></div>
 				<div class="friends-info">
 					<h3><strong><%= link_to(friend) do %><span class="font-13 name"><%= friend.first_name + " " + friend.last_name %></span><% end %></strong></h3>
-					<span class="orange-txt instruct-font"><%= friend.following.count %> TRKINGS</span>
+					<span class="orange-txt instruct-font"><%= Follow.where('user_id = ?',friend.id).count %> TRKINGS</span>
 				</div>
 			</li>
 			<% end %>

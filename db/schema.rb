@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120513211059) do
+ActiveRecord::Schema.define(:version => 20120522005242) do
 
   create_table "artists", :force => true do |t|
     t.string   "name"
@@ -23,21 +23,38 @@ ActiveRecord::Schema.define(:version => 20120513211059) do
     t.string   "website"
     t.string   "soundcloud"
     t.string   "youtube"
+    t.string   "itunes"
+    t.text     "sdid"
+    t.text     "sd"
+    t.text     "juno"
     t.integer  "label_id"
+    t.text     "label_name"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.string   "fbid"
     t.boolean  "ignore"
     t.text     "twitter"
-    t.text     "label_name"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.string   "itunes"
-    t.text     "sdid"
-    t.text     "sd"
   end
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "follows", :force => true do |t|
     t.integer  "user_id"
@@ -71,6 +88,7 @@ ActiveRecord::Schema.define(:version => 20120513211059) do
     t.string   "itunes"
     t.string   "sdigital"
     t.string   "amazon"
+    t.text     "juno"
     t.string   "youtube"
     t.integer  "rls_type"
     t.integer  "artist_id"
@@ -84,6 +102,17 @@ ActiveRecord::Schema.define(:version => 20120513211059) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "roles_users", :id => false, :force => true do |t|
+    t.integer "role_id"
+    t.integer "user_id"
   end
 
   create_table "sessions", :force => true do |t|
@@ -117,6 +146,7 @@ ActiveRecord::Schema.define(:version => 20120513211059) do
     t.integer  "release_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.text     "sd_id"
   end
 
   create_table "users", :force => true do |t|

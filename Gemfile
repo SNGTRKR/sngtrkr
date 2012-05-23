@@ -39,8 +39,10 @@ gem 'scrobbler'
 gem 'itunes-search'
 gem 'amazon-ecs'
 
+gem 'aws-ses', :require => 'aws/ses'
+
 # ADMIN
-#gem 'rails_admin'
+gem 'rails_admin'
 
 # in production environments by default.
 gem 'compass-rails', '>= 1.0.0.rc.2'
@@ -54,9 +56,13 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'jquery_datepicker'
 
 gem "koala", "~> 1.4.0"
+
+# Authentication
 gem 'devise'
+gem 'cancan'
 gem "omniauth-facebook"
 
 gem 'kaminari'
