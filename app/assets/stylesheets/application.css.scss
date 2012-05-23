@@ -363,12 +363,6 @@ body:before {/* thanks to Maleika (Kohoutec)*/
       left:2px;
       top:26px;
     }
-    .beta-white-header {
-      position:relative;
-      text-align:center;
-      left:2px;
-      top:19px;
-    }
     .splash-email {
       position:relative;
       text-align:center;
@@ -377,12 +371,74 @@ body:before {/* thanks to Maleika (Kohoutec)*/
         color:#000;
       }
     }
-    .beta-info {
+    .beta-white-header {
+      margin-bottom:19px;
+    }
+    #beta-header {
+      margin:0 0 20px -2px;
+    }
+    .content-beta-left {
+      width:303px;
+      height:388px;
+      .reg-points { 
+    width:302px;
+  height:249px;
+           @include border-radius(8px);
+    -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+     background:rgba(255,255,255,0.75);
+     position:relative;
+     ul {
+       list-style-type:none;
+       width:302px;
+       top:10px;
+       position:relative;
+       left:-12px;
+    li {
+      width:239px;
+      height:45px;
+      float:left;
+      padding:20px 50px 0 45px;
+      .point-txt {
+      margin-top:6px;
+      float:right;
+      width:158px;
+      height:45px;
+    }
+  }
+}
+}
+    }
+    .content-beta-right {
+      width:268px;
+      height:388px;
+      margin-bottom:125px;
+      a {
+        color:$orange;
+      }
+      a:hover {
+        color:$orange;
+      }
+    }
+    #mc_embed_signup {
       position:relative;
-      text-align:center;
-      top:35px;
-      width:368px;
-      left:46px;
+      top:11px;
+      left:47px;
+      #beta-submit {
+        position:relative;
+        left:17px;
+        top:8px;
+      input[type=submit] {
+                margin:5px 0 0 0;
+                background:none;
+                border:0;
+                color:#fff;
+                font-size:1em;
+                top:14px;
+                left:17px;         
+            }
+          }
     }
     .home-white-header
     {
@@ -773,7 +829,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
       float:left;
       padding:20px 50px 0 45px;
       .point-txt {
-      margin-top:8px;
+      margin-top:6px;
       float:right;
       width:158px;
       height:45px;
@@ -1003,7 +1059,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
       float:left;
       padding:20px 50px 0 45px;
       .point-txt {
-      margin-top:8px;
+      margin-top:6px;
       float:right;
       width:158px;
       height:45px;
@@ -1389,16 +1445,51 @@ span.error{
 }
 #social-media-about {
   position:relative;
-  width:394px;
   top:36px;
-  height:151px;
-  left:133px;
-  .sm-pad {
-    margin-right:66px;
+  width:666px;
+.boxes {
+  list-style-type:none;
+  margin-left:-30px;
+}
+.box {
+  margin:0 0 67px 30px;
+  background:rgba(255,255,255,0.75);
+  @include border-radius(8px);
+  -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+  width:171px;
+  height:93px;
+  padding:15px 15px 15px 15px;
+  .text-nudge {
+    position:relative;
+    top:5px;
   }
-  .fbp, .twitp, .goop {
-    display:none;
+  a {
+    color:$orange;
   }
+  a:hover {
+    color:$orange;
+  }
+  ul.sm {
+    list-style-type:none;
+    margin-top:7px;
+     a {
+          color:#000;
+        }
+        a:hover {
+          color:$orange;
+        }
+    .som {
+      width:171px;
+      .text-nudge-2 {
+        position:relative;
+        bottom:6px;
+        left:5px;
+      }
+    }
+  }
+}
 }
 #privacy-txt{
   position:relative;
@@ -1526,6 +1617,19 @@ span.error{
     bottom:25px;
   }
 }
+}
+#loading-image {
+  position:relative;
+  left:250px;
+  margin-top:-7px;
+}
+.loading-txt {
+  position:relative;
+  text-align:center;
+  width:278px;
+  left:190px;
+  top:15px;
+  height:74px;
 }
 .share-bank {
   position:relative;
@@ -1712,8 +1816,8 @@ span.error{
 .content-pad-160 {
   padding:4px 160px 0 160px;
 }
-.content-pad-191 {
-  padding:4px 191px 0 191px;
+.content-pad-187{
+  padding:4px 187px 0 187px;
 }
 .content-pad-160-bottom {
     padding:4px 160px 166px 160px;
@@ -1721,8 +1825,8 @@ span.error{
 .content-pad-165-bottom {
   padding:4px 165px 166px 165px;
 }
-.content-pad-191-bottom {
-  padding:4px 191px 166px 191px;
+.content-pad-187-bottom {
+  padding:4px 187px 166px 187px;
 }
 .content-error-pad-220-bottom {
   padding:4px 208px 166px 232px;
