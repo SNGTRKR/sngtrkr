@@ -1,0 +1,16 @@
+<script>
+<% fade_time = 300 %>
+	$('a.add-trkr').bind('ajax:success', function() {
+		// Hide the suggestion itself
+		$(this).closest('.new-recommend').fadeOut(<%= fade_time %>);
+	});
+	$('a.untrk-artist').bind('ajax:complete', function() {
+		$(this).closest('li').fadeOut(<%= fade_time %>);
+	});
+	// Disable clicking repeatedly during AJAX call
+	$("a.addremove_trkr,a.untrk-artist").one("click", function() {
+		$(this).click(function() {
+			return false;
+		});
+	}); 
+</script>

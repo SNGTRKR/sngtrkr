@@ -11,7 +11,7 @@ class ArtistJob
     Koala::Facebook::BatchOperation.instance_variable_set(:@identifier, 0)
     results = []
     if Rails.env.development?
-    batch_size = 10
+    batch_size = 50
     else
     batch_size = 50
     end

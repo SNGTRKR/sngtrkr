@@ -7,7 +7,9 @@
 				<li class="profile-menu-button-nudge-2">
 					<div id="trkrs-button">
 						<div class="trkrs-button-txt instruct-font">
-							<div class="font-25"><%= @trackers %></div>
+							<div class="font-25">
+								<%= @trackers %>
+							</div>
 							<br/>
 							<div class="font-15 instruct-font">
 								TRKR'S
@@ -91,8 +93,10 @@
 	</div>
 	<div id="tracked-artists">
 		<% if @user.following.count.zero? %>
-	<div class="no-trk-notify">You are not TRKing anyone yet.</div>
-	<% else %>
+		<div class="no-trk-notify">
+			You are not TRKing anyone yet.
+		</div>
+		<% else %>
 		<ul>
 			<% @following.each do |artist| %>
 			<li class="left">
@@ -104,7 +108,7 @@
 					<div class="instruct-font orange-txt">
 						<%= artist.followers %> TRKR's
 					</div>
-					<%= link_to unfollow_artist_path(artist), :remote => true, "data-type" => "json" do %><img class="remove-artist-button" src="/assets/images/x.png"/><% end %>
+					<%= link_to unfollow_artist_path(artist), :remote => true, :class => 'untrk-artist' do %><img class="remove-artist-button" src="/assets/images/x.png"/><% end %>
 				</div>
 			</li>
 			<% end %>
@@ -112,7 +116,7 @@
 		<% end %>
 		<img class="p-bulge-b" src="/assets/images/p-bulge-bot.png"/>
 	</div>
-	
+
 	<div class="clear"></div>
 	<div class="content-top recommend-text-nudge">
 		<h3 class="signika-txt top-header font-35 left">Here are a few artists we have recommended for you...</h3>
@@ -133,3 +137,4 @@
 			</ul>
 		</div>
 	</div>
+	<%= render :partial => 'shared/artist_suggestion_replace' %>
