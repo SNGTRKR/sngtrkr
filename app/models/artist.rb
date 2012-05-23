@@ -41,63 +41,20 @@ class Artist < ActiveRecord::Base
     end
   end
 
+  def sdigital?
+    sdid?
+  end
+
   def followers
     Follow.where("artist_id = ?",self.id).count
   end
 
-  def youtube?
-    if(self.youtube.blank?)
-    false
-    else
-    true
-    end
-  end
-
-  def soundcloud?
-    if(self.soundcloud.blank?)
-    false
-    else
-    true
-    end
-  end
-
-  def sdigital?
-    if(self.sdid.blank?)
-    false
-    else
-    true
-    end
-  end
-  
-  def itunes?
-    if(self.itunes.blank?)
-    false
-    else
-    true
-    end
-  end
-
   def label?
-    if(self.label_name.blank? and self.label_id.blank?)
-    return false
+    if(label_name? or label_id?)
+    true
     else
-    return true
+    false
     end
   end
 
-  def twitter?
-    if(self.twitter.blank?)
-    false
-    else
-    true
-    end
-  end
-
-  def website?
-    if(self.website.blank?)
-    false
-    else
-    true
-    end
-  end
 end

@@ -67,17 +67,6 @@
 				</div>
 			</div>
 		</div>
-		<!-- Javascript
-		<script type='text/javascript'>
-		window.addEvent('load', function() {
-		new DatePicker('.date-pick', {
-		pickerClass : 'datepicker_jqui',
-		debug : false
-		});
-		});
-
-		</script>
-		-->
 	</body>
 </html>
 <% elsif %>
@@ -104,7 +93,7 @@
 					#wrap {display:table;height:100%}
 					</style>
 					<![endif]-->
-					<%= render "shared/login" %>
+					<a href="<%= user_omniauth_authorize_path(:facebook) %>"><img class="right fb-home-login-nudge" src="/assets/images/log-facebook.png"/></a>
 					<div class="clear"></div>
 					<div class="big-logo-home"><img src="/assets/images/logo-120.png" alt="SNGTRKR"/></div>
 				</div>
@@ -135,84 +124,6 @@
 				</div>
 			</div>
 		</div>
-		<!-- Javascript -->
-		<script type='text/javascript'>
-			window.addEvent('load', function() {
-				new DatePicker('.date-pick', {
-					pickerClass : 'datepicker_jqui',
-					debug : false
-				});
-			});
-
-		</script>
-		<script type="text/javascript">
-			/*
-			 ncjQuery = jQuery.noConflict();
-			 ncjQuery(document).ready(function() {
-			 ncjQuery('.fancybox').fancybox();
-			 });
-			 */
-		</script>
-		<script type="text/javascript">
-			/*
-			 ncjQuery(document).ready(function() {
-			 ncjQuery(".cheform").ajaxForm({
-			 success : function(responseText) {
-			 ncjQuery.fancybox.open({
-			 href : '/admin/change-email.php',
-			 type : 'iframe',
-			 width : 431,
-			 height : 286,
-			 autoSize : false,
-			 closeBtn : false,
-			 });
-			 }
-			 });
-			 });
-			 ncjQuery(document).ready(function() {
-			 ncjQuery(".enform").ajaxForm({
-			 success : function(responseText) {
-			 ncjQuery.fancybox.open({
-			 href : '/admin/email-notify.php',
-			 type : 'iframe',
-			 width : 431,
-			 height : 286,
-			 autoSize : false,
-			 closeBtn : false,
-			 });
-			 }
-			 });
-			 });
-			 ncjQuery(document).ready(function() {
-			 ncjQuery(".chpform").ajaxForm({
-			 success : function(responseText) {
-			 ncjQuery.fancybox.open({
-			 href : '/admin/change-password.php',
-			 type : 'iframe',
-			 width : 431,
-			 height : 286,
-			 autoSize : false,
-			 closeBtn : false,
-			 });
-			 }
-			 });
-			 });
-			 ncjQuery(document).ready(function() {
-			 ncjQuery(".rform").ajaxForm({
-			 success : function(responseText) {
-			 ncjQuery.fancybox.open({
-			 href : '/admin/add-release.php',
-			 type : 'iframe',
-			 width : 431,
-			 height : 286,
-			 autoSize : false,
-			 closeBtn : false,
-			 });
-			 }
-			 });
-			 });
-			 */
-		</script>
 	</body>
 </html>
 <% end %>

@@ -1,28 +1,27 @@
-SNGTRKRR::Application.routes.draw do
+SNGTRKR::Application.routes.draw do
 
   if(Rails.env == "development")
     root :to => "Pages#home"
   else
     root :to => "Pages#splash"
   end
-  match '/splash' => "Pages#splash"
-  match '/home' => "Pages#home"
   match '/about' => "Pages#about"
   match '/terms' => "Pages#terms"
   match '/team' => "Pages#team"
   match '/privacy' => "Pages#privacy"
   match '/help' => "Pages#help"
   match '/recommended' => "Pages#recommended"
+  match '/beta' => "Pages#beta"
 
-  #mount RailsAdmin::Engine => '/admin', :as => 'rails_admin' # Feel free to change '/admin' to any namespace you need.
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin' # Feel free to change '/admin' to any namespace you need.
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users_controller/omniauth_callbacks" }
+  devise_for :users, :controllers => { :registrations => "users/registrations", :omniauth_callbacks => "users_controller/omniauth_callbacks" }
   devise_scope :user do
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   end
 
   match '/timeline' => "Users#timeline"
-  resources :users do
+  resources :users, :except =>[:index] do
     member do
       get 'destroy_confirm'
       get 'manage_confirm'
@@ -33,13 +32,15 @@ SNGTRKRR::Application.routes.draw do
     collection do
       get 'me', :action => 'self'
     end
+    resources :manages
   end
 
   resources :artists do
     collection do
       get 'no_results', :action => 'no_results'
     end
-    resources :releases
+    resources :releases, :only => [:show]
+    resources :manages
   end
 
   # Allows us to have intuitive /artist/1/follow URLs that actually deal with the
@@ -55,7 +56,13 @@ SNGTRKRR::Application.routes.draw do
     end
   end
 
-  resources :labels
+  #resources :labels, :only => [:show] # Not implemented in v1 so no access to it
+
+  require 'resque/server'
+  constraints CanAccessResque do
+    mount Resque::Server, at: 'resque'
+  end
+
   #  Use this line for production
   # unless Rails.application.config.consider_all_requests_local
   #   match '*not_found', to: 'errors#error_404'

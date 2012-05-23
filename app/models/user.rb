@@ -5,17 +5,17 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :fbid, :first_name, :last_name
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :fbid, :first_name, :last_name, :last_sign_in_at
 
   has_many :follow
   has_many :suggest
   has_many :manage
   has_many :super_manage
+  has_and_belongs_to_many :roles
 
-  has_many :followed_artists, :through => :follow, :source => :artist
-  has_many :managed_artists, :through => :manage, :source => :artist
-  has_many :suggested_artists, :through => :suggest, :source => :artist
-  
+  has_many :following, :through => :follow, :source => :artist
+  has_many :managing, :through => :manage, :source => :artist
+  has_many :suggested_all, :through => :suggest, :source => :artist
   has_many :labels, :through => :super_manage
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
     user
     else # Create a user with a stub password.
       user = self.create!(:email => data.email, :password => Devise.friendly_token[0,20], :fbid => data.id, :first_name => data.first_name, :last_name => data.last_name)
+      UserMailer.welcome_email(user).deliver
     end
     Scraper.importFbLikes(access_token.credentials.token, user.id)
     user
@@ -35,94 +36,84 @@ class User < ActiveRecord::Base
       end
     end
   end
-  
-  def friends_with? user, friends
-    if friends.include? user.fbid 
-      true
-    else
-      false
-    end
+
+  def role?(role)
+    return !!self.roles.find_by_name(role.to_s.camelize)
   end
 
-  def manager?
-    if self.managing.count > 0
+  def friends_with? user, friends
+    if friends.include? user.fbid
     true
     else
     false
     end
   end
 
-  def manage(artist_id)
-    m = Manage.new(:user_id => self.id, :artist_id => artist_id)
-    m.save
-    return m.id
-  end
-
-  def unmanage(artist_id)
-    Manage.find(:all, :conditions => ["user_id = '#{self.id}' AND artist_id = '#{artist_id}'"]).each do |f|
-      f.destroy
+  def manager?
+    if managing.count > 0
+    true
+    else
+    false
     end
   end
 
-  def follow(artist_id)
-    t = Follow.new(:user_id => self.id, :artist_id => artist_id)
+  def manage_artist artist_id
+    t = manage.create(:artist_id => artist_id)
     t.save
     return t.id
   end
 
-  def unfollow artist_id
-    Follow.find(:all, :conditions => ["user_id = '#{self.id}' AND artist_id = '#{artist_id}'"]).each do |f|
-      f.destroy
-    end
+  def unmanage_artist artist_id
+    manage.delete(manage.where(:user_id => self.id, :artist_id => artist_id))
   end
 
-  def suggest(artist_id)
-    t = Suggest.new(:user_id => self.id, :artist_id => artist_id)
-    t.save
+  def follow_artist artist_id
+    t = follow.create(:artist_id => artist_id)
     return t.id
   end
 
-  def unsuggest(artist_id)
-    Suggest.find(:all, :conditions => ["user_id = '#{self.id}' AND artist_id = '#{artist_id}'"]).each do |f|
+  def unfollow_artist artist_id
+    follow.delete(follow.where(:user_id => self.id, :artist_id => artist_id))
+  end
+
+  def suggest_artist artist_id
+    t = suggest.create(:artist_id => artist_id)
+    return t.id
+  end
+
+  def unsuggest_artist(artist_id)
+    suggest.where(:artist_id => artist_id).each do |f|
       f.ignore = true
       f.save
     end
   end
 
   def following?(artist_id)
-    if Follow.search(self.id, artist_id).count > 0
-    return true
+    if !Follow.where(:artist_id => artist_id, :user_id => id).empty?
+    true
     else
-    return false
+    false
     end
-  end
-
-  def following
-    Follow.user_follows(self.id)
   end
 
   def managing?(artist_id)
-    if Manage.search(self.id, artist_id).count > 0
-    return true
+    if !Manage.where(:artist_id => artist_id, :user_id => id).empty?
+    true
     else
-    return false
-    end
-  end
-
-  def managing
-    Manage.user_managing(self.id)
-  end
-
-  def suggested?(artist_id)
-    if Suggest.search(self.id, artist_id).count > 0
-    return true
-    else
-    return false
+    false
     end
   end
 
   def suggested
-    self.suggested_artists.find(:all,:conditions => ["suggests.ignore = ?",false])
+    suggested_all.where("suggests.ignore = ?",false)
+  end
+
+  def suggested?(artist_id)
+    if !Suggest.where(:artist_id => artist_id, :user_id => id).empty?
+    true
+    else
+    false
+    end
   end
 
 end

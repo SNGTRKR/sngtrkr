@@ -1,7 +1,21 @@
-        <div class="delete-confirm">
-            <div id="goodbye">Is this goodbye?</div>
-            <div id="delete-txt-1">We are sad to see you leave us, please take a few minutes to say why you’re leaving.</div>
-            <div id="delete-txt-2"><strong>Are you sure you want to delete your account?</strong> The artists you are tracking and your profile will be gone forever!</div>
-            <div id="delete-account-button"><div class="o-button norm-o-pad left signika-font"><%= link_to 'Delete Account', user_path(current_user), :method => :delete %><span></span></div></div>
-            <div id="delete-account-cancel"><div class="o-button norm-o-pad right signika-font"><a href="javascript:parent.ncjQuery.fancybox.close();">Cancel</a><span></span></div></div>
-        </div>
+<div class="delete-confirm">
+	<div id="goodbye">
+		Is this goodbye?
+	</div>
+	<div id="delete-txt-1">
+		We are sad to see you leave us, please take a few minutes to say why you’re leaving.
+	</div>
+	<div id="delete-txt-2">
+		<strong>Are you sure you want to delete your account?</strong> The artists you are tracking and your profile will be gone forever!
+	</div>
+	<div class="delete-account-button font-13">
+		<div class="o-button norm-o-pad left signika-font">
+			<%= link_to 'Delete Account', user_path(current_user), :method => :delete %><span></span>
+		</div>
+	</div>
+	<div class="delete-account-cancel font-13">
+		<div class="o-button norm-o-pad right signika-font">
+			<a href="javascript:$.fancybox.close();">Cancel</a><span></span>
+		</div>
+	</div>
+</div>

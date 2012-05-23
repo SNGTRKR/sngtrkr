@@ -1,50 +1,57 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @release.name %>
+<p id="notice">
+	<%= notice %>
 </p>
 
 <p>
-  <b>Date:</b>
-  <%= @release.date %>
+	<b>Name:</b>
+	<%= @release.name %>
 </p>
 
 <p>
-  <b>Cat no:</b>
-  <%= @release.cat_no %>
+	<b>Date:</b>
+	<%= @release.date %>
 </p>
 
 <p>
-  <b>Itunes:</b>
-  <%= @release.itunes %>
+	<b>Cat no:</b>
+	<%= @release.cat_no %>
 </p>
 
 <p>
-  <b>Sdigital:</b>
-  <%= @release.sdigital %>
+	<b>Itunes:</b>
+	<%= @release.itunes %>
 </p>
 
 <p>
-  <b>Amazon:</b>
-  <%= @release.amazon %>
+	<b>Sdigital:</b>
+	<%= @release.sdigital %>
 </p>
 
 <p>
-  <b>Youtube:</b>
-  <%= @release.youtube %>
+	<b>Amazon:</b>
+	<%= @release.amazon %>
 </p>
 
 <p>
-  <b>Type:</b>
-  <%= @release.rls_type %>
+	<b>Youtube:</b>
+	<%= @release.youtube %>
 </p>
 
 <p>
-  <b>Artist:</b>
-  <%= @release.artist_id %>
+	<b>Type:</b>
+	<%= @release.rls_type %>
 </p>
 
+<p>
+	<b>Artist:</b>
+	<%= @release.artist_id %>
+</p>
+
+<% @release.tracks.each do |t| %>
+<p>
+	<%= link_to t.name, t.preview %>
+</p>
+<% end %>
 
 <%= link_to 'Edit', edit_release_path(@release) %> |
-<%= link_to 'Back', releases_path %>
+<%= link_to 'Back', artist_releases_path %>

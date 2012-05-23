@@ -9,7 +9,7 @@ class Timeline
   end
 
   def self.new id
-    @@artists = User.find(id).followed_artists.collect(&:id)
+    @@artists = User.find(id).following.collect(&:id)
     self
   end
 

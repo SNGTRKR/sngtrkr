@@ -1,6 +1,117 @@
-<h1>Editing artist</h1>
+<%= form_for @artist do |f| %>
+<fieldset class="step">
+	<div class="step-back manage-details-step">
+		<div class="step-left left">
+			<ul>
+				<li>
+					<%= f.label "Artist Name*" %>
+					<%= f.text_field :name, :class => 'form-text' %>
+				</li>
+				<li>
+					<%= f.label "Genre*" %>
+					<%= f.text_field :genre, :class => 'form-text' %>
+				</li>
+				<li>
+					<%= f.label "Label*" %>
+					<%= f.text_field :label_name, :class => 'form-text' %>
+				</li>
+				<li>
+					<%= f.label "Bio" %>
+					<%= f.text_area :bio %>
+				</li>
+				<li>
+					<%= f.label "Website" %>
+					<%= f.text_field :website, :class => 'form-text' %>
+				</li>
+				<li>
+					<%= f.label "Twitter" %>
+					<%= f.text_field :website, :class => 'twitter' %>
+				</li>
+				<li>
+					<%= f.label "Soundcloud" %>
+					<%= f.text_field :soundcloud, :class => 'form-text' %>
+				</li>
+				<li>
+					<%= f.label "Youtube" %>
+					<%= f.text_field :youtube, :class => 'form-text' %>
+				</li>
+			</ul>
+		</div>
+		<div class="step-right right">
+			Here is the information we have managed to gather from your Facebook fan page. Please check this information, by completing any missing or incorrect fields.
+			<br/>
+			<br/>
+			We recommend a maximum of 330 characters for the biography, making it short but sweet.
+			<br/>
+			<br/>
+			Furthermore, please only enter your username for the Twitter, Soundcloud and Youtube fields.
+			<br/>
+			<br/>
+			Please be aware, all of this information will be available to the public.
+			<br/>
+			<br/>
+			<strong>* Required fields.</strong>
+		</div>
+		<div id="details-line"></div>
+	</div>
+</fieldset>
+<fieldset class="step">
+	<div class="step-back manage-picture-step">
+		<div class="step-left left">
+			<%= f.label :picture %>
+			<%= f.file_field 'image' %>
+		</div>
+		<div class="step-right right">
+			<%= image_tag (@artist.image :large) %>
+			Please upload a picture which would best represent you as an artist.
+			<br/>
+			</br/>
+			The artwork needs to be at least 365px width and 300px with. The file size can be no bigger than 1MB.
+			<br/>
+			</br/>
+			<div id="default-button">
+				<div class="o-button norm-o-pad right signika-font">
+					Restore to default<span></span>
+				</div>
+			</div>
+		</div>
+		<div id="picture-line"></div>
+	</div>
+</fieldset>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @artist %> |
-<%= link_to 'Back', artists_path %>
+<fieldset class="step">
+				<div class="step-back manage-summary-step">
+	<%= f.submit "Test" %>
+</div></fieldset>
+<% end %>
+<script>
+	$(document).ready(function() {
+$(".manage-details").click(function(){
+  			 $(".step-back").animate({height:421},"slow");
+  			 $(".step").animate({height:505},"slow");
+  			 $("#progress").animate({width:130},"slow");
+  			 $('.percent').html('50%');
+  			 $('.white-tint').hide();
+  			 $('.white-tint-2').show();
+  			 $('.white-tint-3').show();
+});
+$(".manage-picture").click(function(){
+  			 $(".step-back").animate({height:187},"slow");
+  			 $(".step").animate({height:275},"slow");
+  			 $("#progress").animate({width:195},"slow");
+  			 $('.percent').html('75%');
+  			 $('.white-tint-2').hide();
+  			 $('.white-tint-3').show();
+  			 $('.white-tint').show();
+});
+$(".manage-summary").click(function(){
+  			 $(".step-back").animate({height:283},"slow");
+  			 $(".step").animate({height:371},"slow");
+  			 $("#progress").animate({width:265},"slow");
+  			 $('.percent').html('100%');
+  			 $('.white-tint-3').hide();
+  			 $('.white-tint-2').show();
+  			 $('.white-tint').show();
+});
+	}); 
+</script>
