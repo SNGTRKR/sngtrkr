@@ -4,7 +4,7 @@ class ManagesController < ApplicationController
     @manage.user_id = current_user.id
 
     respond_to do |format|
-      if true #@manage.save
+      if @manage.save
         format.js { redirect_to edit_artist_url(@manage.artist_id) }
       else
         #format.html { render :action => "new" }
