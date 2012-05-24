@@ -4,14 +4,14 @@ class ManagesController < ApplicationController
     @manage.user_id = current_user.id
 
     respond_to do |format|
-      if @manage.save
-#        format.html { redirect_to @manage, :notice => 'Label was successfully created.' }
-        format.json { render :json => @manage, :status => :created, :location => @manage }
+      if true #@manage.save
+        format.js { redirect_to edit_artist_url(@manage.artist_id) }
       else
-        format.html { render :action => "new" }
-        format.json { render :json => @manage.errors, :status => :unprocessable_entity }
+        #format.html { render :action => "new" }
+        #format.json { render :json => @manage.errors, :status => :unprocessable_entity }
       end
     end
   end
+  
 
 end
