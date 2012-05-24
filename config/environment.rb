@@ -20,4 +20,3 @@ end
 
 # Specify wether or not in development mode imported artists are reimported on every launch or not
 IMPORT_REPLACE = true
-
