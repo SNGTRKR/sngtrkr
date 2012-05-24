@@ -4,11 +4,7 @@
 	<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# sngtrkr: http://ogp.me/ns/fb/sngtrkr#">
 		<h1><title>SNGTRKR - <%= yield :title %></title></h1>
 		<link rel="icon" type="image/ico" href="/assets/images/icon.png" >
-		<%= stylesheet_link_tag    "application", :media => "all" %>
-		<%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Signika+Negative:400,600' %>
-		<%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js' %>
-		<%= javascript_include_tag "application" %>
-		<%= csrf_meta_tags %>
+		<%= render :partial => 'layouts/all_js_css' %>
 	</head>
 	<body>
 		<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
@@ -39,7 +35,9 @@
 					</div>
 					<% end %>
 					<div class="clear"></div>
-					<a href="/"><div class="small-logo-home"><img src="/assets/images/logo-55.png" alt="SNGTRKR"/></div></a>
+					<a href="/">
+					<div class="small-logo-home"><img src="/assets/images/logo-55.png" alt="SNGTRKR"/>
+					</div></a>
 
 				</div>
 				<%= yield %>
@@ -89,7 +87,7 @@
 		<div id="wrapper">
 			<div class="wrapper2">
 				<div class="header header-height-big">
-										<!-- IE CSS for sticky footer -->
+					<!-- IE CSS for sticky footer -->
 					<!--[if !IE 7]>
 					<style type="text/css">
 					#wrap {display:table;height:100%}
@@ -97,7 +95,8 @@
 					<![endif]-->
 					<a href="<%= user_omniauth_authorize_path(:facebook) %>"><img class="right fb-home-login-nudge" src="/assets/images/log-facebook.png"/></a>
 					<div class="clear"></div>
-					<div class="big-logo-home"><img src="/assets/images/logo-120.png" alt="SNGTRKR"/></div>
+					<div class="big-logo-home"><img src="/assets/images/logo-120.png" alt="SNGTRKR"/>
+					</div>
 				</div>
 				<%= yield %>
 			</div>

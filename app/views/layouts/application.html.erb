@@ -10,12 +10,7 @@
 		<meta property="sngtrkr:id" content="<%= yield :og_id %>" />
 		<h1><title>SNGTRKR - <%= yield :title %></title></h1>
 		<link rel="icon" type="image/ico" href="/assets/images/icon.png" >
-		<%= stylesheet_link_tag "application", :media => "all" %>
-		<%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Signika+Negative:400,600' %>
-		<%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js' %>
-		<%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js' %>
-		<%= javascript_include_tag "application" %>
-		<%= csrf_meta_tags %>
+		<%= render :partial => 'layouts/all_js_css' %>
 	</head>
 	<body>
 		<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
@@ -83,7 +78,7 @@
 					</li>
 				</ul>
 				<div id="footer-txt">
-					© Copyright SNGTRKR 2012. All Rights Reserved. || 
+					© Copyright SNGTRKR 2012. All Rights Reserved. ||
 					Page rendered in <%= Time.now - @start_time %>s
 				</div>
 			</div>
