@@ -12,11 +12,15 @@ role :web, domain                          # Your HTTP server, Apache/etc
 role :app, domain                          # This may be the same as your `Web` server
 role :db,  domain, :primary => true        # This is where Rails migrations will run
 
-# if you want to clean up old releases on each deploy uncomment this:
+# Only keep the latest 3 releases
 set :keep_releases, 3
 after "deploy:restart", "deploy:cleanup"
-require "bundler/capistrano"
 
+# Bundler for remote gem installs
+require "bundler/capistrano"
+# Whenever for cron jobs
+set :whenever_command, "bundle exec whenever"
+require "whenever/capistrano"
 # Load RVM's capistrano plugin.    
 require "rvm/capistrano"
 

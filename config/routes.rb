@@ -2,6 +2,7 @@ SNGTRKR::Application.routes.draw do
 
   if(Rails.env == "development")
     root :to => "Pages#home"
+    match '/splash' => "Pages#splash"
   else
     root :to => "Pages#splash"
   end

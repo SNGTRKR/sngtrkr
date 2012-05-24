@@ -19,6 +19,7 @@ end
 
 group :development, :test do
   gem 'sqlite3'
+  gem 'seed_dumper'
 end
 
 group :test do
@@ -30,6 +31,7 @@ gem 'capistrano'
 
 # BACKGROUND TASKS
 gem 'resque'
+gem 'whenever', :require => false
 
 gem "paperclip", "~> 3.0"
 
