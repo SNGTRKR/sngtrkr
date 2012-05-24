@@ -5,7 +5,13 @@ class ArtistsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
   def index
     @artists = Artist.search(params[:search])
-    if(params[:search].length < 2)
+    if params[:search].blank?
+      if Rails.env.production?
+        flash.now[:message] = "You must search for an artist"
+      else
+        @artists = Artist.order(:name).page(params[:page])
+      end
+    elsif(params[:search].length < 2)
       flash.now[:message] = "Please enter at least 2 characters into the search box"
       @artists = [];
     elsif @artists.empty?

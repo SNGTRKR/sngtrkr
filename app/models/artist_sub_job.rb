@@ -1,10 +1,15 @@
 class ArtistSubJob
   @queue = :artistsubjob
   @@sevendigital_apikey = "7dufgm34849u"
-  def self.perform artist, user_id, access_token
-    start_time = Time.now
-    require 'open-uri'
-    graph = Koala::Facebook::API.new(access_token)
+  def self.perform access_token, user_id, artist
+    begin
+      if artist["likes"] < 100
+        Rails.logger.info "J002: Skipping #{artist["name"]}, as they have only #{artist["likes"]} likes"
+      return false
+      end
+    rescue
+      Rails.logger.error "J002: Failed, artist's like count could not be read."
+    end
     begin
       s = Scraper.new artist["name"]
     rescue
@@ -17,15 +22,16 @@ class ArtistSubJob
       Rails.logger.error "J002: Failed, last.fm did not believe '#{artist["name"]}' is a real artist"
     return false
     end
-    #a = Artist.new()
-    a = Artist.where("fbid = ?",artist["id"]).first
-    if a.nil?
-      a = Artist.new()
-    elsif Rails.env.production?
-      Rails.logger.error "J002: Failed, artist #{a.name} appears to already be in the database"
-    return false
-    end
+
+    # Once we've covered the basic failing criteria, initialize variables (as late as possible)
+    user = User.find(user_id)
+    graph = Koala::Facebook::API.new(access_token)
+    require 'open-uri'
+    itunes = ItunesSearch::Base.new
+    artist_start_time = Time.now
+
     split_regexp = /[,\/|+\.]/
+    a = Artist.new
     a.name = s.real_name
     a.fbid = artist["id"]
     a.bio = s.bio
@@ -42,7 +48,6 @@ class ArtistSubJob
     else
     websites = [];
     end
-    itunes = ItunesSearch::Base.new
     begin
       a.itunes = itunes.search("term"=>a.name, "country" => "gb").results.first.artistViewUrl
     rescue
@@ -68,7 +73,7 @@ class ArtistSubJob
       end
     end
     image = s.lastFmArtistImage
-    if image != false
+    if image
       io = open(URI.escape(image))
       if io
         def io.original_filename; base_uri.path.split('/').last; end
@@ -77,12 +82,13 @@ class ArtistSubJob
       end
     end
     a.save
-    User.find(user_id).suggest_artist a.id
+    user.suggest_artist a.id
     if !a.sdid.nil?
       Resque.enqueue(ReleaseJob, a.id)
     end
-    end_time = Time.now
-    elapsed_time = end_time - start_time
-    Rails.logger.info "J002: Release import for #{a.name} finished after #{elapsed_time}"
+    artist_end_time = Time.now
+    artist_elapsed_time = artist_end_time - artist_start_time
+    Rails.logger.info "J002: New artist import finished after #{artist_elapsed_time}"
+    return true
   end
 end

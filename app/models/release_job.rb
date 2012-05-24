@@ -16,7 +16,7 @@ class ReleaseJob
       if r.nil?
         r = Release.new
       elsif Rails.env.production? or !IMPORT_REPLACE
-        Rails.logger.notice("J003: 7digital scrape stopped, release appear to already be in database for artist #{artist.name}")
+        Rails.logger.info("J003: 7digital scrape stopped, release appear to already be in database for artist #{artist.name}")
       next
       end
 
@@ -25,8 +25,10 @@ class ReleaseJob
       r.name = release["title"]
       r.label_name = release["label"]["name"]
       r.date = release["releaseDate"]
+      r.cat_no = release["isrc"]
       r.sdigital = release["url"]
       r.scraped = 1
+      Rails.logger.info("J003: Popularity of #{r.name} | #{release["popularity"]}")
       io = open(URI.escape(release["image"]))
       if io
         def io.original_filename; base_uri.path.split('/').last; end
@@ -43,8 +45,18 @@ class ReleaseJob
       end
       i = 1
       tracks.each do |track|
-        t = Track.create(:release_id => r.id, :number => i, :name => track["title"], :sd_id => track["id"])
-        i = i+1
+        begin
+          if track["version"].blank?
+            title = track["title"]
+          else
+          # Accounts for things like "Gold Dust (Netsky Remix)"
+            track = "#{track["title"]} (#{track["version"]})"
+          end
+          t = Track.create(:release_id => r.id, :number => i, :name => title, :sd_id => track["id"])
+          i = i+1
+        rescue
+          Rails.logger.error("J003: Individual track scrape failed for track: #{track.inspect}")
+        end
       end
 
     end

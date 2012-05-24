@@ -2,49 +2,26 @@ class ArtistJob
   @queue = :artistjob
   def self.perform access_token, user_id
     start_time = Time.now
-    require 'open-uri'
     graph = Koala::Facebook::API.new(access_token)
-    music = graph.get_connections("me", "music?fields=name")
-    artist_ids = music.each do |artist|
-      artist["id"]
-    end
-    Koala::Facebook::BatchOperation.instance_variable_set(:@identifier, 0)
-    results = []
-    if Rails.env.development?
-    batch_size = 50
-    else
-    batch_size = 50
-    end
-    artist_ids.in_groups_of(batch_size) do |artists|
-      tmp_results = graph.batch do |batch_api|
-        for artist in artists do
-          if(artist.nil?)
-            Rails.logger.error "J001: Failed, batch api request returned nil."
-          next
-          end
-          # TODO: DISABLE FOR PRODUCTION
-          tmp = Artist.where("fbid = ?",artist["id"]).first
-          if !tmp.nil? and (Rails.env.production? or !IMPORT_REPLACE)
-            # Skip artists already in the database
-            User.find(user_id).suggest_artist(tmp.id)
-          next
-          end
-          batch_api.get_object(artist["id"]+'?fields=name,general_manager,booking_agent,record_label,genre,hometown,website,bio')
-        end
-      end
-      results = results | tmp_results
-      if Rails.env.development?
-      # Limits the intake of artists to one batch when developing.
-      break
+    music = graph.get_connections("me", "music?fields=name,general_manager,booking_agent,record_label,genre,hometown,website,bio,picture,likes")
+    user = User.find(user_id)
+    new_artists, old_artists = [], 0
+    music.each do |artist|
+      a = Artist.where("fbid = ?",artist["id"]).first
+      if a.nil?
+      new_artists << artist
+      else
+      # Suggest artists already in the database and skip over them
+      user.suggest_artist(a.id)
+      old_artists += 1
       end
     end
-    #Rails.logger.info(results)
-    results.each do |artist|
-      Resque.enqueue(ArtistSubJob, artist, user_id, access_token)
+    artist_end_time = Time.now
+    artist_elapsed_time = artist_end_time - start_time
+    Rails.logger.info "J001: Existing artists import finished after #{artist_elapsed_time}, #{old_artists} artists imported"
+
+    new_artists.each do |artist|
+      Resque.enqueue(ArtistSubJob, access_token, user_id, artist)
     end
-    end_time = Time.now
-    elapsed_time = end_time - start_time
-    Rails.logger.info "J001: Artist initial import delayed job after #{elapsed_time}, #{results.count} artists imported"
-    return true
   end
 end
