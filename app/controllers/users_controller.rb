@@ -49,7 +49,7 @@ class UsersController < ApplicationController
     api = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
     @user = current_user
     if @user.managing.count > 0
-      @artist = Artist.find(@user.manage.first.artist_id)
+      @artist = @user.managing.first
       @trackers = @artist.followed_users.count
     end
     @following = @user.following
@@ -193,17 +193,13 @@ class UsersController < ApplicationController
     end
     api = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
     @manageable = []
-    @managing = []
     api.get_object("me/accounts").each do |page|
       if page["category"] == "Musician/band"
         artist = Artist.where("fbid = ?", page["id"]).first
         if artist.nil?
         next
-        end
-        if current_user.managing.count > 0 and current_user.manage.first.artist_id == page["db_id"]
-        @managing.push artist
         else
-        @manageable.push artist
+        @manageable << artist
         end
       end
     end

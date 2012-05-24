@@ -63,7 +63,9 @@ class ArtistsController < ApplicationController
   # GET /artists/1/edit
   def edit
     @artist = Artist.find(params[:id])
-    render :layout => false
+    respond_to do |format|
+      format.js
+    end
   end
 
   # POST /artists

@@ -42,7 +42,7 @@ SNGTRKR::Application.routes.draw do
     collection do
       get 'no_results', :action => 'no_results'
     end
-    resources :releases, :only => [:show]
+    resources :releases
     resources :manages
   end
 

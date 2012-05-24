@@ -1,4 +1,5 @@
-<%= form_for @artist do |f| %>
+<% artist = edit %>
+<%= form_for artist do |f| %>
 <fieldset class="step">
 	<div class="step-back manage-details-step">
 		<div class="step-left left">
@@ -62,7 +63,7 @@
 			<%= f.file_field 'image' %>
 		</div>
 		<div class="step-right right">
-			<%= image_tag (@artist.image :large) %>
+			<%= image_tag (artist.image :large) %>
 			Please upload a picture which would best represent you as an artist.
 			<br/>
 			</br/>
@@ -80,38 +81,57 @@
 </fieldset>
 
 <fieldset class="step">
-				<div class="step-back manage-summary-step">
-	<%= f.submit "Test" %>
-</div></fieldset>
+	<div class="step-back manage-summary-step">
+		<%= f.submit "Save" %>
+	</div>
+</fieldset>
 <% end %>
 <script>
 	$(document).ready(function() {
-$(".manage-details").click(function(){
-  			 $(".step-back").animate({height:421},"slow");
-  			 $(".step").animate({height:505},"slow");
-  			 $("#progress").animate({width:130},"slow");
-  			 $('.percent').html('50%');
-  			 $('.white-tint').hide();
-  			 $('.white-tint-2').show();
-  			 $('.white-tint-3').show();
-});
-$(".manage-picture").click(function(){
-  			 $(".step-back").animate({height:187},"slow");
-  			 $(".step").animate({height:275},"slow");
-  			 $("#progress").animate({width:195},"slow");
-  			 $('.percent').html('75%');
-  			 $('.white-tint-2').hide();
-  			 $('.white-tint-3').show();
-  			 $('.white-tint').show();
-});
-$(".manage-summary").click(function(){
-  			 $(".step-back").animate({height:283},"slow");
-  			 $(".step").animate({height:371},"slow");
-  			 $("#progress").animate({width:265},"slow");
-  			 $('.percent').html('100%');
-  			 $('.white-tint-3').hide();
-  			 $('.white-tint-2').show();
-  			 $('.white-tint').show();
-});
+		$(".manage-details").click(function() {
+			$(".step-back").animate({
+				height : 421
+			}, "slow");
+			$(".step").animate({
+				height : 505
+			}, "slow");
+			$("#progress").animate({
+				width : 130
+			}, "slow");
+			$('.percent').html('50%');
+			$('.white-tint').hide();
+			$('.white-tint-2').show();
+			$('.white-tint-3').show();
+		});
+		$(".manage-picture").click(function() {
+			$(".step-back").animate({
+				height : 187
+			}, "slow");
+			$(".step").animate({
+				height : 275
+			}, "slow");
+			$("#progress").animate({
+				width : 195
+			}, "slow");
+			$('.percent').html('75%');
+			$('.white-tint-2').hide();
+			$('.white-tint-3').show();
+			$('.white-tint').show();
+		});
+		$(".manage-summary").click(function() {
+			$(".step-back").animate({
+				height : 283
+			}, "slow");
+			$(".step").animate({
+				height : 371
+			}, "slow");
+			$("#progress").animate({
+				width : 265
+			}, "slow");
+			$('.percent').html('100%');
+			$('.white-tint-3').hide();
+			$('.white-tint-2').show();
+			$('.white-tint').show();
+		});
 	}); 
 </script>
