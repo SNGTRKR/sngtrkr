@@ -19,6 +19,7 @@ after "deploy:restart", "deploy:cleanup"
 # Bundler for remote gem installs
 require "bundler/capistrano"
 # Whenever for cron jobs
+set :whenever_command, "bundle exec whenever"
 require "whenever/capistrano"
 # Load RVM's capistrano plugin.    
 require "rvm/capistrano"
