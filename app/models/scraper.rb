@@ -76,12 +76,17 @@ class Scraper
       return [id,url]
     rescue
       Rails.logger.error("7digital for ID of '#{artist_name}'")
-    return nil
+      return nil
     end
   end
 
   def self.find_release_info url
-    # Will eventually take an iTunes / 7digital / Amazon url and get information on the release automatically.
+    itunes_regex = /(?<=\/id)([0-9]*)/
+    sd_artist_regex = /(?<=\/artist\/)([a-zA-Z0-9\-]*)/
+    sd_release_regex = /(?<=\/release\/)([a-zA-Z0-9\-]*)/
+    amazon_regex = /(?<=\/product\/)([a-zA-Z0-9\-]*)/
+
+  # Will eventually take an iTunes / 7digital / Amazon url and get information on the release automatically.
   end
 
 end

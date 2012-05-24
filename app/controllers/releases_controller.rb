@@ -87,4 +87,10 @@ class ReleasesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  # Assists the user in filling out the form by fetching data for them.
+  def help
+    
+  end
+  
 end
