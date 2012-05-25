@@ -1,4 +1,6 @@
-<h2 class="signika-txt top-header font-35">Manage an artist</h2>	
+<img id="bulge-left" src="/assets/images/f-bulge-left.png">
+		<img id="bulge-right" src="/assets/images/f-bulge-right.png">
+<h2 class="signika-txt top-header font-35 add-release-header">Manage an artist</h2>	
 <% artist = edit %>
 <div id="steps">
 <%= form_for artist do |f| %>
@@ -61,10 +63,10 @@
 <fieldset class="step">
 	<div class="step-back manage-picture-step">
 		<div class="step-left left">
-			<%= f.label :picture %>
-			<strong><%= f.file_field 'image' %></strong>
-			<strong>Preview:</strong>
-			<%= image_tag (artist.image :manage) %>
+			<strong><%= f.label :picture %></strong>
+			<strong><%= f.file_field 'image' %></strong></br/><br/>
+			<strong>Preview:</strong><br/>
+			<div class="manage-image"><img class="bleed" src="/assets/images/bleed.png"/><%= image_tag (artist.image :manage) %></div>
 		</div>
 		<div class="step-right right">
 			Please upload a picture which would best represent you as an artist.
@@ -125,7 +127,7 @@
 						<strong>If you would like information on how to get started with using your artist timeline, and adding new releases, then head on over to our help page.</strong>
 						<div id="submit-pad">
 							<div class="o-button right norm-o-pad signika-font">
-										<%= f.submit "Submit" %>
+										<%= f.submit "Submit", :class => 'submit-button' %>
 								<span></span>
 							</div>
 						</div>
@@ -167,6 +169,18 @@
 			$("#progress").animate({
 				width : 130
 			}, "slow");
+			$('#bulge-left').animate({
+					height : 607
+				}, "slow");
+				$('#bulge-left').animate({
+					width : 48
+				}, 10);
+				$('#bulge-right').animate({
+					height : 607
+				}, "slow");
+				$('#bulge-right').animate({
+					width : 48
+				}, 10);
 			$('.percent').html('50%');
 			$('.white-tint').hide();
 			$('.white-tint-2').show();
@@ -182,6 +196,18 @@
 			$("#progress").animate({
 				width : 195
 			}, "slow");
+			$('#bulge-left').animate({
+					height : 371
+				}, "slow");
+				$('#bulge-left').animate({
+					width : 48
+				}, 10);
+				$('#bulge-right').animate({
+					height : 371
+				}, "slow");
+				$('#bulge-right').animate({
+					width : 48
+				}, 10);
 			$('.percent').html('75%');
 			$('.white-tint-2').hide();
 			$('.white-tint-3').show();
@@ -197,6 +223,18 @@
 			$("#progress").animate({
 				width : 265
 			}, "slow");
+			$('#bulge-left').animate({
+					height : 467
+				}, "slow");
+				$('#bulge-left').animate({
+					width : 48
+				}, 10);
+				$('#bulge-right').animate({
+					height : 467
+				}, "slow");
+				$('#bulge-right').animate({
+					width : 48
+				}, 10);
 			$('.percent').html('100%');
 			$('.white-tint-3').hide();
 			$('.white-tint-2').show();
@@ -339,7 +377,7 @@
 	/*
 	if there are errors don't allow the user to submit
 	*/
-	$('#registerButton').bind('click',function(){
+	$('.submit-button').bind('click',function(){
 		if($('.edit_artist').data('errors')){
 			alert('Please correct the errors in the Form');
 			return false;
