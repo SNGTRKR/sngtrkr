@@ -43,9 +43,8 @@
 		</div>
 		<div class="right artist-choice">
 			<% if @manageable.count.zero? %>
-			<p>
-				Oh dear, it doesn't look like you have any Facebook artist pages to manage.
-			</p>
+			<span class="font-13"><strong>If seems you don't have any Facebook artists to manage.</strong></span><br/><br/>
+			Please make sure you have a Facebook page for the artist, and set the category for the page to 'Musician/Band'.
 			<% else %>
 			<%= form_for [current_user, Manage.new], :remote => true do |f| %>
 			<ul>
