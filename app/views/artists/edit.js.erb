@@ -1,2 +1,5 @@
-$('#edit-artist-form').hide().html("<%=j render :partial => 'artists/edit', :object => @artist %>");
-$('#edit-artist-form').fancybox().click();
+$('#manage-content').fadeOut();
+$('#manage-form').fadeIn().html("<%=j render :partial => 'artists/edit', :object => @artist %>");
+
+
+
