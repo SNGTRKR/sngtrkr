@@ -13,7 +13,6 @@
 //= require jquery_ujs
 //= require fancy-box/jquery.fancybox
 //= require instant-search/instant-search
-//= require sliding-form/sliding.form
 //= require timers/jquery.timers
 $(document).ready(function() {
 	$("#delete-account a").fancybox({
