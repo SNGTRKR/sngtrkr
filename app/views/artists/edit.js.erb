@@ -1,5 +1,5 @@
-$('#manage-content').fadeOut();
-$('#manage-form').fadeIn().html("<%=j render :partial => 'artists/edit', :object => @artist %>");
+$('#manage-content').fadeOut('fast');
+$('#manage-form').fadeIn('slow').html("<%=j render :partial => 'artists/edit', :object => @artist %>");
 
 
 

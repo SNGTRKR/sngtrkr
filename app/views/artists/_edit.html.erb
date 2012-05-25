@@ -7,35 +7,35 @@
 		<div class="step-left left">
 			<ul>
 				<li>
-					<%= f.label "Artist Name*" %>
+					<strong><%= f.label "Artist Name*" %></strong>
 					<%= f.text_field :name, :class => 'form-text' %>
 				</li>
 				<li>
-					<%= f.label "Genre*" %>
+					<strong><%= f.label "Genre*" %></strong>
 					<%= f.text_field :genre, :class => 'form-text' %>
 				</li>
 				<li>
-					<%= f.label "Label*" %>
+					<strong><%= f.label "Label*" %></strong>
 					<%= f.text_field :label_name, :class => 'form-text' %>
 				</li>
 				<li>
-					<%= f.label "Bio" %>
+					<strong><%= f.label "Bio" %></strong>
 					<%= f.text_area :bio, :rows => 8, :cols => 40, :class => 'form-text' %>
 				</li>
 				<li>
-					<%= f.label "Website" %>
+					<strong><%= f.label "Website" %></strong>
 					<%= f.text_field :website, :class => 'form-text' %>
 				</li>
 				<li>
-					<%= f.label "Twitter" %>
+					<strong><%= f.label "Twitter" %></strong>
 					<%= f.text_field :website, :class => 'form-text' %>
 				</li>
 				<li>
-					<%= f.label "Soundcloud" %>
+					<strong><%= f.label "Soundcloud" %></strong>
 					<%= f.text_field :soundcloud, :class => 'form-text' %>
 				</li>
 				<li>
-					<%= f.label "Youtube" %>
+					<strong><%= f.label "Youtube" %></strong>
 					<%= f.text_field :youtube, :class => 'form-text' %>
 				</li>
 			</ul>
@@ -62,8 +62,9 @@
 	<div class="step-back manage-picture-step">
 		<div class="step-left left">
 			<%= f.label :picture %>
-			<%= f.file_field 'image' %>
-			<%= image_tag (artist.image :large) %>
+			<strong><%= f.file_field 'image' %></strong>
+			<strong>Preview:</strong>
+			<%= image_tag (artist.image :manage) %>
 		</div>
 		<div class="step-right right">
 			Please upload a picture which would best represent you as an artist.
@@ -161,7 +162,7 @@
 				height : 421
 			}, "slow");
 			$(".step").animate({
-				height : 505
+				height : 510
 			}, "slow");
 			$("#progress").animate({
 				width : 130
