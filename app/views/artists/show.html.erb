@@ -4,75 +4,20 @@ content_for :og_image, File.join(root_url , @artist.image.url(:large))
 content_for :og_description, @artist.name + " is telling users about their new releases on SNGTRKR. Why don't you follow them too?"
 content_for :og_id, @artist.id.to_s
 %>
-<% content_for :title do %><%= @artist.name %> information and releases 2012<% end %>
 <style type="text/css">
-.artist-image {
+#artist-image {
 background-image:url(<%= @artist.image.url :large %>);
 background-repeat:no-repeat;
-background-position:center;
 }
 </style>
-<div class="content content-pad-191">
+<% content_for :title do %><%= @artist.name %> information and releases 2012<% end %>
+	<div class="content content-pad-160-bottom">
 	<div id="content-artist">
-		<div class="artist-image left">
-			<div id="outer-button">
-				<div class="inner-button">
-					<%= render :partial => 'shared/trk_artist', :object => @artist %>
-				</div>
-			</div>
-		</div>
-		<div class="artist-info right">
-			<h2 class="font-18 artist-name instruct-font"><%= @artist.name %></h2>
-			<% if @artist.label? %>
-			<span id="label-nudge"><img src="/assets/images/record-label.png"><span class="info-icon-logo-nudge"><%= @artist.label_name %></span></span>
-			<% end %>
-			<% if !@artist.genre.blank? %>
-			<img src="/assets/images/genre.png"><span class="info-icon-logo-nudge"><%= @artist.genre %></span>
-			<% end %>
-			<div id="artist-bio">
-				<%=
- # The || "" means, if artist.bio is false / nil, replace with an empty string.
-          truncate((strip_tags @artist.bio || "" ), :length => 550) %> <strong>Continue Reading</strong>
-			</div>
-		</div>
-		<ul>
-			<li class="social-spacing">
-				<a href="http://www.facebook.com/<%= @artist.fbid %>" target="_blank"><img src="/assets/images/a-fb.png"></a>
-			</li>
-			<% if @artist.twitter? %>
-			<li class="social-spacing">
-				<a href="http://www.twitter.com/<%= @artist.twitter %>" target="_blank"><img src="/assets/images/a-twit.png"></a>
-			</li>
-			<% else %><% end %>
-			<% if @artist.soundcloud? %>
-			<li class="social-spacing">
-				<a href="http://www.soundcloud.com/<%= @artist.soundcloud %>" target="_blank"><img src="/assets/images/a-sc.png"></a>
-			</li>
-			<% else %><% end %>
-			<% if @artist.website? %>
-			<li class="social-spacing">
-				<a href="http://<%= @artist.website %>" target="_blank"><img src="/assets/images/a-web.png"></a>
-			</li>
-			<% else %><% end %>
-			<% if @artist.youtube? %>
-			<li class="social-spacing">
-				<a href="http://www.youtube.com/<%= @artist.youtube %>" target="_blank"><img src="/assets/images/a-yt.png"></a>
-			</li>
-			<% else %><% end %>
-			<% if @artist.itunes? %>
-			<li class="social-spacing">
-				<a href="<%= @artist.itunes  %>" tager="_blank"><img src="/assets/images/a-it.png"></a>
-			</li>
-			<% end %>
-			<!--
-			<li class="social-spacing"><img src="/assets/images/a-amaz.png">
-			</li>
-			-->
-			<% if @artist.sdigital? %>
-			<li>
-				<a href="<%= @artist.sd %>"><img src="/assets/images/a-7d.png"></a>
-			</li>
-			<% end %>
-		</ul>
+	<div id="artist-image"></div>
+	<div id="artist-info">
+	<strong><div class="font-25"><%= @artist.name %></div></strong>
+	<div class="orange-txt font-13 genre"><%= @artist.genre %></div>
+	<%= @artist.label_name %><br/>
+	<div class="left artist-trkr-pos"><%= render :partial => 'shared/trk_artist', :object => @artist %></div>
 	</div>
-	
+

@@ -6,7 +6,7 @@ class Artist < ActiveRecord::Base
   belongs_to :label
 
   has_attached_file :image, :styles => {
-    :large => "220x252#",
+    :large => "365x300#",
     :thumb => "76x76#",
     :recommend => "202x178#",
     :manage => "100x100#" }
