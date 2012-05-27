@@ -1,10 +1,10 @@
 set :application, "sngtrkr"
-set :user, "ec2-user"
-set :domain, 'sngtrkr.com'
+set :user, "deploy"
+set :domain, '176.58.105.173'
 set :applicationdir, "/var/www/#{application}"
 
 set :scm, 'git'
-set :repository,  "ssh://ec2-user@sngtrkr.com/~/sngtrkr.git"
+set :repository,  "ssh://deploy@176.58.105.173/~/sngtrkr.git"
 set :branch, 'master'
 set :scm_verbose, true
 
@@ -22,10 +22,10 @@ require "bundler/capistrano"
 set :whenever_command, "bundle exec whenever"
 require "whenever/capistrano"
 # Load RVM's capistrano plugin.    
-require "rvm/capistrano"
+#require "rvm/capistrano"
 
-set :rvm_ruby_string, '1.9.3'
-set :rvm_type, :user  # Copy the exact line. I really mean :system here
+#set :rvm_ruby_string, '1.9.3'
+#set :rvm_type, :user  # Copy the exact line. I really mean :system here
 
 # deploy config
 set :deploy_to, applicationdir
