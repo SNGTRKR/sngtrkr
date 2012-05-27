@@ -30,6 +30,7 @@ gem 'capistrano'
 # gem 'rvm-capistrano'  -- THIS MUST BE INSTALLED LOCALLY, IT WILL NOT WORK IN A GEMFILE.
 
 # BACKGROUND TASKS
+gem 'redis'
 gem 'resque'
 gem 'whenever', :require => false
 

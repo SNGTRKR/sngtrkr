@@ -265,6 +265,7 @@ DEPENDENCIES
   rails (= 3.2.2)
   rails_admin
   rbrainz
+  redis
   resque
   ruby-prof
   sass-rails (>= 3.2.3)
