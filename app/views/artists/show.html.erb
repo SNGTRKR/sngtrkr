@@ -19,5 +19,36 @@ background-repeat:no-repeat;
 	<div class="orange-txt font-13 genre"><%= @artist.genre %></div>
 	<%= @artist.label_name %><br/>
 	<div class="left artist-trkr-pos"><%= render :partial => 'shared/trk_artist', :object => @artist %></div>
+	<div class="clear"></div>
+	<%= truncate((strip_tags @artist.bio || "" ), :length => 300) %>
+	</div>
+	<ul>
+			<li class="left">
+				<a href="http://www.facebook.com/<%= @artist.fbid %>" target="_blank"><img src="/assets/images/a-fb.png"></a>
+			</li>
+			<% if @artist.twitter? %>
+			<li class="left">
+				<a href="http://www.twitter.com/<%= @artist.twitter %>" target="_blank"><img src="/assets/images/a-twit.png"></a>
+			</li>
+			<% else %><% end %>
+			<% if @artist.soundcloud? %>
+			<li class="left">
+				<a href="http://www.soundcloud.com/<%= @artist.soundcloud %>" target="_blank"><img src="/assets/images/a-sc.png"></a>
+			</li>
+			<% else %><% end %>
+			<% if @artist.website? %>
+			<li class="left">
+				<a href="http://<%= @artist.website %>" target="_blank"><img src="/assets/images/a-web.png"></a>
+			</li>
+			<% else %><% end %>
+			<% if @artist.youtube? %>
+			<li class="left">
+				<a href="http://www.youtube.com/<%= @artist.youtube %>" target="_blank"><img src="/assets/images/a-yt.png"></a>
+			</li>
+			<% else %><% end %>
+			<li class="left">
+				<img src="/assets/images/a-music.png">
+			</li>
+		</ul>
 	</div>
 
