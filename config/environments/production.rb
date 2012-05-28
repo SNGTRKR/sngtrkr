@@ -70,11 +70,13 @@ SNGTRKR::Application.configure do
 
   config.assets.precompile += %w(rails_admin/rails_admin.css rails_admin/rails_admin.js)
 
-    config.action_mailer.delivery_method = :smtp
-    config.action_mailer.smtp_settings = {
-      :address              => "localhost",
-      :port                 => 25,
-      :domain               => 'sngtrkr.com',
-    }
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+	  :address              => "localhost",
+	  :port                 => 25,
+	  :domain               => 'sngtrkr.com',
+	  :enable_starttls_auto => false
+	}
 
 end
