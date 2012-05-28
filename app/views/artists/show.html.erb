@@ -15,9 +15,9 @@ background-repeat:no-repeat;
 	<div id="content-artist">
 	<div id="artist-image"></div>
 	<div id="artist-info">
-	<strong><div class="font-25"><%= @artist.name %></div></strong>
+	<h2><strong><div class="font-25"><%= @artist.name %></div></strong></h2>
 	<div class="orange-txt font-13 genre"><%= @artist.genre %></div>
-	<%= @artist.label_name %><br/>
+	<h3><%= @artist.label_name %><br/></h3>
 	<div class="left artist-trkr-pos"><%= render :partial => 'shared/trk_artist', :object => @artist %></div>
 	<div class="clear"></div>
 	<%= truncate((strip_tags @artist.bio || "" ), :length => 300) %>
