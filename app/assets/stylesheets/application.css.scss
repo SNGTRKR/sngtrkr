@@ -413,7 +413,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     .content-beta-right {
       width:268px;
       height:388px;
-      margin-bottom:125px;
+      margin-bottom:55px;
       a {
         color:$orange;
       }
@@ -561,9 +561,19 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 		  margin-top:11px;
 	  }
 	  .artist-trkr-pos {
-			margin-left:-7px;
+			margin:6px 0 0 -7px;
 		}
     }
+    ul {
+			list-style-type: none;
+			left:383px;
+			width:270px;
+			position:relative;
+			top:12px;
+			li {
+				margin-left:-3px;
+			}
+		}
   }
     .content-top {
   position:relative;
@@ -1622,16 +1632,16 @@ span.error{
 }
 #loading-image {
   position:relative;
-  left:217px;
-  margin-top:-7px;
+  left:270px;
+  top:27px;
 }
 .loading-txt {
   position:relative;
   text-align:center;
   width:278px;
   left:190px;
-  top:15px;
-  height:74px;
+  top:77px;
+  height:136px;
 }
 .share-bank {
   position:relative;
