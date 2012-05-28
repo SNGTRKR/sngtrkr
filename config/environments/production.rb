@@ -76,7 +76,8 @@ SNGTRKR::Application.configure do
 	  :address              => "localhost",
 	  :port                 => 25,
 	  :domain               => 'sngtrkr.com',
-	  :enable_starttls_auto => false
+	  :enable_starttls_auto => false,
+	  :openssl_verify_mode => 'none'
 	}
 
 end
