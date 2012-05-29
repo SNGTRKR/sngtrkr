@@ -1,6 +1,7 @@
 vendor/cache/*
 tmp/cache/*
 log/development.log
+log/test.log
 tmp/**/*
 tmp/*
 db/development.sqlite3
