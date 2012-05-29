@@ -2,25 +2,21 @@
 
 one:
   id: 1
-  name: MyString
-  genre: MyString
-  bio: MyText
-  hometown: MyString
-  booking_email: MyString
-  manager_email: MyString
-  website: MyString
-  soundcloud: MyString
-  youtube: MyString
-  label_id: 1
-
-two:
-  name: MyString
-  genre: MyString
-  bio: MyText
-  hometown: MyString
-  booking_email: MyString
-  manager_email: MyString
-  website: MyString
-  soundcloud: MyString
-  youtube: MyString
-  label_id: 1
+  name: KOAN Sound
+  genre: Electronic
+  bio: KOAN Sound is an electronic music act consisting of...
+  hometown: Bristol, UK
+  booking_email: Europe/ROW Daisy Quin (William Morris) DCQ@wmeenter...
+  manager_email: Tom Riley (Catalyst Artist Management)
+  website: http://www.koansound.com
+  soundcloud: koan-sound
+  youtube: koansoundTV
+  itunes: http://itunes.apple.com/gb/artist/koan-sound/id2946...
+  sdid: 257691
+  sd: http://www.7digital.com/artists/koan-sound/?partner...
+  juno: nil
+  label_id: nil
+  label_name: OWSLA 
+  fbid: 221378194160
+  ignore: false
+  twitter: koansound
