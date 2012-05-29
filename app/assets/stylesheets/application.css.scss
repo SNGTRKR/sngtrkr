@@ -1684,9 +1684,9 @@ span.error{
       margin:0 0 20px 20px;
       background:rgba(255,255,255,0.75);
       @include border-radius(8px);
-      -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-      -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-      box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+      -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
+      -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
+      box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
       
     }
     .friends-image {
@@ -1952,5 +1952,46 @@ span.error{
 	  height:43px;
 	  width:100%;
 	  top:546px;
+  }
+  .release-list {
+	  list-style-type: none;
+	  position:relative;
+	  margin-left:20px;
+	  .each-release {
+	  background:black;
+      @include border-top-left-radius(8px);
+      @include border-top-right-radius(8px);
+      @include border-bottom-left-radius(10px);
+      @include border-bottom-right-radius(10px);
+      -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+      -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+      box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+      height:210px;
+      width:210px;
+      margin:0 20px 20px 0;
+      position:relative;
+      .release-menu {
+	      position:absolute;
+	      height:23px;
+	      width:210px;
+	      background-color:$orange;
+	      @include border-bottom-left-radius(8px);
+          @include border-bottom-right-radius(8px);
+          bottom:0px;
+          left:0px;
+          .menu {
+	          list-style-type:none;
+	          width:210px;
+	          height:23px;
+	          left:29px;
+	          position:relative;
+	          .menu-item {
+		          color:#fff;
+		          padding:0 30px 0 0;
+		          line-height:23px; 
+	          }
+          }
+      }
+	  }
   }
   }
