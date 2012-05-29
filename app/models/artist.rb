@@ -9,7 +9,8 @@ class Artist < ActiveRecord::Base
     :large => "365x300#",
     :thumb => "76x76#",
     :recommend => "202x178#",
-    :manage => "100x100#" }
+    :manage => "100x100#",
+    :release => "210x210#" }
 
   has_many :follow
   has_many :suggest
