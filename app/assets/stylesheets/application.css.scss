@@ -318,6 +318,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
         list-style-type:none;
         position:relative;
         top:20px;
+        left:15px;
         li {
             font-size:1.1em;
             padding:0 30px 0 0;
@@ -574,6 +575,9 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 				margin-left:-3px;
 			}
 		}
+  #bio-full {
+	  display:none;
+  }
   }
     .content-top {
   position:relative;
@@ -1893,16 +1897,6 @@ span.error{
         top:227px;
       }
 }
-.change-email-confirm {
-    width:431px;
-    height:286px;
-    background: url(/assets/fancybox/box-bk-431.png) no-repeat;
-}
-.email-notify-confirm {
-    width:431px;
-    height:286px;
-    background: url(/assets/fancybox/box-bk-431.png) no-repeat;
-}
 .notify-logo-70 {
   position:relative;
   left:101px;
@@ -1941,159 +1935,22 @@ span.error{
   float:right;
   margin-bottom:11px;
 }
-.button{
-    background: $orange;
-    width:7em;
-    @include border-radius();
-    @include box-shadow();
-    text-align:center;
-    margin:0.5em;
-    padding:0.5em;
-    a{
-        color:white;
-        text-decoration:none;
-    }
-}
-.tl-button{
-    margin-top:-5em;
-    position:relative;
-    z-index:30;
-}
-.back{
-    float:left;
-    //margin-left:-0.5em;
-}
-.forward{
-    float:right;
-    //margin-right:-0.5em;
-}
-#timeline{
-    background-color:rgba(255,255,255,0.75);
-    overflow: auto;
-    padding-top:0.5em;
-    padding-bottom:1.5em;
-    margin-bottom:2em;
-    margin-top:1.5em;
-    border: 4px solid $gray;
-    border-width: 3px 0px;
-    position:relative;
-    z-index:0;
-    #timeline_centerer #timeline_release{
-        $small-w:200px;
-        $small-h:250px;
-        $big-w:500px;
-        $big-h:250px;
-        width:40000px;
-        height:300px;
-        border-bottom:0.4em solid $orange;
-        margin-bottom:0.4em;
-        #empty{
-            float:none;
-            margin:auto;
-            margin-top:2em;
-            text-align:center;
-            width:$small-w;
-            height:auto;
-            overflow:hidden;
-            background-color:$orange;
-            *{
-                background-color:none;
-                color:white;
-            }
-        }
-        .small{
-            width:$small-w;
-            height:$small-h;
-        }
-        .big{
-            width:$big-w;
-            height:$big-h;
-            div .line{
-                left:$big-w/2;
-            }
-
-        }
-        .youtube_video{
-            float:right;
-        }
-        li{
-            position:relative;
-            float: left;
-            border:0.2em solid $gray;
-            background-color:white;
-            margin:0.3em;
-            @include border-radius(0.7em);
-            z-index:30;
-            p{
-                width:100%;
-                background-color:$gray;
-                padding:0.4em;
-                a{
-                    color:white;
-                    text-decoration:none;
-                }
-                a:hover{
-                    text-decoration:underline;
-                }
-                .cat-number{
-                    font-size:80%;
-                }
-            }
-            .artist_name{
-            }
-            .release_name{
-                font-size:1.4em;
-            }
-            .label_name{
-                font-size:1.1em;
-                color:#DDD;
-                position:relative;
-                bottom:0px;
-            }
-            .date{
-                color:white;
-                text-align:center;
-                z-index:50;
-                position:relative;
-                margin:auto;
-                width:7em;
-                margin-top:0.8em;
-                padding:0.3em;
-                background-color:$orange;
-                @include border-radius(0.5em);
-                border:2px solid $gray;
-                font-size:1.2em;
-            }
-            .hide{
-                @include border-radius(0.3em);
-                overflow:hidden;
-            }
-            .line{
-                z-index:10;
-                width:0.3em;
-                height:45px;
-                clear:both;
-                float:left;
-                border:none;
-                background-color:$orange;
-                position:absolute;
-                bottom:-46px;
-                left:$small-w/2;
-            }
-            .artwork{
-                margin:auto;
-                display:block;
-            }
-            
-        }
-    }
-    .user_timeline{}
-}
-.timeline_buttons{
-    pointer-events:none;
-}
-.lastfm_img{
-    position:relative;
-    max-width:219px;
-    max-height:254px;
-}
+#timeline {
+  	position:relative;
+    height:558px;
+    background-image: url(/assets/images/grid.png);
+    background-repeat: repeat-x;
+    margin-bottom: 27px;
+  #shadow-top {
+	  position:absolute;
+	  height:43px;
+	  width:100%;
+	  top:-31px;
+  }
+  #shadow-bot {
+	  position:absolute;
+	  height:43px;
+	  width:100%;
+	  top:546px;
+  }
+  }
