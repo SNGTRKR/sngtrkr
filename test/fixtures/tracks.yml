@@ -1,9 +1,1 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
-one:
-  name: MyText
-  sd_preview: MyText
-
-two:
-  name: MyText
-  sd_preview: MyText

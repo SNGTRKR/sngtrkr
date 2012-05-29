@@ -2,11 +2,15 @@ class ReleaseJob
   @queue = :releasejob
   @@sevendigital_apikey = "7dufgm34849u"
   def self.perform(artist_id)
+    if(Rails.env.production?)
+      	proxy = Net::HTTP::Proxy('localhost', 3129)      
+    else
+      	proxy = Net::HTTP
+  	end
     start_time = Time.now
     artist = Artist.find(artist_id)
-    require 'open-uri'
     begin
-      releases = Hash.from_xml( open( URI.parse("http://api.7digital.com/1.2/artist/releases?artistId=#{artist.sdid}&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB&imageSize=350")))["response"]["releases"]["release"]
+      releases = Hash.from_xml( proxy.get_response( URI.parse("http://api.7digital.com/1.2/artist/releases?artistId=#{artist.sdid}&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB&imageSize=350")))["response"]["releases"]["release"]
     rescue
       Rails.logger.error("J003: 7digital scrape failed ~ #{artist.sdid}")
     return false
@@ -29,7 +33,7 @@ class ReleaseJob
       r.sdigital = release["url"]
       r.scraped = 1
       Rails.logger.info("J003: Popularity of #{r.name} | #{release["popularity"]}")
-      io = open(URI.escape(release["image"]))
+      io = proxy.get_response( URI.escape(release["image"]))
       if io
         def io.original_filename; base_uri.path.split('/').last; end
         io.original_filename.blank? ? nil : io
@@ -39,7 +43,7 @@ class ReleaseJob
 
       # Now get the track ID's for preview URLS
       begin
-        tracks = Hash.from_xml( open( URI.parse("http://api.7digital.com/1.2/release/tracks?releaseid=#{r.sd_id}&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB")))["response"]["tracks"]["track"]
+        tracks = Hash.from_xml( proxy.get_response( URI.parse("http://api.7digital.com/1.2/release/tracks?releaseid=#{r.sd_id}&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB")))["response"]["tracks"]["track"]
       rescue
         Rails.logger.error("J003: Track scrape failed for release #{r.name} by #{artist.name}")
       end
