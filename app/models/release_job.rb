@@ -3,7 +3,7 @@ class ReleaseJob
   @@sevendigital_apikey = "7dufgm34849u"
   def self.perform(artist_id)
     if(Rails.env.production?)
-      	proxy = Net::HTTP::Proxy('localhost', 3129)      
+      	proxy = Net::HTTP::Proxy('127.0.0.1', 3129)      
     else
       	proxy = Net::HTTP
   	end
