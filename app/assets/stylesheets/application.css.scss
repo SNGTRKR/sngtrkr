@@ -441,6 +441,35 @@ body:before {/* thanks to Maleika (Kohoutec)*/
             }
           }
     }
+    #beta-line {
+	    position:relative;
+	    width:602px;
+	    border-top-color: black;
+	    border-top-style: solid;
+	    border-top-width: 1px;
+	    margin-top:-15px;
+    }
+     .beta-sm {
+    list-style-type:none;
+    width:602px;
+    margin-top:10px;
+    position: relative;
+    left:15px;
+     a {
+          color:#000;
+        }
+        a:hover {
+          color:$orange;
+        }
+    .beta-som {
+      margin-right:20px;
+      .text-nudge-2 {
+        position:relative;
+        bottom:6px;
+        left:5px;
+      }
+    }
+    }
     .home-white-header
     {
         position:relative;
@@ -1958,7 +1987,7 @@ span.error{
 	  position:relative;
 	  margin-left:20px;
 	  .each-release {
-	  background:black;
+	  background:white;
       @include border-top-left-radius(8px);
       @include border-top-right-radius(8px);
       @include border-bottom-left-radius(10px);
@@ -1970,6 +1999,14 @@ span.error{
       width:210px;
       margin:0 20px 20px 0;
       position:relative;
+      .release-info {
+	      color:#fff;
+	      display:block;
+	      position:absolute;
+	      left:15px;
+	      bottom:33px;
+	      z-index:2;
+      }
       .release-menu {
 	      position:absolute;
 	      height:23px;
@@ -1979,6 +2016,7 @@ span.error{
           @include border-bottom-right-radius(8px);
           bottom:0px;
           left:0px;
+          z-index:2;
           .menu {
 	          list-style-type:none;
 	          width:210px;
@@ -1991,6 +2029,11 @@ span.error{
 		          line-height:23px; 
 	          }
           }
+      }
+      .r-grad {
+	      position:absolute;
+	      z-index:1;
+	      width:210px;
       }
 	  }
   }
