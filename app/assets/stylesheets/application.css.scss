@@ -462,7 +462,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
           color:$orange;
         }
     .beta-som {
-      margin-right:20px;
+      margin:0 20px 37px 0;
       .text-nudge-2 {
         position:relative;
         bottom:6px;
@@ -2038,3 +2038,73 @@ span.error{
 	  }
   }
   }
+.share-release {
+	display:none;
+	width:543px;
+    height:315px;
+    background: url(/assets/images/box-bk-550.png) no-repeat;
+    @include border-radius(8px);
+    color:#000;
+    .share-title {
+        font-size:2.8em;
+        color:#fff;
+        -moz-text-shadow: 0px 2.83px 8px rgba(0,0,0,0.28);
+        -webkit-text-shadow: 0px 2.83px 8px rgba(0,0,0,0.28);
+        text-shadow: 0px 2.83px 8px rgba(0,0,0,0.28);
+        font-family: 'Signika Negative', sans-serif;
+        font-weight:400;
+        line-height:1.3em;
+        position:relative;
+        top:27px;
+        text-align:center;
+      }
+      ul {
+      list-style-type: none;
+      position:relative;
+      top:51px;
+      left:103px;
+	      li {
+		      margin-right:38px;
+	      }
+      }
+      .share-txt {
+	      position:relative;
+	      text-align:center;
+	      top:79px;
+      }
+}
+.buy-release {
+	display:none;
+	width:543px;
+    height:315px;
+    background: url(/assets/images/box-bk-550.png) no-repeat;
+    @include border-radius(8px);
+    color:#000;
+    .buy-title {
+        font-size:2.8em;
+        color:#fff;
+        -moz-text-shadow: 0px 2.83px 8px rgba(0,0,0,0.28);
+        -webkit-text-shadow: 0px 2.83px 8px rgba(0,0,0,0.28);
+        text-shadow: 0px 2.83px 8px rgba(0,0,0,0.28);
+        font-family: 'Signika Negative', sans-serif;
+        font-weight:400;
+        line-height:1.3em;
+        position:relative;
+        top:27px;
+        text-align:center;
+      }
+      ul {
+      list-style-type: none;
+      position:relative;
+      top:51px;
+      left:103px;
+	      li {
+		      margin-right:38px;
+	      }
+      }
+      .buy-txt {
+	      position:relative;
+	      text-align:center;
+	      top:79px;
+      }
+}

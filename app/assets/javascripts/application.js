@@ -20,6 +20,12 @@ $(document).ready(function() {
 		autoSize	: false,
 		closeClick	: false
 	});
+	$(".release-menu a").fancybox({
+		width : 543,
+		height : 315,
+		autoSize	: false,
+		closeClick	: false
+	});
     	});
     	
 
