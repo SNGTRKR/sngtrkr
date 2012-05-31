@@ -17,7 +17,11 @@ SNGTRKR::Application.routes.draw do
   match '/loading' => "Pages#loading"
   match '/welcome_email' => "UserMailer#welcome_email"
   
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin' # Feel free to change '/admin' to any namespace you need.
+
+  namespace :admin do
+    match 'mailer(/:action(/:id(.:format)))' => 'mailer#:action'
+    mount RailsAdmin::Engine => '/rails', :as => 'rails_admin' # Feel free to change '/admin' to any namespace you need.
+  end
 
   devise_for :users, :controllers => { :registrations => "users/registrations", :omniauth_callbacks => "users_controller/omniauth_callbacks" }
   devise_scope :user do

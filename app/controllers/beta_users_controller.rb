@@ -28,6 +28,7 @@ class BetaUsersController < ApplicationController
 
     respond_to do |format|
       if @beta_user.save
+        UserMailer.beta_email(@beta_user).deliver
         flash.now[:notice] = 'Beta user was successfully created.'
         @beta_user = BetaUser.new()
         format.html { render :layout => 'beta' , action: "new" }
