@@ -1,6 +1,7 @@
 class BetaUsersController < ApplicationController
   # GET /beta_users
   # GET /beta_users.json
+  before_filter :authenticate_user!, :except => [:create, :new]
   def index
     @beta_users = BetaUser.all
 
