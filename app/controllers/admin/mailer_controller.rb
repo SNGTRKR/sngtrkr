@@ -6,7 +6,7 @@ class Admin::MailerController < ApplicationController
   end
   
   def beta
-    @user = User.last
+    @user = BetaUser.last
     render :file => 'user_mailer/beta_email.html.erb', :layout => false  end
 
   def preview_welcome()
