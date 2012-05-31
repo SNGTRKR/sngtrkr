@@ -13,8 +13,9 @@ SNGTRKR::Application.routes.draw do
   match '/privacy' => "Pages#privacy"
   match '/help' => "Pages#help"
   match '/recommended' => "Pages#recommended"
-  match '/beta' => "Pages#beta"
+  #match '/beta' => "Pages#beta"
   match '/loading' => "Pages#loading"
+  match '/welcome_email' => "UserMailer#welcome_email"
   
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin' # Feel free to change '/admin' to any namespace you need.
 
@@ -37,6 +38,9 @@ SNGTRKR::Application.routes.draw do
     end
     resources :manages
   end
+  
+  resources :beta_users, :except => [:index]
+  match '/beta' => 'beta_users#new'
 
   resources :artists do
     collection do
