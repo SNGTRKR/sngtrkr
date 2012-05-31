@@ -13,7 +13,7 @@ SNGTRKR::Application.routes.draw do
   match '/privacy' => "Pages#privacy"
   match '/help' => "Pages#help"
   match '/recommended' => "Pages#recommended"
-  #match '/beta' => "Pages#beta"
+  match '/betaold' => "Pages#beta"
   match '/loading' => "Pages#loading"
   match '/welcome_email' => "UserMailer#welcome_email"
   

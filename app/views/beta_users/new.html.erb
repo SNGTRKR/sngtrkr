@@ -12,6 +12,9 @@
       </ul>
     </div>
   <% end %>
+  <% if flash[:notice] %>
+  <div id="success_explanation"><p><%= flash[:notice] %></p></div>
+  <% end %>
 	<div class="content-beta-left left">
 			<h2 class="signika-txt top-header font-35 beta-white-header">Sign up FREE now for an exclusive beta invite...</h2>		
 		<div class="left reg-points">

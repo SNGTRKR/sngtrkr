@@ -16,8 +16,7 @@ class BetaUsersController < ApplicationController
     @beta_user = BetaUser.new
 
     respond_to do |format|
-      format.html { render notice: 'Beta user was successfully created.' } # new.html.erb
-      format.json { render json: @beta_user }
+      format.html { render :layout => 'beta' } # new.html.erb
     end
   end
 
@@ -30,9 +29,9 @@ class BetaUsersController < ApplicationController
       if @beta_user.save
         flash.now[:notice] = 'Beta user was successfully created.'
         @beta_user = BetaUser.new()
-        format.html { render action: "new" }
+        format.html { render :layout => 'beta' , action: "new" }
       else
-        format.html { render action: "new" }
+        format.html { render :layout => 'beta' , action: "new" }
       end
     end
   end
