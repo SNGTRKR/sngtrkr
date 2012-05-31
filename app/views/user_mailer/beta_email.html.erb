@@ -220,64 +220,7 @@
 		.bodyContent div a:link,.bodyContent div a:visited,.bodyContent div a .yshortcuts{
 			color:#F15A24;
 		}
-</style>        
-        <script type="text/javascript">
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-329148-12']);
-            _gaq.push(['_trackPageview']);
-    
-            (function() {
-              var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-              ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
-        </script> <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> <script src="http://us5.campaign-archive2.com/js/mailchimp/fancyzoom.mc.js"></script> <script type="text/javascript">
-            function updateFacebookCommentsCount(num) {
-                $('#campaign-fb-comments-btn span').fadeOut().html(num).fadeIn();
-            }
-            
-            function incrementFacebookLikeCount() {
-                var current = parseInt($('#campaign-fb-like-btn span').html());
-                $('#campaign-fb-like-btn span').fadeOut().html(++current).fadeIn();
-            }
-        
-            function getUrlParams(str) {
-                var vars = {}, hash;
-                if (!str) return vars;
-                var hashes = str.slice(str.indexOf('?') + 1).split('&');
-                for(var i = 0; i < hashes.length; i++) {
-                    hash = hashes[i].split('=');
-                    vars[hash[0]] = hash[1];
-                }
-                return vars;
-            }
-            
-            $(document).ready(function() {
-                var numSociaElems = $('a[rel=socialproxy]').length;
-                var numSocialInitialized = 0;
-                var urlParams = getUrlParams(window.document.location.href);
-                var paramsToCopy = {'e':true, 'eo':true};
-                $('a[rel=socialproxy]').each(function() {
-                    var href = $(this).attr('href');
-                    var newHref = decodeURIComponent(href.match(/socialproxy=(.*)/)[1]);
-                    // for facebook insanity to work well, it needs to all be run against just campaign-archive
-                    newHref = newHref.replace(/campaign-archive(\d)/gi, 'campaign-archive');
-                    var newHrefParams = getUrlParams(newHref);
-                    for(var param in urlParams) {
-                        if ((param in paramsToCopy) && !(param in newHrefParams)) {
-                            newHref += '&' + param + '=' + urlParams[param];
-                        }
-                    }
-                    $(this).attr('href', newHref);
-                    if (href.indexOf('facebook') !== -1) {
-                        $(this).fancyZoom({"zoom_id": "social-proxy", "width":620, "height":450, "iframe_height": 450});
-                    } else {
-                        $(this).fancyZoom({"zoom_id": "social-proxy", "width":450, "height":200, "iframe_height": 200});
-                    }
-                    numSocialInitialized++;
-                                    });
-            });
-        </script> </head>
+</style></head>
     
     <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" style="-webkit-text-size-adjust: none;margin: 0;padding: 0;background-color: #51AECB;width: 100% !important;">
     	<center>
@@ -385,20 +328,10 @@ Regards<br>
                                                     </tr>
                                                     <tr>
                                                         <td valign="top" width="350" style="border-collapse: collapse;">
-                                                            <div style="color: #707070;font-family: Arial;font-size: 12px;line-height: 125%;text-align: left;"><div style="text-align: left;color: #707070;font-family: Arial;font-size: 12px;line-height: 125%;">
-	<span style="color:#ffffff;"><em>Copyright &copy; 2012 SNGTRKR, All rights reserved.</em><br>
+                                                            <div style="color: #707070;font-family: Arial;font-size: 12px;line-height: 125%;text-align: left;"><div style="text-align:center;color: #707070;font-family: Arial;font-size: 12px;line-height: 125%;">
+	<span style="color:#ffffff;"><em>Copyright &copy; 2012 SNGTRKR, All rights reserved.<br/>You are receiving this email since you opted in for the Beta Invite and latest updates at <a href="http://sngtrkr.com">sngtrkr.com</a>.</em><br>
 	</span></div>
 </div>
-                                                        </td>
-                                                        <td valign="top" width="190" id="monkeyRewards" style="border-collapse: collapse;">
-                                                            <div style="color: #707070;font-family: Arial;font-size: 12px;line-height: 125%;text-align: left;"><span style="color:#ffffff;"> <a href="http://www.mailchimp.com/monkey-rewards/?aid=b0e8d9ea49b202bec7cd92ed8&afl=1"><img src="http://gallery.mailchimp.com/089443193dd93823f3fed78b4/images/MC_MonkeyReward_15.1.png" border="0" alt="Email Marketing Powered by MailChimp" title="MailChimp Email Marketing"></a> </span> </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2" valign="middle" id="utility" style="border-collapse: collapse;background-color: #333333;border: 0;">
-                                                            <div style="color: #707070;font-family: Arial;font-size: 12px;line-height: 125%;text-align: center;">
-                                                                &nbsp;<a href="http://sngtrkr.us5.list-manage.com/unsubscribe?u=b0e8d9ea49b202bec7cd92ed8&id=4a3a1c72ff&e=[UNIQID]&c=6364801596" style="color: #F15A24;font-weight: normal;text-decoration: underline;">unsubscribe from this list</a> | <a href="http://sngtrkr.us5.list-manage1.com/profile?u=b0e8d9ea49b202bec7cd92ed8&id=4a3a1c72ff&e=[UNIQID]" style="color: #F15A24;font-weight: normal;text-decoration: underline;">update subscription preferences</a>&nbsp;
-                                                            </div>
                                                         </td>
                                                     </tr>
                                                 </table>
