@@ -159,16 +159,17 @@ class UsersController < ApplicationController
     current_user.follow_artist params[:id]
     current_user.unsuggest_artist params[:id]
     # Post to facebook graph api if in production.
+    api = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
+    artist = Artist.find(params[:id]);
     if Rails.env.production?
-      api = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
-      artist = Artist.find(params[:id]);
       begin
         api.put_connections("me", "sngtrkr:track", :artist => url_for(artist))
-      rescue
-        logger.warning "Failed to track #{artist.name} for #{@user.id}"
+      rescue => e
+        logger.error e.message
+        logger.error e.backtrace.join("\n")
       end
     end
-    @artist = Artist.find(current_user.suggested[6].id) rescue nil
+    @artist = Artist.find(current_user.suggested[5].id) rescue nil
     respond_to do |format|
       format.html { redirect_to artist_path(params[:id])}
       format.json { render("artists/show.json") }

@@ -1,6 +1,14 @@
 # Start a worker with proper env vars and output redirection
 require 'resque/tasks'
 
+#task "resque:setup" do
+#  raise "Please set your RESQUE_WORKER variable to true" unless ENV['RESQUE_WORKER'] == "true"
+#  root_path = "#{File.dirname(__FILE__)}/../.."
+#  require "#{root_path}/app/artist_job.rb"
+#  require "#{root_path}/app/artist_sub_job.rb"
+#  require "#{root_path}/app/release_job.rb"
+#end
+
 if Rails.env.development?
   @workers = 1
 else
