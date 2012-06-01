@@ -164,8 +164,9 @@ class UsersController < ApplicationController
     if Rails.env.production?
       begin
         api.put_connections("me", "sngtrkr:track", :artist => url_for(artist))
-      rescue
-        logger.warning "Failed to track #{artist.name} for #{@user.id}"
+      rescue => e
+        logger.error e.message
+        logger.error e.backtrace.join("\n")
       end
     end
     @artist = Artist.find(current_user.suggested[5].id) rescue nil
