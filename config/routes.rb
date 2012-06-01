@@ -4,7 +4,7 @@ SNGTRKR::Application.routes.draw do
     root :to => "Pages#home"
     match '/splash' => "Pages#splash"
   else
-    root :to => "Pages#beta"
+    root :to => "beta_users#new"
   end
   
   match '/about' => "Pages#about"
