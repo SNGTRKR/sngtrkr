@@ -2696,3 +2696,333 @@ Completed 500 Internal Server Error in 0ms
   [1m[35m (0.0ms)[0m  rollback transaction
   [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
   [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.4ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "artists" ("id", "name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "itunes", "sdid", "sd", "juno", "label_id", "label_name", "fbid", "ignore", "twitter", "created_at", "updated_at") VALUES (1, 'KOAN Sound', 'Electronic', 'KOAN Sound is an electronic music act consisting of...', 'Bristol, UK', 'Europe/ROW Daisy Quin (William Morris) DCQ@wmeenter...', 'Tom Riley (Catalyst Artist Management)', 'http://www.koansound.com', 'koan-sound', 'koansoundTV', 'http://itunes.apple.com/gb/artist/koan-sound/id2946...', 257691, 'http://www.7digital.com/artists/koan-sound/?partner...', 'nil', 0, 'OWSLA', 221378194160, 'f', 'koansound', '2012-06-01 13:45:49', '2012-06-01 13:45:49')[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "beta_users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "beta_users" ("email", "created_at", "updated_at", "id") VALUES ('MyString', '2012-06-01 13:45:49', '2012-06-01 13:45:49', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "beta_users" ("email", "created_at", "updated_at", "id") VALUES ('MyString', '2012-06-01 13:45:49', '2012-06-01 13:45:49', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 13:45:49', '2012-06-01 13:45:49', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 13:45:49', '2012-06-01 13:45:49', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-06-01 13:45:49', '2012-06-01 13:45:49', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-06-01 13:45:49', '2012-06-01 13:45:49', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 13:45:49', '2012-06-01 13:45:49', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 13:45:49', '2012-06-01 13:45:49', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-06-01 13:45:49', '2012-06-01 13:45:49', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-06-01 13:45:49', '2012-06-01 13:45:49', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "suggests"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "suggests" ("user_id", "artist_id", "ignore", "created_at", "updated_at", "id") VALUES (1, 1, 'f', '2012-06-01 13:45:49', '2012-06-01 13:45:49', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "suggests" ("user_id", "artist_id", "ignore", "created_at", "updated_at", "id") VALUES (1, 1, 'f', '2012-06-01 13:45:49', '2012-06-01 13:45:49', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "super_manages"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "super_manages" ("user_id", "label_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 13:45:49', '2012-06-01 13:45:49', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "super_manages" ("user_id", "label_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 13:45:49', '2012-06-01 13:45:49', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "tracks"[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36m (3.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mArtist Load (0.3ms)[0m  [1mSELECT "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "artists" ("id", "name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "itunes", "sdid", "sd", "juno", "label_id", "label_name", "fbid", "ignore", "twitter", "created_at", "updated_at") VALUES (1, 'KOAN Sound', 'Electronic', 'KOAN Sound is an electronic music act consisting of...', 'Bristol, UK', 'Europe/ROW Daisy Quin (William Morris) DCQ@wmeenter...', 'Tom Riley (Catalyst Artist Management)', 'http://www.koansound.com', 'koan-sound', 'koansoundTV', 'http://itunes.apple.com/gb/artist/koan-sound/id2946...', 257691, 'http://www.7digital.com/artists/koan-sound/?partner...', 'nil', 0, 'OWSLA', 221378194160, 'f', 'koansound', '2012-06-01 13:50:38', '2012-06-01 13:50:38')[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "beta_users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "beta_users" ("email", "created_at", "updated_at", "id") VALUES ('MyString', '2012-06-01 13:50:38', '2012-06-01 13:50:38', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "beta_users" ("email", "created_at", "updated_at", "id") VALUES ('MyString', '2012-06-01 13:50:38', '2012-06-01 13:50:38', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 13:50:38', '2012-06-01 13:50:38', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 13:50:38', '2012-06-01 13:50:38', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-06-01 13:50:38', '2012-06-01 13:50:38', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-06-01 13:50:38', '2012-06-01 13:50:38', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 13:50:38', '2012-06-01 13:50:38', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 13:50:38', '2012-06-01 13:50:38', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-06-01 13:50:38', '2012-06-01 13:50:38', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-06-01 13:50:38', '2012-06-01 13:50:38', 298486374)
+  [1m[36mFixture Delete (0.5ms)[0m  [1mDELETE FROM "suggests"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "suggests" ("user_id", "artist_id", "ignore", "created_at", "updated_at", "id") VALUES (1, 1, 'f', '2012-06-01 13:50:38', '2012-06-01 13:50:38', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "suggests" ("user_id", "artist_id", "ignore", "created_at", "updated_at", "id") VALUES (1, 1, 'f', '2012-06-01 13:50:38', '2012-06-01 13:50:38', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "super_manages"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "super_manages" ("user_id", "label_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 13:50:38', '2012-06-01 13:50:38', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "super_manages" ("user_id", "label_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 13:50:38', '2012-06-01 13:50:38', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "tracks"[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36m (68.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mArtist Load (0.4ms)[0m  [1mSELECT "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mRelease Load (0.2ms)[0m  SELECT "releases".* FROM "releases" WHERE (sd_id = '1489882') LIMIT 1
+J003: Popularity of Funk Blaster | 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "artists" ("id", "name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "itunes", "sdid", "sd", "juno", "label_id", "label_name", "fbid", "ignore", "twitter", "created_at", "updated_at") VALUES (1, 'KOAN Sound', 'Electronic', 'KOAN Sound is an electronic music act consisting of...', 'Bristol, UK', 'Europe/ROW Daisy Quin (William Morris) DCQ@wmeenter...', 'Tom Riley (Catalyst Artist Management)', 'http://www.koansound.com', 'koan-sound', 'koansoundTV', 'http://itunes.apple.com/gb/artist/koan-sound/id2946...', 257691, 'http://www.7digital.com/artists/koan-sound/?partner...', 'nil', 0, 'OWSLA', 221378194160, 'f', 'koansound', '2012-06-01 13:59:40', '2012-06-01 13:59:40')[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "beta_users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "beta_users" ("email", "created_at", "updated_at", "id") VALUES ('MyString', '2012-06-01 13:59:40', '2012-06-01 13:59:40', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "beta_users" ("email", "created_at", "updated_at", "id") VALUES ('MyString', '2012-06-01 13:59:40', '2012-06-01 13:59:40', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 13:59:40', '2012-06-01 13:59:40', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 13:59:40', '2012-06-01 13:59:40', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-06-01 13:59:40', '2012-06-01 13:59:40', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-06-01 13:59:40', '2012-06-01 13:59:40', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 13:59:40', '2012-06-01 13:59:40', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 13:59:40', '2012-06-01 13:59:40', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-06-01 13:59:40', '2012-06-01 13:59:40', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-06-01 13:59:40', '2012-06-01 13:59:40', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "suggests"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "suggests" ("user_id", "artist_id", "ignore", "created_at", "updated_at", "id") VALUES (1, 1, 'f', '2012-06-01 13:59:40', '2012-06-01 13:59:40', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "suggests" ("user_id", "artist_id", "ignore", "created_at", "updated_at", "id") VALUES (1, 1, 'f', '2012-06-01 13:59:40', '2012-06-01 13:59:40', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "super_manages"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "super_manages" ("user_id", "label_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 13:59:40', '2012-06-01 13:59:40', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "super_manages" ("user_id", "label_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 13:59:40', '2012-06-01 13:59:40', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "tracks"[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mArtist Load (0.4ms)[0m  [1mSELECT "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mRelease Load (0.2ms)[0m  SELECT "releases".* FROM "releases" WHERE (sd_id = '1489882') LIMIT 1
+J003: Popularity of Funk Blaster | 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "artists" ("id", "name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "itunes", "sdid", "sd", "juno", "label_id", "label_name", "fbid", "ignore", "twitter", "created_at", "updated_at") VALUES (1, 'KOAN Sound', 'Electronic', 'KOAN Sound is an electronic music act consisting of...', 'Bristol, UK', 'Europe/ROW Daisy Quin (William Morris) DCQ@wmeenter...', 'Tom Riley (Catalyst Artist Management)', 'http://www.koansound.com', 'koan-sound', 'koansoundTV', 'http://itunes.apple.com/gb/artist/koan-sound/id2946...', 257691, 'http://www.7digital.com/artists/koan-sound/?partner...', 'nil', 0, 'OWSLA', 221378194160, 'f', 'koansound', '2012-06-01 14:01:08', '2012-06-01 14:01:08')[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "beta_users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "beta_users" ("email", "created_at", "updated_at", "id") VALUES ('MyString', '2012-06-01 14:01:08', '2012-06-01 14:01:08', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "beta_users" ("email", "created_at", "updated_at", "id") VALUES ('MyString', '2012-06-01 14:01:08', '2012-06-01 14:01:08', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 14:01:08', '2012-06-01 14:01:08', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 14:01:08', '2012-06-01 14:01:08', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-06-01 14:01:08', '2012-06-01 14:01:08', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-06-01 14:01:08', '2012-06-01 14:01:08', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 14:01:08', '2012-06-01 14:01:08', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 14:01:08', '2012-06-01 14:01:08', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-06-01 14:01:09', '2012-06-01 14:01:09', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-06-01 14:01:09', '2012-06-01 14:01:09', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "suggests"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "suggests" ("user_id", "artist_id", "ignore", "created_at", "updated_at", "id") VALUES (1, 1, 'f', '2012-06-01 14:01:09', '2012-06-01 14:01:09', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "suggests" ("user_id", "artist_id", "ignore", "created_at", "updated_at", "id") VALUES (1, 1, 'f', '2012-06-01 14:01:09', '2012-06-01 14:01:09', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "super_manages"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "super_manages" ("user_id", "label_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 14:01:09', '2012-06-01 14:01:09', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "super_manages" ("user_id", "label_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 14:01:09', '2012-06-01 14:01:09', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "tracks"[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36m (3.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mArtist Load (0.4ms)[0m  [1mSELECT "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mRelease Load (0.2ms)[0m  SELECT "releases".* FROM "releases" WHERE (sd_id = '1489882') LIMIT 1
+J003: Popularity of Funk Blaster | 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.4ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "artists" ("id", "name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "itunes", "sdid", "sd", "juno", "label_id", "label_name", "fbid", "ignore", "twitter", "created_at", "updated_at") VALUES (1, 'KOAN Sound', 'Electronic', 'KOAN Sound is an electronic music act consisting of...', 'Bristol, UK', 'Europe/ROW Daisy Quin (William Morris) DCQ@wmeenter...', 'Tom Riley (Catalyst Artist Management)', 'http://www.koansound.com', 'koan-sound', 'koansoundTV', 'http://itunes.apple.com/gb/artist/koan-sound/id2946...', 257691, 'http://www.7digital.com/artists/koan-sound/?partner...', 'nil', 0, 'OWSLA', 221378194160, 'f', 'koansound', '2012-06-01 14:11:48', '2012-06-01 14:11:48')[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "beta_users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "beta_users" ("email", "created_at", "updated_at", "id") VALUES ('MyString', '2012-06-01 14:11:48', '2012-06-01 14:11:48', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "beta_users" ("email", "created_at", "updated_at", "id") VALUES ('MyString', '2012-06-01 14:11:48', '2012-06-01 14:11:48', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 14:11:48', '2012-06-01 14:11:48', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 14:11:48', '2012-06-01 14:11:48', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-06-01 14:11:48', '2012-06-01 14:11:48', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-06-01 14:11:48', '2012-06-01 14:11:48', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 14:11:48', '2012-06-01 14:11:48', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 14:11:48', '2012-06-01 14:11:48', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-06-01 14:11:48', '2012-06-01 14:11:48', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-06-01 14:11:48', '2012-06-01 14:11:48', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "suggests"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "suggests" ("user_id", "artist_id", "ignore", "created_at", "updated_at", "id") VALUES (1, 1, 'f', '2012-06-01 14:11:48', '2012-06-01 14:11:48', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "suggests" ("user_id", "artist_id", "ignore", "created_at", "updated_at", "id") VALUES (1, 1, 'f', '2012-06-01 14:11:48', '2012-06-01 14:11:48', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "super_manages"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "super_manages" ("user_id", "label_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 14:11:48', '2012-06-01 14:11:48', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "super_manages" ("user_id", "label_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 14:11:48', '2012-06-01 14:11:48', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "tracks"[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mArtist Load (0.4ms)[0m  [1mSELECT "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mRelease Load (0.2ms)[0m  SELECT "releases".* FROM "releases" WHERE (sd_id = '1489882') LIMIT 1
+J003: Popularity of Funk Blaster | 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "artists" ("id", "name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "itunes", "sdid", "sd", "juno", "label_id", "label_name", "fbid", "ignore", "twitter", "created_at", "updated_at") VALUES (1, 'KOAN Sound', 'Electronic', 'KOAN Sound is an electronic music act consisting of...', 'Bristol, UK', 'Europe/ROW Daisy Quin (William Morris) DCQ@wmeenter...', 'Tom Riley (Catalyst Artist Management)', 'http://www.koansound.com', 'koan-sound', 'koansoundTV', 'http://itunes.apple.com/gb/artist/koan-sound/id2946...', 257691, 'http://www.7digital.com/artists/koan-sound/?partner...', 'nil', 0, 'OWSLA', 221378194160, 'f', 'koansound', '2012-06-01 14:17:31', '2012-06-01 14:17:31')[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "beta_users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "beta_users" ("email", "created_at", "updated_at", "id") VALUES ('MyString', '2012-06-01 14:17:31', '2012-06-01 14:17:31', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "beta_users" ("email", "created_at", "updated_at", "id") VALUES ('MyString', '2012-06-01 14:17:31', '2012-06-01 14:17:31', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 14:17:31', '2012-06-01 14:17:31', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 14:17:31', '2012-06-01 14:17:31', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-06-01 14:17:31', '2012-06-01 14:17:31', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-06-01 14:17:31', '2012-06-01 14:17:31', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 14:17:31', '2012-06-01 14:17:31', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 14:17:31', '2012-06-01 14:17:31', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-06-01 14:17:31', '2012-06-01 14:17:31', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-06-01 14:17:31', '2012-06-01 14:17:31', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "suggests"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "suggests" ("user_id", "artist_id", "ignore", "created_at", "updated_at", "id") VALUES (1, 1, 'f', '2012-06-01 14:17:31', '2012-06-01 14:17:31', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "suggests" ("user_id", "artist_id", "ignore", "created_at", "updated_at", "id") VALUES (1, 1, 'f', '2012-06-01 14:17:31', '2012-06-01 14:17:31', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "super_manages"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "super_manages" ("user_id", "label_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 14:17:31', '2012-06-01 14:17:31', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "super_manages" ("user_id", "label_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 14:17:31', '2012-06-01 14:17:31', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "tracks"[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "users"
+  [1m[36m (3.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mArtist Load (0.3ms)[0m  [1mSELECT "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mRelease Load (0.2ms)[0m  SELECT "releases".* FROM "releases" WHERE (sd_id = '1489882') LIMIT 1
+J003: Popularity of Funk Blaster | 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "artists"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "artists" ("id", "name", "genre", "bio", "hometown", "booking_email", "manager_email", "website", "soundcloud", "youtube", "itunes", "sdid", "sd", "juno", "label_id", "label_name", "fbid", "ignore", "twitter", "created_at", "updated_at") VALUES (1, 'KOAN Sound', 'Electronic', 'KOAN Sound is an electronic music act consisting of...', 'Bristol, UK', 'Europe/ROW Daisy Quin (William Morris) DCQ@wmeenter...', 'Tom Riley (Catalyst Artist Management)', 'http://www.koansound.com', 'koan-sound', 'koansoundTV', 'http://itunes.apple.com/gb/artist/koan-sound/id2946...', 257691, 'http://www.7digital.com/artists/koan-sound/?partner...', 'nil', 0, 'OWSLA', 221378194160, 'f', 'koansound', '2012-06-01 14:24:35', '2012-06-01 14:24:35')[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "beta_users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "beta_users" ("email", "created_at", "updated_at", "id") VALUES ('MyString', '2012-06-01 14:24:35', '2012-06-01 14:24:35', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "beta_users" ("email", "created_at", "updated_at", "id") VALUES ('MyString', '2012-06-01 14:24:35', '2012-06-01 14:24:35', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "follows"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 14:24:35', '2012-06-01 14:24:35', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "follows" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 14:24:35', '2012-06-01 14:24:35', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "labels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-06-01 14:24:35', '2012-06-01 14:24:35', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "labels" ("name", "bio", "website", "twitter", "facebook", "sdigital", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 'MyString', 'MyString', 'MyString', '2012-06-01 14:24:35', '2012-06-01 14:24:35', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "manages"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 14:24:35', '2012-06-01 14:24:35', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "manages" ("user_id", "artist_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 14:24:35', '2012-06-01 14:24:35', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "releases"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-06-01 14:24:35', '2012-06-01 14:24:35', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "releases" ("name", "date", "cat_no", "itunes", "sdigital", "amazon", "youtube", "artist_id", "created_at", "updated_at", "id") VALUES ('MyString', '2012-03-31 01:44:46.000000', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2012-06-01 14:24:35', '2012-06-01 14:24:35', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "suggests"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "suggests" ("user_id", "artist_id", "ignore", "created_at", "updated_at", "id") VALUES (1, 1, 'f', '2012-06-01 14:24:35', '2012-06-01 14:24:35', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "suggests" ("user_id", "artist_id", "ignore", "created_at", "updated_at", "id") VALUES (1, 1, 'f', '2012-06-01 14:24:35', '2012-06-01 14:24:35', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "super_manages"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "super_manages" ("user_id", "label_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 14:24:35', '2012-06-01 14:24:35', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "super_manages" ("user_id", "label_id", "created_at", "updated_at", "id") VALUES (1, 1, '2012-06-01 14:24:35', '2012-06-01 14:24:35', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "tracks"[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36m (3.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mArtist Load (0.4ms)[0m  [1mSELECT "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mRelease Load (0.2ms)[0m  SELECT "releases".* FROM "releases" WHERE (sd_id = '1489882') LIMIT 1
+J003: Popularity of Funk Blaster | 
+[32mCommand[0m :: identify -format %wx%h '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0001489882_35020120601-80005-1xzlnzy.jpg[0]'
+[32mCommand[0m :: convert '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0001489882_35020120601-80005-1xzlnzy.jpg[0]' -resize "300x300>" '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0001489882_35020120601-80005-1xzlnzy20120601-80005-1kvb3b4'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0001489882_35020120601-80005-1xzlnzy.jpg[0]'
+[32mCommand[0m :: convert '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0001489882_35020120601-80005-1xzlnzy.jpg[0]' -resize "100x100>" '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0001489882_35020120601-80005-1xzlnzy20120601-80005-1tygeyt'
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.2ms)[0m  INSERT INTO "releases" ("amazon", "artist_id", "cat_no", "created_at", "date", "image_content_type", "image_file_name", "image_file_size", "image_updated_at", "itunes", "juno", "label_id", "label_name", "name", "rls_type", "scraped", "sd_id", "sdigital", "updated_at", "youtube") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["amazon", nil], ["artist_id", 1], ["cat_no", nil], ["created_at", Fri, 01 Jun 2012 15:24:38 BST +01:00], ["date", Tue, 06 Dec 2011 00:00:00 GMT +00:00], ["image_content_type", "image/jpeg"], ["image_file_name", "0001489882_350.jpg"], ["image_file_size", 35169], ["image_updated_at", Fri, 01 Jun 2012 15:24:37 BST +01:00], ["itunes", nil], ["juno", nil], ["label_id", nil], ["label_name", "OWSLA"], ["name", "Funk Blaster"], ["rls_type", nil], ["scraped", 1], ["sd_id", "1489882"], ["sdigital", "http://www.7digital.com/artists/koan-sound/funk-blaster/?partner=3207"], ["updated_at", Fri, 01 Jun 2012 15:24:38 BST +01:00], ["youtube", nil]]
+[paperclip] Saving attachments.
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.9ms)[0m  [1mINSERT INTO "tracks" ("created_at", "name", "number", "release_id", "sd_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Fri, 01 Jun 2012 15:24:38 BST +01:00], ["name", "Funk Blaster"], ["number", 1], ["release_id", 980190963], ["sd_id", "16435342"], ["updated_at", Fri, 01 Jun 2012 15:24:38 BST +01:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tracks" ("created_at", "name", "number", "release_id", "sd_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Fri, 01 Jun 2012 15:24:38 BST +01:00], ["name", "The Edge"], ["number", 2], ["release_id", 980190963], ["sd_id", "16435343"], ["updated_at", Fri, 01 Jun 2012 15:24:38 BST +01:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "tracks" ("created_at", "name", "number", "release_id", "sd_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Fri, 01 Jun 2012 15:24:38 BST +01:00], ["name", "Meanwhile, In The Future"], ["number", 3], ["release_id", 980190963], ["sd_id", "16435344"], ["updated_at", Fri, 01 Jun 2012 15:24:38 BST +01:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "tracks" ("created_at", "name", "number", "release_id", "sd_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Fri, 01 Jun 2012 15:24:38 BST +01:00], ["name", "Talk Box"], ["number", 4], ["release_id", 980190963], ["sd_id", "16435345"], ["updated_at", Fri, 01 Jun 2012 15:24:38 BST +01:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "tracks" ("created_at", "name", "number", "release_id", "sd_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Fri, 01 Jun 2012 15:24:38 BST +01:00], ["name", "Talk Box (Kill The Noise Remix)"], ["number", 5], ["release_id", 980190963], ["sd_id", "16435346"], ["updated_at", Fri, 01 Jun 2012 15:24:38 BST +01:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mRelease Load (0.1ms)[0m  [1mSELECT "releases".* FROM "releases" WHERE (sd_id = '1420261') LIMIT 1[0m
+J003: Popularity of Max Out EP | 
+[32mCommand[0m :: identify -format %wx%h '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0001420261_35020120601-80005-f7zz5a.jpg[0]'
+[32mCommand[0m :: convert '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0001420261_35020120601-80005-f7zz5a.jpg[0]' -resize "300x300>" '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0001420261_35020120601-80005-f7zz5a20120601-80005-709sh'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0001420261_35020120601-80005-f7zz5a.jpg[0]'
+[32mCommand[0m :: convert '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0001420261_35020120601-80005-f7zz5a.jpg[0]' -resize "100x100>" '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0001420261_35020120601-80005-f7zz5a20120601-80005-l00a0x'
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "releases" ("amazon", "artist_id", "cat_no", "created_at", "date", "image_content_type", "image_file_name", "image_file_size", "image_updated_at", "itunes", "juno", "label_id", "label_name", "name", "rls_type", "scraped", "sd_id", "sdigital", "updated_at", "youtube") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["amazon", nil], ["artist_id", 1], ["cat_no", nil], ["created_at", Fri, 01 Jun 2012 15:24:39 BST +01:00], ["date", Mon, 23 May 2011 00:00:00 BST +01:00], ["image_content_type", "image/jpeg"], ["image_file_name", "0001420261_350.jpg"], ["image_file_size", 13684], ["image_updated_at", Fri, 01 Jun 2012 15:24:39 BST +01:00], ["itunes", nil], ["juno", nil], ["label_id", nil], ["label_name", "Inspected Records"], ["name", "Max Out EP"], ["rls_type", nil], ["scraped", 1], ["sd_id", "1420261"], ["sdigital", "http://www.7digital.com/artists/koan-sound/max-out-ep-1/?partner=3207"], ["updated_at", Fri, 01 Jun 2012 15:24:39 BST +01:00], ["youtube", nil]]
+[paperclip] Saving attachments.
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tracks" ("created_at", "name", "number", "release_id", "sd_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Fri, 01 Jun 2012 15:24:39 BST +01:00], ["name", "Trouble in the West"], ["number", 1], ["release_id", 980190964], ["sd_id", "15660231"], ["updated_at", Fri, 01 Jun 2012 15:24:39 BST +01:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "tracks" ("created_at", "name", "number", "release_id", "sd_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Fri, 01 Jun 2012 15:24:39 BST +01:00], ["name", "Max Out"], ["number", 2], ["release_id", 980190964], ["sd_id", "15660236"], ["updated_at", Fri, 01 Jun 2012 15:24:39 BST +01:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tracks" ("created_at", "name", "number", "release_id", "sd_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Fri, 01 Jun 2012 15:24:39 BST +01:00], ["name", "Mr. Brown"], ["number", 3], ["release_id", 980190964], ["sd_id", "15660240"], ["updated_at", Fri, 01 Jun 2012 15:24:39 BST +01:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "tracks" ("created_at", "name", "number", "release_id", "sd_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Fri, 01 Jun 2012 15:24:39 BST +01:00], ["name", "One Hand Clap"], ["number", 4], ["release_id", 980190964], ["sd_id", "15660247"], ["updated_at", Fri, 01 Jun 2012 15:24:39 BST +01:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mRelease Load (0.2ms)[0m  [1mSELECT "releases".* FROM "releases" WHERE (sd_id = '896692') LIMIT 1[0m
+J003: Popularity of Coast To Coast / Hesitation | 
+[32mCommand[0m :: identify -format %wx%h '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0000896692_35020120601-80005-7sgvdi.jpg[0]'
+[32mCommand[0m :: convert '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0000896692_35020120601-80005-7sgvdi.jpg[0]' -resize "300x300>" '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0000896692_35020120601-80005-7sgvdi20120601-80005-1nu2zio'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0000896692_35020120601-80005-7sgvdi.jpg[0]'
+[32mCommand[0m :: convert '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0000896692_35020120601-80005-7sgvdi.jpg[0]' -resize "100x100>" '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0000896692_35020120601-80005-7sgvdi20120601-80005-e6leku'
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "releases" ("amazon", "artist_id", "cat_no", "created_at", "date", "image_content_type", "image_file_name", "image_file_size", "image_updated_at", "itunes", "juno", "label_id", "label_name", "name", "rls_type", "scraped", "sd_id", "sdigital", "updated_at", "youtube") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["amazon", nil], ["artist_id", 1], ["cat_no", nil], ["created_at", Fri, 01 Jun 2012 15:24:39 BST +01:00], ["date", Mon, 02 Aug 2010 00:00:00 BST +01:00], ["image_content_type", "image/jpeg"], ["image_file_name", "0000896692_350.jpg"], ["image_file_size", 29176], ["image_updated_at", Fri, 01 Jun 2012 15:24:39 BST +01:00], ["itunes", nil], ["juno", nil], ["label_id", nil], ["label_name", "Screwloose Records"], ["name", "Coast To Coast / Hesitation"], ["rls_type", nil], ["scraped", 1], ["sd_id", "896692"], ["sdigital", "http://www.7digital.com/artists/koan-sound/coast-to-coast-hesitation/?partner=3207"], ["updated_at", Fri, 01 Jun 2012 15:24:39 BST +01:00], ["youtube", nil]]
+[paperclip] Saving attachments.
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "tracks" ("created_at", "name", "number", "release_id", "sd_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Fri, 01 Jun 2012 15:24:40 BST +01:00], ["name", "Coast To Coast"], ["number", 1], ["release_id", 980190965], ["sd_id", "9867842"], ["updated_at", Fri, 01 Jun 2012 15:24:40 BST +01:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "tracks" ("created_at", "name", "number", "release_id", "sd_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Fri, 01 Jun 2012 15:24:40 BST +01:00], ["name", "Hesitation"], ["number", 2], ["release_id", 980190965], ["sd_id", "9867843"], ["updated_at", Fri, 01 Jun 2012 15:24:40 BST +01:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mRelease Load (0.2ms)[0m  [1mSELECT "releases".* FROM "releases" WHERE (sd_id = '783827') LIMIT 1[0m
+J003: Popularity of Jumpsuit Adventures | 
+[32mCommand[0m :: identify -format %wx%h '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0000783827_35020120601-80005-1w4dbu2.jpg[0]'
+[32mCommand[0m :: convert '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0000783827_35020120601-80005-1w4dbu2.jpg[0]' -resize "300x300>" '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0000783827_35020120601-80005-1w4dbu220120601-80005-1is17je'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0000783827_35020120601-80005-1w4dbu2.jpg[0]'
+[32mCommand[0m :: convert '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0000783827_35020120601-80005-1w4dbu2.jpg[0]' -resize "100x100>" '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0000783827_35020120601-80005-1w4dbu220120601-80005-n4lbcv'
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "releases" ("amazon", "artist_id", "cat_no", "created_at", "date", "image_content_type", "image_file_name", "image_file_size", "image_updated_at", "itunes", "juno", "label_id", "label_name", "name", "rls_type", "scraped", "sd_id", "sdigital", "updated_at", "youtube") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["amazon", nil], ["artist_id", 1], ["cat_no", nil], ["created_at", Fri, 01 Jun 2012 15:24:40 BST +01:00], ["date", Mon, 26 Apr 2010 00:00:00 BST +01:00], ["image_content_type", "image/jpeg"], ["image_file_name", "0000783827_350.jpg"], ["image_file_size", 15714], ["image_updated_at", Fri, 01 Jun 2012 15:24:40 BST +01:00], ["itunes", nil], ["juno", nil], ["label_id", nil], ["label_name", "Screwloose Records"], ["name", "Jumpsuit Adventures"], ["rls_type", nil], ["scraped", 1], ["sd_id", "783827"], ["sdigital", "http://www.7digital.com/artists/koan-sound/jumpsuit-adventures/?partner=3207"], ["updated_at", Fri, 01 Jun 2012 15:24:40 BST +01:00], ["youtube", nil]]
+[paperclip] Saving attachments.
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tracks" ("created_at", "name", "number", "release_id", "sd_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Fri, 01 Jun 2012 15:24:41 BST +01:00], ["name", "Jumpsuit Adventures"], ["number", 1], ["release_id", 980190966], ["sd_id", "8669668"], ["updated_at", Fri, 01 Jun 2012 15:24:41 BST +01:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "tracks" ("created_at", "name", "number", "release_id", "sd_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Fri, 01 Jun 2012 15:24:41 BST +01:00], ["name", "Blueberry Pie"], ["number", 2], ["release_id", 980190966], ["sd_id", "8669671"], ["updated_at", Fri, 01 Jun 2012 15:24:41 BST +01:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mRelease Load (0.1ms)[0m  [1mSELECT "releases".* FROM "releases" WHERE (sd_id = '685536') LIMIT 1[0m
+J003: Popularity of Akira | 
+[32mCommand[0m :: identify -format %wx%h '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0000685536_35020120601-80005-4zyd8s.jpg[0]'
+[32mCommand[0m :: convert '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0000685536_35020120601-80005-4zyd8s.jpg[0]' -resize "300x300>" '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0000685536_35020120601-80005-4zyd8s20120601-80005-1m5upnk'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0000685536_35020120601-80005-4zyd8s.jpg[0]'
+[32mCommand[0m :: convert '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0000685536_35020120601-80005-4zyd8s.jpg[0]' -resize "100x100>" '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0000685536_35020120601-80005-4zyd8s20120601-80005-1aj6cji'
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO "releases" ("amazon", "artist_id", "cat_no", "created_at", "date", "image_content_type", "image_file_name", "image_file_size", "image_updated_at", "itunes", "juno", "label_id", "label_name", "name", "rls_type", "scraped", "sd_id", "sdigital", "updated_at", "youtube") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["amazon", nil], ["artist_id", 1], ["cat_no", nil], ["created_at", Fri, 01 Jun 2012 15:24:41 BST +01:00], ["date", Mon, 25 Jan 2010 00:00:00 GMT +00:00], ["image_content_type", "image/jpeg"], ["image_file_name", "0000685536_350.jpg"], ["image_file_size", 16930], ["image_updated_at", Fri, 01 Jun 2012 15:24:41 BST +01:00], ["itunes", nil], ["juno", nil], ["label_id", nil], ["label_name", "Screwloose Records"], ["name", "Akira"], ["rls_type", nil], ["scraped", 1], ["sd_id", "685536"], ["sdigital", "http://www.7digital.com/artists/koan-sound/akira/?partner=3207"], ["updated_at", Fri, 01 Jun 2012 15:24:41 BST +01:00], ["youtube", nil]]
+[paperclip] Saving attachments.
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "tracks" ("created_at", "name", "number", "release_id", "sd_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Fri, 01 Jun 2012 15:24:41 BST +01:00], ["name", "Akira"], ["number", 1], ["release_id", 980190967], ["sd_id", "7607920"], ["updated_at", Fri, 01 Jun 2012 15:24:41 BST +01:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "tracks" ("created_at", "name", "number", "release_id", "sd_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Fri, 01 Jun 2012 15:24:41 BST +01:00], ["name", "Endorphin"], ["number", 2], ["release_id", 980190967], ["sd_id", "7607925"], ["updated_at", Fri, 01 Jun 2012 15:24:41 BST +01:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mRelease Load (0.3ms)[0m  [1mSELECT "releases".* FROM "releases" WHERE (sd_id = '329263') LIMIT 1[0m
+J003: Popularity of Clowny/Blessed | 
+[32mCommand[0m :: identify -format %wx%h '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0000329263_35020120601-80005-uij62k.jpg[0]'
+[32mCommand[0m :: convert '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0000329263_35020120601-80005-uij62k.jpg[0]' -resize "300x300>" '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0000329263_35020120601-80005-uij62k20120601-80005-175cire'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0000329263_35020120601-80005-uij62k.jpg[0]'
+[32mCommand[0m :: convert '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0000329263_35020120601-80005-uij62k.jpg[0]' -resize "100x100>" '/var/folders/ds/3bff3vz15n9f9llmwgzmxcb40000gn/T/0000329263_35020120601-80005-uij62k20120601-80005-1a7myyr'
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "releases" ("amazon", "artist_id", "cat_no", "created_at", "date", "image_content_type", "image_file_name", "image_file_size", "image_updated_at", "itunes", "juno", "label_id", "label_name", "name", "rls_type", "scraped", "sd_id", "sdigital", "updated_at", "youtube") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["amazon", nil], ["artist_id", 1], ["cat_no", nil], ["created_at", Fri, 01 Jun 2012 15:24:43 BST +01:00], ["date", Sat, 18 Oct 2008 00:00:00 BST +01:00], ["image_content_type", "image/jpeg"], ["image_file_name", "0000329263_350.jpg"], ["image_file_size", 172569], ["image_updated_at", Fri, 01 Jun 2012 15:24:43 BST +01:00], ["itunes", nil], ["juno", nil], ["label_id", nil], ["label_name", "Abducted Records"], ["name", "Clowny/Blessed"], ["rls_type", nil], ["scraped", 1], ["sd_id", "329263"], ["sdigital", "http://www.7digital.com/artists/koan-sound/clowny-blessed/?partner=3207"], ["updated_at", Fri, 01 Jun 2012 15:24:43 BST +01:00], ["youtube", nil]]
+[paperclip] Saving attachments.
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+J003: Release import for KOAN Sound finished after 7.710578
+  [1m[36m (0.9ms)[0m  [1mrollback transaction[0m
