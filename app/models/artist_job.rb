@@ -6,6 +6,10 @@ class ArtistJob
     music = graph.get_connections("me", "music?fields=name,general_manager,booking_agent,record_label,genre,hometown,website,bio,picture,likes")
     user = User.find(user_id)
     new_artists, old_artists = [], 0
+    # Reduce import for development
+    if Rails.env.development?
+      music = music[0..20]
+    end
     music.each do |artist|
       a = Artist.where("fbid = ?",artist["id"]).first
       if a.nil?
