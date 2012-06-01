@@ -1,4 +1,4 @@
-class ReleaseJob < ActiveRecord::Base
+class ReleaseJob
   @queue = :releasejob
   @@sevendigital_apikey = "7dufgm34849u"
   def self.perform(artist_id)
