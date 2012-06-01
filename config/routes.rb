@@ -2,7 +2,7 @@ SNGTRKR::Application.routes.draw do
 
   if(Rails.env == "development")
     root :to => "Pages#home"
-    match '/splash' => "Pages#splash"
+    match '/beta' => "beta_users#new"
   else
     root :to => "beta_users#new"
   end
@@ -13,7 +13,6 @@ SNGTRKR::Application.routes.draw do
   match '/privacy' => "Pages#privacy"
   match '/help' => "Pages#help"
   match '/recommended' => "Pages#recommended"
-  match '/betaold' => "Pages#beta"
   match '/loading' => "Pages#loading"
   match '/welcome_email' => "UserMailer#welcome_email"
   
