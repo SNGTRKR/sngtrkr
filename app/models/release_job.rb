@@ -2,6 +2,7 @@ class ReleaseJob
   @queue = :releasejob
   @@sevendigital_apikey = "7dufgm34849u"
   def self.perform(artist_id)
+  require 'open-uri'
     if(Rails.env.production?)
       	proxy = Net::HTTP::Proxy('127.0.0.1', 3128)      
     else
@@ -9,12 +10,12 @@ class ReleaseJob
   	end
     start_time = Time.now
     artist = Artist.find(artist_id)
-    begin
-      releases = Hash.from_xml( proxy.get_response( URI.parse("http://api.7digital.com/1.2/artist/releases?artistId=#{artist.sdid}&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB&imageSize=350")))["response"]["releases"]["release"]
-    rescue
-      Rails.logger.error("J003: 7digital scrape failed ~ #{artist.sdid}")
-    return false
-    end
+    #begin
+      releases = Hash.from_xml( open("http://api.7digital.com/1.2/artist/releases?artistId=#{artist.sdid}&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB&imageSize=350"))["response"]["releases"]["release"]
+    #rescue
+    #  Rails.logger.error("J003: 7digital scrape failed ~ #{artist.sdid}")
+    #return false
+    #end
     releases.each do |release|
       r = Release.where("sd_id = ?",release["id"]).first rescue next
       if r.nil?
@@ -33,17 +34,17 @@ class ReleaseJob
       r.sdigital = release["url"]
       r.scraped = 1
       Rails.logger.info("J003: Popularity of #{r.name} | #{release["popularity"]}")
-      io = proxy.get_response( URI.escape(release["image"]))
+      io = open(release["image"])
       if io
         def io.original_filename; base_uri.path.split('/').last; end
-        io.original_filename.blank? ? nil : io
-      r.image = io
+        io.original_filename.blank? ? nil : io      
+        r.image = io
       end
       r.save
 
       # Now get the track ID's for preview URLS
       begin
-        tracks = Hash.from_xml( proxy.get_response( URI.parse("http://api.7digital.com/1.2/release/tracks?releaseid=#{r.sd_id}&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB")))["response"]["tracks"]["track"]
+        tracks = Hash.from_xml(open("http://api.7digital.com/1.2/release/tracks?releaseid=#{r.sd_id}&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB"))["response"]["tracks"]["track"]
       rescue
         Rails.logger.error("J003: Track scrape failed for release #{r.name} by #{artist.name}")
       end
