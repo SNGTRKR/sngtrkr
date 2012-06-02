@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   #  rescue_from ActionController::UnknownAction, with: :render_404
   #  rescue_from ActiveRecord::RecordNotFound, with: :render_404
   #end
-  before_filter :authenticate_user!, :except => [:splash,:home]
+  before_filter :authenticate_user!, :except => [:splash,:home,:sitemap]
   before_filter :timer_start
   def timer_start
     @start_time = Time.now
