@@ -415,6 +415,9 @@ body:before {/* thanks to Maleika (Kohoutec)*/
       width:268px;
       height:388px;
       margin-bottom:55px;
+      .beta-txt {
+	      height:180px;
+      }
       a {
         color:$orange;
       }
@@ -424,7 +427,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     }
     #mc_embed_signup {
       position:relative;
-      top:11px;
+      top:27px;
       left:47px;
       #beta-submit {
         position:relative;

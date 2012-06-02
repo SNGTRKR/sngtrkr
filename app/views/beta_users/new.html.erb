@@ -10,6 +10,11 @@
       <% end %>
       </ul>
     </div>
+<script language="Javascript">
+<!--
+alert ("Alert")
+//-->
+</script>
   <% end %>
   <% if flash[:notice] %>
   <div class="success-explanation font-15"><p><%= flash[:notice] %></p></div>
@@ -38,13 +43,11 @@
 			</div>
 		</div>
 		<div class="content-beta-right right">
-			Inspired by the passion and appreciation that we have for music and artists alike, we built SNGTRKR - a webapp to enable other music lovers to easily track artists, 
-			so that they never miss another music release.<br/><br/>
+			<div id="beta-txt">Inspired by the passion and appreciation that we have for music and artists alike, we built SNGTRKR - a webapp to enable other music lovers to easily track artists, so that they never miss another music release.<br/><br/>
 			We wanted to make it simple for you to find out when your favourite artists are releasing new content, by removing the hassle of looking through 
 			social media sites, subscribing to mailing lists, or repeatedly checking artists’ websites.<br/><br/>
-			If you are an artist and/or record label and you would like more information please email us at <a href="mailto:press@sngtrkr.com">press@sngtrkr.com</a>.
-			All other enquires directed to <a href="mailto:info@sngtrkr.com">info@sngtrkr.com</a>.<br/><br/>
-			<h3><div class="font-13"><strong>To receive an exclusive beta release invite and get the latest updates, enter your email address below:</strong></div></h3>
+			If you are an artist and/or record label and you would like more information please email us at <a href="mailto:press@sngtrkr.com">press@sngtrkr.com</a>.<br/><br/>
+			<h3><div class="font-13"><strong>To receive an exclusive beta release invite and get the latest updates, enter your email address below:</strong></div></h3></div>
 			<div id="mc_embed_signup">
       <%= form_for(@beta_user) do |f| %>
       <div class="mc-field-group">
