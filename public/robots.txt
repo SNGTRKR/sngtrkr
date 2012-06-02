@@ -4,5 +4,4 @@
 # User-Agent: *
 # Disallow: /
 User-agent: *
-Disallow: /
-Allow: /splash
+Allow: /
