@@ -170,6 +170,7 @@ class UsersController < ApplicationController
       end
     end
     @artist = Artist.find(current_user.suggested[5].id) rescue nil
+    @tracked_artist = Artist.find(params[:id])
     respond_to do |format|
       format.html { redirect_to artist_path(params[:id])}
       format.json { render("artists/show.json") }
