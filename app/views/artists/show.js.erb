@@ -1,2 +1,5 @@
-<% fade_time = 300%>
+<% fade_time = 300 %>
+<% if !@artist.blank? %>
 $('.recommended-artists ul').append($("<%=j render :partial => 'shared/artist_suggestion', :object => @artist %>").hide().delay(<%= fade_time %>).fadeIn(<%= fade_time %>));
+<% end %>
+$('#tracked-artists ul').append($("<%=j render :partial => 'shared/artist_tracked', :object => @tracked_artist %>"));
