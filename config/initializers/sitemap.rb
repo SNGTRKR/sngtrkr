@@ -7,16 +7,16 @@ DynamicSitemaps::Sitemap.draw do
   
    new_page!
   
-  # Product.all.each do |product|
-  #   url product_url(product), :last_mod => product.updated_at, :change_freq => 'monthly', :priority => 0.8
-  # end
+   Artist.all.each do |artist|
+     url artist_url(artist), :last_mod => artist.updated_at, :change_freq => 'daily', :priority => 1
+   end
 
-  # new_page!
+   #new_page!
   
-  # autogenerate  :products, :categories,
-  #               :last_mod => :updated_at,
-  #               :change_freq => 'monthly',
-  #               :priority => 0.8
+   #autogenerate  :artists,
+   #              :last_mod => :updated_at,
+   #              :change_freq => 'monthly',
+   #              :priority => 0.8
                 
   # new_page!
   
