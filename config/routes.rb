@@ -1,5 +1,7 @@
 SNGTRKR::Application.routes.draw do
 
+  match 'sitemap.xml' => 'sitemaps#sitemap'
+
   if(Rails.env == "development")
     root :to => "Pages#home"
     match '/beta' => "beta_users#new"
@@ -15,7 +17,6 @@ SNGTRKR::Application.routes.draw do
   match '/recommended' => "Pages#recommended"
   match '/loading' => "Pages#loading"
   match '/welcome_email' => "UserMailer#welcome_email"
-  
 
   match 'mailer(/:action(/:id(.:format)))' => 'mailer#:action'
   namespace :admin do
@@ -74,12 +75,12 @@ SNGTRKR::Application.routes.draw do
   end
 
   #  Use this line for production
-  # unless Rails.application.config.consider_all_requests_local
-  #   match '*not_found', to: 'errors#error_404'
-  #  end
+   unless Rails.application.config.consider_all_requests_local
+     match '*not_found', to: 'errors#error_404'
+    end
 
   # Use this line to view error in development
-  match '*not_found', to: 'errors#error_404'
+  #match '*not_found', to: 'errors#error_404'
 
 # The priority is based upon order of creation:
 # first created -> highest priority.
