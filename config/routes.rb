@@ -17,8 +17,8 @@ SNGTRKR::Application.routes.draw do
   match '/welcome_email' => "UserMailer#welcome_email"
   
 
+  match 'mailer(/:action(/:id(.:format)))' => 'mailer#:action'
   namespace :admin do
-    match 'mailer(/:action(/:id(.:format)))' => 'mailer#:action'
     mount RailsAdmin::Engine => '/rails', :as => 'rails_admin' # Feel free to change '/admin' to any namespace you need.
   end
 
