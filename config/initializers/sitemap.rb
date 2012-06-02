@@ -4,14 +4,30 @@ DynamicSitemaps::Sitemap.draw do
    per_page 10
 
    url root_url, :last_mod => DateTime.now, :change_freq => 'daily', :priority => 1
+   
+   url about_url, :last_mod => DateTime.now, :change_freq => 'montly', :priority => 1
+   
+   url help_url, :last_mod => DateTime.now, :change_freq => 'weekly', :priority => 1
+   
+   url privacy_url, :last_mod => DateTime.now, :change_freq => 'monthly', :priority => 1
+   
+   url team_url, :last_mod => DateTime.now, :change_freq => 'monthly', :priority => 1
+   
+   url terms_url, :last_mod => DateTime.now, :change_freq => 'monthly', :priority => 1
+   
+   
   
    new_page!
   
    Artist.all.each do |artist|
-     url artist_url(artist), :last_mod => artist.updated_at, :change_freq => 'daily', :priority => 1
+     url artist_url(artist), :last_mod => artist.updated_at, :change_freq => 'weekly', :priority => 1
    end
-
-   #new_page!
+   
+   Release.all.each do |release|
+     url release_url(release), :last_mod => artist.updated_at, :change_freq => 'weekly', :priority => 1
+   end
+ 
+   new_page!
   
    #autogenerate  :artists,
    #              :last_mod => :updated_at,
