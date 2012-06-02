@@ -21,6 +21,8 @@
 
 <% end %></script>
 <%= render 'shared/fb_async' %>
+<% content_for :title do %>Track your favourite artists and never miss another release...<% end %>
+<% content_for :description do %>Sign up free now to receive an exclusive beta release invite and get the latest updates. Quickly find and track artists you already like, with Facebook integration.<% end %>
 <h2>Sign in</h2>
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
