@@ -4,6 +4,7 @@ content_for :og_image, File.join(root_url , @artist.image.url(:large))
 content_for :og_description, @artist.name + " is telling users about their new releases on SNGTRKR. Why don't you follow them too?"
 content_for :og_id, @artist.id.to_s
 %>
+<% content_for :description do %><%= truncate((strip_tags @artist.bio || "" ), :length => 150) %><% end %>
 <style type="text/css">
 #artist-image {
 background-image:url(<%= @artist.image.url :large %>);

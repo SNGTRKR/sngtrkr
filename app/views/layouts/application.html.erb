@@ -9,6 +9,7 @@
 		<meta property="og:image"   content="<%= yield :og_image %>" />
 		<meta property="sngtrkr:id" content="<%= yield :og_id %>" />
 		<h1><title>SNGTRKR - <%= yield :title %></title></h1>
+		<meta name="description" content="<%= yield :description %>">
 		<link rel="icon" type="image/ico" href="/assets/images/icon.png" >
 		<%= render :partial => 'layouts/all_js_css' %>
 	</head>

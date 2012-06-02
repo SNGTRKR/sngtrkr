@@ -3,6 +3,7 @@
 <html>
 	<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# sngtrkr: http://ogp.me/ns/fb/sngtrkr#">
 		<h1><title>SNGTRKR - <%= yield :title %></title></h1>
+		<meta name="description" content="<%= yield :description %>">
 		<link rel="icon" type="image/ico" href="/assets/images/icon.png" >
 		<%= render :partial => 'layouts/all_js_css' %>
 	</head>
@@ -74,6 +75,7 @@
 <html>
 	<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# sngtrkr: http://ogp.me/ns/fb/sngtrkr#">
 		<h1><title>SNGTRKR - <%= yield :title %></title></h1>
+		<meta name="description" content="<%= yield :description %>">
 		<link rel="icon" type="image/ico" href="/assets/images/icon.png" >
 		<%= stylesheet_link_tag    "application", :media => "all" %>
 		<%= javascript_include_tag "application" %>

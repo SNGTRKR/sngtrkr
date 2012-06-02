@@ -1,4 +1,5 @@
 <% content_for :title do %><%= @user.first_name %>'s friends on SNGTRKR<% end %>
+<% content_for :description do %><%= @user.first_name %>'s Facebook friends who are using the SNGTRKR platform to track artist releases.<% end %>
 <div class="content content-pad-160-bottom">	
 	<% if !@app_friends.empty? %>
 	<h2 class="signika-txt top-header font-35">Friends (<%= @app_friends.count %>)</h2>
