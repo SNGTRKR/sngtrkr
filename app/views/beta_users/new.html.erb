@@ -2,22 +2,20 @@
 <% content_for :description do %>Sign up free now to receive an exclusive beta release invite and get the latest updates. Quickly find and track artists you already like, with Facebook integration.<% end %>
 <div class="content content-pad-187">
   <% if @beta_user.errors.any? %>
-    <div class="error-explanation font-15">
-      Sorry, we encountered an error processing this email:
-      <ul>
       <% @beta_user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <script language="Javascript">
+	    <!--
+	    alert ("Sorry, we encountered an error processing this email: <%= msg %>")
+	    //-->
+	    </script>
       <% end %>
-      </ul>
-    </div>
-<script language="Javascript">
-<!--
-alert ("Alert")
-//-->
-</script>
   <% end %>
   <% if flash[:notice] %>
-  <div class="success-explanation font-15"><p><%= flash[:notice] %></p></div>
+  <script language="Javascript">
+	    <!--
+	    alert ("<%= flash[:notice] %>")
+	    //-->
+	    </script>
   <% end %>
 	<a href="/"><img id="beta-header" src="/assets/images/beta-header.png"/></a>
 	<div class="content-beta-left left">
