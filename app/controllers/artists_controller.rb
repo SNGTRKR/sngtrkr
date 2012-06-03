@@ -2,8 +2,12 @@ class ArtistsController < ApplicationController
   # GET /artists
   # GET /artists.json
 
-#  before_filter :authenticate_user!, :except => [:show,:index,:no_results]
-  before_filter :authenticate_user!, :except => [:show]
+  if Rails.env.production?
+    before_filter :authenticate_user!, :except => [:show]
+  else
+    before_filter :authenticate_user!, :except => [:show,:index,:no_results]
+  end
+  
   def index
     @artists = Artist.search(params[:search])
     if params[:search].blank?
