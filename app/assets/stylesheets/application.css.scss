@@ -24,16 +24,16 @@ html, body{
 }
 @font-face {
   font-family: "Instruction";
-  src: url("/assets/font/instruction.otf");
+  src: url("/font/instruction.otf");
   src: local("?"),
-    url("/assets/font/instruction.otf") format("opentype");
+    url("/font/instruction.otf") format("opentype");
 }
 body{
     font-family: 'helvetica neue', helvetica, sans-serif;
     font-size:75%;
     font-weight:400;
     line-height:1.4em;
-    background: url("/assets/images/b-bk.png") no-repeat center center fixed;
+    background: url("/images/b-bk.png") no-repeat center center fixed;
     background-color:$blue;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -149,7 +149,7 @@ a.dp-choose-date {
   display: block;
   text-indent: -2000px;
   overflow: hidden;
-  background: url(/assets/datepicker/calendar.png) no-repeat; 
+  background: url(/datepicker/calendar.png) no-repeat; 
 }
 a.dp-choose-date.dp-disabled {
   background-position: 0 -20px;
@@ -176,7 +176,7 @@ input.dp-applied {
     }
 }
 .o-button{
-    background-image: url(/assets/images/header-bk-left-2.png);
+    background-image: url(/images/header-bk-left-2.png);
     display:block;
     height:37px;
     background-repeat:no-repeat;   
@@ -189,7 +189,7 @@ input.dp-applied {
     }
 }
 .o-button span {
-    background-image: url(/assets/images/header-bk-right-2.png);
+    background-image: url(/images/header-bk-right-2.png);
     display:block;
     float:left;
     height:37px;
@@ -289,7 +289,7 @@ input.dp-applied {
     }
 }
 #footer{
-    background-image: url(/assets/images/footer.png);
+    background-image: url(/images/footer.png);
     *{
         color:white;
     }
@@ -543,7 +543,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
             width:120px;
             height:35px;
             float:left;
-            background-image: url(/assets/images/find-out.png);
+            background-image: url(/images/find-out.png);
             background-repeat:no-repeat;
             .find-txt
             {
@@ -651,7 +651,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
       position:relative;
       height:80px;
       width:159px;
-      background-image: url(/assets/images/trkrs-button.png);
+      background-image: url(/images/trkrs-button.png);
       margin-bottom:4px;
       .trkrs-button-txt {
         position:relative;
@@ -1214,7 +1214,7 @@ margin:-1px 0 25px 0;
   margin-right:14px;
   text-align:center;
   line-height:38px;
-  background-image: url(/assets/images/form-button.png);
+  background-image: url(/images/form-button.png);
   background-repeat:no-repeat;
   height:38px;
   width:137px;
@@ -1358,7 +1358,7 @@ position:relative;
   margin-right:14px;
   text-align:center;
   line-height:38px;
-  background-image: url(/assets/images/form-button.png);
+  background-image: url(/images/form-button.png);
   background-repeat:no-repeat;
   height:38px;
   width:137px;
@@ -1391,7 +1391,7 @@ position:relative;
       left:-66px;
 }
 span.checked{
-    background:transparent url(/assets/images/checkedn.png) no-repeat top left;
+    background:transparent url(/images/checkedn.png) no-repeat top left;
     position:absolute;
     top:5px;
     left:5px;
@@ -1400,7 +1400,7 @@ span.checked{
     z-index:1;
 }
 span.error{
-    background:transparent url(/assets/images/errorn.png) no-repeat top left;
+    background:transparent url(/images/errorn.png) no-repeat top left;
     position:absolute;
     top:5px;
     left:5px;
@@ -1442,7 +1442,7 @@ span.error{
     top:19px;
     margin-bottom:25px;
 #progress {
-  background-image: url(/assets/images/progress.png);
+  background-image: url(/images/progress.png);
   background-repeat:no-repeat;
   width:66px;
   height:20px;
@@ -1885,7 +1885,7 @@ span.error{
 .delete-confirm {
     width:431px;
     height:286px;
-    background: url(/assets/images/box-bk-431.png) no-repeat;
+    background: url(/images/box-bk-431.png) no-repeat;
     @include border-radius(8px);
     color:#000;
     #goodbye {
@@ -1970,7 +1970,7 @@ span.error{
 #timeline {
   	position:relative;
     height:558px;
-    background-image: url(/assets/images/grid.png);
+    background-image: url(/images/grid.png);
     background-repeat: repeat-x;
     margin-bottom: 27px;
   #shadow-top {
@@ -2045,7 +2045,7 @@ span.error{
 	display:none;
 	width:543px;
     height:315px;
-    background: url(/assets/images/box-bk-550.png) no-repeat;
+    background: url(/images/box-bk-550.png) no-repeat;
     @include border-radius(8px);
     color:#000;
     .share-title {
@@ -2080,7 +2080,7 @@ span.error{
 	display:none;
 	width:543px;
     height:315px;
-    background: url(/assets/images/box-bk-550.png) no-repeat;
+    background: url(/images/box-bk-550.png) no-repeat;
     @include border-radius(8px);
     color:#000;
     .buy-title {
