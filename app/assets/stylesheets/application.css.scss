@@ -29,6 +29,12 @@ html, body{
   src: local("?"),
     url("/font/instruction.otf") format("opentype");
 }
+@font-face {
+  font-family: "Lucida Grande";
+  src: url("/font/lucida_grande.otf");
+  src: local("?"),
+    url("/font/lucida_grande.otf") format("opentype");
+}
 body{
     font-family: 'helvetica neue', helvetica, sans-serif;
     font-size:75%;
@@ -87,6 +93,9 @@ body{
 .signika-font {
   font-family: 'Signika Negative', sans-serif;
 }
+.lucida-font {
+  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+}
 .line-height-1-25 {
   line-height:1.25em;
 }
@@ -118,11 +127,19 @@ table th{
 .red-txt {
   color:red;
 }
-.fb-login-nudge {
-    margin:-26px -5px 0 0;
+.fb-login {
+    margin:-17px 0 0 5px;
 }
-.fb-home-login-nudge {
-    margin:29px -5px 0 0;
+#fb-logo {
+    position:relative;
+	    margin:4px 5px 0 0;
+    }
+    #fb-txt {
+	    position:relative;
+	    top:-5px;
+    }
+.fb-home-login {
+    margin-top:38px;
 }
 .form-text {   
        width:158px;
@@ -174,19 +191,6 @@ input.dp-applied {
         outline: none;
     }
 }
-/* .o-button{
-    background-image: url(/images/header-bk-left-2.png);
-    display:block;
-    height:37px;
-    background-repeat:no-repeat;   
-    position:relative;
-    white-space:nowrap;
-    z-index:10;
-    color:#fff;
-    *{
-        color:white;
-    }
-} */
 .o-button {
 			color:white;
 			@include border-radius(7px);
@@ -214,21 +218,20 @@ input.dp-applied {
 		    0 1px 3px #777,
 		    0 0px 1px #ccc;
 }
-/* .o-button span {
-    background-image: url(/images/header-bk-right-2.png);
-    display:block;
-    float:left;
-    height:37px;
-    padding:0 5px 5px 0;
-    position:absolute;
-    right:-16px;
-    background-repeat:no-repeat;
-    top:0px;
-    width:11px;
-} */
 .norm-o-pad {
     line-height: 28px;
     height:25px;
+    padding:0 15px 0 15px;
+     a { 
+	    color:#fff;
+    }
+    a:hover {
+	    color:#fff;
+    }
+}
+.fb-o-pad {
+    line-height: 30px;
+    height:30px;
     padding:0 15px 0 15px;
      a { 
 	    color:#fff;
