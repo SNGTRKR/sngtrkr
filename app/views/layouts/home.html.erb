@@ -95,7 +95,7 @@
 					#wrap {display:table;height:100%}
 					</style>
 					<![endif]-->
-					<a href="<%= user_omniauth_authorize_path(:facebook) %>"><%= image_tag "/images/log-facebook.png", :alt => "Login", :class => "fb-home-login-nudge right" %></a>
+					<div class="right o-button fb-o-pad fb-home-login lucida-font font-logout"><%= image_tag "/images/facebook.png", :alt => "Facebook", :id => "fb-logo" %><%= link_to 						"Login", user_omniauth_authorize_path(:facebook), :id => "fb-txt" %></div>
 					<div class="clear"></div>
 					<div class="big-logo-home"><%= image_tag "/images/logo-120.png", :alt => "SNGTRKR" %>
 					</div>
