@@ -5,11 +5,12 @@
 </div>
 <div id="timeline">
 <ul class="release-list">
-	<li class="left each-release">
+  <% @timeline[0..10].each do |release| %>
+	<li class="left each-release" style="background-image:url(<%= release.image :medium %>); background-position:center;">
 	<div class="release-info">
-	<strong><span class="font-18">Just a Thought</span></strong><br/>
-	Fred V &amp; Grafix<br/>
-	<span class="font-11">Viper Recordings</span>
+	<strong><span class="font-18"><%= release.name %></span></strong><br/>
+	<%= link_to release.artist.name, release.artist %><br/>
+	<span class="font-11"><%= release.label_name %></span>
 	</div>
 	<div class="release-menu font-13">
 		<ul class="menu">
@@ -20,6 +21,7 @@
 	</div>
 	<%= image_tag "/images/release-gradient.png", :alt => "Gradient", :class => "r-grad" %>
 	</li>
+	<% end %>
 </ul>
 <div class="clear"></div>
 <div class="share-release">
