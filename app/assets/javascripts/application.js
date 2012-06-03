@@ -13,6 +13,7 @@
 //= require jquery_ujs
 //= require fancy-box/jquery.fancybox
 //= require instant-search/instant-search
+//= require jquery-rotate-compressed.2.2
 $(document).ready(function() {
 	$("#delete-account a").fancybox({
 		width : 431,
