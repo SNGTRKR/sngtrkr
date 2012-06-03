@@ -239,9 +239,7 @@ input.dp-applied {
         width:158px;
         background:rgba(255,255,255,0.75);
         @include border-radius(8px);
-        //@include box-shadow(0px 0px 7px rgba(0,0,0,0.75));
-        @include box-shadow(inset 0px 3px 7px rgba(0,0,0,0.35));
-        border:1px solid #717171;
+        @include box-shadow(0px 0px 7px rgba(0,0,0,0.50));
         input{
             background:transparent;
             padding:0.6em;
@@ -385,7 +383,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
         width:302px;
       height:249px;
                @include border-radius(8px);
-               @include box-shadow(0px 0px 8px rgba(0,0,0,0.75));
+               @include box-shadow(0px 0px 8px rgba(0,0,0,0.40));
 /*        -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
         -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
         box-shadow: inset 0px 10px 18px rgba(0,0,0,0.25); */
