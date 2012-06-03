@@ -8,6 +8,7 @@
 @import "compass/css3/border-radius";
 @import "compass/css3/opacity";
 @import "compass/css3/box-shadow";
+@import "compass/css3/text-shadow";
 @import "compass/utilities/links/link-colors";
 $blue:#45ADD2;
 $orange:#F15A24;
@@ -132,9 +133,7 @@ table th{
        background: #fff;
        background: -webkit-gradient(linear, left top, left 25, from(#fff), color-stop(6%, #eee), to(#fff));
        background: -moz-linear-gradient(top, #fff, #eee 2px, #fff 25px);
-       box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
-       -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
-       -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+       @include box-shadow(0px 0px 8px rgba(0,0,0,0.1));
             }
 .form-text:hover, .itext:focus {
        border-color: #333;
@@ -239,7 +238,7 @@ input.dp-applied {
         width:158px;
         background:rgba(255,255,255,0.75);
         @include border-radius(8px);
-        @include box-shadow(0px 0px 7px rgba(0,0,0,0.50));
+        @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
         input{
             background:transparent;
             padding:0.6em;
@@ -256,9 +255,7 @@ input.dp-applied {
         width:158px;
         background:rgba(255,255,255,0.75);
         @include border-radius(8px);
-        -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
-        -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
-        box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
+        @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
         input{
             background:transparent;
             padding:0.6em;
@@ -341,9 +338,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     padding:0px 73px 0px 73px;
     .signika-txt { /* white text - signikia */
         color:#fff;
-        -moz-text-shadow: 0px 2.83px 8px rgba(0,0,0,0.28);
-        -webkit-text-shadow: 0px 2.83px 8px rgba(0,0,0,0.28);
-        text-shadow: 0px 2.83px 8px rgba(0,0,0,0.28);
+        @include text-shadow(0px 2.83px 8px rgba(0,0,0,0.28));
         font-family: 'Signika Negative', sans-serif;
         font-weight:400;
         line-height:1.3em;
@@ -383,10 +378,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
         width:302px;
       height:249px;
                @include border-radius(8px);
-               @include box-shadow(0px 0px 8px rgba(0,0,0,0.40));
-/*        -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-        -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-        box-shadow: inset 0px 10px 18px rgba(0,0,0,0.25); */
+               @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
          background:rgba(255,255,255,0.75);
          position:relative;
          ul {
@@ -491,9 +483,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
         width:555px;
         background:rgba(255,255,255,0.75);
         @include border-radius(8px);
-        -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-        -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-        box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+        @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
     }
     .search-35
     {
@@ -512,9 +502,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
             height:175px;
             background:rgba(255,255,255,0.75);
             @include border-radius(8px);
-            -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-            -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-            box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+            @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
             color:#00;
             font-size:1.208em;
             text-align:center;
@@ -533,43 +521,13 @@ body:before {/* thanks to Maleika (Kohoutec)*/
             margin: 0 35px 0 0;
         }
     }
-/*    .find-out-box {
-        position:relative;
-        width:705px;
-        top:127px;
-        left:68px;
-        height:189px;
-        .find-box {
-            width:120px;
-            height:35px;
-            float:left;
-            background-image: url(/assets/images/find-out.png);
-            background-repeat:no-repeat;
-            .find-txt
-            {
-                color:#fff;
-                padding:11px 0 0 14px;
-            }
-        }
-        .find-pad {
-            padding:0 169px 0 0;
-        }
-        #notify {
-            position:absolute;
-            bottom:27px;
-            right:12px;
-        }
-} */
-
   #content-artist {
     position:relative;
     width:666px;
     height:300px;
     background:rgba(255,255,255,0.75);
     @include border-radius(12px);
-    -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-    -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+    @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
     margin:5px 0 -115px 0;
     #artist-image {
 	    position:absolute;
@@ -631,7 +589,29 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   .profile-menu {
     float:left;
     width:147px;
-    margin-right:9px;
+    margin:7px 9px 0 0;
+    ul {
+	    li {
+		    width:147px;
+		    height:25px;
+		    background:black;
+		    color:white;
+		    margin:0 0 15px 0;
+		    @include border-radius(7px);
+		    text-align:center;
+		    line-height: 27px;
+		    /*GRADIENT*/
+    background: #F15A24; /* Old browsers */
+    background: -moz-linear-gradient(top, #F15A24 0%, #F37244 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#F37244), color-stop(100%,#F37041)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #F15A24 0%,#F37244 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #F15A24 0%,#F37244 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #F15A24 0%,#F37244 100%); /* IE10+ */
+    background: linear-gradient(top, #F15A24 0%,#F37244 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#F15A24', endColorstr='#F37244',GradientType=0 ); /* IE6-9 */
+    @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
+	    }
+    }
     .menu-width {
       display:block;
       width:121px;
@@ -687,7 +667,6 @@ body:before {/* thanks to Maleika (Kohoutec)*/
         width:155px;
         background:$orange; 
         @include border-radius(8px);
-        // @include box-shadow(0px 0px 7px rgba(0,0,0,0.75));
         @include box-shadow(inset 0px 3px 7px rgba(0,0,0,0.45));
         input{
             background:transparent;
@@ -719,10 +698,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     padding:12px 0 17px 0;
     background:rgba(255,255,255,0.75);
     @include border-radius(8px);
-    @include box-shadow(0px 2px 8px rgba(0,0,0,0.35));
-/*    -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
-    -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 7px rgba(0,0,0,0.75);*/
+    @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
     margin:0 0 15px 15px;
       .each-artist-outer {
     position:relative;
@@ -773,9 +749,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
       height:178px;
       margin:0 0 42px 30px;
       @include border-radius(8px);
-      -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-      -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-       box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+      @include box-shadow(0px 0px 8px rgba(0,0,0,0.55));
         .each-recommend {
           position:relative;
           height:178px;
@@ -836,9 +810,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     position:relative;
     background:rgba(255,255,255,0.75);
     @include border-radius(8px);
-    -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-    -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+    @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
     width:341px;
     height:363px;
     top:29px;
@@ -1015,9 +987,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
      width:263px;
      height:75px; 
          @include border-radius(8px);
-    -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-    -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+    @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
     position:relative;
     margin:0 0 20px 0;
     background:rgba(255,255,255,0.75);
@@ -1062,11 +1032,9 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 .manage-points { 
     width:302px;
   height:319px;
-           @include border-radius(8px);
-    -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-    -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-     background:rgba(255,255,255,0.75);
+    @include border-radius(8px);
+    @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
+    background:rgba(255,255,255,0.75);
      position:relative;
      ul {
        list-style-type:none;
@@ -1109,9 +1077,7 @@ margin:-1px 0 25px 0;
   width:545px;
   background:rgba(255,255,255,0.75);
     @include border-radius(8px);
-    -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-    -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+    @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
     height:421px;
     padding:44px 30px 44px 30px;
     position:relative;
@@ -1263,9 +1229,7 @@ position:relative;
   width:545px;
   background:rgba(255,255,255,0.75);
     @include border-radius(8px);
-    -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-    -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+    @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
     height:144px;
     padding:44px 30px 44px 30px;
     position:relative;
@@ -1436,9 +1400,7 @@ span.error{
   height:20px;
   background:rgba(255,255,255,0.75);
   @include border-radius(12px);
-  -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
-    -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
+  @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
     top:19px;
     margin-bottom:25px;
 #progress {
@@ -1503,9 +1465,7 @@ span.error{
   margin:0 0 67px 30px;
   background:rgba(255,255,255,0.75);
   @include border-radius(8px);
-  -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-  -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-  box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+  @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
   width:171px;
   height:93px;
   padding:15px 15px 15px 15px;
@@ -1623,9 +1583,7 @@ span.error{
   margin:0 0 17px 0;
   background:rgba(255,255,255,0.75);
   @include border-radius(8px);
-  -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-     -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-     box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+  @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
     .artist-search-image {
       position:absolute;
       @include border-top-left-radius(8px);
@@ -1716,9 +1674,7 @@ span.error{
       margin:0 0 20px 20px;
       background:rgba(255,255,255,0.75);
       @include border-radius(8px);
-      -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
-      -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
-      box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
+      @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
       
     }
     .friends-image {
@@ -1755,9 +1711,7 @@ span.error{
         width:208px;
         background:$orange; 
         @include border-radius(8px);
-        -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
-        -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
-        box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
+        @include box-shadow(inset 0px 3px 7px rgba(0,0,0,0.45));
         input{
             background:transparent;
             padding:0.6em;
@@ -1780,9 +1734,7 @@ span.error{
    width:434px;
          background:rgba(255,255,255,0.75);
       @include border-radius(8px);
-      -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-      -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-      box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+      @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
       #friend-image {
         position:absolute;
         top:0px;
@@ -1811,9 +1763,7 @@ span.error{
         width:201px;
         background:$orange; 
         @include border-radius(8px);
-        -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
-        -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
-        box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
+        @include box-shadow(inset 0px 3px 7px rgba(0,0,0,0.45));
                 input{
             background:transparent;
             padding:0.6em;
@@ -1891,9 +1841,7 @@ span.error{
     #goodbye {
         font-size:2.8em;
         color:#fff;
-        -moz-text-shadow: 0px 2.83px 8px rgba(0,0,0,0.28);
-        -webkit-text-shadow: 0px 2.83px 8px rgba(0,0,0,0.28);
-        text-shadow: 0px 2.83px 8px rgba(0,0,0,0.28);
+        @include text-shadow(0px 2.83px 8px rgba(0,0,0,0.28));
         font-family: 'Signika Negative', sans-serif;
         font-weight:400;
         line-height:1.3em;
@@ -1995,9 +1943,7 @@ span.error{
       @include border-top-right-radius(8px);
       @include border-bottom-left-radius(10px);
       @include border-bottom-right-radius(10px);
-      -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-      -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-      box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+      @include box-shadow(0px 0px 8px rgba(0,0,0,0.55));
       height:210px;
       width:210px;
       margin:0 20px 20px 0;
@@ -2051,9 +1997,7 @@ span.error{
     .share-title {
         font-size:2.8em;
         color:#fff;
-        -moz-text-shadow: 0px 2.83px 8px rgba(0,0,0,0.28);
-        -webkit-text-shadow: 0px 2.83px 8px rgba(0,0,0,0.28);
-        text-shadow: 0px 2.83px 8px rgba(0,0,0,0.28);
+        @include text-shadow(0px 2.83px 8px rgba(0,0,0,0.28));
         font-family: 'Signika Negative', sans-serif;
         font-weight:400;
         line-height:1.3em;
@@ -2086,9 +2030,7 @@ span.error{
     .buy-title {
         font-size:2.8em;
         color:#fff;
-        -moz-text-shadow: 0px 2.83px 8px rgba(0,0,0,0.28);
-        -webkit-text-shadow: 0px 2.83px 8px rgba(0,0,0,0.28);
-        text-shadow: 0px 2.83px 8px rgba(0,0,0,0.28);
+        @include text-shadow(0px 2.83px 8px rgba(0,0,0,0.28));
         font-family: 'Signika Negative', sans-serif;
         font-weight:400;
         line-height:1.3em;
