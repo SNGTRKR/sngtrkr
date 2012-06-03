@@ -248,7 +248,6 @@ DEPENDENCIES
   devise
   dynamic_sitemaps
   itunes-search
-  jquery-rails
   jquery_datepicker
   json
   kaminari
