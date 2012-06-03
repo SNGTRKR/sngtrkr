@@ -6,7 +6,7 @@
 	<h2 class="signika-txt home-white-header font-35">Track your favourite artists and never miss another release...</h2>
 	<div id="big-search">
 		<%= form_tag artists_path , :method => 'get' do %>
-		<%= text_field_tag(:search, params[:search]) %> <img class="search-35 right" src="/assets/images/search-35.png"></img>
+		<%= text_field_tag(:search, params[:search]) %> <%= image_tag "/images/search-35.png", :alt => "Search", :class => "search-35 right" %>
 		<% end %>
 	</div>
 	<div class="clear"></div>
@@ -14,17 +14,17 @@
 		<div class="each-box box-pad left">
 			<div class="how-to-txt">
 				Login with facebook to find artists you like.
-			</div><img class="how-image-nudge" src="/assets/images/f-people.png"/>
+			</div><%= image_tag "/images/f-people.png", :alt => "Login", :class => "how-image-nudge" %>
 		</div>
 		<div class="each-box box-pad left">
 			<div class="how-to-txt">
 				Listen to & buy tracks, with an easy to use timeline.
-			</div><img class="how-image-nudge" src="/assets/images/gears.png"/>
+			</div><%= image_tag "/images/gears.png", :alt => "Listen", :class => "how-image-nudge" %>
 		</div>
 		<div class="each-box left">
 			<div class="how-to-txt">
 				Free notifications when artists release new tracks.
-			</div><img class="how-image-nudge" src="/assets/images/calendar.png"/>
+			</div><%= image_tag "/images/calendar.png", :alt => "Notifications", :class => "how-image-nudge" %>
 		</div>
 	</div>
 	<div class="clear"></div>

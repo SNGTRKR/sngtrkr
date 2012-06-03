@@ -5,8 +5,8 @@
 	<h2 class="signika-txt top-header font-35">Friends (<%= @app_friends.count %>)</h2>
 		<div id="friends-list">
 		<div class="friends-search">
-			<input type="text" id="filter"/>
-			<img class="white-search-25 right" src="/assets/images/white-search.png"/>
+			<input type="text" id="filter"/>		
+			<%= image_tag "/images/white-search.png", :alt => "Search", :class => "white-search-25 right" %>
 		</div>
 		<ul>
 			<% @app_friends.each do |friend| %>
@@ -26,9 +26,9 @@
 	<div class="font-15 center-txt"><strong>None of your friends are using SNGTRKR.<br/>Get them involved now by sharing:</strong></div>
 	<div class="share-bank">
 		<ul>
-			<a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com%2F&t=SNGTRKR','Share SNGTRKR on Facebook','scrollbars=no,width=620,height=340'); return false;"><li class="left"><img src="/assets/images/share-fb.png"/></li></a>
-			<a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.sngtrkr.com&text=I%27m+currently+using+SNGTRKR+to+track+artist+releases.+Come+get+involved+at+&url=http%3A%2F%2Fwww.sngtrkr.com&via=SNGTRKR','Share SNGTRKR on Facebook','scrollbars=no,width=620,height=340'); return false;"><li class="left"><img src="/assets/images/share-twit.png"/></li></a>
-			<a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com','Share SNGTRKR on Facebook','scrollbars=no,width=620,height=340'); return false;"><li class="left"><img src="/assets/images/share-goo.png"/></li></a>
+			<a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com%2F&t=SNGTRKR','Share SNGTRKR on Facebook','scrollbars=no,width=620,height=340'); return false;"><li class="left"><%= image_tag "/images/share-fb.png", :alt => "Facebook" %></li></a>
+			<a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.sngtrkr.com&text=I%27m+currently+using+SNGTRKR+to+track+artist+releases.+Come+get+involved+at+&url=http%3A%2F%2Fwww.sngtrkr.com&via=SNGTRKR','Share SNGTRKR on Facebook','scrollbars=no,width=620,height=340'); return false;"><li class="left"><%= image_tag "/images/share-twit.png", :alt => "Twitter" %></li></a>
+			<a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com','Share SNGTRKR on Facebook','scrollbars=no,width=620,height=340'); return false;"><li class="left"><%= image_tag "/images/share-goo.png", :alt => "Google" %></li></a>
 			</ul>
 	</div>
 	<div class="clear"></div>

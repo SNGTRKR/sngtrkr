@@ -18,16 +18,16 @@
 		<a href=".share-release"><li class="left menu-item">Share</li></a>
 		</ul>
 	</div>
-	<img class="r-grad" src="/assets/images/release-gradient.png"/>
+	<%= image_tag "/images/release-gradient.png", :alt => "Gradient", :class => "r-grad" %>
 	</li>
 </ul>
 <div class="clear"></div>
 <div class="share-release">
 	<div class="share-title">Where would you like to<br/> share this track?</div>
 	<ul>
-	<a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com%2F&t=SNGTRKR','Share SNGTRKR on Facebook','scrollbars=no,width=620,height=340'); return false;"><li class="left"><img src="/assets/images/share-fb.png"/></li></a>
-	<a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.sngtrkr.com&text=I%27m+currently+using+SNGTRKR+to+track+artist+releases.+Come+get+involved+at+&url=http%3A%2F%2Fwww.sngtrkr.com&via=SNGTRKR','Share SNGTRKR on Facebook','scrollbars=no,width=620,height=340'); return false;"><li class="left"><img src="/assets/images/share-twit.png"/></li></a>
-	<a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com','Share SNGTRKR on Facebook','scrollbars=no,width=620,height=340'); return false;"><li class="left"><img src="/assets/images/share-goo.png"/></li></a>
+	<a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com%2F&t=SNGTRKR','Share SNGTRKR on Facebook','scrollbars=no,width=620,height=340'); return false;"><li class="left"><%= image_tag "/images/share-fb.png", :alt => "Facebook" %></li></a>
+	<a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.sngtrkr.com&text=I%27m+currently+using+SNGTRKR+to+track+artist+releases.+Come+get+involved+at+&url=http%3A%2F%2Fwww.sngtrkr.com&via=SNGTRKR','Share SNGTRKR on Facebook','scrollbars=no,width=620,height=340'); return false;"><li class="left"><%= image_tag "/images/share-twit.png", :alt => "Twitter" %></li></a>
+	<a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com','Share SNGTRKR on Facebook','scrollbars=no,width=620,height=340'); return false;"><li class="left"><%= image_tag "/images/share-goo.png", :alt => "Google" %></li></a>
 	</ul>
 	<div class="clear"></div>
 	<div class="share-txt">Please note, SNGTRKR is not held responsible for anything posted on third party<br/> sites. See our Terms of Use for more information.</div>

@@ -25,37 +25,37 @@ background-repeat:no-repeat;
 	</div>
 	<ul>
 			<li class="left">
-				<a href="http://www.facebook.com/<%= @artist.fbid %>" target="_blank"><img src="/assets/images/a-fb.png"></a>
+				<a href="http://www.facebook.com/<%= @artist.fbid %>" target="_blank"><%= image_tag "/images/a-fb.png", :alt => "Facebook" %></a>
 			</li>
 			<% if @artist.twitter? %>
 			<li class="left">
-				<a href="http://www.twitter.com/<%= @artist.twitter %>" target="_blank"><img src="/assets/images/a-twit.png"></a>
+				<a href="http://www.twitter.com/<%= @artist.twitter %>" target="_blank"><%= image_tag "/images/a-twit.png", :alt => "Twitter" %></a>
 			</li>
 			<% else %><% end %>
 			<% if @artist.soundcloud? %>
 			<li class="left">
-				<a href="http://www.soundcloud.com/<%= @artist.soundcloud %>" target="_blank"><img src="/assets/images/a-sc.png"></a>
+				<a href="http://www.soundcloud.com/<%= @artist.soundcloud %>" target="_blank"><%= image_tag "/images/a-sc.png", :alt => "Soundcloud" %></a>
 			</li>
 			<% else %><% end %>
 			<% if @artist.website? %>
 			<li class="left">
-				<a href="http://<%= @artist.website %>" target="_blank"><img src="/assets/images/a-web.png"></a>
+				<a href="http://<%= @artist.website %>" target="_blank"><%= image_tag "/images/a-web.png", :alt => "Website" %></a>
 			</li>
 			<% else %><% end %>
 			<% if @artist.youtube? %>
 			<li class="left">
-				<a href="http://www.youtube.com/<%= @artist.youtube %>" target="_blank"><img src="/assets/images/a-yt.png"></a>
+				<a href="http://www.youtube.com/<%= @artist.youtube %>" target="_blank"><%= image_tag "/images/a-yt.png", :alt => "Youtube" %></a>
 			</li>
 			<% else %><% end %>
 			<li class="left">
-				<img src="/assets/images/a-music.png">
+				<%= image_tag "/images/a-music.png", :alt => "Music" %>
 			</li>
 		</ul>
 	</div>
 </div>
 </div>
 <div id="timeline">
-<img id="shadow-top" src="/assets/images/shadow-line.png"/>	
-<img id="shadow-bot" src="/assets/images/shadow-line-bot.png"/>	
+<%= image_tag "/images/shadow-line.png", :alt => "Shadow", :id => "shadow-top" %>
+<%= image_tag "/images/shadow-line-bot.png", :alt => "Shadow", :id => "shadow-bot" %>
 </div>
 <div class="content content-pad-160-bottom">
