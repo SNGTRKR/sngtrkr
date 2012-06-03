@@ -265,12 +265,6 @@ input.dp-applied {
         padding:0.5em;
     }
 }
-.header-height-big {
-    height:170px;
-}
-.header-height-small {
-    height:105px;
-}
 .header{
     padding:0px 42px 0px 42px;
     .p-head
@@ -283,6 +277,7 @@ input.dp-applied {
         }
     }
     .mini-search {
+        @extend .right;
         height:24px;
         width:158px;
         background:rgba(255,255,255,0.75);
@@ -333,6 +328,14 @@ input.dp-applied {
         width:202px;
         height:55px;
     }
+}
+.header-height-big {
+    @extend .header;
+    height:170px;
+}
+.header-height-small {
+    @extend .header;
+    height:105px;
 }
 #footer{
     background-image: url(/images/footer.png);
@@ -652,6 +655,8 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 		    line-height: 28px;
 	    }
     .trkrs-button {
+      @extend  .instruct-font;
+      @extend .o-button;
       position:relative;
       height:68px;
       width:147px;
@@ -798,6 +803,8 @@ body:before {/* thanks to Maleika (Kohoutec)*/
           @include border-radius(8px);
           }
           .recommend-info {
+            @extend .instruct-font;
+            @extend .font-20;
             position:absolute;
             text-align:center;
             line-height:1.4em;
@@ -814,8 +821,20 @@ body:before {/* thanks to Maleika (Kohoutec)*/
           }
           .recommend-trkr-button {
             position:absolute;
+<<<<<<< HEAD
             left:30px;
             bottom:-13px;
+=======
+            left:28px;
+            bottom:-25px;
+            div {
+              @extend .o-button;
+              @extend .trkr-o-pad;
+              @extend .right;
+              @extend .instruct-font;
+              @extend .font-13;
+            }
+>>>>>>> 0c6843138bba975d85bf298ceb511eb6cded2289
           }
           .remove-recommend-trkr-button {
             position:absolute;
@@ -1848,27 +1867,35 @@ span.error{
 } /* END OF CONTENT */
 .content-pad-bottom {
     padding-bottom:166px;
+    @extend .content;
 }
 .content-pad-160 {
   padding:4px 160px 0 160px;
+    @extend .content;
 }
 .content-pad-187{
   padding:4px 187px 0 187px;
+    @extend .content;
 }
 .content-pad-160-bottom {
     padding:4px 160px 166px 160px;
+    @extend .content;
 }
 .content-pad-165-bottom {
   padding:4px 165px 166px 165px;
+    @extend .content;
 }
 .content-pad-187-bottom {
   padding:4px 187px 166px 187px;
+    @extend .content;
 }
 .content-error-pad-220-bottom {
   padding:4px 208px 166px 232px;
+    @extend .content;
 }
 .content-splash-pad-262-bottom {
   padding:4px 262px 166px 262px;
+    @extend .content;
 }
 .delete-confirm {
     width:431px;
