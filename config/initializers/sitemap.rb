@@ -5,7 +5,7 @@ DynamicSitemaps::Sitemap.draw do
 
    url root_url, :last_mod => DateTime.now, :change_freq => 'daily', :priority => 1
    
-   url about_url, :last_mod => DateTime.now, :change_freq => 'montly', :priority => 1
+   url about_url, :last_mod => DateTime.now, :change_freq => 'monthly', :priority => 1
    
    url help_url, :last_mod => DateTime.now, :change_freq => 'weekly', :priority => 1
    
