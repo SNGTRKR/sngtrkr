@@ -99,20 +99,7 @@
 		</div>
 		<% else %>
 		<ul>
-			<% @following.each do |artist| %>
-			<li class="left">
-				<div class="each-artist-outer">
-					<strong> <%= link_to artist do %>
-					<div class="font-13 name">
-						<%= truncate(artist.name, :length => 20) %>
-					</div><% end %></strong>
-					<div class="instruct-font orange-txt">
-						<%= artist.followers %> TRKR's
-					</div>
-					<%= link_to unfollow_artist_path(artist), :remote => true, :class => 'untrk-artist' do %><img class="remove-artist-button" src="/assets/images/x.png"/><% end %>
-				</div>
-			</li>
-			<% end %>
+		  <%= render :partial => 'shared/artist_tracked', :collection => @following %>
 		</ul>
 		<% end %>
 		<img class="p-bulge-b" src="/assets/images/p-bulge-bot.png"/>
@@ -139,3 +126,4 @@
 		</div>
 	</div>
 	<%= render :partial => 'shared/artist_suggestion_replace' %>
+	<%= render :partial => 'shared/fb_async' %>
