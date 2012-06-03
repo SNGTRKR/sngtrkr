@@ -239,9 +239,9 @@ input.dp-applied {
         width:158px;
         background:rgba(255,255,255,0.75);
         @include border-radius(8px);
-        -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
-        -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
-        box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
+        //@include box-shadow(0px 0px 7px rgba(0,0,0,0.75));
+        @include box-shadow(inset 0px 3px 7px rgba(0,0,0,0.35));
+        border:1px solid #717171;
         input{
             background:transparent;
             padding:0.6em;
@@ -382,30 +382,31 @@ body:before {/* thanks to Maleika (Kohoutec)*/
       width:303px;
       height:388px;
       .reg-points { 
-    width:302px;
-  height:249px;
-           @include border-radius(8px);
-    -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-    -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
-     background:rgba(255,255,255,0.75);
-     position:relative;
-     ul {
-       list-style-type:none;
-       width:302px;
-       top:10px;
-       position:relative;
-       left:-12px;
-    li {
-      width:239px;
-      height:45px;
-      float:left;
-      padding:20px 50px 0 45px;
-      .point-txt {
-      margin-top:6px;
-      float:right;
-      width:158px;
-      height:45px;
+        width:302px;
+      height:249px;
+               @include border-radius(8px);
+               @include box-shadow(0px 8px 18px rgba(0,0,0,0.25));
+/*        -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.75);
+        box-shadow: inset 0px 10px 18px rgba(0,0,0,0.25); */
+         background:rgba(255,255,255,0.75);
+         position:relative;
+         ul {
+           list-style-type:none;
+           width:302px;
+           top:10px;
+           position:relative;
+           left:-12px;
+        li {
+          width:239px;
+          height:45px;
+          float:left;
+          padding:20px 50px 0 45px;
+          .point-txt {
+          margin-top:6px;
+          float:right;
+          width:158px;
+          height:45px;
     }
   }
 }
@@ -688,9 +689,8 @@ body:before {/* thanks to Maleika (Kohoutec)*/
         width:155px;
         background:$orange; 
         @include border-radius(8px);
-        -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
-        -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
-        box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
+        // @include box-shadow(0px 0px 7px rgba(0,0,0,0.75));
+        @include box-shadow(inset 0px 3px 7px rgba(0,0,0,0.45));
         input{
             background:transparent;
             padding:0.6em;
@@ -721,9 +721,10 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     padding:12px 0 17px 0;
     background:rgba(255,255,255,0.75);
     @include border-radius(8px);
-    -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
+    @include box-shadow(0px 2px 8px rgba(0,0,0,0.35));
+/*    -moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
     -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 7px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 7px rgba(0,0,0,0.75);*/
     margin:0 0 15px 15px;
       .each-artist-outer {
     position:relative;
