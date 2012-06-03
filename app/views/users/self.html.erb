@@ -5,9 +5,8 @@
 		<div class="profile-menu">
 			<ul>
 				<% if @user.manager? %>
-				<li class="profile-menu-button-nudge-2">
-					<div id="trkrs-button">
-						<div class="trkrs-button-txt instruct-font">
+				<li class="trkrs-button instruct-font o-button">
+				<span class="trkr-txt">
 							<div class="font-25">
 								<%= @trackers %>
 							</div>
@@ -15,28 +14,24 @@
 							<div class="font-15 instruct-font">
 								TRKR'S
 							</div>
-						</div>
-					</div>
+				</span>
 				</li>
 				<% else %>
 				<% end %>
-				<li class="font-13 signika-font">
-					Friends
+				<li class="font-13 signika-font o-button p-menu">
+					<%= link_to 'Friends', friends_user_path(@user) %>
 				</li>
 				<% if @user.manager? %>
-				<li class="profile-menu-button-nudge">
-					<div class="o-button menu-width norm-o-pad font-13 signika-font artist-menu-pad">
+				<li class="font-13 signika-font o-button p-menu">
 						<%= link_to 'Add Release', new_artist_release_path(@artist) %>
-						<span></span>
-					</div>
 				</li>
 				<% else %>
-				<li class="font-13 signika-font">
-					Manage Artist
+				<li class="font-13 signika-font o-button p-menu">
+					<%= link_to 'Manage Artist', managing_user_path(@user) %>
 				</li>
 				<% end %>
-				<li class="font-13 signika-font">
-					Profile Settings
+				<li class="font-13 signika-font o-button p-menu">
+					<%= link_to "Profile Settings", edit_user_path(@user) %>
 				</li>
 			</ul>
 		</div>

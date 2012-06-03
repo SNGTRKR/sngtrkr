@@ -174,7 +174,7 @@ input.dp-applied {
         outline: none;
     }
 }
-.o-button{
+/* .o-button{
     background-image: url(/images/header-bk-left-2.png);
     display:block;
     height:37px;
@@ -186,8 +186,35 @@ input.dp-applied {
     *{
         color:white;
     }
+} */
+.o-button {
+			color:white;
+			@include border-radius(7px);
+			text-align:center;
+		    background:$orange; 
+		    background: -webkit-linear-gradient(top, #F37244 0%, #F15A24 100%);
+		    background: -moz-linear-gradient(top, #F37244 0%, #F15A24 100%);
+		    background: -ms-linear-gradient(top, #F37244 0%, #F15A24 100%);
+		    background: -o-linear-gradient(top, #F37244 0%, #F15A24 100%);
+		    background: linear-gradient(to bottom, #F37244 0%, #F15A24 100%);
+		    text-shadow: #FF6103 0 1px 3px;
+		    -webkit-box-shadow:
+		    inset 0 1px 0  #F15A24,
+		    inset 0 2px 0 #F7931E,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+		    -moz-box-shadow:
+		    inset 0 1px 0  #F15A24,
+		    inset 0 2px 0 #F7931E,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+		    box-shadow:
+		    inset 0 1px 0  #F15A24,
+		    inset 0 2px 0 #F7931E,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
 }
-.o-button span {
+/* .o-button span {
     background-image: url(/images/header-bk-right-2.png);
     display:block;
     float:left;
@@ -198,7 +225,7 @@ input.dp-applied {
     background-repeat:no-repeat;
     top:0px;
     width:11px;
-}
+} */
 .norm-o-pad {
     line-height:37px;
     padding:1px 3px 5px 18px;
@@ -590,66 +617,26 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     float:left;
     width:147px;
     margin:7px 9px 0 0;
-    ul {
-	    li {
+    a {
+	    color:#fff;
+    }
+    a:hover {
+	    color:#fff;
+    }
+	    .p-menu {
 		    width:147px;
 		    height:25px;
-		    background:black;
-		    color:white;
 		    margin:0 0 15px 0;
-		    @include border-radius(7px);
-		    text-align:center;
 		    line-height: 28px;
-    background: #F15A24;
-    background: -webkit-linear-gradient(top, #F37244 0%, #F15A24 100%);
-    background: -moz-linear-gradient(top, #F37244 0%, #F15A24 100%);
-    background: -ms-linear-gradient(top, #F37244 0%, #F15A24 100%);
-    background: -o-linear-gradient(top, #F37244 0%, #F15A24 100%);
-    background: linear-gradient(to bottom, #F37244 0%, #F15A24 100%);
-    text-shadow: #FF6103 0 1px 3px;
-    -webkit-box-shadow:
-        inset 0 1px 0  #FF6600,
-        inset 0 2px 0 #F7931E,
-        0 1px 3px #777,
-        0 0px 1px #ccc;
-    -moz-box-shadow:
-        inset 0 1px 0  #FF6600,
-        inset 0 2px 0 #F7931E,
-        0 1px 3px #777,
-        0 0px 1px #ccc;
-    box-shadow:
-        inset 0 1px 0  #FF6600,
-        inset 0 2px 0 #F7931E,
-        0 1px 3px #777,
-        0 0px 1px #ccc;
 	    }
-    }
-    .menu-width {
-      display:block;
-      width:121px;
-      text-align:center;
-      margin-left:-2px;
-    }
-    .artist-menu-pad{
-      margin-top:-3px;
-    }
-    .profile-menu-button-nudge {
-      margin-left:-5px;
-    }
-    .profile-menu-button-nudge-2 {
-      margin-left:-6px;
-    }
-    #trkrs-button {
+    .trkrs-button {
       position:relative;
-      height:80px;
-      width:159px;
-      background-image: url(/images/trkrs-button.png);
-      margin-bottom:4px;
-      .trkrs-button-txt {
-        position:relative;
-        text-align:center;
-        color:#fff;
-        top:16px;
+      height:68px;
+      width:147px;
+      margin-bottom:15px;
+      .trkr-txt {
+	      position:relative;
+	      top:10px;
       }
     }
   }
@@ -678,8 +665,23 @@ body:before {/* thanks to Maleika (Kohoutec)*/
         height:25px;
         width:155px;
         background:$orange; 
-        @include border-radius(8px);
-        @include box-shadow(inset 0px 3px 7px rgba(0,0,0,0.45));
+        @include border-radius(7px);
+    background: -webkit-linear-gradient(top, #F37244 0%, #F15A24 100%);
+    background: -moz-linear-gradient(top, #F37244 0%, #F15A24 100%);
+    background: -ms-linear-gradient(top, #F37244 0%, #F15A24 100%);
+    background: -o-linear-gradient(top, #F37244 0%, #F15A24 100%);
+    background: linear-gradient(to bottom, #F37244 0%, #F15A24 100%);
+    text-shadow: #FF6103 0 1px 3px;
+    -webkit-box-shadow:
+        0 1px 3px #777,
+        0 0px 1px #ccc;
+    -moz-box-shadow:
+        0 1px 3px #777,
+        0 0px 1px #ccc;
+    box-shadow:
+        0 1px 3px #777,
+        0 0px 1px #ccc;
+
         input{
             background:transparent;
             padding:0.6em;
@@ -708,7 +710,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     width:155px;
     height:28px;
     padding:12px 0 17px 0;
-    background:rgba(255,255,255,0.75);
+      background:rgba(255,255,255,0.75);
     @include border-radius(8px);
     @include box-shadow(0px 2px 8px rgba(0,0,0,0.45));
     margin:0 0 15px 15px;
