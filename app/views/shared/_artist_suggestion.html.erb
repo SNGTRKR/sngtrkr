@@ -5,6 +5,6 @@
 			<%= link_to artist_suggestion.name, artist_suggestion  %>
 		</div>
 		<div class="recommend-trkr-button"><%= render :partial => 'shared/trk_artist', :object => artist_suggestion %></div>
-		<%= link_to (image_tag '/assets/images/ignore.png'), unsuggest_artist_path(artist_suggestion), :remote => true, :class => 'ignore-button' %>
+		<%= link_to (image_tag '/images/ignore.png'), unsuggest_artist_path(artist_suggestion), :remote => true, :class => 'ignore-button', :alt => "Ignore" %>
 	</div>
 </li>

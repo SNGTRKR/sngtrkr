@@ -609,7 +609,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     background: -ms-linear-gradient(top, #F15A24 0%,#F37244 100%); /* IE10+ */
     background: linear-gradient(top, #F15A24 0%,#F37244 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#F15A24', endColorstr='#F37244',GradientType=0 ); /* IE6-9 */
-    @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
+    @include box-shadow(0px 2px 8px rgba(0,0,0,0.45));
 	    }
     }
     .menu-width {
@@ -698,7 +698,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     padding:12px 0 17px 0;
     background:rgba(255,255,255,0.75);
     @include border-radius(8px);
-    @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
+    @include box-shadow(0px 2px 8px rgba(0,0,0,0.45));
     margin:0 0 15px 15px;
       .each-artist-outer {
     position:relative;

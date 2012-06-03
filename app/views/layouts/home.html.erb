@@ -25,19 +25,19 @@
 					<% if(user_signed_in?) %>
 					<div class="mini-search right">
 						<%= form_tag artists_path , :method => 'get' do %>
-						<%= text_field_tag(:search, params[:search]) %> <img class="search-25 right" src="/assets/images/search-25.png"/>
+						<%= text_field_tag(:search, params[:search]) %><%= image_tag "/images/search-25.png", :alt => "Search", :class => "search-25 right" %>
 						<% end %>
 					</div>
 					<% elsif %>
 					<div class="mini-search-2 right">
 						<%= form_tag artists_path , :method => 'get' do %>
-						<%= text_field_tag(:search, params[:search]) %><img class="search-25 right" src="/assets/images/search-25.png"/>
+						<%= text_field_tag(:search, params[:search]) %><%= image_tag "/images/search-25.png", :alt => "Search", :class => "search-25 right" %>
 						<% end %>
 					</div>
 					<% end %>
 					<div class="clear"></div>
 					<a href="/">
-					<div class="small-logo-home"><img src="/assets/images/logo-55.png" alt="SNGTRKR"/>
+					<div class="small-logo-home"><%= image_tag "/images/logo-55.png", :alt => "SNGTRKR" %>
 					</div></a>
 
 				</div>
@@ -95,9 +95,9 @@
 					#wrap {display:table;height:100%}
 					</style>
 					<![endif]-->
-					<a href="<%= user_omniauth_authorize_path(:facebook) %>"><img class="right fb-home-login-nudge" src="/assets/images/log-facebook.png"/></a>
+					<a href="<%= user_omniauth_authorize_path(:facebook) %>"><%= image_tag "/images/log-facebook.png", :alt => "Login", :class => "fb-home-login-nudge right" %></a>
 					<div class="clear"></div>
-					<div class="big-logo-home"><img src="/assets/images/logo-120.png" alt="SNGTRKR"/>
+					<div class="big-logo-home"><%= image_tag "/images/logo-120.png", :alt => "SNGTRKR" %>
 					</div>
 				</div>
 				<%= yield %>

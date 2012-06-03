@@ -73,13 +73,13 @@
 	</div>
 	<div class="clear"></div>
 	<div id="track-num-search">
-		<img class="p-bulge-t" src="/assets/images/p-bulge-top.png"/>
+		<%= image_tag "/images/p-bulge-top.png", :alt => "Shadow", :class => "p-bulge-t" %>
 		<div class="font-15 no-trk">
 			<strong><%= @user.following.count %> TRKed Artists</strong>
 		</div>
 		<div class="artist-trkr-list-search">
 			<input type="text" id="filter"/>
-			<img class="white-search-25 right" src="/assets/images/white-search.png"/>
+			<%= image_tag "/images/white-search.png", :alt => "Search", :class => "white-search-25 right" %>
 		</div>
 	</div>
 	<div id="tracked-artists">
@@ -92,7 +92,7 @@
 		  <%= render :partial => 'shared/artist_tracked', :collection => @following %>
 		</ul>
 		<% end %>
-		<img class="p-bulge-b" src="/assets/images/p-bulge-bot.png"/>
+		<%= image_tag "/images/p-bulge-bot.png", :alt => "Shadow", :class => "p-bulge-b" %>
 	</div>
 
 	<div class="clear"></div>
