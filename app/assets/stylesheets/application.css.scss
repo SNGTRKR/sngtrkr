@@ -821,12 +821,8 @@ body:before {/* thanks to Maleika (Kohoutec)*/
           }
           .recommend-trkr-button {
             position:absolute;
-<<<<<<< HEAD
             left:30px;
             bottom:-13px;
-=======
-            left:28px;
-            bottom:-25px;
             div {
               @extend .o-button;
               @extend .trkr-o-pad;
@@ -834,7 +830,6 @@ body:before {/* thanks to Maleika (Kohoutec)*/
               @extend .instruct-font;
               @extend .font-13;
             }
->>>>>>> 0c6843138bba975d85bf298ceb511eb6cded2289
           }
           .remove-recommend-trkr-button {
             position:absolute;
