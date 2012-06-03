@@ -6,7 +6,7 @@
 	<h2 class="signika-txt home-white-header font-35">Track your favourite artists and never miss another release...</h2>
 	<div id="big-search">
 		<%= form_tag artists_path , :method => 'get' do %>
-		<%= text_field_tag(:search, params[:search]) %> <%= image_tag "/images/search-35.png", :alt => "Search", :class => "search-35 right" %>
+		<%= text_field_tag(:search, nil, :placeholder => 'Which artist are you looking for?') %> <%= image_tag "/images/search-35.png", :alt => "Search", :class => "search-35 right" %>
 		<% end %>
 	</div>
 	<div class="clear"></div>
