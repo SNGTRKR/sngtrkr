@@ -10,7 +10,7 @@
 		<meta property="sngtrkr:id" content="<%= yield :og_id %>" />
 		<h1><title>SNGTRKR - <%= yield :title %></title></h1>
 		<meta name="description" content="<%= yield :description %>">
-		<link rel="icon" type="image/ico" href="/assets/images/icon.png" >
+		<link rel="icon" type="image/ico" href="<%= asset_path "/images/icon.png" %>" >
 		<%= render :partial => 'layouts/all_js_css' %>
 	</head>
 	<body>
@@ -28,19 +28,19 @@
 					</style>
 					<![endif]-->
 					<div class="small-logo-home">
-						<a href="/"><img src="/assets/images/logo-55.png" alt="SNGTRKR"/></a>
+						<a href="/"><img src="<%= asset_path "/images/logo-55.png" %>" alt="SNGTRKR"/></a>
 					</div>
 					<%= render 'shared/login' %>
 					<% if(user_signed_in?) %>
 					<div class="mini-search right">
 						<%= form_tag artists_path , :method => 'get' do %>
-						<%= text_field_tag(:search, params[:search]) %> <img class="search-25 right" src="/assets/images/search-25.png"/>
+						<%= text_field_tag(:search, params[:search]) %> <img class="search-25 right" src="/images/search-25.png"/>
 						<% end %>
 					</div>
 					<% elsif %>
 					<div class="mini-search-2 right">
 						<%= form_tag artists_path , :method => 'get' do %>
-						<%= text_field_tag(:search, params[:search]) %><img class="search-25 right" src="/assets/images/search-25.png"/>
+						<%= text_field_tag(:search, params[:search]) %><img class="search-25 right" src="/images/search-25.png"/>
 						<% end %>
 					</div>
 					<% end %>
