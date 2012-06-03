@@ -232,13 +232,24 @@ input.dp-applied {
     padding:0 15px 0 15px;
 }
 .trkr-o-pad {
-    line-height:26px;
+    line-height:25px;
     height:25px;
     padding:0 15px 0 15px;
+    a { 
+	    color:#fff;
+    }
+    a:hover {
+	    color:#fff;
+    }
 }
 .logout-button {
-  position:relative;
-  margin:-21px 11px 0 0;
+  margin:-15px 0 0 0;
+  a {
+	  color:#fff;
+  }
+  a:hover {
+	  color:#fff;
+  }
 }
 #artist_search_results{
     width:60em;
@@ -259,10 +270,13 @@ input.dp-applied {
     .p-head
     {
         position:relative;
-        margin:0 4px 0 11px;
+        height:25px;
+        margin:0 15px 0 15px;
+        #profile-pad {
+	        padding:2px 7px 0 6px
+        }
     }
     .mini-search {
-      margin-top:6px;
         height:24px;
         width:158px;
         background:rgba(255,255,255,0.75);
@@ -909,7 +923,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
                 font-size:1em;
             }
             #change-email-submit-pad {
-                margin-left:-5px;
+                margin-left:1px;
                 margin-top:2px;
             }
 }
@@ -940,7 +954,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
                 font-size:1em;
             }
             #save-settings-submit-pad {
-                margin-left:-5px;
+                margin-left:1px;
                 margin-top:4px;
             }
 }
@@ -949,10 +963,16 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   top:60px;
   height:180px;
   width:660px;  
+  a {
+	  color:#fff;
+  }
+  a:hover {
+	  color:#fff;
+  }
   #delete-submit-pad {
   position:absolute;
   top:65px;
-  left:-5px;
+  left:1px;
 }
 }
 }
@@ -1042,7 +1062,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
    #manage-choice-submit {
           position:relative;
           margin-top:4px;    
-          right:11px;
+          right:2px;
             }
 } 
 .manage-points { 
@@ -1636,7 +1656,7 @@ span.error{
   .search-trkr-button {
     position:relative;
     right:11px;
-    bottom:25px;
+    bottom:20px;
   }
 }
 }
@@ -1854,6 +1874,12 @@ span.error{
     background: url(/images/box-bk-431.png) no-repeat;
     @include border-radius(8px);
     color:#000;
+    a {
+	    color:#fff;
+    }
+    a:hover {
+	    color:#fff;
+    }
     #goodbye {
         font-size:2.8em;
         color:#fff;
@@ -1884,12 +1910,12 @@ span.error{
       }
       .delete-account-button {
         position:absolute;
-        left:108px;
+        left:115px;
         top:227px;
       }
       .delete-account-cancel {
         position:absolute;
-        left:247px;
+        left:248px;
         top:227px;
       }
 }
