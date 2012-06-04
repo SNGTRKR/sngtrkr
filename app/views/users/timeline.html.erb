@@ -1,12 +1,12 @@
-<% content_for :title do %>--NAME-- personalised timeline of artist releases on SNGTRKR<% end %>
-<% content_for :description do %>--NAME-- personalised timeline of artist releases, where they can view new and old releases while being able to listen to and buy tracks.<% end %>
+<% content_for :title do %>Your Timeline<% end %>
+<% content_for :description do %><%= current_user.first_name %>'s personalised timeline of artist releases, where they can view new and old releases while being able to listen to and buy tracks.<% end %>
 <div class="content content-pad-160">
 </div>
 </div>
 <div id="timeline">
 <ul class="release-list">
   <% @timeline[0..10].each do |release| %>
-	<li class="left each-release" style="background-image:url(<%= release.image :medium %>); background-position:center;">
+	<li class="left each-release" style="background-image:url(<%= release.image :release %>); background-position:center;">
 	<div class="release-info">
 	<strong><span class="font-18"><%= release.name %></span></strong><br/>
 	<%= link_to release.artist.name, release.artist %><br/>
