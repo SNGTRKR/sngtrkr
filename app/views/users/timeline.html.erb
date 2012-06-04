@@ -6,7 +6,7 @@
 <div id="timeline">
 <ul class="release-list">
   <% @timeline[0..10].each do |release| %>
-	<li class="left each-release" style="background-image:url(<%= release.image :medium %>); background-position:center;">
+	<li class="left each-release" style="background-image:url(<%= release.image :release %>); background-position:center;">
 	<div class="release-info">
 	<strong><span class="font-18"><%= release.name %></span></strong><br/>
 	<%= link_to release.artist.name, release.artist %><br/>
