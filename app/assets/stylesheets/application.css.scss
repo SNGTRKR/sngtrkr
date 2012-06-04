@@ -2024,6 +2024,12 @@ span.error{
 	      left:15px;
 	      bottom:33px;
 	      z-index:2;
+	      a {
+		      color:#fff;
+	      }
+	      a:hover {
+		      color:$orange;
+	      }
       }
       .release-menu {
 	      position:absolute;
