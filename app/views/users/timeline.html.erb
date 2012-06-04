@@ -19,7 +19,7 @@
 		<a href=".share-release"><li class="left menu-item">Share</li></a>
 		</ul>
 	</div>
-	<%= image_tag "/images/release-gradient.png", :alt => "Gradient", :class => "r-grad" %>
+	<div class="r-grad gradient"></div>
 	</li>
 	<% end %>
 </ul>
@@ -37,9 +37,9 @@
 <div class="buy-release">
 	<div class="buy-title">Which music retailer would<br/> you like to use?</div>
 	<ul>
-	<li class="left"><img src="/assets/images/release-itunes.png"/></li>
-	<li class="left"><img src="/assets/images/release-amaz.png"/></li>
-	<li class="left"><img src="/assets/images/release-7d.png"/></li>
+	<li class="left"><%= image_tag "/images/release-itunes.png", :alt => "Itunes" %></li>
+	<li class="left"><%= image_tag "/images/release-amaz.png", :alt => "Amazon" %></li>
+	<li class="left"><%= image_tag "/images/release-7d.png", :alt => "7Digital" %></li>
 	</ul>
 	<div class="clear"></div>
 	<div class="buy-txt">Please note, you are accessing a third party website, which you do so at your own<br/> risk. See our Terms of Use for more information.</div>
