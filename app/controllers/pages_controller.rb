@@ -8,7 +8,6 @@ class PagesController < ApplicationController
     end
     require 'koala'
     @graph = Koala::Facebook::API.new
-    render :layout => 'home'
   end
 
   def manage
