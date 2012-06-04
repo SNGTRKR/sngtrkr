@@ -2047,6 +2047,12 @@ span.error{
 	      height:23px;
 	      width:210px;
 	      background-color:$orange;
+	      background: -webkit-linear-gradient(top, #F37244 0%, #F15A24 100%);
+		    background: -moz-linear-gradient(top, #F37244 0%, #F15A24 100%);
+		    background: -ms-linear-gradient(top, #F37244 0%, #F15A24 100%);
+		    background: -o-linear-gradient(top, #F37244 0%, #F15A24 100%);
+		    background: linear-gradient(to bottom, #F37244 0%, #F15A24 100%);
+		    text-shadow: #FF6103 0 1px 3px;
 	      @include border-bottom-left-radius(8px);
           @include border-bottom-right-radius(8px);
           bottom:0px;
@@ -2069,6 +2075,8 @@ span.error{
 	      position:absolute;
 	      z-index:1;
 	      width:210px;
+	      height:189px;
+
       }
 	  }
   }
