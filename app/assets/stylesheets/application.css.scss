@@ -252,6 +252,48 @@ input.dp-applied {
 		    0 1px 3px #777,
 		    0 0px 1px #ccc;
 }
+.fb-button:hover {
+			background: -webkit-linear-gradient(top, #375A98 0%, #4D77B8 100%);
+		    background: -moz-linear-gradient(top, #375A98 0%, #4D77B8 100%);
+		    background: -ms-linear-gradient(top, #375A98 0%, #4D77B8 100%);
+		    background: -o-linear-gradient(top, #375A98 0%, #4D77B8 100%);
+		    background: linear-gradient(to bottom, #375A98 0%, #4D77B8 100%);
+}
+.search-button {
+			color:white;
+			@include border-top-right-radius(7px);
+			@include border-bottom-right-radius(7px);
+			text-align:center;
+		    background:$orange; 
+		    background: -webkit-linear-gradient(top, #F37244 0%, #F15A24 100%);
+		    background: -moz-linear-gradient(top, #F37244 0%, #F15A24 100%);
+		    background: -ms-linear-gradient(top, #F37244 0%, #F15A24 100%);
+		    background: -o-linear-gradient(top, #F37244 0%, #F15A24 100%);
+		    background: linear-gradient(to bottom, #F37244 0%, #F15A24 100%);
+		    text-shadow: #FF6103 0 1px 3px;
+		    -webkit-box-shadow:
+		    inset 0 1px 0  #F15A24,
+		    inset 0 2px 0 #F7931E,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+		    -moz-box-shadow:
+		    inset 0 1px 0  #F15A24,
+		    inset 0 2px 0 #F7931E,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+		    box-shadow:
+		    inset 0 1px 0  #F15A24,
+		    inset 0 2px 0 #F7931E,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+}
+.search-button:hover {
+			background: -webkit-linear-gradient(top, #F15A24 0%, #F37244 100%);
+		    background: -moz-linear-gradient(top, #F15A24 0%, #F37244 100%);
+		    background: -ms-linear-gradient(top, #F15A24 0%, #F37244 100%);
+		    background: -o-linear-gradient(top, #F15A24 0%, #F37244 100%);
+		    background: linear-gradient(to bottom, #F15A24 0%, #F37244 100%);
+}
 .norm-o-pad {
     line-height: 28px;
     height:25px;
@@ -313,9 +355,16 @@ input.dp-applied {
 	        padding:2px 7px 0 6px;
         }
     }
+    .search {
+	    position:relative;
+	    height:25px;
+	    #search-pad {
+		    padding:3px 6px 0 7px;
+	    }
+    }
     .mini-search {
         @extend .right;
-        height:24px;
+        height:25px;
         width:158px;
         background:rgba(255,255,255,0.75);
         @include border-radius(8px);
@@ -616,7 +665,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     height:300px;
     background:rgba(255,255,255,0.75);
     @include border-radius(12px);
-    @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
+    @include box-shadow(0px 0px 8px rgba(0,0,0,0.55));
     margin:5px 0 -115px 0;
     #artist-image {
 	    position:absolute;
@@ -827,7 +876,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
       height:178px;
       margin:0 0 42px 30px;
       @include border-radius(8px);
-      @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
+      @include box-shadow(0px 0px 8px rgba(0,0,0,0.55));
         .each-recommend {
           position:relative;
           height:178px;
@@ -1807,7 +1856,21 @@ span.error{
         width:208px;
         background:$orange; 
         @include border-radius(8px);
-        @include box-shadow(inset 0px 3px 7px rgba(0,0,0,0.45));
+        background: -webkit-linear-gradient(top, #F37244 0%, #F15A24 100%);
+    background: -moz-linear-gradient(top, #F37244 0%, #F15A24 100%);
+    background: -ms-linear-gradient(top, #F37244 0%, #F15A24 100%);
+    background: -o-linear-gradient(top, #F37244 0%, #F15A24 100%);
+    background: linear-gradient(to bottom, #F37244 0%, #F15A24 100%);
+    text-shadow: #FF6103 0 1px 3px;
+    -webkit-box-shadow:
+        0 1px 3px #777,
+        0 0px 1px #ccc;
+    -moz-box-shadow:
+        0 1px 3px #777,
+        0 0px 1px #ccc;
+    box-shadow:
+        0 1px 3px #777,
+        0 0px 1px #ccc;
         input{
             background:transparent;
             padding:0.6em;
@@ -1859,7 +1922,21 @@ span.error{
         width:201px;
         background:$orange; 
         @include border-radius(8px);
-        @include box-shadow(inset 0px 3px 7px rgba(0,0,0,0.45));
+        background: -webkit-linear-gradient(top, #F37244 0%, #F15A24 100%);
+    background: -moz-linear-gradient(top, #F37244 0%, #F15A24 100%);
+    background: -ms-linear-gradient(top, #F37244 0%, #F15A24 100%);
+    background: -o-linear-gradient(top, #F37244 0%, #F15A24 100%);
+    background: linear-gradient(to bottom, #F37244 0%, #F15A24 100%);
+    text-shadow: #FF6103 0 1px 3px;
+    -webkit-box-shadow:
+        0 1px 3px #777,
+        0 0px 1px #ccc;
+    -moz-box-shadow:
+        0 1px 3px #777,
+        0 0px 1px #ccc;
+    box-shadow:
+        0 1px 3px #777,
+        0 0px 1px #ccc;
                 input{
             background:transparent;
             padding:0.6em;
