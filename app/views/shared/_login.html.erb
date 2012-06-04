@@ -2,5 +2,5 @@
 <div class="logout-button"><div class="o-button norm-o-pad right signika-font font-13"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></div></div>
 <a href="/users/me"><div class="p-head right o-button"><%= image_tag "/images/profile.png", :alt => "Profile", :id => "profile-pad" %></div></a>
 <% elsif %>
-<div class="right fb-button fb-o-pad fb-login lucida-font font-logout"><%= image_tag "/images/facebook.png", :alt => "Facebook", :id => "fb-logo" %><%= link_to "Login", user_omniauth_authorize_path(:facebook), :id => "fb-txt" %></div>
+<div class="right fb-button fb-o-pad fb-login lucida-font font-13"><%= image_tag "/images/facebook.png", :alt => "Facebook", :id => "fb-logo" %><%= link_to "Login", user_omniauth_authorize_path(:facebook), :id => "fb-txt" %></div>
 <% end %>
