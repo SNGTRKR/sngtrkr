@@ -2024,14 +2024,13 @@ span.error{
 	      position:absolute;
 	      bottom:33px;
 	      padding:110px 13px 0 13px;
-	      width:100%;
 	      z-index:2;
+	      margin-right:15px;
         -webkit-transition: bottom ease-out 0.5s, padding-top ease-out 0.5s;
       }
       .release-info:hover {
         padding-top:170px;
         bottom:-47px;
-	      margin-right:15px;
 	      a {
 		      color:#fff;
 	      }
