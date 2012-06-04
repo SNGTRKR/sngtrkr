@@ -2026,11 +2026,21 @@ span.error{
 	      padding:110px 13px 0 13px;
 	      width:100%;
 	      z-index:2;
+<<<<<<< HEAD
         -webkit-transition: bottom ease-out 0.5s, padding-top ease-out 0.5s;
       }
       .release-info:hover {
         padding-top:170px;
         bottom:-47px;
+=======
+	      margin-right:15px;
+	      a {
+		      color:#fff;
+	      }
+	      a:hover {
+		      color:$orange;
+	      }
+>>>>>>> 644028a6b9b3f61310749898aa95a35cc4c9ba6b
       }
       .release-menu {
 	      position:absolute;
