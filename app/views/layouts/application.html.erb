@@ -38,9 +38,7 @@
 										<% elsif %>
 					<div class="mini-search-2 right">
 						<%= form_tag artists_path , :method => 'get' do %>
-						<%= text_field_tag(:search, params[:search]) %><%= image_tag "/images/search-25.png", :alt => "Search", :class => "search-25 right" %>
-						<% end %>
-					</div>
+						<%= text_field_tag(:search, params[:search]) %><div class="search right search-button"><%= image_tag "/images/white-search-2.png", :alt => "Search", :id => 								"search-pad" %></div></a><% end %></div>
 					<% end %>
 					<div class="clear"></div>
 				</div>
