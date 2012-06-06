@@ -66,6 +66,9 @@ body{
 .font-13 {
   font-size:1.1em;
 }
+.font-14 {
+	font-size:1.2em;
+}
 .font-15 {
   font-size:1.3em;
 }
@@ -730,12 +733,15 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 	    width:328px;
 	    .home-txt-1 {
 		    /* text-shadow: #1A1A1A 0 0.5px 1px; */
+		    line-height:1.3em;
 	    }
     }
     .home-right {
 	    width:412px;
 	    #macbook {
-		    margin-top:-1px;
+		    position:relative;
+		    top:-1px;
+		    right:4px;
 	    }
     }
   }
@@ -750,7 +756,6 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 		  li {
 			  width:240px;
 			  margin-left:30px;
-			  /* text-shadow: #1A1A1A 0 0.5px 1px; */
 			  #home1 {
 			  	position:relative;
 				  top:32px;
