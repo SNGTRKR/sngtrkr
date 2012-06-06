@@ -160,41 +160,6 @@ table th{
        border-color: #333;
        background:#fff;
             }
-a.dp-choose-date {
-  float: left;
-  width: 16px;
-  height: 16px;
-  padding: 0;
-  margin: 5px 3px 0;
-  display: block;
-  text-indent: -2000px;
-  overflow: hidden;
-  background: url(/datepicker/calendar.png) no-repeat; 
-}
-a.dp-choose-date.dp-disabled {
-  background-position: 0 -20px;
-  cursor: default;
-}
-/* makes the input field shorter once the date picker code
- * has run (to allow space for the calendar icon
- */
-input.dp-applied {
-  width: 140px;
-  float: left;
-}
-#big-search{
-    input{
-        background:transparent;
-        border:none;
-        padding:0.2em;
-        padding-left:1em;
-        font-size:1.8em;
-        width:22em;
-    }
-    input:focus{
-        outline: none;
-    }
-}
 .o-button {
 			color:white;
 			@include border-radius(7px);
@@ -965,7 +930,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
           width:202px;
           @include border-radius(8px);
           $experimental-support-for-svg: true;
-          @include background-image(linear-gradient(top, transparent 0%, #000001 93%, #000001 100% ));
+          @include background-image(linear-gradient(top, #ffffff 0%, #000001 93%, #000001 100% ));
           }
           .recommend-info {
             @extend .instruct-font;
