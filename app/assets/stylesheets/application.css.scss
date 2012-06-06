@@ -139,7 +139,7 @@ table th{
 	    top:-5px;
     }
 .fb-home-login {
-    margin-top:38px;
+    margin-top:0px;
 }
 .form-text {   
        width:158px;
@@ -718,63 +718,57 @@ body:before {/* thanks to Maleika (Kohoutec)*/
       }
     }
     }
-    .home-white-header
-    {
-        position:relative;
-        width:540px;
-        text-align:center;
-        left:147px;
-        top:56px;
-    }
+    
     .add-release-header {
       margin-left:19px;
     }
-    #big-search {
-        position:relative;
-        top:95px;
-        left:139px;
-        height:35px;
-        width:555px;
-        background:rgba(255,255,255,0.75);
-        @include border-radius(8px);
-        @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
+    #content-home {
+    position:relative;
+    width:752px;
+    height:254px;
+    .home-left {
+	    width:328px;
+	    .home-txt-1 {
+		    /* text-shadow: #1A1A1A 0 0.5px 1px; */
+	    }
     }
-    .search-35
-    {
-        height:35px;
-        width:35px;
-        margin-right:5px;
+    .home-right {
+	    width:412px;
+	    #macbook {
+		    margin-top:-1px;
+	    }
     }
-    .how-to-box {
-        position:relative;
-        width:834px;
-        left:1px;
-        top:147px;
-        height:353px;
-        .each-box {
-            width:254px;
-            height:175px;
-            background:rgba(255,255,255,0.75);
-            @include border-radius(8px);
-            @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
-            color:#00;
-            font-size:1.208em;
-            text-align:center;
-            line-height:1.4em;
-            font-weight:500;
-            .how-to-txt
-            {
-                padding:15px 35px 15px 35px;
-            }
-            .how-image-nudge {
-            position:relative;
-            bottom:5px;
-        }
-        }
-        .box-pad {
-            margin: 0 35px 0 0;
-        }
-    }
+  }
+  #home-points {
+	  position:relative;
+	  height:289px;
+	  width:790px;
+	  top:15px;
+	  ul {
+	  list-style-type: none;
+	  margin-left:-30px;
+		  li {
+			  width:240px;
+			  margin-left:30px;
+			  /* text-shadow: #1A1A1A 0 0.5px 1px; */
+			  #home1 {
+			  	position:relative;
+				  top:32px;
+				  left:40px;
+			  }
+			  #home2 {
+			  position:relative;
+				  top:53px;
+				  left:33px;
+			  }
+			  #home3 {
+			  position:relative;
+				  top:30px;
+				  left:33px;
+			  }
+		  }
+	  }
+  }
   #content-artist {
     position:relative;
     width:666px;
@@ -2113,8 +2107,8 @@ span.error{
     padding:4px 160px 166px 160px;
     @extend .content;
 }
-.content-pad-165-bottom {
-  padding:4px 165px 166px 165px;
+.content-pad-115-bottom {
+  padding:14px 115px 166px 115px;
     @extend .content;
 }
 .content-pad-187-bottom {
@@ -2123,10 +2117,6 @@ span.error{
 }
 .content-error-pad-220-bottom {
   padding:4px 208px 166px 232px;
-    @extend .content;
-}
-.content-splash-pad-262-bottom {
-  padding:4px 262px 166px 262px;
     @extend .content;
 }
 .delete-confirm {
