@@ -380,7 +380,7 @@ input.dp-applied {
             background:transparent;
             padding:0.6em;
             border:none;
-            width:9.5em;
+            width:110px;
             outline:none;
         }
 input:focus ~ .results { 
@@ -398,9 +398,9 @@ display: block;
         border-bottom: 1px solid #B0E0E6;
         input{
             background:transparent;
-            padding:0.6em;
+            
             border:none;
-            width:9.5em;
+            width:110px;
             outline:none;
         }
         input:focus ~ .results { 
@@ -664,6 +664,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
       width:268px;
       height:388px;
       margin-bottom:55px;
+      position:relative;
       .beta-txt {
 	      height:180px;
       }
@@ -675,8 +676,8 @@ body:before {/* thanks to Maleika (Kohoutec)*/
       }
     }
     #mc_embed_signup {
-      position:relative;
-      top:32px;
+      position:absolute;
+      top:339px;
       left:47px;
       #beta-submit {
         position:relative;
@@ -2049,7 +2050,7 @@ span.error{
             background:transparent;
             padding:0.6em;
             border:none;
-            width:13.5em;
+            width:120px;
         }
         input:focus{
             outline:none;
