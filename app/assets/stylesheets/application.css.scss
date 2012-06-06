@@ -930,7 +930,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
           width:202px;
           @include border-radius(8px);
           $experimental-support-for-svg: true;
-          @include background-image(linear-gradient(top, #ffffff 0%, #000001 93%, #000001 100% ));
+          @include background-image(linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 94%, rgba(0,0,0,1) 100%));
           }
           .recommend-info {
             @extend .instruct-font;
@@ -2232,7 +2232,7 @@ span.error{
 	      height:210px;
 	      @include border-radius(8px);
 	      $experimental-support-for-svg: true;
-          @include background-image(linear-gradient(top, transparent 0%, #000001 93%, #000001 100% ));
+          @include background-image(linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 94%, rgba(0,0,0,1) 100%));
       }
 	  }
   }
