@@ -534,6 +534,8 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     .signika-txt { /* white text - signikia */
         color:#fff;
         @include text-shadow(0px 2.83px 8px rgba(0,0,0,0.28));
+        zoom: 1;
+        filter: progid:DXImageTransform.Microsoft.DropShadow(OffX=3, OffY=3, Color=#99cc99);
         font-family: 'Signika Negative', sans-serif;
         font-weight:400;
         line-height:1.3em;
@@ -2303,10 +2305,4 @@ span.error{
 	      top:79px;
       }
 }
-.error-explanation {
-	text-align:center;
-	color:red;	
-}
-.success-explanation {
-	text-align:center;
-}
+.placeholder { color: #aaa; }
