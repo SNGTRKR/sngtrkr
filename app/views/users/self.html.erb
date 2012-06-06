@@ -69,9 +69,8 @@
 			<strong><%= @user.following.count %> TRKed Artists</strong>
 		</div>
 		<div class="artist-trkr-list-search">
-			<input type="text" id="filter"/>
-			<%= image_tag "/images/white-search.png", :alt => "Search", :class => "white-search-25 right" %>
-		</div>
+			<input type="text" id="filter" placeholder="Search TRKR's..."/>
+			<div class="search right search-button"><%= image_tag "/images/white-search-2.png", :alt => "Search", :id => "search-pad" %></div></div>
 	</div>
 	<div id="tracked-artists">
 		<% if @user.following.count.zero? %>
