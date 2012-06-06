@@ -380,7 +380,7 @@ input.dp-applied {
             background:transparent;
             padding:0.6em;
             border:none;
-            width:9em;
+            width:9.5em;
             outline:none;
         }
 input:focus ~ .results { 
@@ -400,7 +400,7 @@ display: block;
             background:transparent;
             padding:0.6em;
             border:none;
-            width:10em;
+            width:9.5em;
             outline:none;
         }
         input:focus ~ .results { 
@@ -892,7 +892,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   }
           .artist-trkr-list-search {
         position:absolute;
-       right:-6px;
+        right:-6px;
         bottom:-23px;
         height:25px;
         width:155px;
@@ -901,12 +901,11 @@ body:before {/* thanks to Maleika (Kohoutec)*/
         @include box-shadow(inset 0px 1px 6px rgba(0, 0, 0, 0.25));
         border: 1px solid #50A6C2;
         border-bottom: 1px solid #B0E0E6;
-
         input{
             background:transparent;
             padding:0.6em;
             border:none;
-            width:9em;
+            width:9.5em;
         }
         input:focus{
             outline:none;
@@ -967,11 +966,11 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 }
 .recommended-artists-outer {
   position:relative;
-  height:515px;
-  margin-top:-41px;
+  height:443px;
+  margin-top:31px;
   .recommended-artists {
   position:relative;
-  top:73px;
+  top:0px;
   width:667px;
   height:410px; 
   ul {
@@ -1937,6 +1936,7 @@ span.error{
   position:relative;
   width:667px;
   top:14px;
+  margin-bottom:25px;
   ul {
     list-style-type:none;
     margin-left:-20px;
@@ -1979,38 +1979,28 @@ span.error{
   }
         .friends-search {
         position:absolute;
-        left:459px;
+        right:-1px;
         bottom:21px;
         height:25px;
-        width:208px;
-        background:$orange; 
-        @include border-radius(8px);
-        background: -webkit-linear-gradient(top, #F37244 0%, #F15A24 100%);
-    background: -moz-linear-gradient(top, #F37244 0%, #F15A24 100%);
-    background: -ms-linear-gradient(top, #F37244 0%, #F15A24 100%);
-    background: -o-linear-gradient(top, #F37244 0%, #F15A24 100%);
-    background: linear-gradient(to bottom, #F37244 0%, #F15A24 100%);
-    text-shadow: #FF6103 0 1px 3px;
-    -webkit-box-shadow:
-        0 1px 3px #777,
-        0 0px 1px #ccc;
-    -moz-box-shadow:
-        0 1px 3px #777,
-        0 0px 1px #ccc;
-    box-shadow:
-        0 1px 3px #777,
-        0 0px 1px #ccc;
+        width:209px;
+        background:rgba(255,255,255,0.75);
+        @include border-radius(7px);
+        @include box-shadow(inset 0px 1px 6px rgba(0, 0, 0, 0.25));
+        border: 1px solid #50A6C2;
+        border-bottom: 1px solid #B0E0E6;
         input{
             background:transparent;
             padding:0.6em;
             border:none;
-            width:10em;
-            color:#fff;
+            width:13.5em;
         }
         input:focus{
             outline:none;
         }
     }
+}
+#friends-buffer {
+	margin-bottom:25px;
 }
 #friend-info-top {
   position:relative;
@@ -2045,33 +2035,21 @@ span.error{
   }
   #friend-trkr-search {
         position:absolute;
-        right:6px;
+        right:-1px;
         bottom:28px;
         height:25px;
-        width:201px;
-        background:$orange; 
-        @include border-radius(8px);
-        background: -webkit-linear-gradient(top, #F37244 0%, #F15A24 100%);
-    background: -moz-linear-gradient(top, #F37244 0%, #F15A24 100%);
-    background: -ms-linear-gradient(top, #F37244 0%, #F15A24 100%);
-    background: -o-linear-gradient(top, #F37244 0%, #F15A24 100%);
-    background: linear-gradient(to bottom, #F37244 0%, #F15A24 100%);
-    text-shadow: #FF6103 0 1px 3px;
-    -webkit-box-shadow:
-        0 1px 3px #777,
-        0 0px 1px #ccc;
-    -moz-box-shadow:
-        0 1px 3px #777,
-        0 0px 1px #ccc;
-    box-shadow:
-        0 1px 3px #777,
-        0 0px 1px #ccc;
+        width:202px;
+        background:rgba(255,255,255,0.75);
+        @include border-radius(7px);
+        @include box-shadow(inset 0px 1px 6px rgba(0, 0, 0, 0.25));
+        border: 1px solid #50A6C2;
+        border-bottom: 1px solid #B0E0E6;
+        z-index:1;
                 input{
             background:transparent;
             padding:0.6em;
             border:none;
-            width:10em;
-            color:#fff;
+            width:13.5em;
         }
         input:focus{
             outline:none;
@@ -2079,10 +2057,10 @@ span.error{
   }
 }
 .friend-recommend-nudge {
-  margin-top:-75px;
-}
+  margin-top:-2px;
+  }
 .other-recommend-nudge {
-  margin-top:-54px;
+  margin-top:19px;
 }
         .white-search-25 {
         width:25px;
