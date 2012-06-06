@@ -262,6 +262,14 @@ input.dp-applied {
 		    background: -o-linear-gradient(top, #375A98 0%, #4D77B8 100%);
 		    background: linear-gradient(to bottom, #375A98 0%, #4D77B8 100%);
 }
+    .search {
+	    position:relative;
+	    top:0px;
+	    height:25px;
+	    #search-pad {
+		    padding:3px 6px 0 7px;
+	    }
+    }
 .search-button {
 			color:white;
 			@include border-top-right-radius(7px);
@@ -358,13 +366,6 @@ input.dp-applied {
 	        padding:2px 7px 0 6px;
         }
     }
-    .search {
-	    position:relative;
-	    height:25px;
-	    #search-pad {
-		    padding:3px 6px 0 7px;
-	    }
-    }
     .mini-search {
     margin-top:-1px;
         @extend .right;
@@ -379,7 +380,7 @@ input.dp-applied {
             background:transparent;
             padding:0.6em;
             border:none;
-            width:10em;
+            width:9em;
             outline:none;
         }
 input:focus ~ .results { 
@@ -891,34 +892,21 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   }
           .artist-trkr-list-search {
         position:absolute;
-        left:510px;
+       right:-6px;
         bottom:-23px;
         height:25px;
         width:155px;
-        background:$orange; 
+        background:rgba(255,255,255,0.75);
         @include border-radius(7px);
-    background: -webkit-linear-gradient(top, #F37244 0%, #F15A24 100%);
-    background: -moz-linear-gradient(top, #F37244 0%, #F15A24 100%);
-    background: -ms-linear-gradient(top, #F37244 0%, #F15A24 100%);
-    background: -o-linear-gradient(top, #F37244 0%, #F15A24 100%);
-    background: linear-gradient(to bottom, #F37244 0%, #F15A24 100%);
-    text-shadow: #FF6103 0 1px 3px;
-    -webkit-box-shadow:
-        0 1px 3px #777,
-        0 0px 1px #ccc;
-    -moz-box-shadow:
-        0 1px 3px #777,
-        0 0px 1px #ccc;
-    box-shadow:
-        0 1px 3px #777,
-        0 0px 1px #ccc;
+        @include box-shadow(inset 0px 1px 6px rgba(0, 0, 0, 0.25));
+        border: 1px solid #50A6C2;
+        border-bottom: 1px solid #B0E0E6;
 
         input{
             background:transparent;
             padding:0.6em;
             border:none;
-            width:10em;
-            color:#fff;
+            width:9em;
         }
         input:focus{
             outline:none;
@@ -1379,7 +1367,7 @@ margin:-1px 0 25px 0;
               left:-77px;
             }
      textarea {
-       resize:none;
+	       resize:none;
      }
     .step-left {
       width:290px;
@@ -1476,6 +1464,29 @@ margin:-1px 0 25px 0;
   top:7px;
   right:-12px;
   z-index:50;
+}
+#progress-bar {
+  left:175px;
+  position:relative;
+  width:264px;
+  height:20px;
+  background:rgba(255,255,255,0.75);
+  @include border-radius(12px);
+  @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
+    top:19px;
+    margin-bottom:25px;
+.progress {
+  width:130px;
+  height:20px;
+  @include border-radius(12px);
+  margin-left:-1px;
+}
+.percent {
+  text-align:center;
+  line-height:17px;
+  color:#fff;
+  font-size:1.1em;
+}
 }
 }
 #master-form-wrapper {
@@ -1614,6 +1625,29 @@ position:relative;
   top:7px;
   right:-2px;
 }
+#progress-bar {
+  left:175px;
+  position:relative;
+  width:264px;
+  height:20px;
+  background:rgba(255,255,255,0.75);
+  @include border-radius(12px);
+  @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
+    top:19px;
+    margin-bottom:25px;
+.progress {
+  width:66px;
+  height:20px;
+  @include border-radius(12px);
+  margin-left:-1px;
+}
+.percent {
+  text-align:center;
+  line-height:17px;
+  color:#fff;
+  font-size:1.1em;
+}
+}
 }
 .default-button {
       position:relative;
@@ -1657,29 +1691,6 @@ span.error{
     width:125px;
     @include border-radius(7px);
     z-index:2;
-}
-#progress-bar {
-  left:175px;
-  position:relative;
-  width:264px;
-  height:20px;
-  background:rgba(255,255,255,0.75);
-  @include border-radius(12px);
-  @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
-    top:19px;
-    margin-bottom:25px;
-.progress {
-  width:66px;
-  height:20px;
-  @include border-radius(12px);
-  margin-left:-1px;
-}
-.percent {
-  text-align:center;
-  line-height:17px;
-  color:#fff;
-  font-size:1.1em;
-}
 }
 #about-txt{
   position:relative;
@@ -2111,14 +2122,19 @@ span.error{
   padding:4px 187px 0 187px;
     @extend .content;
 }
-.content-pad-160-bottom {
-    padding:4px 160px 166px 160px;
-    @extend .content;
-}
 .content-pad-115-bottom {
   padding:14px 103px 166px 103px;
     @extend .content;
 }
+.content-pad-160-bottom {
+    padding:4px 160px 166px 160px;
+    @extend .content;
+}
+.content-pad-165-bottom {
+    padding:4px 165px 166px 165px;
+    @extend .content;
+}
+
 .content-pad-187-bottom {
   padding:4px 187px 166px 187px;
     @extend .content;
