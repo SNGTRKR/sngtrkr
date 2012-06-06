@@ -23,6 +23,8 @@ a:link {text-decoration:none;}
 html, body{
     width:100%;
     height:100%;
+    //color:#263a41; // Experimenting with blue tint, but didn't fancy it in the end.
+    color:$gray;
 }
 @font-face {
   font-family: "Instruction";
