@@ -5,8 +5,8 @@
 	<h2 class="signika-txt top-header font-35">Friends (<%= @app_friends.count %>)</h2>
 		<div id="friends-list">
 		<div class="friends-search">
-			<input type="text" id="filter"/>		
-			<%= image_tag "/images/white-search.png", :alt => "Search", :class => "white-search-25 right" %>
+			<input type="text" id="filter" placeholder="Search friends..." />		
+			<div class="search right search-button"><%= image_tag "/images/white-search-2.png", :alt => "Search", :id => "search-pad" %></div>
 		</div>
 		<ul>
 			<% @app_friends.each do |friend| %>
@@ -19,8 +19,9 @@
 			</li>
 			<% end %>
 		</ul>
-
 	</div>
+	<div class="clear"></div>
+	<div id="friends-buffer"></div>
 	<% else %>
 		<h2 class="signika-txt font-35 center-txt">Sharing is caring</h2><br/>
 	<div class="font-15 center-txt"><strong>None of your friends are using SNGTRKR.<br/>Get them involved now by sharing:</strong></div>
