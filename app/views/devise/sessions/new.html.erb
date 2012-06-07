@@ -23,30 +23,16 @@
 <%= render 'shared/fb_async' %>
 <% content_for :title do %>Track your favourite artists and never miss another release...<% end %>
 <% content_for :description do %>Sign up free now to receive an exclusive beta release invite and get the latest updates. Quickly find and track artists you already like, with Facebook integration.<% end %>
-<h2>Sign in</h2>
-
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-<div>
-	<%= f.label :email %>
-	<br />
-	<%= f.email_field :email %>
+<% content_for :title do %>Internal Server Error - ERROR 500<% end %>
+<div class="content content-pad-187-bottom">
+<div id="content-403">
+<div id="content-404-left">
+<h2 class="signika-txt font-100">Oops!</h2>
+<h3 class="txt-404 font-18">Forbidden Access</h3><br/>
+<div class="font-20 txt-404-2">ERROR 403</div></div>
+<div id="content-404-right">
+<%= image_tag "/images/lock.png", :alt => "Server Error", :id => "lock" %>
 </div>
-
-<div>
-	<%= f.label :password %>
-	<br />
-	<%= f.password_field :password %>
 </div>
+<div class="clear"></div>
 
-<% if devise_mapping.rememberable? -%>
-<div>
-	<%= f.check_box :remember_me %> <%= f.label :remember_me %>
-</div>
-<% end -%>
-
-<div>
-	<%= f.submit "Sign in" %>
-</div>
-<% end %>
-
-<%= render "links" %>
