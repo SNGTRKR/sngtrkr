@@ -497,6 +497,12 @@ body:before {/* thanks to Maleika (Kohoutec)*/
         position:relative;
         top:20px;
         left:15px;
+        a {
+	        color:#fff;
+        }
+        a:hover {
+	        color:$orange;
+        }
         li {
             font-size:1.1em;
             padding:0 30px 0 0;
