@@ -28,8 +28,9 @@
 					</style>
 					<![endif]-->
 					<div class="small-logo-home">
-						<a href="/"><%= image_tag "/images/logo-55.png", :alt => "SNGTRKR" %><%= image_tag "/images/crosshair.png", :alt => "SNGTRKR", :id => "crosshair" %></a>
+						<a href="/"><%= image_tag "/images/logo-55.png", :alt => "SNGTRKR" %></a>
 					</div>
+
 					<%= render 'shared/login' %>
 					<% if(user_signed_in?) %>
 					<script type="text/javascript">
