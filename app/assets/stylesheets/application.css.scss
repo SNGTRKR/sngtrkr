@@ -441,23 +441,18 @@ a:hover {
 		    0 0px 1px #ccc;
 }
 }
-    .search-25 {
-        width:25px;
-        height:25px;
-        margin-right:5px;
-    }
-    .big-logo-home{
-        position:relative;
-        left:218px;
-        height:120px;
-        width:470px;
-        top:11px;
-    }
+
     .small-logo-home{
         position:relative;
-        top:25px;
+        top:26px;
         width:202px;
         height:55px;
+        left:-3px;
+    }
+    #crosshair {
+	    position:absolute;
+	    top:3px;
+	    left:3px;
     }
 }
 .header-height-big {
