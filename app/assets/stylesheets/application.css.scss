@@ -497,6 +497,12 @@ body:before {/* thanks to Maleika (Kohoutec)*/
         position:relative;
         top:20px;
         left:15px;
+        a {
+	        color:#fff;
+        }
+        a:hover {
+	        color:$orange;
+        }
         li {
             font-size:1.1em;
             padding:0 30px 0 0;
@@ -549,65 +555,25 @@ body:before {/* thanks to Maleika (Kohoutec)*/
       }
     }
     .beta-white-header {
-      margin-bottom:19px;
+      text-align:center;
     }
     #beta-header {
       margin:24px 0 20px -2px;
     }
-    .content-beta-left {
-      width:303px;
-      height:388px;
-      .reg-points { 
-        width:302px;
-      height:249px;
-               @include border-radius(8px);
-               @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
-         background:rgba(255,255,255,0.75);
-         position:relative;
-         ul {
-           list-style-type:none;
-           width:302px;
-           top:10px;
-           position:relative;
-           left:-12px;
-        li {
-          width:239px;
-          height:45px;
-          float:left;
-          padding:20px 50px 0 45px;
-          .point-txt {
-          margin-top:6px;
-          float:right;
-          width:158px;
-          height:45px;
-    }
-  }
-}
-}
-    }
-    .content-beta-right {
-      width:268px;
-      height:388px;
-      margin-bottom:55px;
-      position:relative;
-      .beta-txt {
-	      height:180px;
-      }
-      a {
-        color:$orange;
-      }
-      a:hover {
-        color:$orange;
-      }
+    #imac {
+	    position:relative;
+	    left:175px;
+	    top:17px;
     }
     #mc_embed_signup {
-      position:absolute;
-      top:339px;
-      left:47px;
+      position:relative;
+      left:255px;
+      top:15px;
+      margin-bottom:62px;
       #beta-submit {
         position:relative;
-        left:24px;
-        top:8px;
+        left:70px;
+        top:15px;
       input[type=submit] {
                 margin:5px 0 0 0;
                 background:none;
@@ -618,37 +584,40 @@ body:before {/* thanks to Maleika (Kohoutec)*/
                 left:17px;         
             }
           }
+          .beta-input {
+	          width:250px;
+	          height:30px;
+          }
     }
-    #beta-line {
-	    position:relative;
-	    width:602px;
-	    border-top-color: black;
-	    border-top-style: solid;
-	    border-top-width: 1px;
-	    margin-top:-15px;
+      #beta-points {
+	  position:relative;
+	  width:780px;
+	  top:15px;
+	  ul {
+	  list-style-type: none;
+	  margin-left:-30px;
+		  li {
+			  width:240px;
+			  margin-left:30px;
+		  }
+	  }
+	  .home-titles {
+		  margin-left:-2px;
+	  }
+  }
+    #beta-social-media {
+    position:relative;
+    top:50px;
+    left:182px;
+    height:143px;
+	    ul {
+	    list-style-type: none;
+	    margin-left:-50px;
+		    li {
+			    margin-left:50px;
+		    }
+	    }
     }
-     .beta-sm {
-    list-style-type:none;
-    width:602px;
-    margin-top:10px;
-    position: relative;
-    left:15px;
-     a {
-          color:#000;
-        }
-        a:hover {
-          color:$orange;
-        }
-    .beta-som {
-      margin:0 20px 37px 0;
-      .text-nudge-2 {
-        position:relative;
-        bottom:6px;
-        left:5px;
-      }
-    }
-    }
-    
     .add-release-header {
       margin-left:19px;
     }
@@ -2032,13 +2001,8 @@ span.error{
     padding:4px 165px 166px 165px;
     @extend .content;
 }
-
 .content-pad-187-bottom {
   padding:4px 187px 166px 187px;
-    @extend .content;
-}
-.content-error-pad-220-bottom {
-  padding:4px 208px 166px 232px;
     @extend .content;
 }
 .delete-confirm {
@@ -2111,25 +2075,60 @@ span.error{
     top:52px;
     line-height:1.25em;
 }
-#content-error-left {
+#content-404 {
+	position:relative;
+	width:480px;
+	top:48px;
+	margin-bottom:24px;
+	left:52px;
+	}
+	#content-500 {
+	position:relative;
+	width:480px;
+	top:48px;
+	height:349px;
+	left:56px;
+	}
+#content-403 {
+	position:relative;
+	width:500px;
+	top:48px;
+	height:347px;
+	left:40px;
+	}
+	#not-found {
+	  position:relative;
+	  left:44px;
+	  top:16px;
+  }
+  #gears {
+	  position:relative;
+	  left:17px;
+	  top:17px;
+  }
+  #lock {
+	  position:relative;
+	  left:28px;
+	  top:39px;
+  }
+#content-404-left {
   float:left;
-  margin-top:34px;
-.error-txt {
+.txt-404 {
   text-align:center;
   width:258px;
   line-height:1.4em;
 }
-.error-404-txt {
+.txt-404-2 {
   color:red;
   width:258px;
   text-align:center;
   line-height:1.4em;
   }
 }
-#content-error-right {
+#content-404-right {
   float:right;
-  margin-bottom:11px;
 }
+
 #timeline {
   	position:relative;
     height:558px;
@@ -2172,7 +2171,7 @@ span.error{
 	      padding:110px 13px 0 13px;
 	      z-index:2;
 	      margin-right:15px;
-        -webkit-transition: bottom ease-out 0.5s;
+      /*  -webkit-transition: bottom ease-out 0.5s;*/
         a {
 		      color:#fff;
 	      }
@@ -2180,14 +2179,14 @@ span.error{
 		      color:$orange;
 	      }
       }
-      .release-info:hover {
+    /*  .release-info:hover {
         bottom:33px;
       } 
       .release-info:hover ~ .release-menu {
 	      bottom:0px;
-      }
+      } */
       .release-menu {
-      -webkit-transition: bottom ease-out 0.5s;
+      /* -webkit-transition: bottom ease-out 0.5s; */
 	      position:absolute;
 	      height:23px;
 	      width:210px;
@@ -2197,7 +2196,7 @@ span.error{
 		    text-shadow: #FF6103 0 1px 3px;
 	      @include border-bottom-left-radius(8px);
           @include border-bottom-right-radius(8px);
-          bottom:-25px;
+          bottom:0px;
           left:0px;
           z-index:2;
           .menu {
@@ -2258,37 +2257,5 @@ span.error{
 	      top:79px;
       }
 }
-.buy-release {
-	display:none;
-	width:543px;
-    height:315px;
-    background: url(/images/box-bk-550.png) no-repeat;
-    @include border-radius(8px);
-    color:#000;
-    .buy-title {
-        font-size:2.8em;
-        color:#fff;
-        @include text-shadow(0px 2.83px 8px rgba(0,0,0,0.28));
-        font-family: 'Signika Negative', sans-serif;
-        font-weight:400;
-        line-height:1.3em;
-        position:relative;
-        top:27px;
-        text-align:center;
-      }
-      ul {
-      list-style-type: none;
-      position:relative;
-      top:51px;
-      left:103px;
-	      li {
-		      margin-right:38px;
-	      }
-      }
-      .buy-txt {
-	      position:relative;
-	      text-align:center;
-	      top:79px;
-      }
-}
+
 

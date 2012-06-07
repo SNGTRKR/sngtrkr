@@ -17,8 +17,8 @@ class BetaUsersController < ApplicationController
     @beta_user = BetaUser.new
 
     respond_to do |format|
-      format.html { render :layout => 'beta' } # new.html.erb
-    end
+      format.html
+          end
   end
 
   # POST /beta_users
