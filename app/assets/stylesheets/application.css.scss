@@ -1995,13 +1995,8 @@ span.error{
     padding:4px 165px 166px 165px;
     @extend .content;
 }
-
 .content-pad-187-bottom {
   padding:4px 187px 166px 187px;
-    @extend .content;
-}
-.content-error-pad-220-bottom {
-  padding:4px 208px 166px 232px;
     @extend .content;
 }
 .delete-confirm {
@@ -2074,25 +2069,60 @@ span.error{
     top:52px;
     line-height:1.25em;
 }
-#content-error-left {
+#content-404 {
+	position:relative;
+	width:480px;
+	top:48px;
+	margin-bottom:24px;
+	left:52px;
+	}
+	#content-500 {
+	position:relative;
+	width:480px;
+	top:48px;
+	height:349px;
+	left:56px;
+	}
+#content-403 {
+	position:relative;
+	width:500px;
+	top:48px;
+	height:347px;
+	left:40px;
+	}
+	#not-found {
+	  position:relative;
+	  left:44px;
+	  top:16px;
+  }
+  #gears {
+	  position:relative;
+	  left:17px;
+	  top:17px;
+  }
+  #lock {
+	  position:relative;
+	  left:28px;
+	  top:39px;
+  }
+#content-404-left {
   float:left;
-  margin-top:34px;
-.error-txt {
+.txt-404 {
   text-align:center;
   width:258px;
   line-height:1.4em;
 }
-.error-404-txt {
+.txt-404-2 {
   color:red;
   width:258px;
   text-align:center;
   line-height:1.4em;
   }
 }
-#content-error-right {
+#content-404-right {
   float:right;
-  margin-bottom:11px;
 }
+
 #timeline {
   	position:relative;
     height:558px;
