@@ -1,6 +1,6 @@
 <% content_for :title do %>Track your favourite artists and never miss another release - Beta Invite Signup<% end %>
 <% content_for :description do %>Sign up free now to receive an exclusive beta release invite and get the latest updates. Quickly find and track artists you already like, with Facebook integration.<% end %>
-<div class="content content-pad-187">
+<div class="content content-pad-115-bottom">
   <% if @beta_user.errors.any? %>
       <% @beta_user.errors.full_messages.each do |msg| %>
         <script language="Javascript">
@@ -17,61 +17,43 @@
 	    //-->
 	    </script>
   <% end %>
-	<a href="/"><%= image_tag "/images/beta-header.png", :id => "beta-header", :alt =>"SNGTRKR" %></a>
-	<div class="content-beta-left left">
-			<h2 class="signika-txt top-header font-35 beta-white-header">Sign up FREE now for an exclusive beta invite...</h2>		
-		<div class="left reg-points">
-			<ul>
-				<li class="left"><%= image_tag "/images/tick.png", :alt => "Tick" %>
-					<div class="point-txt right">
-						Quickly find and track artists you already like, with Facebook integration.
-					</div>
-				</li>
-				<li class="left"><%= image_tag "/images/tick.png", :alt => "Tick" %>
-					<div class="point-txt right">
-						Listen to artists and buy tracks, old and new, with an intuitive timeline. 
-					</div>
-				</li>
-				<li class="left"><%= image_tag "/images/tick.png", :alt => "Tick" %>
-					<div class="point-txt right">
-						Receive notifications when artists release new tracks, before anyone else.
-					</div>
-				</li>
-			</ul>
-			</div>
-		</div>
-		<div class="content-beta-right right">
-			<div id="beta-txt">Inspired by the passion and appreciation that we have for music and artists alike, we built SNGTRKR - a webapp to enable other music lovers to easily track artists, so that they never miss another music release.<br/><br/>
-			We wanted to make it simple for you to find out when your favourite artists are releasing new content, by removing the hassle of looking through 
-			social media sites, subscribing to mailing lists, or repeatedly checking artists’ websites.<br/><br/>
-			If you are an artist and/or record label and you would like more information please email us at <a href="mailto:press@sngtrkr.com">press@sngtrkr.com</a>.<br/><br/>
-			<h3><div class="font-13"><strong>To receive an exclusive beta release invite and get the latest updates, enter your email address below:</strong></div></h3></div>
-			<div id="mc_embed_signup">
+			<h2 class="signika-txt top-header font-35 beta-white-header">Sign up for an exclusive BETA invite....</h2>		
+			<%= image_tag "/images/imac.png", :alt => "iMac", :id => "imac" %>
+					<div id="mc_embed_signup">
       <%= form_for(@beta_user) do |f| %>
       <div class="mc-field-group">
-          <%= f.text_field :email, :class => "required email form-text", :id => "mce-EMAIL" %>
+          <%= f.text_field :email, :class => "required email form-text beta-input font-15", :placeholder => "Enter email address..." %>
       </div>
       	<div id="mce-responses" class="clear">
       		<div class="response" id="mce-error-response" style="display:none"></div>
       		<div class="response" id="mce-success-response" style="display:none"></div>
       	</div>	<div id="beta-submit"><div class="clear">
         <div class="o-button norm-o-pad left signika-font">
-          <%= f.submit "Sign up for beta", :id => "mc-embedded-subscribe" %>
+          <%= f.submit "Sign up for beta", :id => "mc-embedded-subscribe", :class => "font-13" %>
           <span></span>
         </div>
       	</div>
       	</div>
       <% end %>
 </div>
+<div class="clear"></div>
+<div id="beta-points">
+<ul>
+<li class="left"><h3 class="signika-txt font-25 home-titles">Find artists you like</h3><br/>
+<div class="font-13">SNGTRKR intuitively recognises which artists you've liked on Facebook, and supplies you with recommendations to build up your TRK'd artists.</div></li>
+<li class="left"><h3 class="signika-txt font-25 home-titles">Discover new music</h3><br/>
+<div class="font-13">Looking to expand your music library? SNGTRKR makes it fun and exciting to discover new music with track previews, recommendations and purchase links.</div></li>
+<li class="left"><h3 class="signika-txt font-25 home-titles">Keep up to date</h3><br/>
+<div class="font-13">Stay in the loop with your personalised timeline of artist releases, old and new. Alongside regular notifications straight to your inbox.</div></li>
+</ul>
 </div>
 <div class="clear"></div>
-<div id="beta-line"></div>
-<ul class="beta-sm">
-<li class="left beta-som"><a href="mailto:info@sngtrkr.com" target="_blank"><%= image_tag "/images/beta-email.png", :alt => "Email" %><span class="text-nudge-2">info@sngtrkr.com</a></span></li>
-				<li class="left beta-som"><a href="https://www.facebook.com/pages/Sngtrkr/358652204169145" target="_blank"><%= image_tag "/images/about-fb.png", :alt => "Facebook" %><span class="text-nudge-2">Like us on Facebook</a></span></li>
-				<li class="left beta-som"><a href="https://twitter.com/#!/SNGTRKR" target="_blank"><%= image_tag "/images/about-twit.png", :alt => "Twitter" %><span class="text-nudge-2">Follow us on Twitter</a></span></li>
-				<li class="left beta-som"><a href="https://plus.google.com/111951759053908858363/posts" target="_blank"><%= image_tag "/images/about-google.png", :alt => "Google" %><span class="text-nudge-2">Circle us on Google+</a></span></li>
-				</ul>
+<div id="beta-social-media">
+<ul>
+<a href="https://www.facebook.com/sngtrkr" target="_blank"><li class="left"><%= image_tag "/images/trk-fb.png", :alt => "Facebook" %></li></a>
+<a href="https://twitter.com/#!/SNGTRKR" target="_blank"><li class="left"><%= image_tag "/images/trk-twit.png", :alt => "Twitter" %></li></a>
+<a href="https://plus.google.com/111951759053908858363/posts" target="_blank"><li class="left"><%= image_tag "/images/trk-goo.png", :alt => "Google+" %></li></a>
+<a href="mailto:info@sngtrkr.com" target="_blank"><li class="left"><%= image_tag "/images/trk-email.png", :alt => "Email" %></li></a>
+</div>
 <div class="clear"></div>
-
 

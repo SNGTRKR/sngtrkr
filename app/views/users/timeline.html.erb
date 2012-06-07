@@ -14,7 +14,7 @@
 	</div>
 	<div class="release-menu font-13">
 		<ul class="menu">
-		<a href=".buy-release"><li class="left menu-item">Buy</li></a>
+		<li class="left menu-item buy-release">Buy</li>
 		<li class="left menu-item">Listen</li>
 		<a href=".share-release"><li class="left menu-item">Share</li></a>
 		</ul>
@@ -48,4 +48,13 @@
 <%= image_tag "/images/shadow-line-bot.png", :id => 'shadow-bot' %>
 </div>
 <div class="content content-pad-160-bottom">
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".buy-release").click(function() {
+			$(".release-info").animate({
+				left : 400
+			}, "slow");
 
+		});
+		});
+		</script>
