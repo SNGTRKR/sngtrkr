@@ -22,19 +22,7 @@
 					</style>
 					<![endif]-->
 					<%= render 'shared/login' %>
-					<% if(user_signed_in?) %>
-					<div class="mini-search right">
-						<%= form_tag artists_path , :method => 'get' do %>
-						<%= text_field_tag(:search, params[:search]) %><%= image_tag "/images/search-25.png", :alt => "Search", :class => "search-25 right" %>
-						<% end %>
-					</div>
-					<% elsif %>
-					<div class="mini-search-2 right">
-						<%= form_tag artists_path , :method => 'get' do %>
-						<%= text_field_tag(:search, params[:search]) %><%= image_tag "/images/search-25.png", :alt => "Search", :class => "search-25 right" %>
-						<% end %>
-					</div>
-					<% end %>
+					<%= render :partial => 'layouts/artist_mini_search' %>
 					<div class="clear"></div>
 					<a href="/">
 					<div class="small-logo-home"><%= image_tag "/images/logo-55.png", :alt => "SNGTRKR" %>

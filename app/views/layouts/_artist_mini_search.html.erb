@@ -1,0 +1,20 @@
+<div class="mini-search-2 right">
+  <%= form_tag artists_path , :method => 'get' do %>
+  <%= text_field_tag(:search, params[:search], :autocomplete => 'off', :placeholder => "Search artists...") %>
+  <div class="search right search-button"><%= link_to (image_tag "/images/white-search-2.png", :alt => "Search", :id => "search-pad"), "#submit", :id => 'artist-mini-search-submit' %></div></a> 
+  <ul class="results" >
+    <li><a href="index.html">Skream<br /><span>Dubstep</span></a></li>
+    <li><a href="index.html">Amoss<br /><span>Drum &nbsp; Bass</span></a></li>
+    <li><a href="index.html">Tantrum Desire<br /><span>Drum &nbsp; Bass</span></a></li>
+    <li><a href="index.html">Skrillex<br /><span>Dubstep</span></a></li>
+  </ul>
+  <% end %>
+</div>
+<script>
+$(document).ready(function(){
+  $('#artist-mini-search-submit').click(function(){
+    $('form').submit();
+    return false;
+  });
+})
+</script>
