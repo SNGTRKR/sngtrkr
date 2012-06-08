@@ -36,8 +36,10 @@
 					<script type="text/javascript">
 					$.fn.placeholder();
 					</script>
+					<%= render :partial => 'layouts/artist_mini_search', :locals => { :css => 'mini-search'} %>
+					<% else %>
+					<%= render :partial => 'layouts/artist_mini_search', :locals => { :css => 'mini-search-2'} %>
 					<% end %>
-					<%= render :partial => 'layouts/artist_mini_search' %>
 					<div class="clear"></div>
 				</div>
 				<% if flash[:notice] %>
