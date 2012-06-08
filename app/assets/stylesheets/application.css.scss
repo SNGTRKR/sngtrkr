@@ -2129,6 +2129,7 @@ span.error{
     background-image: url(/images/grid.png);
     background-repeat: repeat-x;
     margin-bottom: 27px;
+    overflow:auto;
   #shadow-top {
 	  position:absolute;
 	  height:43px;
@@ -2145,6 +2146,7 @@ span.error{
 	  list-style-type: none;
 	  position:relative;
 	  margin-left:20px;
+	  width:11800px;
 	  .each-release {
 	  overflow: hidden;
 	  background:white;
