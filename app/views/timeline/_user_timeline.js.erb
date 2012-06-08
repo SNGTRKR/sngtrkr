@@ -1,4 +1,3 @@
-i = 1
-@timeline.each do |release| %>
-<%= debug release %>
+<% @timeline.each do |release| %>
+$(document).append("<%=j render :partial => 'timeline/release', :object => release %>");
 <% end %>
