@@ -7,11 +7,12 @@
 <ul class="release-list">
   <% @timeline[0..10].each do |release| %>
 	<li class="left each-release" style="background-image:url(<%= release.image :release %>); background-position:center;">
+	<div class="r-grad">
 	<div class="release-info">
 	<strong><span class="font-18"><%= release.name %></span></strong><br/>
 	<%= link_to release.artist.name, release.artist %><br/>
 	<span class="font-11"><%= release.label_name %></span>
-	</div>
+		</div>
 	<div class="release-menu font-13">
 		<ul class="menu">
 		<li class="left menu-item buy-release">Buy</li>
@@ -19,31 +20,12 @@
 		<a href=".share-release"><li class="left menu-item">Share</li></a>
 		</ul>
 	</div>
-	<div class="r-grad gradient"></div>
+	</div>
+	<div class="opac-50"></div>
 	</li>
 	<% end %>
 </ul>
 <div class="clear"></div>
-<div class="share-release">
-	<div class="share-title">Where would you like to<br/> share this track?</div>
-	<ul>
-	<a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com%2F&t=SNGTRKR','Share SNGTRKR on Facebook','scrollbars=no,width=620,height=340'); return false;"><li class="left"><%= image_tag "/images/share-fb.png", :alt => "Facebook" %></li></a>
-	<a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.sngtrkr.com&text=I%27m+currently+using+SNGTRKR+to+track+artist+releases.+Come+get+involved+at+&url=http%3A%2F%2Fwww.sngtrkr.com&via=SNGTRKR','Share SNGTRKR on Facebook','scrollbars=no,width=620,height=340'); return false;"><li class="left"><%= image_tag "/images/share-twit.png", :alt => "Twitter" %></li></a>
-	<a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com','Share SNGTRKR on Facebook','scrollbars=no,width=620,height=340'); return false;"><li class="left"><%= image_tag "/images/share-goo.png", :alt => "Google" %></li></a>
-	</ul>
-	<div class="clear"></div>
-	<div class="share-txt">Please note, SNGTRKR is not held responsible for anything posted on third party<br/> sites. See our Terms of Use for more information.</div>
-</div>
-<div class="buy-release">
-	<div class="buy-title">Which music retailer would<br/> you like to use?</div>
-	<ul>
-	<li class="left"><%= image_tag "/images/release-itunes.png", :alt => "Itunes" %></li>
-	<li class="left"><%= image_tag "/images/release-amaz.png", :alt => "Amazon" %></li>
-	<li class="left"><%= image_tag "/images/release-7d.png", :alt => "7Digital" %></li>
-	</ul>
-	<div class="clear"></div>
-	<div class="buy-txt">Please note, you are accessing a third party website, which you do so at your own<br/> risk. See our Terms of Use for more information.</div>
-</div>
 <%= image_tag "/images/shadow-line.png", :id => 'shadow-top' %>
 <%= image_tag "/images/shadow-line-bot.png", :id => 'shadow-bot' %>
 </div>
@@ -51,10 +33,19 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$(".buy-release").click(function() {
-			$(".release-info").animate({
-				left : 400
-			}, "slow");
-
+			event.preventDefault();
+			 var $lefty = $(this).children();
+			$(this).closest(".each-release").find('.release-info').animate({bottom : -100}, "slow");
+			$(this).closest(".each-release").find('.release-menu').animate({bottom : -25}, "slow");
+			$(this).closest(".each-release").find('.r-grad').fadeOut("normal");
+			$(this).closest(".each-release").find('.opac-50').fadeIn("normal");
 		});
+		$(".r-grad").mouseover(function(){
+				$(this).closest(".each-release").find('.release-info').stop().animate({bottom : 33}, "slow");
+				$(this).closest(".each-release").find('.release-menu').stop().animate({bottom : 0}, "slow");
+			}).mouseout(function(){
+				$(this).closest(".each-release").find('.release-info').stop().animate({bottom : 13}, "slow");
+				$(this).closest(".each-release").find('.release-menu').stop().animate({bottom : -25}, "slow");
+			});
 		});
 		</script>
