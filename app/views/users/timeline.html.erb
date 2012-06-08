@@ -17,11 +17,31 @@
 		<ul class="menu">
 		<li class="left menu-item buy-release">Buy</li>
 		<li class="left menu-item">Listen</li>
-		<a href=".share-release"><li class="left menu-item">Share</li></a>
+		<li class="left menu-item share-release">Share</li>
 		</ul>
 	</div>
-	</div>
+	</div> <!-- r-grad -->
 	<div class="opac-50"></div>
+	<div id="share-release">
+	<div class="signika-txt font-22 center-txt share-header">Share this track</div>
+	<ul class="share-list">
+	<li class="left"><%= image_tag "/images/release-fb.png", :alt => "Facebook" %></li>
+	<li class="left"><%= image_tag "/images/release-twit.png", :alt => "Twitter" %></li>
+	<li class="left"><%= image_tag "/images/release-goo.png", :alt => "Google+" %></li>
+	</ul>
+	<div class="clear"></div>
+	<div class="font-13 o-button norm-o-pad signika-font left share-cancel">Cancel</div>
+	</div>
+	<div id="buy-release">
+	<div class="signika-txt font-22 center-txt buy-header">Buy this track</div>
+	<ul class="buy-list">
+	<li class="left"><%= image_tag "/images/release-it.png", :alt => "iTunes" %></li>
+	<li class="left"><%= image_tag "/images/release-amaz.png", :alt => "Amazon" %></li>
+	<li class="left"><%= image_tag "/images/release-7d.png", :alt => "7Digital" %></li>
+	</ul>
+	<div class="clear"></div>
+	<div class="font-13 o-button norm-o-pad signika-font left buy-cancel">Cancel</div>
+	</div>
 	</li>
 	<% end %>
 </ul>
@@ -32,13 +52,12 @@
 <div class="content content-pad-160-bottom">
 <script type="text/javascript">
 	$(document).ready(function() {
-		$(".buy-release").click(function() {
-			event.preventDefault();
-			 var $lefty = $(this).children();
+		$(".share-release").click(function() {
 			$(this).closest(".each-release").find('.release-info').animate({bottom : -100}, "slow");
 			$(this).closest(".each-release").find('.release-menu').animate({bottom : -25}, "slow");
 			$(this).closest(".each-release").find('.r-grad').fadeOut("normal");
 			$(this).closest(".each-release").find('.opac-50').fadeIn("normal");
+			$(this).closest(".each-release").find('#share-release').animate({right : 0}, "slow");
 		});
 		$(".r-grad").mouseover(function(){
 				$(this).closest(".each-release").find('.release-info').stop().animate({bottom : 33}, "slow");
@@ -47,5 +66,26 @@
 				$(this).closest(".each-release").find('.release-info').stop().animate({bottom : 13}, "slow");
 				$(this).closest(".each-release").find('.release-menu').stop().animate({bottom : -25}, "slow");
 			});
+		$(".share-cancel").click(function() {
+			$(this).closest(".each-release").find('.release-info').animate({bottom : 13}, "slow");
+			$(this).closest(".each-release").find('.release-menu').animate({bottom : -25}, "slow");
+			$(this).closest(".each-release").find('.r-grad').fadeIn("normal");
+			$(this).closest(".each-release").find('.opac-50').fadeOut("normal");
+			$(this).closest(".each-release").find('#share-release').animate({right : -210}, "slow");
+		});
+		$(".buy-release").click(function() {
+			$(this).closest(".each-release").find('.release-info').animate({bottom : -100}, "slow");
+			$(this).closest(".each-release").find('.release-menu').animate({bottom : -25}, "slow");
+			$(this).closest(".each-release").find('.r-grad').fadeOut("normal");
+			$(this).closest(".each-release").find('.opac-50').fadeIn("normal");
+			$(this).closest(".each-release").find('#buy-release').animate({left : 0}, "slow");
+		});
+		$(".buy-cancel").click(function() {
+			$(this).closest(".each-release").find('.release-info').animate({bottom : 13}, "slow");
+			$(this).closest(".each-release").find('.release-menu').animate({bottom : -25}, "slow");
+			$(this).closest(".each-release").find('.r-grad').fadeIn("normal");
+			$(this).closest(".each-release").find('.opac-50').fadeOut("normal");
+			$(this).closest(".each-release").find('#buy-release').animate({left : -210}, "slow");
+		});
 		});
 		</script>
