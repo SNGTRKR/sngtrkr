@@ -80,6 +80,9 @@ body{
 .font-20 {
   font-size:1.8em;
 }
+.font-22 {
+	font-size:2em;
+}
 .font-25 {
   font-size:2.3em;
 }
@@ -455,6 +458,13 @@ a:hover {
 	    left:3px;
     }
 }
+.signika-txt { /* white text - signikia */
+        color:#fff;
+        @include text-shadow(0px 2.83px 8px rgba(0,0,0,0.28));
+        font-family: 'Signika Negative', sans-serif;
+        font-weight:400;
+        line-height:1.3em;
+    }
 .header-height-big {
     @extend .header;
     height:170px;
@@ -510,6 +520,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
         top:105px;
     }
 }
+
 #wrapper{
     min-height:100%;
 }
@@ -520,13 +531,6 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 }
 .content {
     padding:0px 73px 0px 73px;
-    .signika-txt { /* white text - signikia */
-        color:#fff;
-        @include text-shadow(0px 2.83px 8px rgba(0,0,0,0.28));
-        font-family: 'Signika Negative', sans-serif;
-        font-weight:400;
-        line-height:1.3em;
-    }
     .artist-name { /* Artist name - Instruction font */
       position:relative;
       width:200px;
@@ -2012,13 +2016,8 @@ span.error{
     a:hover {
 	    color:#fff;
     }
-    #goodbye {
+    .goodbye {
         font-size:2.8em;
-        color:#fff;
-        @include text-shadow(0px 2.83px 8px rgba(0,0,0,0.28));
-        font-family: 'Signika Negative', sans-serif;
-        font-weight:400;
-        line-height:1.3em;
         position:relative;
         top:28px;
         left:101px;
@@ -2214,8 +2213,50 @@ span.error{
 	      width:210px;
 	      height:210px;
 	      @include border-radius(8px);
-	      background:rgba(0,0,0,0.5);
+	      background:rgba(0,0,0,0.75);
 	      display:none;
+      }
+      #share-release {
+	      position:absolute;
+	      height:210px;
+	      width:210px;
+	      z-index:2;
+	      right:-210px;
+	      .share-header {
+		      position:relative;
+		      top:29px;
+	      }
+	      .share-list {
+		      position:relative;
+		      left:29px;
+		      top:44px;
+	      }
+	      .share-cancel {
+		      position:relative;
+		      left:70px;
+		      top:67px;
+	      }
+      }
+      #buy-release {
+	      position:absolute;
+	      height:210px;
+	      width:210px;
+	      z-index:2;
+	      left:-210px;
+	      .buy-header {
+		      position:relative;
+		      top:29px;
+	      }
+	      .buy-list {
+		      position:relative;
+		      left:29px;
+		      top:44px;
+	      }
+	      .buy-cancel {
+		      position:relative;
+		      left:70px;
+		      top:67px;
+	      }
       }
 	  }
   }
