@@ -3,11 +3,13 @@
 <div class="content content-pad-160">
 </div>
 </div>
+<div id="timeline-outer">
 <div id="timeline">
 <ul class="release-list">
 <%= render :partial => 'timeline/release', :collection => @timeline[0..10] %>
 </ul>
 <div class="clear"></div>
+</div>
 <%= image_tag "/images/shadow-line.png", :id => 'shadow-top' %>
 <%= image_tag "/images/shadow-line-bot.png", :id => 'shadow-bot' %>
 </div>
@@ -49,7 +51,11 @@
 			$(this).closest(".each-release").find('.opac-50').fadeOut("normal");
 			$(this).closest(".each-release").find('#buy-release').animate({left : -210}, "slow");
 		});
-		$('#timeline').mousedown(function (event) {
+		});
+		</script>
+		<script type="text/javascript" charset="utf-8">
+$(document).ready(function () {        
+        $('#timeline').mousedown(function (event) {
             $(this)
                 .data('down', true)
                 .data('x', event.clientX)
@@ -78,5 +84,14 @@
                 }                
             } catch (e) {}
         }
-		});
+    });
+        //mousewheel
+        var stepsWidth = 0;
+			var widths = new Array();
+			$('.release-list .each-release').each(function(i) {
+				var $step = $(this);
+				widths[i] = stepsWidth;
+				stepsWidth += $step.width();
+			});
+			$('.release-list').width(stepsWidth+220);
 		</script>
