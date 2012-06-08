@@ -5,45 +5,7 @@
 </div>
 <div id="timeline">
 <ul class="release-list">
-  <% @timeline[0..10].each do |release| %>
-	<li class="left each-release" style="background-image:url(<%= release.image :release %>); background-position:center;">
-	<div class="r-grad">
-	<div class="release-info">
-	<strong><span class="font-18"><%= release.name %></span></strong><br/>
-	<%= link_to release.artist.name, release.artist %><br/>
-	<span class="font-11"><%= release.label_name %></span>
-		</div>
-	<div class="release-menu font-13">
-		<ul class="menu">
-		<li class="left menu-item buy-release">Buy</li>
-		<li class="left menu-item">Listen</li>
-		<li class="left menu-item share-release">Share</li>
-		</ul>
-	</div>
-	</div> <!-- r-grad -->
-	<div class="opac-50"></div>
-	<div id="share-release">
-	<div class="signika-txt font-22 center-txt share-header">Share this track</div>
-	<ul class="share-list">
-	<a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com%2F&t=SNGTRKR','Share SNGTRKR on Facebook','scrollbars=no,width=620,height=340'); return false;"><li class="left"><%= image_tag "/images/release-fb.png", :alt => "Facebook" %></li></a>
-	<a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.sngtrkr.com&text=<%= release.artist.name%>+&#45;+<%= release.name %>+released+on+<%= release.label_name %>.+Check+out+<%= release.artist.name %>+on+SNGTRKR+&#45;&via=SNGTRKR','Share SNGTRKR on Facebook','scrollbars=no,width=620,height=340'); return false;"><li class="left"><%= image_tag "/images/release-twit.png", :alt => "Twitter" %></li></a>
-	<a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com','Share SNGTRKR on Facebook','scrollbars=no,width=620,height=340'); return false;"><li class="left"><%= image_tag "/images/release-goo.png", :alt => "Google+" %></li></a>
-	</ul>
-	<div class="clear"></div>
-	<div class="font-13 o-button norm-o-pad signika-font left share-cancel">Cancel</div>
-	</div>
-	<div id="buy-release">
-	<div class="signika-txt font-22 center-txt buy-header">Buy this track</div>
-	<ul class="buy-list">
-	<li class="left"><%= image_tag "/images/release-it.png", :alt => "iTunes" %></li>
-	<li class="left"><%= image_tag "/images/release-amaz.png", :alt => "Amazon" %></li>
-	<li class="left"><%= image_tag "/images/release-7d.png", :alt => "7Digital" %></li>
-	</ul>
-	<div class="clear"></div>
-	<div class="font-13 o-button norm-o-pad signika-font left buy-cancel">Cancel</div>
-	</div>
-	</li>
-	<% end %>
+<%= render :partial => 'timeline/release', :collection => @timeline[0..10] %>
 </ul>
 <div class="clear"></div>
 <%= image_tag "/images/shadow-line.png", :id => 'shadow-top' %>
