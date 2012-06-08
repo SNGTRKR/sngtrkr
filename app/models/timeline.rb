@@ -13,8 +13,8 @@ class Timeline
     self
   end
 
-  def self.user
-    Release.joins(:artist).order("date DESC").where("artist_id in (?)",@@artists)
+  def self.user page = 0
+    Release.joins(:artist).order("date DESC").where("artist_id in (?)",@@artists).page(page)
   end
 
 end

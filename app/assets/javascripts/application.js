@@ -26,7 +26,11 @@ $(document).ready(function() {
 		autoSize	: false,
 		closeClick	: false
 	});
-    	});
+  $('#artist-mini-search-submit').click(function(){
+    $(this).closest('form').submit();
+    return false;
+  });
+});
 
     	
 
