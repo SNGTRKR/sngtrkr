@@ -27,8 +27,10 @@ SNGTRKR::Application.routes.draw do
   devise_scope :user do
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   end
+  
+  resources :timeline
 
-  match '/timeline' => "Users#timeline"
+  match '/my_timeline' => "Users#timeline"
   resources :users, :except =>[:index] do
     member do
       get 'destroy_confirm'
