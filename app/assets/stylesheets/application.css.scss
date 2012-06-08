@@ -2109,14 +2109,6 @@ span.error{
 #content-404-right {
   float:right;
 }
-
-#timeline {
-  	position:relative;
-    height:558px;
-    background-image: url(/images/grid.png);
-    background-repeat: repeat-x;
-    margin-bottom: 27px;
-    overflow:auto;
   #shadow-top {
 	  position:absolute;
 	  height:43px;
@@ -2129,11 +2121,24 @@ span.error{
 	  width:100%;
 	  top:546px;
   }
+  #timeline-outer {
+	  position:relative;
+	  height:558px;
+  }
+#timeline {
+  	position:relative;
+    height:558px;
+    background-image: url(/images/grid.png);
+    background-repeat: repeat-x;
+    margin-bottom: 27px;
+    overflow:auto;
+    /*cursor: -moz-grab !important;*/ /* should this be applied with JS? */
+
   .release-list {
 	  list-style-type: none;
 	  position:relative;
-	  margin-left:20px;
-	  width:11800px;
+	  margin:20px 0 0 20px;
+	 width:11800px;
 	  .each-release {
 	  overflow: hidden;
 	  background:white;

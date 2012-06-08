@@ -33,12 +33,30 @@
 
 					<%= render 'shared/login' %>
 					<% if(user_signed_in?) %>
+<<<<<<< HEAD
+					<div class="mini-search right">
+						<%= form_tag artists_path , :method => 'get' do %>
+						<%= text_field_tag(:search, params[:search], :autocomplete => 'off', :placeholder => "Search artists...") %><div class="search right search-button"><%= image_tag "/images/white-search-2.png", :alt => "Search", :id => "search-pad" %></div></a> 
+						<ul class="results" >
+			 <li><a href="index.html">Skream<br /><span>Dubstep</span></a></li>
+			 <li><a href="index.html">Amoss<br /><span>Drum & Bass</span></a></li>
+	 		<li><a href="index.html">Tantrum Desire<br /><span>Drum & Bass</span></a></li>
+         	<li><a href="index.html">Skrillex<br /><span>Dubstep</span></a></li>
+		 </ul>
+		 <% end %></div>
+										<% elsif %>
+					<div class="mini-search-2 right">
+						<%= form_tag artists_path , :method => 'get' do %>
+						<%= text_field_tag(:search, params[:search], :autocomplete => 'off', :placeholder => "Search artists...") %><div class="search right search-button"><%= image_tag "/images/white-search-2.png", :alt => "Search", :id => "search-pad" %></div></a>
+						<% end %></div>
+=======
 					<script type="text/javascript">
 					$.fn.placeholder();
 					</script>
 					<%= render :partial => 'layouts/artist_mini_search', :locals => { :css => 'mini-search'} %>
 					<% else %>
 					<%= render :partial => 'layouts/artist_mini_search', :locals => { :css => 'mini-search-2'} %>
+>>>>>>> 7d4a57d1435dfb4a37497b0d47ad89ea20fa300f
 					<% end %>
 					<div class="clear"></div>
 				</div>
