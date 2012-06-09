@@ -965,41 +965,41 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     float:right;
     width:284px;
     margin-top:12px;
-            .rform {
-            position:relative;
-            width:284px;
-            height:320px;
-            top:27px;
-            label { 
-                width:110px; 
-                display:block;
-                float:left;
-                margin-top:6px;
-            }
-            li {
-                padding:0 0 18px 0;
-            }
-            input[type=submit] {
-                margin:5px 0 0 0;
-                background:none;
-                border:0;
-                color:#fff;
-                font-size:1em            
-            }
-            #submit-pad {
-                margin-right:14px;
-                margin-top:2px;
-            }
-            #file_browser {
-              position:relative;
-              bottom:16px;
-              left:109px;
-            }
-            #type_dropdown {
-              position:relative;
-              top:4px;
-            }
-        }
+      .rform {
+      position:relative;
+      width:284px;
+      height:320px;
+      top:27px;
+      label { 
+          width:110px; 
+          display:block;
+          float:left;
+          margin-top:6px;
+      }
+      li {
+          padding:0 0 18px 0;
+      }
+      input[type=submit] {
+          margin:5px 0 0 0;
+          background:none;
+          border:0;
+          color:#fff;
+          font-size:1em            
+      }
+      #submit-pad {
+          margin-right:14px;
+          margin-top:2px;
+      }
+      #file_browser {
+        position:relative;
+        bottom:16px;
+        left:109px;
+      }
+      #type_dropdown {
+        position:relative;
+        top:4px;
+      }
+  }
 }
 #p-settings {
   margin:16px 0 0 0;

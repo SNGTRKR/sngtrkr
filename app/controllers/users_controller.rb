@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     end
 
     tl = Timeline.new(current_user.id)
-    @timeline = tl.user.page params[:page]
+    @timeline = tl.user params[:page]
     respond_to do |format|
       format.html # index.html.erb
     end
