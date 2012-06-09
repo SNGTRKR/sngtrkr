@@ -1,40 +1,24 @@
 <% content_for :title do %>Track your favourite artists and never miss another release - Beta Invite Signup<% end %>
 <% content_for :description do %>Sign up free now to receive an exclusive beta release invite and get the latest updates. Quickly find and track artists you already like, with Facebook integration.<% end %>
 <div class="content content-pad-115-bottom">
-  <% if @beta_user.errors.any? %>
-      <% @beta_user.errors.full_messages.each do |msg| %>
-        <script language="Javascript">
-	    <!--
-	    alert ("Sorry, we encountered an error processing this email: <%= msg %>")
-	    //-->
-	    </script>
-      <% end %>
+	<h2 class="signika-txt top-header font-35 beta-white-header">Sign up for an exclusive BETA invite....</h2>		
+	<%= image_tag "/images/imac.png", :alt => "iMac", :id => "imac" %>
+	<div id="mc_embed_signup">
+  <%= form_for(@beta_user) do |f| %>
+  <div class="mc-field-group">
+      <%= f.text_field :email, :class => "required email form-text beta-input font-15", :placeholder => "Enter email address..." %>
+  </div>
+  	<div id="mce-responses" class="clear">
+  		<div class="response" id="mce-error-response" style="display:none"></div>
+  		<div class="response" id="mce-success-response" style="display:none"></div>
+  	</div>	<div id="beta-submit"><div class="clear">
+    <div class="o-button norm-o-pad left signika-font">
+      <%= f.submit "Sign up for beta", :id => "mc-embedded-subscribe", :class => "font-13" %>
+      <span></span>
+    </div>
+  	</div>
+  	</div>
   <% end %>
-  <% if flash[:notice] %>
-  <script language="Javascript">
-	    <!--
-	    alert ("Thank you for signing up to SNGTRKR beta, you will receive a confirmation email soon.")
-	    //-->
-	    </script>
-  <% end %>
-			<h2 class="signika-txt top-header font-35 beta-white-header">Sign up for an exclusive BETA invite....</h2>		
-			<%= image_tag "/images/imac.png", :alt => "iMac", :id => "imac" %>
-					<div id="mc_embed_signup">
-      <%= form_for(@beta_user) do |f| %>
-      <div class="mc-field-group">
-          <%= f.text_field :email, :class => "required email form-text beta-input font-15", :placeholder => "Enter email address..." %>
-      </div>
-      	<div id="mce-responses" class="clear">
-      		<div class="response" id="mce-error-response" style="display:none"></div>
-      		<div class="response" id="mce-success-response" style="display:none"></div>
-      	</div>	<div id="beta-submit"><div class="clear">
-        <div class="o-button norm-o-pad left signika-font">
-          <%= f.submit "Sign up for beta", :id => "mc-embedded-subscribe", :class => "font-13" %>
-          <span></span>
-        </div>
-      	</div>
-      	</div>
-      <% end %>
 </div>
 <div class="clear"></div>
 <div id="beta-points">
@@ -56,4 +40,26 @@
 <a href="mailto:info@sngtrkr.com" target="_blank"><li class="left"><%= image_tag "/images/trk-email.png", :alt => "Email" %></li></a>
 </div>
 <div class="clear"></div>
+<% if flash[:notice] %>
+<script language="Javascript">
+    <!--
+    $(document).ready(function(){
+	    alert ("Thank you for signing up to SNGTRKR beta, you will receive a confirmation email soon.")
+    });
+    //-->
+    </script>
+<% end %>
+<% if @beta_user.errors.any? %>
+  <% @beta_user.errors.full_messages.each do |msg| %>
+    <script language="Javascript">
+  <!--
+  $(document).ready(function(){
+    alert ("Sorry, we encountered an error processing this email: <%= msg %>")
+  });
+  //-->
+  </script>
+  <% end %>
+<% end %>
+
+
 
