@@ -36,11 +36,8 @@ SNGTRKR::Application.configure do
   config.assets.debug = true
 
   # Mail
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.assets.prefix = "/dev-assets"
 
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.delivery_method = :ses
+  config.action_mailer.perform_deliveries = false
 
 end
