@@ -1,5 +1,9 @@
 <%= image_tag "/images/f-bulge-left.png", :alt => "Shadow", :id => "bulge-left" %>
 <%= image_tag "/images/f-bulge-right.png", :alt => "Shadow", :id => "bulge-right" %>
+<% 
+image_width = 100
+image_height = 100
+%>
 <h2 class="signika-txt top-header font-35 add-release-header">Manage an artist</h2>	
 <% artist = edit %>
 <div id="steps">
@@ -66,7 +70,8 @@
 			<strong><%= f.label :picture %></strong>
 			<strong><%= f.file_field 'image' %></strong></br/><br/>
 			<strong>Preview:</strong><br/>
-			<div class="manage-image"><img class="bleed" src="/assets/images/bleed.png"/><%= image_tag (artist.image :manage) %></div>
+			<div class="manage-image"><!--<img class="bleed" src="/assets/images/bleed.png"/>--><%= image_tag (artist.image :manage), :id => 'manage-image-current' %>
+			<canvas id="canvas" width="<%= image_width %>" height="<%= image_height %>"></canvas></div>
 		</div>
 		<div class="step-right right">
 			Please upload a picture which would best represent you as an artist.
@@ -317,7 +322,7 @@
 	*/
 	$('.edit_artist > fieldset').each(function(){
 		var $fieldset = $(this);
-		$fieldset.children(':last').find(':li').keydown(function(e){
+		$fieldset.children(':last').find('li').keydown(function(e){
 			if (e.which == 9){
 				$('#navigation li:nth-child(' + (parseInt(current)+1) + ') a').click();
 				/* force the blur for validation */
@@ -383,7 +388,37 @@
 			return false;
 		}	
 	});
+  function draw(ev) {
+      console.log(ev);
+      var ctx = document.getElementById('canvas').getContext('2d'),
+          img = new Image(),
+          f = document.getElementById("artist_image").files[0],
+          url = window.URL || window.webkitURL,
+          src = url.createObjectURL(f),
+          canvasCopy = document.getElementById('canvas');
+      var ctx2 = canvas.getContext("2d");
+      img.src = src;
+      img.onload = function() {
+        $('#manage-image-current').hide();
+        var maxWidth = <%= image_width %>, maxHeight = <%= image_height %>, ratio = 1;
+
+        if(img.width > maxWidth)
+          ratio = maxWidth / img.width;
+          else if(img.height > maxHeight) ratio = maxHeight / img.height;
+  
+          canvasCopy.width = img.width;
+          canvasCopy.height = img.height;
+          //ctx.drawImage(img, 0, 0);
+          
+          canvas.width = img.width * ratio;
+          canvas.height = img.height * ratio;
+          ctx.drawImage(img, 0, 0, canvasCopy.width, canvasCopy.height);
+          url.revokeObjectURL(src);
+        }      
+  };
+  document.getElementById("artist_image").addEventListener("change", draw, false);
 });
+
 
 </script>
 
