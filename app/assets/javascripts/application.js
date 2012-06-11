@@ -23,8 +23,10 @@ $(document).ready(function() {
 	$(".release-menu a").fancybox({
 		width : 543,
 		height : 315,
-		autoSize	: false,
-		closeClick	: false
+		autoSize	: false
+	});
+	$("#artist-info a").fancybox({
+		autoScale	: true,
 	});
   $('#artist-mini-search-submit').click(function(){
     $(this).closest('form').submit();
