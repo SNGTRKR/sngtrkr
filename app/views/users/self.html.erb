@@ -64,7 +64,6 @@
 	</div>
 	<div class="clear"></div>
 	<div id="track-num-search">
-		<%= image_tag "/images/p-bulge-top.png", :alt => "Shadow", :class => "p-bulge-t" %>
 		<div class="font-15 no-trk">
 			<strong><%= @user.following.count %> TRKed Artists</strong>
 		</div>
@@ -78,11 +77,12 @@
 			You are not TRKing anyone yet.
 		</div>
 		<% else %>
+		<%= image_tag "/images/p-bulge-top.png", :alt => "Shadow", :class => "p-bulge-t", :style => 'margin-bottom: -11px' %>
 		<ul>
 		  <%= render :partial => 'shared/artist_tracked', :collection => @following %>
 		</ul>
+		<%= image_tag "/images/p-bulge-bot.png", :alt => "Shadow", :class => "p-bulge-b", :style => 'margin-top: -12px' %>
 		<% end %>
-		<%= image_tag "/images/p-bulge-bot.png", :alt => "Shadow", :class => "p-bulge-b" %>
 	</div>
 
 	<div class="clear"></div>
