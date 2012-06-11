@@ -775,16 +775,16 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 }
 #track-num-search {
   position:relative;
-  top:-6px;
-  margin-bottom:6px;
+  width:666px;
+  top:20px;
+  margin-bottom:23px;
   .no-trk {
     position:relative;
-    bottom:-25px;
+    top:27px;
   }
           .artist-trkr-list-search {
         position:absolute;
-        right:-6px;
-        bottom:-23px;
+        right:0px;
         height:25px;
         width:155px;
         background:rgba(255,255,255,0.75);
@@ -802,17 +802,17 @@ body:before {/* thanks to Maleika (Kohoutec)*/
             outline:none;
         }
     }
-    .p-bulge-t {
-      position:relative;
-      bottom:0px;
+     .p-bulge-t {
+      position:absolute;
       left:12px;
+      top:-27px;
     }
 }
 #tracked-artists {
   position:relative;
   top:25px;
   width:666px;
-  ::-webkit-scrollbar {
+  /* ::-webkit-scrollbar {
       width: 10px;
   }
   ::-webkit-scrollbar-track {
@@ -822,13 +822,13 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   ::-webkit-scrollbar-thumb {
       border-radius: 10px;
       background-color: rgba(0,0,0,0.3);
-  }
+  } */
 
   ul {
   list-style-type:none;
-  margin:0px -20px 0px -15px;
-  max-height: 250px;
-  overflow-y: scroll;
+margin-left:-15px;
+/*  max-height: 250px;
+  overflow-y: scroll; */
 
     li {
       width:155px;
@@ -837,7 +837,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
         background:rgba(255,255,255,0.75);
       @include border-radius(8px);
       @include box-shadow(0px 2px 5px rgba(0, 0, 0, 0.25));
-      margin:7px 0 7px 15px;
+      margin:15px 0 0 15px;
       .each-artist-outer {
         position:relative;
         width:155px;
@@ -862,9 +862,13 @@ body:before {/* thanks to Maleika (Kohoutec)*/
       .p-bulge-b {
       position:relative;
       left:12px;
+      margin-top:9px;
     }
+    
     .no-trk-notify {
-      margin-bottom:12px;
+    position:relative;
+    top:10px;
+      margin-bottom:6px;
     }
 }
 .recommend-text-nudge {
