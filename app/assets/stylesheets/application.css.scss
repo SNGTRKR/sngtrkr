@@ -4,7 +4,7 @@
 * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 //= require fancybox/jquery.fancybox
 //= require manage_artist
-
+//= require font-awesome
 @import "compass/reset";
 @import "compass/css3/border-radius";
 @import "compass/css3/opacity";
@@ -15,6 +15,7 @@
 $blue:#45ADD2;
 $orange:#F15A24;
 $gray:#1A1A1A;
+$light-gray:#666666;
 $footer:166px;
 a:link {text-decoration:none; color:white}
 a:visited {color:white}
@@ -57,6 +58,9 @@ body{
 .tab-indent {
   padding-left: 2em;
 
+}
+.light-gray {
+	color:$light-gray;
 }
 .clear {
     clear:both;
@@ -696,11 +700,26 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 	    left:387px;
 	    top:14px;
 	  .genre {
-		  margin-top:11px;
+		 margin-top:-9px;
 	  }
 	  .artist-trkr-pos {
-			margin:6px 0 15px 0;
+			margin:6px 0 15px 1px;
+			a {
+				color:#fff;
+			}
+			a:hover {
+				color:#fff;
+			}
 		}
+		.artist-name {
+			line-height:1em;
+		}
+			a {
+				color:$orange;
+			}
+			a:hover {
+				color:#000;
+			}
     }
     ul {
 			list-style-type: none;
@@ -712,9 +731,6 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 				margin-left:-3px;
 			}
 		}
-  #bio-full {
-	  display:none;
-  }
   }
     .content-top {
   position:relative;
@@ -1034,6 +1050,7 @@ margin-left:-15px;
   margin:16px 0 0 0;
 #change-email {
   position:relative;
+  margin-bottom:35px;
             label { 
                 width:110px; 
                 display:block;
@@ -1057,8 +1074,7 @@ margin-left:-15px;
 }
 #email-notify {
   position:relative;
-  top:30px;
-
+  margin-bottom:57px;
             label { 
                 width:110px; 
                 display:block;
@@ -1086,10 +1102,16 @@ margin-left:-15px;
                 margin-top:4px;
             }
 }
+#manage-artist {
+position:relative;
+margin-bottom:53px;
+	.delete-artist-pad {
+		margin-left:15px;
+	}
+}
 #delete-account {
   position:relative;
-  top:60px;
-  height:180px;
+  margin-bottom:72px;
   width:660px;  
   a {
 	  color:#fff;
@@ -1776,7 +1798,7 @@ span.error{
      .artist-search-info {
        position:relative;
        left:64px;
-       top:2px;
+       top:1px;
   .artist-search-name {
     margin:0 0 2px 0;
       a
@@ -1797,7 +1819,7 @@ span.error{
   .search-trkr-button {
     position:relative;
     right:11px;
-    bottom:20px;
+    bottom:35px;
   }
 }
 }
@@ -2025,7 +2047,7 @@ span.error{
     height:286px;
     background: url(/images/box-bk-431.png) no-repeat;
     @include border-radius(8px);
-    color:#000;
+    color:$gray;
     a {
 	    color:#fff;
     }
@@ -2053,7 +2075,7 @@ span.error{
         width:237px;
         display:block;
         left:97px;
-        top:97px;
+        top:86px;
       }
       .delete-account-button {
         position:absolute;
@@ -2285,4 +2307,27 @@ span.error{
 	  }
   }
   }
-
+  #bio-full {
+	  display:none;
+	  background: url(/images/box-bk-431.png) no-repeat;
+	      -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;   
+    color:$gray; 
+    @include border-radius(8px);
+	  	  #bio {
+	  position:relative;
+		  width:401px;
+		  padding:30px 20px 30px 20px;
+		  .bio-title {
+			  margin-bottom:8px;
+		  }
+		  a {
+			  color:$gray;
+		  }
+		  a:hover {
+			  color:$gray;
+		  }
+	  }
+  }
