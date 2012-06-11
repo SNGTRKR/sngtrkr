@@ -81,8 +81,8 @@ image_height = 100
 			<br/>
 			</br/>
 			<div class="default-button">
-				<div class="o-button norm-o-pad right signika-font font-13">
-					Restore to default<span></span>
+			 <div class="o-button norm-o-pad right signika-font font-13" id="manage-image-restore">
+					<span>Restore to default</span>
 				</div>
 			</div>
 		</div>
@@ -389,7 +389,6 @@ image_height = 100
 		}	
 	});
   function draw(ev) {
-      console.log(ev);
       var ctx = document.getElementById('canvas').getContext('2d'),
           img = new Image(),
           f = document.getElementById("artist_image").files[0],
@@ -417,6 +416,11 @@ image_height = 100
         }      
   };
   document.getElementById("artist_image").addEventListener("change", draw, false);
+  $('#manage-image-restore').click(function(){
+    document.getElementById('artist_image').value = "";
+    $('#manage-image-current').show();
+    document.getElementById('canvas').getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+  });
 });
 
 
