@@ -34,7 +34,7 @@ image_height = 100
 				</li>
 				<li>
 					<strong><%= f.label "Twitter" %></strong>
-					<%= f.text_field :website, :class => 'form-text' %>
+					<%= f.text_field :twitter, :class => 'form-text' %>
 				</li>
 				<li>
 					<strong><%= f.label "Soundcloud" %></strong>
@@ -93,32 +93,30 @@ image_height = 100
 <fieldset class="step">
 	<div class="step-back manage-summary-step">
 		<div class="step-left left">
-						<ul>
+						<ul id="artist-summary">
 							<li>
-								<strong>Artist Name:</strong>
+								<strong>Artist Name:</strong> <span id="name"></span>
 							</li>
 							<li>
-								<strong>Genre:</strong>
+								<strong>Genre:</strong> <span id="genre"></span>
 							</li>
 							<li>
-								<strong>Label:</strong>
+								<strong>Label:</strong> <span id="label"></span>
 							</li>
 							<li>
-								<strong>Bio:</strong>
-							</li>
-							<br/>
-							</br/>
+								<strong>Bio:</strong> <div id="bio"></div>
+							</li> 
 							<li>
-								<strong>Website:</strong>
+								<strong>Website:</strong> <span id="website"></span>
 							</li>
 							<li>
-								<strong>Twitter:</strong>
+								<strong>Twitter:</strong> <span id="twitter"></span>
 							</li>
 							<li>
-								<strong>Soundcloud:</strong>
+								<strong>Soundcloud:</strong> <span id="soundcloud"></span>
 							</li>
 							<li>
-								<strong>Youtube:</strong>
+								<strong>Youtube:</strong> <span id="youtube"></span>
 							</li>
 						</ul>
 					</div>
@@ -244,6 +242,15 @@ image_height = 100
 			$('.white-tint-3').hide();
 			$('.white-tint-2').show();
 			$('.white-tint').show();
+			// Fill in summary info
+			$('#artist-summary #name').html($('#artist_name').val());
+			$('#artist-summary #genre').html($('#artist_genre').val());
+			$('#artist-summary #label').html($('#artist_label_name').val());
+			$('#artist-summary #bio').html($('#artist_bio').val());
+			$('#artist-summary #website').html($('#artist_website').val());
+			$('#artist-summary #twitter').html($('#artist_twitter').val());
+			$('#artist-summary #soundcloud').html($('#artist_soundcloud').val());
+			$('#artist-summary #youtube').html($('#artist_youtube').val());			
 		});
 	}); 
 	$(function() {
@@ -388,6 +395,7 @@ image_height = 100
 			return false;
 		}	
 	});
+	// Image Preview 
   function draw(ev) {
       var ctx = document.getElementById('canvas').getContext('2d'),
           img = new Image(),
@@ -407,7 +415,6 @@ image_height = 100
   
           canvasCopy.width = img.width;
           canvasCopy.height = img.height;
-          //ctx.drawImage(img, 0, 0);
           
           canvas.width = img.width * ratio;
           canvas.height = img.height * ratio;
@@ -416,6 +423,8 @@ image_height = 100
         }      
   };
   document.getElementById("artist_image").addEventListener("change", draw, false);
+  
+  // Image Restore (Reset to existing image)
   $('#manage-image-restore').click(function(){
     document.getElementById('artist_image').value = "";
     $('#manage-image-current').show();
