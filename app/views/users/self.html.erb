@@ -70,21 +70,21 @@
 		<div class="artist-trkr-list-search">
 			<input type="text" id="filter" placeholder="Search TRKR's..."/>
 			<div class="search right search-button"><%= image_tag "/images/white-search-2.png", :alt => "Search", :id => "search-pad" %></div></div>
+			<%= image_tag "/images/p-bulge-top.png", :alt => "Shadow", :class => "p-bulge-t" %>
 	</div>
 	<div id="tracked-artists">
-		<% if @user.following.count.zero? %>
+	
+			<% if @user.following.count.zero? %>
 		<div class="no-trk-notify">
 			You are not TRKing anyone yet.
 		</div>
 		<% else %>
-		<%= image_tag "/images/p-bulge-top.png", :alt => "Shadow", :class => "p-bulge-t", :style => 'margin-bottom: -11px' %>
 		<ul>
 		  <%= render :partial => 'shared/artist_tracked', :collection => @following %>
 		</ul>
-		<%= image_tag "/images/p-bulge-bot.png", :alt => "Shadow", :class => "p-bulge-b", :style => 'margin-top: -12px' %>
 		<% end %>
+		<%= image_tag "/images/p-bulge-bot.png", :alt => "Shadow", :class => "p-bulge-b" %>
 	</div>
-
 	<div class="clear"></div>
 	<div class="content-top recommend-text-nudge">
 		<h3 class="signika-txt top-header font-35 left">Here are a few artists we have recommended for you...</h3>
