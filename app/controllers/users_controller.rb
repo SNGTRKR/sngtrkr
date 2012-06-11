@@ -180,9 +180,6 @@ class UsersController < ApplicationController
 
   # This page contains a list of all the Artist page's the logged in user controls.
   def managing
-    if current_user.managing.count > 0
-      return redirect_to :action => 'self', :controller => 'users'
-    end
     api = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
     @manageable = []
     api.get_object("me/accounts").each do |page|
@@ -194,6 +191,10 @@ class UsersController < ApplicationController
         @manageable << artist
         end
       end
+    end
+    if current_user.managing.count > 0
+      @artist = current_user.managing.first
+      render 'artists/edit_s2'
     end
   end
 
