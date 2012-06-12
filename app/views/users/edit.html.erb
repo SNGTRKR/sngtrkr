@@ -42,7 +42,7 @@
 			<h3><div class="font-13"><strong>Email Notifications</strong></div></h3>
 			<br/>
 			You can change how often you receive emails for new releases, from the options provided below.
-			The default setting is ‘Weekly’.
+			Your current setting is <strong>Weekly</strong>.
 			<br/>
 			<br/>
 			<!--<form method="post" action="email_notify.php" onsubmit="" class="enform">-->
@@ -76,9 +76,26 @@
 					</div>
 				</div>
 			</ul>
+			<div id="slider"></div>
 			<% end %>
 		</div>
 		<div class="clear"></div>
+		<% if @user.manager? %>
+				<div id="manage-artist">
+			<h3><div class="font-13"><strong>Artist management</strong></div></h3>
+			<br/>
+			You are currently managing the artist known as <strong>JellyFishBoy</strong>.
+			<br/>
+			<br/>
+			<div class="o-button norm-o-pad left signika-font font-13">
+					<%= link_to 'Edit', managing_user_path(@user) %>
+				</div>
+			<div class="o-button norm-o-pad left signika-font font-13 delete-artist-pad">
+					Delete
+				</div>
+				</div>
+				<div class="clear"></div>
+				<% else %><% end %>
 		<div id="delete-account">
 			<h3><div class="font-13"><strong>Delete Your Account</strong></div></h3>
 			<br/>
@@ -90,7 +107,6 @@
 			</div>
 		</div>
 	</div>
-
 		<div id="delete-confirmation">
 		<%= render :partial => 'delete_confirm' %>
 	</div>

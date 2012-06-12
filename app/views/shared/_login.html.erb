@@ -3,6 +3,14 @@
 <a href="/users/me"><div class="p-head right o-button"><%= image_tag "/images/profile.png", :alt => "Profile", :id => "profile-pad" %></div></a>
 <% elsif %>
 <%= link_to(user_omniauth_authorize_path(:facebook), :id => "fb-txt") do %>
-<div class="right fb-button fb-o-pad fb-login lucida-font font-13"><%= image_tag "/images/facebook.png", :alt => "Facebook", :id => "fb-logo" %> <span>Login</span></div>
+<div class="right fb-button fb-o-pad fb-login lucida-font font-13"><%= image_tag "/images/facebook.png", :alt => "Facebook", :id => "fb-logo" %><span class="login-txt">Login</span></div>
 <%  end %>
 <% end %>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('.fb-login').click(function(){
+    $('.login-txt').html('Logging in...');
+  });
+});
+
+</script>

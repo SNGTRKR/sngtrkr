@@ -7,22 +7,21 @@
 		<%= flash[:message] %>
 	</p>
 	<% end %> <!-- JSON URL: <%= url_for artists_url(:search => params[:search], :format => :json)  %> -->
-	<div id="artist-search">
+	<ul id="artist-search">
 		<% @artists.each do |artist| %>
-		<div class="artist-search-row">
+		<li class="artist-search-row">
 			<div class="artist-search-image" style="background-image:url(<%= artist.image.url :thumb %>);background-repeat:no-repeat;background-position:center;"></div>
 			<div class="artist-search-info">
 				<h3 class="font-15 instruct-font artist-search-name"><%= link_to artist.name, artist %></h3>
-				<div class="instruct-font orange-txt">
-					<%= artist.followers %> TRKR'S
-				</div>
+				<div class="instruct-font orange-txt"><%= artist.followers %> TRKR'S</div>
+				<%= artist.genre %>
 			</div>
 			<div class="search-trkr-button">
 				<%= render :partial => 'shared/trk_artist', :object => artist %>
 			</div>
-		</div>
+		</li>
 		<% end %>
-	</div>
+	</ul>
 	<%= if !@artists.empty?
       paginate @artists
     end %>
