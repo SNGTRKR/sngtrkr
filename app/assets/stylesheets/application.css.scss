@@ -2175,13 +2175,13 @@ span.error{
   #timeline-outer {
 	  position:relative;
 	  height:558px;
+	  margin-bottom:26px;
   }
 #timeline {
   	position:relative;
     height:558px;
     background-image: url(/images/grid.png);
     background-repeat: repeat-x;
-    margin-bottom: 27px;
     overflow:auto;
     /*cursor: -moz-grab !important;*/ /* should this be applied with JS? */
 
@@ -2190,6 +2190,9 @@ span.error{
 	  position:relative;
 	  margin:20px 0 0 20px;
 	 width:11800px;
+	 .release-outer {
+		 position:relative;
+		 height:250px;
 	  .each-release {
 	  overflow: hidden;
 	  background:white;
@@ -2304,6 +2307,22 @@ span.error{
 		      top:67px;
 	      }
       }
+	  }
+	  	  #release-line {
+		  position:absolute;
+		  top:210px;
+		  left:104px;
+		  height:30px;
+		  border-style:solid;
+		  border-left-width:3px;
+		  border-left-color:#000;
+	  }
+	  .release-date {
+		  text-align:center;
+		  position:relative;
+		  top:15px;
+		  margin-left:-17px;
+	  }
 	  }
   }
   }
