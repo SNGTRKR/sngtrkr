@@ -5,6 +5,8 @@
 </div>
 <div id="timeline-outer">
 <div id="timeline">
+<%= image_tag "/images/timeline-left.png", :alt => "SNGTRKR", :id => "left-logo" %>
+<div id="left-line"></div>
 <ul class="release-list">
 <%= render :partial => 'timeline/release', :collection => @timeline[0..10] %>
 </ul>

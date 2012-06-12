@@ -2188,11 +2188,68 @@ span.error{
   .release-list {
 	  list-style-type: none;
 	  position:relative;
-	  margin:20px 0 0 20px;
+	  margin:20px 0 0 159px;
 	 width:11800px;
+	 .even {
+	 height:210px;
+		 top:301px !important;
+		 	  	  .release-line {
+		  position:absolute;
+		  top:-30px;
+		  left:104px;
+		  height:30px;
+		  border-style:solid;
+		  border-left-width:3px;
+		  border-left-color:#000;
+	  }
+	  .release-date {
+		  text-align:center;
+		  position:absolute;
+		  top:-56px;
+		  left:74px;
+		  color:#000;
+	  }
+	  .release-join {
+	  	  position:absolute;
+	  	 top:-47px;
+	  	  left:147px;
+	  	  width:147px;
+		  border-style:solid;
+		  border-bottom-width:3px;
+		  border-bottom-color:#000;
+	  }
+		 	 }
+	 .odd {
+	 		 height:250px;
+		 	  	  .release-line {
+		  position:absolute;
+		  top:210px;
+		  left:104px;
+		  height:30px;
+		  border-style:solid;
+		  border-left-width:3px;
+		  border-left-color:#000;
+	  }
+	  .release-date {
+		  text-align:center;
+		  position:relative;
+		  top:15px;
+		  margin-left:-17px;
+		  color:#000;
+	  }
+	  .release-join {
+	  	  position:absolute;
+	  	 bottom:-7px;
+	  	  left:147px;
+	  	  width:147px;
+		  border-style:solid;
+		  border-bottom-width:3px;
+		  border-bottom-color:#000;
+	  }
+	 }
+	 
 	 .release-outer {
 		 position:relative;
-		 height:250px;
 	  .each-release {
 	  overflow: hidden;
 	  background:white;
@@ -2308,22 +2365,21 @@ span.error{
 	      }
       }
 	  }
-	  	  #release-line {
-		  position:absolute;
-		  top:210px;
-		  left:104px;
-		  height:30px;
-		  border-style:solid;
-		  border-left-width:3px;
-		  border-left-color:#000;
 	  }
-	  .release-date {
-		  text-align:center;
-		  position:relative;
-		  top:15px;
-		  margin-left:-17px;
-	  }
-	  }
+  }
+  #left-logo {
+	  position:absolute;
+	  left:24px;
+	  top:250px;
+  }
+  #left-line {
+  position:relative;
+  top:277px;
+  left:77px;
+  width:147px;
+  border-style:solid;
+  border-bottom-width:3px;
+  border-bottom-color:#000;
   }
   }
   #bio-full {
