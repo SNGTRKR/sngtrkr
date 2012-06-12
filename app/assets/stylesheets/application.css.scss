@@ -828,23 +828,9 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   position:relative;
   top:25px;
   width:666px;
-  /* ::-webkit-scrollbar {
-      width: 10px;
-  }
-  ::-webkit-scrollbar-track {
-      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-      border-radius: 10px;
-  }
-  ::-webkit-scrollbar-thumb {
-      border-radius: 10px;
-      background-color: rgba(0,0,0,0.3);
-  } */
-
   ul {
   list-style-type:none;
 margin-left:-15px;
-/*  max-height: 250px;
-  overflow-y: scroll; */
 
     li {
       width:155px;
@@ -2164,25 +2150,36 @@ span.error{
 	  position:absolute;
 	  height:43px;
 	  width:100%;
-	  top:-31px;
+	  top:-32px;
   }
   #shadow-bot {
-	  position:absolute;
+	  position:relative;
 	  height:43px;
 	  width:100%;
-	  top:546px;
+	  top:-3px;
   }
   #timeline-outer {
 	  position:relative;
-	  height:558px;
+	  height:609px;
+	   background-image: url(/images/grid2.png);
+    background-repeat: repeat-x;
 	  margin-bottom:26px;
+	     ::-webkit-scrollbar {
+      width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+      border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: rgba(0,0,0,0.3);
+  } 
   }
 #timeline {
   	position:relative;
-    height:558px;
-    background-image: url(/images/grid.png);
-    background-repeat: repeat-x;
-    overflow:auto;
+    height:600px;
+    overflow-x:scroll;
     /*cursor: -moz-grab !important;*/ /* should this be applied with JS? */
 
   .release-list {

@@ -4,6 +4,7 @@
 </div>
 </div>
 <div id="timeline-outer">
+<%= image_tag "/images/shadow-line.png", :id => 'shadow-top' %>
 <div id="timeline">
 <%= image_tag "/images/timeline-left.png", :alt => "SNGTRKR", :id => "left-logo" %>
 <div id="left-line"></div>
@@ -12,7 +13,6 @@
 </ul>
 <div class="clear"></div>
 </div>
-<%= image_tag "/images/shadow-line.png", :id => 'shadow-top' %>
 <%= image_tag "/images/shadow-line-bot.png", :id => 'shadow-bot' %>
 </div>
 <div class="content content-pad-160-bottom">
@@ -39,6 +39,13 @@
 			$(this).closest(".each-release").find('.opac-50').fadeOut("normal");
 			$(this).closest(".each-release").find('#share-release').animate({right : -210}, "slow");
 		});
+		$(".sm-trigger").click(function() {
+			$(this).closest(".each-release").find('.release-info').animate({bottom : 13}, "slow");
+			$(this).closest(".each-release").find('.release-menu').animate({bottom : -25}, "slow");
+			$(this).closest(".each-release").find('.r-grad').fadeIn("normal");
+			$(this).closest(".each-release").find('.opac-50').fadeOut("normal");
+			$(this).closest(".each-release").find('#share-release').animate({right : -210}, "slow");
+		});
 		$(".buy-release").click(function() {
 			$(this).closest(".each-release").find('.release-info').animate({bottom : -100}, "slow");
 			$(this).closest(".each-release").find('.release-menu').animate({bottom : -25}, "slow");
@@ -53,9 +60,16 @@
 			$(this).closest(".each-release").find('.opac-50').fadeOut("normal");
 			$(this).closest(".each-release").find('#buy-release').animate({left : -210}, "slow");
 		});
+		$(".buy-trigger").click(function() {
+			$(this).closest(".each-release").find('.release-info').animate({bottom : 13}, "slow");
+			$(this).closest(".each-release").find('.release-menu').animate({bottom : -25}, "slow");
+			$(this).closest(".each-release").find('.r-grad').fadeIn("normal");
+			$(this).closest(".each-release").find('.opac-50').fadeOut("normal");
+			$(this).closest(".each-release").find('#buy-release').animate({left : -210}, "slow");
+		});
 		});
 		</script>
-		<script type="text/javascript" charset="utf-8">
+		<script type="text/javascript">
 $(document).ready(function () {        
         $('#timeline').mousedown(function (event) {
             $(this)
