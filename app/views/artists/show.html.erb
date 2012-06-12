@@ -16,12 +16,12 @@ background-repeat:no-repeat;
 	<div id="content-artist">
 	<div id="artist-image"></div>
 	<div id="artist-info">
-	<h2><strong><div class="font-25"><%= @artist.name %></div></strong></h2>
-	<div class="orange-txt font-13 genre"><%= @artist.genre %></div>
-	<h3><%= @artist.label_name %><br/></h3>
+	<h2><strong><div class="font-25 artist-name"><%= @artist.name %></div></strong></h2>
+	<div class="font-13 genre"><% if @artist.genre? %><span class="orange-txt"><%= truncate((strip_tags @artist.genre || "" ), :length => 50) %></span><% else %><span class="light-gray">No genre set</span><% end %></div>
+	<h3><% if @artist.label_name? %><%= truncate((strip_tags @artist.label_name || "" ), :length => 50) %><% else %><span class="light-gray">No label set</span><% end %><br/></h3>
 	<div class="left artist-trkr-pos"><%= render :partial => 'shared/trk_artist', :object => @artist %></div>
 	<div class="clear"></div>
-	<%= truncate((strip_tags @artist.bio || "" ), :length => 300) %>
+	<% if @artist.bio? %><%= raw(truncate((strip_tags @artist.bio || "" ), :length => 300, :omission => "...<a href='#bio-full'>Read more</a>")) %><% else %><span class="light-gray">No biography set</span><% end %>
 	</div>
 	<ul>
 			<li class="left">
@@ -54,8 +54,21 @@ background-repeat:no-repeat;
 	</div>
 </div>
 </div>
+<div id="timeline-outer">
 <div id="timeline">
+
+</div>
 <%= image_tag "/images/shadow-line.png", :alt => "Shadow", :id => "shadow-top" %>
 <%= image_tag "/images/shadow-line-bot.png", :alt => "Shadow", :id => "shadow-bot" %>
 </div>
 <div class="content content-pad-160-bottom">
+			<div id="bio-full">
+	<div id="bio">
+		<div class="signika-txt font-35 bio-title">Biography</div>
+		<%= raw(@artist.bio) %></div>
+	</div>
+	<script type="text/javascript">
+$(document).ready(function(){
+  $('#bio a').attr('target', '_blank');
+});
+</script>
