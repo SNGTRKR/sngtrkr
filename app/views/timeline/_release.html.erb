@@ -1,10 +1,10 @@
-<li class="left each-release" style="background-image:url(<%= release.image :release %>); background-position:center;">
+<li class="release-outer left">
+<div class=" each-release" style="background-image:url(<%= release.image :release %>); background-position:center;">
 <div class="r-grad">
 <div class="release-info">
 <strong><span class="font-18"><%= release.name %></span></strong><br/>
 <%= link_to release.artist.name, release.artist %><br/>
 <span class="font-11"><%= release.label_name %></span>
-<span class="font-11"><%= release.date.strftime("%d/%m/%Y")  %></span>
 	</div>
 <div class="release-menu font-13">
 	<ul class="menu">
@@ -35,4 +35,7 @@
 <div class="clear"></div>
 <div class="font-13 o-button norm-o-pad signika-font left buy-cancel"><%= link_to "Cancel", "#" %></div>
 </div>
+</div>
+<div id="release-line"></div>
+<div class="instruct-font font-20 release-date"><%= release.date.strftime("%d/%m")%></div>
 </li>
