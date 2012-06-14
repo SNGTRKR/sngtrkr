@@ -14,7 +14,12 @@ background-repeat:no-repeat;
 <% content_for :title do %><%= @artist.name %> information and releases 2012<% end %>
 	<div class="content content-pad-160-bottom">
 	<div id="content-artist">
-	<div id="artist-image"></div>
+	<div id="artist-image"><div id="share-bar">
+	<ul>
+	<a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com%2F&t=SNGTRKR','Share SNGTRKR on Facebook','scrollbars=no,width=620,height=340'); return false;"><li class="left"><i class="icon-facebook"></i><span>Share</span></li></a>
+	<a href="#" title="Share on Twitter" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.sngtrkr.com&text=<%= @artist.name %>+is+using+SNGTRKR+to+keep+their+fans+up+to+date+with+releases.+Check+them+out+&#45;&via=SNGTRKR','Share SNGTRKR on Facebook','scrollbars=no,width=620,height=340'); return false;"><li class="left"><i class="icon-twitter"></i><span>Tweet</span></li></a>	
+	<a href="#" title="Share on Google Plus" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com','Share SNGTRKR on Facebook','scrollbars=no,width=620,height=340'); return false;"><li class="left"><i class="icon-google-plus"></i><span>Post</span></li></a>
+	</ul></div></div>
 	<div id="artist-info">
 	<h2><strong><div class="font-25 artist-name"><%= @artist.name %></div></strong></h2>
 	<div class="font-13 genre"><% if @artist.genre? %><span class="orange-txt"><%= truncate((strip_tags @artist.genre || "" ), :length => 50) %></span><% else %><span class="light-gray">No genre set</span><% end %></div>
@@ -70,5 +75,11 @@ background-repeat:no-repeat;
 	<script type="text/javascript">
 $(document).ready(function(){
   $('#bio a').attr('target', '_blank');
+  		$("#artist-image").mouseover(function(){
+				$("#share-bar").stop().animate({bottom : 0}, "slow");
+			}).mouseout(function(){
+				$("#share-bar").stop().animate({bottom : -25}, "slow");
+			});
 });
+
 </script>

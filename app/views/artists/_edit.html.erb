@@ -8,7 +8,7 @@ image_height = 100
 <h2 class="signika-txt top-header font-35 add-release-header">Manage an artist</h2>	
 <% artist = edit %>
 <div id="steps">
-<%= form_for artist do |f| %>
+<%= form_for artist, :html => {:name => 'edit-forme'} do |f| %>
 <fieldset class="step">
 	<div class="step-back manage-details-step">
 		<div class="step-left left">
@@ -314,34 +314,33 @@ image_height = 100
 	validates one fieldset
 	and returns -1 if errors found, or 1 if not
 	*/
-	function validateStep(step){
-		if(step == fieldsetCount) return;
-		
-		var error = 1;
-		var hasError = false;
-		$('.edit_artist').children(':nth-child('+ parseInt(step) +')').find(':input:not(button)').each(function(){
-			var $this 		= $(this);
-			var valueLength = jQuery.trim($this.val()).length;
-			
-			if(valueLength == ''){
-				hasError = true;
-				$this.css('background-color','#FFEDEF');
+			function validateStep(step) {
+				if(step == fieldsetCount)
+					return;
+
+				var error = 1;
+				var hasError = false;
+				/* INDIVIDUAL ERROR HANDLER - Works but error handling in the first field is mirrored by the other 2. See release/new for old code  */
+				var aname=document.forms["edit-forme"]["artist[name]"].value;
+				var agenre=document.forms["edit-forme"]["artist[genre]"].value;
+				var alabel=document.forms["edit-forme"]["artist[label_name]"].value;
+				if (aname=="" || agenre=="" || alabel=="")
+				{
+					hasError = true;
+					}
+					
+				var $link = $('#navigation li:nth-child(' + parseInt(step) + ') a');
+				$link.parent().find('.error,.checked').remove();
+				
+				var valclass = 'checked';
+				if(hasError) {
+					error = -1;
+					valclass = 'error';
+				}
+				$('<span class="' + valclass + '"></span>').insertAfter($link);
+
+				return error;
 			}
-			else
-				$this.css('background-color','#FFFFFF');	
-		});
-		var $link = $('#navigation li:nth-child(' + parseInt(step) + ') a');
-		$link.parent().find('.error,.checked').remove();
-		
-		var valclass = 'checked';
-		if(hasError){
-			error = -1;
-			valclass = 'error';
-		}
-		$('<span class="'+valclass+'"></span>').insertAfter($link);
-		
-		return error;
-	}
 	
 	/*
 	if there are errors don't allow the user to submit

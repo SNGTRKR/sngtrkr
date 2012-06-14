@@ -1,0 +1,54 @@
+#manage-content {
+position:relative;
+left:23px;
+	#manage-top {
+	position:relative;
+	width:617px;
+	height:186px;
+		.content-left {
+			width:309px;
+			.button-margin {
+				margin-top:3px;
+			}
+		}
+		.content-right {
+			width:304px;
+		}
+		}
+		#manage-points {
+		position:relative;
+		top:4px;
+			ul {
+				list-style-type:none;
+				.middle {
+					margin-bottom:35px;
+				}
+				.bottom {
+					margin-bottom:31px;
+				}
+				li {
+					.point-left {
+						width:374px;
+					}
+					.point-right {
+						width:205px;
+						#manage1 {
+							position:relative;
+							left:31px;
+							top:7px;
+						}
+						#manage2 {
+							position:relative;
+							left:55px;
+							top:41px;
+						}
+						#manage3 {
+							position:relative;
+							top:8px;
+							left:62px;
+						}
+					}
+				}
+			}
+		}
+	}
