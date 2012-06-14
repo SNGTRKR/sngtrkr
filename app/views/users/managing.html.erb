@@ -1,78 +1,49 @@
 <% content_for :title do %>Manage an artist<% end %>
 <% content_for :description do %>Joining SNGTRKR as an artist, could not be any easier. Increase record sales and web presence; keep your fans up to date with future releases with your personalised timeline.<% end %>
-<div class="content content-pad-187-bottom">
+<div class="content content-pad-160-bottom">
 	<div id="manage-content">
-	<div id="manage-header">
-		<div class="content-top">
-			<h2 class="signika-txt top-header font-35">Join now and build a closer relationship to your fans...</h2>
-			<div class="content-top-right">
-				Joining SNGTRKR as an artist, could not be any easier.
-				We do all the hard work for you, from gathering your artist information, to filling your personal timeline with past and current releases.
-				<br/>
-				</br/>
-				<h3><strong>Get started now by selecting an artist you want to manage:
-				<br/>
-				</br/></strong></h3>
-			</div>
-		</div>
+	<div id="manage-top">
+	<div class="content-left left">
+	<h2 class="signika-txt font-35">Join now and build a closer relationship to your fans...</h2><br/>
+	<div class="o-button norm-o-pad left signika-font font-logout button-margin">Manage an artist</div>
 	</div>
-	<div class="clear"></div>
-	<div id="manage-choice">
-		<div class="left manage-points">
-			<ul>
-				<li class="left"><%= image_tag "/images/tick.png", :alt => "Tick" %>
-					<div class="point-txt right">
-						Increase your web presence with an online profile full of useful information.
-					</div>
-				</li>
-				<li class="left"><%= image_tag "/images/tick.png", :alt => "Tick" %>
-					<div class="point-txt right">
-						Add your releases, old and new, to an intuitive personal timeline.
-					</div>
-				</li>
-				<li class="left"><%= image_tag "/images/tick.png", :alt => "Tick" %>
-					<div class="point-txt right">
-						Keep your fans up to date with future releases, with regular email notifications.
-					</div>
-				</li>
-				<li class="left"><%= image_tag "/images/tick.png", :alt => "Tick" %>
-					<div class="point-txt right">
-						Increase record sales with links to the appropiate music outlets for your fans.
-					</div>
-				</li>
-			</ul>
-		</div>
-		<div class="right artist-choice">
-			<% if @manageable.count.zero? %>
-			<span class="font-13"><strong>If seems you don't have any Facebook artists to manage.</strong></span><br/><br/>
-			Please make sure you have a Facebook page for the artist, and set the category for the page to 'Musician/Band'.
-			<% else %>
-			<%= form_for [current_user, Manage.new], :remote => true do |f| %>
-			<ul>
-				<% @manageable.each do |artist| %>
-				<li class="left">
-					<div class="a-image" style='background-image:url(<%= "//graph.facebook.com/"+artist.fbid+"/picture?type=normal" %>);background-repeat:no-repeat;background-position:center;'></div>
-					<div class="artists-info">
-						<h3><strong><span class="font-13 name"><%= f.label(:artist_id, artist.name) %></span></span></strong></h3>
-						Dubstep
-					</div>
-					<div class="artist-radio">
-						<%= f.radio_button(:artist_id, artist.id) %>
-					</div>
-				</li>
-				<% end %>
-			</ul>
-			<div id="manage-choice-submit">
-				<div class="o-button norm-o-pad right signika-font font-13">
-					<%= f.submit "Manage" %>
-				</div>
-			</div>
-			<% end %>
-			<% end %>
-		</div>
+	<div class="content-right right">
+	<%= image_tag "/images/macbook2.png", :alt => "Macbook Pro" %>
 	</div>
 	</div>
-	<div class="clear"></div>
+	<div id="manage-points">
+	<ul>
+	<li class="left middle">
+		<div class="point-left left">
+		<h3 class="signika-txt font-25">Manage your profile</h3><br/>
+		Manage and update your personal profile with information such as genre, label, biography, social media links, website 		and much more. Create your personal, tailored timeline by adding releases, old and new, to deliver a rich source of 		information for your fans to experience and enjoy.
+		</div>
+		<div class="point-right right">
+		<%= image_tag "/images/manage1.png", :alt => "Timeline", :id => "manage1" %>
+		</div>
+	</li>
+	<li class="left middle">
+		<div class="point-left left">
+		<h3 class="signika-txt font-25">Keep your fans up to date</h3><br/>
+		Keep your fans in the loop by adding new releases to your intuitive timeline, and automatically sending notifications 		straight to their inbox. All of this is supported by share, buy and listen links to easily keep exisiting fans up to 		date and also expand your fanbase even more.
+		</div>
+		<div class="point-right right">
+		<%= image_tag "/images/manage2.png", :alt => "Discover new music", :id => "manage2" %>
+		</div>
+	</li>
+	<li class="left bottom">
+		<div class="point-left left">
+		<h3 class="signika-txt font-25">Increase web presence</h3><br/>
+		Struggling to get yourself known and your music heard? SNGTRKR is the full package platform, to enable up and coming 		and popular artists alike, reinforce and grow their fanbase. A strong music community coupled with the social media 		platform makes it easy to gain presence, both on and offline.
+		</div>
+		<div class="point-right right">
+		<%= image_tag "/images/manage3.png", :alt => "Music media", :id => "manage3" %>
+		</div>
+	</li>
+	</ul>
+	</div>
+	</div>
+		<div class="clear"></div>
 	<div id="manage-form"></div>
 
 	
