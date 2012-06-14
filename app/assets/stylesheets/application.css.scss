@@ -711,7 +711,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 				   }
 				   span {
 					   position:relative;
-					   top:-2px;
+					   top:-3px;
 				   }
 			   }
 		   }
@@ -863,7 +863,7 @@ margin-left:-15px;
     li {
       width:155px;
       height:28px;
-      padding:12px 0 17px 0;
+      padding:11px 0 17px 0;
         background:rgba(255,255,255,0.75);
       @include border-radius(8px);
       @include box-shadow(0px 2px 5px rgba(0, 0, 0, 0.25));
@@ -1180,7 +1180,7 @@ margin:-1px 0 25px 0;
                 width:118px; 
                 display:block;
                 float:left;
-                margin-top:1px;
+                margin-top:4px;
             }
             li {
                 padding:0 0 18px 0;
@@ -1565,8 +1565,9 @@ span.error{
 }
 #social-media-about {
   position:relative;
-  top:36px;
+  top:38px;
   width:666px;
+  height:193px;
 .boxes {
   list-style-type:none;
   margin-left:-30px;
@@ -2327,3 +2328,66 @@ span.error{
 		  }
 	  }
   }
+  #manage-choice {
+display:none;
+background: url(/images/box-bk-684.png) no-repeat;
+	      -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;   
+    color:$gray; 
+    @include border-radius(8px);
+    #manage-options {
+	    padding:30px 20px 30px 20px;
+	  ul {
+	  margin-top:11px;
+    list-style-type:none;
+    width:263px;
+    li {
+     width:263px;
+     height:75px; 
+         @include border-radius(8px);
+    @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
+    position:relative;
+    margin:0 0 20px 0;
+    background:rgba(255,255,255,0.75);
+    .a-image {
+      position:absolute;
+      @include border-top-left-radius(8px);
+      @include border-bottom-left-radius(8px);
+      top:0px;
+      left:0px;
+      height:75px;
+      width:75px;
+      border-style:solid;
+      border-right-width:3px;
+      border-right-color:$orange;
+      background:#000;
+    }
+    .artists-info {
+      position:relative;
+      left:90px;
+      top:21px;
+      width:120px;
+    }
+    .artist-radio {
+      position:relative;
+      left:230px;
+      bottom:3px;
+    }
+    }
+    }
+          input[type=submit] {
+                background:none;
+                border:0;
+                color:#fff;
+                font-size:1em            
+            }
+            #manage-buttons {
+            height:121px;
+            #manage-choice-submit {
+	            margin-left:100px;
+	          }
+	          }
+            }
+}
