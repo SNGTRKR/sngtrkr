@@ -138,17 +138,7 @@ strong{
   color:red;
 }
 .fb-login {
-    margin:-12px 0 0 5px;
-}
-#fb-logo {
-  margin:4px 5px 0 0;
-}
-#fb-txt {
-  position:relative;
-  top:-5px;
-}
-.fb-home-login {
-    margin-top:0px;
+	    margin:-16px 0 0 5px;
 }
 .form-text {   
        width:158px;
@@ -273,10 +263,14 @@ strong{
     line-height: 30px;
     height:30px;
     position:relative;
-    padding:0 15px 0 35px;
-    img {
-      position: absolute;
-      left:15px;
+    padding:0 23px 0 16px;
+    i {
+	    font-size:1.8em;
+    }
+    span {
+	    position:relative;
+	    left:7px;
+	    top:-4px;
     }
 }
 .trkr-o-pad {
@@ -692,6 +686,36 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 	    border-style:solid;
 	    border-right-width:6px;
 	    border-right-color:$orange;
+	    overflow:hidden;
+	   #share-bar {
+		   height:25px;
+		   width:365px;
+		   background:rgba(0,0,0,0.75);
+		   @include border-bottom-left-radius(12px);
+		   position:absolute;
+		   bottom:-25px;
+		   left:0px;
+		   color:#fff;
+		   ul {
+		   position:absolute;
+		   left:22px;
+		   top:0px;
+		   list-style-type:none;
+		   margin-left:-60px;
+		   width:380px;
+			   li {
+			   margin-left:60px;
+				   i {
+					 margin:4px 10px 0 0;  
+					 font-size:1.6em;
+				   }
+				   span {
+					   position:relative;
+					   top:-2px;
+				   }
+			   }
+		   }
+	   }
     }
     #artist-info {
 	    position:relative;
@@ -720,6 +744,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 			a:hover {
 				color:#000;
 			}
+    
     }
     ul {
 			list-style-type: none;
