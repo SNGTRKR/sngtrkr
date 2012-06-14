@@ -138,17 +138,7 @@ strong{
   color:red;
 }
 .fb-login {
-    margin:-12px 0 0 5px;
-}
-#fb-logo {
-  margin:4px 5px 0 0;
-}
-#fb-txt {
-  position:relative;
-  top:-5px;
-}
-.fb-home-login {
-    margin-top:0px;
+	    margin:-16px 0 0 5px;
 }
 .form-text {   
        width:158px;
@@ -273,10 +263,14 @@ strong{
     line-height: 30px;
     height:30px;
     position:relative;
-    padding:0 15px 0 35px;
-    img {
-      position: absolute;
-      left:15px;
+    padding:0 23px 0 16px;
+    i {
+	    font-size:1.8em;
+    }
+    span {
+	    position:relative;
+	    left:7px;
+	    top:-4px;
     }
 }
 .trkr-o-pad {
@@ -692,6 +686,36 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 	    border-style:solid;
 	    border-right-width:6px;
 	    border-right-color:$orange;
+	    overflow:hidden;
+	   #share-bar {
+		   height:25px;
+		   width:365px;
+		   background:rgba(0,0,0,0.75);
+		   @include border-bottom-left-radius(12px);
+		   position:absolute;
+		   bottom:-25px;
+		   left:0px;
+		   color:#fff;
+		   ul {
+		   position:absolute;
+		   left:22px;
+		   top:0px;
+		   list-style-type:none;
+		   margin-left:-60px;
+		   width:380px;
+			   li {
+			   margin-left:60px;
+				   i {
+					 margin:4px 10px 0 0;  
+					 font-size:1.6em;
+				   }
+				   span {
+					   position:relative;
+					   top:-2px;
+				   }
+			   }
+		   }
+	   }
     }
     #artist-info {
 	    position:relative;
@@ -720,6 +744,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 			a:hover {
 				color:#000;
 			}
+    
     }
     ul {
 			list-style-type: none;
@@ -828,23 +853,9 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   position:relative;
   top:25px;
   width:666px;
-  /* ::-webkit-scrollbar {
-      width: 10px;
-  }
-  ::-webkit-scrollbar-track {
-      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-      border-radius: 10px;
-  }
-  ::-webkit-scrollbar-thumb {
-      border-radius: 10px;
-      background-color: rgba(0,0,0,0.3);
-  } */
-
   ul {
   list-style-type:none;
 margin-left:-15px;
-/*  max-height: 250px;
-  overflow-y: scroll; */
 
     li {
       width:155px;
@@ -1139,111 +1150,6 @@ margin-bottom:53px;
           width:267px;
         }
 }
-#manage-content {
-#manage-header {
-  margin-bottom:20px;
-      .content-top {
-  position:relative;
-  width:605px;
-  height:128px;
-  .top-header {
-    float:left;
-    width:302px;
-  }
-  .content-top-right {
-    float:right;
-    width:267px;
-    margin-top:9px;
-  }
-}
-}
-#manage-choice {
-  position:relative;
-  width:605px;
-  height:320px;
-  margin:0 0 30px 0;
-  .artist-choice {
-  width:265px;
-  height:320px;  
-  margin-top:-4px;   
-  ul {
-    list-style-type:none;
-    width:263px;
-    li {
-     width:263px;
-     height:75px; 
-         @include border-radius(8px);
-    @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
-    position:relative;
-    margin:0 0 20px 0;
-    background:rgba(255,255,255,0.75);
-    .a-image {
-      position:absolute;
-      @include border-top-left-radius(8px);
-      @include border-bottom-left-radius(8px);
-      top:0px;
-      left:0px;
-      height:75px;
-      width:75px;
-      border-style:solid;
-      border-right-width:3px;
-      border-right-color:$orange;
-      background:#000;
-    }
-    .artists-info {
-      position:relative;
-      left:90px;
-      top:21px;
-      width:120px;
-    }
-    .artist-radio {
-      position:relative;
-      left:230px;
-      bottom:3px;
-    }
-    }
-  }
-      input[type=submit] {
-                background:none;
-                border:0;
-                color:#fff;
-                font-size:1em            
-            }
-   #manage-choice-submit {
-          position:relative;
-          margin-top:4px;    
-          right:2px;
-            }
-} 
-.manage-points { 
-    width:302px;
-  height:319px;
-    @include border-radius(8px);
-    @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
-    background:rgba(255,255,255,0.75);
-     position:relative;
-     ul {
-       list-style-type:none;
-       width:302px;
-       top:10px;
-       position:relative;
-       left:-12px;
-    li {
-      width:239px;
-      height:45px;
-      float:left;
-      padding:20px 50px 0 45px;
-      .point-txt {
-      margin-top:6px;
-      float:right;
-      width:158px;
-      height:45px;
-    }
-  }
-}
-}
-}
-}
 #manage-form{
   position:relative;
     width:649px;
@@ -1416,6 +1322,8 @@ margin:-1px 0 25px 0;
 }
 #master-form-wrapper {
   position:relative;
+  width:650px;
+  left:8px;
 #new-release-form{
     width:649px;
     overflow:hidden;
@@ -2026,18 +1934,17 @@ span.error{
   padding:4px 187px 0 187px;
     @extend .content;
 }
+/* HOME */
 .content-pad-115-bottom {
   padding:14px 103px 166px 103px;
     @extend .content;
 }
+/* STANDARD */
 .content-pad-160-bottom {
     padding:4px 160px 166px 160px;
     @extend .content;
 }
-.content-pad-165-bottom {
-    padding:4px 165px 166px 165px;
-    @extend .content;
-}
+/* SEARCH RESULT */
 .content-pad-187-bottom {
   padding:4px 187px 166px 187px;
     @extend .content;
@@ -2164,25 +2071,36 @@ span.error{
 	  position:absolute;
 	  height:43px;
 	  width:100%;
-	  top:-31px;
+	  top:-32px;
   }
   #shadow-bot {
-	  position:absolute;
+	  position:relative;
 	  height:43px;
 	  width:100%;
-	  top:546px;
+	  top:-3px;
   }
   #timeline-outer {
 	  position:relative;
-	  height:558px;
+	  height:609px;
+	   background-image: url(/images/grid2.png);
+    background-repeat: repeat-x;
 	  margin-bottom:26px;
+	     ::-webkit-scrollbar {
+      width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+      border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: rgba(0,0,0,0.3);
+  } 
   }
 #timeline {
   	position:relative;
-    height:558px;
-    background-image: url(/images/grid.png);
-    background-repeat: repeat-x;
-    overflow:auto;
+    height:600px;
+    overflow-x:scroll;
     /*cursor: -moz-grab !important;*/ /* should this be applied with JS? */
 
   .release-list {

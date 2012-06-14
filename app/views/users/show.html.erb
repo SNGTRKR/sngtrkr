@@ -8,7 +8,7 @@
 				<h2><div class="font-15"><strong><%= @friend.first_name + " " + @friend.last_name %></strong></div></h2>
 				<div class="orange-txt instruct-font">
 					<%= @friend.following.count %> TRKINGS
-				</div><br/>
+				</div>
 				Last logged in <%= (time_ago_in_words @friend.last_sign_in_at) rescue @friend.last_sign_in_at %> ago
 			</div>
 		</div>
