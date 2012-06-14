@@ -8,7 +8,7 @@ left:23px;
 		.content-left {
 			width:309px;
 			.button-margin {
-				margin-top:3px;
+				margin-top:2px;
 			}
 		}
 		.content-right {
@@ -21,26 +21,30 @@ left:23px;
 			ul {
 				list-style-type:none;
 				.middle {
-					margin-bottom:35px;
+					margin-bottom:33px;
 				}
 				.bottom {
-					margin-bottom:31px;
+					margin-bottom:40px;
 				}
 				li {
 					.point-left {
 						width:374px;
+						span {
+							position:relative;
+							top:10px;
+						}
 					}
 					.point-right {
 						width:205px;
 						#manage1 {
 							position:relative;
 							left:31px;
-							top:7px;
+							top:8px;
 						}
 						#manage2 {
 							position:relative;
 							left:55px;
-							top:41px;
+							top:43px;
 						}
 						#manage3 {
 							position:relative;
