@@ -43,7 +43,7 @@ body{
     font-family: 'helvetica neue', helvetica, sans-serif;
     font-size:75%;
     font-weight:400;
-    line-height:1.4em;
+    line-height:1.45em;
     background: url("/images/b-bk.png") no-repeat center center fixed;
     background-color:$blue;
     -webkit-background-size: cover;
@@ -734,6 +734,9 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 			a:hover {
 				color:#fff;
 			}
+		}
+		#artist-bio {
+			margin-left:1px;
 		}
 		.artist-name {
 			line-height:1em;
