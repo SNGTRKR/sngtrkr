@@ -140,6 +140,9 @@ strong{
 .fb-login {
 	    margin:-16px 0 0 5px;
 }
+.fb-home-login {
+	margin-top:-2px;
+}
 .form-text {   
        width:158px;
        border:1px solid #999;
@@ -654,12 +657,12 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 			  #home2 {
 			  position:relative;
 				  top:53px;
-				  left:33px;
+				  left:34px;
 			  }
 			  #home3 {
 			  position:relative;
 				  top:30px;
-				  left:33px;
+				  left:34px;
 			  }
 		  }
 	  }
@@ -772,6 +775,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     float:right;
     width:302px;
     margin-top:9px;
+    line-height:1.4em;
   }
 }
 #content-profile-top {
@@ -812,6 +816,14 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     width:494px;
     margin-top:4px;
     margin-left:14px;
+    .user {
+	    position:relative;
+	    top:6px;
+    }
+    .artist {
+	   position:relative;
+	    top:5px; 
+    }
   }
   .artist-text-nudge {
     margin-top:3px;
@@ -824,7 +836,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   margin-bottom:23px;
   .no-trk {
     position:relative;
-    top:27px;
+    top:28px;
   }
           .artist-trkr-list-search {
         position:absolute;
@@ -1338,7 +1350,7 @@ position:relative;
 .step{
     float:left;
     width:649px;
-  height:232px;
+  height:239px;
 }
 .step-back {
   margin:5px 22px 5px 22px;
@@ -1346,14 +1358,14 @@ position:relative;
   background:rgba(255,255,255,0.75);
     @include border-radius(8px);
     @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
-    height:144px;
+    height:151px;
     padding:44px 30px 44px 30px;
     position:relative;
     label { 
                 width:118px; 
                 display:block;
                 float:left;
-                margin-top:1px;
+                margin-top:4px;
             }
             li {
                 padding:0 0 18px 0;
@@ -1378,6 +1390,10 @@ position:relative;
      }
     .step-left {
       width:290px;
+      .type-pad {
+	      position:relative;
+	      top:-4px;
+      }
     }
     .step-right {
       width:226px;
@@ -1658,11 +1674,11 @@ span.error{
 }
 #team {
   position:relative;
-  padding:0 0 22px 0;
+  padding:5px 0 22px 0;
 .team-members {
   position:relative;
   width:668px;  
-  padding:20px 0 0 0;
+  padding:7px 0 0 0;
 .team-pic-left {
   width:168px;
   height:153px;
@@ -1677,10 +1693,8 @@ span.error{
   width:490px;
   height:133px;
   padding:13px 0 0 0;
+  margin-top:-3px;
 }
-  .desc-align {
-    text-align:right;
-  }
 }
 }
 #artist-search {
@@ -1729,9 +1743,9 @@ span.error{
   }
   }
   .search-trkr-button {
-    position:relative;
-    right:11px;
-    bottom:35px;
+    position:absolute;
+    right:35px;
+    top:25px;
   }
 }
 }
@@ -1805,7 +1819,7 @@ span.error{
     .friends-info {
       position:relative;
       left:92px;
-      bottom:88px;
+      bottom:89px;
       width:105px;
     }
     a {
