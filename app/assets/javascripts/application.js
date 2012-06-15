@@ -28,6 +28,9 @@ $(document).ready(function() {
 	$("#artist-info a").fancybox({
 		autoScale	: true,
 	});
+	$("#manage-top a").fancybox({
+		autoScale	: true,
+	});
   $('#artist-mini-search-submit').click(function(){
     $(this).closest('form').submit();
     return false;

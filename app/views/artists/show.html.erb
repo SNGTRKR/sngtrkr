@@ -26,7 +26,7 @@ background-repeat:no-repeat;
 	<h3><% if @artist.label_name? %><%= truncate((strip_tags @artist.label_name || "" ), :length => 50) %><% else %><span class="light-gray">No label set</span><% end %><br/></h3>
 	<div class="left artist-trkr-pos"><%= render :partial => 'shared/trk_artist', :object => @artist %></div>
 	<div class="clear"></div>
-	<% if @artist.bio? %><%= raw(truncate((strip_tags @artist.bio || "" ), :length => 300, :omission => "...<a href='#bio-full'>Read more</a>")) %><% else %><span class="light-gray">No biography set</span><% end %>
+	<div id="artist-bio"><% if @artist.bio? %><%= raw(truncate((strip_tags @artist.bio || "" ), :length => 300, :omission => "...<a href='#bio-full'>Read more</a>")) %><% else %><span class="light-gray">No biography set</span><% end %></div>
 	</div>
 	<ul>
 			<li class="left">
