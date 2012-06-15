@@ -48,19 +48,19 @@
 			<!--<form method="post" action="email_notify.php" onsubmit="" class="enform">-->
 			<ul>
 				<li class="radio-pad">
-					<%= f.radio_button :email_frequency, :always, :class => 'form-text left' %>
-					<%= f.label :always %>
+					<%= f.radio_button :email_frequency, 0, :class => 'form-text left' %>
+					<%= f.label :instant %>
 				</li>
 				<li class="radio-pad">
-					<%= f.radio_button :email_frequency, :daily, :class => 'form-text left' %>
+					<%= f.radio_button :email_frequency, 1, :class => 'form-text left' %>
 					<%= f.label :daily %>
 				</li>
 				<li class="radio-pad">
-					<%= f.radio_button :email_frequency, :weekly, :class => 'form-text left' %>
+					<%= f.radio_button :email_frequency, 2, :class => 'form-text left' %>
 					<%= f.label :weekly %>
 				</li>
 				<li class="radio-pad">
-					<%= f.radio_button :email_frequency, :fortnightly, :class => 'form-text left' %>
+					<%= f.radio_button :email_frequency, 3, :class => 'form-text left' %>
 					<%= f.label :fortnightly %>
 				</li>
 				<li>
