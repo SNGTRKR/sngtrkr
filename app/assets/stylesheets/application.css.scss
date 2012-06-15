@@ -758,6 +758,49 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 			width:270px;
 			position:relative;
 			top:12px;
+.dropdownContain {
+	width: 160px;
+	position: absolute;
+	z-index: 2;
+	left: 50%;
+	margin-left: -80px; /* half of width */
+	display:none;
+.dropOut {
+	width: 160px;
+	float: left;
+	position: relative;
+	margin-top: 0px;
+	color:#fff;
+	@include border-radius(4px);
+	$experimental-support-for-svg: true;
+            @include background-image(linear-gradient(top, #F15A24 0%, #F37244 100%));
+	@include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
+	.triangle {
+	width: 0;
+	height: 0;
+	position: absolute;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 8px solid $orange;
+	top: -8px;
+	left: 50%;
+	margin-left: -8px;
+}
+
+ ul {
+	position:relative;
+	left:0px;
+	top:0px;
+ li {
+	padding: 12px 0 10px 5px;
+	@include border-radius(4px);
+}
+}
+}
+}
+			.music-option {
+				position:relative;
+			}
 			li {
 				margin-left:-3px;
 			}
@@ -1188,7 +1231,7 @@ margin:-1px 0 25px 0;
     height:421px;
     padding:44px 30px 44px 30px;
     position:relative;
-    label { 
+    label {
                 width:118px; 
                 display:block;
                 float:left;
