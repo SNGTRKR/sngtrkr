@@ -394,10 +394,8 @@
 					var valueLength = jQuery.trim($this.val()).length;
 
 					if(valueLength == '') {
-						hasError = true;
-						$this.css('background-color', '#FFEDEF');
-					} else
-						$this.css('background-color', '#FFFFFF');
+						hasError = true;	
+					}
 				});
 				var $link = $('#navigation li:nth-child(' + parseInt(step) + ') a');
 				$link.parent().find('.error,.checked').remove();

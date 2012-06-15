@@ -15,15 +15,15 @@ image_height = 100
 			<ul>
 				<li>
 					<strong><%= f.label "Artist Name*" %></strong>
-					<%= f.text_field :name, :class => 'form-text' %>
+					<%= f.text_field :name, :class => 'form-text fvalidate' %>
 				</li>
 				<li>
 					<strong><%= f.label "Genre*" %></strong>
-					<%= f.text_field :genre, :class => 'form-text' %>
+					<%= f.text_field :genre, :class => 'form-text fleave' %>
 				</li>
 				<li>
 					<strong><%= f.label "Label*" %></strong>
-					<%= f.text_field :label_name, :class => 'form-text' %>
+					<%= f.text_field :label_name, :class => 'form-text fvalidate' %>
 				</li>
 				<li>
 					<strong><%= f.label "Bio" %></strong>
@@ -317,18 +317,18 @@ image_height = 100
 			function validateStep(step) {
 				if(step == fieldsetCount)
 					return;
+	
 
 				var error = 1;
 				var hasError = false;
-				/* INDIVIDUAL ERROR HANDLER - Works but error handling in the first field is mirrored by the other 2. See release/new for old code  */
-				var aname=document.forms["edit-forme"]["artist[name]"].value;
-				var agenre=document.forms["edit-forme"]["artist[genre]"].value;
-				var alabel=document.forms["edit-forme"]["artist[label_name]"].value;
-				if (aname=="" || agenre=="" || alabel=="")
-				{
-					hasError = true;
+	$('.edit_artist').children(':nth-child(' + parseInt(step) + ')').find('input:not(button)').each(function() {
+					var $this = $(this);
+					var valueLength = jQuery.trim($this.val()).length;
+					if(valueLength == '') {
+						hasError = true;	
 					}
 					
+			});
 				var $link = $('#navigation li:nth-child(' + parseInt(step) + ') a');
 				$link.parent().find('.error,.checked').remove();
 				
