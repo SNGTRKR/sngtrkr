@@ -98,11 +98,15 @@
 	</div>
 	<div class="clear"></div>
 	<div class="recommended-artists-outer">
+	 <% if @user.suggested.count.zero? %>
+	 <p>Sorry, we have no suggestions for you at the moment... </p>
+	 <% else %>
 		<div class="recommended-artists">
 			<ul>
 				<%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 6] %>
 			</ul>
 		</div>
+		<% end %>
 	</div>
 	<%= render :partial => 'shared/artist_suggestion_replace' %>
 	<%= render :partial => 'shared/fb_async' %>
