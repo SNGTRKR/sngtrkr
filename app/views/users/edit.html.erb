@@ -45,7 +45,6 @@
 			Your current setting is <strong>Weekly</strong>.
 			<br/>
 			<br/>
-			<!--<form method="post" action="email_notify.php" onsubmit="" class="enform">-->
 			<ul>
 				<li class="radio-pad">
 					<%= f.radio_button :email_frequency, 0, :class => 'form-text left' %>
@@ -64,8 +63,6 @@
 					<%= f.label :fortnightly %>
 				</li>
 				<li>
-					<!-- left so you have a frame of reference for what it used to be	<input class="form-text radio" type="radio" name="e-notify" id="monthly" />
-					<label for="monthly">Monthly</label>-->
 					<%= f.radio_button :email_frequency, :monthly , :class => 'form-text left' %>
 					<%= f.label :monthly %>
 				</li>
