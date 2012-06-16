@@ -1,0 +1,95 @@
+.recommend-text-nudge {
+  top:13px;
+}
+.recommended-artists-outer {
+  position:relative;
+  height:443px;
+  margin-top:31px;
+  .recommended-artists {
+  position:relative;
+  top:0px;
+  width:667px;
+  height:410px; 
+  ul {
+    list-style-type:none;
+    margin-left:-30px;
+    li {
+      width:202px;
+      height:178px;
+      margin:0 0 42px 30px;
+      @include border-radius(8px);
+      @include box-shadow(0px 0px 8px rgba(0,0,0,0.55));
+        .each-recommend {
+          position:relative;
+          height:178px;
+          width:202px;
+          .black-tint {
+            position:relative; 
+            height:178px;
+          width:202px;
+          @include border-radius(8px);
+          $experimental-support-for-svg: true;
+          @include background-image(linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 94%, rgba(0,0,0,1) 100%));
+          }
+          .recommend-info {
+            @extend .instruct-font;
+            @extend .font-20;
+            position:absolute;
+            text-align:center;
+            line-height:1.4em;
+            z-index:2;
+            width:202px;
+            display:block;
+            bottom:20px;
+            a {
+              color:#fff;
+            }
+            a:hover {
+              color:$orange;
+            }
+          }
+          .recommend-trkr-button {
+            position:absolute;
+            left:30px;
+            bottom:-13px;
+            div {
+              @extend .o-button;
+              @extend .trkr-o-pad;
+              @extend .right;
+              @extend .instruct-font;
+              @extend .font-13;
+            }
+          }
+          .remove-recommend-trkr-button {
+            position:absolute;
+            left:42px;
+            bottom:-25px;
+          }
+          .ignore-outer {
+          position:relative;
+          height:25px;
+          width:31px;
+          left:140px;
+          bottom:12px;
+          .ignore-button {
+	           padding:3px 7px 0 6px;
+          }
+          
+          }
+        }
+    }
+  }
+}
+}
+.recommend-continue {
+  position:relative;
+  right:-6px;
+  bottom:1px;
+  height:61px;
+}
+.friend-recommend-nudge {
+  margin-top:-2px;
+  }
+.other-recommend-nudge {
+  margin-top:19px;
+}

@@ -1,0 +1,47 @@
+#footer{
+    background-image: url(/images/footer.png);
+    *{
+        color:white;
+    }
+    position:relative;
+    margin-top:-$footer;
+    height:$footer;
+    clear:both;
+}
+/*Opera Fix*/
+body:before {/* thanks to Maleika (Kohoutec)*/
+    content:"";
+    height:100%;
+    float:left;
+    width:0;
+    margin-top:-32767px;/* thank you Erik J - negate effect of float*/
+}
+#fcontainer{
+    position:relative;
+    width:980px;
+    margin:0 auto;
+    padding:20px 0 0 0;
+    text-align:center; 
+    .footer-menu {
+        list-style-type:none;
+        position:relative;
+        top:20px;
+        left:15px;
+        a {
+	        color:#fff;
+        }
+        a:hover {
+	        color:$orange;
+        }
+        li {
+            font-size:1.1em;
+            padding:0 30px 0 0;
+            display:inline;
+        }
+    } 
+    #footer-txt {
+        font-size:0.9em;
+        position:relative;
+        top:105px;
+    }
+}

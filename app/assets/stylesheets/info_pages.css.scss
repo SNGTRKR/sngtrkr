@@ -1,0 +1,153 @@
+#about-txt{
+  position:relative;
+  top:16px;
+}
+#terms-txt{
+  position:relative;
+  top:16px;
+  padding:0 0 18px 0;
+  ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom:16px;
+  }
+  ol {
+    list-style-type:decimal;
+    margin-left: 20px;
+     margin-bottom:16px;
+  }
+  a
+  {
+    color:$orange;
+  }
+  a:hover {
+    color:#000;
+  }
+  a:active {
+    color:$orange;
+  }
+  a:visited {
+    color:$orange;
+  }
+  p {
+  margin-bottom:16px;
+}
+}
+#social-media-about {
+  position:relative;
+  top:38px;
+  width:666px;
+  height:193px;
+.boxes {
+  list-style-type:none;
+  margin-left:-30px;
+}
+.box {
+  margin:0 0 67px 30px;
+  background:rgba(255,255,255,0.75);
+  @include border-radius(8px);
+  @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
+  width:171px;
+  height:93px;
+  padding:15px 15px 15px 15px;
+  .text-nudge {
+    position:relative;
+    top:5px;
+  }
+  a {
+    color:$orange;
+  }
+  a:hover {
+    color:$orange;
+  }
+  ul.sm {
+    list-style-type:none;
+    margin-top:7px;
+     a {
+          color:#000;
+        }
+        a:hover {
+          color:$orange;
+        }
+    .som {
+      width:171px;
+      .text-nudge-2 {
+        position:relative;
+        bottom:6px;
+        left:5px;
+      }
+    }
+  }
+}
+}
+#privacy-txt{
+  position:relative;
+  top:16px;
+  padding:0 0 18px 0;
+  ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom:16px;
+  }
+  a
+  {
+    color:$orange;
+  }
+  a:hover {
+    color:#000;
+  }
+  a:active {
+    color:$orange;
+  }
+  a:visited {
+    color:$orange;
+  }
+  p {
+  margin-bottom:16px;
+}
+}
+#team-txt{
+  position:relative;
+  top:16px;
+  a
+  {
+    color:$orange;
+  }
+  a:hover {
+    color:#000;
+  }
+  a:active {
+    color:$orange;
+  }
+  a:visited {
+    color:$orange;
+  }
+  p {
+  margin-bottom:16px;
+}
+}
+#team {
+  position:relative;
+  padding:5px 0 22px 0;
+.team-members {
+  position:relative;
+  width:668px;  
+  padding:7px 0 0 0;
+.team-pic-left {
+  width:168px;
+  height:153px;
+  margin-left:-10px;
+}
+.team-pic-right {
+  width:168px;
+  height:153px;
+  margin-right:-2px;
+}
+.team-desc {
+  width:490px;
+  height:133px;
+  padding:13px 0 0 0;
+  margin-top:-3px;
+}
+}
+}

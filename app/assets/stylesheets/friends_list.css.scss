@@ -1,0 +1,92 @@
+.share-bank {
+  position:relative;
+  height:95px;
+  width:400px;
+  top:34px;
+  left:140px;
+  ul {
+    list-style-type:none;
+    margin-left:-30px;
+    li {
+      margin:0 0 0 30px;
+    }
+  }
+}
+.share-warning {
+  position:relative;
+  width:378px;
+  left:141px;
+  top:62px;
+  text-align:center;
+  height:121px;
+}
+#friends-list {
+  position:relative;
+  width:667px;
+  top:14px;
+  margin-bottom:25px;
+  ul {
+    list-style-type:none;
+    margin-left:-20px;
+    position:relative;
+    li {
+      width:199px;
+      height:38px;
+      padding:26px 10px 26px 0px;
+      margin:0 0 20px 20px;
+      background:rgba(255,255,255,0.75);
+      @include border-radius(8px);
+      @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
+      
+    }
+    .friends-image {
+      position:relative;
+      @include border-top-left-radius(8px);
+      @include border-bottom-left-radius(8px);
+      bottom:26px;
+      left:0px;
+      height:90px;
+      width:80px;
+      border-style:solid;
+      border-right-width:3px;
+      border-right-color:$orange;
+      background:#000;
+    }
+    .friends-info {
+      position:relative;
+      left:92px;
+      bottom:89px;
+      width:105px;
+    }
+    a {
+      color:#000;
+    }
+    a:hover {
+      color:#000;
+    }
+  }
+        .friends-search {
+        position:absolute;
+        right:-1px;
+        bottom:21px;
+        height:25px;
+        width:209px;
+        background:rgba(255,255,255,0.75);
+        @include border-radius(7px);
+        @include box-shadow(inset 0px 1px 6px rgba(0, 0, 0, 0.25));
+        border: 1px solid #50A6C2;
+        border-bottom: 1px solid #B0E0E6;
+        input{
+            background:transparent;
+            padding:0.6em;
+            border:none;
+            width:150px;
+        }
+        input:focus{
+            outline:none;
+        }
+    }
+}
+#friends-buffer {
+	margin-bottom:25px;
+}

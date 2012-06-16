@@ -1,0 +1,80 @@
+#p-settings {
+  margin:16px 0 0 0;
+#change-email {
+  position:relative;
+  margin-bottom:35px;
+            label { 
+                width:110px; 
+                display:block;
+                float:left;
+                margin-top:6px;
+            }
+            li {
+                padding:0 0 18px 0;
+            }
+            input[type=submit] {
+                margin:5px 0 0 0;
+                background:none;
+                border:0;
+                color:#fff;
+                font-size:1em;
+            }
+            #change-email-submit-pad {
+                margin-left:1px;
+                margin-top:2px;
+            }
+}
+#email-notify {
+  position:relative;
+  margin-bottom:57px;
+            label { 
+                width:110px; 
+                display:block;
+                position:relative;
+                bottom:15px;
+                left:30px;
+            }
+            li {
+                float:left;
+                display:block;
+                width:90px;
+            }
+            .radio-pad {
+              padding:0 52px 0 0;
+            }
+            input[type=submit] {
+                margin:5px 0 0 0;
+                background:none;
+                border:0;
+                color:#fff;
+                font-size:1em;
+            }
+            #save-settings-submit-pad {
+                margin-left:1px;
+                margin-top:4px;
+            }
+}
+#manage-artist {
+position:relative;
+margin-bottom:53px;
+	.delete-artist-pad {
+		margin-left:15px;
+	}
+}
+#delete-account {
+  position:relative;
+  margin-bottom:72px;
+  width:660px;  
+  a {
+	  color:#fff;
+  }
+  a:hover {
+	  color:#fff;
+  }
+  #delete-submit-pad {
+  position:absolute;
+  top:65px;
+  left:1px;
+}
+}
+}

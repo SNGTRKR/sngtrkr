@@ -1,0 +1,233 @@
+  #shadow-top {
+	  position:absolute;
+	  height:43px;
+	  width:100%;
+	  top:-32px;
+  }
+  #shadow-bot {
+	  position:relative;
+	  height:43px;
+	  width:100%;
+	  top:-3px;
+  }
+  #timeline-outer {
+	  position:relative;
+	  height:609px;
+	   background-image: url(/images/grid2.png);
+    background-repeat: repeat-x;
+	  margin-bottom:26px;
+	     ::-webkit-scrollbar {
+      width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+      border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: rgba(0,0,0,0.3);
+  } 
+  }
+#timeline {
+  	position:relative;
+    height:600px;
+    overflow-x:scroll;
+    /*cursor: -moz-grab !important;*/ /* should this be applied with JS? */
+
+  .release-list {
+	  list-style-type: none;
+	  position:relative;
+	  margin:20px 0 0 159px;
+	 width:11800px;
+	 .even {
+	 height:210px;
+		 top:301px !important;
+		 	  	  .release-line {
+		  position:absolute;
+		  top:-30px;
+		  left:104px;
+		  height:30px;
+		  border-style:solid;
+		  border-left-width:3px;
+		  border-left-color:#000;
+	  }
+	  .release-date {
+		  text-align:center;
+		  position:absolute;
+		  top:-56px;
+		  left:74px;
+		  color:#000;
+	  }
+	  .release-join {
+	  	  position:absolute;
+	  	 top:-47px;
+	  	  left:147px;
+	  	  width:147px;
+		  border-style:solid;
+		  border-bottom-width:3px;
+		  border-bottom-color:#000;
+	  }
+		 	 }
+	 .odd {
+	 		 height:250px;
+		 	  	  .release-line {
+		  position:absolute;
+		  top:210px;
+		  left:104px;
+		  height:30px;
+		  border-style:solid;
+		  border-left-width:3px;
+		  border-left-color:#000;
+	  }
+	  .release-date {
+		  text-align:center;
+		  position:relative;
+		  top:15px;
+		  margin-left:-17px;
+		  color:#000;
+	  }
+	  .release-join {
+	  	  position:absolute;
+	  	 bottom:-7px;
+	  	  left:147px;
+	  	  width:147px;
+		  border-style:solid;
+		  border-bottom-width:3px;
+		  border-bottom-color:#000;
+	  }
+	 }
+	 
+	 .release-outer {
+		 position:relative;
+	  .each-release {
+	  overflow: hidden;
+	  background:white;
+      @include border-top-left-radius(8px);
+      @include border-top-right-radius(8px);
+      @include border-bottom-left-radius(10px);
+      @include border-bottom-right-radius(10px);
+      @include box-shadow(0px 0px 8px rgba(0,0,0,0.55));
+      height:210px;
+      width:210px;
+      margin:0 20px 20px 0;
+      position:relative;
+      .release-info {
+	      color:#fff;
+	      display:block;
+	      position:absolute;
+	      bottom:13px;
+	      padding:110px 13px 0 13px;
+	      z-index:2;
+	      margin-right:15px;
+        a {
+		      color:#fff;
+	      }
+	      a:hover {
+		      color:$orange;
+	      }
+      }
+      .release-menu {
+	      position:absolute;
+	      height:23px;
+	      width:210px;
+	      background-color:$orange;
+	      $experimental-support-for-svg: true;
+          @include background-image(linear-gradient(top, #F37244 0%, #F15A24 100%));
+		    text-shadow: #FF6103 0 1px 3px;
+	      @include border-bottom-left-radius(8px);
+          @include border-bottom-right-radius(8px);
+          bottom:-25px;
+          left:0px;
+          z-index:2;
+          .menu {
+	          list-style-type:none;
+	          width:210px;
+	          height:23px;
+	          left:29px;
+	          position:relative;
+	          .menu-item {
+	            cursor:pointer;
+		          color:#fff;
+		          padding:0 30px 0 0;
+		          line-height:23px; 
+	          }
+          }
+      }
+      .r-grad {
+	      position:absolute;
+	      z-index:1;
+	      width:210px;
+	      height:210px;
+	      @include border-radius(8px);
+	      $experimental-support-for-svg: true;
+          @include background-image(linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 94%, rgba(0,0,0,1) 100%));
+      }
+      .opac-50 {
+	      position:absolute;
+	      z-index:1;
+	      width:210px;
+	      height:210px;
+	      @include border-radius(8px);
+	      background:rgba(0,0,0,0.75);
+	      display:none;
+      }
+      #share-release {
+	      position:absolute;
+	      height:210px;
+	      width:210px;
+	      z-index:2;
+	      right:-210px;
+	      .share-header {
+		      position:relative;
+		      top:29px;
+	      }
+	      .share-list {
+		      position:relative;
+		      left:29px;
+		      top:44px;
+	      }
+	      .share-cancel {
+		      position:relative;
+		      left:70px;
+		      top:67px;
+	      }
+      }
+      #buy-release {
+	      position:absolute;
+	      height:210px;
+	      width:210px;
+	      z-index:2;
+	      left:-210px;
+	      .buy-header {
+		      position:relative;
+		      top:29px;
+	      }
+	      .buy-list {
+		      position:relative;
+		      left:29px;
+		      top:44px;
+	      }
+	      .buy-cancel {
+		      position:relative;
+		      left:70px;
+		      top:67px;
+	      }
+      }
+	  }
+	  }
+  }
+  #left-logo {
+	  position:absolute;
+	  left:24px;
+	  top:250px;
+  }
+  #left-line {
+  position:relative;
+  top:277px;
+  left:77px;
+  width:147px;
+  border-style:solid;
+  border-bottom-width:3px;
+  border-bottom-color:#000;
+  }
+  }
