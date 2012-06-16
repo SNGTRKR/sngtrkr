@@ -39,16 +39,16 @@
 							<div class="step-left left">
 								<ul>
 									<li>
-										<label for="t-name"><strong>Track Name*</strong></label>
-										<input id="t-name" name="t-name" type="text" class="form-text" />
+										<label for="t-name"><strong>Track Name</strong></label>
+										<input id="t-name" name="t-name" type="text" class="form-text fvalidate" />
 									</li>
 									<li>
-										<label for="r-date"><strong>Release Date*</strong></label>
-										<input id="r-date" name="r-date" type="text" class="form-text" />
+										<label for="r-date"><strong>Release Date</strong></label>
+										<input id="r-date" name="r-date" type="text" class="form-text fvalidate" />
 									</li>
 									<li>
 										<label for="cat-no"><strong>Catalogue Number</strong></label>
-										<input id="cat-no" name="cat-no" type="text" class="form-text" />
+										<input id="cat-no" name="cat-no" type="text" class="form-text fvalidate" />
 									</li>
 									<li>
 										<label for="r-type" class="type-pad"><strong>Type*</strong></label>
@@ -59,7 +59,7 @@
 									</li>
 									<li>
 										<label for="label"><strong>Label</strong></label>
-										<input id="label" name="label" type="text" class="form-text" />
+										<input id="label" name="label" type="text" class="form-text fvalidate" />
 									</li>
 								</ul>
 							</div>
@@ -70,7 +70,7 @@
 								If you wish to submit an album release, further options will be made available once you specify the release type.
 								<br/>
 								<br/>
-								<strong>* Required fields.</strong>
+								<strong>All fields required.</strong>
 							</div>
 							<div id="details-line"></div>
 							<div class="clear"></div>
@@ -389,11 +389,11 @@
 
 				var error = 1;
 				var hasError = false;
-				$('.new_release').children(':nth-child(' + parseInt(step) + ')').find(':input:not(button)').each(function() {
+				$('.new_release').children(':nth-child(' + parseInt(step) + ')').find('input.fvalidate:not("button")').each(function() {
 					var $this = $(this);
 					var valueLength = jQuery.trim($this.val()).length;
 
-					if(valueLength == '') {
+					if(valueLength == '' || valueLength == null) {
 						hasError = true;	
 					}
 				});
