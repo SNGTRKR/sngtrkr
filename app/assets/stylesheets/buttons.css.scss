@@ -1,0 +1,138 @@
+.o-button {
+			color:white;
+			cursor: pointer;
+			@include border-radius(7px);
+			text-align:center;
+	    background:$orange; 
+	    $experimental-support-for-svg: true;
+      @include background-image(linear-gradient(top, #F37244 0%, #F15A24 100%));
+	    text-shadow: #FF6103 0 1px 3px;
+	    -webkit-box-shadow:
+	    inset 0 1px 0  #F15A24,
+	    inset 0 2px 0 #F7931E,
+	    0 1px 3px #777,
+	    0 0px 1px #ccc;
+	    -moz-box-shadow:
+	    inset 0 1px 0  #F15A24,
+	    inset 0 2px 0 #F7931E,
+	    0 1px 3px #777,
+	    0 0px 1px #ccc;
+	    box-shadow:
+	    inset 0 1px 0  #F15A24,
+	    inset 0 2px 0 #F7931E,
+	    0 1px 3px #777,
+	    0 0px 1px #ccc;
+}
+.o-button:hover {
+			$experimental-support-for-svg: true;
+            @include background-image(linear-gradient(top, #F15A24 0%, #F37244 100%));
+}
+.fb-button {
+			color:white;
+			@include border-radius(7px);
+			text-align:center;
+		    background:$orange;
+		    $experimental-support-for-svg: true;
+            @include background-image(linear-gradient(top, #4D77B8 0%, #375A98 100%)); 
+		    text-shadow: #22428A 0 1px 3px;
+		    -webkit-box-shadow:
+		    inset 0 1px 0  #375A98,
+		    inset 0 2px 0 #6F90C4,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+		    -moz-box-shadow:
+		    inset 0 1px 0  #375A98,
+		    inset 0 2px 0 #6F90C4,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+		    box-shadow:
+		    inset 0 1px 0  #375A98,
+		    inset 0 2px 0 #6F90C4,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+}
+.fb-button:hover {
+			$experimental-support-for-svg: true;
+            @include background-image(linear-gradient(top, #375A98 0%, #4D77B8 100%)); 
+}
+    .search {
+	    position:relative;
+	    top:0px;
+	    height:25px;
+	    #search-pad {
+		    padding:3px 6px 0 7px;
+	    }
+    }
+.search-button {
+			color:white;
+			@include border-top-right-radius(7px);
+			@include border-bottom-right-radius(7px);
+			text-align:center;
+		    $experimental-support-for-svg: true;
+            @include background-image(linear-gradient(top, #F37244 0%, #F15A24 100%));
+		    text-shadow: #FF6103 0 1px 3px;
+		    -webkit-box-shadow:
+		    inset 0 1px 0  #F15A24,
+		    inset 0 2px 0 #F7931E,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+		    -moz-box-shadow:
+		    inset 0 1px 0  #F15A24,
+		    inset 0 2px 0 #F7931E,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+		    box-shadow:
+		    inset 0 1px 0  #F15A24,
+		    inset 0 2px 0 #F7931E,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+}
+.search-button:hover {
+			$experimental-support-for-svg: true;
+            @include background-image(linear-gradient(top, #F15A24 0%, #F37244 100%));
+}
+.norm-o-pad {
+    line-height: 28px;
+    height:25px;
+    padding:0 15px 0 15px;
+     a { 
+	    color:#fff;
+    }
+    a:hover {
+	    color:#fff;
+    }
+}
+.fb-o-pad {
+    line-height: 30px;
+    height:30px;
+    position:relative;
+    padding:0 23px 0 16px;
+    i {
+	    font-size:1.8em;
+    }
+    span {
+	    position:relative;
+	    left:7px;
+	    top:-4px;
+    }
+}
+.trkr-o-pad {
+    line-height:25px;
+    height:25px;
+    padding:0 15px 0 15px;
+    a { 
+	    color:#fff;
+    }
+    a:hover {
+	    color:#fff;
+    }
+}
+.logout-button {
+  margin:-15px 0 0 0;
+  a {
+	  color:#fff;
+  }
+  a:hover {
+	  color:#fff;
+  }
+}

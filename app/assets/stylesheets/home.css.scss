@@ -1,0 +1,52 @@
+    #content-home {
+    position:relative;
+    width:766px;
+    height:254px;
+    .home-left {
+	    width:328px;
+	    .home-txt-1 {
+		    /* text-shadow: #1A1A1A 0 0.5px 1px; */
+		    line-height:1.3em;
+	    }
+    }
+    .home-right {
+	    width:412px;
+	    #macbook {
+		    position:relative;
+		    top:-1px;
+		    right:4px;
+	    }
+    }
+  }
+  #home-points {
+	  position:relative;
+	  height:289px;
+	  width:780px;
+	  top:15px;
+	  ul {
+	  list-style-type: none;
+	  margin-left:-30px;
+		  li {
+			  width:240px;
+			  margin-left:30px;
+			  #home1 {
+			  	position:relative;
+				  top:32px;
+				  left:40px;
+			  }
+			  #home2 {
+			  position:relative;
+				  top:53px;
+				  left:34px;
+			  }
+			  #home3 {
+			  position:relative;
+				  top:30px;
+				  left:34px;
+			  }
+		  }
+	  }
+	  .home-titles {
+		  margin-left:-2px;
+	  }
+  }

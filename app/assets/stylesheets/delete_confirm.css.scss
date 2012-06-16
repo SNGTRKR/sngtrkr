@@ -1,0 +1,49 @@
+.delete-confirm {
+    width:431px;
+    height:286px;
+    background: url(/images/box-bk-431.png) no-repeat;
+    @include border-radius(8px);
+    color:$gray;
+    a {
+	    color:#fff;
+    }
+    a:hover {
+	    color:#fff;
+    }
+    .goodbye {
+        font-size:2.8em;
+        position:relative;
+        top:28px;
+        left:101px;
+        width:260px;
+      }
+      #delete-txt-1 {
+        position:relative;
+        text-align:center;
+        width:237px;
+        display:block;
+        left:97px;
+        top:34px;
+      }
+      #delete-txt-2 {
+        position:relative;
+        text-align:center;
+        width:237px;
+        display:block;
+        left:97px;
+        top:86px;
+      }
+      .delete-account-button {
+        position:absolute;
+        left:115px;
+        top:227px;
+      }
+      .delete-account-cancel {
+        position:absolute;
+        left:248px;
+        top:227px;
+      }
+}
+  #delete-confirmation {
+    display:none;
+  }
