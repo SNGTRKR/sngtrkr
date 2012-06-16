@@ -1,3 +1,18 @@
+    .content-top {
+  position:relative;
+  width:666px;
+  height:128px;
+  .top-header {
+    float:left;
+    width:340px;
+  }
+  .content-top-right {
+    float:right;
+    width:302px;
+    margin-top:9px;
+    line-height:1.4em;
+  }
+}
 .recommend-text-nudge {
   top:13px;
 }
