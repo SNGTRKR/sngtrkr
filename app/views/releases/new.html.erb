@@ -91,6 +91,9 @@
 								The artwork needs to be at least 350px height/width and can be no bigger than 1MB in file size.
 								<br/>
 								<br/>
+								<strong>You are required to supply artwork.</strong>
+								<br/>
+								<br/>
 								<div class="default-button">
 									<div class="o-button norm-o-pad right signika-font font-13">
 										Restore to default<span></span>
@@ -142,9 +145,16 @@
 								<strong>If you would like more information on how to mange your releases, please visit our help page.</strong>
 								<br/>
 								<br/>
+								<div id="submit-pad">
+							<div class="o-button right norm-o-pad signika-font">
+										<input type="submit" class="new_submit" value="Submit"/>
+							</div>
+						</div>
+								
 							</div>
 							<div id="summary-line"></div>
 						</div>
+						
 					</fieldset>
 			</div>
 			<div id="navigation" style="display:none;">
@@ -278,6 +288,16 @@
 				$('.white-tint').show();
 				$('.white-tint-3').show();
 			});
+				
+	/*
+	if there are errors don't allow the user to submit
+	*/
+			 $('.new_submit').bind('click',function(){
+					if($('.new_release').data('errors')){
+			alert('Please go back and complete required fields.');
+			return false;
+		}
+	});
 		});
 		$(function() {
 			/*
@@ -365,59 +385,50 @@
 				});
 			});
 
-			/*
-			 validates errors on all the fieldsets
-			 records if the Form has errors in $('#formElem').data()
-			 */
-			function validateSteps() {
-				var FormErrors = false;
-				for(var i = 1; i < fieldsetCount; ++i) {
-					var error = validateStep(i);
-					if(error == -1)
-						FormErrors = true;
-				}
-				$('.new_release').data('errors', FormErrors);
-			}
-
-			/*
-			 validates one fieldset
-			 and returns -1 if errors found, or 1 if not
-			 */
-			function validateStep(step) {
-				if(step == fieldsetCount)
-					return;
-
-				var error = 1;
-				var hasError = false;
-				$('.new_release').children(':nth-child(' + parseInt(step) + ')').find('input.fvalidate:not("button")').each(function() {
-					var $this = $(this);
-					var valueLength = jQuery.trim($this.val()).length;
-
-					if(valueLength == '' || valueLength == null) {
-						hasError = true;	
-					}
-				});
-				var $link = $('#navigation li:nth-child(' + parseInt(step) + ') a');
-				$link.parent().find('.error,.checked').remove();
-
-				var valclass = 'checked';
-				if(hasError) {
-					error = -1;
-					valclass = 'error';
-				}
-				$('<span class="' + valclass + '"></span>').insertAfter($link);
-
-				return error;
-			}
-
-			/*
-			 if there are errors don't allow the user to submit
-			 */
-			$('#registerButton').bind('click', function() {
-				if($('.new_release').data('errors')) {
-					alert('Please correct the errors in the Form');
-					return false;
-				}
-			});
+	/*
+	validates errors on all the fieldsets
+	records if the Form has errors in $('#formElem').data()
+	*/
+	function validateSteps(){
+		var FormErrors = false;
+		for(var i = 1; i < fieldsetCount; ++i){
+			var error = validateStep(i);
+			if(error == -1)
+				FormErrors = true;
+		}
+		$('.new_release').data('errors',FormErrors);	
+	}
+	
+	/*
+	validates one fieldset
+	and returns -1 if errors found, or 1 if not
+	*/
+	function validateStep(step){
+		if(step == fieldsetCount) return;
+		
+		var error = 1;
+		var hasError = false;
+		$('.new_release').children(':nth-child('+ parseInt(step) +')').find('input.fvalidate:not("button")').each(function(){
+			var $this 		= $(this);
+			var valueLength = jQuery.trim($this.val()).length;
+			
+			if(valueLength == ''){
+				hasError = true;
+			
+			}	
 		});
+		var $link = $('#navigation li:nth-child(' + parseInt(step) + ') a');
+		$link.parent().find('.error,.checked').remove();
+		
+		var valclass = 'checked';
+		if(hasError){
+			error = -1;
+			valclass = 'error';
+		}
+		$('<span class="'+valclass+'"></span>').insertAfter($link);
+		
+		return error;
+	}
+
+});
 	</script>
