@@ -8,7 +8,7 @@ image_height = 100
 <h2 class="signika-txt top-header font-35 add-release-header">Manage an artist</h2>	
 <% artist = edit %>
 <div id="steps">
-<%= form_for artist, :html => {:name => 'edit-forme'} do |f| %>
+<%= form_for artist do |f| %>
 <fieldset class="step">
 	<div class="step-back manage-details-step">
 		<div class="step-left left">
@@ -19,7 +19,7 @@ image_height = 100
 				</li>
 				<li>
 					<strong><%= f.label "Genre*" %></strong>
-					<%= f.text_field :genre, :class => 'form-text fleave' %>
+					<%= f.text_field :genre, :class => 'form-text fvalidate' %>
 				</li>
 				<li>
 					<strong><%= f.label "Label*" %></strong>
@@ -321,14 +321,14 @@ image_height = 100
 
 				var error = 1;
 				var hasError = false;
-	$('.edit_artist').children(':nth-child(' + parseInt(step) + ')').find('input:not(button)').each(function() {
+				$('.edit_artist').children(':nth-child(' + parseInt(step) + ')').find('input.fvalidate:not("button")').each(function() {
 					var $this = $(this);
 					var valueLength = jQuery.trim($this.val()).length;
-					if(valueLength == '') {
+
+					if(valueLength == '' || valueLength == null) {
 						hasError = true;	
 					}
-					
-			});
+				});
 				var $link = $('#navigation li:nth-child(' + parseInt(step) + ') a');
 				$link.parent().find('.error,.checked').remove();
 				
