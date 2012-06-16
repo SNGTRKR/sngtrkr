@@ -15,19 +15,19 @@ image_height = 100
 			<ul>
 				<li>
 					<strong><%= f.label "Artist Name*" %></strong>
-					<%= f.text_field :name, :class => 'form-text fvalidate' %>
+					<%= f.text_field :name, :class => 'form-text mfvalidate' %>
 				</li>
 				<li>
 					<strong><%= f.label "Genre*" %></strong>
-					<%= f.text_field :genre, :class => 'form-text fvalidate' %>
+					<%= f.text_field :genre, :class => 'form-text mfvalidate' %>
 				</li>
 				<li>
 					<strong><%= f.label "Label*" %></strong>
-					<%= f.text_field :label_name, :class => 'form-text fvalidate' %>
+					<%= f.text_field :label_name, :class => 'form-text mfvalidate' %>
 				</li>
 				<li>
-					<strong><%= f.label "Bio" %></strong>
-					<%= f.text_area :bio, :rows => 8, :cols => 40, :class => 'form-text' %>
+					<strong><%= f.label "Bio*" %></strong>
+					<%= f.text_area :bio, :rows => 8, :cols => 40, :class => 'form-text mfvalidate' %>
 				</li>
 				<li>
 					<strong><%= f.label "Website" %></strong>
@@ -69,7 +69,7 @@ image_height = 100
 	<div class="step-back manage-picture-step">
 		<div class="step-left left">
 			<strong><%= f.label :picture %></strong>
-			<strong><%= f.file_field 'image' %></strong></br/><br/>
+			<strong><%= f.file_field 'image', :class => 'mfvalidate' %></strong></br/><br/>
 			<strong>Preview:</strong><br/>
 			<div class="manage-image"><!--<img class="bleed" src="/assets/images/bleed.png"/>--><%= image_tag (artist.image :manage), :id => 'manage-image-current' %>
 			<canvas id="canvas" width="<%= image_width %>" height="<%= image_height %>"></canvas></div>
@@ -144,13 +144,13 @@ image_height = 100
 <div id="navigation" style="display:none;">
 			<ul>
 				<li class="selected signika-font o-button norm-o-pad">
-					<a href="#" class="manage-details"><h3>1. Details</h3></a>
+					<a href="#" class="manage-details"><h3>1. Details</h3><div class="white-tint"></div></a>
 				</li>
 				<li class="signika-font o-button norm-o-pad">
-					<a href="#" class="manage-picture"><h3>2. Picture</h3></a>
+					<a href="#" class="manage-picture"><h3>2. Picture</h3><div class="white-tint-2"></div></a>
 				</li>
 				<li class="signika-font o-button norm-o-pad">
-					<a href="#" class="manage-summary"><h3>3. Summary</h3></a>
+					<a href="#" class="manage-summary"><h3>3. Summary</h3><div class="white-tint-3"></div></a>
 				</li>
 			</ul>
 		</div>
@@ -321,14 +321,16 @@ image_height = 100
 
 				var error = 1;
 				var hasError = false;
-				$('.edit_artist').children(':nth-child(' + parseInt(step) + ')').find('input.fvalidate:not("button")').each(function() {
-					var $this = $(this);
-					var valueLength = jQuery.trim($this.val()).length;
-
-					if(valueLength == '' || valueLength == null) {
-						hasError = true;	
-					}
-				});
+				/* validating input by class possibly not working in manage artist due to it being within an ajax call. need to setup new release with rails form syntax and see 				whether the validation still works there. If it does, need to separate this form into 2 separate pages. Cancel ajax, get JS validation working. */
+		$('.edit_artist').children(':nth-child('+ parseInt(step) +')').find('input.mfvalidate:not("button")').each(function(){
+			var $this 		= $(this);
+			var valueLength = jQuery.trim($this.val()).length;
+			
+			if(valueLength == ''){
+				hasError = true;
+			
+			}	
+		});
 				var $link = $('#navigation li:nth-child(' + parseInt(step) + ') a');
 				$link.parent().find('.error,.checked').remove();
 				
@@ -387,8 +389,6 @@ image_height = 100
     document.getElementById('canvas').getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
   });
 });
-
-
 </script>
 
 
