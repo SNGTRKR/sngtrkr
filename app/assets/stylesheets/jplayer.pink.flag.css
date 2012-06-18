@@ -30,7 +30,7 @@ div.jp-video {
 	border-left:1px solid #554461;
 	border-right:1px solid #180a1f;
 	border-bottom:1px solid #180a1f;
-	background-color:#3a2a45;
+	background-color:#1A1A1A;
 	position:relative;
 }
 div.jp-audio {
@@ -79,7 +79,7 @@ div.jp-video-full div.jp-interface {
 div.jp-interface {
 	position: relative;
 	width:100%;
-	background-color:#3a2a45; /* Required for the full screen */
+	background-color:#1A1A1A; /* Required for the full screen */
 }
 
 
