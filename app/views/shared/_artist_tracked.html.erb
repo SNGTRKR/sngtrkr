@@ -5,7 +5,7 @@
 			<%= truncate(artist_tracked.name, :length => 20) %>
 		</div><% end %></strong>
 		<div class="instruct-font orange-txt">
-			<%= artist_tracked.followers %> TRKR's
+			<%= artist_tracked.followers %> TRKRs
 		</div>
 		<%= link_to (image_tag '/images/x.png'), unfollow_artist_path(artist_tracked), :remote => true, :class => 'remove-artist-button', :alt => "Remove" %>
 	</div>
