@@ -13,6 +13,9 @@
 //= require jquery_ujs
 //= require fancy-box/jquery.fancybox
 //= require instant-search/instant-search
+//= require jplayer/jquery.jplayer
+//= require jplayer/jquery.jplayer.inspector
+//= require jplayer/jplayer.playlist
 $(document).ready(function() {
 	$("#delete-account a").fancybox({
 		width : 431,

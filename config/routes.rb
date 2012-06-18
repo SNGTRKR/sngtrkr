@@ -14,9 +14,9 @@ SNGTRKR::Application.routes.draw do
   match '/team' => "Pages#team"
   match '/privacy' => "Pages#privacy"
   match '/help' => "Pages#help"
-  match '/recommended' => "Pages#recommended"
   match '/loading' => "Pages#loading"
   match '/welcome_email' => "UserMailer#welcome_email"
+  match '/player' => "Pages#player"
 
   match 'mailer(/:action(/:id(.:format)))' => 'mailer#:action'
   namespace :admin do
