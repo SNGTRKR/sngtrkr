@@ -5,22 +5,22 @@
 		<h2 class="signika-txt top-header font-35 add-release-header">Add new release</h2>
 		<div id="new-release-form">
 			<div id="steps">
-				<form class="new_release"  action="" method="post">
+			  <%= form_for [@artist, Release.new], :class => 'new_release' do |f| %>
 					<fieldset class="step">
 						<div class="step-back new-avail-step">
 							<div class="step-left left">
 								<ul>
 									<li>
 										<label for="itunes"><strong>iTunes link</strong></label>
-										<input id="itunes" name="itunes" type="text" class="form-text" />
+          					<%= f.text_field :itunes, :class => 'form-text' %>
 									</li>
 									<li>
 										<label for="amazon"><strong>Amazon link</strong></label>
-										<input id="amazon" name="amazon" type="text" class="form-text" />
+          					<%= f.text_field :amazon, :class => 'form-text' %>
 									</li>
 									<li>
 										<label for="7digi"><strong>7Digital link</strong></label>
-										<input id="7digi" name="7digi" type="text" class="form-text" />
+          					<%= f.text_field :sdigital, :class => 'form-text' %>
 									</li>
 								</ul>
 							</div>
@@ -39,27 +39,24 @@
 							<div class="step-left left">
 								<ul>
 									<li>
-										<label for="t-name"><strong>Track Name</strong></label>
-										<input id="t-name" name="t-name" type="text" class="form-text fvalidate" />
+										<label for="t-name"><strong>Release Name</strong></label>
+          					<%= f.text_field :name, :class => 'form-text fvalidate' %>
 									</li>
 									<li>
 										<label for="r-date"><strong>Release Date</strong></label>
-										<input id="r-date" name="r-date" type="text" class="form-text fvalidate" />
+          					<%= f.date_select :date, :class => 'form-text fvalidate' %>
 									</li>
 									<li>
 										<label for="cat-no"><strong>Catalogue Number</strong></label>
-										<input id="cat-no" name="cat-no" type="text" class="form-text fvalidate" />
+          					<%= f.text_field :cat_no, :class => 'form-text fvalidate' %>
 									</li>
 									<li>
-										<label for="r-type" class="type-pad"><strong>Type*</strong></label>
-										<select name="r-type" id="r-type">
-											<option value="0">Single</option>
-											<option value="1">Album</option>
-										</select>
+										<label for="rls_type" class="type-pad"><strong>Type*</strong></label>
+          					<%= f.select :rls_type, {'Single' => 0, 'Album' => 1}, :options => [:class => 'form-text fvalidate'] %>
 									</li>
 									<li>
 										<label for="label"><strong>Label</strong></label>
-										<input id="label" name="label" type="text" class="form-text fvalidate" />
+          					<%= f.text_field :label_name, :class => 'form-text' %>
 									</li>
 								</ul>
 							</div>
@@ -81,8 +78,8 @@
 							<div class="step-left left">
 								<label for="file_browser"><strong>Artwork:</strong></label>
 								<br/>
-								<br/>
-								<input type="file" name="file_browser"/>
+								<br/>								
+                <%= f.file_field 'image', :class => 'mfvalidate' %>
 							</div>
 							<div class="step-right right">
 								Please upload the artwork related to the release you are submitting.
@@ -109,7 +106,7 @@
 							<div class="step-left left">
 								<ul>
 									<li>
-										<strong>Track Name:</strong>
+										<strong>Release Name:</strong>
 									</li>
 									<li>
 										<strong>Release Date:</strong>
@@ -147,7 +144,7 @@
 								<br/>
 								<div id="submit-pad">
 							<div class="o-button right norm-o-pad signika-font">
-										<input type="submit" class="new_submit" value="Submit"/>
+      					<%= f.submit 'Add Release', :class => 'new_submit' %>
 							</div>
 						</div>
 								
@@ -179,7 +176,7 @@
 						25%
 					</div>
 				</div>
-				</form>
+        <% end %>
 			</div>
 
 		</div>
