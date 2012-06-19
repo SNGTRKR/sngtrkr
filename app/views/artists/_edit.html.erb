@@ -9,6 +9,7 @@ image_height = 100
 <% artist = edit %>
 <div id="steps">
 <%= form_for artist do |f| %>
+<div id="fields">
 <fieldset class="step">
 	<div class="step-back manage-details-step">
 		<div class="step-left left">
@@ -138,6 +139,7 @@ image_height = 100
 					<div id="summary-line"></div>
 	</div>
 </fieldset>
+</div>
 <% end %>
 </div>
 <div id="navigation" style="display:none;">
@@ -321,7 +323,7 @@ image_height = 100
 				var error = 1;
 				var hasError = false;
 				/* validating input by class possibly not working in manage artist due to it being within an ajax call. need to setup new release with rails form syntax and see 				whether the validation still works there. If it does, need to separate this form into 2 separate pages. Cancel ajax, get JS validation working. */
-		$('.edit_artist').children(':nth-child('+ parseInt(step) +')').find('input.mfvalidate:not("button")').each(function(){
+		$('#fields').children(':nth-child('+ parseInt(step) +')').find('input.mfvalidate:not("button")').each(function(){
 			var $this 		= $(this);
 			var valueLength = jQuery.trim($this.val()).length;
 			

@@ -6,6 +6,7 @@
 		<div id="new-release-form">
 			<div id="steps">
 			  <%= form_for [@artist, Release.new] do |f| %>
+			  <div id="fields">
 					<fieldset class="step">
 						<div class="step-back new-avail-step">
 							<div class="step-left left">
@@ -93,7 +94,7 @@
 								<br/>
 								<div class="default-button">
 									<div class="o-button norm-o-pad right signika-font font-13">
-										Restore to default<span></span>
+										Restore to default
 									</div>
 								</div>
 							</div>
@@ -153,7 +154,9 @@
 						</div>
 						
 					</fieldset>
-			</div>
+			  </div> <!-- end of fields -->
+			  			<% end %>
+			</div> <!-- end of steps -->
 			<div id="navigation" style="display:none;">
 				<ul>
 					<li class="selected signika-font o-button norm-o-pad">
@@ -170,19 +173,15 @@
 					</li>
 				</ul>
 			</div>
+			
 			<div id="progress-bar">
 				<div class="progress o-button">
-					<div class="percent instruct-font">
-						25%
-					</div>
-				</div>
-        <% end %>
-			</div>
-
-		</div>
+					<div class="percent instruct-font">25%</div>
+				</div></div>
+		</div> <!-- end of #new-release-form -->
 		<%= image_tag "/images/f-bulge-left.png", :alt => "Shadow", :id => "bulge-left" %>
 		<%= image_tag "/images/f-bulge-right.png", :alt => "Shadow", :id => "bulge-right" %>
-	</div>
+	</div> <!-- end of master wrapper -->
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$(".new-avail").click(function() {
@@ -406,7 +405,7 @@
 		var error = 1;
 		var hasError = false;
 		/* Its not working for rails form since it selects children of the parent div(form) new_release, but rails adds extra input and divs just below the opening form tag. Need to change how it selects each stage by element */
-		$('#new_release').children(':nth-child('+ parseInt(step) +')').find('input.fvalidate:not("button")').each(function(){
+		$('#fields').children(':nth-child('+ parseInt(step) +')').find('input.fvalidate:not("button")').each(function(){
 			var $this 		= $(this);
 			var valueLength = jQuery.trim($this.val()).length;
 			
