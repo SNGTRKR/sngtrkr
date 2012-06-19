@@ -5,7 +5,7 @@
   <%= form_for(@user) do |f| %>
 	<div id="delete-txt-1">
 		We are sad to see you leave us, please take a few minutes to say why you’re leaving.
-		<%= select_tag(:city_id, options_for_select([['Please select an option',0],['Too complicated', 1], ['Not enough information', 2], ['Too many emails', 3], ['Inaccurate information', 4], 
+		<%= select_tag(:leave_reason, options_for_select([['Please select an option',0],['Too complicated', 1], ['Not enough information', 2], ['Too many emails', 3], ['Inaccurate information', 4], 
 		  ['Website is malfunctioning', 5], ['Privacy worries', 6] ])) %>
 	</div>
 	<div id="delete-txt-2">

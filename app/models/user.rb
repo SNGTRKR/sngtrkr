@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :fbid, :first_name, :last_name, :last_sign_in_at, :email_frequency
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :fbid, :first_name, :last_name, :last_sign_in_at, :email_frequency, :deleted_at, :leave_reason
 
   has_many :follow
   has_many :suggest
@@ -35,6 +35,11 @@ class User < ActiveRecord::Base
         user.email = data["email"]
       end
     end
+  end
+  
+  def soft_delete
+    # assuming you have deleted_at column added already
+    update_attribute(:deleted_at, Time.current)
   end
 
   def role?(role)
