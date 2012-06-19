@@ -3,7 +3,7 @@ class ReleasesController < ApplicationController
   # GET /releases.json
   def index
     @artist = Artist.find(params[:artist_id])
-    @releases = Release.all
+    @releases = @artist.releases.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +15,7 @@ class ReleasesController < ApplicationController
   # GET /releases/1.json
   def show
     @artist = Artist.find(params[:artist_id])
-    @release = Release.find(params[:id])
+    @release = @artist.releases.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -38,22 +38,20 @@ class ReleasesController < ApplicationController
   # GET /releases/1/edit
   def edit
     @artist = Artist.find(params[:artist_id])
-    @release = Release.find(params[:id])
+    @release = @artist.releases.find(params[:id])
   end
 
   # POST /releases
   # POST /releases.json
   def create
     @artist = Artist.find(params[:artist_id])
-    @release = Release.new(params[:release])
+    @release = @artist.releases.build(params[:release])
 
     respond_to do |format|
       if @release.save
-        format.html { redirect_to @release, :notice => 'Release was successfully created.' }
-        format.json { render :json => @release, :status => :created, :location => @release }
+        format.html { redirect_to [@artist, @release], :notice => 'Release was successfully created.' }
       else
         format.html { render :action => "new" }
-        format.json { render :json => @release.errors, :status => :unprocessable_entity }
       end
     end
   end
