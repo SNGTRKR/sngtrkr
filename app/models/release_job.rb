@@ -11,7 +11,7 @@ class ReleaseJob
     start_time = Time.now
     artist = Artist.find(artist_id)
     #begin
-      releases = Hash.from_xml( open("http://api.7digital.com/1.2/artist/releases?artistId=#{artist.sdid}&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB&imageSize=350"))["response"]["releases"]["release"]
+    releases = Hash.from_xml( open("http://api.7digital.com/1.2/artist/releases?artistId=#{artist.sdid}&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB&imageSize=350"))["response"]["releases"]["release"]
     #rescue
     #  Rails.logger.error("J003: 7digital scrape failed ~ #{artist.sdid}")
     #return false
