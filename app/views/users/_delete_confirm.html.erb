@@ -5,8 +5,8 @@
   <%= form_for(@user) do |f| %>
 	<div id="delete-txt-1">
 		We are sad to see you leave us, please take a few minutes to say why you’re leaving.
-		<%= select_tag(:leave_reason, options_for_select([['Please select an option',0],['Too complicated', 1], ['Not enough information', 2], ['Too many emails', 3], ['Inaccurate information', 4], 
-		  ['Website is malfunctioning', 5], ['Privacy worries', 6] ])) %>
+		<div id="delete-reason"><%= select_tag(:leave_reason, options_for_select([['Please select an option',0],['Too complicated', 1], ['Not enough information', 2], ['Too many emails', 3], ['Inaccurate information', 4], 
+		  ['Website is malfunctioning', 5], ['Privacy worries', 6] ])) %></div>
 	</div>
 	<div id="delete-txt-2">
 		<strong>Are you sure you want to delete your account?</strong> The artists you are tracking and your profile will be gone forever!
