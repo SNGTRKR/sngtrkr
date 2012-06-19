@@ -22,14 +22,9 @@ div.jp-video {
 	 */
 
 	font-size:1.25em; /* 1.25em for testing in site pages */ /* No parent CSS that can effect the size in the demos ZIP */
-
 	font-family:Verdana, Arial, sans-serif;
 	line-height:1.6;
 	color: #fff;
-	border-top:1px solid #554461;
-	border-left:1px solid #554461;
-	border-right:1px solid #180a1f;
-	border-bottom:1px solid #180a1f;
 	background-color:#1A1A1A;
 	position:relative;
 }
@@ -487,7 +482,7 @@ div.jp-video .jp-volume-bar {
 .jp-playlist li {
 	position: relative;
 	padding: 2px 0;
-	border-top:1px solid #554461;
+	border-top:1px solid #b45a24;
 	border-bottom:1px solid #180a1f;
 	overflow: hidden;
 }
@@ -518,19 +513,19 @@ div.jp-type-playlist div.jp-playlist a {
 }
 
 div.jp-type-playlist div.jp-playlist a:hover {
-	color: #e892e9;
+	color: #F15A24;
 }
 
 div.jp-type-playlist div.jp-playlist li.jp-playlist-current {
-	background-color: #26102e;
+	background-color: #363636;
 	margin: 0 -20px;
 	padding: 2px 20px;
-	border-top: 1px solid #26102e;
-	border-bottom: 1px solid #26102e;
+	border-top: 1px solid #363636;
+	border-bottom: 1px solid #363636;
 }
 
 div.jp-type-playlist div.jp-playlist li.jp-playlist-current a{
-	color: #e892e9;
+	color: #F15A24;
 }
 
 div.jp-type-playlist div.jp-playlist a.jp-playlist-item-remove {
@@ -542,7 +537,7 @@ div.jp-type-playlist div.jp-playlist a.jp-playlist-item-remove {
 	color:#8C7A99;
 }
 div.jp-type-playlist div.jp-playlist a.jp-playlist-item-remove:hover {
-	color:#E892E9;
+	color:#F15A24;
 }
 
 div.jp-type-playlist div.jp-playlist span.jp-free-media {
@@ -557,7 +552,7 @@ div.jp-type-playlist div.jp-playlist span.jp-free-media a{
 }
 
 div.jp-type-playlist div.jp-playlist span.jp-free-media a:hover{
-	color:#E892E9;
+	color:#F15A24;
 }
 span.jp-artist {
 	font-size:.8em;
@@ -626,8 +621,8 @@ div.jp-jplayer {
 	padding:5px;
 	font-size:.8em;
 	background-color:#3a2a45;
-	border-top:2px solid #554461;
-	border-left:2px solid #554461;
+	border-top:2px solid #b45a24;
+	border-left:2px solid #b45a24;
 	border-right:2px solid #180a1f;
 	border-bottom:2px solid #180a1f;
 	color:#FFF;
