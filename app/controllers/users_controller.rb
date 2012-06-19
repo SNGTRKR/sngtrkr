@@ -215,5 +215,10 @@ class UsersController < ApplicationController
       format.json
     end
   end
+  
+  def unmanage
+    current_user.managing.delete(current_user.managing.first)
+    redirect_to :root
+  end
 
 end
