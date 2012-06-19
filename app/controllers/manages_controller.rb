@@ -13,5 +13,12 @@ class ManagesController < ApplicationController
     end
   end
   
+  def destroy
+    @user = User.find(params[:user_id])
+    @manage = @user.managing.find(params[:id])
+    @manage.destroy
+    redirect_to edit_user_path(@user)
+  end
+  
 
 end
