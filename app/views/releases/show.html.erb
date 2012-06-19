@@ -6,7 +6,9 @@
 	<b>Name:</b>
 	<%= @release.name %>
 </p>
-
+<p>
+  <%= image_tag @release.image :medium %>
+</p>
 <p>
 	<b>Date:</b>
 	<%= @release.date %>
@@ -53,5 +55,5 @@
 </p>
 <% end %>
 
-<%= link_to 'Edit', edit_release_path(@release) %> |
+<%= link_to 'Edit', edit_artist_release_path([@artist,@release]) %> |
 <%= link_to 'Back', artist_releases_path %>
