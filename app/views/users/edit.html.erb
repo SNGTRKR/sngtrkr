@@ -81,14 +81,14 @@
 				<div id="manage-artist">
 			<h3><div class="font-13"><strong>Artist management</strong></div></h3>
 			<br/>
-			You are currently managing the artist known as <strong>JellyFishBoy</strong>.
+			You are currently managing the artist known as <strong><%= @user.managing.first.name %></strong>.
 			<br/>
 			<br/>
 			<div class="o-button norm-o-pad left signika-font font-13">
-					<%= link_to 'Edit', managing_user_path(@user) %>
+					<%= link_to 'Edit', edit_artist_path(@user.managing.first) %>
 				</div>
 			<div class="o-button norm-o-pad left signika-font font-13 delete-artist-pad">
-					Delete
+					<%= link_to 'Delete', unmanage_user_path(current_user) %>
 				</div>
 				</div>
 				<div class="clear"></div>

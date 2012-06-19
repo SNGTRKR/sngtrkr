@@ -33,6 +33,7 @@ SNGTRKR::Application.routes.draw do
   match '/my_timeline' => "Users#timeline"
   resources :users, :except =>[:index] do
     member do
+      get 'unmanage'
       get 'destroy_confirm'
       get 'manage_confirm'
       get 'managing'
