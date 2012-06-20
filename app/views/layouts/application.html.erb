@@ -70,6 +70,14 @@
 					<li>
 						<a href="/privacy">Privacy Policy</a>
 					</li>
+					<% if can? :manage, :all %>
+					<li>
+						<a href="/admin/rails">Administration</a>
+					</li>
+					<li>
+						<a href="/resque">Resque</a>
+					</li>
+					<% end %>
 				</ul>
 				<div id="footer-txt">
 					© Copyright SNGTRKR 2012. All Rights Reserved.
