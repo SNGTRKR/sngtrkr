@@ -19,6 +19,14 @@ class Artist < ActiveRecord::Base
   has_many :suggested_users, :through => :suggest, :source => :user
   has_many :manager_users, :through => :manage, :source => :user
 
+  def self.ordered
+    order('name')
+  end
+  
+  def self.popularity 
+    order('updated_at DESC')
+  end
+
   before_save :default_values
   def default_values
     # Don't ignore new artists!
