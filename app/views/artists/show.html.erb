@@ -58,9 +58,9 @@ background-repeat:no-repeat;
 					<div class="dropOut font-13">
 						<div class="triangle"></div>
 						<ul>
-							<li class="left"><%= image_tag "/images/release-it.png", :alt => "iTunes", :title => "iTunes" %></li>
-							<li class="left"><%= image_tag "/images/release-amaz.png", :alt => "Amazon", :title => "Amazon"  %></li>
-							<li class="left"><%= image_tag "/images/release-7d.png", :alt => "7Digital", :title => "7Digital"  %></li>
+							<li class="left"><%= link_to (image_tag "/images/release-it.png", :alt => "iTunes", :title => "iTunes"), @artist.itunes %></li>
+							<!--<li class="left"><%= image_tag "/images/release-amaz.png", :alt => "Amazon", :title => "Amazon"  %></li>-->
+							<li class="left"><%= link_to (image_tag "/images/release-7d.png", :alt => "7Digital", :title => "7Digital"), @artist.sd %></li>
 							<div class="clear"></div>
 						</ul>
 					
