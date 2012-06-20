@@ -100,10 +100,13 @@
             }
           }
           .friend-trk-class {
-
+	          position:relative;
+	          bottom:12px;
           }
           .friend-untrk-class {
-	          
+	          position:relative;
+	          bottom:12px;
+	          right:41px;
           }
         }
     }
