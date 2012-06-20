@@ -8,6 +8,8 @@ class Release < ActiveRecord::Base
   :release => "210x210#" }
 
   has_many :tracks
+  has_many :notification
+  has_many :user_notifications, :through => :notification, :source => :user
   belongs_to :artist
 
 end
