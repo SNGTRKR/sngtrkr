@@ -2,7 +2,7 @@
 	console.log("Including facebook script in content_for");
 	FB.getLoginStatus(function(response) {
 		if(response.status === 'connected') {
-			$('.login-txt').html('Logging in...');
+			<span>Loggin in...</span>
 			window.location.replace('<%= File.join(root_url, user_omniauth_authorize_path(:facebook)) %>');
 			// the user is logged in and has authenticated your
 			// app, and response.authResponse supplies
@@ -25,13 +25,9 @@
 <% content_for :description do %>Sign up free now to receive an exclusive beta release invite and get the latest updates. Quickly find and track artists you already like, with Facebook integration.<% end %>
 <% content_for :title do %>Internal Server Error - ERROR 403<% end %>
 <div class="content content-pad-187-bottom">
-<div id="content-403">
-<div id="content-404-left">
-<h2 class="signika-txt font-100">Oops!</h2>
-<h3 class="txt-404 font-18">Forbidden Access</h3><br/>
-<div class="font-20 txt-404-2">ERROR 403</div></div>
-<div id="content-404-right">
-<%= image_tag "/images/lock.png", :alt => "Server Error", :id => "lock" %>
-</div>
-</div>
+<h2 class="signika-txt font-35 center-txt">Restricted access</h2>
+<div class="access-txt">You need to have a SNGTRKR account to access this page.<br/> Please login with your Facebook account:</div>
+	<%= link_to(user_omniauth_authorize_path(:facebook)) do %>
+	<div class="left fb-button fb-o-pad lucida-font font-logout fb-access-login"><i class="icon-facebook"></i><span class="home-login-txt">Login with Facebook</span></div>
+	<% end %>
 <div class="clear"></div>
