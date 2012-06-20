@@ -1,6 +1,13 @@
 class Scraper
   include MusicBrainz
   @@sevendigital_apikey = "7dufgm34849u"
+  if Rails.env.production?
+    @@proxy = 'http://localhost:3128'
+  else
+    @@proxy = nil
+  end
+  require 'open-uri'
+
   # DOCS FOR ALL THE SCRAPING MODULES
   # Last.fm (Scrobbler) - http://scrobbler.rubyforge.org/docs/
   # MusicBrainz - http://rbrainz.rubyforge.org/api-0.5.2/
@@ -12,8 +19,7 @@ class Scraper
   end
 
   def self.new artist_name
-    search = URI.encode artist_name
-    @artist_info = Hash.from_xml( Net::HTTP.get( URI.parse("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=#{search}&api_key=6541dc514e866d40539bfe4eddde211c&autocorrect")))
+    @artist_info = Hash.from_xml( open("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=#{CGI.escape(artist_name)}&api_key=6541dc514e866d40539bfe4eddde211c&autocorrect", :proxy => @@proxy))
     @artist_name = artist_name
     self
   end
@@ -64,7 +70,7 @@ class Scraper
   end
 
   def self.artist_sevendigital artist_name
-    xml =  Hash.from_xml Net::HTTP.get( URI.parse("http://api.7digital.com/1.2/artist/search?q=#{URI.escape(artist_name)}&sort=score%20desc&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB"))
+    xml =  Hash.from_xml open("http://api.7digital.com/1.2/artist/search?q=#{CGI.escape(artist_name)}&sort=score%20desc&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB", :proxy => @@proxy)
     results = xml["response"]["searchResults"]["searchResult"]
     # Necessary to still return an ID when we have multiple artist possibilities (picks first artist)
     if results.kind_of?(Array)
