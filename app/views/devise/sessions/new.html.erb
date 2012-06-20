@@ -2,7 +2,7 @@
 	console.log("Including facebook script in content_for");
 	FB.getLoginStatus(function(response) {
 		if(response.status === 'connected') {
-			<span>Logging in..</span>
+			$('.login-txt').html('Logging in...');
 			window.location.replace('<%= File.join(root_url, user_omniauth_authorize_path(:facebook)) %>');
 			// the user is logged in and has authenticated your
 			// app, and response.authResponse supplies
