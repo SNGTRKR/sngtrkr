@@ -87,14 +87,14 @@
 			position:relative;
 			top:12px;
 .dropdownContain {
-	width: 160px;
+	width: 110px;
 	position: absolute;
 	z-index: 2;
 	left: 50%;
-	margin-left: -80px; /* half of width */
-	display:none;
+	margin-left: -60px; /* half of width */
+
 .dropOut {
-	width: 160px;
+	width: 110px;
 	float: left;
 	position: relative;
 	margin-top: 0px;
@@ -117,10 +117,10 @@
 
  ul {
 	position:relative;
-	left:0px;
-	top:0px;
+	left:1px;
+	top:-4px;
  li {
-	padding: 12px 0 10px 5px;
+	padding: 12px 0 0 5px;
 	@include border-radius(4px);
 }
 }
