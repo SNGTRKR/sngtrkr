@@ -45,7 +45,7 @@
 									</li>
 									<li>
 										<label for="r-date"><strong>Release Date</strong></label>
-          					<%= f.date_select :date, :class => 'form-text' %>
+          					<%= f.datepicker :date, :class => 'form-text' %>
 									</li>
 									<li>
 										<label for="cat-no"><strong>Catalogue Number</strong></label>
@@ -105,30 +105,30 @@
 					<fieldset class="step">
 						<div class="step-back new-summary-step">
 							<div class="step-left left">
-								<ul>
+								<ul id="release-summary">
 									<li>
-										<strong>Release Name:</strong>
+										<strong>Release Name:</strong> <span id="name"></span>
 									</li>
 									<li>
-										<strong>Release Date:</strong>
+										<strong>Release Date:</strong> <span id="date"></span>
 									</li>
 									<li>
-										<strong>Catalogue Number:</strong>
+										<strong>Catalogue Number:</strong> <span id="cat"></span>
 									</li>
 									<li>
-										<strong>Type:</strong>
+										<strong>Type:</strong> <span id="type"></span>
 									</li>
 									<li>
-										<strong>Label:</strong>
+										<strong>Label:</strong> <span id="label"></span>
 									</li>
 									<li>
-										<strong>iTunes Link:</strong>
+										<strong>iTunes Link:</strong> <span id="itunes"></span>
 									</li>
 									<li>
-										<strong>Amazon Link:</strong>
+										<strong>Amazon Link:</strong> <span id="amazon"></span>
 									</li>
 									<li>
-										<strong>7Digital Link:</strong>
+										<strong>7Digital Link:</strong> <span id="7d"></span>
 									</li>
 								</ul>
 							</div>
@@ -282,6 +282,21 @@
 				$('.white-tint-2').show();
 				$('.white-tint').show();
 				$('.white-tint-3').show();
+				// If else for type value
+				var valueType = $('#release_rls_type').val();
+				if(valueType == 0){
+				releaseType = 'Single';			
+				} else 
+				releaseType = 'Album';
+				// Fill in summary info
+			$('#release-summary #name').html($('#release_name').val());
+			$('#release-summary #date').html($('#release_date').val());
+			$('#release-summary #cat').html($('#release_cat_no').val());
+			$('#release-summary #type').html(releaseType);
+			$('#release-summary #label').html($('#release_label_name').val());
+			$('#release-summary #itunes').html($('#release_itunes').val());
+			$('#release-summary #amazon').html($('#release_amazon').val());
+			$('#release-summary #7d').html($('#release_sdigital').val());		
 			});
 				
 	/*
@@ -295,20 +310,8 @@
 	});
 		});
 		$(function() {
-			/*
-			 number of fieldsets
-			 */
 			var fieldsetCount = $('#fields').children().length;
-
-			/*
-			 current position of fieldset / navigation link
-			 */
 			var current = 1;
-
-			/*
-			 sum and save the widths of each one of the fieldsets
-			 set the final sum as the total width of the steps element
-			 */
 			var stepsWidth = 0;
 			var widths = new Array();
 			$('#steps .step').each(function(i) {
@@ -317,41 +320,14 @@
 				stepsWidth += $step.width();
 			});
 			$('#steps').width(stepsWidth);
-
-			/*
-			 to avoid problems in IE, focus the first input of the form
-			 */
 			$('#fields').children(':first').find(':input:first').focus();
-
-			/*
-			 show the navigation bar
-			 */
 			$('#navigation').show();
-
-			/*
-			 when clicking on a navigation link
-			 the form slides to the corresponding fieldset
-			 */
 			$('#navigation a').bind('click', function(e) {
 				var $this = $(this);
 				var prev = current;
 				$this.closest('ul').find('li').removeClass('selected');
 				$this.parent().addClass('selected');
-				/*
-				 we store the position of the link
-				 in the current variable
-				 */
 				current = $this.parent().index() + 1;
-				/*
-				 animate / slide to the next or to the corresponding
-				 fieldset. The order of the links in the navigation
-				 is the order of the fieldsets.
-				 Also, after sliding, we trigger the focus on the first
-				 input element of the new fieldset
-				 If we clicked on the last link (confirmation), then we validate
-				 all the fieldsets, otherwise we validate the previous one
-				 before the form slided
-				 */
 				$('#steps').stop().animate({
 					marginLeft : '-' + widths[current - 1] + 'px'
 				}, 500, function() {
@@ -363,11 +339,6 @@
 				});
 				e.preventDefault();
 			});
-
-			/*
-			 clicking on the tab (on the last input of each fieldset), makes the form
-			 slide to the next step
-			 */
 			$('#fields > fieldset').each(function() {
 				var $fieldset = $(this);
 				$fieldset.children(':last').find(':li').keydown(function(e) {
@@ -379,11 +350,6 @@
 					}
 				});
 			});
-
-	/*
-	validates errors on all the fieldsets
-	records if the Form has errors in $('#formElem').data()
-	*/
 	function validateSteps(){
 		var FormErrors = false;
 		for(var i = 1; i < fieldsetCount; ++i){
@@ -393,18 +359,12 @@
 		}
 		$('#fields').data('errors',FormErrors);	
 	}
-	
-	/*
-	validates one fieldset
-	and returns -1 if errors found, or 1 if not
-	*/
 	function validateStep(step){
 		if(step == fieldsetCount) return;
 		
 		var error = 1;
 		var hasError = false;
-		/* Its not working for rails form since it selects children of the parent div(form) new_release, but rails adds extra input and divs just below the opening form tag. Need to change how it selects each stage by element */
-		$('#fields').children(':nth-child('+ parseInt(step) +')').find('input.fvalidate:not("button")').each(function(){
+		$('#fields').children(':nth-child('+ parseInt(step) +')').find(':input.fvalidate:not("button")').each(function(){
 			var $this 		= $(this);
 			var valueLength = jQuery.trim($this.val()).length;
 			
