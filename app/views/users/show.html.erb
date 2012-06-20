@@ -24,19 +24,9 @@
 				<div class="center-txt"><strong>It seems <%= @friend.first_name %> isn't tracking any artists yet...</strong></div>
 				<% end %>
 				<ul>
-				<% @friend.following.ordered.each do |artist| %>
-				<li class="left new-trkr-friend" style="background-image:url(<%= artist.image.url %>);background-repeat:no-repeat;background-position:center;">
-					<div class="each-friend">
-						<div class="black-tint"></div>
-						<div class="instruct-font font-20 friend-info">
-							<h3><%= link_to artist.name, artist %></h3>
-						</div>
-						<div class="friend-trkr-button">
-						<%= render :partial => 'shared/trk_artist', :object => artist %>
-						</div>
-					</div>
-				</li>
-				<% end %>
+				
+				<%= render :partial => 'shared/friend_artist_suggestion', :collection => @friend.following.ordered %>
+
 			</ul>
 		</div>
 	</div>
