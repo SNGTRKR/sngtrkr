@@ -24,7 +24,7 @@
 				<div class="center-txt"><strong>It seems <%= @friend.first_name %> isn't tracking any artists yet...</strong></div>
 				<% end %>
 				<ul>
-				<% @friend.following.each do |artist| %>
+				<% @friend.following.ordered.each do |artist| %>
 				<li class="left new-recommend" style="background-image:url(<%= artist.image.url %>);background-repeat:no-repeat;background-position:center;">
 					<div class="each-recommend">
 						<div class="black-tint"></div>
