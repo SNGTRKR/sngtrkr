@@ -282,11 +282,17 @@
 				$('.white-tint-2').show();
 				$('.white-tint').show();
 				$('.white-tint-3').show();
+				// If else for type value
+				var valueType = $('#release_rls_type').val();
+				if(valueType == 0){
+				releaseType = 'Single';			
+				} else 
+				releaseType = 'Album';
 				// Fill in summary info
 			$('#release-summary #name').html($('#release_name').val());
 			$('#release-summary #date').html($('#release_date').val());
 			$('#release-summary #cat').html($('#release_cat_no').val());
-			$('#release-summary #type').html($('#release_rls_type').val());
+			$('#release-summary #type').html(releaseType);
 			$('#release-summary #label').html($('#release_label_name').val());
 			$('#release-summary #itunes').html($('#release_itunes').val());
 			$('#release-summary #amazon').html($('#release_amazon').val());
