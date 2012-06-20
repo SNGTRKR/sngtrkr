@@ -1,5 +1,9 @@
 <% content_for :title do %>New release for <%= @artist.name %><% end %>
 <% content_for :description do %>Adding a new music release for <%= @artist.name %>, so their fans can track, listen to and buy.<% end %>
+<% 
+image_width = 100
+image_height = 100
+%>
 <div class="content content-pad-160-bottom">
 	<div id="master-form-wrapper">
 		<h2 class="signika-txt top-header font-35 add-release-header">Add new release</h2>
@@ -77,10 +81,8 @@
 					<fieldset class="step">
 						<div class="step-back new-artwork-step">
 							<div class="step-left left">
-								<label for="file_browser"><strong>Artwork:</strong></label>
-								<br/>
-								<br/>								
-                <%= f.file_field 'image' %>
+								<label for="file_browser"><strong>Artwork:</strong></label>							
+								<%= f.file_field 'image' %></br/><br/>
 							</div>
 							<div class="step-right right">
 								Please upload the artwork related to the release you are submitting.
@@ -145,7 +147,7 @@
 								<br/>
 								<div id="submit-pad">
 							<div class="o-button right norm-o-pad signika-font">
-      					<%= f.submit 'Add Release', :class => 'new_submit' %>
+      					<%= f.submit 'Submit', :class => 'new_submit' %>
 							</div>
 						</div>
 								
@@ -385,6 +387,5 @@
 		
 		return error;
 	}
-
 });
 	</script>
