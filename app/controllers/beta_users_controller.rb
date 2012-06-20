@@ -14,11 +14,14 @@ class BetaUsersController < ApplicationController
   # GET /beta_users/new
   # GET /beta_users/new.json
   def new
+    if user_signed_in?
+      redirect_to '/my_timeline'
+    end
     @beta_user = BetaUser.new
 
     respond_to do |format|
       format.html
-          end
+    end
   end
 
   # POST /beta_users
