@@ -37,6 +37,8 @@
 </div>
 </div>
 <div class="release-line"></div>
-<div class="instruct-font font-20 release-date"><%= release.date.strftime("%d/%m")%></div>
+<% date_format ||= "%d/%m" %>
+<% date_class ||= "font-20" %>
+<div class="instruct-font <%= date_class %> release-date"><%= release.date.strftime(date_format)%></div>
 <div class="release-join"></div>
 </li>
