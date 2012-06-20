@@ -79,7 +79,7 @@
 		</div>
 		<% else %>
 		<ul>
-		  <%= render :partial => 'shared/artist_tracked', :collection => @following %>
+		  <%= render :partial => 'shared/artist_tracked', :collection => @following.ordered %>
 		</ul>
 		<% end %>
 		<%= image_tag "/images/p-bulge-bot.png", :alt => "Shadow", :class => "p-bulge-b" %>
