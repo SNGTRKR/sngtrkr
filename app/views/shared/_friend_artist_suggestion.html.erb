@@ -1,7 +1,7 @@
-<li class="left new-recommend" style="background-image:url(<%= friend_artist_suggestion.image.url :recommend %>);background-repeat:no-repeat;background-position:center;">
-	<div class="each-recommend">
+<li class="left new-friend" style="background-image:url(<%= friend_artist_suggestion.image.url :recommend %>);background-repeat:no-repeat;background-position:center;">
+	<div class="each-friend">
 		<div class="black-tint"></div>
-		<div class="instruct-font font-20 recommend-info">
+		<div class="instruct-font font-20 friend-info">
 			<%= link_to friend_artist_suggestion.name, friend_artist_suggestion  %>
 		</div>
 		<div class="recommend-trkr-button"><%= render :partial => 'shared/trk_artist', :object => friend_artist_suggestion, :locals => { :friend_trk_class => 'friend-trk-class', :friend_untrk_class => 'friend-untrk-class' } %></div>
