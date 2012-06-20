@@ -17,10 +17,14 @@ class User < ActiveRecord::Base
   has_many :managing, :through => :manage, :source => :artist
   has_many :suggested_all, :through => :suggest, :source => :artist
   has_many :labels, :through => :super_manage
-  
+    
   before_save :default_values
   def default_values
     self.email_frequency ||= 1
+  end
+
+  def self.ordered
+    order('first_name, last_name')
   end
   
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
