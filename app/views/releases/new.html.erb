@@ -45,23 +45,23 @@ image_height = 100
 								<ul>
 									<li>
 										<label for="t-name"><strong>Release Name</strong></label>
-          					<%= f.text_field :name, :class => 'form-text fvalidate' %>
+          					<%= f.text_field :name, :class => 'form-text fvalidate', :tabindex => -1 %>
 									</li>
 									<li>
 										<label for="r-date"><strong>Release Date</strong></label>
-          					<%= f.datepicker :date, :class => 'form-text' %>
+          					<%= f.datepicker :date, :class => 'form-text', :tabindex => -1 %>
 									</li>
 									<li>
 										<label for="cat-no"><strong>Catalogue Number</strong></label>
-          					<%= f.text_field :cat_no, :class => 'form-text fvalidate' %>
+          					<%= f.text_field :cat_no, :class => 'form-text fvalidate', :tabindex => -1 %>
 									</li>
 									<li>
 										<label for="rls_type" class="type-pad"><strong>Type</strong></label>
-          					<%= f.select :rls_type, {'Single' => 0, 'Album' => 1}, :options => [:class => 'form-text'] %>
+          					<%= f.select :rls_type, {'Single' => 0, 'Album' => 1}, { :tabindex => -1 } %>
 									</li>
 									<li>
 										<label for="label"><strong>Label</strong></label>
-          					<%= f.text_field :label_name, :class => 'form-text fvalidate' %>
+          					<%= f.text_field :label_name, :class => 'form-text fvalidate', :tabindex => -1 %>
 									</li>
 								</ul>
 							</div>
@@ -82,7 +82,7 @@ image_height = 100
 						<div class="step-back new-artwork-step">
 							<div class="step-left left">
 								<label for="file_browser"><strong>Artwork:</strong></label>							
-								<%= f.file_field 'image' %></br/><br/>
+								<%= f.file_field 'image', :tabindex => -1 %></br/><br/>
 							</div>
 							<div class="step-right right">
 								Please upload the artwork related to the release you are submitting.
@@ -147,7 +147,7 @@ image_height = 100
 								<br/>
 								<div id="submit-pad">
 							<div class="o-button right norm-o-pad signika-font">
-      					<%= f.submit 'Submit', :class => 'new_submit' %>
+      					<%= f.submit 'Submit', :class => 'new_submit', :tabindex => -1 %>
 							</div>
 						</div>
 								
@@ -341,17 +341,17 @@ image_height = 100
 				});
 				e.preventDefault();
 			});
-			$('#fields > fieldset').each(function() {
-				var $fieldset = $(this);
-				$fieldset.children(':last').find(':li').keydown(function(e) {
-					if(e.which == 9) {
-						$('#navigation li:nth-child(' + (parseInt(current) + 1) + ') a').click();
-						/* force the blur for validation */
-						$(this).blur();
-						e.preventDefault();
-					}
-				});
-			});
+			  
+			  /*  $('#fields > fieldset').each(function() {
+                                var $fieldset = $(this);
+                                $fieldset.children(':last').find(':input').keydown(function(e) {
+                              if(e.which == 9) {
+                             $('#navigation li:nth-child(' + (parseInt(current) + 1) + ') a').click();
+                                $(this).blur();
+                                e.preventDefault();
+                                }
+                                });
+                                });  */
 	function validateSteps(){
 		var FormErrors = false;
 		for(var i = 1; i < fieldsetCount; ++i){
