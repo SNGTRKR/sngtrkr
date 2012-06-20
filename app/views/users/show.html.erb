@@ -29,16 +29,9 @@
 					<div class="each-recommend">
 						<div class="black-tint"></div>
 						<div class="instruct-font font-20 recommend-info">
-							<h3><%= artist.name %></h3>
+							<h3><%= link_to artist.name, artist %></h3>
 						</div>
 						<%= render :partial => 'shared/trk_artist', :object => artist %>
-						<!-- ADD TRKR + IGNORE BUTTON HTML
-						<div class="recommend-trkr-button"><div class="o-button trkr-o-pad right instruct-font">ADD TRKR<span></span></div></div>
-						<img src="/assets/images/ignore.png" class="ignore-button"/>
-						-->
-						<!-- REMOVE TRKR BUTTON HTML
-						<div class="remove-recommend-trkr-button"><div class="o-button trkr-o-pad right instruct-font">REMOVE TRKR<span></span></div></div>
-						-->
 					</div>
 				</li>
 				<% end %>
