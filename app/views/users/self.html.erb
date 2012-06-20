@@ -35,7 +35,7 @@
 			<% if @user.manager? %>
 			<span class="artist"><h2>
 			<div class="font-15">
-				Welcome to your profile, <strong><%= @artist.name %></strong>!
+				Welcome, <strong><%= link_to @artist.name, @artist %></strong>
 			</div></h2>
 			<br/>
 			Here you will be able to view how many of your fans are TRKing you, along with adding releases, new and old, to your personalized artist timeline.
