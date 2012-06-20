@@ -70,7 +70,7 @@ image_height = 100
 	<div class="step-back manage-picture-step">
 		<div class="step-left left">
 			<strong><%= f.label :picture %></strong>
-			<strong><%= f.file_field 'image' %></strong></br/><br/>
+			<%= f.file_field 'image' %></br/><br/>
 			<strong>Preview:</strong><br/>
 			<div class="manage-image"><img class="bleed" src="/images/bleed.png"/><%= image_tag (artist.image :manage), :id => 'manage-image-current' %>
 			<canvas id="canvas" width="<%= image_width %>" height="<%= image_height %>"></canvas></div>
