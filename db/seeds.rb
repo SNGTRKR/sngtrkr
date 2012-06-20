@@ -14,5 +14,7 @@ u = User.new(:first_name => 'Matt', :last_name => 'Bessey', :fbid => "757635703"
 u.roles = [r]
 u.save
 User.create!(:first_name => 'Barry', :last_name => 'Smith', :fbid => "123456789", :email => "test@example.com",:password => 'test42343egy76df', :last_sign_in_at => Time.now)
-Artist.create!( :id => '25', :name =>"JellyFishBoy", :fbid => "204842319549165", :genre => "Dubstep", :hometown => "Bristol", :booking_email => "billy@jellyfishboy.co.uk")
+Artist.create!(:name =>"JellyFishBoy", :fbid => "204842319549165", :genre => "Dubstep", :hometown => "Bristol", :booking_email => "billy@jellyfishboy.co.uk")
 Artist.create!(:name =>"False Economy", :fbid => "193078984080645", :genre => "Dubstep", :hometown => "Bristol", :booking_email => "bessey@gmail.com")
+User.find(1).following.build(:id => Artist.find(1).id).save
+User.find(2).following.build(:id => Artist.find(1).id).save
