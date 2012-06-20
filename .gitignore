@@ -13,3 +13,4 @@ doc/app
 .DS_Store
 public/system/*
 log/*
+dump.rdb
