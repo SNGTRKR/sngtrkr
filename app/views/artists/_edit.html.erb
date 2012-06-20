@@ -1,12 +1,12 @@
-<% content_for :title do %>Manage an artist<% end %>
+<% artist = edit %>
+<% content_for :title do %>Edit <%= artist.name %>'s details<% end %>
 <%= image_tag "/images/f-bulge-left.png", :alt => "Shadow", :id => "bulge-left" %>
 <%= image_tag "/images/f-bulge-right.png", :alt => "Shadow", :id => "bulge-right" %>
 <% 
 image_width = 100
 image_height = 100
 %>
-<h2 class="signika-txt top-header font-35 add-release-header">Manage an artist</h2>	
-<% artist = edit %>
+<h2 class="signika-txt top-header font-35 add-release-header">Edit <strong><%= artist.name %></strong>'s details</h2>	
 <div id="steps">
 <%= form_for artist do |f| %>
 <span id="fields">
