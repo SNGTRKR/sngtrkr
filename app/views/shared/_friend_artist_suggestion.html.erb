@@ -1,10 +1,9 @@
-<li class="left new-recommend" style="background-image:url(<%= artist_suggestion.image.url :recommend %>);background-repeat:no-repeat;background-position:center;">
+<li class="left new-recommend" style="background-image:url(<%= friend_artist_suggestion.image.url :recommend %>);background-repeat:no-repeat;background-position:center;">
 	<div class="each-recommend">
 		<div class="black-tint"></div>
 		<div class="instruct-font font-20 recommend-info">
-			<%= link_to artist_suggestion.name, artist_suggestion  %>
+			<%= link_to friend_artist_suggestion.name, artist_suggestion  %>
 		</div>
-		<div class="recommend-trkr-button"><%= render :partial => 'shared/trk_artist', :object => artist_suggestion %></div>
-		<div class="ignore-outer o-button"><%= link_to (image_tag '/images/ignore.png', :class => 'ignore-button', :alt => "Ignore"), unsuggest_artist_path(artist_suggestion), :remote => true %></div>
+		<div class="recommend-trkr-button"><%= render :partial => 'shared/trk_artist', :object => friend_artist_suggestion %></div>
 	</div>
 </li>
