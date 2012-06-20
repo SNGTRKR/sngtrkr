@@ -6,7 +6,7 @@
 image_width = 100
 image_height = 100
 %>
-<h2 class="signika-txt top-header font-35 add-release-header">Edit <strong><%= artist.name %></strong>'s details</h2>	
+<h2 class="signika-txt top-header font-35 add-release-header">Edit <%= artist.name %>'s details</h2>	
 <div id="steps">
 <%= form_for artist do |f| %>
 <span id="fields">
@@ -256,7 +256,7 @@ image_height = 100
 		});
 			$('.submit-button').bind('click',function(){
 		if($('#fields').data('errors')){
-			alert('Please correct the errors in the Form');
+			alert('Please go back and complete required fields.');
 			return false;
 		}	
 	});
