@@ -34,7 +34,7 @@ class ReleaseJob
       r.sdigital = release["url"]
       r.scraped = 1
       Rails.logger.info("J003: Popularity of #{r.name} | #{release["popularity"]}")
-      io = open(release["image"])
+      io = open(release["image"], :proxy => proxy)
       if io
         def io.original_filename; base_uri.path.split('/').last; end
         io.original_filename.blank? ? nil : io      
