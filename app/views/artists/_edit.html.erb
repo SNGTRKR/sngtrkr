@@ -72,7 +72,7 @@ image_height = 100
 			<strong><%= f.label :picture %></strong>
 			<strong><%= f.file_field 'image' %></strong></br/><br/>
 			<strong>Preview:</strong><br/>
-			<div class="manage-image"><!--<img class="bleed" src="/assets/images/bleed.png"/>--><%= image_tag (artist.image :manage), :id => 'manage-image-current' %>
+			<div class="manage-image"><img class="bleed" src="/images/bleed.png"/><%= image_tag (artist.image :manage), :id => 'manage-image-current' %>
 			<canvas id="canvas" width="<%= image_width %>" height="<%= image_height %>"></canvas></div>
 		</div>
 		<div class="step-right right">
@@ -248,7 +248,7 @@ image_height = 100
 			$('#artist-summary #name').html($('#artist_name').val());
 			$('#artist-summary #genre').html($('#artist_genre').val());
 			$('#artist-summary #label').html($('#artist_label_name').val());
-			$('#artist-summary #bio').html($('#artist_bio').val());
+			$('#artist-summary #bio').html($('#artist_bio').val().substring(0,100));
 			$('#artist-summary #website').html($('#artist_website').val());
 			$('#artist-summary #twitter').html($('#artist_twitter').val());
 			$('#artist-summary #soundcloud').html($('#artist_soundcloud').val());
@@ -302,11 +302,6 @@ image_height = 100
 			}
 		});
 	});
-	
-	/*
-	validates errors on all the fieldsets
-	records if the Form has errors in $('#formElem').data()
-	*/
 	function validateSteps(){
 		var FormErrors = false;
 		for(var i = 1; i < fieldsetCount; ++i){
@@ -316,11 +311,6 @@ image_height = 100
 		}
 		$('#fields').data('errors',FormErrors);	
 	}
-	
-	/*
-	validates one fieldset
-	and returns -1 if errors found, or 1 if not
-	*/
 			function validateStep(step) {
 				if(step == fieldsetCount)
 					return;
@@ -328,8 +318,7 @@ image_height = 100
 
 				var error = 1;
 				var hasError = false;
-				/* validating input by class possibly not working in manage artist due to it being within an ajax call. need to setup new release with rails form syntax and see 				whether the validation still works there. If it does, need to separate this form into 2 separate pages. Cancel ajax, get JS validation working. */
-		$('#fields').children(':nth-child('+ parseInt(step) +')').find('input.mfvalidate:not("button")').each(function(){
+		$('#fields').children(':nth-child('+ parseInt(step) +')').find(':input.mfvalidate:not("button")').each(function(){
 			var $this 		= $(this);
 			var valueLength = jQuery.trim($this.val()).length;
 			
@@ -350,11 +339,6 @@ image_height = 100
 
 				return error;
 			}
-	
-	/*
-	if there are errors don't allow the user to submit
-	*/
-
 	// Image Preview 
   function draw(ev) {
       var ctx = document.getElementById('canvas').getContext('2d'),
