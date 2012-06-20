@@ -70,9 +70,9 @@ image_height = 100
 	<div class="step-back manage-picture-step">
 		<div class="step-left left">
 			<strong><%= f.label :picture %></strong>
-			<%= f.file_field 'image' %></br/><br/>
+			<%= f.file_field 'image', :tabindex => -1 %></br/><br/>
 			<strong>Preview:</strong><br/>
-			<div class="manage-image"><img class="bleed" src="/images/bleed.png"/><%= image_tag (artist.image :manage), :id => 'manage-image-current' %>
+			<div class="manage-image"><%= image_tag (artist.image :manage), :id => 'manage-image-current' %>
 			<canvas id="canvas" width="<%= image_width %>" height="<%= image_height %>"></canvas></div>
 		</div>
 		<div class="step-right right">
@@ -132,7 +132,7 @@ image_height = 100
 						<strong>If you would like information on how to get started with using your artist timeline, and adding new releases, then head on over to our help page.</strong>
 						<div id="submit-pad">
 							<div class="o-button right norm-o-pad signika-font">
-										<%= f.submit "Submit", :class => 'submit-button' %>
+										<%= f.submit "Submit", :class => 'submit-button', :tabindex => -1 %>
 							</div>
 						</div>
 					</div>
@@ -291,17 +291,16 @@ image_height = 100
 		});
         e.preventDefault();
     });
-	$('#fields > fieldset').each(function(){
-		var $fieldset = $(this);
-		$fieldset.children(':last').find('li').keydown(function(e){
-			if (e.which == 9){
-				$('#navigation li:nth-child(' + (parseInt(current)+1) + ') a').click();
-				/* force the blur for validation */
-				$(this).blur();
-				e.preventDefault();
-			}
-		});
-	});
+    			   /*   $('#fields > fieldset').each(function() {
+                                var $fieldset = $(this);
+                                $fieldset.children(':last').find(':li').keydown(function(e) {
+                              if(e.which == 9) {
+                             $('#navigation li:nth-child(' + (parseInt(current) + 1) + ') a').click();
+                                $(this).blur();
+                                e.preventDefault();
+                                }
+                                });
+                                }); */
 	function validateSteps(){
 		var FormErrors = false;
 		for(var i = 1; i < fieldsetCount; ++i){
