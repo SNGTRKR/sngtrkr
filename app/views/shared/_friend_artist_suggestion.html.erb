@@ -2,7 +2,7 @@
 	<div class="each-friend">
 		<div class="black-tint"></div>
 		<div class="instruct-font font-20 friend-info">
-			<%= link_to friend_artist_suggestion.name, friend_artist_suggestion  %>
+			<%= link_to friend_artist_suggestion.name, friend_artist_suggestion, :class => 'name'  %>
 		</div>
 		<div class="recommend-trkr-button"><%= render :partial => 'shared/trk_artist', :object => friend_artist_suggestion, :locals => { :friend_trk_class => 'friend-trk-class', :friend_untrk_class => 'friend-untrk-class' } %></div>
 	</div>
