@@ -35,6 +35,7 @@ SNGTRKR::Application.routes.draw do
     member do
       get 'unmanage'
       get 'destroy_confirm'
+      post 'destroy_with_reason'
       get 'manage_confirm'
       get 'managing'
       get 'friends'
