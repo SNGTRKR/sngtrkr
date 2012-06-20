@@ -83,9 +83,6 @@ image_height = 100
 							<div class="step-left left">
 								<label for="file_browser"><strong>Artwork:</strong></label>							
 								<%= f.file_field 'image' %></br/><br/>
-								<strong>Preview:</strong><br/>
-								<div class="release-image"><img class="bleed" src="/images/bleed.png"/>
-								<canvas id="canvas" width="<%= image_width %>" height="<%= image_height %>"></canvas></div>
 							</div>
 							<div class="step-right right">
 								Please upload the artwork related to the release you are submitting.
@@ -150,7 +147,7 @@ image_height = 100
 								<br/>
 								<div id="submit-pad">
 							<div class="o-button right norm-o-pad signika-font">
-      					<%= f.submit 'Add Release', :class => 'new_submit' %>
+      					<%= f.submit 'Submit', :class => 'new_submit' %>
 							</div>
 						</div>
 								
@@ -390,40 +387,5 @@ image_height = 100
 		
 		return error;
 	}
-	// Image Preview 
-  function draw(ev) {
-      var ctx = document.getElementById('canvas').getContext('2d'),
-          img = new Image(),
-          f = document.getElementById("artist_image").files[0],
-          url = window.URL || window.webkitURL,
-          src = url.createObjectURL(f),
-          canvasCopy = document.getElementById('canvas');
-      var ctx2 = canvas.getContext("2d");
-      img.src = src;
-      img.onload = function() {
-        $('#manage-image-current').hide();
-        var maxWidth = <%= image_width %>, maxHeight = <%= image_height %>, ratio = 1;
-
-        if(img.width > maxWidth)
-          ratio = maxWidth / img.width;
-          else if(img.height > maxHeight) ratio = maxHeight / img.height;
-  
-          canvasCopy.width = img.width;
-          canvasCopy.height = img.height;
-          
-          canvas.width = img.width * ratio;
-          canvas.height = img.height * ratio;
-          ctx.drawImage(img, 0, 0, canvasCopy.width, canvasCopy.height);
-          url.revokeObjectURL(src);
-        }      
-  };
-  document.getElementById("artist_image").addEventListener("change", draw, false);
-  
-  // Image Restore (Reset to existing image)
-  $('#manage-image-restore').click(function(){
-    document.getElementById('artist_image').value = "";
-    $('#manage-image-current').show();
-    document.getElementById('canvas').getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
-  });
 });
 	</script>
