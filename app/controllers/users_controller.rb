@@ -120,21 +120,27 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def destroy      
+    @user = User.find(params[:id])
+    @user.destroy
 
-  def destroy
+    respond_to do |format|
+      format.html { redirect_to users_url }
+      format.json { head :no_content }
+    end
+  end
+
+  def destroy_with_reason
     @user = User.find(params[:id])
     @user.update_attributes(params[:user])
     @user.soft_delete
     #set_flash_message :notice, :destroyed
     sign_out_and_redirect(@user)
-    
-    #@user = User.find(params[:id])
-    #@user.destroy
-
-    #respond_to do |format|
-    #  format.html { redirect_to users_url }
-    #  format.json { head :no_content }
-    #end
+    respond_to do |format|
+      format.html { redirect_to users_url }
+      format.json { head :no_content }
+    end
   end
 
   def manage
