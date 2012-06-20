@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
   has_many :managing, :through => :manage, :source => :artist
   has_many :suggested_all, :through => :suggest, :source => :artist
   has_many :labels, :through => :super_manage
+  has_many :notification
+  has_many :release_notifications, :through => :notification, :source => :release
     
   before_save :default_values
   def default_values
