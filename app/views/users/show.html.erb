@@ -18,20 +18,22 @@
 		</div>
 	</div>
 	<div class="clear"></div>
-	<div class="recommended-artists-outer friend-recommend-nudge">
-		<div class="recommended-artists">
+	<div class="friend-artists-outer friend-trkrs-nudge">
+		<div class="friend-artists">
 			<% if @friend.following.none? %>
 				<div class="center-txt"><strong>It seems <%= @friend.first_name %> isn't tracking any artists yet...</strong></div>
 				<% end %>
 				<ul>
 				<% @friend.following.ordered.each do |artist| %>
-				<li class="left new-recommend" style="background-image:url(<%= artist.image.url %>);background-repeat:no-repeat;background-position:center;">
-					<div class="each-recommend">
+				<li class="left new-trkr-friend" style="background-image:url(<%= artist.image.url %>);background-repeat:no-repeat;background-position:center;">
+					<div class="each-friend">
 						<div class="black-tint"></div>
-						<div class="instruct-font font-20 recommend-info">
+						<div class="instruct-font font-20 friend-info">
 							<h3><%= link_to artist.name, artist %></h3>
 						</div>
+						<div class="friend-trkr-button">
 						<%= render :partial => 'shared/trk_artist', :object => artist %>
+						</div>
 					</div>
 				</li>
 				<% end %>
