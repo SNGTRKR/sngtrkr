@@ -1,0 +1,18 @@
+<div class="unmanage-confirm">
+	<div class="sure signika-txt">
+		Are you sure?
+	</div>
+	<div id="unmanage-txt-1">
+		Are you sure you wish to stop managing your artist? You can always come back to it, if you change your mind.
+	</div>
+	<div id="unmanage-txt-2">
+		<strong>If you need help getting started or managing your artist account, please be sure to visit our help page or contact us at <a href="mailto:support@sngtrkr.com">support@sngtrkr.com</a>.</strong>
+	</div>
+	<div class="unmanage-buttons">
+	<div class="o-button norm-o-pad left signika-font font-13 unmanage-artist-button">
+					<%= link_to 'Yes', unmanage_user_path(current_user) %>
+				</div>
+		<div class="o-button norm-o-pad right signika-font unmanage-artist-cancel font-13">
+			<a href="javascript:$.fancybox.close();">No</a></div>
+	</div>
+</div>
