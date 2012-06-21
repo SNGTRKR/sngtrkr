@@ -210,15 +210,18 @@ class UsersController < ApplicationController
     end
   end
 
-  def manage_confirm
-    render :layout => false
-  end
-
   def recommend
     @user = current_user
     respond_to do |format|
       format.html
       format.json
+    end
+  end
+  
+    def unmanage_confirm
+    respond_to do |format|
+      format.html { render :unmanage_confirm, :layout => false }
+      format.json { head :no_content }
     end
   end
   
