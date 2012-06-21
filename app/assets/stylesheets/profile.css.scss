@@ -43,6 +43,12 @@
     .artist {
 	   position:relative;
 	    top:5px; 
+	    a {
+		    color:#000;
+	    }
+	    a:hover {
+		    color:$orange;
+	    }
     }
   }
   .artist-text-nudge {
