@@ -5,13 +5,14 @@
 		<div class="profile-menu">
 			<ul>
 				<% if @user.manager? %>
-				<li class="trkrs-button">
+				<%= link_to @artist do %><li class="trkrs-button">
 				<span class="trkr-txt">
 							<div class="font-25"><%= @trackers %></div>
 							<br/>
 							<div class="font-15 instruct-font">TRKRS</div>
 				</span>
 				</li>
+				<% end %>
 				<% else %>
 				<% end %>
 				<li class="font-13 signika-font o-button p-menu">
