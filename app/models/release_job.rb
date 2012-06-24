@@ -63,7 +63,7 @@ class ReleaseJob
           Rails.logger.error("J003: Individual track scrape failed for track: #{track.inspect}")
         end
       end
-
+      
     end
     end_time = Time.now
     elapsed_time = end_time - start_time
