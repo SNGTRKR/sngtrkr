@@ -11,5 +11,15 @@ class Release < ActiveRecord::Base
   has_many :notification
   has_many :user_notifications, :through => :notification, :source => :user
   belongs_to :artist
+  
+  after_create :notify_followers
+
+  # Notify users that follow this release's artist of this release.
+  def notify_followers
+    self.artist.followed_users.each do |user|
+      user.release_notifications << release
+    end  
+  end
+
 
 end
