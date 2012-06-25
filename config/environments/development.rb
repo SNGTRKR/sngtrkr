@@ -38,6 +38,12 @@ SNGTRKR::Application.configure do
   # Mail
   config.assets.prefix = "/dev-assets"
 
-  config.action_mailer.perform_deliveries = false
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
 
+end
+
+private_config = Rails.root + "config/environments/personal/private.rb"
+if File.exists? private_config
+  load private_config
 end
