@@ -14,3 +14,4 @@ doc/app
 public/system/*
 log/*
 dump.rdb
+config/environments/personal/private.rb
