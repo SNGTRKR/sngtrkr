@@ -11,11 +11,11 @@ one:
   artist_id: 1
 
 two:
-  name: MyString
+  name: Skroom
   date: 2012-03-31 01:44:46
   cat_no: MyString
   itunes: MyString
   sdigital: MyString
   amazon: MyString
   youtube: MyString
-  artist_id: 1
+  artist_id: 2
