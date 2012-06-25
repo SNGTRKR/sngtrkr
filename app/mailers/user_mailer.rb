@@ -24,7 +24,7 @@ class UserMailer < ActionMailer::Base
         when 3 then @freq_word = "Fortnightly"
         when 4 then @freq_word = "Monthly"
       end
-      mail(:to => "#{@user.first_name} #{@user.last_name} <#{@user.email}>", :subject => "SNGTRKR | #{@freq_word} Update")
+      mail(:to => "#{@user.first_name} #{@user.last_name} <#{@user.email}>", :subject => "SNGTRKR | #{@freq_word} Update").deliver
       user.release_notifications.destroy_all
     end
   end
