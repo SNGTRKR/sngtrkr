@@ -10,7 +10,7 @@ class UserMailer < ActionMailer::Base
     mail(:to => "#{@user.email}", :subject => "Welcome to the SNGTRKR beta!")
   end
   
-  def new_releases(frequency)
+  def new_releases_deliver(frequency)
     #frequency_enum = {:instant => 0, :daily => 1, :weekly => 2, :fortnightly => 3, :monthly => 4}
     User.where(:email_frequency => frequency).each do |user|
       @user = user
