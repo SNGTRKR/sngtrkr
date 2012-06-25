@@ -2,7 +2,7 @@ class MailerController < ApplicationController
 
   before_filter :authenticate_user!, :only => []
 
-  def welcome()
+  def welcome
     @user = User.last
     render :file => 'user_mailer/welcome_email.html.erb', :layout => false
   end
@@ -10,6 +10,12 @@ class MailerController < ApplicationController
   def beta
     @user = BetaUser.last
     render :file => 'user_mailer/beta_email.html.erb', :layout => false  
+  end
+  
+  def daily_release
+    @user = User.last
+    @releases = User.last.release_notifications
+    render :file => 'user_mailer/new_releases.html.erb', :layout => false  
   end
 
 end

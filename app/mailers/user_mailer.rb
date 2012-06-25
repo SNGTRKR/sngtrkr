@@ -24,7 +24,11 @@ class UserMailer < ActionMailer::Base
         when 3 then @freq_word = "Fortnightly"
         when 4 then @freq_word = "Monthly"
       end
-      mail(:to => "#{@user.first_name} #{@user.last_name} <#{@user.email}>", :subject => "SNGTRKR | #{@freq_word} Update").deliver
+      
+      # Building list of artist names for the email subject
+      artist_names = @releases[0,2].uniq{|r| r.artist.name}.join(', ')
+      
+      mail(:to => "#{@user.first_name} #{@user.last_name} <#{@user.email}>", :subject => "#{@freq_word} Update | New releases from #{artist_names}").deliver
       user.release_notifications.destroy_all
     end
   end
