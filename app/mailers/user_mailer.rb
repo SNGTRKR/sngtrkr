@@ -15,6 +15,9 @@ class UserMailer < ActionMailer::Base
     User.where(:email_frequency => frequency).each do |user|
       @user = user
       @releases = user.release_notifications
+      if @releases.empty?
+        next
+      end
       case frequency
         when 1 then @freq_word = "Daily"
         when 2 then @freq_word = "Weekly"
