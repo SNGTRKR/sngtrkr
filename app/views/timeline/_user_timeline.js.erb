@@ -1,3 +1,7 @@
 <% @timeline.each do |release| %>
-$(document).append("<%=j render :partial => 'timeline/release', :object => release %>");
+$(document).prepend("<%=j render :partial => 'timeline/release', :object => release %>");
+<% end %>
+
+<% if @timeline.empty? %>
+console.log("No releases")
 <% end %>

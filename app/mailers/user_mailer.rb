@@ -26,7 +26,7 @@ class UserMailer < ActionMailer::Base
       end
       
       # Building list of artist names for the email subject
-      artist_names = @releases[0,2].uniq{|r| r.artist.name}.join(', ')
+      artist_names = @releases.select('DISTINCT artist_id')[0,2].collect{|r| r.artist.name}.join(', ')
       
       mail(:to => "#{@user.first_name} #{@user.last_name} <#{@user.email}>", :subject => "#{@freq_word} Update | New releases from #{artist_names}").deliver
       user.release_notifications.destroy_all
