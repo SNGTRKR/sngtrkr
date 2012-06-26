@@ -21,5 +21,4 @@ class Release < ActiveRecord::Base
     end  
   end
 
-
 end
