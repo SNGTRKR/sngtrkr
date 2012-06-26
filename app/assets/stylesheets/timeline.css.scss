@@ -8,7 +8,7 @@
 	  position:relative;
 	  height:43px;
 	  width:100%;
-	  top:-3px;
+	  top:13px;
   }
   #timeline-outer {
 	  position:relative;
@@ -27,6 +27,11 @@
       border-radius: 10px;
       background-color: rgba(0,0,0,0.3);
   } 
+  }
+  #timelime-trim {
+  position:relative;
+  height:585px;
+  overflow:hidden;
   }
 #timeline {
   	position:relative;
