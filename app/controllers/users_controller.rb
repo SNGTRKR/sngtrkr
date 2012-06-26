@@ -27,9 +27,10 @@ class UsersController < ApplicationController
     end
 
     tl = Timeline.new(current_user.id)
-    @timeline = tl.user params[:page]
+    @timeline = tl.user(params[:page])
+    @timeline = @timeline.reverse # Reverse so farthest right release is the newest, but pages index from the newest page.
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
     end
   end
 
@@ -37,6 +38,8 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @friend = User.find(params[:id])
+    @your_friends = User.where(:fbid => session["friend_ids"])
+    @their_friends = User.where(:fbid => session["friend_ids"])
     if !current_user.friends_with? @friend, session["friend_ids"]
       return redirect_to :root, :error => "You do not have permissions to view this user"
     end
