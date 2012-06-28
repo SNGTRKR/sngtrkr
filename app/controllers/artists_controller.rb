@@ -27,7 +27,7 @@ class ArtistsController < ApplicationController
     else
       respond_to do |format|
         format.html # index.html.erb
-        format.json { render :json => ["success", @artists[0..5]] }
+        format.json
       end
     end
   end
