@@ -1,0 +1,11 @@
+[
+<% @artists.each do |artist| %>
+  { 
+    "name":"<%= artist.name %>",
+    "followers":"<%= artist.followed_users.count %>",
+    "genre":"<%= artist.genre %>",
+    "id":"<%= artist.id %>"
+  }<%= "," unless artist == @artists.last %>
+<% end %>
+]
+
