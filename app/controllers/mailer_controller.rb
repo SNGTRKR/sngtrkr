@@ -15,6 +15,8 @@ class MailerController < ApplicationController
   def daily_release
     @user = User.last
     @releases = Release.all[1,3]
+    @date = Date.today
+    @date_adjective = 'weekly'
     render :file => 'user_mailer/new_releases.html.erb', :layout => false  
   end
 
