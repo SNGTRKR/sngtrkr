@@ -86,6 +86,20 @@ class ReleasesController < ApplicationController
     end
   end
   
+  # Fill in release information based on suggested information
+  def magic
+    @store = params[:store]
+    @url = Base64.decode64(params[:url])
+    if @store == '7digital'
+      
+    elsif @store == 'itunes'
+      @id = Scraper.find_release_info @url, 1
+    end
+    respond_to do |format|
+      format.json
+    end
+  end
+  
   # Assists the user in filling out the form by fetching data for them.
   def help
     
