@@ -4,191 +4,190 @@ image_height = 100
 @release = Release.new
 %>
 <div class="content content-pad-160-bottom">
-	<div id="master-form-wrapper">
-		<h2 class="signika-txt top-header font-35 add-release-header">Add new release</h2>
-		<div id="new-release-form">
-			<div id="steps">
-			  <%= form_for [@artist, @release] do |f| %>
-        <span id="fields">
-					<fieldset class="step">
-						<div class="step-back new-avail-step">
-							<div class="step-left left">
-								<ul>
-									<li>
-										<label for="itunes"><strong>iTunes link</strong></label>
-          					<%= f.text_field :itunes, :class => 'form-text' %>
-									</li>
-									<li>
-										<label for="amazon"><strong>Amazon link</strong></label>
-          					<%= f.text_field :amazon, :class => 'form-text' %>
-									</li>
-									<li>
-										<label for="7digi"><strong>7Digital link</strong></label>
-          					<%= f.text_field :sdigital, :class => 'form-text' %>
-									</li>
-								</ul>
-							</div>
-							<div class="step-right right">
-								Add the purchase URLs for your release, then we will work our magic and try to get as much info on the release from these sources.
-								<br/>
-								<br/>
-								<strong>If your track has yet to be released on these music outlets, or you are not planning to, then please ignore this section.</strong>
-							</div>
-							<div id="avail-line"></div>
-							<div class="clear"></div>
-						</div>
-					</fieldset>
-					<fieldset class="step">
-						<div class="step-back new-details-step">
-							<div class="step-left left">
-								<ul>
-									<li>
-										<label for="t-name"><strong>Release Name</strong></label>
-          					<%= f.text_field :name, :class => 'form-text fvalidate', :tabindex => -1 %>
-									</li>
-									<li>
-										<label for="r-date"><strong>Release Date</strong></label>
-          					<%= f.datepicker :date, :class => 'form-text', :tabindex => -1 %>
-									</li>
-									<li>
-										<label for="cat-no"><strong>Catalogue Number</strong></label>
-          					<%= f.text_field :cat_no, :class => 'form-text fvalidate', :tabindex => -1 %>
-									</li>
-									<li>
-										<label for="genre"><strong>Genre</strong></label>
-          					<%= f.text_field :genre, :class => 'form-text fvalidate', :tabindex => -1 %>
-									</li>
-									<li>
-										<label for="rls_type" class="type-pad"><strong>Type</strong></label>
-          					<%= f.select :rls_type, {'Single' => 0, 'Album' => 1}, {}, { :tabindex => 1 } %>
-									</li>
-									<li>
-										<label for="label"><strong>Label</strong></label>
-          					<%= f.text_field :label_name, :class => 'form-text fvalidate', :tabindex => -1 %>
-									</li>
-								</ul>
-							</div>
-							<div class="step-right right">
-								Here is the information we have managed to gather from the links you supplied. Please check this information, by completing any missing or incorrect fields.
-								<br/>
-								<br/>
-								If you wish to submit an album release, further options will be made available once you specify the release type.
-								<br/>
-								<br/>
-								<strong>All fields required.</strong>
-							</div>
-							<div id="details-line"></div>
-							<div class="clear"></div>
-						</div>
-					</fieldset>
-					<fieldset class="step">
-						<div class="step-back new-artwork-step">
-							<div class="step-left left">
-								<label for="file_browser"><strong>Artwork:</strong></label>							
-								<%= f.file_field 'image', :tabindex => -1 %></br/><br/>
-          			<strong>Preview:</strong><br/>
-          			<div class="manage-image"><%= image_tag (@release.image :manage), :id => 'manage-image-current' %>
-          			<canvas id="canvas" width="<%= image_width %>" height="<%= image_height %>"></canvas></div>
-							</div>
-							<div class="step-right right">
-								Please upload the artwork related to the release you are submitting.
-								<br/>
-								<br/>
-								The artwork needs to be at least 350px height/width and can be no bigger than 1MB in file size.
-								<br/>
-								<br/>
-								<strong>You are required to supply artwork.</strong>
-								<br/>
-								<br/>
-								<div class="default-button">
-									<div class="o-button norm-o-pad right signika-font font-13">
-										Restore to default
-									</div>
-								</div>
-							</div>
-							<div id="artwork-line"></div>
-							<div class="clear"></div>
-						</div>
-					</fieldset>
-					<fieldset class="step">
-						<div class="step-back new-summary-step">
-							<div class="step-left left">
-								<ul id="release-summary">
-									<li>
-										<strong>Release Name:</strong> <span id="name"></span>
-									</li>
-									<li>
-										<strong>Release Date:</strong> <span id="date"></span>
-									</li>
-									<li>
-										<strong>Catalogue Number:</strong> <span id="cat"></span>
-									</li>
-									<li>
-										<strong>Type:</strong> <span id="type"></span>
-									</li>
-									<li>
-										<strong>Label:</strong> <span id="label"></span>
-									</li>
-									<li>
-										<strong>iTunes Link:</strong> <span id="itunes"></span>
-									</li>
-									<li>
-										<strong>Amazon Link:</strong> <span id="amazon"></span>
-									</li>
-									<li>
-										<strong>7Digital Link:</strong> <span id="7d"></span>
-									</li>
-								</ul>
-							</div>
-							<div class="step-right right">
-								Here is a summary of all the information you have entered for your release. Please read over and check everything.
-								<br/>
-								<br/>
-								If you wish to change anything, please use the menu below to return to previous stages. You will still be able to edit the information on your release,
-								even after you submit it.
-								<br/>
-								<br/>
-								<strong>If you would like more information on how to mange your releases, please visit our help page.</strong>
-								<br/>
-								<br/>
-								<div id="submit-pad">
-							<div class="o-button right norm-o-pad signika-font">
-      					<%= f.submit 'Submit', :class => 'new_submit', :tabindex => -1 %>
-							</div>
-						</div>
-								
-							</div>
-							<div id="summary-line"></div>
-						</div>
-						
-					</fieldset>
-			</span>   <!-- end of fields -->
-			  			<% end %>
-			</div> <!-- end of steps -->
-			<div id="navigation" style="display:none;">
+<div id="master-form-wrapper">
+<h2 class="signika-txt top-header font-35 add-release-header">Add new release</h2>
+<div id="new-release-form">
+<div id="steps">
+<%= form_for [@artist, @release] do |f| %>
+<span id="fields">
+	<fieldset class="step">
+		<div class="step-back new-avail-step">
+			<div class="step-left left">
 				<ul>
-					<li class="selected signika-font o-button norm-o-pad">
-						<a href="#" class="new-avail"><h3>1. Availability</h3><div class="white-tint"></div></a>
+					<li>
+						<label for="itunes"><strong>iTunes link</strong></label>
+  					<%= f.text_field :itunes, :class => 'form-text' %>
 					</li>
-					<li class="signika-font o-button norm-o-pad">
-						<a href="#" class="new-details"><h3>2. Details</h3><div class="white-tint-2"></div></a>
+					<li>
+						<label for="amazon"><strong>Amazon link</strong></label>
+  					<%= f.text_field :amazon, :class => 'form-text' %>
 					</li>
-					<li class="signika-font o-button norm-o-pad">
-						<a href="#" class="new-artwork"><h3>3. Artwork</h3><div class="white-tint-3"></div></a>
-					</li>
-					<li class="signika-font o-button norm-o-pad">
-						<a href="#" class="new-summary"><h3>4. Summary</h3><div class="white-tint-4"></div></a>
+					<li>
+						<label for="7digi"><strong>7Digital link</strong></label>
+  					<%= f.text_field :sdigital, :class => 'form-text' %>
 					</li>
 				</ul>
 			</div>
+			<div class="step-right right">
+				Add the purchase URLs for your release, then we will work our magic and try to get as much info on the release from these sources.
+				<br/>
+				<br/>
+				<strong>If your track has yet to be released on these music outlets, or you are not planning to, then please ignore this section.</strong>
+			</div>
+			<div id="avail-line"></div>
+			<div class="clear"></div>
+		</div>
+	</fieldset>
+	<fieldset class="step">
+		<div class="step-back new-details-step">
+			<div class="step-left left">
+				<ul>
+					<li>
+						<label for="t-name"><strong>Release Name</strong></label>
+  					<%= f.text_field :name, :class => 'form-text fvalidate', :tabindex => -1 %>
+					</li>
+					<li>
+						<label for="r-date"><strong>Release Date</strong></label>
+  					<%= f.datepicker :date, :class => 'form-text', :tabindex => -1 %>
+					</li>
+					<li>
+						<label for="cat-no"><strong>Catalogue Number</strong></label>
+  					<%= f.text_field :cat_no, :class => 'form-text fvalidate', :tabindex => -1 %>
+					</li>
+					<li>
+						<label for="genre"><strong>Genre</strong></label>
+  					<%= f.text_field :genre, :class => 'form-text fvalidate', :tabindex => -1 %>
+					</li>
+					<li>
+						<label for="rls_type" class="type-pad"><strong>Type</strong></label>
+  					<%= f.select :rls_type, {'Single' => 0, 'Album' => 1}, {}, { :tabindex => 1 } %>
+					</li>
+					<li>
+						<label for="label"><strong>Label</strong></label>
+  					<%= f.text_field :label_name, :class => 'form-text fvalidate', :tabindex => -1 %>
+					</li>
+				</ul>
+			</div>
+			<div class="step-right right">
+				Here is the information we have managed to gather from the links you supplied. Please check this information, by completing any missing or incorrect fields.
+				<br/>
+				<br/>
+				If you wish to submit an album release, further options will be made available once you specify the release type.
+				<br/>
+				<br/>
+				<strong>All fields required.</strong>
+			</div>
+			<div id="details-line"></div>
+			<div class="clear"></div>
+		</div>
+	</fieldset>
+	<fieldset class="step">
+	<div class="step-back new-artwork-step">
+		<div class="step-left left">
+			<label for="file_browser"><strong>Artwork:</strong></label>							
+			<%= f.file_field 'image', :tabindex => -1 %></br/><br/>
+			<strong>Preview:</strong><br/>
+			<div class="manage-image"><%= image_tag (@release.image :manage), :id => 'manage-image-current' %>
+			<canvas id="canvas" width="<%= image_width %>" height="<%= image_height %>"></canvas></div>
+		</div>
+		<div class="step-right right">
+			Please upload the artwork related to the release you are submitting.
+			<br/>
+			<br/>
+			The artwork needs to be at least 350px height/width and can be no bigger than 1MB in file size.
+			<br/>
+			<br/>
+			<strong>You are required to supply artwork.</strong>
+			<br/>
+			<br/>
+			<div class="default-button">
+				<div class="o-button norm-o-pad right signika-font font-13">
+					Restore to default
+				</div>
+  			</div>
+  		</div>
+  		<div id="artwork-line"></div>
+  		<div class="clear"></div>
+  	</div>
+  </fieldset>
+  <fieldset class="step">
+  	<div class="step-back new-summary-step">
+  		<div class="step-left left">
+  			<ul id="release-summary">
+  				<li>
+  					<strong>Release Name:</strong> <span id="name"></span>
+  				</li>
+  				<li>
+  					<strong>Release Date:</strong> <span id="date"></span>
+  				</li>
+  				<li>
+  					<strong>Catalogue Number:</strong> <span id="cat"></span>
+  				</li>
+  				<li>
+  					<strong>Type:</strong> <span id="type"></span>
+  				</li>
+  				<li>
+  					<strong>Label:</strong> <span id="label"></span>
+  				</li>
+  				<li>
+  					<strong>iTunes Link:</strong> <span id="itunes"></span>
+  				</li>
+  				<li>
+  					<strong>Amazon Link:</strong> <span id="amazon"></span>
+  				</li>
+  				<li>
+  					<strong>7Digital Link:</strong> <span id="7d"></span>
+  				</li>
+  			</ul>
+  		</div>
+  		<div class="step-right right">
+  			Here is a summary of all the information you have entered for your release. Please read over and check everything.
+  			<br/>
+  			<br/>
+  			If you wish to change anything, please use the menu below to return to previous stages. You will still be able to edit the information on your release,
+  			even after you submit it.
+  			<br/>
+  			<br/>
+  			<strong>If you would like more information on how to mange your releases, please visit our help page.</strong>
+  			<br/>
+  			<br/>
+  			<div id="submit-pad">
+  		<div class="o-button right norm-o-pad signika-font">
+  			<%= f.submit 'Submit', :class => 'new_submit', :tabindex => -1 %>
+  		</div>
+  	</div>
+  			
+  		</div>
+  		<div id="summary-line"></div>
+  	</div>
+  </fieldset>
+  </span>   <!-- end of fields -->
+  <% end %>
+</div> <!-- end of steps -->
+<div id="navigation" style="display:none;">
+	<ul>
+		<li class="selected signika-font o-button norm-o-pad">
+			<a href="#" class="new-avail"><h3>1. Availability</h3><div class="white-tint"></div></a>
+		</li>
+		<li class="signika-font o-button norm-o-pad">
+			<a href="#" class="new-details"><h3>2. Details</h3><div class="white-tint-2"></div></a>
+		</li>
+		<li class="signika-font o-button norm-o-pad">
+			<a href="#" class="new-artwork"><h3>3. Artwork</h3><div class="white-tint-3"></div></a>
+		</li>
+		<li class="signika-font o-button norm-o-pad">
+			<a href="#" class="new-summary"><h3>4. Summary</h3><div class="white-tint-4"></div></a>
+		</li>
+	</ul>
+</div>
 <div id="progress-bar">
-				<div class="progress o-button">
-					<div class="percent instruct-font">25%</div>
-				</div></div>
-		</div> <!-- end of #new-release-form -->
-		<%= image_tag "/images/f-bulge-left.png", :alt => "Shadow", :id => "bulge-left" %>
-		<%= image_tag "/images/f-bulge-right.png", :alt => "Shadow", :id => "bulge-right" %>
-	</div> <!-- end of master wrapper -->
+			<div class="progress o-button">
+				<div class="percent instruct-font">25%</div>
+			</div></div>
+	</div> <!-- end of #new-release-form -->
+	<%= image_tag "/images/f-bulge-left.png", :alt => "Shadow", :id => "bulge-left" %>
+	<%= image_tag "/images/f-bulge-right.png", :alt => "Shadow", :id => "bulge-right" %>
+</div> <!-- end of master wrapper -->
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$(".new-avail").click(function() {
