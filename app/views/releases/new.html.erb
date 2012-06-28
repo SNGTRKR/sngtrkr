@@ -56,6 +56,10 @@ image_height = 100
           					<%= f.text_field :cat_no, :class => 'form-text fvalidate', :tabindex => -1 %>
 									</li>
 									<li>
+										<label for="genre"><strong>Genre</strong></label>
+          					<%= f.text_field :genre, :class => 'form-text fvalidate', :tabindex => -1 %>
+									</li>
+									<li>
 										<label for="rls_type" class="type-pad"><strong>Type</strong></label>
           					<%= f.select :rls_type, {'Single' => 0, 'Album' => 1}, {}, { :tabindex => 1 } %>
 									</li>
