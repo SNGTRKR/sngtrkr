@@ -122,6 +122,9 @@ image_height = 100
 										<strong>Catalogue Number:</strong> <span id="cat"></span>
 									</li>
 									<li>
+										<strong>Genre:</strong> <span id="genre"></span>
+									</li>
+									<li>
 										<strong>Type:</strong> <span id="type"></span>
 									</li>
 									<li>
@@ -219,10 +222,10 @@ image_height = 100
 			});
 			$(".new-details").click(function() {
 				$(".step-back").animate({
-					height : 190
+					height : 233
 				}, "slow");
 				$(".step").animate({
-					height : 278
+					height : 321
 				}, "slow");
 				$(".progress").animate({
 					width : 130
@@ -263,10 +266,10 @@ image_height = 100
 			});
 			$(".new-summary").click(function() {
 				$(".step-back").animate({
-					height : 266
+					height : 303
 				}, "slow");
 				$(".step").animate({
-					height : 354
+					height : 391
 				}, "slow");
 				$(".progress").animate({
 					width : 265
@@ -298,6 +301,7 @@ image_height = 100
 			$('#release-summary #name').html($('#release_name').val());
 			$('#release-summary #date').html($('#release_date').val());
 			$('#release-summary #cat').html($('#release_cat_no').val());
+			$('#release-summary #genre').html($('#release_genre').val());
 			$('#release-summary #type').html(releaseType);
 			$('#release-summary #label').html($('#release_label_name').val());
 			$('#release-summary #itunes').html($('#release_itunes').val());

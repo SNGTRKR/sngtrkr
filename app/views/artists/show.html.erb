@@ -21,7 +21,7 @@ background-repeat:no-repeat;
 	<a href="#" title="Share on Google Plus" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for @artist %>','ShareSNGTRKRonGooglePlus','scrollbars=no,width=620,height=340'); return false;"><li class="left"><i class="icon-google-plus"></i><span>Post</span></li></a>
 	</ul></div></div>
 	<div id="artist-info">
-	<h2><strong><div class="font-25 artist-name"><%= @artist.name %></div></strong></h2>
+	<h2><strong><div class="font-22 artist-name"><%= @artist.name %></div></strong></h2>
 	<div class="font-13 genre"><% if @artist.genre? %><span class="orange-txt"><%= truncate((strip_tags @artist.genre || "" ), :length => 30) %></span><% else %><span class="light-gray">No genre set</span><% end %></div>
 	<h3><% if @artist.label_name? %><%= truncate((strip_tags @artist.label_name || "" ), :length => 50) %><% else %><span class="light-gray">No label set</span><% end %><br/></h3>
 	<div class="left artist-trkr-pos"><%= render :partial => 'shared/trk_artist', :object => @artist %></div>
