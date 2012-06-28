@@ -42,8 +42,8 @@
 <div id="release-info">
 	<h2 class="font-22 release-name"><strong><%= @release.name %></strong></h2>
 	<h3 class="font-14 orange-txt"><%= link_to @artist.name, @artist %></h3>
-	<i class="icon-tag"></i><% if @release.genre? %><%= @release.genre %><% else %><span class="light-gray">No genre set</span><% end %><br/>
-	<i class="icon-music"></i><% if @release.label_name? %><%= @release.label_name %><% else %><span class="light-gray">No label set</span><% end %><br/>
+	<i class="icon-tag"></i><% if @release.genre? %><%= truncate((strip_tags @release.genre || "" ), :length => 30) %><% else %><span class="light-gray">No genre set</span><% end %><br/>
+	<i class="icon-music"></i><% if @release.label_name? %><%= truncate((strip_tags @release.label_name || "" ), :length => 50) %><% else %><span class="light-gray">No label set</span><% end %><br/>
 	<i class="icon-calendar"></i><strong><%= @release.date %></strong><br/><br/>
 	Tracklisting:
 </div>
