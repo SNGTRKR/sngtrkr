@@ -1,0 +1,123 @@
+#artist-release {
+margin:6px 0 31px 0;
+	.release-left {
+		width:310px;
+		#release-image {
+			position:relative;
+			height:310px;
+			width:310px;
+			@include box-shadow(0px 0px 8px rgba(0,0,0,0.55));
+			@include border-radius(12px);
+			overflow:hidden;
+			      #opac-50 {
+	      position:absolute;
+	      z-index:1;
+	      height:310px;
+			width:310px;
+	      @include border-radius(12px);
+	      background:rgba(0,0,0,0.75);
+	      display:none;
+      }
+                #share-release {
+	      position:absolute;
+	      height:310px;
+	      width:310px;
+	      z-index:2;
+	      right:-310px;
+	      top:50px;
+	      .share-header {
+		      position:relative;
+		      top:29px;
+		      text-align:center;
+	      }
+	      .share-list {
+		      position:relative;
+		      left:78px;
+		      top:44px;
+	      }
+	      .share-cancel {
+		      position:relative;
+		      left:121px;
+		      top:67px;
+	      }
+      }
+                #buy-release {
+	      position:absolute;
+	      height:310px;
+	      width:310px;
+	      z-index:2;
+	      left:-310px;
+	      top:50px;
+	      .buy-header {
+		      position:relative;
+		      top:29px;
+		      text-align:center;
+	      }
+	      .buy-list {
+		      position:relative;
+		      left:78px;
+		      top:44px;
+	      }
+	      .buy-cancel {
+		      position:relative;
+		      left:121px;
+		      top:67px;
+	      }
+      }
+		}
+		.release-rating {
+		text-align:center;
+			ul {
+			position:relative;
+			left:63px;
+			top:15px;
+			list-style-type:none;
+			font-size:2.3em;
+				li {
+					
+				}
+			}
+			#rating-txt {
+				position:relative;
+				top:22px;
+			}
+		}
+	}
+	.release-right {
+		width:280px;
+		#release-info {
+			position:relative;
+			width:246px;
+			background:rgba(255,255,255,0.75);
+			height:294px;
+			@include box-shadow(0px 0px 8px rgba(0,0,0,0.55));
+			@include border-radius(12px);
+			padding:17px;
+			line-height:1.7em;
+			i {
+				margin-right:10px;
+			}
+			.release-name {
+				margin-bottom:3px;
+				line-height:1em;
+			}
+			a {
+				color:$orange;
+			}
+			a:hover {
+				color:#000;
+			}
+		}
+		ul {
+			list-style-type:none;
+			margin:15px 0 0 -14px;
+			i {
+				margin-right:5px;
+			}
+			li {
+				width:102px;
+				margin-left:15px;
+			}
+		}
+	}
+}

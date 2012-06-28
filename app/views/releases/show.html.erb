@@ -1,59 +1,87 @@
-<p id="notice">
-    <%= notice %>
-</p>
-
-<p>
-    <b>Name:</b>
-    <%= @release.name %>
-</p>
-<p>
-  <%= image_tag @release.image :medium %>
-</p>
-<p>
-    <b>Date:</b>
-    <%= @release.date %>
-</p>
-
-<p>
-    <b>Cat no:</b>
-    <%= @release.cat_no %>
-</p>
-
-<p>
-    <b>Itunes:</b>
-    <%= @release.itunes %>
-</p>
-
-<p>
-    <b>Sdigital:</b>
-    <%= @release.sdigital %>
-</p>
-
-<p>
-    <b>Amazon:</b>
-    <%= @release.amazon %>
-</p>
-
-<p>
-    <b>Youtube:</b>
-    <%= @release.youtube %>
-</p>
-
-<p>
-    <b>Type:</b>
-    <%= @release.rls_type %>
-</p>
-
-<p>
-    <b>Artist:</b>
-    <%= @release.artist_id %>
-</p>
-
-<% @release.tracks.each do |t| %>
-<p>
-    <%= link_to t.name, t.preview %>
-</p>
-<% end %>
-
-<%= link_to 'Edit', edit_artist_release_path([@artist,@release]) %> |
-<%= link_to 'Back', artist_releases_path %>
+<% content_for :title do %><%= @release.name %> release information by <%= @artist.name %><% end %>
+<% content_for :description do %><%= @release.name %> release information by <%= @artist.name %>. <%= @artist.bio %> <% end %>
+<div class="content content-pad-187-bottom">
+<div id="artist-release">
+<div class="release-left left">
+<div id="release-image" style="background-image:url(<%= @release.image :release_i %>);background-repeat:no-repeat;background-position:center;">
+<div id="opac-50"></div>
+<div id="share-release">
+<h4 class="signika-txt font-22 center-txt share-header">Share this track</h4>
+<ul class="share-list">
+<a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [@artist, @release] %>%2F&t=SNGTRKR','ShareSNGTRKRonFacebook','scrollbars=no,width=620,height=340'); return false;"><li class="left"><%= image_tag "/images/release-fb.png", :alt => "Facebook", :class => 'sm-trigger' %></li></a>
+<a href="#" title="Share on Twitter" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [@artist, @release] %>&text=<%= @artist.name %>+&#45;+<%= @release.name %>+released+on+<%= @release.label_name %>.+Check+out+<%= @artist.name %>+on+SNGTRKR+&#45;+www.sngtrkr.com<%= url_for [@artist, @release] %>&via=SNGTRKR','ShareSNGTRKRonTwitter','scrollbars=no,width=620,height=340'); return false;"><li class="left"><%= image_tag "/images/release-twit.png", :alt => "Twitter", :class => 'sm-trigger' %></li></a>
+<a href="#" title="Share on Google Plus" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [@artist, @release] %>','ShareSNGTRKRonGooglePlus','scrollbars=no,width=620,height=340'); return false;"><li class="left"><%= image_tag "/images/release-goo.png", :alt => "Google+", :class => 'sm-trigger' %></li></a>
+</ul>
+<div class="clear"></div>
+<div class="font-13 o-button norm-o-pad signika-font left share-cancel">Cancel</div>
+</div>
+<div id="buy-release">
+<h4 class="signika-txt font-22 center-txt buy-header">Buy this track</h4>
+<ul class="buy-list">
+<li class="left"><%= image_tag "/images/release-it.png", :alt => "iTunes", :class => 'buy-trigger', :title => "iTunes" %></li>
+<li class="left"><%= image_tag "/images/release-amaz.png", :alt => "Amazon", :class => 'buy-trigger', :title => "Amazon"  %></li>
+<li class="left"><%= image_tag "/images/release-7d.png", :alt => "7Digital", :class => 'buy-trigger', :title => "7Digital"  %></li>
+</ul>
+<div class="clear"></div>
+<div class="font-13 o-button norm-o-pad signika-font left buy-cancel">Cancel</div>
+</div>
+</div>
+<div class="release-rating font-13">
+<ul>
+<li class="left"><i class="icon-star-empty"></i></li>
+<li class="left"><i class="icon-star-empty"></i></li>
+<li class="left"><i class="icon-star-empty"></i></li>
+<li class="left"><i class="icon-star-empty"></i></li>
+<li class="left"><i class="icon-star-empty"></i></li>
+</ul>
+<div class="clear"></div>
+<span id="rating-txt">0 Fan Ratings</span>
+</div>
+</div>
+<div class="release-right right">
+<div id="release-info">
+	<h2 class="font-22 release-name"><strong><%= @release.name %></strong></h2>
+	<h3 class="font-14 orange-txt"><%= link_to @artist.name, @artist %></h3>
+	<i class="icon-tag"></i><% if @release.genre? %><%= truncate((strip_tags @release.genre || "" ), :length => 30) %><% else %><span class="light-gray">No genre set</span><% end %><br/>
+	<i class="icon-music"></i><% if @release.label_name? %><%= truncate((strip_tags @release.label_name || "" ), :length => 50) %><% else %><span class="light-gray">No label set</span><% end %><br/>
+	<i class="icon-calendar"></i><strong><%= @release.date %></strong><br/><br/>
+	Tracklisting:
+</div>
+<ul>
+<li class="left o-button signika-font norm-o-pad font-13 buy-release"><i class="icon-shopping-cart"></i>Buy</li>
+<li class="left o-button signika-font norm-o-pad font-13 share-release"><i class="icon-share-alt"></i>Share</li>
+</ul>
+</div>
+<div class="clear"></div>
+</div>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".share-release").click(function() {
+			$('#opac-50').fadeIn("normal");
+			$('#share-release').animate({right : 0}, "slow");
+			$('#buy-release').animate({left : -310}, "slow");
+		});
+		$(".share-cancel").click(function() {
+			$('#opac-50').fadeOut("normal");
+			$('#share-release').animate({right : -310}, "slow");
+		});
+		$(".sm-trigger").click(function() {
+			$('#opac-50').fadeOut("normal");
+			$('#share-release').animate({right : -310}, "slow");
+		});
+		
+		$(".buy-release").click(function() {
+			$('#opac-50').fadeIn("normal");
+			$('#buy-release').animate({left : 0}, "slow");
+			$('#share-release').animate({right : -310}, "slow");
+		});
+		$(".buy-cancel").click(function() {
+			$('#opac-50').fadeOut("normal");
+			$('#buy-release').animate({left : -310}, "slow");
+		});
+		$(".buy-trigger").click(function() {
+			$('#opac-50').fadeOut("normal");
+			$('#buy-release').animate({left : -310}, "slow");
+		});
+		});
+		</script>
