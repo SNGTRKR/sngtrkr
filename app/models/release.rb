@@ -6,7 +6,8 @@ class Release < ActiveRecord::Base
   :medium => "300x300>", 
   :thumb => "100x100>",
   :release => "210x210#",
-  :release_i => "312x312#" }
+  :release_i => "312x312#",
+  :release_email => "84x84#" }
 
   has_many :tracks
   has_many :notification
