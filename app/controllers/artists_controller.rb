@@ -31,6 +31,24 @@ class ArtistsController < ApplicationController
       end
     end
   end
+  
+  def search
+    @artists = Artist.search(params[:search])
+    if(params[:search].length < 2)
+      flash.now[:message] = "Please enter at least 2 characters into the search box"
+      @artists = [];
+    elsif @artists.empty?
+      respond_to do |format|
+        format.html { redirect_to no_results_artists_path(:search => params[:search])}# index.html.erb
+        format.json { render :json => "" }
+      end
+    else
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json
+      end
+    end
+  end
 
   def no_results
     @search = params[:search]
