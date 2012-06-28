@@ -5,7 +5,8 @@ class Release < ActiveRecord::Base
   has_attached_file :image, :styles => { 
   :medium => "300x300>", 
   :thumb => "100x100>",
-  :release => "210x210#" }
+  :release => "210x210#",
+  :release_i => "310x310#" }
 
   has_many :tracks
   has_many :notification
