@@ -4,9 +4,9 @@
 <meta property="fb:page_id" content="43929265776" />           
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
         <!-- Facebook sharing information tags -->
-        <meta property="og:title" content="SNGTRKR BETA Invite Confirmation">
+        <meta property="og:title" content="Your personal Weekly digest - <%= Date.today %>">
         
-        <title>SNGTRKR BETA Invite Confirmation</title>
+        <title>Your personal Weekly digest - <%= Date.today %></title>
 		
 	<style type="text/css">
 		body{
@@ -190,12 +190,13 @@
 			height:83px;
 			width:83px;
 			background-color:black;
+			top:3px;
 			
 		}
 		.release-list li .r-info {
 			position:relative;
 			left:98px;
-			top:-86px;
+			top:-83px;
 			line-height:1.4em;
 		}
 		.release-list li .r-info a:link { color:#000; text-decoration: none; }
@@ -230,12 +231,6 @@
                                         	<td valign="top" style="border-collapse: collapse;">
                                             	<div style="color: #000000;font-family: Arial;font-size: 10px;line-height: 100%;text-align: left;">Your weekly personal digest of artist releases.</div>
                                             </td>
-                                            <td valign="top" width="190" style=3D="border-collapse: collapse;">
-                                            <div style="color: #00000=";font-family: Arial;font-size: 10px;line-height: 100%;text-align: left;">
-                                                Is this email not displaying correctly?<br><a href="http://sngtrkr.com/mailer/beta" target=3D"_blank" style="color: #FFFFFF;font-weight: normal;text-decoration: underline;">View it in your browser</a>.
-                                                </div>
-                                            </td>
-                                            <!--  -->
                                         </tr>
                                     </table>
                                 	<!-- // End Module: Standard Preheader \ -->
@@ -276,22 +271,21 @@
                                                             <div style="color: #000000;font-family: Arial;font-size: 14px;line-height: 150%;text-align: left;"><h1 class="h1" style="color: #202020;display: block;font-family: Arial;font-size: 34px;font-weight: bold;line-height: 100%;margin-top:-30px;margin-right: 0;margin-bottom: 10px;margin-left: 0;text-align: left;">
 	<br>
 	<span style="font-size: 22px; line-height: 100%; ">Hello <%= @user.first_name %> <%= @user.last_name %>,</span></h1>
-	Here is your weekly personal digest of artist releases, for 
+	Here is your weekly personal digest of artist releases, for <strong><%= Date.today %></strong>
 	<ul class="release-list">
 <% @releases.each do |release| %>
 <li class="left">
 <hr>
-<div class="r-artwork" style="background-image:url(<%= release.image :release_email %>);background-repeat:no-repeat;background-position:center;"></div>
-<div class="r-info"><h2><%= link_to release.name, [release.artist, release] %></h2>
-<strong>Artist</strong>: <%= link_to release.artist.name, release.artist %></br>
+<%= link_to [release.artist, release], :target => "_blank" do %><div class="r-artwork" style="background-image:url(<%= release.image :release_email %>);background-repeat:no-repeat;background-position:center;"></div><% end %>
+<div class="r-info"><h2><%= link_to release.name, [release.artist, release], :target => "_blank" %></h2>
+<strong>Artist</strong>: <%= link_to release.artist.name, release.artist, :target => "_blank" %></br>
 <strong>Label</strong>: <%= release.label_name %><br/>
 <strong>Catalogue No</strong>: <%= release.cat_no %></div>
 <div class="r-date"><%= release.date %></div>
 </li>
 <% end %>
 	</ul>
-</div>
-                                                        </td>
+</div>                                                 </td>
                                                     </tr>
                                                 </table>
                                                 <!-- // End Module: Standard Postcard Content \\ -->
