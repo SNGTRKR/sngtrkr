@@ -50,7 +50,7 @@
 			<span class="font-13"><strong>If seems you don't have any Facebook artists to manage.</strong></span><br/><br/>
 			Please make sure you have a Facebook page for the artist, and set the category for the page to 'Musician/Band'.
 			<% else %>
-			<%= form_for [current_user, Manage.new], :remote => true do |f| %>
+			<%= form_for [current_user, Manage.new] do |f| %>
 					<ul>
 				<% @manageable.each do |artist| %>
 				<li class="left">
@@ -84,5 +84,3 @@
 	</div>
 		<div class="clear"></div>
 	<div id="manage-form"></div>
-
-	
