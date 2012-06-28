@@ -1,7 +1,7 @@
 <% css ||= 'mini-search' %>
 <div class="<%= css %>">
   <%= form_tag artists_path , :method => 'get' do %>
-  <%= text_field_tag(:mini_search_field, params[:search], :autocomplete => 'off', :placeholder => "Search artists...") %>
+  <%= text_field_tag(:search, params[:search], :autocomplete => 'off', :placeholder => "Search artists...", :id => 'mini_search_field') %>
   <div class="search right search-button">
     <%= link_to (image_tag "/images/white-search-2.png", :alt => "Search", :id => "search-pad"), "#submit", :id => 'artist-mini-search-submit' %>
   </div>
