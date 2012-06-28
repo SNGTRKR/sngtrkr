@@ -4,9 +4,9 @@
 <meta property="fb:page_id" content="43929265776" />           
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
         <!-- Facebook sharing information tags -->
-        <meta property="og:title" content="Your personal Weekly digest - <%= Date.today %>">
+        <meta property="og:title" content="Your personal Weekly digest - <%= Date.today.strftime("#{Date.today.day.ordinalize} %B %Y ") %>">
         
-        <title>Your personal Weekly digest - <%= Date.today %></title>
+        <title>Your personal <%= @date_adjective %> digest - <%= Date.today.strftime("#{Date.today.day.ordinalize} %B %Y ") %></title>
 		
 	<style type="text/css">
 		body{
@@ -18,6 +18,15 @@
 		body{
 			margin:0;
 			padding:0;
+		}
+		@font-face {
+		font-family: "Instruction";
+		src: url("http://sngtrkr.com/font/instruction.otf");
+		src: local("?"),
+		url("http://sngtrkr.com/font/instruction.otf") format("opentype");
+		}
+		.instruct-font {
+		font-family: "Instruction", Helvetica, Arial, sans-serif;
 		}
 		img{
 			border:0;
@@ -271,7 +280,7 @@
                                                             <div style="color: #000000;font-family: Arial;font-size: 14px;line-height: 150%;text-align: left;"><h1 class="h1" style="color: #202020;display: block;font-family: Arial;font-size: 34px;font-weight: bold;line-height: 100%;margin-top:-30px;margin-right: 0;margin-bottom: 10px;margin-left: 0;text-align: left;">
 	<br>
 	<span style="font-size: 22px; line-height: 100%; ">Hello <%= @user.first_name %> <%= @user.last_name %>,</span></h1>
-	Here is your weekly personal digest of artist releases, for <strong><%= Date.today %></strong>
+	Here is your <%= @date_adjective %> personal digest of artist releases, for <strong><%= Date.today.strftime("#{Date.today.day.ordinalize} %B %Y ") %></strong>
 	<ul class="release-list">
 <% @releases.each do |release| %>
 <li class="left">
@@ -281,7 +290,7 @@
 <strong>Artist</strong>: <%= link_to release.artist.name, release.artist, :target => "_blank" %></br>
 <strong>Label</strong>: <%= release.label_name %><br/>
 <strong>Catalogue No</strong>: <%= release.cat_no %></div>
-<div class="r-date"><%= release.date %></div>
+<div class="r-date instruct-font"><%= release.date.strftime("%d %b") %></div>
 </li>
 <% end %>
 	</ul>
