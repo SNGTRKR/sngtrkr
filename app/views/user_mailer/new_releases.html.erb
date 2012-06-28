@@ -1,7 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://opengraph.org/schema/"> <head>
 <link rel="icon" type="image/ico" href="/images/icon.png" >
-<meta property="og:image" content="http://gallery.mailchimp.com/b0e8d9ea49b202bec7cd92ed8/images/header_2.png" />
 <meta property="fb:page_id" content="43929265776" />           
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
         <!-- Facebook sharing information tags -->
@@ -10,17 +9,8 @@
         <title>SNGTRKR BETA Invite Confirmation</title>
 		
 	<style type="text/css">
-		#outlook a{
-			padding:0;
-		}
 		body{
 			width:100% !important;
-		}
-		.ReadMsgBody{
-			width:100%;
-		}
-		.ExternalClass{
-			width:100%;
 		}
 		body{
 			-webkit-text-size-adjust:none;
@@ -68,32 +58,6 @@
 			color:#202020;
 			display:block;
 			font-family:Arial;
-			font-size:30px;
-			font-weight:bold;
-			line-height:100%;
-			margin-top:0;
-			margin-right:0;
-			margin-bottom:10px;
-			margin-left:0;
-			text-align:left;
-		}
-		h3,.h3{
-			color:#202020;
-			display:block;
-			font-family:Arial;
-			font-size:26px;
-			font-weight:bold;
-			line-height:100%;
-			margin-top:0;
-			margin-right:0;
-			margin-bottom:10px;
-			margin-left:0;
-			text-align:left;
-		}
-		h4,.h4{
-			color:#202020;
-			display:block;
-			font-family:Arial;
 			font-size:22px;
 			font-weight:bold;
 			line-height:100%;
@@ -102,7 +66,8 @@
 			margin-bottom:10px;
 			margin-left:0;
 			text-align:left;
-		}
+	
+                }
 		#templatePreheader{
 			background-color:#51AECB;
 		}
@@ -151,11 +116,6 @@
 			line-height:150%;
 			text-align:left;
 		}
-		.bodyContent div a:link,.bodyContent div a:visited,.bodyContent div a .yshortcuts {
-			color:#336699;
-			font-weight:normal;
-			text-decoration:underline;
-		}
 		.bodyContent img{
 			display:inline;
 			height:auto;
@@ -193,9 +153,6 @@
 		#utility div{
 			text-align:center;
 		}
-		#monkeyRewards img{
-			max-width:190px;
-		}
 		.headerContent a{
 			color:#000000;
 			text-decoration:none;
@@ -218,6 +175,43 @@
 		.bodyContent div a:link,.bodyContent div a:visited,.bodyContent div a .yshortcuts{
 			color:#F15A24;
 		}
+		.release-list {
+			list-style-type:none;
+			margin-left:-40px;
+			width:558px;
+			position:relative;
+		}
+		.release-list li {
+			height:100px;
+			position:relative;
+		}
+		.release-list li .r-artwork {
+			position:relative;
+			height:83px;
+			width:83px;
+			background-color:black;
+			
+		}
+		.release-list li .r-info {
+			position:relative;
+			left:98px;
+			top:-86px;
+			line-height:1.4em;
+		}
+		.release-list li .r-info a:link { color:#000; text-decoration: none; }
+		.release-list li .r-info a:active { color:#000; text-decoration: none;  }
+		.release-list li .r-info a:visited { color:#000; text-decoration: none;  }
+		.release-list li .r-info a:hover { color:#F15A24; text-decoration: none;  }
+		
+		.release-list li .r-date {
+			position:absolute;
+			left:400px;
+			top:50px;
+		}
+		strong {
+			font-weight:bold;
+		}
+		
 </style></head>
     
     <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" style="-webkit-text-size-adjust: none;margin: 0;padding: 0;background-color: #51AECB;width: 100% !important;">
@@ -283,7 +277,19 @@
 	<br>
 	<span style="font-size: 22px; line-height: 100%; ">Hello <%= @user.first_name %> <%= @user.last_name %>,</span></h1>
 	Here is your weekly personal digest of artist releases, for 
-<%= debug @releases %>
+	<ul class="release-list">
+<% @releases.each do |release| %>
+<li class="left">
+<hr>
+<div class="r-artwork" style="background-image:url(<%= release.image :release_email %>);background-repeat:no-repeat;background-position:center;"></div>
+<div class="r-info"><h2><%= link_to release.name, [release.artist, release] %></h2>
+<strong>Artist</strong>: <%= link_to release.artist.name, release.artist %></br>
+<strong>Label</strong>: <%= release.label_name %><br/>
+<strong>Catalogue No</strong>: <%= release.cat_no %></div>
+<div class="r-date"><%= release.date %></div>
+</li>
+<% end %>
+	</ul>
 </div>
                                                         </td>
                                                     </tr>
