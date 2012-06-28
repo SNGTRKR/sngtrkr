@@ -19,15 +19,6 @@
 			margin:0;
 			padding:0;
 		}
-		@font-face {
-		font-family: "Instruction";
-		src: url("http://sngtrkr.com/font/instruction.otf");
-		src: local("?"),
-		url("http://sngtrkr.com/font/instruction.otf") format("opentype");
-		}
-		.instruct-font {
-		font-family: "Instruction", Helvetica, Arial, sans-serif;
-		}
 		img{
 			border:0;
 			height:auto;
@@ -87,11 +78,6 @@
 			line-height:100%;
 			text-align:left;
 		}
-		.preheaderContent div a:link,.preheaderContent div a:visited,.preheaderContent div a .yshortcuts {
-			color:#336699;
-			font-weight:normal;
-			text-decoration:underline;
-		}
 		#templateHeader{
 			background-color:#51AECB;
 			border-bottom:0px none;
@@ -105,11 +91,6 @@
 			padding:0;
 			text-align:center;
 			vertical-align:middle;
-		}
-		.headerContent a:link,.headerContent a:visited,.headerContent a .yshortcuts {
-			color:#336699;
-			font-weight:normal;
-			text-decoration:underline;
 		}
 		#headerImage{
 			height:auto;
@@ -215,13 +196,19 @@
 		
 		.release-list li .r-date {
 			position:absolute;
-			left:400px;
-			top:50px;
+			left:480px;
+			top:32px;
+			text-align:center;
 		}
 		strong {
 			font-weight:bold;
 		}
-		
+		.day {
+			font-size:45px;
+		}
+		.month {
+			font-size:22px;
+		}
 </style></head>
     
     <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" style="-webkit-text-size-adjust: none;margin: 0;padding: 0;background-color: #51AECB;width: 100% !important;">
@@ -290,7 +277,7 @@
 <strong>Artist</strong>: <%= link_to release.artist.name, release.artist, :target => "_blank" %></br>
 <strong>Label</strong>: <%= release.label_name %><br/>
 <strong>Catalogue No</strong>: <%= release.cat_no %></div>
-<div class="r-date instruct-font"><%= release.date.strftime("%d %b") %></div>
+<div class="r-date instruct-font"><span class="day"><%= release.date.strftime("%d") %></span><br/><span class="month"><%= release.date.strftime("%b") %></span></div>
 </li>
 <% end %>
 	</ul>
