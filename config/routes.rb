@@ -17,6 +17,7 @@ SNGTRKR::Application.routes.draw do
   match '/loading' => "Pages#loading"
   match '/welcome_email' => "UserMailer#welcome_email"
   match '/player' => "Pages#player"
+  match '/release_magic/:store/:url' => "Releases#magic"
 
   match 'mailer(/:action(/:id(.:format)))' => 'mailer#:action'
   namespace :admin do

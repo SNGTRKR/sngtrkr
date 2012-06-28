@@ -86,8 +86,15 @@ class Scraper
     end
   end
 
-  def self.find_release_info url
-    itunes_regex = /(?<=\/id)([0-9]*)/
+  # Stores: 1 => itunes, 2 => 7digital, 3 => juno
+  def self.find_release_info url, store
+    require 'net/http'
+    if store == 1
+      itunes_regex = /(?<=\/id)([0-9]*)/
+      id = itunes_regex.match url
+      return ActiveSupport::JSON.decode(open("http://itunes.apple.com/lookup?ambAlbumId=#{id}"))
+      
+    end
     sd_artist_regex = /(?<=\/artist\/)([a-zA-Z0-9\-]*)/
     sd_release_regex = /(?<=\/release\/)([a-zA-Z0-9\-]*)/
     amazon_regex = /(?<=\/product\/)([a-zA-Z0-9\-]*)/
