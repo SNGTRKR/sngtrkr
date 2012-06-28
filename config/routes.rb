@@ -51,6 +51,7 @@ SNGTRKR::Application.routes.draw do
   resources :beta_users, :except => [:index]
   match '/beta' => 'beta_users#new'
 
+  match '/artists/search' => "Artists#search"
   resources :artists do
     collection do
       get 'no_results', :action => 'no_results'
