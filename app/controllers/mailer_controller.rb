@@ -14,7 +14,7 @@ class MailerController < ApplicationController
   
   def daily_release
     @user = User.last
-    @releases = User.last.release_notifications
+    @releases = Release.all[1,3]
     render :file => 'user_mailer/new_releases.html.erb', :layout => false  
   end
 
