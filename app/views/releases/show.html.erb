@@ -45,7 +45,7 @@
 	<i class="icon-tag"></i><% if @release.genre? %><%= truncate((strip_tags @release.genre || "" ), :length => 30) %><% else %><span class="light-gray">No genre set</span><% end %><br/>
 	<i class="icon-music"></i><% if @release.label_name? %><%= truncate((strip_tags @release.label_name || "" ), :length => 50) %><% else %><span class="light-gray">No label set</span><% end %><br/>
 	<i class="icon-calendar"></i><strong><%= @release.date.strftime("#{Date.today.day.ordinalize} %B %Y ") %></strong><br/><br/>
-	Tracklisting:
+	<i class="icon-reorder"></i>Tracklisting:
 </div>
 <ul>
 <li class="left o-button signika-font norm-o-pad font-13 buy-release"><i class="icon-shopping-cart"></i>Buy</li>
