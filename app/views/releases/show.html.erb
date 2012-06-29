@@ -47,10 +47,17 @@
 	<i class="icon-calendar"></i><strong><%= @release.date.strftime("#{Date.today.day.ordinalize} %B %Y ") %></strong><br/><br/>
 	<i class="icon-list-ul"></i>Tracklisting:
 </div>
-<ul>
+<ul class="menu-user">
 <li class="left o-button signika-font norm-o-pad font-13 buy-release"><i class="icon-shopping-cart"></i>Buy</li>
 <li class="left o-button signika-font norm-o-pad font-13 share-release"><i class="icon-share-alt"></i>Share</li>
 </ul>
+<!-- 
+MENU FOR ARTIST TO ENABLE EDIT FUNCTION
+<ul class="menu-artist">
+<li class="left o-button signika-font norm-o-pad font-13 buy-release"><i class="icon-shopping-cart"></i>Buy</li>
+<li class="left o-button signika-font norm-o-pad font-13 share-release"><i class="icon-share-alt"></i>Share</li>
+<li class="left o-button signika-font norm-o-pad font-13"><i class="icon-edit"></i>Edit</li>
+</ul> -->
 </div>
 <div class="clear"></div>
 </div>
@@ -72,7 +79,6 @@
 	<div class="clearfix"></div>
 	<a class="prev o-button" id="rel_prev" href="#"><i class="icon-chevron-left"></i></a>
 	<a class="next o-button" id="rel_next" href="#"><i class="icon-chevron-right"></i></a>
-	<!-- <div class="pagination" id="foo2_pag"></div> -->
 </div>
 <script type="text/javascript">
 	$(document).ready(function() {
