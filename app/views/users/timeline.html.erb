@@ -70,6 +70,22 @@
 			$(this).closest(".each-release").find('.opac-50').fadeOut("normal");
 			$(this).closest(".each-release").find('#buy-release').animate({left : -210}, "slow");
 		});
+				$(".artist-list").carouFredSel({
+	circular: false,
+	infinite: false,
+	auto 	: false,
+	scroll	: {
+		items	: "page"
+	},
+	prev	: {	
+		button	: "#rel_prev",
+		key		: "left"
+	},
+	next	: { 
+		button	: "#rel_next",
+		key		: "right"
+	},
+});
 		});
 		</script>
 		<script type="text/javascript">
