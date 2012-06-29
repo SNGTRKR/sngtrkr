@@ -6,7 +6,7 @@
 <div id="release-image" style="background-image:url(<%= @release.image :release_i %>);background-repeat:no-repeat;background-position:center;">
 <div id="opac-50"></div>
 <div id="share-release">
-<h4 class="signika-txt font-22 center-txt share-header">Share this track</h4>
+<h5 class="signika-txt font-22 center-txt share-header">Share this track</h5>
 <ul class="share-list">
 <a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [@artist, @release] %>%2F&t=SNGTRKR','ShareSNGTRKRonFacebook','scrollbars=no,width=620,height=340'); return false;"><li class="left"><%= image_tag "/images/release-fb.png", :alt => "Facebook", :class => 'sm-trigger' %></li></a>
 <a href="#" title="Share on Twitter" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [@artist, @release] %>&text=<%= @artist.name %>+&#45;+<%= @release.name %>+released+on+<%= @release.label_name %>.+Check+out+<%= @artist.name %>+on+SNGTRKR+&#45;+www.sngtrkr.com<%= url_for [@artist, @release] %>&via=SNGTRKR','ShareSNGTRKRonTwitter','scrollbars=no,width=620,height=340'); return false;"><li class="left"><%= image_tag "/images/release-twit.png", :alt => "Twitter", :class => 'sm-trigger' %></li></a>
@@ -16,7 +16,7 @@
 <div class="font-13 o-button norm-o-pad signika-font left share-cancel">Cancel</div>
 </div>
 <div id="buy-release">
-<h4 class="signika-txt font-22 center-txt buy-header">Buy this track</h4>
+<h5 class="signika-txt font-22 center-txt buy-header">Buy this track</h5>
 <ul class="buy-list">
 <li class="left"><%= image_tag "/images/release-it.png", :alt => "iTunes", :class => 'buy-trigger', :title => "iTunes" %></li>
 <li class="left"><%= image_tag "/images/release-amaz.png", :alt => "Amazon", :class => 'buy-trigger', :title => "Amazon"  %></li>
@@ -54,6 +54,26 @@
 </div>
 <div class="clear"></div>
 </div>
+<h4 class="signika-txt font-25 also-by">Also by <%= link_to @artist.name, @artist %></h4>
+<div class="release-carousel">
+	<ul class="release-list">
+		<li><div></div><span>Track 1</span></li>
+		<li><div></div><span>Track 2</span></li>
+		<li><div></div><span>Track 3</span></li>
+		<li><div></div><span>Track 4</span></li>
+		<li><div></div><span>Track 5</span></li>
+		<li><div></div><span>Track 6</span></li>
+		<li><div></div><span>Track 7</span></li>
+		<li><div></div><span>Track 8</span></li>
+		<li><div></div><span>Track 9</span></li>
+		<li><div></div><span>Track 10</span></li>
+		<li><div></div><span>Track 11</span></li>
+	</ul>
+	<div class="clearfix"></div>
+	<a class="prev o-button" id="rel_prev" href="#"><i class="icon-chevron-left"></i></a>
+	<a class="next o-button" id="rel_next" href="#"><i class="icon-chevron-right"></i></a>
+	<!-- <div class="pagination" id="foo2_pag"></div> -->
+</div>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$(".share-release").click(function() {
@@ -83,5 +103,22 @@
 			$('#opac-50').fadeOut("normal");
 			$('#buy-release').animate({left : -310}, "slow");
 		});
+		$(".release-list").carouFredSel({
+	circular: false,
+	infinite: false,
+	auto 	: false,
+	scroll	: {
+		items	: "page"
+	},
+	prev	: {	
+		button	: "#rel_prev",
+		key		: "left"
+	},
+	next	: { 
+		button	: "#rel_next",
+		key		: "right"
+	},
+});
+
 		});
 		</script>

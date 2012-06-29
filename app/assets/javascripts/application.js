@@ -17,6 +17,7 @@
 //= require jplayer/jquery.jplayer
 //= require jplayer/jquery.jplayer.inspector
 //= require jplayer/jplayer.playlist
+//= require carousel/jquery.carousel-packed.js
 $(document).ready(function() {
 	$("#delete-account a").fancybox({
 		width : 431,
