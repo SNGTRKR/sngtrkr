@@ -1,0 +1,19 @@
+#email-confirm {
+	position:relative;
+	background:#F4E5C7;
+	height:101px;
+	#confirm-container {
+		    position:relative;
+		    width:895px;
+		    margin:0 auto;
+		    padding:20px 0 0 0;
+		    margin-top:-8px;
+		#confirm-buttons {
+			position:relative;
+			top:5px;
+			div {
+				margin-right:15px;
+			}
+		}
+	}
+}
