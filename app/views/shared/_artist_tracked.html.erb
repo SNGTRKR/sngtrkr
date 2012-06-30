@@ -7,6 +7,6 @@
 		<div class="instruct-font orange-txt">
 			<%= artist_tracked.followers %> TRKRs
 		</div>
-		<%= link_to (image_tag '/images/x.png'), unfollow_artist_path(artist_tracked), :remote => true, :class => 'remove-artist-button', :alt => "Remove" %>
+		<%= link_to unfollow_artist_path(artist_tracked), :remote => true do %><i class="icon-remove"></i><% end %>
 	</div>
 </li>

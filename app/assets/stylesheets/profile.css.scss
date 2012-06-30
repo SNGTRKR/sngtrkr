@@ -115,14 +115,14 @@ margin-left:-15px;
           color:#000;
         }
         a:hover {
-          color:#000;
+          color:$orange;
         }
-        .remove-artist-button {
-          position:absolute;
-          height:15px;
-          width:15px;
-          top:-10px;
-          right:3px;
+        .icon-remove {
+	        position:absolute;
+	        top:-9px;
+	        right:4px;
+	        color:$orange;
+	        font-size:0.9em;
         }
       }
     }
