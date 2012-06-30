@@ -25,7 +25,7 @@ $(document).ready(function() {
 		autoSize	: false,
 		closeClick	: false
 	});
-	$("#manage-artist a").fancybox({
+	$("#delete-artist-trigger a").fancybox({
 		width : 431,
 		height : 286,
 		autoSize	: false,
