@@ -97,7 +97,7 @@ MENU FOR ARTIST TO ENABLE EDIT FUNCTION
 <div class="release-carousel">
 <ul class="release-list">
 	<% @releases.each do |release| %>
-		<li><div style="background-image:url(<%= release.image :release_carousel %>);background-repeat:no-repeat;background-position:center;"></div><span><%= link_to [release.artist, release] do %><%= truncate((strip_tags release.name || "" ), :length => 19) %><% end %></span></li>
+		<li><%= link_to [release.artist, release] do %><div style="background-image:url(<%= release.image :release_carousel %>);background-repeat:no-repeat;background-position:center;"></div><span><%= truncate((strip_tags release.name || "" ), :length => 19) %></span><% end %></li>
 		<% end %>
 	</ul>
 	
