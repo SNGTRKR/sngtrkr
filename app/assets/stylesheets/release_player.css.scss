@@ -1,7 +1,8 @@
 #release-i-player {
-	position:relative;
-	top:85px;
+	position:absolute;
+	bottom:15px;
 #jp_container_1 {
+position:relative;
 .jp-type-single {
 	.jp-interface {
 	position: relative;
@@ -47,7 +48,7 @@ position: absolute;
 	height:4px;
 	cursor: pointer;
 	top:17px;
-	right:20px;
+	left:190px;
 	.jp-volume-bar-value {
 		background:$orange;
 	width:0px;
@@ -79,19 +80,19 @@ ul {
 		.icon-volume-off {
 			position:absolute;
 			font-size:1.3em;
-			right:55px;
+			left:170px;
 			top:9px;
 		}
 		.icon-volume-down {
 			position:absolute;
 			font-size:1.3em;
-			right:55px;
+			left:170px;
 			top:9px;
 		}
 		.icon-volume-up {
 			position:absolute;
 			font-size:1.3em;
-			right:-5px;
+			left:231px;
 			top:9px;
 		}
 		}
