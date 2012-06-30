@@ -1,28 +1,7 @@
 <% content_for :title do %><%= @user.first_name %>'s friends on SNGTRKR<% end %>
 <% content_for :description do %><%= @user.first_name %>'s Facebook friends who are using the SNGTRKR platform to track artist releases.<% end %>
 <div class="content content-pad-160-bottom">	
-	<% if !@app_friends.empty? %>
-	<h2 class="signika-txt top-header font-35">Friends (<%= @app_friends.count %>)</h2>
-		<div id="friends-list">
-		<div class="friends-search">
-			<input type="text" id="filter" placeholder="Search friends..." />		
-			<div class="search right search-button"><%= image_tag "/images/white-search-2.png", :alt => "Search", :id => "search-pad" %></div>
-		</div>
-		<ul>
-			<% @app_friends.each do |friend| %>
-			<li class="left">
-				<div class="friends-image" style="background-image:url(<%= "//graph.facebook.com/"+friend.fbid+"/picture?type=normal" %>);background-repeat:no-repeat;background-position:center;"></div>
-				<div class="friends-info">
-					<h3><strong><%= link_to(friend) do %><span class="font-13 name"><%= friend.first_name + " " + friend.last_name %></span><% end %></strong></h3>
-					<span class="orange-txt instruct-font"><%= Follow.where('user_id = ?',friend.id).count %> TRKINGS</span>
-				</div>
-			</li>
-			<% end %>
-		</ul>
-	</div>
-	<div class="clear"></div>
-	<div id="friends-buffer"></div>
-	<% else %>
+
 		<h2 class="signika-txt font-35 center-txt">Sharing is caring</h2><br/>
 	<div class="font-15 center-txt"><strong>None of your friends are using SNGTRKR.<br/>Get them involved now by sharing:</strong></div>
 	<div class="share-bank">
@@ -34,5 +13,5 @@
 	</div>
 	<div class="clear"></div>
 		<div class="font-11 share-warning">Please note, SNGTRKR is not held responsible for anything posted on third party sites. See our Terms of Use for more information.</div>
-	<% end %>
+
 	<div class="clear"></div>
