@@ -1,9 +1,13 @@
 #artist-search {
    position:relative;
    margin:20px 0 32px 0;
+   li {
+   	   position:relative;
+	   width:604px;
 .artist-search-row {
   position:relative;
-  width:554px;
+  width:499px;
+  /* width:474px; */
   height:53px;
   padding:11px 25px 11px 25px;
   margin:0 0 17px 0;
@@ -42,6 +46,17 @@
     right:35px;
     top:25px;
   }
+}
+}
+.artist-trkr-search {
+	position:absolute;
+	width:50px;
+	height:75px;
+	top:0px;
+	right:0px;
+	text-align:center;
+	font-size:3em;
+	line-height:75px;
 }
 }
 .pagination {
