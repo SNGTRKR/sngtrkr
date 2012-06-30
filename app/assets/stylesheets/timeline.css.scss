@@ -239,6 +239,17 @@
 		      position:relative;
 		      left:29px;
 		      top:44px;
+		      		      li {
+			      height:38px;
+			      width:38px;
+			      @include border-radius(4px);
+			      margin-right:15px;
+			      img {
+				      position:relative;
+				      top:1px;
+				      right:1px;
+			      }
+		      }
 	      }
 	      .buy-cancel {
 		      position:relative;
