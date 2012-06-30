@@ -185,11 +185,38 @@
 	      .share-header {
 		      position:relative;
 		      top:29px;
+		      text-align:center;
 	      }
 	      .share-list {
 		      position:relative;
 		      left:29px;
 		      top:44px;
+		 .fb-icon, .twit-icon, .goo-icon {
+	      height:38px;
+	      width:38px;
+	      line-height:38px;
+	      @include border-radius(4px);
+	      margin-right:15px;
+      }
+      .goo-icon {
+		overflow:hidden;
+		font-size:4.8em;	
+      }
+      .icon-twitter {
+	      position:relative;
+	      bottom:2px;
+	      font-size:2.5em;
+      }
+      .icon-facebook {
+	      position:relative;
+	      right:1px;
+	      font-size:2.5em;
+      }
+      .icon-google-plus {
+	      position:relative;
+	      right:20px;
+	      top:5px;
+      }
 	      }
 	      .share-cancel {
 		      position:relative;
@@ -206,6 +233,7 @@
 	      .buy-header {
 		      position:relative;
 		      top:29px;
+		      text-align:center;
 	      }
 	      .buy-list {
 		      position:relative;
