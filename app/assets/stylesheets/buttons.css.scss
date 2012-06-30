@@ -31,7 +31,7 @@
 			color:white;
 			@include border-radius(7px);
 			text-align:center;
-		    background:$orange;
+		    background:#375A98;
 		    $experimental-support-for-svg: true;
             @include background-image(linear-gradient(top, #4D77B8 0%, #375A98 100%)); 
 		    text-shadow: #22428A 0 1px 3px;
@@ -54,6 +54,62 @@
 .fb-button:hover {
 			$experimental-support-for-svg: true;
             @include background-image(linear-gradient(top, #375A98 0%, #4D77B8 100%)); 
+}
+.google-button {
+			color:white;
+			@include border-radius(7px);
+			text-align:center;
+		    background:#a5281a;
+		    $experimental-support-for-svg: true;
+            @include background-image(linear-gradient(top, #da4a38 0%, #a5281a 100%)); 
+		    text-shadow: #8C1717 0 1px 3px;
+		    -webkit-box-shadow:
+		    inset 0 1px 0  #a5281a,
+		    inset 0 2px 0 #FA8072,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+		    -moz-box-shadow:
+		    inset 0 1px 0  #a5281a,
+		    inset 0 2px 0 #FA8072,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+		    box-shadow:
+		    inset 0 1px 0  #a5281a,
+		    inset 0 2px 0 #FA8072,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+}
+.google-button:hover {
+		$experimental-support-for-svg: true;
+        @include background-image(linear-gradient(top, #a5281a 0%, #da4a38 100%)); 
+}
+.twitter-button {
+			color:white;
+			@include border-radius(7px);
+			text-align:center;
+		    background:#33CCFF;
+		    $experimental-support-for-svg: true;
+            @include background-image(linear-gradient(top, #9AE4E8 0%, #33CCFF 100%)); 
+		    text-shadow: #8C1717 0 1px 3px;
+		    -webkit-box-shadow:
+		    inset 0 1px 0  #33CCFF,
+		    inset 0 2px 0 #FA8072,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+		    -moz-box-shadow:
+		    inset 0 1px 0  #33CCFF,
+		    inset 0 2px 0 #FA8072,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+		    box-shadow:
+		    inset 0 1px 0  #33CCFF,
+		    inset 0 2px 0 #FA8072,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+}
+.twitter-button:hover {
+		$experimental-support-for-svg: true;
+        @include background-image(linear-gradient(top, #33CCFF 0%, #9AE4E8 100%)); 
 }
     .search {
 	    position:relative;
