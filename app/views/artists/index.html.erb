@@ -1,7 +1,7 @@
 <% content_for :title do %>Search results for "<%= params[:search] %>"<% end %>
 <% content_for :description do %>Search results: <% @artists.each do |artist| %><%= artist.name %>, <%end%><% end %>
 <div class="content content-pad-187-bottom">
-	<h2 class="signika-txt top-header font-35">Search Results</h2>
+	<h3 class="signika-txt top-header font-35">Search Results</h3>
 	<% if flash[:message] %>
 	<p>
 		<%= flash[:message] %>
@@ -12,7 +12,7 @@
 		<li class="artist-search-row">
 			<div class="artist-search-image" style="background-image:url(<%= artist.image.url :thumb %>);background-repeat:no-repeat;background-position:center;"></div>
 			<div class="artist-search-info">
-				<h3 class="font-15 instruct-font artist-search-name"><%= link_to artist.name, artist %></h3>
+				<h2 class="font-15 instruct-font artist-search-name"><%= link_to artist.name, artist %></h2>
 				<div class="instruct-font orange-txt"><%= artist.followers %> TRKRS</div>
 				<%= artist.genre %>
 			</div>
