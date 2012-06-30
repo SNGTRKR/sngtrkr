@@ -200,7 +200,7 @@ margin:6px 0 31px 0;
 	    position:absolute;
 	    background-color:black;
 	    @include border-radius(8px);
-	    @include box-shadow(0px 2px 5px rgba(0, 0, 0, 0.25));
+	    @include box-shadow(0px 2px 5px rgba(0, 0, 0, 0.45));
 	    top:0px;
 	    left:0px;
     }
