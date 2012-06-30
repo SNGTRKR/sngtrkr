@@ -24,7 +24,7 @@ margin:6px 0 31px 0;
 	      width:310px;
 	      z-index:2;
 	      right:-310px;
-	      top:50px;
+	      top:58px;
 	      .share-header {
 		      position:relative;
 		      top:29px;
@@ -32,8 +32,34 @@ margin:6px 0 31px 0;
 	      }
 	      .share-list {
 		      position:relative;
-		      left:78px;
+		      left:83px;
 		      top:44px;
+		 .fb-icon, .twit-icon, .goo-icon {
+	      height:38px;
+	      width:38px;
+	      line-height:38px;
+	      @include border-radius(4px);
+	      margin-right:15px;
+      }
+      .goo-icon {
+		overflow:hidden;
+		font-size:4.8em;	
+      }
+      .icon-twitter {
+	      position:relative;
+	      bottom:2px;
+	      font-size:2.5em;
+      }
+      .icon-facebook {
+	      position:relative;
+	      right:1px;
+	      font-size:2.5em;
+      }
+      .icon-google-plus {
+	      position:relative;
+	      right:20px;
+	      top:6px;
+      }
 	      }
 	      .share-cancel {
 		      position:relative;
@@ -47,7 +73,7 @@ margin:6px 0 31px 0;
 	      width:310px;
 	      z-index:2;
 	      left:-310px;
-	      top:50px;
+	      top:49px;
 	      .buy-header {
 		      position:relative;
 		      top:29px;
@@ -55,8 +81,19 @@ margin:6px 0 31px 0;
 	      }
 	      .buy-list {
 		      position:relative;
-		      left:78px;
+		      left:83px;
 		      top:44px;
+		      li {
+			      height:38px;
+			      width:38px;
+			      @include border-radius(4px);
+			      margin-right:15px;
+			      img {
+				      position:relative;
+				      top:1px;
+				      right:1px;
+			      }
+		      }
 	      }
 	      .buy-cancel {
 		      position:relative;
@@ -151,13 +188,19 @@ margin:6px 0 31px 0;
 	float: left;
 	position:relative;
     margin:3px 10px 0 10px;
+    a {
+	    color:#000;
+    }
+    a:hover {
+	    color:$orange;
+    }
     div {
 	    height:115px;
 	    width:115px;
 	    position:absolute;
 	    background-color:black;
 	    @include border-radius(8px);
-	    @include box-shadow(0px 2px 5px rgba(0, 0, 0, 0.25));
+	    @include box-shadow(0px 2px 5px rgba(0, 0, 0, 0.45));
 	    top:0px;
 	    left:0px;
     }
