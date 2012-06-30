@@ -42,10 +42,10 @@
 <div id="release-info">
 	<h2 class="font-22 release-name"><strong><%= @release.name %></strong></h2>
 	<h3 class="font-15 orange-txt"><%= link_to @artist.name, @artist %></h3>
-	<i class="icon-tag i-info"></i><% if @release.genre? %><%= truncate((strip_tags @release.genre || "" ), :length => 30) %><% else %><span class="light-gray">No genre set</span><% end %><br/>
-	<i class="icon-music i-info"></i><% if @release.label_name? %><%= truncate((strip_tags @release.label_name || "" ), :length => 50) %><% else %><span class="light-gray">No label set</span><% end %><br/>
-	<i class="icon-calendar i-info"></i><strong><%= @release.date.strftime("#{Date.today.day.ordinalize} %B %Y ") %></strong><br/><br/>
-	<i class="icon-list-ul i-info"></i>Tracklisting:
+	<i class="icon-tag i-info" title="Genre"></i><% if @release.genre? %><%= truncate((strip_tags @release.genre || "" ), :length => 30) %><% else %><span class="light-gray">No genre set</span><% end %><br/>
+	<i class="icon-music i-info" title="Record Label"></i><% if @release.label_name? %><%= truncate((strip_tags @release.label_name || "" ), :length => 50) %><% else %><span class="light-gray">No label set</span><% end %><br/>
+	<i class="icon-calendar i-info" title="Release Date"></i><strong><%= @release.date.strftime("#{Date.today.day.ordinalize} %B %Y ") %></strong><br/><br/>
+	<i class="icon-list-ul i-info" title="Tracklistings"></i>Tracklisting:
 	  <div id="release_jplayer_1" class="jp-jplayer"></div>
 	  <div id="release-i-player">
   <div id="jp_container_1" class="jp-audio">
