@@ -17,11 +17,7 @@
 </div>
 <div id="buy-release">
 <h5 class="signika-txt font-22 center-txt buy-header">Buy this track</h5>
-<ul class="buy-list">
-<li class="left buy-trigger white-button"><%= image_tag "/images/itunes.png", :alt => "iTunes", :title => "iTunes" %></li>
-<li class="left buy-trigger white-button"><%= image_tag "/images/amazon.png", :alt => "Amazon", :title => "Amazon" %></li>
-<li class="left buy-trigger white-button"><%= image_tag "/images/7digital.png", :alt => "7Digital", :title => "7Digital" %></li>
-</ul>
+<%= render :partial => 'shared/buy_links', :object => @release %>
 <div class="clear"></div>
 <div class="font-13 o-button norm-o-pad signika-font left buy-cancel">Cancel</div>
 </div>
@@ -160,6 +156,7 @@
 
 		});
 		</script>
+		<% if !@release.tracks.count.zero? %>
 		<script type="text/javascript">
     $(document).ready(function(){
       $("#release_jplayer_1").jPlayer({
@@ -175,3 +172,4 @@
       });
     });
   </script>
+  <% end %>
