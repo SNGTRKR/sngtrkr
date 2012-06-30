@@ -3,13 +3,36 @@
   height:95px;
   width:400px;
   top:34px;
-  left:140px;
+  left:171px;
   ul {
     list-style-type:none;
     margin-left:-30px;
-    li {
-      margin:0 0 0 30px;
-    }
+    .fb-icon, .twit-icon, .goo-icon {
+	      height:86px;
+	      width:86px;
+	      line-height:86px;
+	      @include border-radius(10px);
+	      margin-left:30px;
+      }
+      .goo-icon {
+		overflow:hidden;
+		font-size:10.5em;	
+      }
+      .icon-twitter {
+	      position:relative;
+	      bottom:2px;
+	      font-size:5.5em;
+      }
+      .icon-facebook {
+	      position:relative;
+	      right:1px;
+	      font-size:5.5em;
+      }
+      .icon-google-plus {
+	      position:relative;
+	      right:40px;
+	      top:9px;
+      }
   }
 }
 .share-warning {

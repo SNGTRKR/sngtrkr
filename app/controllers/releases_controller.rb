@@ -16,6 +16,7 @@ class ReleasesController < ApplicationController
   def show
     @artist = Artist.find(params[:artist_id])
     @release = @artist.releases.find(params[:id])
+    @releases = @artist.releases.all
 
     respond_to do |format|
       format.html # show.html.erb
