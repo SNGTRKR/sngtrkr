@@ -95,19 +95,12 @@ MENU FOR ARTIST TO ENABLE EDIT FUNCTION
 </div>
 <h4 class="signika-txt font-25 also-by">Also by <%= link_to @artist.name, @artist %></h4>
 <div class="release-carousel">
-	<ul class="release-list">
-		<li><div></div><span>Track 1</span></li>
-		<li><div></div><span>Track 2</span></li>
-		<li><div></div><span>Track 3</span></li>
-		<li><div></div><span>Track 4</span></li>
-		<li><div></div><span>Track 5</span></li>
-		<li><div></div><span>Track 6</span></li>
-		<li><div></div><span>Track 7</span></li>
-		<li><div></div><span>Track 8</span></li>
-		<li><div></div><span>Track 9</span></li>
-		<li><div></div><span>Track 10</span></li>
-		<li><div></div><span>Track 11</span></li>
+<ul class="release-list">
+	<% @releases.each do |release| %>
+		<li><div style="background-image:url(<%= release.image :release_carousel %>);background-repeat:no-repeat;background-position:center;"></div><span><%= link_to [release.artist, release] do %><%= truncate((strip_tags release.name || "" ), :length => 19) %><% end %></span></li>
+		<% end %>
 	</ul>
+	
 	<div class="clearfix"></div>
 	<a class="prev o-button" id="rel_prev" href="#"><i class="icon-chevron-left"></i></a>
 	<a class="next o-button" id="rel_next" href="#"><i class="icon-chevron-right"></i></a>

@@ -188,6 +188,12 @@ margin:6px 0 31px 0;
 	float: left;
 	position:relative;
     margin:3px 10px 0 10px;
+    a {
+	    color:#000;
+    }
+    a:hover {
+	    color:$orange;
+    }
     div {
 	    height:115px;
 	    width:115px;
