@@ -9,16 +9,16 @@
 	<% end %> <!-- JSON URL: <%= url_for artists_url(:search => params[:search], :format => :json)  %> -->
 	<ul id="artist-search">
 		<% @artists.each do |artist| %>
-		<li class="artist-search-row">
+		<li>
+		<div class="artist-search-row">
 			<div class="artist-search-image" style="background-image:url(<%= artist.image.url :thumb %>);background-repeat:no-repeat;background-position:center;"></div>
 			<div class="artist-search-info">
 				<h2 class="font-15 instruct-font artist-search-name"><%= link_to artist.name, artist %></h2>
 				<div class="instruct-font orange-txt"><%= artist.followers %> TRKRS</div>
 				<%= artist.genre %>
 			</div>
-			<div class="search-trkr-button">
-				<%= render :partial => 'shared/trk_artist', :object => artist %>
-			</div>
+		</div>
+		<!--	<%= render :partial => 'shared/search_trk_artist', :object => artist %> -->
 		</li>
 		<% end %>
 	</ul>
