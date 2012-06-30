@@ -25,7 +25,7 @@ $(document).ready(function() {
 		autoSize	: false,
 		closeClick	: false
 	});
-	$(".delete-artist-pad a").fancybox({
+	$("#manage-artist a").fancybox({
 		width : 431,
 		height : 286,
 		autoSize	: false,

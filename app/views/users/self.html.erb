@@ -15,21 +15,13 @@
 				<% end %>
 				<% else %>
 				<% end %>
-				<li class="font-13 signika-font o-button p-menu">
-					<%= link_to 'Friends', friends_user_path(@user) %>
-				</li>
+				<%= link_to friends_user_path(@user) do %><li class="font-13 signika-font o-button p-menu">Friends</li><% end %>
 				<% if @user.manager? %>
-				<li class="font-13 signika-font o-button p-menu">
-						<%= link_to 'Add Release', new_artist_release_path(@artist) %>
-				</li>
+				<%= link_to new_artist_release_path(@artist) do %><li class="font-13 signika-font o-button p-menu">Add Release</li><% end %>
 				<% else %>
-				<li class="font-13 signika-font o-button p-menu">
-					<%= link_to 'Manage Artist', managing_user_path(@user) %>
-				</li>
+				<%= link_to managing_user_path(@user) do %><li class="font-13 signika-font o-button p-menu">Manage Artist</li><% end %>
 				<% end %>
-				<li class="font-13 signika-font o-button p-menu">
-					<%= link_to "Profile Settings", edit_user_path(@user) %>
-				</li>
+				<%= link_to edit_user_path(@user) do %><li class="font-13 signika-font o-button p-menu">Profile Settings</li><% end %>
 			</ul>
 		</div>
 		<div class="profile-welcome">
