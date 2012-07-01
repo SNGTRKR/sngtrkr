@@ -31,9 +31,10 @@
 <li class="left"><i class="icon-star-empty"></i></li>
 </ul>
 <div class="clear"></div>
-<span id="rating-txt">0 Fan Ratings</span>
+<span id="rating-txt">Fan Ratings</span>
 </div>
-</div>
+<%= ratings_for(@release, :remote_options => {:url => rate_artist_release_path(@artist,@release)}) %> </div>
+
 <div class="release-right right">
 <div id="release-info">
 	<h2 class="font-22 release-name"><strong><%= @release.name %></strong></h2>

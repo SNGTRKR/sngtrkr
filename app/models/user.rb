@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   validates :fbid, :uniqueness => true
   validates :email, :presence => true, :uniqueness => true
 
+  ajaxful_rater
 
   has_many :follow
   has_many :suggest

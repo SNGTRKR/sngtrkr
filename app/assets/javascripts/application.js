@@ -19,6 +19,11 @@
 //= require jplayer/jplayer.playlist
 //= require carousel/jquery.carousel-packed.js
 $(document).ready(function() {
+  // Release rating.
+  $('a').live('ajax:complete', function(xhr, status) {
+    $(".ajaxful-rating-wrapper").replaceWith(status.responseText)
+  });
+  
 	$("#delete-account a").fancybox({
 		width : 431,
 		height : 286,
