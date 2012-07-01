@@ -1,0 +1,36 @@
+#flash-outer {
+  display: none;
+	position:relative;
+	background:rgba(245,230,200,0.9);
+	height:auto;
+  @include box-shadow(0px 3px 8px rgba(0,0,0,0.2));
+	#flash-inner {
+		    position:relative;
+		    width:895px;
+		    margin:0 auto;
+		    padding:15px 0 15px 0;
+		.button {
+		  @extend .o-button;
+		  @extend .norm-o-pad;
+		  padding-left: 30px;
+			float:right;
+			top:5px;
+			div {
+				margin-right:15px;
+			}
+		}
+		a {
+  		color:$orange;
+  		font-weight: bold;
+		}
+		#flash-dismiss{
+  		font-size: 120%;
+  		padding: 0px 8px;
+  		margin-top:3px;
+		}
+	}
+}
+
+#flash-outer-closed {
+  height: 0px;
+}

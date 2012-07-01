@@ -19,6 +19,12 @@
 //= require jplayer/jplayer.playlist
 //= require carousel/jquery.carousel-packed.js
 $(document).ready(function() {
+  // Flash Dismissal
+  $('#flash-outer').delay(300).slideDown(500,'easeInQuad');
+  $('#flash-dismiss').click(function(){
+    $('#flash-outer').slideUp(500,'easeInQuad');
+  })
+
   // Release rating.
   $('a').live('ajax:complete', function(xhr, status) {
     $(".ajaxful-rating-wrapper").replaceWith(status.responseText)
