@@ -25,32 +25,30 @@
 <div class="release-rating font-13">
 <%= ratings_for(@release, :remote_options => {:url => rate_artist_release_path(@artist,@release)}) %>
 <div class="clear"></div>
-<span id="rating-txt"><%= @release.rates.count %> Fan Ratings</span>
+<span id="rating-txt"><% if @release.rates.count > 0 %><%= @release.rates.count %> fan rating<% if @release.rates.count > 1 %>s<% else %><% end %><% else %>No fan ratings. Be the first!<% end %></span>
 </div>
  </div>
 <div class="release-right right">
 <div id="release-info">
 	<h2 class="font-22 release-name"><strong><%= @release.name %></strong></h2>
-	<h3 class="font-15 orange-txt"><%= link_to @artist.name, @artist %></h3>
+	<h3 class="font-15 orange-txt artist-release-name"><%= link_to @artist.name, @artist %></h3>
 	<i class="icon-tag i-info" title="Genre"></i><% if @release.genre? %><%= truncate((strip_tags @release.genre || "" ), :length => 30) %><% else %><span class="light-gray">No genre set</span><% end %><br/>
 	<i class="icon-music i-info" title="Record Label"></i><% if @release.label_name? %><%= truncate((strip_tags @release.label_name || "" ), :length => 50) %><% else %><span class="light-gray">No label set</span><% end %><br/>
 	<i class="icon-calendar i-info" title="Release Date"></i><strong><%= @release.date.strftime("#{Date.today.day.ordinalize} %B %Y ") %></strong><br/><br/>
-	<i class="icon-list-ul i-info" title="Tracklistings"></i>Tracklisting:
 	<% if !@release.tracks.count.zero? %>
-	<div class="scrollbar">
-	<div id="tracklist">
-  	<% 
-  	i = 1
-  	@release.tracks.ordered.each do |track| %>
-  	<p><%= i %> - <%= track.name %></p>
-  	<% 
-  	i += 1
-  	end %>
-	</div>
-	</div>
   <div id="release_jplayer_1" class="jp-jplayer"></div>
   <div id="release-i-player">
   <div id="jp_container_1" class="jp-audio">
+        <i class="icon-list-ul i-info" title="Tracklistings"></i>Tracklisting:
+      	<div class="scrollbar">
+	<div id="tracklist">
+      <div class="jp-playlist">
+					<ul>
+						<li></li>
+					</ul>
+				</div>
+	</div>
+      	</div>
     <div class="jp-type-single">
       <div class="jp-gui jp-interface">
         <ul class="jp-controls">
@@ -73,21 +71,17 @@
           <div class="jp-duration"></div>
         </div>
       </div>
-      <div class="jp-playlist">
-					<ul>
-						<li></li>
-					</ul>
-				</div>
+
       <div class="jp-no-solution">
         <span>Update Required</span>
         To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
-      </div>
-    </div>
-  </div>
-	  </div>
+      </div> <!-- no-solution -->
+    </div> <!-- jp-interface -->
+  </div> <!-- type-single -->
+	  </div> <! -- jp_container -->
 <% else %>
 <div id="no-preview"><strong>No track preview available for this release.</strong></div><% end %>
-</div>
+</div> <! -- release-i-player -->
 <% if current_user.managing.first != @artist %>
   <ul class="menu-user">
   <li class="left o-button signika-font norm-o-pad font-13 buy-release"><i class="icon-shopping-cart"></i>Buy</li>
@@ -100,12 +94,12 @@
   <li class="left o-button signika-font norm-o-pad font-13"><i class="icon-edit"></i>Edit</li>
   </ul>
 <% end %>
-</div>
+</div><!-- release-info -->
 <div class="clear"></div>
-</div>
+</div> <!-- release-right -->
 <h4 class="signika-txt font-25 also-by">Also by <%= link_to @artist.name, @artist %></h4>
-<div class="release-carousel">
-<ul class="release-list">
+<div class="release-carousel <% if @releases.count < 5 %>under-5<% else %><% end %>">
+<ul class="release-list" >
 	<% @releases.each do |release|
   	 if release == @release 
     	 next
@@ -174,13 +168,16 @@
 		jPlayer: "#release_jplayer_1",
 		cssSelectorAncestor: "#jp_container_1"
 	}, [
-	<% @release.tracks.ordered.each do |track| %>
+	<% 
+  	i = 1
+  	@release.tracks.ordered.each do |track| %>
 		{
-		
-			title:"<%= track.name %>",
+			title:"<%= i %> - <%= track.name %>",
 			m4a:"<%= track.preview %>"
 		},
-		<% end %>
+		<% 
+		i += 1
+		end %>
 		
 	], {
         swfPath: "/js",
