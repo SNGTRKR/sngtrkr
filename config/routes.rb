@@ -14,7 +14,6 @@ SNGTRKR::Application.routes.draw do
   match '/team' => "Pages#team"
   match '/privacy' => "Pages#privacy"
   match '/help' => "Pages#help"
-  match '/loading' => "Pages#loading"
   match '/welcome_email' => "UserMailer#welcome_email"
   match '/player' => "Pages#player"
   match '/release_magic/:store/:url' => "Releases#magic"
@@ -58,6 +57,7 @@ SNGTRKR::Application.routes.draw do
     end
     collection do
       get 'import/:fb_id/:access_token', :action => 'import'
+      get 'first_suggestions'
     end
     resources :releases do 
       member do 
