@@ -1,100 +1,64 @@
-  #content-artist {
-    position:relative;
-    width:666px;
-    height:300px;
-    background:rgba(255,255,255,0.75);
-    @include border-radius(12px);
-    @include box-shadow(0px 0px 8px rgba(0,0,0,0.55));
-    margin:5px 0 -115px 0;
-    #artist-image {
-	    position:absolute;
-	    width:365px;
-	    height:300px;
-	    top:0px;
-	    left:0px;
-	    @include border-top-left-radius(12px);
-        @include border-bottom-left-radius(12px);
-	    border-style:solid;
-	    border-right-width:6px;
-	    border-right-color:$orange;
-	    overflow:hidden;
-	   #share-bar {
-		   height:25px;
-		   width:365px;
-		   background:rgba(0,0,0,0.75);
-		   @include border-bottom-left-radius(12px);
-		   position:absolute;
-		   bottom:-25px;
-		   left:0px;
-		   color:#fff;
-		   ul {
-		   position:absolute;
-		   left:22px;
-		   top:0px;
-		   list-style-type:none;
-		   margin-left:-60px;
-		   width:380px;
-			   li {
-			   margin-left:60px;
-				   i {
-					 margin:4px 10px 0 0;  
-					 font-size:1.6em;
-				   }
-				   span {
-					   position:relative;
-					   top:-3px;
-				   }
-			   }
-		   }
-	   }
-    }
-    #artist-info {
-	    position:relative;
-	    width:262px;
-	    height:231px;
-	    left:387px;
-	    top:14px;
-	    i {
-		    margin-right:10px;
-	    }
-	  .genre {
-		 margin-top:-9px;
-	  }
-	  .artist-trkr-pos {
-			margin:6px 0 15px 1px;
-			a {
-				color:#fff;
-			}
-			a:hover {
-				color:#fff;
-			}
-		}
-		#artist-bio {
-			margin-left:1px;
-		}
-		.artist-name {
-			line-height:1em;
-		}
-			a {
-				color:$orange;
-			}
-			a:hover {
-				color:#000;
-			}
-    
-    }
-    ul {
-			list-style-type: none;
-			left:384px;
-			width:270px;
+#artist-profile {
+margin:6px 0 31px 0;
+	.profile-left {
+		width:310px;
+		#profile-image {
 			position:relative;
-			top:12px;
+			height:368px;
+			width:309px;
+			@include box-shadow(0px 0px 8px rgba(0,0,0,0.55));
+			@include border-radius(12px);
+			overflow:hidden;
+			      #opac-50 {
+	      position:absolute;
+	      z-index:3;
+	      height:368px;
+			width:310px;
+	      @include border-radius(12px);
+	      background:rgba(0,0,0,0.75);
+	      display:none;
+      }
+      #social-bar-shadow {
+	      width:309px;
+	      position:absolute;
+	      height:35px;
+	      bottom:0px;
+	      left:0px;
+	      z-index:2;
+	      $experimental-support-for-svg: true;
+          @include background-image(linear-gradient(top,  rgba(0,0,0,0) 80%,rgba(0,0,0,1) 100%));
+          @include border-radius(12px);
+          pointer-events:none;
+      }
+      #social-hidden {
+      	  position:absolute;
+	      width:309px;
+	      overflow:hidden;
+	      left:10px;
+	      bottom:0px;
+	      height:120px;
+	      z-index:1;
+      .artist-sm {
+	      position:relative;
+	      top:30px;
+      		 .fb-icon, .twit-icon, .sc-icon, .web-icon, .yt-icon, .music-icon {
+	      height:38px;
+	      width:38px;
+	      line-height:38px;
+	      @include border-radius(4px);
+	      margin-right:12px;
+	      font-size:2.5em;
+      }
+      .music-option {
+	      position:relative;
+      }
 .dropdownContain {
 	width: 110px;
 	position: absolute;
 	z-index: 2;
-	left: 50%;
+	left: 40%;
 	margin-left: -55px; /* half of width */
+	top:-15px;
 	display:none;
 .dropOut {
 	width: 110px;
@@ -103,37 +67,153 @@
 	margin-top: 0px;
 	color:#fff;
 	@include border-radius(4px);
+	background-color:#F15A24;
 	$experimental-support-for-svg: true;
-            @include background-image(linear-gradient(top, #F15A24 0%, #F37244 100%));
+    @include background-image(linear-gradient(top, #F37244 0%, #F15A24 100%));
 	@include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
-	.triangle {
-	width: 0;
-	height: 0;
-	position: absolute;
-	border-left: 8px solid transparent;
-	border-right: 8px solid transparent;
-	border-bottom: 8px solid $orange;
-	top: -8px;
-	left: 50%;
-	margin-left: -8px;
+.triangle {
+	color:$orange;
+	position:absolute;
+	top:44px;
+	left:39px;
+	font-size:2em;
 }
 
  ul {
 	position:relative;
-	left:1px;
+	left:2px;
 	top:-4px;
  li {
-	padding: 12px 0 0 5px;
+	margin: 12px 0 4px 10px;
 	@include border-radius(4px);
+	height:38px;
+	width:38px;	
+	position:relative;		      
 }
 }
 }
 }
-			.music-option {
-				position:relative;
+      li {
+      .sm-pop {
+	      position:relative;
+	      bottom:-78px;
+      }
+      img {
+	      position:relative;
+	      top:1px;
+	      right:1px;
+      }
+      .icon-twitter {
+	      position:relative;
+	      bottom:2px;
+	      
+      }
+      .icon-facebook {
+	      position:relative;
+	      right:1px;
+	      
+      }
+      .icon-music {
+	      position:relative;
+	      right:1px;
+      }
+      icon-globe {
+	      position:relative;
+	      top:1px;
+      }
+      }
+      }
+      }
+                #share-profile {
+	      position:absolute;
+	      height:310px;
+	      width:310px;
+	      z-index:4;
+	      right:-310px;
+	      top:87px;
+	      .share-header {
+		      position:relative;
+		      top:29px;
+		      text-align:center;
+	      }
+	      .share-list {
+		      position:relative;
+		      left:83px;
+		      top:44px;
+		 .fb-icon, .twit-icon, .goo-icon {
+	      height:38px;
+	      width:38px;
+	      line-height:38px;
+	      @include border-radius(4px);
+	      margin-right:15px;
+      }
+      .goo-icon {
+		overflow:hidden;
+		font-size:4.8em;	
+      }
+      .icon-twitter {
+	      position:relative;
+	      bottom:2px;
+	      font-size:2.5em;
+      }
+      .icon-facebook {
+	      position:relative;
+	      right:1px;
+	      font-size:2.5em;
+      }
+      .icon-google-plus {
+	      position:relative;
+	      right:20px;
+	      top:6px;
+      }
+	      }
+	      .share-cancel {
+		      position:relative;
+		      left:121px;
+		      top:67px;
+	      }
+      }
+              
+		}
 			}
-			li {
-				margin-left:-3px;
+	.profile-right {
+		width:280px;
+		#profile-info {
+			position:relative;
+			width:246px;
+			background:rgba(255,255,255,0.75);
+			height:294px;
+			@include box-shadow(0px 0px 8px rgba(0,0,0,0.55));
+			@include border-radius(12px);
+			padding:17px;
+			line-height:1.7em;
+			#artist-bio {
+				line-height:1.45em;
+			}
+			.i-info {
+				margin-right:10px;
+			}
+			.profile-name {
+				margin-bottom:3px;
+				line-height:1em;
+			}
+			a {
+				color:$orange;
+			}
+			a:hover {
+				color:#000;
 			}
 		}
-  }
+		.menu-user {
+			list-style-type:none;
+			margin:15px 0 0 -14px;
+			i {
+				margin-right:5px;
+			}
+			li {
+				width:102px;
+				margin-left:15px;
+			}
+		}
+		}
+}
