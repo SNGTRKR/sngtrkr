@@ -10,6 +10,7 @@ end
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'json'
+gem 'ajaxful_rating', "~> 3.0.0.beta8"
 
 # VERSION AND DEPLOYMENT
 group :production do

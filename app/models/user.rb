@@ -1,11 +1,16 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, #:registerable,
+  # :token_authenticatable, :encryptable,  :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :confirmable,  #:registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :fbid, :first_name, :last_name, :last_sign_in_at, :email_frequency, :deleted_at, :leave_reason
+
+  validates :fbid, :uniqueness => true
+  validates :email, :presence => true, :uniqueness => true
+
+  ajaxful_rater
 
   has_many :follow
   has_many :suggest
@@ -31,12 +36,16 @@ class User < ActiveRecord::Base
   
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
-    if user = self.find_by_email(data.email)
+    if user = self.find_by_fbid(data.id)
     user
     else # Create a user with a stub password.
       user = self.create!(:email => data.email, :password => Devise.friendly_token[0,20], :fbid => data.id, :first_name => data.first_name, :last_name => data.last_name)
       UserMailer.welcome_email(user).deliver
     end
+    # Confirm the user's email address automatically
+    user.confirm! 
+    user.save!
+
     Scraper.importFbLikes(access_token.credentials.token, user.id)
     user
   end

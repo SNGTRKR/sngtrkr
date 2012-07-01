@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120630211415) do
+ActiveRecord::Schema.define(:version => 20120701020354) do
 
   create_table "artists", :force => true do |t|
     t.string   "name"
@@ -93,6 +93,19 @@ ActiveRecord::Schema.define(:version => 20120630211415) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "rates", :force => true do |t|
+    t.integer  "rater_id"
+    t.integer  "rateable_id"
+    t.string   "rateable_type"
+    t.integer  "stars",         :null => false
+    t.string   "dimension"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "rates", ["rateable_id", "rateable_type"], :name => "index_rates_on_rateable_id_and_rateable_type"
+  add_index "rates", ["rater_id"], :name => "index_rates_on_rater_id"
 
   create_table "releases", :force => true do |t|
     t.string   "name"
@@ -186,6 +199,10 @@ ActiveRecord::Schema.define(:version => 20120630211415) do
     t.text     "fbid"
     t.integer  "leave_reason"
     t.date     "deleted_at"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

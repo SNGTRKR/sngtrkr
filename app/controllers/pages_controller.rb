@@ -4,6 +4,7 @@ class PagesController < ApplicationController
     if(user_signed_in?)
       return redirect_to '/my_timeline'
     end
+    # Used to auto log the user in.
     require 'koala'
     @graph = Koala::Facebook::API.new
   end
