@@ -56,7 +56,7 @@ function load_suggestions(data){
 $(document).ready(function(){
   var i = <%= @user.suggested.count %>, j = 0;
   var brk;
-  first_sugg = setInterval( "$.get('/artists/first_suggestions.json', function(data){ load_suggestions(data) });",1000);
+  first_sugg = setInterval( "$.get('/artists/first_suggestions.json', function(data){ load_suggestions(data) });",5000);
 });
 </script>
 <% end %>
