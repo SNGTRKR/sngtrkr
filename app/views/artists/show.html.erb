@@ -29,10 +29,6 @@ content_for :og_id, @artist.id.to_s
 <li class="left pop-trig"><a href="http://www.twitter.com/<%= @artist.twitter %>" target="_blank"><div class="sm-pop twitter-button twit-icon"><i class="icon-twitter"></i></div></a></li><% else %><% end %>
 <% if @artist.soundcloud? %>
 <li class="left pop-trig"><a href="http://www.soundcloud.com/<%= @artist.soundcloud %>" target="_blank"><div class="sm-pop sc-icon soundcloud-button"><%= image_tag "/images/soundcloud.png", :alt => "Soundcloud" %></div></a></li><% else %><% end %>
-<% if @artist.website? %>
-<li class="left pop-trig"><a href="http://<%= @artist.website %>" target="_blank"><div class="sm-pop web-icon black-button"><i class="icon-globe"></i></div></a></li><% else %><% end %>
-<% if @artist.youtube? %>
-<li class="left pop-trig"><a href="http://www.youtube.com/<%= @artist.youtube %>" target="_blank"><div class="sm-pop yt-icon white-button"><%= image_tag "/images/youtube.png", :alt => "Youtube" %></div></a></li><% else %><% end %>
 <li class="left pop-trig music-option"><div class="sm-pop o-button music-icon"><i class="icon-music"></i></div><div class="dropdownContain">
 					<div class="dropOut font-13">
 						
@@ -45,6 +41,10 @@ content_for :og_id, @artist.id.to_s
 					<div class="triangle"><i class="icon-sort-down"></i></div>
 
 					</div></div></li>
+<% if @artist.youtube? %>
+<li class="left pop-trig"><a href="http://www.youtube.com/<%= @artist.youtube %>" target="_blank"><div class="sm-pop yt-icon white-button"><%= image_tag "/images/youtube.png", :alt => "Youtube" %></div></a></li><% else %><% end %>
+<% if @artist.website? %>
+<li class="left pop-trig"><a href="http://<%= @artist.website %>" target="_blank"><div class="sm-pop web-icon black-button"><i class="icon-globe"></i></div></a></li><% else %><% end %>
 </ul>
 </div> <!-- social-hidden -->
 </div> <!-- profile-image -->
