@@ -134,7 +134,7 @@ class UsersController < ApplicationController
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to users_url }
+      format.html { redirect_to users_url, :notice => '<p>Account successfully destroyed.</p>' }
       format.json { head :no_content }
     end
   end
@@ -145,19 +145,11 @@ class UsersController < ApplicationController
     @user.leave_reason = params[:leave_reason]
     @user.soft_delete
     sign_out(@user)
-    redirect_to :root, :notice => "Your account has been removed from the site. Note that we will retain your data privately, so if you change your mind, you can rejoin anytime. If you wish to have your data completely removed, please email support@sngtrkr.com"
+    redirect_to :root, :notice => "<p>Your account has been removed from the site. Note that we will retain your data privately, so if you change your mind, you can rejoin anytime. If you wish to have your data completely removed, please email support@sngtrkr.com</p>"
   end
 
   def manage
     current_user.manage_artist params[:id]
-    respond_to do |format|
-      format.html { redirect_to artist_path(params[:id])}
-      format.json { render :json => { :response => :success } }
-    end
-  end
-
-  def unmanage
-    current_user.unmanage_artist params[:id]
     respond_to do |format|
       format.html { redirect_to artist_path(params[:id])}
       format.json { render :json => { :response => :success } }
