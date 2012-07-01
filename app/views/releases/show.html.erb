@@ -30,11 +30,39 @@
  </div>
 <div class="release-right right">
 <div id="release-info">
-	<h2 class="font-22 release-name"><strong><%= @release.name %></strong></h2>
+	<h2 class="font-22 release-name"><strong>
+  	<% if @manager %>
+  	<%= best_in_place [@artist, @release], :name, :type => :input %>
+  	<% else %>
+  	<%= @release.name %>
+  	<% end %>
+  	</strong></h2>
 	<h3 class="font-15 orange-txt artist-release-name"><%= link_to @artist.name, @artist %></h3>
-	<i class="icon-tag i-info" title="Genre"></i><% if @release.genre? %><%= truncate((strip_tags @release.genre || "" ), :length => 30) %><% else %><span class="light-gray">No genre set</span><% end %><br/>
-	<i class="icon-music i-info" title="Record Label"></i><% if @release.label_name? %><%= truncate((strip_tags @release.label_name || "" ), :length => 50) %><% else %><span class="light-gray">No label set</span><% end %><br/>
-	<i class="icon-calendar i-info" title="Release Date"></i><strong><%= @release.date.strftime("#{Date.today.day.ordinalize} %B %Y ") %></strong><br/><br/>
+	<i class="icon-tag i-info" title="Genre"></i>
+	<% if @release.genre? %>
+  	<% if @manager %>
+  	<%= best_in_place [@artist, @release], :genre, :type => :input %>
+  	<% else %>
+  	<%= @release.genre %>
+  	<% end %>
+	<% else %><span class="light-gray">No genre set</span><% end %><br/>
+	<i class="icon-music i-info" title="Record Label"></i>
+	<% if @release.label_name? %>
+  	<% if @manager %>
+  	<%= best_in_place [@artist, @release], :label_name, :type => :input %>
+  	<% else %>
+  	<%= @release.label_name %>
+  	<% end %>
+	<% else %>
+	<span class="light-gray">No label set</span>
+	<% end %><br/>
+	<i class="icon-calendar i-info" title="Release Date"></i><strong>
+  	<% if @manager %>
+  	 <%= best_in_place [@artist, @release], :date, :type => :date %>
+  	<% else %>
+  	 <%= @release.date.strftime("#{Date.today.day.ordinalize} %B %Y ") %>
+  	<% end %>
+	</strong><br/><br/>
 	<% if !@release.tracks.count.zero? %>
   <div id="release_jplayer_1" class="jp-jplayer"></div>
   <div id="release-i-player">

@@ -11,6 +11,7 @@ end
 
 gem 'json'
 gem 'ajaxful_rating', "~> 3.0.0.beta8"
+gem "best_in_place"
 
 # VERSION AND DEPLOYMENT
 group :production do

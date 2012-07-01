@@ -17,7 +17,11 @@ class ReleasesController < ApplicationController
     @artist = Artist.find(params[:artist_id])
     @release = @artist.releases.find(params[:id])
     @releases = @artist.releases.all
-
+    if current_user.managing.first == @artist 
+      @manager = true
+    else
+      @manager = false
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @release }
