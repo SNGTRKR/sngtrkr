@@ -54,7 +54,7 @@ content_for :og_id, @artist.id.to_s
 	<h2 class="font-22 profile-name"><strong><%= @artist.name %></strong></h2>
 	<i class="icon-tag i-info" title="Genre"></i><% if @artist.genre? %><%= truncate((strip_tags @artist.genre || "" ), :length => 30) %><% else %><span class="light-gray">No genre set</span><% end %><br/>
 	<i class="icon-music i-info" title="Record Label"></i><% if @artist.label_name? %><%= truncate((strip_tags @artist.label_name || "" ), :length => 50) %><% else %><span class="light-gray">No label set</span><% end %><br/><br/>
-<div id="artist-bio"><% if @artist.bio? %><%= raw(truncate((strip_tags @artist.bio || "" ), :length => 520, :omission => "...<a href='#bio-full'>Read more</a>")) %><% else %><span class="light-gray">No biography set</span><% end %></div>
+<div id="artist-bio"><% if @artist.bio? %><%= raw(truncate((strip_tags @artist.bio || "" ), :length => 480, :omission => "...<a href='#bio-full'>Read more</a>")) %><% else %><span class="light-gray">No biography set</span><% end %></div>
 </div>
   <ul class="menu-user">
   <li class="left o-button trkr-o-pad font-13 buy-release instruct-font">ADD TRKR</li>
