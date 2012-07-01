@@ -79,9 +79,17 @@ margin:6px 0 31px 0;
 		      top:29px;
 		      text-align:center;
 	      }
+	      .buy-count-1 {
+		      left:136px;
+	      }
+	      .buy-count-2 {
+		      left:109px;
+	      }
+	      .buy-count-3 {
+		      left:83px;
+	      }
 	      .buy-list {
 		      position:relative;
-		      left:83px;
 		      top:44px;
 		      li {
 			      height:38px;
@@ -235,7 +243,10 @@ position:absolute;
 	right:-6px;
 }
 #tracklist {
+position:relative;
+	left:20px;
   height:60px;
+  width:227px;
   overflow-y: scroll;
   @extend .scrollbar;
 }
