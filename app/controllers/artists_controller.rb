@@ -136,10 +136,22 @@ class ArtistsController < ApplicationController
     end
   end
   
+  # Used to import a single artist at a time
   def import
     @artist = ArtistSubJob.single_import(params[:access_token], params[:fb_id], current_user.id)
     respond_to do |format|
       format.js
+    end
+  end
+  
+  # For first time users waiting for some initial artists to follow.
+  def first_suggestions
+    @user = current_user
+    @six = 'false'
+    @six = 'true' unless @user.suggested.count < 6
+    respond_to do |format|
+      format.js
+      format.json { render :json => @six }
     end
   end
   
