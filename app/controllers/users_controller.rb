@@ -106,7 +106,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update_attributes(params[:user])
         if !params[:user][:email]
-          notice = 'Success!Your changes have been saved.'
+          notice = 'Success! Your changes have been saved.'
         else
           notice = '<p>Success! Your changes have been saved. You must confirm your email address before it will register in the system. Please check your email now for a confirmation link.</p>'
         end
