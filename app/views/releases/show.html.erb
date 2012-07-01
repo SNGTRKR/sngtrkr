@@ -32,7 +32,7 @@
 <div id="release-info">
 	<h2 class="font-22 release-name"><strong>
   	<% if @manager %>
-  	<%= best_in_place [@artist, @release], :name, :type => :input %>
+  	<%= best_in_place [@artist, @release], :name, :type => :input, :class => 'form-text' %>
   	<% else %>
   	<%= @release.name %>
   	<% end %>
@@ -41,7 +41,7 @@
 	<i class="icon-tag i-info" title="Genre"></i>
 	<% if @release.genre? %>
   	<% if @manager %>
-  	<%= best_in_place [@artist, @release], :genre, :type => :input %>
+  	<%= best_in_place [@artist, @release], :genre, :type => :input, :class => 'form-text' %>
   	<% else %>
   	<%= @release.genre %>
   	<% end %>
@@ -49,7 +49,7 @@
 	<i class="icon-music i-info" title="Record Label"></i>
 	<% if @release.label_name? %>
   	<% if @manager %>
-  	<%= best_in_place [@artist, @release], :label_name, :type => :input %>
+  	<%= best_in_place [@artist, @release], :label_name, :type => :input, :class => 'form-text' %>
   	<% else %>
   	<%= @release.label_name %>
   	<% end %>
@@ -58,7 +58,7 @@
 	<% end %><br/>
 	<i class="icon-calendar i-info" title="Release Date"></i><strong>
   	<% if @manager %>
-  	 <%= best_in_place [@artist, @release], :date, :type => :date %>
+  	 <%= best_in_place [@artist, @release], :date, :type => :date, :class => 'form-text' %>
   	<% else %>
   	 <%= @release.date.strftime("#{Date.today.day.ordinalize} %B %Y ") %>
   	<% end %>
@@ -110,18 +110,10 @@
 <% else %>
 <div id="no-preview"><strong>No track preview available for this release.</strong></div><% end %>
 </div> <! -- release-i-player -->
-<% if current_user.managing.first != @artist %>
   <ul class="menu-user">
   <li class="left o-button signika-font norm-o-pad font-13 buy-release"><i class="icon-shopping-cart"></i>Buy</li>
   <li class="left o-button signika-font norm-o-pad font-13 share-release"><i class="icon-share-alt"></i>Share</li>
   </ul>
-<% else %>
-  <ul class="menu-artist">
-  <li class="left o-button signika-font norm-o-pad font-13 buy-release"><i class="icon-shopping-cart"></i>Buy</li>
-  <li class="left o-button signika-font norm-o-pad font-13 share-release"><i class="icon-share-alt"></i>Share</li>
-  <li class="left o-button signika-font norm-o-pad font-13"><i class="icon-edit"></i>Edit</li>
-  </ul>
-<% end %>
 </div><!-- release-info -->
 <div class="clear"></div>
 </div> <!-- release-right -->
