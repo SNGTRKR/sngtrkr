@@ -145,11 +145,13 @@ margin:6px 0 31px 0;
 				margin-bottom:3px;
 				line-height:1em;
 			}
+			.artist-release-name {
 			a {
 				color:$orange;
 			}
 			a:hover {
 				color:#000;
+			}
 			}
 		}
 		.menu-user {
@@ -238,10 +240,11 @@ position:absolute;
 	right:-6px;
 }
 #tracklist {
-position:relative;
-	left:20px;
-  height:60px;
-  width:227px;
+position:absolute;
+	left:21px;
+  height:80px;
+  width:228px;
+  top:-85px;
   overflow-y: scroll;
   @extend .scrollbar;
 }
