@@ -22,9 +22,10 @@
 		<a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 		<div id="wrapper">
 		<% if flash[:notice] or flash[:error] %>
-		<div id="email-confirm">
-  		<div id="confirm-container">
-  		  <%= flash[:notice] %>
+		<div id="flash-outer">
+  		<div id="flash-inner">
+  		  <div class="button" id="flash-dismiss"><i class="icon-remove"></i></div>
+  		  <%= raw flash[:notice] %>
   		</div>
 		</div>
 		<% end %>
