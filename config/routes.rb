@@ -56,6 +56,9 @@ SNGTRKR::Application.routes.draw do
     collection do
       get 'no_results', :action => 'no_results'
     end
+    collection do
+      get 'import/:fb_id/:access_token', :action => 'import'
+    end
     resources :releases do 
       member do 
         post 'rate'
