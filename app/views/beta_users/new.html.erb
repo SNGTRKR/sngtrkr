@@ -40,15 +40,6 @@
 <a href="mailto:info@sngtrkr.com" target="_blank"><li class="left"><%= image_tag "/images/trk-email.png", :alt => "Email" %></li></a>
 </div>
 <div class="clear"></div>
-<% if flash[:notice] %>
-<script language="Javascript">
-    <!--
-    $(document).ready(function(){
-	    alert ("Thank you for signing up to SNGTRKR beta, you will receive a confirmation email soon.")
-    });
-    //-->
-    </script>
-<% end %>
 <% if @beta_user.errors.any? %>
   <% @beta_user.errors.full_messages.each do |msg| %>
     <script language="Javascript">
