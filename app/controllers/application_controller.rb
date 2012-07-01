@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
     if Rails.env.production?
       {:host => "sngtrkr.com"}
     else
-      {}
+      {:host => 'localhost'}
     end
   end
 
@@ -44,4 +44,15 @@ class ApplicationController < ActionController::Base
       format.all { render nothing: true, status: 500}
     end
   end
+
+  def after_resending_confirmation_instructions_path_for(resource)
+            flash[:notice] = 'You still need to confirm your email change. A confirmation email was sent to <strong>tom.alan.dallimore@googlemail.com</strong>. Your email will not be changed until you complete 	this step!
+    		<div id="confirm-buttons">
+      		<div class="o-button font-13 signika-font norm-o-pad left">Resend confirmation</div>
+      	
+      		<div class="clear"></div>
+    		</div>'
+    		redirect_to :root
+  end
+
 end

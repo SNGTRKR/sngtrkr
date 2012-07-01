@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       redirect_to :root, :error => "You should not try to tamper with other users things..."
     end
   end
-
+  
   def index
     @users = User.limit(50).all
     respond_to do |format|
