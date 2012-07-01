@@ -134,6 +134,7 @@ margin:6px 0 31px 0;
 			@include border-radius(12px);
 			padding:17px;
 			line-height:1.7em;
+			
 			#no-preview {
 				position:absolute;
 				bottom:15px;
@@ -145,13 +146,15 @@ margin:6px 0 31px 0;
 				margin-bottom:3px;
 				line-height:1em;
 			}
+			.artist-release-name {
 			a {
 				color:$orange;
 			}
 			a:hover {
 				color:#000;
 			}
-		}
+			}
+			}
 		.menu-user {
 			list-style-type:none;
 			margin:15px 0 0 -14px;
@@ -178,6 +181,9 @@ margin:6px 0 31px 0;
 }
 .also-by {
 	margin-top:-2px;
+}
+.under-5 {
+	left:-42px;
 }
 .release-carousel {
 	padding: 5px 0 15px 33px; 
@@ -238,12 +244,13 @@ position:absolute;
 	right:-6px;
 }
 #tracklist {
-position:relative;
-	left:20px;
   height:60px;
-  width:227px;
+  width:248px;
   overflow-y: scroll;
   @extend .scrollbar;
+  ul {
+	  margin-left:21px;
+  }
 }
 .ajaxful-rating {
 	width:185px;

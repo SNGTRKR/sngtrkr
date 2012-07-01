@@ -11,22 +11,19 @@
 		    padding:15px 0 15px 0;
 		.button {
 		  @extend .o-button;
-		  @extend .norm-o-pad;
-		  padding-left: 30px;
+          height:25px;
+          width:31px;
+		  font-size:1.5em;
+		  line-height:26px;  
+		  text-align:center; 
+			position:absolute;
+			right:0px;
+			top:3px;
 			float:right;
-			top:5px;
-			div {
-				margin-right:15px;
-			}
 		}
 		a {
   		color:$orange;
   		font-weight: bold;
-		}
-		#flash-dismiss{
-  		font-size: 120%;
-  		padding: 0px 8px;
-  		margin-top:3px;
 		}
 	}
 }

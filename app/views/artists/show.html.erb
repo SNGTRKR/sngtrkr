@@ -57,7 +57,17 @@ content_for :og_id, @artist.id.to_s
 <div id="artist-bio"><% if @artist.bio? %><%= raw(truncate((strip_tags @artist.bio || "" ), :length => 480, :omission => "...<a href='#bio-full'>Read more</a>")) %><% else %><span class="light-gray">No biography set</span><% end %></div>
 </div>
   <ul class="menu-user">
-  <li class="left o-button trkr-o-pad font-13 buy-release instruct-font">ADD TRKR</li>
+  <li class="left o-button trkr-o-pad font-13 buy-release instruct-font">
+	  <% if user_signed_in?%>
+<% if current_user.following? @artist.id %>
+<%= link_to "REMOVE TRKR", unfollow_artist_path(@artist), :remote => true %>
+<% else %>
+<%= link_to "ADD TRKR", follow_artist_path(@artist), :remote => true %>
+<% end %>
+<% elsif %>
+<a href="<%= user_omniauth_authorize_path(:facebook) %>">LOGIN TO TRK</a>
+<% end %>
+  </li>
   <li class="left o-button signika-font norm-o-pad font-13 share-profile"><i class="icon-share-alt"></i>Share</li>
   </ul>
 </div> <!-- profile-right -->
