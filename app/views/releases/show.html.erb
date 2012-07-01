@@ -25,7 +25,7 @@
 <div class="release-rating font-13">
 <%= ratings_for(@release, :remote_options => {:url => rate_artist_release_path(@artist,@release)}) %>
 <div class="clear"></div>
-<span id="rating-txt"><%= @release.rates.count %> Fan Ratings</span>
+<span id="rating-txt"><%= @release.rates.count %> Fan Rating<% if @release.rates.count > 1 %>s<% else %><% end %></span>
 </div>
  </div>
 <div class="release-right right">
