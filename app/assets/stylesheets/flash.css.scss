@@ -1,28 +1,43 @@
-#flash-outer {
+.flash-outer {
   display: none;
-	position:relative;
+	position:absolute;
+	z-index: 200;
+	left:50%;
+	margin-left:-400px;
 	background:rgba(245,230,200,0.9);
 	height:auto;
+	width:800px;
+	@include border-radius(0px 0px 8px 8px);
   @include box-shadow(0px 3px 8px rgba(0,0,0,0.2));
 	#flash-inner {
 		    position:relative;
-		    width:895px;
+		    width:777px;
 		    margin:0 auto;
-		    padding:15px 0 15px 0;
+		    padding:10px 0 10px 0;
 		.button {
-		  @extend .o-button;
-          height:25px;
-          width:31px;
-		  font-size:1.5em;
+		  cursor: pointer;
+//		  @extend .o-button;
+      color:$gray;
+      //height:25px;
+      //width:31px;
+		  font-size:1em;
 		  line-height:26px;  
 		  text-align:center; 
 			position:absolute;
 			right:0px;
 			top:3px;
-			float:right;
+			float:left;
+  		opacity: 0.6;
 		}
 		a {
   		color:$orange;
+  		font-weight: bold;
+		}
+		p {
+  		opacity: 0.7;
+		  text-align: center;
+  		float:left;
+  		width: 95%;
   		font-weight: bold;
 		}
 	}
@@ -30,4 +45,8 @@
 
 #flash-outer-closed {
   height: 0px;
+}
+
+.flash-outer-success {
+	background:rgba(194, 255, 208,0.9);
 }
