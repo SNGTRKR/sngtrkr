@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120630211415) do
+ActiveRecord::Schema.define(:version => 20120701000659) do
 
   create_table "artists", :force => true do |t|
     t.string   "name"
@@ -186,6 +186,10 @@ ActiveRecord::Schema.define(:version => 20120630211415) do
     t.text     "fbid"
     t.integer  "leave_reason"
     t.date     "deleted_at"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
