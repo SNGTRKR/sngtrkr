@@ -15,7 +15,6 @@
 //= require fancy-box/jquery.fancybox
 //= require instant-search/instant-search
 //= require jplayer/jquery.jplayer
-//= require jplayer/jquery.jplayer.inspector
 //= require jplayer/jplayer.playlist
 //= require carousel/jquery.carousel-packed.js
 //= require jquery.purr
