@@ -79,7 +79,8 @@
     </div>
   </div>
 	  </div>
-<% end %>
+<% else %>
+<strong>No preview available for this release<% end %>
 </div>
 <% if current_user.managing.first != @artist %>
   <ul class="menu-user">
