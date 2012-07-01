@@ -114,13 +114,8 @@ margin:6px 0 31px 0;
 		text-align:center;
 			ul {
 			position:relative;
-			left:63px;
+			left:61px;
 			top:15px;
-			list-style-type:none;
-			font-size:2.3em;
-				li {
-					
-				}
 			}
 			#rating-txt {
 				position:relative;
@@ -249,4 +244,7 @@ position:relative;
   width:227px;
   overflow-y: scroll;
   @extend .scrollbar;
+}
+.ajaxful-rating {
+	width:185px;
 }
