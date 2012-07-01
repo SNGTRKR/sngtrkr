@@ -2,6 +2,7 @@ class PagesController < ApplicationController
 
   def home
     if(user_signed_in?)
+      flash.keep
       return redirect_to '/my_timeline'
     end
     # Used to auto log the user in.
@@ -32,6 +33,7 @@ class PagesController < ApplicationController
   
   def splash
     if(user_signed_in?)
+      flash.keep
       return redirect_to '/timeline'
     end
     render :layout => 'splash'
