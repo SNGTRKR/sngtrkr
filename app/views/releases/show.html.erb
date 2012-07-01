@@ -73,6 +73,11 @@
           <div class="jp-duration"></div>
         </div>
       </div>
+      <div class="jp-playlist">
+					<ul>
+						<li></li>
+					</ul>
+				</div>
       <div class="jp-no-solution">
         <span>Update Required</span>
         To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
@@ -165,14 +170,19 @@
 		<% if !@release.tracks.count.zero? %>
 		<script type="text/javascript">
     $(document).ready(function(){
-      $("#release_jplayer_1").jPlayer({
-        ready: function () {
-          $(this).jPlayer("setMedia", {
-//            m4a: "http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a",
-//            oga: "http://www.jplayer.org/audio/ogg/Miaow-07-Bubble.ogg",
-            m4a: "<%= @release.tracks.first.preview %>"
-          });
-        },
+        new jPlayerPlaylist({
+		jPlayer: "#release_jplayer_1",
+		cssSelectorAncestor: "#jp_container_1"
+	}, [
+	<% @release.tracks.ordered.each do |track| %>
+		{
+		
+			title:"<%= track.name %>",
+			m4a:"<%= track.preview %>"
+		},
+		<% end %>
+		
+	], {
         swfPath: "/js",
         supplied: "m4a, oga"
       });
