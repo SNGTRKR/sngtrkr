@@ -64,7 +64,7 @@ $(document).ready(function() {
       } else {
         $('#mini_search_results').html("")
         $.each(data, function(){ 
-          $('#mini_search_results').append("<li><a href=\"/artist/"+this.id+"\">"+this.name+"<br /><span>"+this.genre+"</span></a></li>");
+          $('#mini_search_results').append("<li><a href=\"/artists/"+this.id+"\">"+this.name+"<br /><span>"+this.genre+"</span></a></li>");
         });
       }
     })}

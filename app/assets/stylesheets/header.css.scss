@@ -38,6 +38,9 @@
         @extend .mini-search-common;
         margin:-15px 11px 0 0;
     }
+    .results:hover {
+      display: block;
+    }
     .results {
     display: none;
     position: relative;
