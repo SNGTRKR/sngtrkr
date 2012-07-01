@@ -1,12 +1,14 @@
 <% friend_trk_class ||= nil %>
 <% friend_untrk_class ||= nil %>
 <% if user_signed_in?%>
-<% if current_user.following? trk_artist.id %>
-<%= link_to unfollow_artist_path(trk_artist), :remote => true do %><div class="o-button trkr-o-pad artist-remove-o-pad right instruct-font font-13 <%=  "#{friend_untrk_class}" %>">REMOVE TRKR</div><% end %>
+  <% if current_user.following? trk_artist.id %>
+    <%= link_to unfollow_artist_path(trk_artist, :format => :json), :class => 'remove-trkr', :remote => true do %>
+      <div class="o-button trkr-o-pad artist-remove-o-pad right instruct-font font-13 <%=  "#{friend_untrk_class}" %>">REMOVE TRKR</div>
+    <% end %>
+  <% else %>
+    <%= link_to follow_artist_path(trk_artist), :class => 'add-trkr', :remote => true do %><div class="o-button trkr-o-pad right instruct-font font-13 <%=  "#{friend_trk_class}" %>">ADD TRKR</div><% end %>
+  <% end %>
 <% else %>
-<%= link_to follow_artist_path(trk_artist), :remote => true do %><div class="o-button trkr-o-pad right instruct-font font-13 <%=  "#{friend_trk_class}" %>">ADD TRKR</div><% end %>
-<% end %>
-<% elsif %>
-<a href="<%= user_omniauth_authorize_path(:facebook) %>"><div class="o-button trkr-o-pad right instruct-font font-13">
-	LOGIN TO TRK</div></a>
+  <a href="<%= user_omniauth_authorize_path(:facebook) %>"><div class="o-button trkr-o-pad right instruct-font font-13">
+  	LOGIN TO TRK</div></a>
 <% end %>
