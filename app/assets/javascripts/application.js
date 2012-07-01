@@ -18,6 +18,9 @@
 //= require jplayer/jquery.jplayer.inspector
 //= require jplayer/jplayer.playlist
 //= require carousel/jquery.carousel-packed.js
+//= require jquery.purr
+//= require best_in_place
+
 $(document).ready(function() {
   // Flash Dismissal
   $('#flash-outer').delay(300).slideDown(500,'easeInQuad');
