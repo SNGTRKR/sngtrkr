@@ -34,8 +34,7 @@
 	<h3 class="font-15 orange-txt artist-release-name"><%= link_to @artist.name, @artist %></h3>
 	<i class="icon-tag i-info" title="Genre"></i><% if @release.genre? %><%= truncate((strip_tags @release.genre || "" ), :length => 30) %><% else %><span class="light-gray">No genre set</span><% end %><br/>
 	<i class="icon-music i-info" title="Record Label"></i><% if @release.label_name? %><%= truncate((strip_tags @release.label_name || "" ), :length => 50) %><% else %><span class="light-gray">No label set</span><% end %><br/>
-	<i class="icon-calendar i-info" title="Release Date"></i><strong><%= @release.date.strftime("#{Date.today.day.ordinalize} %B %Y ") %></strong><br/><br/>
-	<i class="icon-list-ul i-info" title="Tracklistings"></i>Tracklisting:
+	<i class="icon-calendar i-info" title="Release Date"></i><strong><%= @release.date.strftime("#{Date.today.day.ordinalize} %B %Y ") %></strong>
 	<% if !@release.tracks.count.zero? %>
   <div id="release_jplayer_1" class="jp-jplayer"></div>
   <div id="release-i-player">
@@ -62,6 +61,8 @@
           <div class="jp-duration"></div>
         </div>
       </div>
+      <div id="tracklisting">
+      <span><i class="icon-list-ul i-info" title="Tracklistings"></i>Tracklisting:</span>
       	<div class="scrollbar">
 	<div id="tracklist">
       <div class="jp-playlist">
@@ -71,6 +72,7 @@
 				</div>
 	</div>
       	</div>
+      </div>
       <div class="jp-no-solution">
         <span>Update Required</span>
         To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
@@ -97,8 +99,8 @@
 <div class="clear"></div>
 </div>
 <h4 class="signika-txt font-25 also-by">Also by <%= link_to @artist.name, @artist %></h4>
-<div class="release-carousel">
-<ul class="release-list">
+<div class="release-carousel <% if @releases.count < 5 %>under-5<% else %><% end %>">
+<ul class="release-list" >
 	<% @releases.each do |release|
   	 if release == @release 
     	 next

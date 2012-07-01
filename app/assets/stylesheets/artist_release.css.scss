@@ -181,6 +181,9 @@ margin:6px 0 31px 0;
 .also-by {
 	margin-top:-2px;
 }
+.under-5 {
+	left:-42px;
+}
 .release-carousel {
 	padding: 5px 0 15px 33px; 
 	position: relative;
@@ -239,14 +242,19 @@ position:absolute;
 .next {
 	right:-6px;
 }
-#tracklist {
+#tracklisting {
 position:absolute;
 	left:21px;
-  height:80px;
+	  top:-85px;
+	  span {
+		  margin-left:-21px;
+	  }
+#tracklist {
+  height:60px;
   width:228px;
-  top:-85px;
   overflow-y: scroll;
   @extend .scrollbar;
+}
 }
 .ajaxful-rating {
 	width:185px;
