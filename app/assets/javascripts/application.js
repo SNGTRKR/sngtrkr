@@ -47,7 +47,7 @@ $(document).ready(function() {
 		height : 315,
 		autoSize	: false
 	});
-	$("#artist-info a").fancybox({
+	$("#artist-bio a").fancybox({
 		autoScale	: true,
 	});
 	$("#manage-top a").fancybox({
