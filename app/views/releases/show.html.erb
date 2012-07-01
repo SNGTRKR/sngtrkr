@@ -44,6 +44,17 @@
 	<i class="icon-calendar i-info" title="Release Date"></i><strong><%= @release.date.strftime("#{Date.today.day.ordinalize} %B %Y ") %></strong><br/><br/>
 	<i class="icon-list-ul i-info" title="Tracklistings"></i>Tracklisting:
 	<% if !@release.tracks.count.zero? %>
+	<div class="scrollbar">
+	<div id="tracklist">
+  	<% 
+  	i = 1
+  	@release.tracks.ordered.each do |track| %>
+  	<p><%= i %> - <%= track.name %></p>
+  	<% 
+  	i += 1
+  	end %>
+	</div>
+	</div>
   <div id="release_jplayer_1" class="jp-jplayer"></div>
   <div id="release-i-player">
   <div id="jp_container_1" class="jp-audio">
