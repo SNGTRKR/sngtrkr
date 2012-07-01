@@ -135,15 +135,12 @@ class UsersController < ApplicationController
   end
 
   def destroy_with_reason
+    Rails.logger.info(params)
     @user = User.find(params[:id])
-    @user.update_attributes(params[:user])
+    @user.leave_reason = params[:leave_reason]
     @user.soft_delete
-    #set_flash_message :notice, :destroyed
-    sign_out_and_redirect(@user)
-    respond_to do |format|
-      format.html { redirect_to users_url }
-      format.json { head :no_content }
-    end
+    sign_out(@user)
+    redirect_to :root, :notice => "Your account has been removed from the site. Note that we will retain your data privately, so if you change your mind, you can rejoin anytime. If you wish to have your data completely removed, please email support@sngtrkr.com"
   end
 
   def manage

@@ -2,7 +2,7 @@
 	<div class="goodbye signika-txt">
 		Is this goodbye?
 	</div>
-  <%= form_for(@user, :url => { :action => :destroy_with_reason }) do |f| %>
+  <%= form_for(@user, :url => { :action => :destroy_with_reason }, :method => :post) do |f| %>
 	<div id="delete-txt-1">
 		We are sad to see you leave us, please take a few minutes to say why you’re leaving.
 		<div id="delete-reason"><%= select_tag(:leave_reason, options_for_select([['Please select an option',0],['Too complicated', 1], ['Not enough information', 2], ['Too many emails', 3], ['Inaccurate information', 4], 
