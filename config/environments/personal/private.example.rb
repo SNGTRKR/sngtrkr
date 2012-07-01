@@ -9,7 +9,7 @@ SNGTRKR::Application.configure do
     :address              => "smtp.gmail.com",
     :port                 => 587,
     :user_name             => 'bessey@gmail.com',
-    :password             => 'rubberduckybigteeth132',
+    :password             => '',
     :authentication       => 'plain',
     :enable_starttls_auto => true
   }
