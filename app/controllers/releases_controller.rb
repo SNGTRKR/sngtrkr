@@ -106,4 +106,11 @@ class ReleasesController < ApplicationController
     
   end
   
+  def rate
+    @artist = Artist.find(params[:artist_id])
+    @release = @artist.releases.find(params[:id])
+    @release.rate(params[:stars], current_user, params[:dimension])
+    render :update, :layout => false
+  end
+  
 end

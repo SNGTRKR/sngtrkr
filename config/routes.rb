@@ -56,8 +56,17 @@ SNGTRKR::Application.routes.draw do
     collection do
       get 'no_results', :action => 'no_results'
     end
-    resources :releases
+    resources :releases do 
+      member do 
+        post 'rate'
+      end
+    end
     resources :manages
+  end
+  resources :releases do 
+    member do 
+      post 'rate'
+    end
   end
 
   # Allows us to have intuitive /artist/1/follow URLs that actually deal with the
