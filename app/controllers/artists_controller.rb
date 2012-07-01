@@ -135,4 +135,12 @@ class ArtistsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def import
+    @artist = ArtistSubJob.single_import(params[:access_token], params[:fb_id], current_user.id)
+    respond_to do |format|
+      format.js
+    end
+  end
+  
 end
