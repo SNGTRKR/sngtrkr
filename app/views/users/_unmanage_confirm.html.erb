@@ -9,7 +9,7 @@
 		<strong>If you need help getting started or managing your artist account, please visit our help page or contact us at <a href="mailto:support@sngtrkr.com" target="_blank">support@sngtrkr.com</a>.</strong>
 	</div>
 	<div class="unmanage-buttons">
-	<%= link_to user_manage_path(@user.managing.first), :method => :delete do %><div class="o-button norm-o-pad left signika-font font-13 unmanage-artist-button">Yes<% end %>
+	<%= link_to user_manage_path(@user,@user.manage.first), :method => :delete do %><div class="o-button norm-o-pad left signika-font font-13 unmanage-artist-button">Yes<% end %>
 					
 				</div>
 		<a href="javascript:$.fancybox.close();"><div class="o-button norm-o-pad right signika-font unmanage-artist-cancel font-13">
