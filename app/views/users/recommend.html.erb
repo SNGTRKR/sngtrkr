@@ -1,19 +1,62 @@
 <% content_for :title do %>Artist recommendations<% end %>
 <% content_for :description do %>We noticed you’ve already liked a few artists on Facebook, so decided to recommend some you might want to track. With one simple click, it’s easy to add and remove artists to your tracking timeline.<% end %>
+<% content_for :extra_head do  javascript_include_tag "/jquery-rotate-compressed.2.2" end %>
 <div class="content content-pad-160-bottom">
 <div class="content-top">
 <h2 class="signika-txt top-header font-35">Here are a few artists you already like, just to get you started...</h2>	
 <div class="content-top-right">
 We noticed you’ve already liked a few artists on Facebook, so decided to recommend some you might want to TRK. 
 With one simple click, it’s easy to add and remove artists to your TRKing timeline.<br/><br/>Continue to the home page, 
-where you will able to view your personalized timeline of releases, new and old...
+where you will able to view your personalised timeline of releases, new and old...
 </div>	
 </div>
 <div class="clear"></div>
 	<div class="recommended-artists-outer other-recommend-nudge">
 		<div class="recommended-artists">
 			<ul>
+  		<% if !@first_time or @user.suggested.count > 6 %>
 				<%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 6] %>
-				</ul>
-		</div></div>
-<div class="recommend-continue"><div class="o-button norm-o-pad right signika-font font-13"><a href="/">Continue</a></div></div>
+    		<% else %>
+      		<h2 class="signika-txt font-35 center-txt">Please wait...</h2><br/>
+      		<%= image_tag "/images/loading.png", :alt => "Loading", :id => "loading-image" %>
+      		<h3><div class="loading-txt">...while we work our magic and find which artists you’ve already liked on Facebook.</div></h3>
+      		<script type="text/javascript">
+        		$(document).ready(function() {
+        		var angle = 0;
+        		setInterval(function(){
+          		angle+=4;
+          		$("#loading-image").rotate(angle);
+          		},25);
+        		});
+      		</script>		  
+  		<% end %>
+			</ul>
+		</div>
+	</div>
+<div class="recommend-continue">
+  <div class="o-button norm-o-pad right signika-font font-13">
+    <a href="/">Continue</a>
+  </div>
+</div>
+<%= render 'shared/artist_suggestion_replace' %>
+<% if @user.suggested.count < 6 %>
+<script>
+var first_sugg, times = 1;
+function load_suggestions(data){
+    // We have confirmation that we have 6 suggestions to display, so we can actually load the html for them now.
+  if(data == true){ 
+    $.get('/artists/first_suggestions.js');
+    int=window.clearInterval(first_sugg)
+  } else if(times == 60) {
+    // We have tried to load suggestions for quite a while now, giving up.
+    int=window.clearInterval(first_sugg)
+  }
+  times++;
+}
+$(document).ready(function(){
+  var i = <%= @user.suggested.count %>, j = 0;
+  var brk;
+  first_sugg = setInterval( "$.get('/artists/first_suggestions.json', function(data){ load_suggestions(data) });",1000);
+});
+</script>
+<% end %>
