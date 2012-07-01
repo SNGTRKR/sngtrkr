@@ -24,7 +24,7 @@ SNGTRKR::Application.routes.draw do
     mount RailsAdmin::Engine => '/rails', :as => 'rails_admin' # Feel free to change '/admin' to any namespace you need.
   end
 
-  devise_for :users, :controllers => { :registrations => "users/registrations", :omniauth_callbacks => "users_controller/omniauth_callbacks" }
+  devise_for :users, :controllers => { :registrations => "users/registrations", :omniauth_callbacks => "users_controller/omniauth_callbacks"}
   devise_scope :user do
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   end
@@ -56,8 +56,17 @@ SNGTRKR::Application.routes.draw do
     collection do
       get 'no_results', :action => 'no_results'
     end
-    resources :releases
+    resources :releases do 
+      member do 
+        post 'rate'
+      end
+    end
     resources :manages
+  end
+  resources :releases do 
+    member do 
+      post 'rate'
+    end
   end
 
   # Allows us to have intuitive /artist/1/follow URLs that actually deal with the

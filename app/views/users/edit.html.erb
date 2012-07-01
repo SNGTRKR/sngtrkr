@@ -101,9 +101,11 @@
 			</div>
 		</div>
 	</div>
-		<div id="delete-confirmation">
+	<div id="delete-confirmation">
 		<%= render :partial => 'delete_confirm' %>
 	</div>
+	<% if @user.manager? %>
 	<div id="unmanage-confirmation">
-	<%= render :partial => 'unmanage_confirm' %>
+  	<%= render :partial => 'unmanage_confirm' %>
 	</div>
+	<% end %>

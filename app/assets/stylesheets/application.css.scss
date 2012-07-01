@@ -5,6 +5,7 @@
 //= require jquery.fancybox
 //= require font-awesome
 //= require jquery-ui-1.8.21.custom
+//= require ajaxful_rating
 @import "compass/reset";
 @import "compass/css3/border-radius";
 @import "compass/css3/opacity";
@@ -71,8 +72,23 @@ body{
         height:25px;
         margin-right:5px;
     }
-/* Email Confirm CSS */
-@import "email_confirm.css.scss";
+/* Scroll bar styling */
+.scrollbar {
+  ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 1px 6px rgba(0,0,0,0.3);
+      border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: rgba(0,0,0,0.3);
+  }
+}
+/* Flash (System Notification)  CSS */
+@import "flash.css.scss";
 /* Buttons CSS*/
 @import "buttons.css.scss";
 /* Header CSS*/

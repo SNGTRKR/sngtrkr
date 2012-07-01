@@ -9,16 +9,16 @@ margin:6px 0 31px 0;
 			@include box-shadow(0px 0px 8px rgba(0,0,0,0.55));
 			@include border-radius(12px);
 			overflow:hidden;
-			      #opac-50 {
+      #opac-50 {
 	      position:absolute;
 	      z-index:1;
 	      height:310px;
-			width:310px;
+  			width:310px;
 	      @include border-radius(12px);
 	      background:rgba(0,0,0,0.75);
 	      display:none;
       }
-                #share-release {
+      #share-release {
 	      position:absolute;
 	      height:310px;
 	      width:310px;
@@ -233,4 +233,9 @@ position:absolute;
 }
 .next {
 	right:-6px;
+}
+#tracklist {
+  height:60px;
+  overflow-y: scroll;
+  @extend .scrollbar;
 }
