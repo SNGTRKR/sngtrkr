@@ -105,7 +105,12 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, :notice => 'User was successfully updated.' }
+        if !params[:user][:email]
+          notice = 'Success!Your changes have been saved.'
+        else
+          notice = '<p>Success! Your changes have been saved. You must confirm your email address before it will register in the system. Please check your email now for a confirmation link.</p>'
+        end
+        format.html { redirect_to edit_user_path(@user), :flash => { :success => notice } }
         format.json { head :no_content }
       else
         format.html { render :action => "edit" }
@@ -129,7 +134,7 @@ class UsersController < ApplicationController
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to users_url }
+      format.html { redirect_to users_url, :notice => '<p>Account successfully destroyed.</p>' }
       format.json { head :no_content }
     end
   end
@@ -140,19 +145,11 @@ class UsersController < ApplicationController
     @user.leave_reason = params[:leave_reason]
     @user.soft_delete
     sign_out(@user)
-    redirect_to :root, :notice => "Your account has been removed from the site. Note that we will retain your data privately, so if you change your mind, you can rejoin anytime. If you wish to have your data completely removed, please email support@sngtrkr.com"
+    redirect_to :root, :notice => "<p>Your account has been removed from the site. Note that we will retain your data privately, so if you change your mind, you can rejoin anytime. If you wish to have your data completely removed, please email support@sngtrkr.com</p>"
   end
 
   def manage
     current_user.manage_artist params[:id]
-    respond_to do |format|
-      format.html { redirect_to artist_path(params[:id])}
-      format.json { render :json => { :response => :success } }
-    end
-  end
-
-  def unmanage
-    current_user.unmanage_artist params[:id]
     respond_to do |format|
       format.html { redirect_to artist_path(params[:id])}
       format.json { render :json => { :response => :success } }
