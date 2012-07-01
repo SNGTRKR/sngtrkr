@@ -105,7 +105,12 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, :notice => 'User was successfully updated.' }
+        if !params[:user][:email]
+          notice = 'Success!Your changes have been saved.'
+        else
+          notice = '<p>Success! Your changes have been saved. You must confirm your email address before it will register in the system. Please check your email now for a confirmation link.</p>'
+        end
+        format.html { redirect_to edit_user_path(@user), :flash => { :success => notice } }
         format.json { head :no_content }
       else
         format.html { render :action => "edit" }

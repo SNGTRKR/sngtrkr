@@ -7,6 +7,7 @@ class PagesController < ApplicationController
     # Used to auto log the user in.
     require 'koala'
     @graph = Koala::Facebook::API.new
+    #flash[:success] = "<p>I done a success!</p>"
   end
 
   def manage
