@@ -9,10 +9,12 @@ r = Role.create(:name => 'Admin')
 u = User.new(:first_name => 'Billy', :last_name => 'Dallimore', :fbid => "660815460", :email => "tom.alan.dallimore@googlemail.com",:password => 'test42343egysfdf', :last_sign_in_at => Time.now, 
   :email_frequency => 1)
 u.roles = [r]
+u.skip_confirmation!
 u.save
 
 u = User.new(:first_name => 'Matt', :last_name => 'Bessey', :fbid => "757635703", :email => "bessey@gmail.com",:password => 'test42343egy20df', :last_sign_in_at => Time.now)
 u.roles = [r]
+u.skip_confirmation!
 u.save
 User.create!(:first_name => 'Barry', :last_name => 'Smith', :fbid => "123456789", :email => "test@example.com",:password => 'test42343egy76df', :last_sign_in_at => Time.now, 
   :email_frequency => 1)
