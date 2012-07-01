@@ -14,6 +14,7 @@
 		<meta name="description" content="<%= yield :description %>">
 		<link rel="icon" type="image/ico" href="<%= asset_path "/images/icon.png" %>" >
 		<%= render :partial => 'layouts/all_js_css' %>
+		<%= yield :extra_head %>
 	</head>
 	<body>
 		<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
@@ -88,6 +89,19 @@
 				</div>
 			</div>
 		</div>
-
+		<script type="text/javascript">
+    	var _gaq = _gaq || [];
+    	_gaq.push(['_setAccount', 'UA-32097152-1']);
+    	_gaq.push(['_trackPageview']);
+    
+    	(function() {
+    		var ga = document.createElement('script');
+    		ga.type = 'text/javascript';
+    		ga.async = true;
+    		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    		var s = document.getElementsByTagName('script')[0];
+    		s.parentNode.insertBefore(ga, s);
+    	})(); 
+    </script>
 	</body>
 </html>
