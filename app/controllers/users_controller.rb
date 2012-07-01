@@ -182,12 +182,18 @@ class UsersController < ApplicationController
 
   def unsuggest
     current_user.unsuggest_artist params[:id]
-    redir :id
+    respond_to do |format|
+      format.html
+      format.json { render :json => { :response => :success } }
+    end
   end
 
   def suggest
     current_user.suggest_artist params[:id]
-    redir :id
+    respond_to do |format|
+      format.html
+      format.json { render :json => { :response => :success } }
+    end
   end
 
   # This page contains a list of all the Artist page's the logged in user controls.
@@ -214,6 +220,11 @@ class UsersController < ApplicationController
 
   def recommend
     @user = current_user
+    if @user.sign_in_count == 1
+      @first_time = true
+    else
+      @first_time = false
+    end
     respond_to do |format|
       format.html
       format.json
