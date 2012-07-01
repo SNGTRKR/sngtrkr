@@ -131,6 +131,10 @@ margin:6px 0 31px 0;
 			@include border-radius(12px);
 			padding:17px;
 			line-height:1.7em;
+			#no-preview {
+				position:absolute;
+				bottom:15px;
+			}
 			.i-info {
 				margin-right:10px;
 			}
