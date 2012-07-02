@@ -23,10 +23,12 @@
 		<a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 		<div id="wrapper">
 		<% if flash[:notice] or flash[:error] or flash[:success] %>
-		<div class="flash-outer <% if flash[:success] then %>flash-outer-success<% end %>">
+		<div class="flash-outer <% if flash[:success] then %>flash-outer-success<% end %>" <% if flash[:disappear_after] then %>data-disappear-after="<%= flash[:disappear_after] %>"<% end %>>
   		<div id="flash-inner">
+  		  <p>
   		  <%= raw flash[:notice] %>
   		  <%= raw flash[:success] %>
+  		  </p>
   		  <div class="button" id="flash-dismiss"><i class="icon-remove"></i></div>
     		<div class="clear"></div>
   		</div>

@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   before_filter :self_only, :only => [:edit, :manage, :managing, :unmanage, :friends]
+  
   # This action is to ensure a user cannot simply hack a URL to view another user's area
   def self_only
     @user = current_user
@@ -108,7 +109,7 @@ class UsersController < ApplicationController
         if !params[:user][:email]
           notice = 'Success! Your changes have been saved.'
         else
-          notice = '<p>Success! Your changes have been saved. You must confirm your email address before it will register in the system. Please check your email now for a confirmation link.</p>'
+          notice = 'Success! Your changes have been saved. You must confirm your email address before it will register in the system. Please check your email now for a confirmation link.'
         end
         format.html { redirect_to edit_user_path(@user), :flash => { :success => notice } }
         format.json { head :no_content }
@@ -134,7 +135,7 @@ class UsersController < ApplicationController
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to users_url, :notice => '<p>Account successfully destroyed.</p>' }
+      format.html { redirect_to users_url, :notice => 'Account successfully destroyed.' }
       format.json { head :no_content }
     end
   end

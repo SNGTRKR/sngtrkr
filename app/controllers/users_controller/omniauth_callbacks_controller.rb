@@ -20,7 +20,8 @@ class UsersController::OmniauthCallbacksController < Devise::OmniauthCallbacksCo
     session["friends"] = app_friends
     session["friend_ids"] = app_friend_ids
     if @user.persisted?
-      flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Facebook"
+      flash[:notice] = I18n.t("devise.omniauth_callbacks.success", :kind => "Facebook")
+      flash[:disappear_after] = 3000
       sign_in_and_redirect @user, :event => :authentication
     else
       session["devise.facebook_data"] = request.env["omniauth.auth"]
