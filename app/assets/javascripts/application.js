@@ -26,6 +26,10 @@ $(document).ready(function() {
   $('#flash-dismiss').click(function(){
     $('.flash-outer').slideUp(500,'easeInQuad');
   })
+  if($('.flash-outer').data('disappear-after')){
+    console.log("delay detected");
+    $('.flash-outer').delay($('.flash-outer').data('disappear-after')).slideUp(1000,'easeInQuad');
+  }
 
   // Release rating.
   $('a').live('ajax:complete', function(xhr, status) {
