@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   before_filter :self_only, :only => [:edit, :manage, :managing, :unmanage, :friends]
+  
   # This action is to ensure a user cannot simply hack a URL to view another user's area
   def self_only
     @user = current_user
@@ -108,7 +109,7 @@ class UsersController < ApplicationController
         if !params[:user][:email]
           notice = 'Success! Your changes have been saved.'
         else
-          notice = '<p>Success! Your changes have been saved. You must confirm your email address before it will register in the system. Please check your email now for a confirmation link.</p>'
+          notice = 'Success! Your changes have been saved. You must confirm your email address before it will register in the system. Please check your email now for a confirmation link.'
         end
         format.html { redirect_to edit_user_path(@user), :flash => { :success => notice } }
         format.json { head :no_content }
@@ -134,7 +135,7 @@ class UsersController < ApplicationController
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to users_url, :notice => '<p>Account successfully destroyed.</p>' }
+      format.html { redirect_to users_url, :notice => 'Account successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -168,7 +169,6 @@ class UsersController < ApplicationController
     current_user.follow_artist params[:id]
     current_user.unsuggest_artist params[:id]
     @artist = Artist.find(current_user.suggested[5].id) rescue nil
-    @artist ||= Artist.find(current_user.suggested.last.id) rescue nil
     @tracked_artist = Artist.find(params[:id])
     respond_to do |format|
       format.html { redirect_to artist_path(params[:id])}
@@ -179,9 +179,12 @@ class UsersController < ApplicationController
 
   def unsuggest
     current_user.unsuggest_artist params[:id]
+    @artist = Artist.find(current_user.suggested[5].id) rescue nil
+    @tracked_artist = Artist.find(params[:id])
     respond_to do |format|
-      format.html
-      format.json { render :json => { :response => :success } }
+      format.html { redirect_to artist_path(params[:id])}
+      format.json { render("artists/show.json") }
+      format.js { render("artists/show.js") }
     end
   end
 

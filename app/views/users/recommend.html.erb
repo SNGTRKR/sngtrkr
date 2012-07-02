@@ -38,25 +38,25 @@ where you will able to view your personalised timeline of releases, new and old.
     <a href="/">Continue</a>
   </div>
 </div>
-<%= render 'shared/artist_suggestion_replace' %>
-<% if @user.suggested.count < 6 %>
 <script>
-var first_sugg, times = 1;
-function load_suggestions(data){
-    // We have confirmation that we have 6 suggestions to display, so we can actually load the html for them now.
-  if(data == true){ 
-    $.get('/artists/first_suggestions.js');
-    int=window.clearInterval(first_sugg)
-  } else if(times == 60) {
-    // We have tried to load suggestions for quite a while now, giving up.
-    int=window.clearInterval(first_sugg)
+  <% if @user.suggested.count < 6 %>
+  var first_sugg, times = 1;
+  function load_suggestions(data){
+      // We have confirmation that we have 6 suggestions to display, so we can actually load the html for them now.
+    if(data == true){ 
+      $.get('/artists/first_suggestions.js');
+      int=window.clearInterval(first_sugg)
+    } else if(times == 60) {
+      // We have tried to load suggestions for quite a while now, giving up.
+      int=window.clearInterval(first_sugg)
+    }
+    times++;
   }
-  times++;
-}
-$(document).ready(function(){
-  var i = <%= @user.suggested.count %>, j = 0;
-  var brk;
-  first_sugg = setInterval( "$.get('/artists/first_suggestions.json', function(data){ load_suggestions(data) });",5000);
-});
+  $(document).ready(function(){
+    artist_suggestion_replace();
+    var i = <%= @user.suggested.count %>, j = 0;
+    var brk;
+    first_sugg = setInterval( "$.get('/artists/first_suggestions.json', function(data){ load_suggestions(data) });",5000);
+  });
+  <% end %>
 </script>
-<% end %>

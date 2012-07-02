@@ -30,7 +30,7 @@ SNGTRKR::Application.routes.draw do
   
   resources :timeline
 
-  match '/my_timeline' => "Users#timeline"
+  match '/tl' => "Users#timeline"
   resources :users, :except =>[:index] do
     member do
       get 'unmanage'

@@ -57,7 +57,7 @@
 	<div class="clear"></div>
 	<div id="track-num-search">
 		<div class="font-15 no-trk">
-			<strong><%= @user.following.count %> TRKed Artists</strong>
+			<strong><%= @user.following.count %> TRKED Artists</strong>
 		</div>
 		<div class="artist-trkr-list-search">
 			<input type="text" id="filter" placeholder="Search TRKRs..."/>
@@ -101,5 +101,7 @@
 		</div>
 		<% end %>
 	</div>
-	<%= render :partial => 'shared/artist_suggestion_replace' %>
+	<script>
+  	artist_suggestion_replace();
+	</script>
 	<%= render :partial => 'shared/fb_async' %>

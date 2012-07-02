@@ -20,12 +20,31 @@
 //= require jquery.purr
 //= require best_in_place
 
+function artist_suggestion_replace(){
+	$('a.add-trkr, a.ignore-trk-artist').bind('ajax:complete', function() {
+		// Hide the suggestion itself
+		console.log("Successfully Trked Artist")
+		$(this).closest('li').fadeOut(300);
+	});
+  $('a.untrk-artist').bind('ajax:complete', function() {
+		console.log("Successfully Untrked Artist")
+		$(this).closest('li').fadeOut(300);
+	});
+	// Disables buttons by hiding them after they are clicked.
+	$('a.add-trkr, a.untrk-artist, a.ignore-trk-artist').click(function(){$(this).hide()});
+
+}
+
 $(document).ready(function() {
   // Flash Dismissal
   $('.flash-outer').delay(300).slideDown(500,'easeInQuad');
   $('#flash-dismiss').click(function(){
     $('.flash-outer').slideUp(500,'easeInQuad');
   })
+  if($('.flash-outer').data('disappear-after')){
+    console.log("delay detected");
+    $('.flash-outer').delay($('.flash-outer').data('disappear-after')).slideUp(1000,'easeInQuad');
+  }
 
   // Release rating.
   $('a').live('ajax:complete', function(xhr, status) {
