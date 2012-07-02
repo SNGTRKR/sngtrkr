@@ -8,18 +8,22 @@ content_for :og_id, @artist.id.to_s
 <% content_for :title do %><%= @artist.name %> information and releases 2012<% end %>
 <div class="content content-pad-187">
 <% if can? :manage, Resque %>
-<div class="super-admin-field">
-<strong>Admin Box</strong>
+<div class="super-admin">
 <%= form_for @artist do |f| %>
+<div class="ignore">
   <% if !@artist.ignore? %>
     <%= f.hidden_field :ignore, :value => true %>
-    <%= f.submit "Ignore Artist" %>
+    <%= f.submit :submit do %><i class="icon-ban-circle"></i><% end %>
   <% else %>
     <%= f.hidden_field :ignore, :value => false %>
     <%= f.submit "Unignore Artist" %>
+
   <% end %>
+  </div>
 <% end %>
-<%= link_to "Edit Artist", edit_artist_path(@artist) %>
+<div class="edit">
+<%= link_to edit_artist_path(@artist) do %><i class="icon-edit"></i><% end %>
+</div>
 </div>
 <% end %>
 <div id="artist-profile">
@@ -67,8 +71,8 @@ content_for :og_id, @artist.id.to_s
 <div class="profile-right right">
 <div id="profile-info">
 	<h2 class="font-22 profile-name"><strong><%= @artist.name %></strong></h2>
-	<i class="icon-tag i-info" title="Genre"></i><% if @artist.genre? %><%= @artist.genre %><% else %><span class="light-gray">No genre set</span><% end %><br/>
-	<i class="icon-music i-info" title="Record Label"></i><% if @artist.label_name? %><%= truncate((strip_tags @artist.label_name || "" ), :length => 50) %><% else %><span class="light-gray">No label set</span><% end %><br/><br/>
+	<i class="icon-music i-info" title="Genre"></i><% if @artist.genre? %><%= @artist.genre %><% else %><span class="light-gray">No genre set</span><% end %><br/>
+	<i class="icon-tag i-info" title="Record Label"></i><% if @artist.label_name? %><%= truncate((strip_tags @artist.label_name || "" ), :length => 50) %><% else %><span class="light-gray">No label set</span><% end %><br/><br/>
 <div id="artist-bio"><% if @artist.bio? %><%= raw(truncate((strip_tags @artist.bio || "" ), :length => 480, :omission => "...<a href='#bio-full'>Read more</a>")) %><% else %><span class="light-gray">No biography set</span><% end %></div>
 </div>
   <ul class="menu-user">
@@ -136,6 +140,17 @@ $(document).ready(function(){
 			}).mouseout(function(){
 				$(".dropdownContain").stop().fadeOut();
 			});
+			$(".edit").mouseover(function(){
+				$('.edit').stop().animate({left : 60}, "slow");
+			}).mouseout(function(){
+				$('.edit').stop().animate({left : 0}, "slow");
+			});
+			$(".ignore").mouseover(function(){
+				$('.ignore').stop().animate({left : 60}, "slow");
+			}).mouseout(function(){
+				$('.ignore').stop().animate({left : 0}, "slow");
+			});
+				
 					$(".share-release").click(function() {
 			$(this).closest(".each-release").find('.release-info').animate({bottom : -100}, "slow");
 			$(this).closest(".each-release").find('.release-menu').animate({bottom : -25}, "slow");
