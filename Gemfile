@@ -33,10 +33,10 @@ gem 'capistrano'
 
 # BACKGROUND TASKS
 gem 'redis'
-gem 'resque'
+gem "resque", "~> 1.20.0"
 gem 'whenever', :require => false
 
-gem "paperclip", "~> 3.0"
+gem "paperclip"
 
 # SCRAPING GEMS
 gem 'rbrainz'
@@ -61,7 +61,7 @@ end
 gem 'jquery-rails'
 gem 'jquery_datepicker'
 
-gem "koala", "~> 1.4.0"
+gem "koala"
 
 # Authentication
 gem 'devise'

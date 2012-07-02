@@ -75,3 +75,26 @@
       }
     }
   }
+  
+// Facebook search results
+.facebook-result-single{
+  height: 100px;
+  overflow-y: hidden;
+  padding: 5px;
+  margin:0px 10px 0px 10px;
+  img {
+    float:left;
+    padding: 5px;
+  }
+  .name{
+    font-weight: bold;
+    font-size: 1.5em;
+  }
+  .name:hover{
+    color:$orange;
+    cursor: pointer;
+  }
+  div {
+    padding: 5px;
+  }
+}
