@@ -134,7 +134,6 @@ margin:6px 0 31px 0;
 			@include border-radius(12px);
 			padding:17px;
 			line-height:1.7em;
-			
 			#no-preview {
 				position:absolute;
 				bottom:15px;
@@ -191,10 +190,10 @@ margin:6px 0 31px 0;
 	position:relative;
     margin:3px 10px 0 10px;
     a {
-	    color:#000;
+	    color:$gray;
     }
     a:hover {
-	    color:$orange;
+	    color:#fff;
     }
     div {
 	    height:115px;
