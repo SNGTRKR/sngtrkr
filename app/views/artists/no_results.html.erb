@@ -28,24 +28,28 @@
 	</div>
 	-->
       </div>
+  </div>
+  <div class="clear"></div>
   	<p>Are any of these the artist you're after? We found them on facebook. They aren't in the SNGTRKR database yet, so if you think one of them is the artist you're looking for feel free to add them!</p>
+  	<br />
   	<div id="facebook-search-results">
-    	Facebook Results
+    	FACEBOOK AJAX LOADER GOES HERE
   	</div> 
     <script>
     <% content_for :fb_js do %>
-    FB.api("search/?q=<%= CGI::escape(@search) %>&fields=id,picture,description,name,bio&type=page&limit=10",function(pages){
+    FB.api("search/?q=<%= CGI::escape(@search) %>&fields=id,picture,description,name,bio,genre,likes,record_label,category&type=page&limit=10",function(pages){
       $('#facebook-search-results').html("");
       $.each(pages['data'],function(){
+        if(this['category'] != "Musician/band") return true;
         if(this['bio'] == null) var bio = this['description'];
         else var bio = this['bio'];
-        $('#facebook-search-results').append("<div class=\"facebook-result-single\"><img src=\""+this['picture']+"\"><span id=\"name\" data-fb-id=\""+this['id']+"\">"+this['name']+"</span><span id=\"bio\">"+bio+"</span></div>");  
+        $('#facebook-search-results').append("<div class=\"facebook-result-single\"><img class=\"picture\" src=\""+this['picture']+"\"><div class=\"name\" data-fb-id=\""+this['id']+"\">"+this['name']+"</div><div class=\"genre\">"+this['genre']+" / "+this['record_label']+" / "+this['likes']+" Likes</div><div class=\"bio\">"+bio+"</div><div class=\"clear\"></div></div>");  
       });
-      $('.facebook-result-single #name').click(function(){
+      $('.facebook-result-single .name').click(function(){
+        $('#facebook-search-results').fadeOut(300,function(){$('#facebook-search-results').html("AJAXY BUSINESS HERE TOO PLEASE. Please wait while we import that artist, you'll be taken to their profile once they are imported!")}).fadeIn();
         $.ajax({ url: '/artists/import/'+$(this).data('fb-id')+'/'+ FB.getAuthResponse()['accessToken']+'.js'});
       });
     });
     <% end %>
     </script>
     <%= render 'shared/fb_async' %>
-  </div>
