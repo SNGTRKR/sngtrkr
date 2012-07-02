@@ -169,7 +169,6 @@ class UsersController < ApplicationController
     current_user.follow_artist params[:id]
     current_user.unsuggest_artist params[:id]
     @artist = Artist.find(current_user.suggested[5].id) rescue nil
-    @artist ||= Artist.find(current_user.suggested.last.id) rescue nil
     @tracked_artist = Artist.find(params[:id])
     respond_to do |format|
       format.html { redirect_to artist_path(params[:id])}
@@ -180,9 +179,12 @@ class UsersController < ApplicationController
 
   def unsuggest
     current_user.unsuggest_artist params[:id]
+    @artist = Artist.find(current_user.suggested[5].id) rescue nil
+    @tracked_artist = Artist.find(params[:id])
     respond_to do |format|
-      format.html
-      format.json { render :json => { :response => :success } }
+      format.html { redirect_to artist_path(params[:id])}
+      format.json { render("artists/show.json") }
+      format.js { render("artists/show.js") }
     end
   end
 
