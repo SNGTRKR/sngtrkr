@@ -66,10 +66,14 @@ class ReleasesController < ApplicationController
   def update
     @artist = Artist.find(params[:artist_id])
     @release = Release.find(params[:id])
+    if params[:release][:delete_image] == "true"
+      @release.image.clear
+      params[:release].delete(:delete_image)
+    end
 
     respond_to do |format|
       if @release.update_attributes(params[:release])
-        format.html { redirect_to @release, :notice => 'Release was successfully updated.' }
+        format.html { redirect_to [@artist, @release], :notice => 'Release was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render :action => "edit" }
