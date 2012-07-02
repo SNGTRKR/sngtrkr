@@ -59,14 +59,11 @@
   	<% end %>
   	</strong></h2>
 	<h3 class="font-15 orange-txt artist-release-name"><%= link_to @artist.name, @artist %></h3>
-<<<<<<< HEAD
+	
+	
+	
 	<i class="icon-music i-info" title="Genre"></i>
-	<% if @release.genre? %>
-  	<% if @manager %>
-=======
-	<i class="icon-tag i-info" title="Genre"></i>
 	<% if @manager %>
->>>>>>> 7f3a76168263bbbe23616dd07e9cad364855567c
   	<%= best_in_place [@artist, @release], :genre, :type => :input, :class => 'form-text' %>
   <% else %>
   	<% if @release.genre? %>
@@ -74,17 +71,13 @@
   	<% else %>
   	 <span class="light-gray">No genre set</span>
   	<% end %>
-<<<<<<< HEAD
-	<% else %><span class="light-gray">No genre set</span><% end %><br/>
+	<% end %><br/>
+	
+	
+	
+	
 	<i class="icon-tag i-info" title="Record Label"></i>
-	<% if @release.label_name? %>
   	<% if @manager %>
-=======
-  <% end %>
-	<br/>
-	<i class="icon-music i-info" title="Record Label"></i>
-	<% if @manager %>
->>>>>>> 7f3a76168263bbbe23616dd07e9cad364855567c
   	<%= best_in_place [@artist, @release], :label_name, :type => :input, :class => 'form-text' %>
 	<% else %>
   	<% if @release.label_name? %>
@@ -93,6 +86,7 @@
   	<span class="light-gray">No label set</span>
   	<% end %>
   <% end %>	
+  
 	<br/>
 	<i class="icon-calendar i-info" title="Release Date"></i><strong>
   	<% if @manager %>
