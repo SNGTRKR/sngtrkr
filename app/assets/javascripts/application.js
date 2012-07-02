@@ -20,6 +20,24 @@
 //= require jquery.purr
 //= require best_in_place
 
+function artist_suggestion_replace(){
+	$('a.add-trkr').bind('ajax:complete', function() {
+		// Hide the suggestion itself
+		console.log("Successfully Trked Artist")
+		$(this).closest('li').fadeOut(300);
+	});
+	$('a.untrk-artist').bind('ajax:complete', function() {
+		console.log("Successfully Untrked Artist")
+		$(this).closest('li').fadeOut(300);
+	});
+	// Disable clicking repeatedly during AJAX call
+	$("a.addremove_trkr,a.untrk-artist").one("click", function() {
+		$(this).click(function() {
+			return false;
+		});
+	}); 
+}
+
 $(document).ready(function() {
   // Flash Dismissal
   $('.flash-outer').delay(300).slideDown(500,'easeInQuad');

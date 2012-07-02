@@ -3,4 +3,5 @@
 $('.recommended-artists ul').append($("<%=j render :partial => 'shared/artist_suggestion', :object => @artist %>").hide().delay(<%= fade_time %>).fadeIn(<%= fade_time %>));
 <% end %>
 $('#tracked-artists ul').append($("<%=j render :partial => 'shared/artist_tracked', :object => @tracked_artist %>"));
+artist_suggestion_replace();
 FB.api("/me/sngtrkr:track", 'post', {artist: "<%= "#{artist_url({:anchor => @tracked_artist.id, :only_path => false})}" %>"});
