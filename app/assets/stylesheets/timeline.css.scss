@@ -33,11 +33,11 @@
 	  list-style-type: none;
 	  position:relative;
 	  margin:20px 0 0 159px;
-	 width:11800px;
+    width:11800px;
 	 .even {
-	 height:210px;
+  	 height:210px;
 		 top:301px !important;
-		 	  	  .release-line {
+	  .release-line {
 		  position:absolute;
 		  top:-30px;
 		  left:104px;
@@ -114,6 +114,18 @@
 	      padding:110px 13px 0 13px;
 	      z-index:2;
 	      margin-right:15px;
+	      h2 {
+          font-size: 1.4em;
+          padding-bottom: 3px;
+  	      font-weight: bold;
+	      }
+	      h3 {
+          color: $orange;
+          font-size: 1.2em;
+          a {
+            color: $orange;
+          }
+        }
         a {
 		      color:#fff;
 	      }
