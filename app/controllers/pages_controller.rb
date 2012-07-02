@@ -3,7 +3,7 @@ class PagesController < ApplicationController
   def home
     if(user_signed_in?)
       flash.keep
-      return redirect_to '/my_timeline'
+      return redirect_to '/tl'
     end
     # Used to auto log the user in.
     require 'koala'
