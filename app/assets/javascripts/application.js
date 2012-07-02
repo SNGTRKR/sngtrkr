@@ -21,21 +21,18 @@
 //= require best_in_place
 
 function artist_suggestion_replace(){
-	$('a.add-trkr').bind('ajax:complete', function() {
+	$('a.add-trkr, a.ignore-trk-artist').bind('ajax:complete', function() {
 		// Hide the suggestion itself
 		console.log("Successfully Trked Artist")
 		$(this).closest('li').fadeOut(300);
 	});
-	$('a.untrk-artist').bind('ajax:complete', function() {
+  $('a.untrk-artist').bind('ajax:complete', function() {
 		console.log("Successfully Untrked Artist")
 		$(this).closest('li').fadeOut(300);
 	});
-	// Disable clicking repeatedly during AJAX call
-	$("a.addremove_trkr,a.untrk-artist").one("click", function() {
-		$(this).click(function() {
-			return false;
-		});
-	}); 
+	// Disables buttons by hiding them after they are clicked.
+	$('a.add-trkr, a.untrk-artist, a.ignore-trk-artist').click(function(){$(this).hide()});
+
 }
 
 $(document).ready(function() {
