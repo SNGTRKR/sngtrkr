@@ -21,7 +21,7 @@
     color:$orange;
   }
   a:hover {
-    color:#000;
+    color:$gray;
   }
   a:active {
     color:$orange;
@@ -64,7 +64,7 @@
     list-style-type:none;
     margin-top:7px;
      a {
-          color:#000;
+          color:$gray;
         }
         a:hover {
           color:$orange;
@@ -135,7 +135,7 @@
     color:$orange;
   }
   a:hover {
-    color:#000;
+    color:$gray;
   }
   a:active {
     color:$orange;
@@ -152,16 +152,10 @@
   top:16px;
   a
   {
-    color:$orange;
+    color:#fff;
   }
   a:hover {
-    color:#000;
-  }
-  a:active {
-    color:$orange;
-  }
-  a:visited {
-    color:$orange;
+    color:$gray;
   }
   p {
   margin-bottom:16px;

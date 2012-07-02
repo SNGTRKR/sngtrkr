@@ -101,7 +101,7 @@
       @include border-top-right-radius(8px);
       @include border-bottom-left-radius(10px);
       @include border-bottom-right-radius(10px);
-      @include box-shadow(0px 0px 8px rgba(0,0,0,0.55));
+      @include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.45));
       height:210px;
       width:210px;
       margin:0 20px 20px 0;
