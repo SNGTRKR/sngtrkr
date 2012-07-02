@@ -52,8 +52,8 @@ content_for :og_id, @artist.id.to_s
 <div class="profile-right right">
 <div id="profile-info">
 	<h2 class="font-22 profile-name"><strong><%= @artist.name %></strong></h2>
-	<i class="icon-tag i-info" title="Genre"></i><% if @artist.genre? %><%= @artist.genre %><% else %><span class="light-gray">No genre set</span><% end %><br/>
-	<i class="icon-music i-info" title="Record Label"></i><% if @artist.label_name? %><%= truncate((strip_tags @artist.label_name || "" ), :length => 50) %><% else %><span class="light-gray">No label set</span><% end %><br/><br/>
+	<i class="icon-music i-info" title="Genre"></i><% if @artist.genre? %><%= @artist.genre %><% else %><span class="light-gray">No genre set</span><% end %><br/>
+	<i class="icon-tag i-info" title="Record Label"></i><% if @artist.label_name? %><%= truncate((strip_tags @artist.label_name || "" ), :length => 50) %><% else %><span class="light-gray">No label set</span><% end %><br/><br/>
 <div id="artist-bio"><% if @artist.bio? %><%= raw(truncate((strip_tags @artist.bio || "" ), :length => 480, :omission => "...<a href='#bio-full'>Read more</a>")) %><% else %><span class="light-gray">No biography set</span><% end %></div>
 </div>
   <ul class="menu-user">

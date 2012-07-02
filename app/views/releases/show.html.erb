@@ -38,7 +38,7 @@
   	<% end %>
   	</strong></h2>
 	<h3 class="font-15 orange-txt artist-release-name"><%= link_to @artist.name, @artist %></h3>
-	<i class="icon-tag i-info" title="Genre"></i>
+	<i class="icon-music i-info" title="Genre"></i>
 	<% if @release.genre? %>
   	<% if @manager %>
   	<%= best_in_place [@artist, @release], :genre, :type => :input, :class => 'form-text' %>
@@ -46,7 +46,7 @@
   	<%= @release.genre %>
   	<% end %>
 	<% else %><span class="light-gray">No genre set</span><% end %><br/>
-	<i class="icon-music i-info" title="Record Label"></i>
+	<i class="icon-tag i-info" title="Record Label"></i>
 	<% if @release.label_name? %>
   	<% if @manager %>
   	<%= best_in_place [@artist, @release], :label_name, :type => :input, :class => 'form-text' %>
