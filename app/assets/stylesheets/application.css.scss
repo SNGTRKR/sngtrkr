@@ -260,3 +260,13 @@ span.error{
 @import "manage_choice.css.scss";
 /* Unmanage Confirm CSS*/
 @import "unmanage_confirm.css.scss";
+
+// Admin Only CSS
+.super-admin-field {
+  background-color: #434343;
+  color:white;
+  padding:10px;
+  position: absolute;
+  left: 0px;
+  top: 100px;
+}

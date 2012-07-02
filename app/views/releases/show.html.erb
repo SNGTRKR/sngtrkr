@@ -4,6 +4,27 @@
 <div id="artist-release">
 <div class="release-left left">
 <div id="release-image" style="background-image:url(<%= @release.image :release_i %>);background-repeat:no-repeat;background-position:center;">
+<% if @manager %>
+  <% if !@release.image? %>
+    <div id="release-image-add">
+      <%= form_for [@artist,@release] do |f| %> 
+        <%= f.file_field :image %> 
+        <%= f.submit "Upload Artwork" %> 
+      <% end %>
+    </div>
+  <% else %>
+    <div id="release-image-edit">
+      <%= form_for [@artist,@release] do |f| %> 
+        <%= f.file_field :image %> 
+        <%= f.submit "Replace Artwork" %> 
+      <% end %>
+      <%= form_for [@artist,@release] do |f| %>
+        <%= f.hidden_field :delete_image, :value => true %>
+        <%= f.submit "Delete Artwork" %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
 <div id="opac-50"></div>
 <div id="share-release">
 <h5 class="signika-txt font-22 center-txt share-header">Share this track</h5>
@@ -38,24 +59,41 @@
   	<% end %>
   	</strong></h2>
 	<h3 class="font-15 orange-txt artist-release-name"><%= link_to @artist.name, @artist %></h3>
+<<<<<<< HEAD
 	<i class="icon-music i-info" title="Genre"></i>
 	<% if @release.genre? %>
   	<% if @manager %>
+=======
+	<i class="icon-tag i-info" title="Genre"></i>
+	<% if @manager %>
+>>>>>>> 7f3a76168263bbbe23616dd07e9cad364855567c
   	<%= best_in_place [@artist, @release], :genre, :type => :input, :class => 'form-text' %>
+  <% else %>
+  	<% if @release.genre? %>
+    	<%= @release.genre %>
   	<% else %>
-  	<%= @release.genre %>
+  	 <span class="light-gray">No genre set</span>
   	<% end %>
+<<<<<<< HEAD
 	<% else %><span class="light-gray">No genre set</span><% end %><br/>
 	<i class="icon-tag i-info" title="Record Label"></i>
 	<% if @release.label_name? %>
   	<% if @manager %>
+=======
+  <% end %>
+	<br/>
+	<i class="icon-music i-info" title="Record Label"></i>
+	<% if @manager %>
+>>>>>>> 7f3a76168263bbbe23616dd07e9cad364855567c
   	<%= best_in_place [@artist, @release], :label_name, :type => :input, :class => 'form-text' %>
-  	<% else %>
-  	<%= @release.label_name %>
-  	<% end %>
 	<% else %>
-	<span class="light-gray">No label set</span>
-	<% end %><br/>
+  	<% if @release.label_name? %>
+    	<%= @release.label_name %>
+  	<% else %>
+  	<span class="light-gray">No label set</span>
+  	<% end %>
+  <% end %>	
+	<br/>
 	<i class="icon-calendar i-info" title="Release Date"></i><strong>
   	<% if @manager %>
   	 <%= best_in_place [@artist, @release], :date, :type => :date, :class => 'form-text' %>
