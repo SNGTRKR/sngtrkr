@@ -18,6 +18,10 @@ class Artist < ActiveRecord::Base
   has_many :followed_users, :through => :follow, :source => :user
   has_many :suggested_users, :through => :suggest, :source => :user
   has_many :manager_users, :through => :manage, :source => :user
+  
+  def self.real_only
+    where(:ignore => false)
+  end
 
   def self.ordered
     order('name')

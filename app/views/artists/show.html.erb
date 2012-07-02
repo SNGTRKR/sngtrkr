@@ -7,6 +7,21 @@ content_for :og_id, @artist.id.to_s
 <% content_for :description do %><%= truncate((strip_tags @artist.bio || "" ), :length => 150) %><% end %>
 <% content_for :title do %><%= @artist.name %> information and releases 2012<% end %>
 <div class="content content-pad-187">
+<% if can? :manage, Resque %>
+<div class="super-admin-field">
+<strong>Admin Box</strong>
+<%= form_for @artist do |f| %>
+  <% if !@artist.ignore? %>
+    <%= f.hidden_field :ignore, :value => true %>
+    <%= f.submit "Ignore Artist" %>
+  <% else %>
+    <%= f.hidden_field :ignore, :value => false %>
+    <%= f.submit "Unignore Artist" %>
+  <% end %>
+<% end %>
+<%= link_to "Edit Artist", edit_artist_path(@artist) %>
+</div>
+<% end %>
 <div id="artist-profile">
 <div class="profile-left left">
 <div id="profile-image" style="background-image:url(<%= @artist.image.url :large %>);background-repeat:no-repeat;background-position:center;">
