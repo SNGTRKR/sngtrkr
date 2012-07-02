@@ -9,12 +9,12 @@ class ArtistsController < ApplicationController
   end
   
   def index
-    @artists = Artist.search(params[:search])
+    @artists = Artist.real_only.search(params[:search])
     if params[:search].blank?
       if Rails.env.production?
         flash.now[:message] = "You must search for an artist"
       else
-        @artists = Artist.order(:name).page(params[:page])
+        @artists = Artist.real_only.order(:name).page(params[:page])
       end
     elsif(params[:search].length < 2)
       flash.now[:message] = "Please enter at least 2 characters into the search box"
@@ -33,7 +33,7 @@ class ArtistsController < ApplicationController
   end
   
   def search
-    @artists = Artist.search(params[:search])
+    @artists = Artist.real_only.search(params[:search])
     if(params[:search].length < 2)
       flash.now[:message] = "Please enter at least 2 characters into the search box"
       @artists = [];
