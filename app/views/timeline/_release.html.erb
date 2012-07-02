@@ -1,9 +1,12 @@
+<% artist_page ||= 'false' %>
 <li class="release-outer left <%= cycle("odd", "even") -%>">
 <div class=" each-release" style="background-image:url(<%= release.image :release %>); background-position:center;">
 <div class="r-grad">
 <div class="release-info">
 <h2><%= link_to release.name, [release.artist, release] %></h2>
+<% if artist_page == 'false' %>
 <h3><%= link_to release.artist.name, release.artist %></h3>
+<% end %>
 <span class="font-11"><%= release.label_name %></span>
 	</div>
 <div class="release-menu font-13">
