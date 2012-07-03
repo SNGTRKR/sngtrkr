@@ -87,7 +87,6 @@ GEM
       multi_xml
     httpauth (0.1)
     i18n (0.6.0)
-    itunes-search (0.2.6)
     itunes-search-api (0.1.0)
       httparty
     journey (1.0.4)
@@ -254,7 +253,6 @@ DEPENDENCIES
   compass-rails (>= 1.0.0.rc.2)
   devise
   dynamic_sitemaps
-  itunes-search
   itunes-search-api
   jquery-rails
   jquery_datepicker
