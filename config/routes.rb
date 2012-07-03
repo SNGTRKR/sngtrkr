@@ -53,9 +53,6 @@ SNGTRKR::Application.routes.draw do
   match '/artists/search' => "Artists#search"
   resources :artists do
     collection do
-      get 'no_results', :action => 'no_results'
-    end
-    collection do
       get 'import/:fb_id/:access_token', :action => 'import'
       get 'first_suggestions'
     end
@@ -67,8 +64,10 @@ SNGTRKR::Application.routes.draw do
     resources :manages
     resources :follows, :except => [:destroy,:edit]
     get 'unfollow' => 'Follows#destroy'
+    post 'unfollow' => 'Follows#destroy'
     resources :suggests, :except => [:destroy,:edit]
     get 'unsuggest' => 'Suggests#destroy'
+    post 'unsuggest' => 'Suggests#destroy'
   end
   resources :releases do 
     member do 

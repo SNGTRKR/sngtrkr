@@ -73,23 +73,25 @@ content_for :og_id, @artist.id.to_s
 	<h2 class="font-22 profile-name"><strong><%= @artist.name %></strong></h2>
 	<i class="icon-music i-info" title="Genre"></i><% if @artist.genre? %><%= @artist.genre %><% else %><span class="light-gray">No genre set</span><% end %><br/>
 	<i class="icon-tag i-info" title="Record Label"></i><% if @artist.label_name? %><%= truncate((strip_tags @artist.label_name || "" ), :length => 50) %><% else %><span class="light-gray">No label set</span><% end %><br/><br/>
-<div id="artist-bio"><% if @artist.bio? %><%= raw(truncate((strip_tags @artist.bio || "" ), :length => 480, :omission => "...<a href='#bio-full'>Read more</a>")) %><% else %><span class="light-gray">No biography set</span><% end %></div>
+<div id="artist-bio">
+  <% if @artist.bio? %>
+    <%= raw(truncate((strip_tags @artist.bio || "" ), :length => 480, :omission => "...<a href='#bio-full'>Read more</a>")) %>
+  <% else %>
+    <span class="light-gray">No biography set</span>
+  <% end %>
+</div>
 </div>
   <ul class="menu-user">
   <li>
-<% if user_signed_in?%>
-<% if current_user.following? @artist.id %>
-  <%= form_for [@artist, @follow], :remote => true, :method => :delete do |f| %>
-  <%= f.submit "UNTRK ARTIST",  :class => "left o-button trkr-o-pad font-13 buy-release instruct-font"  %>
-  <% end %>
-<% else %>
-  <%= form_for [@artist, @artist.follow.build()], :remote => true do |f| %>
-  <%= f.submit "TRK ARTIST",  :class => "left o-button trkr-o-pad font-13 buy-release instruct-font" %>
-  <% end %>
-<% end %>
-<% elsif %>
-<a href="<%= user_omniauth_authorize_path(:facebook) %>">LOGIN TO TRK</a>
-<% end %>
+    <% if user_signed_in?%>
+      <% if current_user.following? @artist.id %>
+        <%= button_to "REMOVE TRKR", artist_unfollow_path(@artist, :format => 'js'), :remote => true, :class => "left o-button trkr-o-pad font-13 buy-release instruct-font", :id => 'remove-trkr' %>
+      <% else %>
+        <%= button_to "ADD TRKR", artist_follows_path(@artist, :format => 'js'), :remote => true, :class => "left o-button trkr-o-pad font-13 buy-release instruct-font", :id => 'add-trkr' %>
+      <% end %>
+    <% else %>
+      <a href="<%= user_omniauth_authorize_path(:facebook) %>">LOGIN TO TRK</a>
+    <% end %>
   </li>
   <li class="left o-button signika-font norm-o-pad font-13 share-profile"><i class="icon-share-alt"></i>Share</li>
   </ul>
@@ -249,3 +251,4 @@ $(document).ready(function () {
 			});
 			$('.release-list').width(stepsWidth+220);
 		</script>
+		<%= render 'shared/fb_async' %>
