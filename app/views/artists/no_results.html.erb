@@ -18,25 +18,5 @@
       </div>
   </div>
   <div class="clear"></div>
-  	<div id="facebook-search-results">
-    	FACEBOOK AJAX LOADER GOES HERE
-    	<div class="clear"></div>
-  	</div> 
-    <script>
-    <% content_for :fb_js do %>
-    FB.api("search/?q=<%= CGI::escape(@search) %>&fields=id,picture,description,name,bio,genre,likes,record_label,category&type=page&limit=10",function(pages){
-      $('#facebook-search-results').html("");
-      $.each(pages['data'],function(){
-        if(this['category'] != "Musician/band") return true;
-        if(this['bio'] == null) var bio = this['description'];
-        else var bio = this['bio'];
-        $('#facebook-search-results').append("<div class=\"facebook-result-single\"><div class=\"fb-row\"><div class=\"fb-artist-image\" style=\"background-image:url("+this['picture']+");background-repeat:no-repeat;background-position:center;\"></div><div class=\"fb-artist-info\"><span class=\"instruct-font font-15\">"+this['name']+"</span><br/><span class=\"orange-txt\">"+this['likes']+" likes</span><br/>"+this['genre']+"<br/>"+this['record_label']+"</div><i class=\"icon-bookmark\"></i><i class=\"icon-facebook\"></i></div><div class=\"fb-add o-button\" data-fb-id=\""+this['id']+"\"><i class=\"icon-plus\"></div></div>");  
-      });
-      $('.facebook-result-single .fb-add').click(function(){
-        $('#facebook-search-results').fadeOut(300,function(){$('#facebook-search-results').html("AJAXY BUSINESS HERE TOO PLEASE. Please wait while we import that artist, you'll be taken to their profile once they are imported!")}).fadeIn();
-        $.ajax({ url: '/artists/import/'+$(this).data('fb-id')+'/'+ FB.getAuthResponse()['accessToken']+'.js'});
-      });
-    });
-    <% end %>
-    </script>
+    <%= render 'artists/fb_search' %>
     <%= render 'shared/fb_async' %>
