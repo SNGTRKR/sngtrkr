@@ -25,6 +25,7 @@ margin:6px 0 31px 0;
 	      bottom:0px;
 	      left:0px;
 	      z-index:2;
+	      opacity: 0.3;
 	      $experimental-support-for-svg: true;
           @include background-image(linear-gradient(top,  rgba(0,0,0,0) 80%,rgba(0,0,0,1) 100%));
           @include border-radius(12px);
