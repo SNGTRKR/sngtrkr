@@ -64,8 +64,11 @@ SNGTRKR::Application.routes.draw do
         post 'rate'
       end
     end
-    resources :manage
-    resources :follows
+    resources :manages
+    resources :follows, :except => [:destroy,:edit]
+    get 'unfollow' => 'Follows#destroy'
+    resources :suggests, :except => [:destroy,:edit]
+    get 'unsuggest' => 'Suggests#destroy'
   end
   resources :releases do 
     member do 
@@ -79,10 +82,6 @@ SNGTRKR::Application.routes.draw do
     member do
       get 'manage'
       get 'unmanage'
-      get 'follow'
-      get 'unfollow'
-      get 'suggest'
-      get 'unsuggest'
     end
   end
 

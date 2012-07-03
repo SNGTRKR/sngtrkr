@@ -4,7 +4,11 @@
 		<div class="instruct-font font-20 recommend-info">
 			<%= link_to artist_suggestion.name, artist_suggestion  %>
 		</div>
-		<div class="recommend-trkr-button"><%= render :partial => 'shared/trk_artist', :object => artist_suggestion %></div>
-		<div class="ignore-outer o-button"><%= link_to  unsuggest_artist_path(artist_suggestion, :format => :js), :remote => true, :class => 'ignore-trk-artist' do %><i class="icon-remove"></i><% end %></div>
+		<%= render :partial => 'shared/trk_artist', :object => artist_suggestion %>
+		<div class="ignore-outer o-button">
+		<%= link_to artist_unsuggest_path(artist_suggestion), :remote => true, :class => 'ignore-trk-artist ' do |f| %>
+  		<i class="icon-remove"></i>
+		<% end %>
+		</div>
 	</div>
 </li>

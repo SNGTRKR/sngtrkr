@@ -64,16 +64,15 @@
             }
           }
           .recommend-trkr-button {
+            cursor: pointer;
             position:absolute;
             left:30px;
             bottom:-13px;
-            div {
-              @extend .o-button;
-              @extend .trkr-o-pad;
-              @extend .right;
-              @extend .instruct-font;
-              @extend .font-13;
-            }
+            @extend .o-button;
+            @extend .trkr-o-pad;
+            @extend .right;
+            @extend .instruct-font;
+            @extend .font-13;
           }
           .remove-recommend-trkr-button {
             position:absolute;
