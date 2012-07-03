@@ -35,7 +35,6 @@ class ArtistSubJob
     user = User.find(user_id)
     graph = Koala::Facebook::API.new(access_token)
     require 'open-uri'
-    itunes = ItunesSearch::Base.new
     artist_start_time = Time.now
 
     split_regexp = /[,\/|+\.]/
@@ -57,7 +56,9 @@ class ArtistSubJob
     websites = [];
     end
     begin
-      a.itunes = itunes.search("term"=>a.name, "country" => "gb").results.first.artistViewUrl
+      itunes_results = ITunesSearchAPI.search(:term => a.name, :country => "GB").first
+      a.itunes = itunes_results['artistViewUrl']
+      a.itunes_id = itunes_results['artistId']
     rescue
       a.itunes = nil
     end

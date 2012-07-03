@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120701020354) do
+ActiveRecord::Schema.define(:version => 20120702192658) do
 
   create_table "artists", :force => true do |t|
     t.string   "name"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20120701020354) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "itunes_id"
   end
 
   create_table "beta_users", :force => true do |t|

@@ -41,7 +41,7 @@ gem "paperclip"
 # SCRAPING GEMS
 gem 'rbrainz'
 gem 'scrobbler'
-gem 'itunes-search'
+gem 'itunes-search-api'
 gem 'amazon-ecs'
 
 # ADMIN
