@@ -23,7 +23,8 @@ class ArtistsController < ApplicationController
       @artists = [];
     elsif @artists.empty?
       respond_to do |format|
-        format.html { redirect_to no_results_artists_path(:search => params[:search])}# index.html.erb
+        format.html { render 'artists/no_results' }# index.html.erb
+        #format.html { redirect_to no_results_artists_path(:search => params[:search])}# index.html.erb
         format.json { render :json => ActiveSupport::JSON.encode(["failure"]) }
       end
     else
