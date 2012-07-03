@@ -11,6 +11,7 @@ class ArtistsController < ApplicationController
   def index
     @artists = Artist.real_only.search(params[:search])
     @search = params[:search]
+    @ids = @artists.map{|a| a.fbid}
     if params[:search].blank?
       if Rails.env.production?
         flash.now[:message] = "You must search for an artist"
