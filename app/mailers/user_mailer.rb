@@ -34,19 +34,19 @@ class UserMailer < ActionMailer::Base
   end
   
   def daily_releases
-    new_releases(1)
+    new_releases_deliver(1)
   end
 
   def weekly_releases
-    new_releases(2)
+    new_releases_deliver(2)
   end
   
   def fortnightly_releases
-    new_releases(3)
+    new_releases_deliver(3)
   end
 
   def monthly_releases
-    new_releases(4)
+    new_releases_deliver(4)
   end
   
   def instant_release(release)
