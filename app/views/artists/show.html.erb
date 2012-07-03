@@ -13,10 +13,10 @@ content_for :og_id, @artist.id.to_s
 <div class="ignore">
   <% if !@artist.ignore? %>
     <%= f.hidden_field :ignore, :value => true %>
-    <%= f.submit :submit do %><i class="icon-ban-circle"></i><% end %>
+    <%= f.submit "Ignore Arist", :type => :image, :src => "/images/ignore.png", :class => "i-artist" %>
   <% else %>
     <%= f.hidden_field :ignore, :value => false %>
-    <%= f.submit "Unignore Artist" %>
+    <%= f.submit "Unignore Arist", :type => :image, :src => "/images/unignore.png", :class => "ui-artist" %>
 
   <% end %>
   </div>
@@ -156,7 +156,6 @@ $(document).ready(function(){
 			}).mouseout(function(){
 				$('.ignore').stop().animate({left : 0}, "slow");
 			});
-				
 					$(".share-release").click(function() {
 			$(this).closest(".each-release").find('.release-info').animate({bottom : -100}, "slow");
 			$(this).closest(".each-release").find('.release-menu').animate({bottom : -25}, "slow");
