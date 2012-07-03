@@ -11,6 +11,7 @@ class ReleaseJob
     start_time = Time.now
     artist = Artist.find(artist_id)
 
+    # STAGE 1 - 7DIGITAL IMPORT
     releases = Hash.from_xml( open("http://api.7digital.com/1.2/artist/releases?artistId=#{artist.sdid}&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB&imageSize=350", :proxy => proxy))["response"]["releases"]["release"]
 
     releases.each do |release|
@@ -42,36 +43,14 @@ class ReleaseJob
       r.date = release["releaseDate"]
       r.cat_no = release["isrc"]
       r.sdigital = release["url"]
+      r.upc = release["barcode"]
       r.scraped = 1
       
       # iTunes UPC lookup
-      itunes_release = ActiveSupport::JSON.decode( open("http://itunes.apple.com/lookup?upc=#{release["barcode"]}&country=GB"))['results'][0]
+      itunes_release = ActiveSupport::JSON.decode( open("http://itunes.apple.com/lookup?upc=#{release["barcode"]}&country=GB", :proxy => proxy))['results'][0]
       if !itunes_release.nil?
         r.itunes = itunes_release['collectionViewUrl']
       end
-      
-      # iTunes Advanced
-      
-      #if artist.itunes_id?
-      #  itunes_releases = ActiveSupport::JSON.decode( open("http://itunes.apple.com/lookup?id=#{artist.itunes_id}&entity=album&country=GB"))['results']
-      #  i = 1
-      #  while !itunes_releases[i].nil?
-      #    # If either is a substring of the other
-      #    if r.name.include? itunes_releases[i]['collectionName'] or itunes_releases[i]['collectionName'].include? r.name
-      #      Rails.logger.info("J004: iTunes substring found for #{r.name} and #{itunes_releases[i]['collectionName']}")
-      #      r.itunes = itunes_releases[i]['collectionViewUrl']
-      #      itunes_release_date = Date.strptime itunes_releases[i]['releaseDate']
-      #      # Take the earliest of the two release dates.
-      #      if itunes_release_date < r.date.to_datetime
-      #        r.date = itunes_release_date
-      #      end
-      #      break
-      #    end
-      #    i += 1
-      #  end
-      #  itunes_releases = ActiveSupport::JSON.decode( open("http://itunes.apple.com/lookup?id=#{artist.itunes_id}&entity=song&country=GB"))['results']
-        
-      # end
       
       Rails.logger.info("J003: Popularity of #{r.name} | #{release["popularity"]}")
       io = open(release["image"], :proxy => proxy)
@@ -104,7 +83,56 @@ class ReleaseJob
         end
       end
       
+      # Get track previews from iTunes if you can't get them from 7digital
+      if tracks.empty? and !itunes_release.nil?
+        Rails.logger.info("J007: Scraping tracks from iTunes for #{r.name}")
+        i = 1
+        itunes_release_tracks = ActiveSupport::JSON.decode( open("http://itunes.apple.com/lookup?id=#{itunes_release[0]['collectionId']}&entity=song&country=GB", :proxy => proxy))['results']
+        while !itunes_release_tracks[i].nil?
+          t = Track.create(:release_id => r.id, :number => i, :name => itunes_release_tracks[i], :itunes_preview => itunes_release_tracks[i]['previewUrl'])
+          i += 1
+        end
+      end
+      
     end
+    
+    # STAGE 2 - ITUNES IMPORT
+    if artist.itunes_id?
+      itunes_releases = ActiveSupport::JSON.decode( open("http://itunes.apple.com/lookup?id=#{artist.itunes_id}&entity=album&country=GB", :proxy => proxy))['results']
+      i = 1
+      while !itunes_releases[i].nil?
+        # Avoid importing the same album twice
+        if !artist.releases.where("name LIKE ?", "%#{itunes_releases[i]['collectionName']}%").empty?
+          i += 1
+          next
+        end
+        r = Release.new
+        Rails.logger.info("J004: new iTunes album found for #{artist.name} and #{itunes_releases[i]['collectionName']}")
+        r.itunes = itunes_releases[i]['collectionViewUrl']
+        r.artist_id = artist.id
+        r.itunes_id = itunes_releases[i]["collectionId"]
+        r.itunes = itunes_releases[i]['collectionViewUrl']
+        r.name = itunes_releases[i]["collectionName"]
+        r.date = itunes_releases[i]['releaseDate']
+        r.scraped = 1
+        
+        if itunes_releases[i]["artworkUrl100"]
+          io = open(itunes_releases[i]["artworkUrl100"], :proxy => proxy)
+          if io
+            def io.original_filename; base_uri.path.split('/').last; end
+            io.original_filename.blank? ? nil : io      
+            r.image = io
+          end
+        end
+        
+        r.save
+        i += 1
+      end
+      itunes_releases = ActiveSupport::JSON.decode( open("http://itunes.apple.com/lookup?id=#{artist.itunes_id}&entity=song&country=GB"))['results']
+     
+     end
+
+    
     end_time = Time.now
     elapsed_time = end_time - start_time
     Rails.logger.info "J003: Release import for #{artist.name} finished after #{elapsed_time}"
