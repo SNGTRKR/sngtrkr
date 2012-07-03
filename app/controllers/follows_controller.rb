@@ -15,9 +15,10 @@ class FollowsController < ApplicationController
   
   def destroy
     current_user.unfollow_artist params[:artist_id]
+    @artist_id = params[:artist_id]
     respond_to do |format|
       format.html { redirect_to artist_path(:id => params[:artist_id]) }
-      format.js { render :nothing => true }
+      format.js { render 'untrk_response' }
       format.json { render :json => { :response => :success } }
     end
   end
