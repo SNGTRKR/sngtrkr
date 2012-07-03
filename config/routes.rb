@@ -66,8 +66,10 @@ SNGTRKR::Application.routes.draw do
     end
     resources :manages
     resources :follows, :except => [:destroy,:edit]
+    get 'unfollow' => 'Follows#destroy'
     post 'unfollow' => 'Follows#destroy'
     resources :suggests, :except => [:destroy,:edit]
+    get 'unsuggest' => 'Suggests#destroy'
     post 'unsuggest' => 'Suggests#destroy'
   end
   resources :releases do 

@@ -29,6 +29,7 @@ function artist_suggestion_replace(){
   $('a.untrk-artist').bind('ajax:complete', function() {
 		console.log("Successfully Untrked Artist")
 		$(this).closest('li').fadeOut(300);
+		$('#user-following-count').html(parseInt($('#user-following-count').html(),10) - 1);
 	});
 	// Disables buttons by hiding them after they are clicked.
 	$('.add-trkr, a.untrk-artist, a.ignore-trk-artist').click(function(){$(this).hide()});
