@@ -6,7 +6,7 @@
 		Are you sure you wish to stop managing <strong><%= @user.managing.first.name %></strong>? You can always come back to it, if you change your mind.
 	</div>
 	<div id="unmanage-txt-2">
-		<strong>If you need help getting started or managing your artist account, please visit our help page or contact us at <a href="mailto:support@sngtrkr.com" target="_blank">support@sngtrkr.com</a>.</strong>
+		<strong>If you need help getting started or managing your artist account, please visit our help page or contact us at</strong> <a href="mailto:support@sngtrkr.com" target="_blank">support@sngtrkr.com</a>.
 	</div>
 	<div class="unmanage-buttons">
 	<%= link_to user_manage_path(@user,@user.manage.first), :method => :delete do %><div class="o-button norm-o-pad left signika-font font-13 unmanage-artist-button">Yes<% end %>
