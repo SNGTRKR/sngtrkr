@@ -27,6 +27,11 @@
 			$experimental-support-for-svg: true;
             @include background-image(linear-gradient(top, #F15A24 0%, #F37244 100%));
 }
+
+input.o-button {
+  border:none; 
+}
+
 .fb-button {
 			color:white;
 			@include border-radius(7px);

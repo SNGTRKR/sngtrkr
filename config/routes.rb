@@ -64,7 +64,8 @@ SNGTRKR::Application.routes.draw do
         post 'rate'
       end
     end
-    resources :manages
+    resources :manage
+    resources :follows
   end
   resources :releases do 
     member do 
