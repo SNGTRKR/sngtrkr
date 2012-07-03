@@ -1,15 +1,18 @@
 <div id="facebook-search-results">
-	FACEBOOK AJAX LOADER GOES HERE
+<div id="facebook-loading">
+<h4 class="signika-txt font-25">Loading...</h4>
+	<i class="icon-refresh"></i><br/>
+	...please wait while we search Facebook for "<%= @search %>".
+</div>
 	<div class="clear"></div>
 </div> 
 <script>
-// List of artist ID's returned for search, so we can hide facebook artists already in the database.
 var artist_ids = <%= raw @ids.to_json %>
 
 <% content_for :fb_js do %>
 
 
-FB.api("search/?q=<%= CGI::escape(@search) %>&fields=id,picture,description,name,bio,genre,likes,record_label,category&type=page&limit=10",function(pages){
+FB.api("search/?q=<%= CGI::escape(@search) %>&fields=id,picture,description,name,bio,genre,likes,record_label,category&type=page&limit=10&size=large",function(pages){
   $('#facebook-search-results').html("");
   $.each(pages['data'],function(){
     // Skip non music pages
@@ -22,13 +25,13 @@ FB.api("search/?q=<%= CGI::escape(@search) %>&fields=id,picture,description,name
     $('.facebook-result-single:last .fb-row')
       .find('.fb-artist-image').css('background-image','url('+this['picture']+')')
       .parent().find('.fb-artist-info .likes').html(this['likes'].commafy()+' likes')
-      .parent().find('.name').html("<a href=\"http://facebook.com/"+this['id']+"\">"+this['name']+'</a>')
+      .parent().find('.name').html("<a href=\"http://facebook.com/"+this['id']+"\" target=\"_blank\">"+this['name']+'</a>')
       .parent().find('.genre').html(this['genre'])
       .parent().find('.record_label').html(this['record_label']);
     $('.facebook-result-single:last .fb-add').data('fb-id',this['id']);
     });
   $('.facebook-result-single .fb-add').click(function(){
-    $('#facebook-search-results').fadeOut(300,function(){$('#facebook-search-results').html("AJAXY BUSINESS HERE TOO PLEASE. Please wait while we import that artist, you'll be taken to their profile once they are imported!")}).fadeIn();
+    $('#facebook-search-results').fadeOut(300,function(){$('#facebook-search-results').html("<div id=\"facebook-loading\"><h4 class=\"signika-txt font-25\">Importing...</h4><i class=\"icon-refresh\"></i><br/>...please wait while we import the artist into the SNGTRKR database.</div>")}).fadeIn();
     $.ajax({ url: '/artists/import/'+$(this).data('fb-id')+'/'+FB.getAuthResponse()['accessToken']+'.js'});
   });
 });

@@ -80,11 +80,11 @@ content_for :og_id, @artist.id.to_s
 <% if user_signed_in?%>
 <% if current_user.following? @artist.id %>
   <%= form_for [@artist, @follow], :remote => true, :method => :delete do |f| %>
-  <%= f.submit "UNTRK ARTIST",  :class => "left o-button trkr-o-pad font-13 buy-release instruct-font left"  %>
+  <%= f.submit "UNTRK ARTIST",  :class => "left o-button trkr-o-pad font-13 buy-release instruct-font"  %>
   <% end %>
 <% else %>
   <%= form_for [@artist, @artist.follow.build()], :remote => true do |f| %>
-  <%= f.submit "TRK ARTIST",  :class => "left o-button trkr-o-pad font-13 buy-release instruct-font left" %>
+  <%= f.submit "TRK ARTIST",  :class => "left o-button trkr-o-pad font-13 buy-release instruct-font" %>
   <% end %>
 <% end %>
 <% elsif %>

@@ -177,3 +177,46 @@ position:relative;
 }
 }
 }
+.default-button {
+      position:relative;
+      left:-53px;
+}
+span.checked{
+    background:transparent url(/images/checkedn.png) no-repeat top left;
+    position:absolute;
+    top:-1px;
+    left:-1px;
+    width:20px;
+    height:20px;
+    z-index:1;
+}
+span.error{
+    background:transparent url(/images/errorn.png) no-repeat top left;
+    position:absolute;
+    top:-1px;
+    left:-1px;
+    width:20px;
+    height:20px;
+    z-index:1;
+}
+ .white-tint {
+   display:none;
+    position:absolute;
+    top:0px;
+    left:0px;
+    background:rgba(255,255,255,0.4);
+    height:25px;
+    width:125px;
+    @include border-radius(7px);
+    z-index:2;
+} 
+.white-tint-2, .white-tint-3, .white-tint-4 {
+  position:absolute;
+    top:0px;
+    left:0px;
+    background:rgba(255,255,255,0.4);
+    height:25px;
+    width:125px;
+    @include border-radius(7px);
+    z-index:2;
+}
