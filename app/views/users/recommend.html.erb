@@ -14,7 +14,7 @@ where you will able to view your personalised timeline of releases, new and old.
 	<div class="recommended-artists-outer other-recommend-nudge">
 		<div class="recommended-artists">
 			<ul>
-  		<% if !@first_time or @user.suggested.count > 6 %>
+  		<% if @user.suggested.count > 6 %>
 				<%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 6] %>
     		<% else %>
       		<h2 class="signika-txt font-35 center-txt">Please wait...</h2><br/>

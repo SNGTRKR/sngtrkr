@@ -1,7 +1,13 @@
-<% @timeline.each do |release| %>
-$(document).prepend("<%=j render :partial => 'timeline/release', :object => release %>");
-<% end %>
-
 <% if @timeline.empty? %>
-console.log("No releases")
+console.log("No releases");
+<% else %>
+
+var old_width = $('.release-list').width();
+$('.release-list').prepend("<% @timeline.each do |release| %><%=j render :partial => 'timeline/release', :object => release %><% end %>");
+var new_width = timeline_widths();
+$('#timeline').scrollLeft(new_width - old_width);
+console.log("Old width was "+old_width);
+$('.release-list').width(new_width);
+console.log("Width increased to "+new_width);
+
 <% end %>

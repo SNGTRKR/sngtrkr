@@ -28,9 +28,8 @@ SNGTRKR::Application.routes.draw do
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   end
   
-  resources :timeline
-
   match '/tl' => "Users#timeline"
+  
   resources :users, :except =>[:index] do
     member do
       get 'unmanage'
@@ -43,6 +42,7 @@ SNGTRKR::Application.routes.draw do
     end
     collection do
       get 'me', :action => 'self'
+      match 'me/timeline/:page' => 'Timeline#index'
     end
     resources :manages
   end
