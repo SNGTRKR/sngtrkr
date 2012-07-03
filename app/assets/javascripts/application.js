@@ -19,7 +19,7 @@
 //= require carousel/jquery.carousel-packed.js
 //= require jquery.purr
 //= require best_in_place
-
+//= require rotate/jQueryRotate.2.2
 function artist_suggestion_replace(){
 	$('a.add-trkr, a.ignore-trk-artist').bind('ajax:complete', function() {
 		// Hide the suggestion itself

@@ -1,6 +1,6 @@
 #artist-search {
    position:relative;
-   margin:20px 0 32px 0;
+   margin:20px 0 26px 0;
    li {
    	   position:relative;
 	   width:604px;
@@ -75,16 +75,44 @@
       }
     }
   }
-  
+    .content-search-top {
+  position:relative;
+  width:604px;
+  height:128px;
+  .top-header {
+    float:left;
+    width:302px;
+  }
+  .content-top-right {
+    float:right;
+    width:302px;
+    margin-top:9px;
+    line-height:1.4em;
+  }
+}
+.fb-result-header {
+	margin-left:-2px;
+}
 #facebook-search-results {
 position:relative;
 margin:19px 0 30px 0;
+#facebook-loading {
+position:relative;
+margin-top:-3px;
+	text-align:center;
+	.icon-refresh {
+		font-size:10em;
+		color:$orange;
+		margin:30px 0 33px 0;
+		display:block;
+	}
+}
 .facebook-result-single {
 position:relative;
-width:666px;
+width:604px;
 .fb-row {
   position:relative;
-  width:559px;
+  width:497px;
   height:68px;
   padding:11px 25px 11px 25px;
   margin:0 0 17px 0;
@@ -106,7 +134,12 @@ width:666px;
 	.fb-artist-info {
 		position:relative;
 		left:81px;
-		top:-1px;
+		 a{
+			 color:$gray;
+		 }
+		 a:hover {
+			 color:$orange;
+		 }
 	}
 	.icon-bookmark {
 		position:absolute;
@@ -134,4 +167,4 @@ width:666px;
 	line-height:90px;
 	}
 }
-}
+}	
