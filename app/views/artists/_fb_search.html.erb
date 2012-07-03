@@ -3,17 +3,25 @@
 	<div class="clear"></div>
 </div> 
 <script>
+// List of artist ID's returned for search, so we can hide facebook artists already in the database.
+var artist_ids = <%= raw @ids.to_json %>
+
 <% content_for :fb_js do %>
+
+
 FB.api("search/?q=<%= CGI::escape(@search) %>&fields=id,picture,description,name,bio,genre,likes,record_label,category&type=page&limit=10",function(pages){
   $('#facebook-search-results').html("");
   $.each(pages['data'],function(){
+    // Skip non music pages
     if(this['category'] != "Musician/band") return true;
+    // Skip artists already in db
+    if($.inArray(this['id'], artist_ids) == 0) return true;
     if(this['bio'] == null) var bio = this['description'];
     else var bio = this['bio'];
     $('#facebook-search-results').append("<%=j render 'artists/fb_search_js' %>");
     $('.facebook-result-single:last .fb-row')
       .find('.fb-artist-image').css('background-image','url('+this['picture']+')')
-      .parent().find('.fb-artist-info .likes').html(this['likes']+' Likes')
+      .parent().find('.fb-artist-info .likes').html(this['likes'].commafy()+' likes')
       .parent().find('.name').html("<a href=\"http://facebook.com/"+this['id']+"\">"+this['name']+'</a>')
       .parent().find('.genre').html(this['genre'])
       .parent().find('.record_label').html(this['record_label']);

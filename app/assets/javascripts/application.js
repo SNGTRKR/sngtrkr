@@ -35,7 +35,20 @@ function artist_suggestion_replace(){
 
 }
 
+String.prototype.commafy = function () {
+	return this.replace(/(^|[^\w.])(\d{4,})/g, function($0, $1, $2) {
+		return $1 + $2.replace(/\d(?=(?:\d\d\d)+(?!\d))/g, "$&,");
+	});
+}
+
+Number.prototype.commafy = function () {
+	return String(this).commafy();
+}
+
+
 $(document).ready(function() {
+
+
   // Flash Dismissal
   $('.flash-outer').delay(300).slideDown(500,'easeInQuad');
   $('#flash-dismiss').click(function(){
