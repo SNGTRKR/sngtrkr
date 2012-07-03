@@ -4,26 +4,25 @@
 <div id="artist-release">
 <div class="release-left left">
 <div id="release-image" style="background-image:url(<%= @release.image :release_i %>);background-repeat:no-repeat;background-position:center;">
+<i class="icon-edit edit-image"></i>
 <% if @manager %>
+<div id="release-image-options">
   <% if !@release.image? %>
-    <div id="release-image-add">
       <%= form_for [@artist,@release] do |f| %> 
         <%= f.file_field :image %> 
-        <%= f.submit "Upload Artwork" %> 
+        <%= f.submit "Upload Artwork", :class => "left o-button norm-o-pad font-13 signika-font add" %> 
       <% end %>
-    </div>
   <% else %>
-    <div id="release-image-edit">
       <%= form_for [@artist,@release] do |f| %> 
         <%= f.file_field :image %> 
-        <%= f.submit "Replace Artwork" %> 
+        <%= f.submit "Replace Artwork", :class => "left o-button norm-o-pad font-13 signika-font edit" %> 
       <% end %>
       <%= form_for [@artist,@release] do |f| %>
         <%= f.hidden_field :delete_image, :value => true %>
-        <%= f.submit "Delete Artwork" %>
+        <%= f.submit "Delete Artwork", :class => "left o-button norm-o-pad font-13 signika-font del" %>
       <% end %>
-    </div>
   <% end %>
+  </div>
 <% end %>
 <div id="opac-50"></div>
 <div id="share-release">
@@ -193,6 +192,9 @@
 		$(".buy-trigger").click(function() {
 			$('#opac-50').fadeOut("normal");
 			$('#buy-release').animate({left : -310}, "slow");
+		});
+		$(".edit-image").click(function() {
+			$('#release-image-options').animate({bottom : 0}, "slow");
 		});
 		$(".release-list").carouFredSel({
 	circular: false,

@@ -9,6 +9,37 @@ margin:6px 0 31px 0;
 			@include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.45));
 			@include border-radius(12px);
 			overflow:hidden;
+			.icon-edit {
+				color:#fff;
+				font-size:2em;
+				position:absolute;
+				right:10px;
+				top:10px;
+			}
+			#release-image-options {
+				position:absolute;
+				bottom:-70px;
+				background-color:rgba(0,0,0,0.75);
+				height:70px;
+				width:309px;
+				@include border-bottom-left-radius(12px);
+				@include border-bottom-right-radius(12px);
+				color:#fff;
+				.add {
+					margin:5px 15px 0 0;
+				}
+				.edit {
+					margin:5px 15px 0 0;
+				}
+				.del {
+					margin-top:5px;
+				}
+				.edit_release {
+					position:relative;
+					left:26px;
+					top:10px;
+				}
+			}
       #opac-50 {
 	      position:absolute;
 	      z-index:1;
