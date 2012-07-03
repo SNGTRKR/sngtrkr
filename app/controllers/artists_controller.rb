@@ -68,10 +68,11 @@ class ArtistsController < ApplicationController
     @artist = Artist.find(params[:id])
     @user = current_user
     @timeline = Timeline.artist(params[:id])
-    @follow = Follow.where(:artist_id => params[:id], :user_id => current_user.id).first
+    @follow = current_user.follow .where(:artist_id => params[:id]).first
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @artist }
+      format.js
     end
   end
 

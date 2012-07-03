@@ -1,12 +1,12 @@
 <li class="left">
 	<div class="each-artist-outer">
-		<strong> <%= link_to artist_tracked do %>
+		<strong> <%= link_to artist_path(artist_tracked) do %>
 		<div class="font-13 name">
 			<%= truncate(artist_tracked.name, :length => 20) %>
 		</div><% end %></strong>
 		<div class="instruct-font orange-txt">
 			<%= artist_tracked.followers %> TRKRs
 		</div>
-		<%= link_to unfollow_artist_path(artist_tracked), :remote => true, :class => 'untrk-artist' do %><i class="icon-remove"></i><% end %>
+		<%= link_to artist_unfollow_path(artist_tracked), :remote => true, :class => 'untrk-artist' do %><i class="icon-remove"></i><% end %>
 	</div>
 </li>
