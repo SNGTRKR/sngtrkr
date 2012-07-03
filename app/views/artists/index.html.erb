@@ -1,4 +1,4 @@
-<% content_for :title do %>Search results for "<%= params[:search] %>"<% end %>
+<% content_for :title do %>Search results for "<%= @search %>"<% end %>
 <% content_for :description do %>Search results: <% @artists.each do |artist| %><%= artist.name %>, <%end%><% end %>
 <div class="content content-pad-187-bottom">
 	<h3 class="signika-txt top-header font-35">Search Results</h3>
@@ -6,7 +6,7 @@
 	<p>
 		<%= flash[:message] %>
 	</p>
-	<% end %> <!-- JSON URL: <%= url_for artists_url(:search => params[:search], :format => :json)  %> -->
+	<% end %> <!-- JSON URL: <%= url_for artists_url(:search => @search, :format => :json)  %> -->
 	<ul id="artist-search">
 		<% @artists.each do |artist| %>
 		<li>
@@ -22,6 +22,8 @@
 		</li>
 		<% end %>
 	</ul>
-	<%= if !@artists.empty?
-      paginate @artists
-    end %>
+	<h3 class="signika-txt top-header font-35">Facebook Results</h3>
+	<p>If you don't see the artist you were looking for above, you can add their facebook page to SNGTRKR here. Make sure to choose the artist's offical page, and not a fan page.</p>
+	<%= if !@artists.empty? then paginate @artists end %>
+  <%= render 'artists/fb_search' %>
+  <%= render 'shared/fb_async' %>
