@@ -10,21 +10,31 @@ class ReleaseJob
     end
     start_time = Time.now
     artist = Artist.find(artist_id)
-    #begin
+
     releases = Hash.from_xml( open("http://api.7digital.com/1.2/artist/releases?artistId=#{artist.sdid}&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB&imageSize=350", :proxy => proxy))["response"]["releases"]["release"]
-    #rescue
-    #  Rails.logger.error("J003: 7digital scrape failed ~ #{artist.sdid}")
-    #return false
-    #end
+
     releases.each do |release|
       r = Release.where("sd_id = ?",release["id"]).first rescue next
       if r.nil?
         r = Release.new
       elsif Rails.env.production? or !IMPORT_REPLACE
         Rails.logger.info("J003: 7digital scrape stopped, release appear to already be in database for artist #{artist.name}")
-      next
+        next
+      end
+      
+      # Check for duplicate and skip if present
+      existing_duplicates = Release.where(:artist_id => artist.id, :name => release["title"])
+      if !existing_duplicates.empty?
+        existing_duplicate = existing_duplicates.first
+        # If the new release came out earlier, change the release date of the existing release in the DB.
+        if existing_duplicate.date > release["releaseDate"]
+          existing_duplicate.date = release["releaseDate"]
+          existing_duplicate.save
+        end
+        next
       end
 
+      # Seven Digital
       r.artist_id = artist.id
       r.sd_id = release["id"]
       r.name = release["title"]
@@ -33,6 +43,36 @@ class ReleaseJob
       r.cat_no = release["isrc"]
       r.sdigital = release["url"]
       r.scraped = 1
+      
+      # iTunes UPC lookup
+      itunes_release = ActiveSupport::JSON.decode( open("http://itunes.apple.com/lookup?upc=#{release["barcode"]}&country=GB"))['results'][0]
+      if !itunes_release.nil?
+        r.itunes = itunes_release['collectionViewUrl']
+      end
+      
+      # iTunes Advanced
+      
+      #if artist.itunes_id?
+      #  itunes_releases = ActiveSupport::JSON.decode( open("http://itunes.apple.com/lookup?id=#{artist.itunes_id}&entity=album&country=GB"))['results']
+      #  i = 1
+      #  while !itunes_releases[i].nil?
+      #    # If either is a substring of the other
+      #    if r.name.include? itunes_releases[i]['collectionName'] or itunes_releases[i]['collectionName'].include? r.name
+      #      Rails.logger.info("J004: iTunes substring found for #{r.name} and #{itunes_releases[i]['collectionName']}")
+      #      r.itunes = itunes_releases[i]['collectionViewUrl']
+      #      itunes_release_date = Date.strptime itunes_releases[i]['releaseDate']
+      #      # Take the earliest of the two release dates.
+      #      if itunes_release_date < r.date.to_datetime
+      #        r.date = itunes_release_date
+      #      end
+      #      break
+      #    end
+      #    i += 1
+      #  end
+      #  itunes_releases = ActiveSupport::JSON.decode( open("http://itunes.apple.com/lookup?id=#{artist.itunes_id}&entity=song&country=GB"))['results']
+        
+      # end
+      
       Rails.logger.info("J003: Popularity of #{r.name} | #{release["popularity"]}")
       io = open(release["image"], :proxy => proxy)
       if io
