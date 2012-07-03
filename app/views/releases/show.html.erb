@@ -7,6 +7,7 @@
 <i class="icon-edit edit-image"></i>
 <% if @manager %>
 <div id="release-image-options">
+<i class="icon-remove edit-image-close"></i>
   <% if !@release.image? %>
       <%= form_for [@artist,@release] do |f| %> 
         <%= f.file_field :image %> 
@@ -195,6 +196,9 @@
 		});
 		$(".edit-image").click(function() {
 			$('#release-image-options').animate({bottom : 0}, "slow");
+		});
+		$(".edit-image-close").click(function() {
+			$('#release-image-options').animate({bottom : -70}, "slow");
 		});
 		$(".release-list").carouFredSel({
 	circular: false,
