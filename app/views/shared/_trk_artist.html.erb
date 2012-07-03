@@ -6,9 +6,12 @@
       <div class="o-button trkr-o-pad artist-remove-o-pad right instruct-font font-13 <%=  "#{friend_untrk_class}" %>"></div>
     <% end %>
   <% else %>
-    <%= button_to "ADD TRKR", artist_follows_path(trk_artist, trk_artist.follow.build(), :format => 'js'), :class => "recommend-trkr-button add-trkr #{friend_trk_class}", :form_class => 'add-trkr', :remote => true do %><% end %>
+    <%= button_to "ADD TRKR", artist_follows_path(trk_artist, :format => 'js'), :class => "recommend-trkr-button add-trkr #{friend_trk_class}", :form_class => 'add-trkr', :remote => true do %><% end %>
   <% end %>
 <% else %>
-  <a href="<%= user_omniauth_authorize_path(:facebook) %>"><div class="o-button trkr-o-pad right instruct-font font-13">
-  	LOGIN TO TRK</div></a>
+  <a href="<%= user_omniauth_authorize_path(:facebook) %>">
+    <div class="o-button trkr-o-pad right instruct-font font-13">
+    	LOGIN TO TRK
+  	</div>
+  </a>
 <% end %>
