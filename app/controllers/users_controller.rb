@@ -57,6 +57,7 @@ class UsersController < ApplicationController
       @trackers = @artist.followed_users.count
     end
     @following = @user.following
+
     respond_to do |format|
       format.html # show.html.erb
     end
@@ -153,45 +154,6 @@ class UsersController < ApplicationController
     current_user.manage_artist params[:id]
     respond_to do |format|
       format.html { redirect_to artist_path(params[:id])}
-      format.json { render :json => { :response => :success } }
-    end
-  end
-
-  def unfollow
-    current_user.unfollow_artist params[:id]
-    respond_to do |format|
-      format.html { redirect_to artist_path(params[:id])}
-      format.json { render :json => { :response => :success } }
-    end
-  end
-
-  def follow
-    current_user.follow_artist params[:id]
-    current_user.unsuggest_artist params[:id]
-    @artist = Artist.find(current_user.suggested[5].id) rescue nil
-    @tracked_artist = Artist.find(params[:id])
-    respond_to do |format|
-      format.html { redirect_to artist_path(params[:id])}
-      format.json { render("artists/show.json") }
-      format.js { render("artists/show.js") }
-    end
-  end
-
-  def unsuggest
-    current_user.unsuggest_artist params[:id]
-    @artist = Artist.find(current_user.suggested[5].id) rescue nil
-    @tracked_artist = Artist.find(params[:id])
-    respond_to do |format|
-      format.html { redirect_to artist_path(params[:id])}
-      format.json { render("artists/show.json") }
-      format.js { render("artists/show.js") }
-    end
-  end
-
-  def suggest
-    current_user.suggest_artist params[:id]
-    respond_to do |format|
-      format.html
       format.json { render :json => { :response => :success } }
     end
   end

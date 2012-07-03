@@ -32,6 +32,15 @@ input.o-button {
   border:none; 
 }
 
+.ignore-cross-absolute{
+  position: absolute;
+  bottom: -11px;
+  right: 38px;
+  color: white;
+  font-size: 1.2em;
+  pointer-events:none;
+}
+
 .fb-button {
 			color:white;
 			@include border-radius(7px);
