@@ -21,7 +21,7 @@
 //= require best_in_place
 
 function artist_suggestion_replace(){
-	$('a.add-trkr, a.ignore-trk-artist').bind('ajax:complete', function() {
+	$('.add-trkr, a.ignore-trk-artist').bind('ajax:complete', function() {
 		// Hide the suggestion itself
 		console.log("Successfully Trked Artist")
 		$(this).closest('li').fadeOut(300);
@@ -31,7 +31,7 @@ function artist_suggestion_replace(){
 		$(this).closest('li').fadeOut(300);
 	});
 	// Disables buttons by hiding them after they are clicked.
-	$('a.add-trkr, a.untrk-artist, a.ignore-trk-artist').click(function(){$(this).hide()});
+	$('.add-trkr, a.untrk-artist, a.ignore-trk-artist').click(function(){$(this).hide()});
 
 }
 
