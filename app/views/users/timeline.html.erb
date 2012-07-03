@@ -20,7 +20,33 @@
 <div class="content content-pad-160-bottom">
 
 <script type="text/javascript">
-	$(document).ready(function() {
+		function timeline_widths(){
+      // Width setting
+      var stepsWidth = 0;
+  		var widths = new Array();
+  		$('.release-list .each-release').each(function(i) {
+  			var $step = $(this);
+  			widths[i] = stepsWidth;
+  			stepsWidth += $step.width()+1;
+  		});
+  		return stepsWidth+220
+		}
+			$(document).ready(function() {
+    // Scroll to end of timeline
+    $("#timeline").scrollTo('max');
+
+		$('.release-list').width(timeline_widths());
+		var page = 2
+    // Ajax scroll load
+    $('#timeline').scroll(function(){
+      if ($('#timeline').scrollLeft() < 10){
+         console.log('Scrolled to end!');
+         $.get('/users/me/timeline/'+page);
+         page++;
+      }
+    });
+
+    
 		$(".share-release").click(function() {
 			$(this).closest(".each-release").find('.release-info').animate({bottom : -100}, "slow");
 			$(this).closest(".each-release").find('.release-menu').animate({bottom : -25}, "slow");
@@ -70,46 +96,43 @@
 			$(this).closest(".each-release").find('.opac-50').fadeOut("normal");
 			$(this).closest(".each-release").find('#buy-release').animate({left : -210}, "slow");
 		});
-				$(".artist-list").carouFredSel({
-	circular: false,
-	infinite: false,
-	auto 	: false,
-	scroll	: {
-		items	: "page"
-	},
-	prev	: {	
-		button	: "#rel_prev",
-		key		: "left"
-	},
-	next	: { 
-		button	: "#rel_next",
-		key		: "right"
-	},
-});
-		});
-		</script>
-		<script type="text/javascript">
-$(document).ready(function () {        
-        $('#timeline').mousedown(function (event) {
-            $(this)
-                .data('down', true)
-                .data('x', event.clientX)
-                .data('scrollLeft', this.scrollLeft);
-                
-            return false;
-        }).mouseup(function (event) {
-            $(this).data('down', false);
-        }).mousemove(function (event) {
-            if ($(this).data('down') == true) {
-                this.scrollLeft = $(this).data('scrollLeft') + $(this).data('x') - event.clientX;
-            }
-        }).mousewheel(function (event, delta) {
-            this.scrollLeft -= (delta * 30);
-        }).css({
-            'overflow' : 'hidden',
-            'cursor' : '-moz-grab'
-        });
+		$(".artist-list").carouFredSel({
+    	circular: false,
+    	infinite: false,
+    	auto 	: false,
+    	scroll	: {
+    		items	: "page"
+    	},
+    	prev	: {	
+    		button	: "#rel_prev",
+    		key		: "left"
+    	},
+    	next	: { 
+    		button	: "#rel_next",
+    		key		: "right"
+    	},
     });
+    
+    $('#timeline').mousedown(function (event) {
+        $(this)
+            .data('down', true)
+            .data('x', event.clientX)
+            .data('scrollLeft', this.scrollLeft);
+            
+        return false;
+    }).mouseup(function (event) {
+        $(this).data('down', false);
+    }).mousemove(function (event) {
+        if ($(this).data('down') == true) {
+            this.scrollLeft = $(this).data('scrollLeft') + $(this).data('x') - event.clientX;
+        }
+    }).mousewheel(function (event, delta) { // MATT - COMMENTED OUT AS BROWSER WAS SAYING NO SUCH EVENT
+        this.scrollLeft -= (delta * 30);
+    }).css({
+        'overflow' : 'hidden',
+        'cursor' : '-moz-grab'
+    });
+  });
     
     $(window).mouseout(function (event) {
         if ($('#timeline').data('down')) {
@@ -120,13 +143,5 @@ $(document).ready(function () {
             } catch (e) {}
         }
     });
-        //mousewheel
-        var stepsWidth = 0;
-			var widths = new Array();
-			$('.release-list .each-release').each(function(i) {
-				var $step = $(this);
-				widths[i] = stepsWidth;
-				stepsWidth += $step.width();
-			});
-			$('.release-list').width(stepsWidth+220);
+    //mousewheel
 		</script>

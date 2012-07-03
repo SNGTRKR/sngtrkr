@@ -20,6 +20,7 @@
 //= require jquery.purr
 //= require best_in_place
 //= require rotate/jQueryRotate.2.2
+//= require jquery.scrollto-1.4.2-min
 function artist_suggestion_replace(){
 	$('.add-trkr, a.ignore-trk-artist').bind('ajax:complete', function() {
 		// Hide the suggestion itself
