@@ -9,14 +9,6 @@ margin:6px 0 31px 0;
 			@include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.45));
 			@include border-radius(12px);
 			overflow:hidden;
-			.icon-edit {
-				color:#fff;
-				font-size:2em;
-				position:absolute;
-				right:9px;
-				top:10px;
-				cursor:pointer;
-			}
 			#release-image-options {
 				position:absolute;
 				bottom:-70px;
@@ -27,6 +19,14 @@ margin:6px 0 31px 0;
 				@include border-bottom-right-radius(12px);
 				color:#fff;
 				z-index:1;
+						.icon-edit {
+				color:#fff;
+				font-size:2em;
+				position:absolute;
+				right:9px;
+				top:10px;
+				cursor:pointer;
+			}
 				.add {
 					margin:5px 15px 0 0;
 				}
