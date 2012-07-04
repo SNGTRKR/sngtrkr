@@ -1,7 +1,6 @@
 <% content_for :title do %>Friend: <%= @friend.first_name %> <%= @friend.last_name %><% end %>
 <% content_for :description do %>Public profile page for your friend, <%= @friend.first_name %> <%= @friend.last_name %>. You can see when they last logged in, how many artists they are tracking and who they are tracking.<% end %>
 <div class="content content-pad-160-bottom">
-	<img id="friend-cover" />
 	<div id="friend-wrapper">
 	<div id="friend-cover">
 		
@@ -20,9 +19,19 @@
 			</div>
 	<div id="friend-image"  style="background-image:url(<%= "//graph.facebook.com/"+@friend.fbid+"/picture?type=normal" %>);background-repeat:no-repeat;background-position:center;"></div>
 	</div>
-	<ul>
+	<div id="friend-data">
+	<div class="left friend-activity">
+	<%= image_tag "/images/p-bulge-top.png", :alt => "Shadow", :class => "p-bulge-t" %>
+		<ul>
   	<%= render :partial => 'users/activity', :collection => User.find(1).recent_activity %>
+  	<div class="clear"></div>
 	</ul>
+	<%= image_tag "/images/p-bulge-bot.png", :alt => "Shadow", :class => "p-bulge-b" %>
+	</div>
+	<div class="right friend-trkrs">
+	</div>
+	<div class="clear"></div>
+	</div>
 	<script>
 		window.fbAsyncInit = function() {
 FB.init({
