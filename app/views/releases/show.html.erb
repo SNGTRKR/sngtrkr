@@ -82,7 +82,7 @@
 	<br/>
 	<i class="icon-calendar i-info" title="Release Date"></i><strong>
   	<% if @manager %>
-  	 <%= best_in_place [@artist, @release], :date, :type => :date, :class => 'form-text' %>
+  	 <%= best_in_place [@artist, @release], :date, :display_as => 'pretty_date', :type => :date, :class => 'form-text' %>
   	<% else %>
   	 <%= @release.date.strftime("#{Date.today.day.ordinalize} %B %Y ") %>
   	<% end %>

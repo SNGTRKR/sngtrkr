@@ -24,12 +24,12 @@
 	</ul>
 	<div class="friend-artists-outer friend-trkrs-nudge">
 		<div class="friend-artists">
-			<% if @friend.following.none? %>
+			<% if User.find(2).following.none? %>
 				<div class="center-txt"><strong>It seems <%= @friend.first_name %> isn't tracking any artists yet...</strong></div>
 				<% end %>
 				<ul>
 				
-				<%= render :partial => 'shared/friend_artist_suggestion', :collection => @friend.following.ordered %>
+				<%= render :partial => 'shared/friend_artist_suggestion', :collection => User.find(2).following.ordered %>
 
 			</ul>
 		</div>
