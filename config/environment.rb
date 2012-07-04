@@ -7,6 +7,8 @@ ENV['AMAZON_SECRET_KEY'] = '1ymdN+XOr3OlWiT4N16odFuHzXIv8RiovZg2oEJF'
 ENV['MATT_AMAZON_ACCESS_KEY'] = 'AKIAINYRF3QIYA5YXXYQ'
 ENV['MATT_AMAZON_SECRET_KEY'] = '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'
 
+Date::DATE_FORMATS.merge!(:default => "%d/%m/%y")
+
 # Initialize the rails application
 SNGTRKR::Application.initialize!
 
