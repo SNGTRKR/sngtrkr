@@ -67,7 +67,12 @@
     li {
       width:202px;
       height:178px;
-      margin:0 0 42px 30px;
+      margin:0 0 0 30px;
+      margin-bottom: -130px;
+      
+      display: block;
+      position: relative;
+      @include transition(margin-left 1s);
       @include border-radius(8px);
       @include box-shadow(0px 0px 8px rgba(0,0,0,0.55));
         .each-friend {
@@ -91,7 +96,8 @@
             z-index:2;
             width:202px;
             display:block;
-            bottom:20px;
+            top:5px;
+            text-shadow: 0px 1px 2px $gray;
             a {
               color:#fff;
             }
@@ -110,6 +116,9 @@
 	          right:42px;
           }
         }
+    }
+    li:hover {
+      margin-left:220px;
     }
   }
 }
