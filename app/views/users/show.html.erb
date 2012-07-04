@@ -1,6 +1,7 @@
 <% content_for :title do %>Friend: <%= @friend.first_name %> <%= @friend.last_name %><% end %>
 <% content_for :description do %>Public profile page for your friend, <%= @friend.first_name %> <%= @friend.last_name %>. You can see when they last logged in, how many artists they are tracking and who they are tracking.<% end %>
 <div class="content content-pad-160-bottom">
+	<img id="friend-cover" />
 	<div id="friend-info-top">
 		<div class="left friend-info">
 			<div id="friend-image"  style="background-image:url(<%= "//graph.facebook.com/"+@friend.fbid+"/picture?type=normal" %>);background-repeat:no-repeat;background-position:center;"></div>
@@ -65,6 +66,9 @@ appId      : <%= '\''+FB_APP_ID+'\'' %>
 	});
 	FB.api(<%= '\''+@friend.fbid+'/picture?type=large\'' %>, function(response) {
 		// The response will literally just be the URL to the friend's profile picture
+	});
+	FB.api(<%= '\''+@friend.fbid+'?fields=cover\'' %>, function(response){
+	   $('#friend-cover').attr("src",response['cover']['source']);
 	});
 	};
 
