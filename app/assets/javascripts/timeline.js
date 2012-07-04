@@ -18,23 +18,23 @@ function artist_suggestion_replace(){
 function timeline_widths(){
   // Width setting
   var stepsWidth = 0;
-	var widths = new Array();
-	$('.release-list .each-release').each(function(i) {
+	$('.release-list .release-outer').each(function(i) {
 		var $step = $(this);
-		widths[i] = stepsWidth;
-		stepsWidth += $step.width()+1;
+		stepsWidth += $step.width();
 	});
-	return stepsWidth+220
+	return stepsWidth
 }
 $(document).ready(function() {
   // Scroll to end of timeline
   $("#timeline").scrollTo('max');
-  
+  // Set global AJAX load variable
+  var last_load = new Date().getTime();;
   $('.release-list').width(timeline_widths());
   var page = 2
   // Ajax scroll load
   $('#timeline').scroll(function(){
-    if ($(this).scrollLeft() < 500){
+    if ($(this).scrollLeft() < 500 && (new Date().getTime() - last_load) > 300){
+      last_load = new Date().getTime();;
       $(this).trigger('mouseup');
        console.log('Scrolled to end!');
        $.get('/users/me/timeline/'+page);
