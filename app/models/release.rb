@@ -27,5 +27,9 @@ class Release < ActiveRecord::Base
       user.release_notifications << release
     end  
   end
+  
+  def pretty_date
+    date.strftime('%d/%m/%Y')
+  end
 
 end
