@@ -7,7 +7,7 @@
   position:absolute;
   height:247px;
   width:666px;
-  @include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.35));
+  @include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.45));
   @include border-radius(12px);
   z-index:2;
   background:black;
