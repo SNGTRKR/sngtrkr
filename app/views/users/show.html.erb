@@ -2,38 +2,27 @@
 <% content_for :description do %>Public profile page for your friend, <%= @friend.first_name %> <%= @friend.last_name %>. You can see when they last logged in, how many artists they are tracking and who they are tracking.<% end %>
 <div class="content content-pad-160-bottom">
 	<img id="friend-cover" />
-	<div id="friend-info-top">
-		<div class="left friend-info">
-			<div id="friend-image"  style="background-image:url(<%= "//graph.facebook.com/"+@friend.fbid+"/picture?type=normal" %>);background-repeat:no-repeat;background-position:center;"></div>
-			<div id="f-info">
-				<h2><div class="font-15"><strong><%= @friend.first_name + " " + @friend.last_name %></strong></div></h2>
-				<div class="orange-txt instruct-font">
-					<%= @friend.following.count %> TRKINGS
-				</div>
-				Last logged in <%= (time_ago_in_words @friend.last_sign_in_at) rescue @friend.last_sign_in_at %> ago
-			</div>
-		</div>
+	<div id="friend-wrapper">
+	<div id="friend-cover">
+		
 		<div id="friend-trkr-search">
 			<input type="text" id="filter" placeholder="Search friends TRKR's..."/>
 			<div class="search right search-button"><%= image_tag "/images/white-search-2.png", :alt => "Search", :id => "search-pad" %></div>
 		</div>
+		
 	</div>
-	<div class="clear"></div>
+			<div class="friend-info">
+			<div id="f-info">
+				<h2><div class="font-15"><strong><%= @friend.first_name + " " + @friend.last_name %></strong></div></h2>
+				<div class="orange-txt instruct-font">
+					<%= @friend.following.count %> TRKINGS</div>
+			</div>
+			</div>
+	<div id="friend-image"  style="background-image:url(<%= "//graph.facebook.com/"+@friend.fbid+"/picture?type=normal" %>);background-repeat:no-repeat;background-position:center;"></div>
+	</div>
 	<ul>
   	<%= render :partial => 'users/activity', :collection => User.find(1).recent_activity %>
 	</ul>
-	<div class="friend-artists-outer friend-trkrs-nudge">
-		<div class="friend-artists">
-			<% if User.find(2).following.none? %>
-				<div class="center-txt"><strong>It seems <%= @friend.first_name %> isn't tracking any artists yet...</strong></div>
-				<% end %>
-				<ul>
-				
-				<%= render :partial => 'shared/friend_artist_suggestion', :collection => User.find(2).following.ordered %>
-
-			</ul>
-		</div>
-	</div>
 	<script>
 		window.fbAsyncInit = function() {
 FB.init({

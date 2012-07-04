@@ -1,38 +1,20 @@
-#friend-info-top {
-  position:relative;
-  height:128px;
-  width:666px;
+#friend-wrapper {
   margin:5px 0 0 0;
-  .friend-info {
-   height:100px;
-   width:434px;
-         background:rgba(255,255,255,0.75);
-      @include border-radius(8px);
-      @include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.25));
-      #friend-image {
-        position:absolute;
-        top:0px;
-        left:0px;
-        width:100px;
-        height:100px;
-        border-style:solid;
-      border-right-width:3px;
-      border-right-color:$orange;
-      background:#000;
-      @include border-top-left-radius(8px);
-      @include border-bottom-left-radius(8px);
-      }
-      #f-info {
-        position:relative;
-        left:116px;
-        top:9px;
-        width:283px;
-      }
-  }
+  position:relative;
+  width:666px;
+  height:300px;
+  #friend-cover {
+  position:absolute;
+  height:247px;
+  width:666px;
+  @include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.35));
+  @include border-radius(12px);
+  z-index:2;
+  background:black;
   #friend-trkr-search {
         position:absolute;
         right:-1px;
-        bottom:28px;
+        top:273px;
         height:25px;
         width:202px;
         background:rgba(255,255,255,0.75);
@@ -52,77 +34,33 @@
         }
   }
 }
-.friend-artists-outer {
-  position:relative;
-  height:443px;
-  margin-top:31px;
-  .friend-artists {
-  position:relative;
-  top:0px;
-  width:667px;
-  height:410px; 
-  ul {
-    list-style-type:none;
-    margin-left:-30px;
-    li {
-      width:202px;
-      height:178px;
-      margin:0 0 0 30px;
-      margin-bottom: -130px;
-      
-      display: block;
-      position: relative;
-      @include transition(margin-left 1s);
+    .friend-info {
+  position:absolute;
+  height:100px;
+   width:363px;
+   top:199px;
+        left:37px;
+   z-index:1;
+         background:rgba(255,255,255,0.75);
       @include border-radius(8px);
-      @include box-shadow(0px 0px 8px rgba(0,0,0,0.55));
-        .each-friend {
-          position:relative;
-          height:178px;
-          width:202px;
-          .black-tint {
-            position:relative; 
-            height:178px;
-          width:202px;
-          @include border-radius(8px);
-          $experimental-support-for-svg: true;
-          @include background-image(linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 94%, rgba(0,0,0,1) 100%));
-          }
-          .friend-info {
-            @extend .instruct-font;
-            @extend .font-20;
-            position:absolute;
-            text-align:center;
-            line-height:1.4em;
-            z-index:2;
-            width:202px;
-            display:block;
-            top:5px;
-            text-shadow: 0px 1px 2px $gray;
-            a {
-              color:#fff;
-            }
-            a:hover {
-              color:$orange;
-            }
-          }
-          .friend-trk-class {
-	          position:relative;
-	          bottom:12px;
-	          right:52px;
-          }
-          .friend-untrk-class {
-	          position:relative;
-	          bottom:12px;
-	          right:42px;
-          }
-        }
-    }
-    li:hover {
-      margin-left:220px;
-    }
+      @include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.25));
+      #f-info {
+        position:relative;
+        left:116px;
+        top:56px;
+        width:283px;
+      }
   }
+        #friend-image {
+	      z-index:3;
+        position:absolute;
+        top:199px;
+        left:37px;
+        width:100px;
+        height:100px;
+      @include border-top-left-radius(8px);
+      @include border-bottom-left-radius(8px);
+      @include border-top-right-radius(8px);
+      }
+
 }
-}
-.friend-trkrs-nudge {
-  margin-top:-2px;
-  }
