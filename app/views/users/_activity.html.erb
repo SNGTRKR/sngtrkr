@@ -1,0 +1,7 @@
+<li>
+  <% if activity[:action] == 'follow' %>
+    <h4>TRK'D <%= Artist.find(activity[:id]).name %>, <%= time_ago_in_words(activity[:time]) %> ago.</h4>
+  <% elsif activity[:action] == 'rate' %>
+    <h4>RATE'D <%= Release.find(activity[:id]).artist.name %> - <%= Release.find(activity[:id]).name %>, with <%= activity[:stars] %> stars, <%= time_ago_in_words(activity[:time]) %> ago. </h4>
+  <% end %>
+</li>
