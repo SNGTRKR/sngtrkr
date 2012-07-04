@@ -41,8 +41,12 @@ $(document).ready(function() {
        page++;
     }
   });
-  
-  
+  // Formatting
+  timeline_formatting();
+
+});
+
+function timeline_formatting(){
   $(".share-release").click(function() {
   	$(this).closest(".each-release").find('.release-info').animate({bottom : -100}, "slow");
   	$(this).closest(".each-release").find('.release-menu').animate({bottom : -25}, "slow");
@@ -114,28 +118,27 @@ $(document).ready(function() {
           .data('down', true)
           .data('x', event.clientX)
           .data('scrollLeft', this.scrollLeft);
-          
-      return false;
-  }).mouseup(function (event) {
-      $(this).data('down', false);
-  }).mousemove(function (event) {
-      if ($(this).data('down') == true) {
-          this.scrollLeft = $(this).data('scrollLeft') + $(this).data('x') - event.clientX;
-      }
-  }).mousewheel(function (event, delta) {
-      this.scrollLeft -= (delta * 30);
-  }).css({
-      'overflow' : 'hidden',
-      'cursor' : '-moz-grab'
+          return false;
+      }).mouseup(function (event) {
+          $(this).data('down', false);
+      }).mousemove(function (event) {
+          if ($(this).data('down') == true) {
+              this.scrollLeft = $(this).data('scrollLeft') + $(this).data('x') - event.clientX;
+          }
+      }).mousewheel(function (event, delta) {
+          this.scrollLeft -= (delta * 30);
+      }).css({
+          'overflow' : 'hidden',
+          'cursor' : '-moz-grab'
+      });
+    
+    $(window).mouseout(function (event) {
+      if ($('#timeline').data('down')) {
+          try {
+              if (event.originalTarget.nodeName == 'BODY' || event.originalTarget.nodeName == 'HTML') {
+                  $('#timeline').data('down', false);
+              }                
+          } catch (e) {}
+      }  
   });
-});
-
-$(window).mouseout(function (event) {
-    if ($('#timeline').data('down')) {
-        try {
-            if (event.originalTarget.nodeName == 'BODY' || event.originalTarget.nodeName == 'HTML') {
-                $('#timeline').data('down', false);
-            }                
-        } catch (e) {}
-    }
-});
+}
