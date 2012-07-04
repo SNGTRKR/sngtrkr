@@ -141,5 +141,13 @@ class User < ActiveRecord::Base
     false
     end
   end
+  
+  def recent_activity
+    recent_follows = self.follow.order('updated_at DESC').limit(10)
+    recent_follows.map! { |follow| {:action => 'follow', :time => follow.updated_at, :object => 'artist', :id => follow.artist_id } }
+    recent_rates = Rate.where(:rater_id => self.id, :rateable_type => 'Release').order('updated_at DESC').limit(10)
+    recent_rates.map! { |rate| {:action => 'rate', :time => rate.updated_at, :object => 'release', :id => rate.rateable_id, :stars => rate.stars}}
+    recent_actions = (recent_rates + recent_follows).sort_by!{|action| action[:time]}.reverse!
+  end
 
 end

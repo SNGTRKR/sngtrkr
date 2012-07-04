@@ -18,6 +18,9 @@
 		</div>
 	</div>
 	<div class="clear"></div>
+	<ul>
+  	<%= render :partial => 'users/activity', :collection => User.find(2).recent_activity %>
+	</ul>
 	<div class="friend-artists-outer friend-trkrs-nudge">
 		<div class="friend-artists">
 			<% if @friend.following.none? %>
