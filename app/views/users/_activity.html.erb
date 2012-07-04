@@ -1,7 +1,14 @@
-<li>
-  <% if activity[:action] == 'follow' %>
-    <h4>TRK'D <%= Artist.find(activity[:id]).name %>, <%= time_ago_in_words(activity[:time]) %> ago.</h4>
+ <li>
+ <% if activity[:action] == 'follow' %>
+  <div class="each-activity">
+  <div class="activity-image"><i class="icon-screenshot"></i></div>
+    <h4 class="follow-info"><div class="instruct-font font-15 a-name"><%= Artist.find(activity[:id]).name %></div><div class="orange-txt line-height-1-25"><%= Artist.find(activity[:id]).genre %></div><div class="font-11"><%= time_ago_in_words(activity[:time]) %> ago.</div></h4>
+  </div>
   <% elsif activity[:action] == 'rate' %>
-    <h4>RATE'D <%= Release.find(activity[:id]).artist.name %> - <%= Release.find(activity[:id]).name %>, with <%= activity[:stars] %> stars, <%= time_ago_in_words(activity[:time]) %> ago. </h4>
+  <div class="each-activity">
+  <div class="activity-image"><i class="icon-star-empty"></i></div>
+    <h4 class="rate-info">RATE'D <%= Release.find(activity[:id]).artist.name %> - <%= Release.find(activity[:id]).name %>, with <%= activity[:stars] %> stars, <%= time_ago_in_words(activity[:time]) %> ago. </h4>
+  </div>
+    <div class="activity-play o-button"><i class="icon-play"></i></div>
   <% end %>
 </li>
