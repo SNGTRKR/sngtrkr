@@ -101,7 +101,6 @@ class ArtistsController < ApplicationController
     end    
     respond_to do |format|
       format.html
-      format.js
     end
   end
 
@@ -130,6 +129,7 @@ class ArtistsController < ApplicationController
       if @artist.update_attributes(params[:artist])
         format.html { redirect_to @artist, :notice => 'Artist was successfully updated.' }
         format.json { head :no_content }
+        format.js
       else
         format.html { render :action => "edit" }
         format.json { render :json => @artist.errors, :status => :unprocessable_entity }
@@ -170,12 +170,12 @@ class ArtistsController < ApplicationController
 
 
   def scrape_confirm
-    #@artist = Artist.find(params[:artist_id])
+    @artist = Artist.find(params[:artist_id])
     require 'open-uri'
     if params[:store] == '7digital'
       @sd_info = Scraper.artist_7digital_search params[:search]
     elsif params[:store] == 'itunes'
-      #@itunes_info = ActiveSupport::JSON.decode( open("http://itunes.apple.com/lookup?id=#{@artist.itunes_id}&country=GB"))
+      @itunes_info = ActiveSupport::JSON.decode( open("http://itunes.apple.com/search?term=#{ CGI.escape(params[:search])}&country=GB&limit=10&entity=musicArtist"))['results']
     else
       return render :nothing => true
     end
