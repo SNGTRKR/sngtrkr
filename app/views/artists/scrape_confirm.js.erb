@@ -1,4 +1,9 @@
 // Scrape search success
 <% if params[:store] == '7digital' %>
-$('#ajax-7digital-search-results').html("<%=j render :partial => 'artists/7digital_possibility', :collection => @sd_info %>");
+console.log("<%= @sd_info %>");
+$('#ajax-7digital-search-results').html("<%=j render :partial => 'artists/sdigital_possibility', :collection => @sd_info %>");
+//$('#ajax-7digital-search-results').append("None of these people are me.");
+<% elsif params[:store] == 'itunes' %>
+console.log("<%= @itunes_info %>");
+$('#ajax-itunes-search-results').html("<%=j render :partial => 'artists/itunes_possibility', :collection => @itunes_info %>");
 <% end %>

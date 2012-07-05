@@ -87,8 +87,15 @@ class Scraper
   end
   
   def self.artist_7digital_search artist_name
-    xml =  Hash.from_xml open("http://api.7digital.com/1.2/artist/search?q=#{CGI.escape(artist_name)}&sort=score%20desc&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB", :proxy => @@proxy)
+    xml =  Hash.from_xml open("http://api.7digital.com/1.2/artist/search?q=#{CGI.escape(artist_name)}&sort=score%20desc&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB&imageSize=150", :proxy => @@proxy)
     results = xml["response"]["searchResults"]["searchResult"]
+    i = 0
+    ret = Array.new
+    while !results[i].nil? do
+      ret[i] = { :score => results[i]['score'] }
+      i += 1
+    end
+    return results
   end
 
   # Stores: 1 => itunes, 2 => 7digital, 3 => juno
