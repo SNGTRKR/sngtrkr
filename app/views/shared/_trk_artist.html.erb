@@ -2,11 +2,10 @@
 <% friend_untrk_class ||= nil %>
 <% if user_signed_in?%>
   <% if current_user.following? trk_artist.id %>
-    <%= link_to "REMOVE TRKR", artist_unfollow_path(trk_artist), :method => :post, :class => 'remove-trkr #{friend_untrk_class}', :remote => true do %>
-      <div class="o-button trkr-o-pad artist-remove-o-pad right instruct-font font-13 <%=  "#{friend_untrk_class}" %>"></div>
-    <% end %>
+    <%= render :partial => "follows/unfollow_artist", :object => trk_artist, :locals => { :css_class => 'recommend-trkr-button remove-trkr', :id => '' }  %>
   <% else %>
-    <%= link_to "", artist_follows_path(trk_artist), :method => :post, :class => "recommend-trkr-button add-trkr #{friend_trk_class}", :remote => true, :method => :post %>
+    <%= render :partial => "follows/unfollow_artist", :object => trk_artist, :locals => { :css_class => 'recommend-trkr-button  add-trkr', :id => '' } %>
+    <!--<%= link_to "", artist_follows_path(trk_artist), :method => :post, :class => "recommend-trkr-button add-trkr #{friend_trk_class}", :remote => true, :method => :post %>-->
   <% end %>
 <% else %>
   <a href="<%= user_omniauth_authorize_path(:facebook) %>">
