@@ -170,7 +170,7 @@
       position: relative; 
       @include border-radius(8px);
       .new-friend {
-      @include box-shadow(1px -3px 8px rgba(0,0,0,0.45));
+      @include box-shadow(1px -3px 8px rgba(0,0,0,0.25));
       position:relative;
       top:0px;
       left:0px;
@@ -184,7 +184,7 @@
           width:202px;
           @include border-radius(8px);
           $experimental-support-for-svg: true;
-          @include background-image(linear-gradient(bottom,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 99.9%, rgba(0,0,0,1) 100%));
+          @include background-image(linear-gradient(bottom,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 99.9%, rgba(0,0,0,0.55) 100%));
           }
           .friend-info {
             @extend .instruct-font;
@@ -193,7 +193,7 @@
             text-align:center;
             line-height:1.4em;
             width:202px;
-            text-shadow: 0px 1px 2px $gray;
+            text-shadow: 0px 1px 7px $gray;
             height:30px;
             top:10px;
             a {
