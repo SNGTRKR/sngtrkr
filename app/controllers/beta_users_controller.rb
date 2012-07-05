@@ -32,7 +32,7 @@ class BetaUsersController < ApplicationController
     respond_to do |format|
       if @beta_user.save
         UserMailer.beta_email(@beta_user).deliver
-        flash.now[:notice] = 'Beta user was successfully created.'
+        flash.now[:notice] = 'Thank you for signing up to the SNGTRKR beta release. Please check your inbox for a confirmation email.'
         @beta_user = BetaUser.new()
         format.html { render action: "new" }
       else
