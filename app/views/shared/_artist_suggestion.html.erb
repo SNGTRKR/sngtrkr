@@ -17,7 +17,7 @@
 		</div>
 		</div>
 		<div class="recommend-buttons">
-		<%= render :partial => 'shared/trk_artist', :object => artist_suggestion %>
+		<%= render :partial => 'shared/trk_artist', :object => artist_suggestion, :locals => { :icon => 'icon-ok' } %>
 		<div class="mini-share"><i class="icon-share-alt"></i></div>
 		<%= link_to artist_unsuggest_path(artist_suggestion), :remote => true, :class => 'mini-ignore-trk-artist' do |f| %><i class="icon-remove"></i><% end %>
 		</div>

@@ -22,14 +22,14 @@
 	<div id="friend-data">
 	<div class="left friend-activity">
 	<%= image_tag "/images/p-bulge-top.png", :alt => "Shadow", :class => "p-bulge-t" %>
-		<ul>
+	<ul>
   	<%= render :partial => 'users/activity', :collection => User.find(1).recent_activity %>
   	<div class="clear"></div>
 	</ul>
 	<%= image_tag "/images/p-bulge-bot.png", :alt => "Shadow", :class => "p-bulge-b" %>
 	</div>
 	<div class="right friend-trkrs">
-	<ul>
+	<ul id ="friend-trkr-list">
 	 <%= render :partial => 'shared/friend_artist_suggestion', :collection => User.find(2).following.ordered %>	
 	</ul>	
 	</div>
@@ -88,16 +88,31 @@ appId      : <%= '\''+FB_APP_ID+'\'' %>
 	</script>
 <script type="text/javascript">
 $(document).ready(function () {
-  $(".new-friend").mouseover(function () {
+  $(".each-friend").mouseover(function () {
   	$(this).css("z-index","50");
-    $(this).stop().animate({
-      top: -10
-    }, "slow");
+    $(this).stop().animate({top: -10}, "slow");
   }).mouseout(function () {
   	  $(this).css("z-index","1");
-	  $(this).stop().animate({
-      top: 0
-    }, "slow");
+	  $(this).stop().animate({top: 0}, "slow");
   });
+
+		$(".mini-share").click(function() {
+			$(this).closest(".each-friend").find('.opac-50').fadeIn("normal");
+			$(this).closest(".each-friend").find('.share-artist').animate({right : 0}, "slow");
+			 $(this).closest(".each-friend").find('.friend-trkr-buttons').css("z-index","2"); 
+			 $(this).closest(".each-friend").find('.friend-info').fadeOut("normal");
+		});
+		$(".share-cancel").click(function() {
+			$(this).closest(".each-friend").find('.opac-50').fadeOut("normal");
+			$(this).closest(".each-friend").find('.share-artist').animate({right : -202}, "slow");
+			 $(this).closest(".each-friend").find('.friend-trkr-buttons').css("z-index","0"); 
+			 $(this).closest(".each-friend").find('.friend-info').fadeIn("normal");
+		});
+		$(".sm-trigger").click(function() {
+			$(this).closest(".each-friend").find('.opac-50').fadeOut("normal");
+			$(this).closest(".each-friend").find('.share-artist').animate({right : -202}, "slow");
+			 $(this).closest(".each-friend").find('.friend-trkr-buttons').css("z-index","0"); 
+			 $(this).closest(".each-friend").find('.friend-info').fadeIn("normal");
+		});
 });
 </script>
