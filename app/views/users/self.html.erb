@@ -95,7 +95,7 @@
 	 <p>Sorry, we have no suggestions for you at the moment... </p>
 	 <% else %>
 		<div class="recommended-artists">
-			<ul>
+			<ul id="ajax-recommended-artists">
 				<%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 6] %>
 			</ul>
 		</div>

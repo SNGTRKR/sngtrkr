@@ -53,16 +53,6 @@ class ArtistsController < ApplicationController
     end
   end
 
-  def no_results
-    @search = params[:search]
-    @user = current_user
-    @artists = current_user.suggested
-    @artists |= []
-    respond_to do |format|
-      format.html
-    end
-  end
-
   # GET /artists/1
   # GET /artists/1.json
   def show
