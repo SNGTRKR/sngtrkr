@@ -1,5 +1,6 @@
 <% if @timeline.empty? %>
 console.log("No releases");
+$('#timeline').unbind("scroll");
 <% else %>
 
 var old_width = $('.release-list').width();
