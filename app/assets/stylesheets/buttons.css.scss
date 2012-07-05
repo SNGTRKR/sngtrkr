@@ -1,3 +1,10 @@
+.button {
+  @extend .o-button;
+  @extend .norm-o-pad; 
+  @extend .signika-font;
+  @extend .font-13;
+}
+
 .o-button {
 			color:white;
 			cursor: pointer;
@@ -24,8 +31,8 @@
 	    0 0px 1px #ccc;
 }
 .o-button:hover {
-			$experimental-support-for-svg: true;
-            @include background-image(linear-gradient(top, #F15A24 0%, #F37244 100%));
+	$experimental-support-for-svg: true;
+  @include background-image(linear-gradient(top, #F15A24 0%, #F37244 100%));
 }
 
 input.o-button {

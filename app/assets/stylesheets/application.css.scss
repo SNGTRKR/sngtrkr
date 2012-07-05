@@ -6,6 +6,7 @@
 //= require font-awesome
 //= require jquery-ui-1.8.21.custom
 //= require ajaxful_rating
+// Compass Imports
 @import "compass/reset";
 @import "compass/css3/border-radius";
 @import "compass/css3/opacity";
@@ -13,45 +14,14 @@
 @import "compass/css3/text-shadow";
 @import "compass/utilities/links/link-colors";
 @import "compass";
+
 $blue:#45ADD2;
 $orange:#F15A24;
 $gray:#1A1A1A;
 $light-gray:#666666;
 $footer:166px;
-a:link {text-decoration:none; color:white}
-a:visited {color:white}
-*{
-  margin:0;
-  padding:0;
-}
-html, body{
-  width:100%;
-  height:100%;
-}
-body{
-    font-family: 'helvetica neue', helvetica, sans-serif;
-    font-size:75%;
-    font-weight:400;
-    line-height:1.45em;
-    background: url("/images/b-bk.png") no-repeat center center fixed;
-    background-color:$blue;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;    
-    color:$gray;
-}
-/* Font Styling CSS*/
-@import "font_styling.css.scss";
-.notice{
-  margin: auto;
-  text-align: center;
-  background-color: #FCF0C4;
-  padding: 10px;
-  margin: 0px 100px;
-  font-weight: bold;
-  border:2px solid #E0B518;
-}
+
+// SNGTRKR Imports
 /* Flash (System Notification)  CSS */
 @import "flash.css.scss";
 /* Buttons CSS*/
@@ -60,24 +30,20 @@ body{
 @import "header.css.scss";
 /* Footer CSS*/
 @import "footer.css.scss";
-#wrapper{
-    min-height:100%;
-}
-.wrapper2 {
-    width:980px;
-    margin:0 auto;
-    min-height:100%;
-}
-.content {
-    padding:0px 73px 0px 73px;
-    .artist-name { /* Artist name - Instruction font */
-      position:relative;
-      width:200px;
-      display:block;
-      text-transform:uppercase;
-      margin-top:-2px;
-      padding:0 0 14px 0;
-    }
+/* Font Styling CSS*/
+@import "font_styling.css.scss";
+/* Delete Confirm CSS*/
+@import "delete_confirm.css.scss";
+/* Errors CSS*/
+@import "errors.css.scss";
+/* Timeline CSS*/
+@import "timeline.css.scss";
+/* Manage Choice CSS*/
+@import "manage_choice.css.scss";
+/* Unmanage Confirm CSS*/
+@import "unmanage_confirm.css.scss";
+// Admin CSS
+@import "admin.css.scss";
 /* Beta CSS*/
 @import "beta.css.scss";
 /* Home CSS*/
@@ -107,7 +73,63 @@ body{
 /* Friend CSS*/
 @import "friend.css.scss";
 
-} /* END OF CONTENT */
+a:link {text-decoration:none; color:white}
+a:visited {color:white}
+
+*{
+  margin:0;
+  padding:0;
+}
+html, body{
+  width:100%;
+  height:100%;
+}
+body{
+    font-family: 'helvetica neue', helvetica, sans-serif;
+    font-size:75%;
+    font-weight:400;
+    line-height:1.45em;
+    background: url("/images/b-bk.png") no-repeat center center fixed;
+    background-color:$blue;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;    
+    color:$gray;
+}
+input[type="button"], input[type="submit"]{
+  @extend .button;
+}
+.notice{
+  margin: auto;
+  text-align: center;
+  background-color: #FCF0C4;
+  padding: 10px;
+  margin: 0px 100px;
+  font-weight: bold;
+  border:2px solid #E0B518;
+}
+
+#wrapper{
+  min-height:100%;
+}
+.wrapper2 {
+  width:980px;
+  margin:0 auto;
+  min-height:100%;
+}
+.content {
+  padding:0px 73px 0px 73px;
+  .artist-name { /* Artist name - Instruction font */
+    position:relative;
+    width:200px;
+    display:block;
+    text-transform:uppercase;
+    margin-top:-2px;
+    padding:0 0 14px 0;
+  }
+} 
+/* END OF CONTENT */
 .content-pad-bottom {
     padding-bottom:166px;
     @extend .content;
@@ -135,40 +157,27 @@ body{
   padding:4px 187px 166px 187px;
     @extend .content;
 }
-/* Delete Confirm CSS*/
-@import "delete_confirm.css.scss";
-/* Errors CSS*/
-@import "errors.css.scss";
-/* Timeline CSS*/
-@import "timeline.css.scss";
 #bio-full {
-	  display:none;
-	  background: url(/images/box-bk-431.png) no-repeat;
-	      -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;   
-    color:$gray; 
-    @include border-radius(8px);
-	  	  #bio {
-	  position:relative;
-		  width:401px;
-		  padding:30px 20px 30px 20px;
-		  .bio-title {
-			  margin-bottom:8px;
-		  }
-		  a {
-			  color:$gray;
-		  }
-		  a:hover {
-			  color:$gray;
-		  }
+  display:none;
+  background: url(/images/box-bk-431.png) no-repeat;
+      -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;   
+  color:$gray; 
+  @include border-radius(8px);
+  #bio {
+    position:relative;
+	  width:401px;
+	  padding:30px 20px 30px 20px;
+	  .bio-title {
+		  margin-bottom:8px;
+	  }
+	  a {
+		  color:$gray;
+	  }
+	  a:hover {
+		  color:$gray;
 	  }
   }
-/* Manage Choice CSS*/
-@import "manage_choice.css.scss";
-/* Unmanage Confirm CSS*/
-@import "unmanage_confirm.css.scss";
-
-// Admin CSS
-@import "admin.css.scss";
+}
