@@ -158,59 +158,79 @@
 	<a class="next o-button" id="rel_next" href="#"><i class="icon-chevron-right"></i></a>
 </div>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$(".share-release").click(function() {
-			$('#opac-50').fadeIn("normal");
-			$('#share-release').animate({right : 0}, "slow");
-			$('#buy-release').animate({left : -310}, "slow");
-		});
-		$(".share-cancel").click(function() {
-			$('#opac-50').fadeOut("normal");
-			$('#share-release').animate({right : -310}, "slow");
-		});
-		$(".sm-trigger").click(function() {
-			$('#opac-50').fadeOut("normal");
-			$('#share-release').animate({right : -310}, "slow");
-		});
-		
-		$(".buy-release").click(function() {
-			$('#opac-50').fadeIn("normal");
-			$('#buy-release').animate({left : 0}, "slow");
-			$('#share-release').animate({right : -310}, "slow");
-		});
-		$(".buy-cancel").click(function() {
-			$('#opac-50').fadeOut("normal");
-			$('#buy-release').animate({left : -310}, "slow");
-		});
-		$(".buy-trigger").click(function() {
-			$('#opac-50').fadeOut("normal");
-			$('#buy-release').animate({left : -310}, "slow");
-		});
-		$(".edit-image").click(function() {
-			$('#release-image-options').animate({bottom : 0}, "slow");
-		});
-		$(".edit-image-close").click(function() {
-			$('#release-image-options').animate({bottom : -70}, "slow");
-		});
-		$(".release-list").carouFredSel({
-	circular: false,
-	infinite: false,
-	auto 	: false,
-	scroll	: {
-		items	: "page"
-	},
-	prev	: {	
-		button	: "#rel_prev",
-		key		: "left"
-	},
-	next	: { 
-		button	: "#rel_next",
-		key		: "right"
-	},
-});
+	$(document).ready(function () {
+	  $(".share-release").click(function () {
+	    $('#opac-50').fadeIn("normal");
+	    $('#share-release').animate({
+	      right: 0
+	    }, "slow");
+	    $('#buy-release').animate({
+	      left: -310
+	    }, "slow");
+	  });
+	  $(".share-cancel").click(function () {
+	    $('#opac-50').fadeOut("normal");
+	    $('#share-release').animate({
+	      right: -310
+	    }, "slow");
+	  });
+	  $(".sm-trigger").click(function () {
+	    $('#opac-50').fadeOut("normal");
+	    $('#share-release').animate({
+	      right: -310
+	    }, "slow");
+	  });
 
-		});
-		</script>
+	  $(".buy-release").click(function () {
+	    $('#opac-50').fadeIn("normal");
+	    $('#buy-release').animate({
+	      left: 0
+	    }, "slow");
+	    $('#share-release').animate({
+	      right: -310
+	    }, "slow");
+	  });
+	  $(".buy-cancel").click(function () {
+	    $('#opac-50').fadeOut("normal");
+	    $('#buy-release').animate({
+	      left: -310
+	    }, "slow");
+	  });
+	  $(".buy-trigger").click(function () {
+	    $('#opac-50').fadeOut("normal");
+	    $('#buy-release').animate({
+	      left: -310
+	    }, "slow");
+	  });
+	  $(".edit-image").click(function () {
+	    $('#release-image-options').animate({
+	      bottom: 0
+	    }, "slow");
+	  });
+	  $(".edit-image-close").click(function () {
+	    $('#release-image-options').animate({
+	      bottom: -70
+	    }, "slow");
+	  });
+	  $(".release-list").carouFredSel({
+	    circular: false,
+	    infinite: false,
+	    auto: false,
+	    scroll: {
+	      items: "page"
+	    },
+	    prev: {
+	      button: "#rel_prev",
+	      key: "left"
+	    },
+	    next: {
+	      button: "#rel_next",
+	      key: "right"
+	    },
+	  });
+
+	});
+</script>
 		<% if !@release.tracks.count.zero? %>
 		<script type="text/javascript">
     $(document).ready(function(){
