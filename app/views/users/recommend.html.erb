@@ -13,7 +13,7 @@ where you will able to view your personalised timeline of releases, new and old.
 <div class="clear"></div>
 	<div class="recommended-artists-outer other-recommend-nudge">
 		<div class="recommended-artists">
-			<ul>
+			<ul id="ajax-recommended-artists">
   		<% if @user.suggested.count > 6 %>
 				<%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 6] %>
     		<% else %>
