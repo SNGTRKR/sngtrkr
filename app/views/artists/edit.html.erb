@@ -28,13 +28,19 @@
 
 <h3>iTunes Identity</h3>
 <% if !@artist.itunes_id? %>
-<p>We couldn't find you on iTunes, if you aren't on there, don't worry, you don't need to do anything.</p>
+  <p>We couldn't find you on iTunes, if you aren't on there, don't worry, you don't need to do anything.</p>
 <% else %>
-<p><%= link_to @itunes_info['results'][0]['artistName'] + " on iTunes", @itunes_info['results'][0]['artistLinkUrl'] %></p>
-<p>Genre: <%=  @itunes_info['results'][0]['primaryGenreName'] %></p>
-<%= link_to "This isn't me" %>
-<%= form_for @artist, :remote => true do |f| %>
-  <%= hidden_field_tag "itunes_id_delete" %>
-  <%= f.submit "I'm not on iTunes" %>
-<% end %>
+  <p><%= link_to @itunes_info['results'][0]['artistName'] + " on iTunes", @itunes_info['results'][0]['artistLinkUrl'] %></p>
+  <p>Genre: <%=  @itunes_info['results'][0]['primaryGenreName'] %></p>
+  <%= link_to "This isn't me" %>
+  <%= form_for @artist, :remote => true do |f| %>
+    <%= hidden_field_tag "itunes_id_delete" %>
+    <%= f.submit "I'm not on iTunes" %>
+  <% end %>
+  <%=form_for @artist, :url => artist_scrape_confirm_path(:artist_id => @artist.id, :format => :js), :remote => true do |f| %>
+    <%= text_field_tag :search, @artist.name %>
+    <%= hidden_field_tag :store, "itunes" %>
+    <%= submit_tag "Search" %>
+  <% end %>
+  <div id="ajax-itunes-search-results"></div>
 <% end %>
