@@ -8,7 +8,8 @@ class Release < ActiveRecord::Base
   :release => "210x210#",
   :release_i => "310x311#",
   :release_email => "84x84#",
-  :release_carousel => "116x116#" }
+  :release_carousel => "116x116#",
+  :friend_activity_release => "71x71#" }
   #:default_url => "/images/release/:style/missing.png"
 
 
