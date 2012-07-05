@@ -1,0 +1,3 @@
+<% css_class ||= nil %>
+<% id ||= nil %>
+<%= link_to "U", artist_unfollow_path(unfollow_artist), :method => :post, :class => "button remove-trkr #{css_class}", :remote => true, :id => id  %>
