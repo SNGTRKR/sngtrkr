@@ -4,9 +4,7 @@
 			<%= link_to artist_suggestion.name, artist_suggestion  %>
 		</div>
 		<%= render :partial => 'shared/trk_artist', :object => artist_suggestion %>
-		<div class="ignore-outer o-button">
-		<%= link_to artist_unsuggest_path(artist_suggestion), :remote => true, :class => 'ignore-trk-artist ' do |f| %>
+		<%= link_to artist_unsuggest_path(artist_suggestion), :remote => true, :class => 'button ignore-trk-artist ' do |f| %>
   		<i class="icon-remove"></i>
 		<% end %>
-		</div>
 </li>
