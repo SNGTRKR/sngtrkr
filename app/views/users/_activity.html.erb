@@ -6,7 +6,7 @@
     <h4 class="follow-info"><div class="instruct-font font-15 a-name"><%= link_to artist.name, artist %></div><div class="orange-txt line-height-1-25"><%= artist.genre %></div>
     <div class="font-11"><%= time_ago_in_words(activity[:time]) %> ago.</div></h4>
   </div>
-  <%= render :partial => 'follows/follow_artist', :object => artist %>
+  <%= render :partial => 'follows/follow_artist', :object => artist, :locals => { :css_class => "left" } %>
 <% elsif activity[:action] == 'rate' %>
   <% release = Release.find(activity[:id]) %>
   <div class="each-activity">
