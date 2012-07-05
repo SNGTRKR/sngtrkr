@@ -1,2 +1,2 @@
-$('#remove-trkr').parent().parent().parent().html("<%=j button_to "ADD TRKR", artist_follows_path(@artist, :format => 'js'), :class => 'left o-button trkr-o-pad font-13 buy-release instruct-font', :id => 'add-trkr', :remote => true %>");
+$('#remove-trkr').parent().html("<%=j link_to "ADD TRKR", artist_follows_path(@artist), :method => :post, :class => 'left o-button trkr-o-pad font-13 buy-release instruct-font', :id => 'add-trkr', :remote => true %>");
 console.log('Untrked Artist ID <%= @artist_id %>');

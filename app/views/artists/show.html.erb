@@ -85,9 +85,9 @@ content_for :og_id, @artist.id.to_s
   <li>
     <% if user_signed_in?%>
       <% if current_user.following? @artist.id %>
-        <%= button_to "REMOVE TRKR", artist_unfollow_path(@artist, :format => 'js'), :remote => true, :class => "left o-button trkr-o-pad font-13 buy-release instruct-font", :id => 'remove-trkr' %>
+        <%= link_to "REMOVE TRKR", artist_unfollow_path(@artist), :method => :post, :remote => true, :class => "left o-button trkr-o-pad font-13 buy-release instruct-font", :id => 'remove-trkr' %>
       <% else %>
-        <%= button_to "ADD TRKR", artist_follows_path(@artist, :format => 'js'), :remote => true, :class => "left o-button trkr-o-pad font-13 buy-release instruct-font", :id => 'add-trkr' %>
+        <%= link_to "ADD TRKR", artist_follows_path(@artist), :method => :post, :remote => true, :class => "left o-button trkr-o-pad font-13 buy-release instruct-font", :id => 'add-trkr' %>
       <% end %>
     <% else %>
       <a href="<%= user_omniauth_authorize_path(:facebook) %>">LOGIN TO TRK</a>
