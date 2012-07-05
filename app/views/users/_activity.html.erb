@@ -3,7 +3,7 @@
   <% artist = Artist.find(activity[:id]) %>
   <div class="each-activity">
   <div class="activity-image" style="background-image:url(<%= artist.image :friend_activity_artist %>);background-repeat:no-repeat;background-position:center;"><i class="icon-screenshot"></i></div>
-    <h4 class="follow-info"><div class="instruct-font font-15 a-name"><%= link_to artist.name, artist %></div><div class="orange-txt line-height-1-25"><%= artist.genre %></div>
+    <h4 class="follow-info"><div class="instruct-font font-15 a-name"><%= link_to truncate((strip_tags artist.name || "" ), :length => 23), artist %></div><div class="orange-txt line-height-1-25"><%= artist.genre %></div>
     <div class="font-11"><%= time_ago_in_words(activity[:time]) %> ago.</div></h4>
   </div>
   <%= render :partial => 'shared/activity_trk_artist', :object => artist %>
