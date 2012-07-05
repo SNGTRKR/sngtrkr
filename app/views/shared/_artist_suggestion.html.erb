@@ -1,7 +1,6 @@
 <li class="left new-recommend" style="background-image:url(<%= artist_suggestion.image.url :recommend %>);background-repeat:no-repeat;background-position:center;">
-	<div class="each-recommend">
 		<div class="black-tint"></div>
-		<div class="instruct-font font-20 recommend-info">
+		<div class="instruct-font font-20 recommend-info <% if artist_suggestion.name.length > 14 %>twoline<% else %>oneline<% end %>">
 			<%= link_to artist_suggestion.name, artist_suggestion  %>
 		</div>
 		<%= render :partial => 'shared/trk_artist', :object => artist_suggestion %>
@@ -10,5 +9,4 @@
   		<i class="icon-remove"></i>
 		<% end %>
 		</div>
-	</div>
 </li>
