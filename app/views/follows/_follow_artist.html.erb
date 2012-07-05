@@ -1,2 +1,4 @@
 <% css_class ||= nil %>
+<% id ||= nil %>
+<% icon ||= nil %>
 <%= link_to artist_follows_path(follow_artist), :method => :post, :class => "add-trkr #{css_class}", :remote => true, :method => :post, :id => id do %><i class="<%= icon %>"></i><% end %>
