@@ -14,7 +14,7 @@ where you will able to view your personalised timeline of releases, new and old.
 	<div class="recommended-artists-outer other-recommend-nudge">
 		<div class="recommended-artists">
 			<ul id="ajax-recommended-artists">
-  		<% if @user.suggested.count > 6 %>
+  		<% if @user.suggested.count >= 6 %>
 				<%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 6] %>
     		<% else %>
       		<h2 class="signika-txt font-35 center-txt">Please wait...</h2><br/>
@@ -39,6 +39,9 @@ where you will able to view your personalised timeline of releases, new and old.
   </div>
 </div>
 <script>
+  $(document).ready(function(){
+    artist_suggestion_replace();
+  });
   <% if @user.suggested.count < 6 %>
   var first_sugg, times = 1;
   function load_suggestions(data){
