@@ -6,7 +6,7 @@
       <div class="o-button trkr-o-pad artist-remove-o-pad right instruct-font font-13 <%=  "#{friend_untrk_class}" %>"></div>
     <% end %>
   <% else %>
-    <%= link_to "ADD TRKR", artist_follows_path(trk_artist), :method => :post, :class => "recommend-trkr-button add-trkr #{friend_trk_class}", :remote => true, :method => :post %>
+    <%= link_to "", artist_follows_path(trk_artist), :method => :post, :class => "recommend-trkr-button add-trkr #{friend_trk_class}", :remote => true, :method => :post %>
   <% end %>
 <% else %>
   <a href="<%= user_omniauth_authorize_path(:facebook) %>">
