@@ -20,24 +20,6 @@ $(document).ready(function () {
   timeline_setup();
 });
 
-function artist_suggestion_replace() {
-  $('.add-trkr, a.ignore-trk-artist').bind('ajax:complete', function () {
-    // Hide the suggestion itself
-    console.log("Successfully Trked Artist")
-    $(this).closest('li').fadeOut(300);
-  });
-  $('a.untrk-artist').bind('ajax:complete', function () {
-    console.log("Successfully Untrked Artist")
-    $(this).closest('li').fadeOut(300);
-    $('#user-following-count').html(parseInt($('#user-following-count').html(), 10) - 1);
-  });
-  // Disables buttons by hiding them after they are clicked.
-  $('.add-trkr, a.untrk-artist, a.ignore-trk-artist').click(function () {
-    $(this).hide()
-  });
-
-}
-
 function timeline_widths() {
   // Width setting
   var stepsWidth = 0;
