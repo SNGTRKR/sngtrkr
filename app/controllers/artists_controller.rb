@@ -91,6 +91,14 @@ class ArtistsController < ApplicationController
   # GET /artists/1/edit
   def edit
     @artist = Artist.find(params[:id])
+    @@sevendigital_apikey = "7dufgm34849u"
+    require 'open-uri'
+    if @artist.sdid?
+      @sd_info = Hash.from_xml open("http://api.7digital.com/1.2/artist/details?artistid=#{CGI.escape(@artist.sdid)}&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB&imageSize=350")
+    end
+    if @artist.itunes_id?
+      @itunes_info = ActiveSupport::JSON.decode( open("http://itunes.apple.com/lookup?id=#{@artist.itunes_id}&country=GB"))
+    end    
     respond_to do |format|
       format.html
       format.js
@@ -162,17 +170,17 @@ class ArtistsController < ApplicationController
 
 
   def scrape_confirm
-    @@sevendigital_apikey = "7dufgm34849u"
+    #@artist = Artist.find(params[:artist_id])
     require 'open-uri'
-    @artist = Artist.find(params[:artist_id])
-    if @artist.sdid?
-      @sd_info = Hash.from_xml open("http://api.7digital.com/1.2/artist/details?artistid=#{CGI.escape(@artist.sdid)}&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB&imageSize=350")
+    if params[:store] == '7digital'
+      @sd_info = Scraper.artist_7digital_search params[:search]
+    elsif params[:store] == 'itunes'
+      #@itunes_info = ActiveSupport::JSON.decode( open("http://itunes.apple.com/lookup?id=#{@artist.itunes_id}&country=GB"))
+    else
+      return render :nothing => true
     end
-    if @artist.itunes_id?
-      @itunes_info = ActiveSupport::JSON.decode( open("http://itunes.apple.com/lookup?id=#{@artist.itunes_id}&country=GB"))
-    end    
     respond_to do |format| 
-      format.html
+      format.js
     end
   end
   

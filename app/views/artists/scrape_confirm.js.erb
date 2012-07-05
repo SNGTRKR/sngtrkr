@@ -1,0 +1,4 @@
+// Scrape search success
+<% if params[:store] == '7digital' %>
+$('#ajax-7digital-search-results').html("<%=j render :partial => 'artists/7digital_possibility', :collection => @sd_info %>");
+<% end %>

@@ -85,6 +85,11 @@ class Scraper
       return nil
     end
   end
+  
+  def self.artist_7digital_search artist_name
+    xml =  Hash.from_xml open("http://api.7digital.com/1.2/artist/search?q=#{CGI.escape(artist_name)}&sort=score%20desc&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB", :proxy => @@proxy)
+    results = xml["response"]["searchResults"]["searchResult"]
+  end
 
   # Stores: 1 => itunes, 2 => 7digital, 3 => juno
   def self.find_release_info url, store
