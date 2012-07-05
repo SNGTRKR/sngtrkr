@@ -98,7 +98,7 @@ content_for :og_id, @artist.id.to_s
 <%= image_tag "/images/timeline-left.png", :alt => "SNGTRKR", :id => "left-logo" %>
 <div id="left-line"></div>
 <ul class="release-list">
-<%= render :partial => 'timeline/release', :collection => @timeline.order("date ASC"), :locals => { :date_format => "%d/%m/%y", :date_class => 'font-15', :artist_page => 'true' } %>
+<%= render :partial => 'timeline/release', :collection => @timeline.order("date ASC"), :locals => { :date_format => "%b.<br>%Y ", :date_class => 'font-15', :artist_page => 'true' } %>
 </ul>
 <div class="clear"></div>
 </div>
