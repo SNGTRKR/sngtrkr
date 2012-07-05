@@ -10,10 +10,11 @@ class SuggestsController < ApplicationController
   end
   
   def destroy
-    @artist = current_user.unsuggest_artist params[:artist_id]
+    current_user.unsuggest_artist params[:artist_id]
+    @artist = current_user.suggested[5] rescue nil
     respond_to do |format|
       format.html { redirect_to artist_path(@artist) }
-      format.js { render :nothing => true }
+      format.js { render "suggests/next", :format => :js  }
       format.json { render :json => { :response => :success } }
     end
   end
