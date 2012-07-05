@@ -53,13 +53,28 @@ class ReleaseJob
       end
       
       Rails.logger.info("J003: Popularity of #{r.name} | #{release["popularity"]}")
-      io = open(release["image"], :proxy => proxy)
-      if io
-        def io.original_filename; base_uri.path.split('/').last; end
-        io.original_filename.blank? ? nil : io      
-        r.image = io
+
+      # Source the artwork from last.fm
+      album_info = Scraper.lastfm_album_info(artist.name, r.name)
+      best_artwork = album_info['image'].last rescue best_artwork = nil
+      if best_artwork
+        io = open(best_artwork, :proxy => proxy)
+        if io
+          def io.original_filename; base_uri.path.split('/').last; end
+          io.original_filename.blank? ? nil : io      
+          r.image = io
+        end
+      else
+        # Source the artwork from 7digital if last.fm don't have it.
+        io = open(release["image"], :proxy => proxy)
+        if io
+          def io.original_filename; base_uri.path.split('/').last; end
+          io.original_filename.blank? ? nil : io      
+          r.image = io
+        end
       end
       r.save
+
 
       # Now get the track ID's for preview URLS
       begin
@@ -96,6 +111,7 @@ class ReleaseJob
       
     end
     
+    
     # STAGE 2 - ITUNES IMPORT
     if artist.itunes_id?
       itunes_releases = ActiveSupport::JSON.decode( open("http://itunes.apple.com/lookup?id=#{artist.itunes_id}&entity=album&country=GB", :proxy => proxy))['results']
@@ -116,15 +132,27 @@ class ReleaseJob
         r.date = itunes_releases[i]['releaseDate']
         r.scraped = 1
         
-        if itunes_releases[i]["artworkUrl100"]
-          io = open(itunes_releases[i]["artworkUrl100"], :proxy => proxy)
+        album_info = Scraper.lastfm_album_info(artist.name, r.name)
+        best_artwork = album_info['image'].last rescue best_artwork = nil
+        if best_artwork
+          io = open(best_artwork, :proxy => proxy)
           if io
             def io.original_filename; base_uri.path.split('/').last; end
             io.original_filename.blank? ? nil : io      
             r.image = io
           end
+        else  
+          # Itunes artwork is really shit quality so only use it if we must...
+          if itunes_releases[i]["artworkUrl100"]
+            io = open(itunes_releases[i]["artworkUrl100"], :proxy => proxy)
+            if io
+              def io.original_filename; base_uri.path.split('/').last; end
+              io.original_filename.blank? ? nil : io      
+              r.image = io
+            end
+          end
         end
-        
+                
         r.save
         i += 1
       end

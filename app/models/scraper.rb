@@ -23,7 +23,17 @@ class Scraper
     @artist_name = artist_name
     self
   end
-
+  
+  def self.lastfm_album_info(artist_name, album_name)
+    album_info = Hash.from_xml( open("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&artist=#{CGI.escape(artist_name)}&album=#{CGI.escape(album_name)}&api_key=6541dc514e866d40539bfe4eddde211c&autocorrect", :proxy => @@proxy))
+    begin
+      album_info = album_info['lfm']['album'] 
+    rescue 
+      return false # If there's an issue here, there were probably no results.
+    end
+    return album_info
+  end
+  
   def self.lastFmArtistImage
     begin
       image = @artist_info["lfm"]["artist"]["image"].last
