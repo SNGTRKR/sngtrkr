@@ -105,19 +105,3 @@
   	artist_suggestion_replace();
 	</script>
 	<%= render :partial => 'shared/fb_async' %>
-		<script type="text/javascript">
-$(document).ready(function(){
-		$(".mini-share").click(function() {
-			$('.opac-50').fadeIn("normal");
-			$('.share-artist').animate({right : 0}, "slow");
-		});
-		$(".share-cancel").click(function() {
-			$('.opac-50').fadeOut("normal");
-			$('.share-artist').animate({right : -202}, "slow");
-		});
-		$(".sm-trigger").click(function() {
-			$('.opac-50').fadeOut("normal");
-			$('.share-artist').animate({right : -202}, "slow");
-		});
-		});
-		</script>
