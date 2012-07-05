@@ -26,10 +26,10 @@
 		</div>
 		<div class="profile-welcome">
 			<% if @user.manager? %>
-			<span class="artist"><h2>
+			<span class="artist">
 			<div class="font-15">
 				Welcome, <strong><%= link_to @artist.name, @artist %></strong>
-			</div></h2>
+			</div>
 			<br/>
 			Here you will be able to view how many of your fans are TRKing you, along with adding releases, new and old, to your personalized artist timeline.
 			Your interactive timeline will enable you to edit and delete releases you have already added.
@@ -42,10 +42,10 @@
 			<br/>
 			If you need further help with anything, then be sure to visit our Help page.</span>
 						<% else %>
-			<span class="user"><h2>
+			<span class="user">
 			<div class="font-15">
 			Welcome to your profile, <strong><%= @user.first_name %> <%= @user.last_name %></strong>!
-			</div></h2>
+			</div>
 			<br/>
 			Here you will be able to change the settings of your profile, manage any Facebook artists you control and view the list of artists you are currently tracking.
 			<br/>
@@ -79,7 +79,7 @@
 	</div>
 	<div class="clear"></div>
 	<div class="content-top recommend-text-nudge">
-		<h3 class="signika-txt top-header font-35 left">Here are a few artists we have recommended for you...</h3>
+		<div class="signika-txt top-header font-35 left">Here are a few artists we have recommended for you...</div>
 		<div class="content-top-right">
 			We noticed you’ve already liked a few artists on Facebook, so decided to recommend some you might want to track.
 			With one simple click, it’s easy to add and remove artists to your tracking timeline.
@@ -105,3 +105,19 @@
   	artist_suggestion_replace();
 	</script>
 	<%= render :partial => 'shared/fb_async' %>
+		<script type="text/javascript">
+$(document).ready(function(){
+		$(".mini-share").click(function() {
+			$('.opac-50').fadeIn("normal");
+			$('.share-artist').animate({right : 0}, "slow");
+		});
+		$(".share-cancel").click(function() {
+			$('.opac-50').fadeOut("normal");
+			$('.share-artist').animate({right : -202}, "slow");
+		});
+		$(".sm-trigger").click(function() {
+			$('.opac-50').fadeOut("normal");
+			$('.share-artist').animate({right : -202}, "slow");
+		});
+		});
+		</script>

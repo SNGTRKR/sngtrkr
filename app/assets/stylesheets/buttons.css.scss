@@ -4,7 +4,6 @@
   @extend .signika-font;
   @extend .font-13;
 }
-
 .o-button {
 			color:white;
 			cursor: pointer;
@@ -304,3 +303,21 @@ input.o-button {
 .fb-home-login {
 	margin-top:-2px;
 }
+.mini-trkr-button, .mini-share, .mini-ignore-trk-artist {
+            line-height:25px;
+            height:25px;
+            width:31px;
+            font-size:1.5em;
+            @extend .o-button; 
+            position:absolute;
+          }
+.mini-ignore-trk-artist {
+	right:0px;
+}
+.mini-trkr-button {
+	left:0px;
+}
+.mini-share {
+	left:46px;
+}
+          
