@@ -69,6 +69,7 @@ SNGTRKR::Application.configure do
   config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   config.assets.precompile += %w(rails_admin/rails_admin.css rails_admin/rails_admin.js)
+  config.assets.precompile += %w(timeline.js)
 
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
