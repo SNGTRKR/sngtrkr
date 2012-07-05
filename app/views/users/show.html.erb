@@ -29,6 +29,9 @@
 	<%= image_tag "/images/p-bulge-bot.png", :alt => "Shadow", :class => "p-bulge-b" %>
 	</div>
 	<div class="right friend-trkrs">
+	<ul>
+	 <%= render :partial => 'shared/friend_artist_suggestion', :collection => User.find(2).following.ordered %>	
+	</ul>	
 	</div>
 	<div class="clear"></div>
 	</div>
@@ -83,3 +86,18 @@ appId      : <%= '\''+FB_APP_ID+'\'' %>
 			ref.parentNode.insertBefore(js, ref);
 		}(document));
 	</script>
+<script type="text/javascript">
+$(document).ready(function () {
+  $(".new-friend").mouseover(function () {
+  	$(this).css("z-index","50");
+    $(this).stop().animate({
+      top: -10
+    }, "slow");
+  }).mouseout(function () {
+  	  $(this).css("z-index","1");
+	  $(this).stop().animate({
+      top: 0
+    }, "slow");
+  });
+});
+</script>
