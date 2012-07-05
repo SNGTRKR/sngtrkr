@@ -54,6 +54,9 @@
 					<% end %>
 					<div class="clear"></div>
 				</div>
+				<% if content_for?(:content_class) %>
+  				<div class="content <%= yield :content_class  %>">
+				<% end %>
 				<%= yield %>
 			</div>
 		</div></div>

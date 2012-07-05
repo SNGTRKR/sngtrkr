@@ -159,5 +159,21 @@ class ArtistsController < ApplicationController
       format.json { render :json => @six }
     end
   end
+
+
+  def scrape_confirm
+    @@sevendigital_apikey = "7dufgm34849u"
+    require 'open-uri'
+    @artist = Artist.find(params[:artist_id])
+    if @artist.sdid?
+      @sd_info = Hash.from_xml open("http://api.7digital.com/1.2/artist/details?artistid=#{CGI.escape(@artist.sdid)}&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB&imageSize=350")
+    end
+    if @artist.itunes_id?
+      @itunes_info = ActiveSupport::JSON.decode( open("http://itunes.apple.com/lookup?id=#{@artist.itunes_id}&country=GB"))
+    end    
+    respond_to do |format| 
+      format.html
+    end
+  end
   
 end
