@@ -62,7 +62,7 @@ SNGTRKR::Application.routes.draw do
       end
     end
     resources :manages
-    get 'scrape_confirm' => 'Manages#scrape_confirm'
+    match 'scrape_confirm'
     resources :follows, :except => [:destroy,:edit]
     get 'unfollow' => 'Follows#destroy'
     post 'unfollow' => 'Follows#destroy'
