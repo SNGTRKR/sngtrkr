@@ -134,11 +134,15 @@ width:604px;
 	.fb-artist-info {
 		position:relative;
 		left:81px;
+		top:-2px;
 		 a{
 			 color:$gray;
 		 }
 		 a:hover {
 			 color:$orange;
+		 }
+		 .name {
+			 margin-bottom:4px;
 		 }
 	}
 	.icon-bookmark {
