@@ -2,10 +2,9 @@
 <% friend_untrk_class ||= nil %>
 <% if user_signed_in?%>
   <% if current_user.following? trk_artist.id %>
-    <%= render :partial => "follows/unfollow_artist", :object => trk_artist, :locals => { :css_class => 'recommend-trkr-button remove-trkr', :id => '' }  %>
+    <%= render :partial => "follows/unfollow_artist", :object => trk_artist, :locals => { :css_class => 'mini-trkr-button remove-trkr', :id => '' }  %>
   <% else %>
-    <%= render :partial => "follows/follow_artist", :object => trk_artist, :locals => { :css_class => 'recommend-trkr-button  add-trkr', :id => '' } %>
-    <!--<%= link_to "", artist_follows_path(trk_artist), :method => :post, :class => "recommend-trkr-button add-trkr #{friend_trk_class}", :remote => true, :method => :post %>-->
+    <%= render :partial => "follows/follow_artist", :object => trk_artist, :locals => { :css_class => 'mini-trkr-button  add-trkr', :id => '' } %>
   <% end %>
 <% else %>
   <a href="<%= user_omniauth_authorize_path(:facebook) %>">
