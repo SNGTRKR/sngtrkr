@@ -66,15 +66,15 @@
 	</div>
 	<div id="tracked-artists">
 	
-			<% if @user.following.count.zero? %>
+		<ul>
+		<% if @user.following.count.zero? %>
 		<div class="no-trk-notify">
 			You are not TRKing anyone yet.
 		</div>
 		<% else %>
-		<ul>
 		  <%= render :partial => 'shared/artist_tracked', :collection => @following.ordered %>
-		</ul>
 		<% end %>
+		</ul>
 		<%= image_tag "/images/p-bulge-bot.png", :alt => "Shadow", :class => "p-bulge-b" %>
 	</div>
 	<div class="clear"></div>
