@@ -1,0 +1,2 @@
+<% css_class ||= nil %>
+<%= link_to "F", artist_follows_path(follow_artist), :method => :post, :class => "button add-trkr #{css_class}", :remote => true, :method => :post, :id => id  %>
