@@ -40,6 +40,17 @@ content_for :og_id, @artist.id.to_s
 <div class="clear"></div>
 <div class="font-13 o-button norm-o-pad signika-font left share-cancel">Cancel</div>
 </div> <!-- share-profile -->
+
+<div id="buy-profile">
+<h5 class="signika-txt font-22 buy-header">Browse this artist</h5>
+<ul class="buy-list">
+  <li class="left buy-trigger white-button"><%= link_to image_tag("/images/itunes.png", :alt => "iTunes", :title => "iTunes"), @artist.itunes, :target => "_blank" %></li>
+  <li class="left buy-trigger white-button"><%= link_to image_tag("/images/7digital.png", :alt => "7Digital", :title => "7Digital"), @artist.sd, :target => "_blank" %></li>
+</ul>
+<div class="clear"></div>
+<div class="font-13 o-button norm-o-pad signika-font left buy-cancel">Cancel</div>
+</div>
+
 <div id="social-bar-shadow"></div>
 <div id="social-hidden">
 <ul class="artist-sm">
@@ -48,18 +59,6 @@ content_for :og_id, @artist.id.to_s
 <li class="left pop-trig"><a href="http://www.twitter.com/<%= @artist.twitter %>" target="_blank"><div class="sm-pop twitter-button twit-icon"><i class="icon-twitter"></i></div></a></li><% else %><% end %>
 <% if @artist.soundcloud? %>
 <li class="left pop-trig"><a href="http://www.soundcloud.com/<%= @artist.soundcloud %>" target="_blank"><div class="sm-pop sc-icon soundcloud-button"><%= image_tag "/images/soundcloud.png", :alt => "Soundcloud" %></div></a></li><% else %><% end %>
-<li class="left pop-trig music-option"><div class="sm-pop o-button music-icon"><i class="icon-music"></i></div><div class="dropdownContain">
-					<div class="dropOut font-13">
-						
-						<ul>
-						<li class="left white-button"><%= link_to (image_tag"/images/7digital.png", :alt => "7Digital", :title => "7Digital"), @artist.sd, :target => "_blank" %></li>
-						<li class="left white-button"><%= link_to (image_tag "/images/itunes.png", :alt => "iTunes", :title => "iTunes"), @artist.itunes, :target => "_blank" %></li>
-							<div class="clear"></div>
-						</ul>
-						
-					<div class="triangle"><i class="icon-sort-down"></i></div>
-
-					</div></div></li>
 <% if @artist.youtube? %>
 <li class="left pop-trig"><a href="http://www.youtube.com/<%= @artist.youtube %>" target="_blank"><div class="sm-pop yt-icon white-button"><%= image_tag "/images/youtube.png", :alt => "Youtube" %></div></a></li><% else %><% end %>
 <% if @artist.website? %>
@@ -82,16 +81,7 @@ content_for :og_id, @artist.id.to_s
 </div>
 </div>
   <ul class="menu-user">
-  <li>
-    <% if user_signed_in?%>
-      <% if current_user.following? @artist.id %>
-        <%= render :partial => "follows/unfollow_artist", :object => @artist, :locals => { :css_class => "left", :id => "remove-trkr" } %>
-      <% else %>
-        <%= render :partial => "follows/follow_artist", :object => @artist, :locals => { :css_class => "left", :id => "add-trkr" } %>
-      <% end %>
-    <% else %>
-      <a href="<%= user_omniauth_authorize_path(:facebook) %>">LOGIN TO TRK</a>
-    <% end %>
+  <li class="left o-button signika-font norm-o-pad font-13 buy-profile"><i class="icon-shopping-cart"></i>Buy</li>
   </li>
   <li class="left o-button signika-font norm-o-pad font-13 share-profile"><i class="icon-share-alt"></i>Share</li>
   </ul>
@@ -127,6 +117,7 @@ $(document).ready(function(){
 		$(".share-profile").click(function() {
 			$('#opac-50').fadeIn("normal");
 			$('#share-profile').animate({right : 0}, "slow");
+			$('#buy-profile').animate({left : -310}, "slow");
 		});
 		$(".share-cancel").click(function() {
 			$('#opac-50').fadeOut("normal");
@@ -136,15 +127,24 @@ $(document).ready(function(){
 			$('#opac-50').fadeOut("normal");
 			$('#share-profile').animate({right : -310}, "slow");
 		});
+	   $(".buy-profile").click(function() {
+			$('#opac-50').fadeIn("normal");
+			$('#buy-profile').animate({left : 0}, "slow");
+			$('#share-profile').animate({right : -310}, "slow");
+		});
+		$(".buy-cancel").click(function() {
+			$('#opac-50').fadeOut("normal");
+			$('#buy-profile').animate({left : -310}, "slow");
+		});
+		$(".buy-trigger").click(function() {
+			$('#opac-50').fadeOut("normal");
+			$('#buy-profile').animate({left : -310}, "slow");
+		});
+		
 				$(".pop-trig").mouseover(function(){
 				$(this).closest(".pop-trig").find('.sm-pop').stop().animate({bottom : -53}, "slow");
 			}).mouseout(function(){
 				$(this).closest(".pop-trig").find('.sm-pop').stop().animate({bottom : -78}, "slow");
-			});
-			$(".music-option").mouseover(function(){
-				$(".dropdownContain").stop().fadeIn();
-			}).mouseout(function(){
-				$(".dropdownContain").stop().fadeOut();
 			});
 			$(".edit").mouseover(function(){
 				$('.edit').stop().animate({left : 60}, "slow");

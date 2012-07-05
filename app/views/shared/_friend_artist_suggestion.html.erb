@@ -3,5 +3,7 @@
 		<div class="instruct-font font-20 friend-info <% if friend_artist_suggestion.name.length > 14 %>twoline<% else %>oneline<% end %>">
 			<%= link_to friend_artist_suggestion.name, friend_artist_suggestion, :class => 'name'  %>
 		</div>
-		<div class="recommend-trkr-button"><%= render :partial => 'shared/trk_artist', :object => friend_artist_suggestion, :locals => { :friend_trk_class => 'friend-trk-class', :friend_untrk_class => 'friend-untrk-class' } %></div>
+		<div class="friend-trkr-buttons"><%= render :partial => 'shared/trk_artist', :object => friend_artist_suggestion %>
+		<div class="mini-share"><i class="icon-share-alt"></i></div>
+		</div>
 </li>
