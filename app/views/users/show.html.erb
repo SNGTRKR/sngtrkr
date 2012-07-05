@@ -22,14 +22,22 @@
 	<div class="left friend-activity">
 	<%= image_tag "/images/p-bulge-top.png", :alt => "Shadow", :class => "p-bulge-t" %>
 	<ul>
-  	<%= render :partial => 'users/activity', :collection => User.find(1).recent_activity %>
+	 <% if @friend.recent_activity.empty? %>
+  	 <li>   
+       <p><%= @friend.first_name %> hasn't peformed any actions yet.</p>
+     </li>
+   <% end %>
+  	<%= render :partial => 'users/activity', :collection => @friend.recent_activity %>
   	<div class="clear"></div>
 	</ul>
 	<%= image_tag "/images/p-bulge-bot.png", :alt => "Shadow", :class => "p-bulge-b" %>
 	</div>
 	<div class="right friend-trkrs">
+ <% if @friend.following.empty? %>
+   <p><%= @friend.first_name %> hasn't tracked any artists yet.</p>
+ <% end %>
 	<ul id ="friend-trkr-list">
-	 <%= render :partial => 'shared/friend_artist_suggestion', :collection => User.find(2).following.ordered %>	
+	 <%= render :partial => 'shared/friend_artist_suggestion', :collection => @friend.following.ordered %>	
 	</ul>	
 	</div>
 	<div class="clear"></div>
