@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html>
 	<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# sngtrkr: http://ogp.me/ns/fb/sngtrkr#">
 	 <% if content_for? :og_name %>
@@ -29,9 +29,8 @@
   		  <%= raw flash[:notice] %>
   		  <%= raw flash[:success] %>
   		  </p>
-  		  <div class="button" id="flash-dismiss"><i class="icon-remove"></i></div>
-    		<div class="clear"></div>
   		</div>
+  		<div class="flash-close"><i class="icon-remove"></i></div>
 		</div>
 		<% end %>
 			<div class="wrapper2">
