@@ -53,7 +53,7 @@ $(document).ready(function () {
 
   // Flash Dismissal
   $('.flash-outer').delay(300).slideDown(500, 'easeInQuad');
-  $('#flash-dismiss').click(function () {
+  $('.flash-close').click(function () {
     $('.flash-outer').slideUp(500, 'easeInQuad');
   })
   if ($('.flash-outer').data('disappear-after')) {

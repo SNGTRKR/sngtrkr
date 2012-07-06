@@ -4,12 +4,6 @@
     background: url(/images/box-bk-431.png) no-repeat;
     @include border-radius(8px);
     color:$gray;
-    a {
-	    color:#fff;
-    }
-    a:hover {
-	    color:#fff;
-    }
     .sure {
         font-size:2.8em;
         position:relative;
@@ -32,10 +26,10 @@
         left:97px;
         top:44px;
           a {
-	    color:$gray;
+	    color:#fff;
     }
     a:hover {
-	    color:#fff;
+	    color:$gray;
     }
       }
       .unmanage-buttons {
