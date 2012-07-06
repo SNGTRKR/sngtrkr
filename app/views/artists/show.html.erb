@@ -54,15 +54,15 @@ content_for :og_id, @artist.id.to_s
 <div id="social-bar-shadow"></div>
 <div id="social-hidden">
 <ul class="artist-sm">
-<li class="left pop-trig"><a href="http://www.facebook.com/<%= @artist.fbid %>" target="_blank"><div class="fb-button fb-icon sm-pop"><i class="icon-facebook"></i></div></a></li>
+<li><a href="http://www.facebook.com/<%= @artist.fbid %>" target="_blank"><div class="fb-button fb-icon sm-pop"><i class="icon-facebook"></i></div></a></li>
 <% if @artist.twitter? %>
-<li class="left pop-trig"><a href="http://www.twitter.com/<%= @artist.twitter %>" target="_blank"><div class="sm-pop twitter-button twit-icon"><i class="icon-twitter"></i></div></a></li><% else %><% end %>
+<li><a href="http://www.twitter.com/<%= @artist.twitter %>" target="_blank"><div class="sm-pop twitter-button twit-icon"><i class="icon-twitter"></i></div></a></li><% else %><% end %>
 <% if @artist.soundcloud? %>
-<li class="left pop-trig"><a href="http://www.soundcloud.com/<%= @artist.soundcloud %>" target="_blank"><div class="sm-pop sc-icon soundcloud-button"><%= image_tag "/images/soundcloud.png", :alt => "Soundcloud" %></div></a></li><% else %><% end %>
+<li><a href="http://www.soundcloud.com/<%= @artist.soundcloud %>" target="_blank"><div class="sm-pop sc-icon soundcloud-button"><%= image_tag "/images/soundcloud.png", :alt => "Soundcloud" %></div></a></li><% else %><% end %>
 <% if @artist.youtube? %>
-<li class="left pop-trig"><a href="http://www.youtube.com/<%= @artist.youtube %>" target="_blank"><div class="sm-pop yt-icon white-button"><%= image_tag "/images/youtube.png", :alt => "Youtube" %></div></a></li><% else %><% end %>
+<li><a href="http://www.youtube.com/<%= @artist.youtube %>" target="_blank"><div class="sm-pop yt-icon white-button"><%= image_tag "/images/youtube.png", :alt => "Youtube" %></div></a></li><% else %><% end %>
 <% if @artist.website? %>
-<li class="left pop-trig"><a href="http://<%= @artist.website %>" target="_blank"><div class="sm-pop web-icon black-button"><i class="icon-globe"></i></div></a></li><% else %><% end %>
+<li><a href="http://<%= @artist.website %>" target="_blank"><div class="sm-pop web-icon black-button"><i class="icon-globe"></i></div></a></li><% else %><% end %>
 </ul>
 </div> <!-- social-hidden -->
 </div> <!-- profile-image -->
@@ -141,10 +141,10 @@ $(document).ready(function(){
 			$('#buy-profile').animate({left : -310}, "slow");
 		});
 		
-				$(".pop-trig").mouseover(function(){
-				$(this).closest(".pop-trig").find('.sm-pop').stop().animate({bottom : -53}, "slow");
+				$("#profile-image").mouseover(function(){
+				$('.sm-pop').stop().animate({bottom : -47}, "normal");
 			}).mouseout(function(){
-				$(this).closest(".pop-trig").find('.sm-pop').stop().animate({bottom : -78}, "slow");
+				$('.sm-pop').stop().animate({bottom : -78}, "normal");
 			});
 			$(".edit").mouseover(function(){
 				$('.edit').stop().animate({left : 60}, "slow");
