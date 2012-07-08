@@ -2,7 +2,7 @@ class Artist < ActiveRecord::Base
   validates :name, :presence => true
   validates :fbid, :presence => true, :uniqueness => true
 
-  has_many :releases
+  has_many :releases, :dependent => :delete_all
   belongs_to :label
 
   has_attached_file :image, :styles => {

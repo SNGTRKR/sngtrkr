@@ -12,9 +12,9 @@ class User < ActiveRecord::Base
 
   ajaxful_rater
 
-  has_many :follow
-  has_many :suggest
-  has_many :manage
+  has_many :follow, :dependent => :delete_all
+  has_many :suggest, :dependent => :delete_all
+  has_many :manage, :dependent => :delete_all
   has_many :super_manage
   has_and_belongs_to_many :roles
 
@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   has_many :managing, :through => :manage, :source => :artist
   has_many :suggested_all, :through => :suggest, :source => :artist
   has_many :labels, :through => :super_manage
-  has_many :notification
+  has_many :notification, :dependent => :delete_all
   has_many :release_notifications, :through => :notification, :source => :release
     
   before_save :default_values
