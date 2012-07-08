@@ -1,10 +1,11 @@
 class Scraper
   include MusicBrainz
-  @@sevendigital_apikey = "7dufgm34849u"
+  
+  @sevendigital_apikey = "7dufgm34849u"
   if Rails.env.production?
-    @@proxy = 'http://localhost:3128'
+    @proxy = 'http://localhost:3128'
   else
-    @@proxy = nil
+    @proxy = nil
   end
   require 'open-uri'
 
@@ -19,13 +20,13 @@ class Scraper
   end
 
   def self.new artist_name
-    @artist_info = Hash.from_xml( open("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=#{CGI.escape(artist_name)}&api_key=6541dc514e866d40539bfe4eddde211c&autocorrect", :proxy => @@proxy))
+    @artist_info = Hash.from_xml( open("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=#{CGI.escape(artist_name)}&api_key=6541dc514e866d40539bfe4eddde211c&autocorrect", :proxy => @proxy))
     @artist_name = artist_name
     self
   end
   
   def self.lastfm_album_info(artist_name, album_name)
-    album_info = Hash.from_xml( open("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&artist=#{CGI.escape(artist_name)}&album=#{CGI.escape(album_name)}&api_key=6541dc514e866d40539bfe4eddde211c&autocorrect", :proxy => @@proxy))
+    album_info = Hash.from_xml( open("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&artist=#{CGI.escape(artist_name)}&album=#{CGI.escape(album_name)}&api_key=6541dc514e866d40539bfe4eddde211c&autocorrect", :proxy => @proxy))
     begin
       album_info = album_info['lfm']['album'] 
     rescue 
@@ -80,7 +81,7 @@ class Scraper
   end
 
   def self.artist_sevendigital artist_name
-    xml =  Hash.from_xml open("http://api.7digital.com/1.2/artist/search?q=#{CGI.escape(artist_name)}&sort=score%20desc&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB", :proxy => @@proxy)
+    xml =  Hash.from_xml open("http://api.7digital.com/1.2/artist/search?q=#{CGI.escape(artist_name)}&sort=score%20desc&oauth_consumer_key=#{@sevendigital_apikey}&country=GB", :proxy => @proxy)
     results = xml["response"]["searchResults"]["searchResult"]
     # Necessary to still return an ID when we have multiple artist possibilities (picks first artist)
     if results.kind_of?(Array)
@@ -97,7 +98,7 @@ class Scraper
   end
   
   def self.artist_7digital_search artist_name
-    xml =  Hash.from_xml open("http://api.7digital.com/1.2/artist/search?q=#{CGI.escape(artist_name)}&sort=score%20desc&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB&imageSize=150", :proxy => @@proxy)
+    xml =  Hash.from_xml open("http://api.7digital.com/1.2/artist/search?q=#{CGI.escape(artist_name)}&sort=score%20desc&oauth_consumer_key=#{@sevendigital_apikey}&country=GB&imageSize=150", :proxy => @proxy)
     results = xml["response"]["searchResults"]["searchResult"]
     i = 0
     ret = Array.new

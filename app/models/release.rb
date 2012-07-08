@@ -13,8 +13,8 @@ class Release < ActiveRecord::Base
   #:default_url => "/images/release/:style/missing.png"
 
 
-  has_many :tracks
-  has_many :notification
+  has_many :tracks, :dependent => :delete_all
+  has_many :notification, :dependent => :delete_all
   has_many :user_notifications, :through => :notification, :source => :user
   belongs_to :artist
   
@@ -25,7 +25,7 @@ class Release < ActiveRecord::Base
   # Notify users that follow this release's artist of this release.
   def notify_followers
     self.artist.followed_users.each do |user|
-      user.release_notifications << release
+      user.release_notifications << self
     end  
   end
   
