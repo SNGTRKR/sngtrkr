@@ -16,8 +16,11 @@ u = User.new(:first_name => 'Matt', :last_name => 'Bessey', :fbid => "757635703"
 u.roles = [r]
 u.skip_confirmation!
 u.save
-User.create!(:first_name => 'Barry', :last_name => 'Smith', :fbid => "123456789", :email => "matt@sngtrkr.com",:password => 'test42343egy76df', :last_sign_in_at => Time.now, 
+
+u = User.new(:first_name => 'Barry', :last_name => 'Smith', :fbid => "123456789", :email => "matt@sngtrkr.com",:password => 'test42343egy76df', :last_sign_in_at => Time.now, 
   :email_frequency => 1)
+u.skip_confirmation!
+u.save
 
 Artist.create!(:name =>"JellyFishBoy", :fbid => "204842319549165", :genre => "Dubstep", :hometown => "Bristol", :booking_email => "billy@jellyfishboy.co.uk")
 Artist.create!(:name =>"False Economy", :fbid => "193078984080645", :genre => "Dubstep", :hometown => "Bristol", :booking_email => "bessey@gmail.com")

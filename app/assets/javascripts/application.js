@@ -89,10 +89,10 @@ $(document).ready(function () {
   $("#manage-top a").fancybox({
     autoScale: true,
   });
-  /*$('#artist-mini-search-submit').click(function(){
+  $('#artist-mini-search-submit').click(function(){
     $(this).closest('form').submit();
     return false;
-  });*/
+  });
   $('#mini_search_field').keyup(function () {
     $.get("/artists/search.json", {
       search: $('#mini_search_field').val()
