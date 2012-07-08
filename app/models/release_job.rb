@@ -88,7 +88,12 @@ class ReleaseJob
     end
 
     releases.each do |release|
-      if release["id"].blank? or !release["id"].is_a?(Integer) or !Release.where("sd_id = ?",release["id"]).empty? 
+      begin
+        if release["id"].blank? or !Release.where("sd_id = ?",release["id"]).empty? 
+          next
+        end
+      rescue
+        Rails.logger.error "J004: Release for artist '#{artist.name}' with SD ID '#{release["id"]}' failed"
         next
       end
       r = Release.new
