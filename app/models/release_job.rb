@@ -8,6 +8,12 @@ class ReleaseJob
     @proxy = nil
   end
 
+  def self.daily_release
+    Artist.where(:ignore => false).each do |artist|
+      Resque.enqueue(ReleaseJob, artist.id)
+    end
+  end
+
   def self.perform(artist_id)
     if artist_id.blank? 
       raise "No Artist ID given"

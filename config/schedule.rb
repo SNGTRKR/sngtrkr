@@ -15,5 +15,5 @@ every 1.month, :at => '12:00 am' do
 end
 
 every 1.day, :at => '1:00 pm' do 
-  runner "Cron.daily_release"
+  runner "ReleaseJob.daily_release"
 end
