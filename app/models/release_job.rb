@@ -93,7 +93,7 @@ class ReleaseJob
           next
         end
       rescue
-        Rails.logger.error "J004: Release for artist '#{artist.name}' with SD ID '#{release["id"]}' failed"
+        Rails.logger.error "J004: Release for artist '#{artist.name}' with SD ID '#{release["id"].inspect}' failed"
         next
       end
       r = Release.new

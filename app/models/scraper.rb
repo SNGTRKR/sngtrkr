@@ -34,7 +34,7 @@ class Scraper
     begin
       album_info = Hash.from_xml( open("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&artist=#{CGI.escape(artist_name)}&album=#{CGI.escape(album_name)}&api_key=6541dc514e866d40539bfe4eddde211c&autocorrect", :proxy => @proxy))
     rescue
-      raise "URL Issue for artist_name: '#{artist_name}' and album-name: '#{album_name}'"
+      raise "URL Issue for artist_name: '#{artist_name.inspect}' and album-name: '#{album_name.inspect}'"
     end
     begin
       album_info = album_info['lfm']['album'] 
