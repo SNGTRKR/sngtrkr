@@ -1,7 +1,8 @@
 <%= stylesheet_link_tag "application", :media => "all" %>
 <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Signika+Negative:400,600' %>
 <%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js' %>
-<%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js' %>
+<script>window.jQuery || document.write("<%=j javascript_include_tag "/jquery-1.7.2.min.js" %>")</script> 
+<!-- <%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js' %>-->
 <%= javascript_include_tag "application" %>
 
 <%= csrf_meta_tags %>
