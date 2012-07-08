@@ -22,8 +22,12 @@
 		</li>
 		<% end %>
 	</ul>
-	<h3 class="signika-txt fb-result-header font-35">Facebook Results</h3>
-	<p>If you don't see the artist you were looking for above, you can add their facebook page to SNGTRKR here. Make sure to choose the artist's offical page, and not a fan page.</p>
-	<%= if !@artists.empty? then paginate @artists end %>
-  <%= render 'artists/fb_search' %>
-  <%= render 'shared/fb_async' %>
+	<% if user_signed_in? %>
+  	<h3 class="signika-txt fb-result-header font-35">Facebook Results</h3>
+  	<p>If you don't see the artist you were looking for above, you can add their facebook page to SNGTRKR here. Make sure to choose the artist's offical page, and not a fan page.</p>
+  	<%= if !@artists.empty? then paginate @artists end %>
+    <%= render 'artists/fb_search' %>
+    <%= render 'shared/fb_async' %>
+  <% else %>
+  
+  <% end %>
