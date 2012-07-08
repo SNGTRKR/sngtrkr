@@ -9,23 +9,22 @@ class ArtistsController < ApplicationController
   end
   
   def index
-    @artists = Artist.real_only.search(params[:search])
     @search = params[:search]
-    @ids = @artists.map{|a| a.fbid}
     if params[:search].blank?
-      if Rails.env.production?
-        flash.now[:message] = "You must search for an artist"
-      else
-        @artists = Artist.real_only.order(:name).page(params[:page])
-      end
+      @empty_search = true
     elsif(params[:search].length < 2)
-      flash.now[:message] = "Please enter at least 2 characters into the search box"
-      @artists = [];
-    elsif @artists.empty?
+      @short_search = true
+    else
+      @artists = Artist.real_only.search(params[:search]).order(:name).page(params[:page]).per(10)
+      @ids = @artists.map{|a| a.fbid}
+    end
+    
+    if !@artists or @artists.empty?
       respond_to do |format|
         format.html { render 'artists/no_results' }# index.html.erb
         #format.html { redirect_to no_results_artists_path(:search => params[:search])}# index.html.erb
         format.json { render :json => ActiveSupport::JSON.encode(["failure"]) }
+        return
       end
     else
       respond_to do |format|
