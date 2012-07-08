@@ -259,7 +259,7 @@ margin:6px 0 31px 0;
 }
 }
 }
-.prev, .next {
+.c-prev, .c-next {
 position:absolute;
 	width: 33px;
 	height: 161px;
@@ -270,10 +270,10 @@ position:absolute;
 		top:66px;
 	}
 }
-.prev {
+.c-prev {
 	left:0px;
 }
-.next {
+.c-next {
 	right:-6px;
 }
 #tracklist {
