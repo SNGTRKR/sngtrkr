@@ -56,7 +56,7 @@
 				<li class="left">
 					<div class="a-image" style='background-image:url(<%= "//graph.facebook.com/"+artist.fbid+"/picture?type=normal" %>);background-repeat:no-repeat;background-position:center;'></div>
 					<div class="artists-info">
-						<h3><strong><span class="font-13 name"><%= f.label(:artist_id, artist.name) %></span></span></strong></h3>
+						<h3><strong><span class="font-13 name"><%= truncate((strip_tags f.label(:artist_id, artist.name) || "" ), :length => 17) %></span></span></strong></h3>
 						Dubstep
 					</div>
 					<div class="artist-radio">
@@ -64,23 +64,14 @@
 					</div>
 				</li>
 				<% end %>
+				<div class="clear"></div>
 			</ul>
 			<div id="manage-buttons">
-						<div id="manage-choice-submit">
-				<div class="left">
-					<a href="javascript:$.fancybox.close();"><%= f.submit "Manage" %></a>
+				<a href="javascript:$.fancybox.close();"><%= f.submit "Manage" %></a>
+				<a href="javascript:$.fancybox.close();"><div class="o-button norm-o-pad right signika-font font-13">Cancel</div></a>
 				</div>
-			</div>
-			<div id="manage-choice-cancel">
-				<a href="javascript:$.fancybox.close();"><div class="o-button norm-o-pad right signika-font font-13">
-					Cancel
-				</div></a>
-			</div>
-			</div>
 			<% end %>
 			<% end %>
 			</div>
-			<div class="clear"></div>
 	</div>
-		<div class="clear"></div>
 	<div id="manage-form"></div>
