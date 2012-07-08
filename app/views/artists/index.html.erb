@@ -1,33 +1,39 @@
 <% content_for :title do %>Search results for "<%= @search %>"<% end %>
-<% content_for :description do %>Search results: <% @artists.each do |artist| %><%= artist.name %>, <%end%><% end %>
+<% if @artists %>
+  <% content_for :description do %>Search results: <% @artists.each do |artist| %><%= artist.name %>, <% end %><% end %>
+<% else %>
+  <% content_for :description do %>Search results empty<% end %>
+<% end %>
 <div class="content content-pad-187-bottom">
 	<h3 class="signika-txt top-header font-35">Search Results</h3>
-	<% if flash[:message] %>
-	<p>
-		<%= flash[:message] %>
-	</p>
-	<% end %> <!-- JSON URL: <%= url_for artists_url(:search => @search, :format => :json)  %> -->
-	<ul id="artist-search">
-		<% @artists.each do |artist| %>
-		<li>
-		<div class="artist-search-row">
-			<div class="artist-search-image" style="background-image:url(<%= artist.image.url :thumb %>);background-repeat:no-repeat;background-position:center;"></div>
-			<div class="artist-search-info">
-				<h2 class="font-15 instruct-font artist-search-name"><%= link_to artist.name, artist %></h2>
-				<div class="instruct-font orange-txt"><%= artist.followers %> TRKRS</div>
-				<%= artist.genre %>
-			</div>
-		</div>
-		<%= render :partial => 'shared/search_trk_artist', :object => artist %>
-		</li>
-		<% end %>
-	</ul>
-	<%= if !@artists.empty? then paginate @artists end %>
-	<% if user_signed_in? %>
-  	<h3 class="signika-txt fb-result-header font-35">Facebook Results</h3>
-  	<p>If you don't see the artist you were looking for above, you can add their facebook page to SNGTRKR here. Make sure to choose the artist's offical page, and not a fan page.</p>
-    <%= render 'artists/fb_search' %>
-    <%= render 'shared/fb_async' %>
-  <% else %>
-  
-  <% end %>
+	<!-- JSON URL: <%= url_for artists_url(:search => @search, :format => :json)  %> -->
+	<% if @empty_search %>
+  	<p> Error: your search was empty </p>
+  <% elsif @short_search %>
+    <p> Error: your search must be at least 2 characters long </p>
+	<% else %>
+  	<ul id="artist-search">
+  		<% @artists.each do |artist| %>
+  		<li>
+  		<div class="artist-search-row">
+  			<div class="artist-search-image" style="background-image:url(<%= artist.image.url :thumb %>);background-repeat:no-repeat;background-position:center;"></div>
+  			<div class="artist-search-info">
+  				<h2 class="font-15 instruct-font artist-search-name"><%= link_to artist.name, artist %></h2>
+  				<div class="instruct-font orange-txt"><%= artist.followers %> TRKRS</div>
+  				<%= artist.genre %>
+  			</div>
+  		</div>
+  		<%= render :partial => 'shared/search_trk_artist', :object => artist %>
+  		</li>
+  		<% end %>
+  	</ul>
+  	<% if @artists then paginate @artists end %>
+  	<% if user_signed_in? %>
+    	<h3 class="signika-txt fb-result-header font-35">Facebook Results</h3>
+    	<p>If you don't see the artist you were looking for above, you can add their facebook page to SNGTRKR here. Make sure to choose the artist's offical page, and not a fan page.</p>
+      <%= render 'artists/fb_search' %>
+      <%= render 'shared/fb_async' %>
+    <% else %>
+      <!-- content to show in replacement of facebook search results, if not logged in -->
+    <% end %>
+  <% end %>  
