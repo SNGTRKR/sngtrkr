@@ -20,7 +20,7 @@ class ReleaseJob
     end
     releases = Hash.from_xml( open("http://api.7digital.com/1.2/artist/releases?artistId=#{artist.sdid}&oauth_consumer_key=#{@sevendigital_apikey}&country=GB&imageSize=350", :proxy => @proxy))["response"]["releases"]["release"]
     if releases.blank?
-      raise "7digital Releases returned empty"
+      return false
     end
 
     releases.each do |release|
