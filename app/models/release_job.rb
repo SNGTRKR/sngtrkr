@@ -83,18 +83,15 @@ class ReleaseJob
       return false
     end
     releases = Hash.from_xml( open("http://api.7digital.com/1.2/artist/releases?artistId=#{artist.sdid}&oauth_consumer_key=#{@sevendigital_apikey}&country=GB&imageSize=350", :proxy => @proxy))["response"]["releases"]["release"]
+    if releases.blank?
+      raise "7digital Releases returned empty"
+    end
 
     releases.each do |release|
-      if !Release.where("sd_id = ?",release["id"]).empty? 
+      if release["id"].blank? or !release["id"].is_a?(Integer) or !Release.where("sd_id = ?",release["id"]).empty? 
         next
       end
       r = Release.new
-      #if r.nil?
-      #  r = Release.new
-      #elsif Rails.env.production? or !IMPORT_REPLACE
-      #  Rails.logger.info("J003: 7digital scrape stopped, release appear to already be in database for artist #{artist.name}")
-      #  next
-      #end
       
       # Check for duplicate and skip if present
       existing_duplicates = Release.where(:artist_id => artist.id, :name => release["title"])
@@ -130,14 +127,14 @@ class ReleaseJob
       # Source the artwork from last.fm
       album_info = Scraper.lastfm_album_info(artist.name, r.name)
       best_artwork = album_info['image'].last rescue best_artwork = nil
-      if best_artwork
+      if best_artwork.is_a?(String)
         io = open(best_artwork, :proxy => @proxy)
         if io
           def io.original_filename; base_uri.path.split('/').last; end
           io.original_filename.blank? ? nil : io      
           r.image = io
         end
-      else
+      elsif release["image"]
         # Source the artwork from 7digital if last.fm don't have it.
         io = open(release["image"], :proxy => @proxy)
         if io
