@@ -17,18 +17,11 @@ where you will able to view your personalised timeline of releases, new and old.
   		<% if @user.suggested.count >= 6 %>
 				<%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 6] %>
     		<% else %>
-      		<h2 class="signika-txt font-35 center-txt">Please wait...</h2><br/>
-      		<%= image_tag "/images/loading.png", :alt => "Loading", :id => "loading-image" %>
-      		<h3><div class="loading-txt">...while we work our magic and find which artists you’ve already liked on Facebook.</div></h3>
-      		<script type="text/javascript">
-        		$(document).ready(function() {
-        		var angle = 0;
-        		setInterval(function(){
-          		angle+=4;
-          		$("#loading-image").rotate(angle);
-          		},25);
-        		});
-      		</script>		  
+      		<div id="loading">
+<h2 class="signika-txt font-25">Please wait...</h2>
+	<i class="icon-refresh"></i><br/>
+	...while we work our magic and find which artists you’ve already liked on Facebook.
+</div>		  
   		<% end %>
 			</ul>
 		</div>

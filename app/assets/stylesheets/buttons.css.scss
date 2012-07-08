@@ -309,15 +309,9 @@ input.o-button {
             width:31px;
             font-size:1.5em;
             @extend .o-button; 
-            position:absolute;
+            position:relative;
+            display:block;
+            float:left;
+            margin-right:15px;
           }
-.mini-ignore-trk-artist {
-	right:0px;
-}
-.mini-trkr-button {
-	left:0px;
-}
-.mini-share {
-	left:46px;
-}
           

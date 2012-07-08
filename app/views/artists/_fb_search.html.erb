@@ -1,5 +1,5 @@
 <div id="facebook-search-results">
-<div id="facebook-loading">
+<div id="loading">
 <h4 class="signika-txt font-25">Loading...</h4>
 	<i class="icon-refresh"></i><br/>
 	...please wait while we search Facebook for "<%= @search %>".
@@ -31,7 +31,7 @@ FB.api("search/?q=<%= CGI::escape(@search) %>&fields=id,picture,description,name
     $('.facebook-result-single:last .fb-add').data('fb-id',this['id']);
     });
   $('.facebook-result-single .fb-add').click(function(){
-    $('#facebook-search-results').fadeOut(300,function(){$('#facebook-search-results').html("<div id=\"facebook-loading\"><h4 class=\"signika-txt font-25\">Importing...</h4><i class=\"icon-refresh\"></i><br/>...please wait while we import the artist into the SNGTRKR database.</div>")}).fadeIn();
+    $('#facebook-search-results').fadeOut(300,function(){$('#facebook-search-results').html("<div id=\"loading\"><h4 class=\"signika-txt font-25\">Importing...</h4><i class=\"icon-refresh\"></i><br/>...please wait while we import the artist into the SNGTRKR database.</div>")}).fadeIn();
     $.ajax({ url: '/artists/import/'+$(this).data('fb-id')+'/'+FB.getAuthResponse()['accessToken']+'.js'});
   });
 });

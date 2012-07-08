@@ -198,13 +198,19 @@ margin:6px 0 31px 0;
 		}
 		.menu-user {
 			list-style-type:none;
-			margin:15px 0 0 -14px;
-			i {
+			margin-top:15px;
+			position:relative;
+			width:300px;
+			.icon-shopping-cart, .icon-share-alt {
 				margin-right:5px;
 			}
+			.buy-profile, .share-profile {
+				width:80px;
+				margin-right:15px;
+			}
 			li {
-				width:102px;
-				margin-left:15px;
+				float:left;
+				position:relative;
 			}
 		}
 		}
