@@ -47,14 +47,14 @@ background: url(/images/box-bk-431.png) no-repeat;
     }
     }
     }
-          input[type=submit] {
-                font-size:1.1em            
-            }
+
             #manage-buttons {
-            height:124px;
-            #manage-choice-submit {
-	            margin-left:107px;
-	          }
+	        position:relative;
+	        left:89px;
+            width:174px;
+            a {
+	            margin-left:15px;
+            }
 	          }
             }
 }
