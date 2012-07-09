@@ -6,7 +6,7 @@ $('#timeline').unbind("scroll");
 var old_width = timeline_widths();
 $('.release-list').prepend("<% @timeline.each do |release| %><%=j render :partial => 'timeline/release', :object => release %><% end %>");
 var new_width = timeline_widths();
-$('#timeline').scrollLeft(new_width - old_width);
+$('#timeline').scrollLeft(new_width - old_width + $(this).scrollLeft());
 console.log("Scrolled "+ (new_width - old_width));
 $('.release-list').width(new_width);
 //console.log("Width increased to "+new_width);
