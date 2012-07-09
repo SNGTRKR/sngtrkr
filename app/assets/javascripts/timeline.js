@@ -25,9 +25,9 @@ function timeline_widths() {
   var stepsWidth = 0;
   $('.release-list .release-outer').each(function (i) {
     var $step = $(this);
-    stepsWidth += $step.width();
+    stepsWidth += $step.width() - 75;
   });
-  return stepsWidth
+  return stepsWidth + 75
 }
 
 function timeline_setup() {
@@ -69,7 +69,7 @@ function timeline_setup() {
     $(this).closest(".each-release").find('.r-grad').fadeIn("normal");
     $(this).closest(".each-release").find('.opac-50').fadeOut("normal");
     $(this).closest(".each-release").find('#share-release').animate({
-      right: -210
+      right: -310
     }, "slow");
   });
   $(".sm-trigger").click(function () {
@@ -82,7 +82,7 @@ function timeline_setup() {
     $(this).closest(".each-release").find('.r-grad').fadeIn("normal");
     $(this).closest(".each-release").find('.opac-50').fadeOut("normal");
     $(this).closest(".each-release").find('#share-release').animate({
-      right: -210
+      right: -310
     }, "slow");
   });
   $(".buy-release").click(function () {
@@ -108,7 +108,7 @@ function timeline_setup() {
     $(this).closest(".each-release").find('.r-grad').fadeIn("normal");
     $(this).closest(".each-release").find('.opac-50').fadeOut("normal");
     $(this).closest(".each-release").find('#buy-release').animate({
-      left: -210
+      left: -310
     }, "slow");
   });
   $(".buy-trigger").click(function () {
@@ -121,7 +121,7 @@ function timeline_setup() {
     $(this).closest(".each-release").find('.r-grad').fadeIn("normal");
     $(this).closest(".each-release").find('.opac-50').fadeOut("normal");
     $(this).closest(".each-release").find('#buy-release').animate({
-      left: -210
+      left: -310
     }, "slow");
   });
 
