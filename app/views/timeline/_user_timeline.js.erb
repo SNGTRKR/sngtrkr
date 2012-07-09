@@ -3,12 +3,12 @@ console.log("No releases");
 $('#timeline').unbind("scroll");
 <% else %>
 
-var old_width = $('.release-list').width();
+var old_width = timeline_widths();
 $('.release-list').prepend("<% @timeline.each do |release| %><%=j render :partial => 'timeline/release', :object => release %><% end %>");
 var new_width = timeline_widths();
 $('#timeline').scrollLeft(new_width - old_width);
-console.log("Old width was "+old_width);
+console.log("Scrolled "+ (new_width - old_width));
 $('.release-list').width(new_width);
-console.log("Width increased to "+new_width);
-timeline_formatting();
+//console.log("Width increased to "+new_width);
+timeline_setup();
 <% end %>
