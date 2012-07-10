@@ -33,6 +33,23 @@ Number.prototype.commafy = function () {
 
 
 $(document).ready(function () {
+	//Feedback
+	$('#feedback > #trigger > .icon-bullhorn').click(function () {
+	$('#feedback').animate({width: 170}, "normal");
+	$('#feedback > #trigger').animate({width: 170}, "normal");
+	$('#feedback > #trigger > span').css("margin-left","7px");
+	$('#feedback > #trigger > span').html('Feedback');
+	$('#feedback > #content').slideDown(850);
+	$('#feedback > #trigger > .icon-bullhorn').css("pointer-events","none");
+	});
+	$('#feedback > #content > .cancel').click(function () {
+	$('#feedback').animate({width: 31}, "normal");
+	$('#feedback > #trigger').animate({width: 31}, "normal");
+	$('#feedback > #trigger > span').css("margin-left","0px");
+	$('#feedback > #trigger > span').html('');
+	$('#feedback > #content').slideUp("normal");
+	$('#feedback > #trigger > .icon-bullhorn').css("pointer-events","auto");
+	});
   // Release carousel
   $(".artist-list").carouFredSel({
     circular: false,
