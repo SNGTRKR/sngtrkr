@@ -165,14 +165,14 @@ margin:-1px 0 25px 0;
  ul{
     list-style:none;
     position:relative;
-    left:111px;
+    left:20px;
     top:2px;
  li{
   float:left;
   position:relative;
   margin-right:25px;
   height:25px;
-  width:95px;
+  width:71px;
   font-size:1.1em;
   a {
     color:#fff;
@@ -208,7 +208,7 @@ margin:-1px 0 25px 0;
     top:19px;
     margin-bottom:25px;
 .progress {
-  width:130px;
+  width:53px;
   height:20px;
   @include border-radius(12px);
   margin-left:-1px;
@@ -220,4 +220,25 @@ margin:-1px 0 25px 0;
   font-size:1.1em;
 }
 }
+}
+ .swhite-tint {
+   display:none;
+    position:absolute;
+    top:0px;
+    left:0px;
+    background:rgba(255,255,255,0.4);
+    height:25px;
+    width:101px;
+    @include border-radius(7px);
+    z-index:2;
+} 
+.swhite-tint-2, .swhite-tint-3, .swhite-tint-4 {
+  position:absolute;
+    top:0px;
+    left:0px;
+    background:rgba(255,255,255,0.4);
+    height:25px;
+    width:101px;
+    @include border-radius(7px);
+    z-index:2;
 }
