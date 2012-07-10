@@ -72,7 +72,8 @@ $footer:166px;
 @import "friends_list.css.scss";
 /* Friend CSS*/
 @import "friend.css.scss";
-
+/* Feedback CSS */
+@import "feedback.css.scss";
 a:link {text-decoration:none; color:white}
 a:visited {color:white}
 
@@ -111,7 +112,11 @@ margin-top:-3px;
 		display:block;
 	}
 }
-
+#beta-corner {
+	position:absolute;
+	top:0px;
+	left:0px;
+}
 #wrapper{
   min-height:100%;
 }
