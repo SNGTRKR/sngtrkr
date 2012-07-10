@@ -1,5 +1,8 @@
 class FollowsController < ApplicationController
 
+  load_and_authorize_resource
+
+
   def index
     redirect_to artist_path(:id => params[:artist_id])
   end

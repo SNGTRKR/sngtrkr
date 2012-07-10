@@ -1,6 +1,10 @@
 class ReleasesController < ApplicationController
   # GET /releases
   # GET /releases.json
+
+  load_and_authorize_resource
+  skip_authorization_check :only => [:rate]
+  
   def index
     @artist = Artist.find(params[:artist_id])
     @releases = @artist.releases.all

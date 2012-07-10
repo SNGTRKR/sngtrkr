@@ -10,6 +10,9 @@ class ApplicationController < ActionController::Base
   #end
   before_filter :authenticate_user!, :except => [:splash,:home,:sitemap]
   before_filter :timer_start
+  
+  check_authorization  :unless => :devise_controller?
+  
   def timer_start
     @start_time = Time.now
   end
