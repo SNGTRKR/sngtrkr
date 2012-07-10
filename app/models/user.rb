@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   has_many :suggest, :dependent => :delete_all
   has_many :manage, :dependent => :delete_all
   has_many :super_manage
+  has_many :feedbacks
   has_and_belongs_to_many :roles
 
   has_many :following, :through => :follow, :source => :artist

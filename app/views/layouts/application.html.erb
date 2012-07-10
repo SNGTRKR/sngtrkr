@@ -27,6 +27,9 @@
 		<div class="flash-outer <% if flash[:success] then %>flash-outer-success<% end %>" <% if flash[:disappear_after] then %>data-disappear-after="<%= flash[:disappear_after] %>"<% end %>>
   		<div id="flash-inner">
   		  <p>
+  		  <% if flash[:error] and !flash[:notice] %>
+    		  <%= raw flash[:error] %>
+  		  <% end %>
   		  <%= raw flash[:notice] %>
   		  <%= raw flash[:success] %>
   		  </p>

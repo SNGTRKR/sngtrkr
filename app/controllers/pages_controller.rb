@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
 
+  skip_authorization_check
+
   def home
     if(user_signed_in?)
       flash.keep

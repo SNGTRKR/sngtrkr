@@ -1,14 +1,24 @@
 class Ability
   include CanCan::Ability
+  include Devise
   def initialize(user)
-    user ||= User.new # guest user
-    #can :access, nil                   # allow everyone to read everything
-    #can :manage, :all
-    #can :access, :all
+    # Logged in user permissions
+    if !user.blank?
+      can :manage, [User, Rate]
+      can :create, [Feedback]
+    end
+    
+    # Guest user permissions
+    user ||= User.new
+    can :read, [Artist, Release] 
+    
+    # Admin permissions
     if user.role? :admin
       can :manage, :all
-      can :access, :rails_admin       # only allow admin users to access Rails Admin
+      can :read, :rails_admin       # only allow admin users to access Rails Admin
       can :manage, Resque
+    else
+      
     end
   end
 end

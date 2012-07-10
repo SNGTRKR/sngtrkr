@@ -3,6 +3,9 @@ class UsersController < ApplicationController
   # GET /users.json
   before_filter :self_only, :only => [:edit, :manage, :managing, :unmanage, :friends]
   
+  load_and_authorize_resource
+
+    
   # This action is to ensure a user cannot simply hack a URL to view another user's area
   def self_only
     @user = current_user

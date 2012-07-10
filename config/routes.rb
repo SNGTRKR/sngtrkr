@@ -83,6 +83,8 @@ SNGTRKR::Application.routes.draw do
     end
   end
 
+  resources :feedbacks
+
   #resources :labels, :only => [:show] # Not implemented in v1 so no access to it
 
   require 'resque/server'

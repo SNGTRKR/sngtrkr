@@ -2,6 +2,8 @@ class ArtistsController < ApplicationController
   # GET /artists
   # GET /artists.json
 
+  load_and_authorize_resource
+
   if Rails.env.production?
     before_filter :authenticate_user!, :except => [:show]
   else
