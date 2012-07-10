@@ -1,12 +1,12 @@
 #friend-wrapper {
-  margin:5px 0 0 0;
+  margin:5px 0 0 39px;
   position:relative;
-  width:666px;
+  width:696px;
   height:300px;
   #friend-cover {
   position:absolute;
   height:247px;
-  width:666px;
+  width:696px;
   @include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.45));
   @include border-radius(12px);
   z-index:2;
@@ -18,7 +18,7 @@
         right:-1px;
         top:273px;
         height:25px;
-        width:202px;
+        width:159px;
         background:rgba(255,255,255,0.75);
         @include border-radius(7px);
         @include box-shadow(inset 0px 1px 6px rgba(0, 0, 0, 0.25));
@@ -29,7 +29,7 @@
             background:transparent;
             padding:0.6em;
             border:none;
-            width:145px;
+            width:110px;
         }
         input:focus{
             outline:none;
@@ -39,9 +39,9 @@
     .friend-info {
   position:absolute;
   height:100px;
-   width:386px;
+   width:332px;
    top:199px;
-        left:30px;
+        left:25px;
    z-index:1;
          background:rgba(255,255,255,0.75);
       @include border-radius(8px);
@@ -49,7 +49,7 @@
       #f-info {
         position:relative;
         left:116px;
-        top:57px;
+        top:56px;
         width:283px;
       }
   }
@@ -57,7 +57,7 @@
 	      z-index:3;
         position:absolute;
         top:195px;
-        left:30px;
+        left:25px;
         width:100px;
         height:100px;
       @include border-top-left-radius(8px);
@@ -66,38 +66,40 @@
       border-style:solid;
       border-color:rgba(255,255,255,0.75);
       border-width:2px;
+      background:$gray;
       }
 
 }
 #friend-data {
 	position:relative;
-	width:666px;
-	margin:16px 0 18px 0;
-	.friend-activity {
-	width:446px;
+	width:696px;
+	margin:27px 0 16px 39px;
+	#friend-activity {
+	width:370px;
 	position:relative;
+	@extend .left;
 	ul {
 	list-style-type:none;
 	width:446px;
-	margin:37px 0 24px 31px;
+	margin-left:25px;
 	li {
 	float:left;
 	position:relative;
-	height:70px;
-	width:386px;
-	margin-bottom:10px;
+	height:86px;
+	width:332px;
+	margin-bottom:15px;
 		.each-activity {
 			top:0px;
 			left:0px;
-			width:328px;
-			height:70px;
+			width:274px;
+			height:86px;
 			background-color:rgba(255,255,255,0.75);
 			@include box-shadow(0px 2px 5px rgba(0, 0, 0, 0.25));
 			position:relative;
 			@include border-radius(8px);
 			.activity-image {
-				height:70px;
-				width:70px;
+				height:86px;
+				width:86px;
 				position:absolute;
 				left:0px;
 				top:0px;
@@ -120,24 +122,30 @@
 					left:1px;
 				}
 			}
-			.a-name {
-					margin-bottom:4px;
-					 a{
-						 color:$gray;
-					 }
-					 a:hover {
-						 color:$orange;
-					 }
-				}
 			.follow-info {
 				position:relative;
-				left:83px;
-				top:9px;	
+				left:100px;
+				top:10px;	
+				a {
+					color:$gray;
+				}
+				a:hover {
+					color:$orange;
+				}
+				.followers {
+					margin:-2px 0 -1px 0;
+				}
 			}
 			.rate-info {
 				position:relative;
-				left:83px;
-				top:9px;
+				left:100px;
+				top:10px;
+				a {
+					color:$gray;
+				}
+				a:hover {
+					color:$orange;
+				}
 				.release {
 					a {
 						color:$orange;
@@ -148,83 +156,69 @@
 				}
 			}
 		}
-		.activity-trkr {
+		.activity-trkr, .activity-play {
 				position:absolute;
 				top:0px;
 				right:0px;
-				height:70px;
+				height:86px;
 				width:50px;
-				line-height:70px;
+				line-height:86px;
 				font-size:3em;
 				@extend .o-button;
 		}
-					.activity-play {
-				position:absolute;
-				top:0px;
-				right:0px;
-				height:70px;
-				width:50px;
-				line-height:70px;
-				font-size:3em;
-			}
 			}
 	}	
-	.p-bulge-t {
-		position:absolute;
-		top:0px;
-		left:0px;
-		width:446px;
-		height:19px;
 	}
-	.p-bulge-b {
-		position:absolute;
-		bottom:0px;
-		left:0px;
-		width:446px;
-		height:19px;
-	}
-	}
-	.friend-trkrs {
-		width:205px;
+	#friend-trkrs {
+		width:320px;
 		position:relative;
-  #friend-trkr-list {
-    list-style-type:none;
-    margin-left:-30px;
-    margin-top:144px;
-    .each-friend {
-      width:202px;
-      height:178px;
-      margin:0 0 0 33px;
-      margin-top:-130px;
+		@extend .right;
+		@extend .scrollbar;
+		margin-bottom:30px;
+		  #friend-trkr-list {
+			    list-style-type:none;
+			    margin-left:-11px; 
+			    overflow-y:scroll;
+			        .each-friend {
+      width:135px;
+      height:120px;
+      margin:0 0 32px 20px;
       position: relative; 
-      @include border-radius(8px);
+      @include border-radius(7px);
+      @extend .left;
       .new-friend {
-      @include box-shadow(1px -3px 8px rgba(0,0,0,0.25));
+      @include box-shadow(0px 2px 8px rgba(0,0,0,0.45));
       position:relative;
       top:0px;
       left:0px;
-      width:202px;
-      height:178px;
+      width:135px;
+      height:120px;
       @include border-radius(8px);
       overflow:hidden;
           .black-tint {
-            position:absolute; 
-            height:178px;
-          width:202px;
-          @include border-radius(8px);
-          $experimental-support-for-svg: true;
-          @include background-image(linear-gradient(bottom,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 99.9%, rgba(0,0,0,0.55) 100%));
+              position:absolute; 
+              height:120px;
+	          width:135px;
+	          @include border-radius(7px);
+	          $experimental-support-for-svg: true;
+	          @include background-image(linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 94%, rgba(0,0,0,1) 100%));
+          }
+          .oneline{
+	          top:77px;
+          }
+          .twoline {
+	          top:56px;
           }
           .friend-info {
             @extend .instruct-font;
-            @extend .font-20;
-            position:relative;
+            @extend .font-15;
+            position:absolute;
             text-align:center;
             line-height:1.4em;
-            width:202px;
+            width:135px;
             text-shadow: 0px 1px 7px $gray;
-            height:30px;
-            top:10px;
+            height:120px;
+            bottom:0px;
             a {
               color:#fff;
             }
@@ -233,63 +227,62 @@
               color:$orange;
             }
           }
-                    .opac-50 {
+         .opac-50 {
 	      position:absolute;
-	      z-index:1;
+	      z-index:0;
 	      top:0px;
-	      width:202px;
-	      height:178px;
-	      @include border-radius(8px);
+	      width:135px;
+	      height:120px;
+	      @include border-radius(7px);
 	      background:rgba(0,0,0,0.75);
 	      display:none;
       }
           .share-artist {
 	      position:absolute;
-	      height:178px;
-	      width:202px;
+	      height:120px;
+	      width:135px;
 	      z-index:2;
 	      right:-202px;
-	      top:-13px;
+	      top:10px;
 	      .share-header {
 		      position:relative;
-		      top:29px;
 		      text-align:center;
+		      @extend .signika-txt;
+		      @extend .font-15;
 	      }
 	      .share-list {
 		      position:relative;
-		      left:29px;
-		      top:44px;
+		      left:20px;
+		      top:5px;
 		 .fb-icon, .twit-icon, .goo-icon {
-	      height:38px;
-	      width:38px;
-	      line-height:38px;
-	      @include border-radius(4px);
-	      margin-right:15px;
+	      height:25px;
+	      width:25px;
+	      line-height:25px;
+	      @include border-radius(3px);
+	      margin-right:10px;
       }
       .goo-icon {
 		overflow:hidden;
-		font-size:4.8em;	
+		font-size:3.2em;	
       }
       .icon-twitter {
-	      position:relative;
 	      bottom:2px;
-	      font-size:2.5em;
       }
-      .icon-facebook {
+      .icon-facebook, .icon-twitter {
 	      position:relative;
-	      right:1px;
-	      font-size:2.5em;
+	      font-size:1.7em;
       }
       .icon-google-plus {
 	      position:relative;
-	      right:20px;
-	      top:6px;
+	      right:13px;
+	      top:3px;
       }
 	      }
 	      .share-cancel {
 		      position:relative;
-		      left:67px;
-		      top:67px;
+		      left:37px;
+		      top:15px;
+		      @extend .font-11;
 	      }
       }
       }
@@ -297,9 +290,9 @@
 	          position:absolute;
 	          height:25px;
 	          width:92px;
-	          top:165px;
-	          left:62px;
-	          z-index:0;
+	          top:107px;
+	          left:30px;
+	          z-index:1;
 	                    }
     }
   }

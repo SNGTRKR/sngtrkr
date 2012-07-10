@@ -1,13 +1,13 @@
 #footer{
-    //background-image: url(/images/footer.png);
-    @include background-image(linear-gradient(top, #414040 1%,$gray 100%));
-    border-top:4px solid $orange;
-    *{
-        color:white;
-        opacity: 0.90;
-    }
+    background-image: url(/images/footer.png);
+    //@include background-image(linear-gradient(top, #414040 1%,$gray 100%));
+   // border-top:4px solid $orange;
+  //  *{
+  //      color:white;
+ //       opacity: 0.90;
+  //  }
     position:relative;
-    margin-top:-($footer+4);
+    margin-top:-($footer);
     height:$footer;
     clear:both;
     overflow: hidden;
@@ -25,6 +25,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     margin:0 auto;
     padding:20px 0 0 0;
     text-align:center; 
+    color:#fff;
     .footer-menu {
         list-style-type:none;
         padding-top:10px;
@@ -42,6 +43,6 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     } 
     p {
       font-size:0.9em;
-      padding-top:70px;
+      margin-top:75px;
     }
 }

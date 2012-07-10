@@ -10,7 +10,8 @@ class Artist < ActiveRecord::Base
     :thumb => "76x76#",
     :recommend => "202x178#",
     :manage => "100x100#",
-    :friend_activity_artist => "71x71#" }
+    :friend_activity_artist => "87x87#",
+    :friend_trkrs => "136x121#" }
 
   has_many :follow
   has_many :suggest

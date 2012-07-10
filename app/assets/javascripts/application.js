@@ -33,6 +33,23 @@ Number.prototype.commafy = function () {
 
 
 $(document).ready(function () {
+	//Feedback
+	$('#feedback > #trigger > .icon-bullhorn').click(function () {
+	$('#feedback').animate({width: 170}, "normal");
+	$('#feedback > #trigger').animate({width: 170}, "normal");
+	$('#feedback > #trigger > span').css("margin-left","7px");
+	$('#feedback > #trigger > span').html('Feedback');
+	$('#feedback > #content').slideDown(850);
+	$('#feedback > #trigger > .icon-bullhorn').css("pointer-events","none");
+	});
+	$('#feedback > #content > .cancel').click(function () {
+	$('#feedback').animate({width: 31}, "normal");
+	$('#feedback > #trigger').animate({width: 31}, "normal");
+	$('#feedback > #trigger > span').css("margin-left","0px");
+	$('#feedback > #trigger > span').html('');
+	$('#feedback > #content').slideUp("normal");
+	$('#feedback > #trigger > .icon-bullhorn').css("pointer-events","auto");
+	});
   // Release carousel
   $(".artist-list").carouFredSel({
     circular: false,
@@ -112,13 +129,13 @@ $(document).ready(function () {
 function artist_suggestion_replace() {
   // Sharing options
 	$(".mini-share").click(function() {
-		$(this).parent().parent().find('.opac-50').fadeIn("normal").parent().find('.share-artist').animate({right : 0}, "slow");
+		$(this).parent().parent().find('.opac-50').fadeIn("normal").parent().find('.share-artist').animate({right : 0}, "slow").parent().find('.recommend-info').fadeOut("normal");
 	});
 	$(".share-cancel").click(function() {
-		$(this).parent().parent().find('.opac-50').fadeOut("normal").parent().find('.share-artist').animate({right : -202}, "slow");
+		$(this).parent().parent().find('.opac-50').fadeOut("normal").parent().find('.share-artist').animate({right : -202}, "slow").parent().find('.recommend-info').fadeIn("normal");;
 	});
 	$(".sm-trigger").click(function() {
-		$(this).parent().parent().find('.opac-50').fadeOut("normal").parent().find('.share-artist').animate({right : -202}, "slow");
+		$(this).parent().parent().parent().parent().find('.opac-50').fadeOut("normal").parent().find('.share-artist').animate({right : -202}, "slow").parent().find('.recommend-info').fadeIn("normal");;
 	});
 
   $('.add-trkr, a.ajax-ignore-artist').bind('ajax:complete', function () {
