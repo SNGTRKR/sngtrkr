@@ -1,4 +1,7 @@
 class FeedbacksController < ApplicationController
+
+  load_and_authorize_resource
+
   # GET /feedbacks
   # GET /feedbacks.json
   def index
@@ -47,6 +50,7 @@ class FeedbacksController < ApplicationController
       if @feedback.save
         format.html { redirect_to @feedback, notice: 'Feedback was successfully created.' }
         format.json { render json: @feedback, status: :created, location: @feedback }
+        format.js { render 'confirm' }
       else
         format.html { render action: "new" }
         format.json { render json: @feedback.errors, status: :unprocessable_entity }

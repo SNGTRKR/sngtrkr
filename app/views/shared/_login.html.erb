@@ -12,7 +12,7 @@
 	</p>
 	<%= form_for Feedback.new, :remote => true do |f| %>
 	<%= f.text_area :feedback, :id => "fedbox", :class => "form-text", :rows => 4 %>
-	<%= f.submit "Submit", :class => :left %>
+	<%= f.submit "Submit", :class => :left, :disable_with => 'Submitted!' %>
 	<div class="button right cancel">Cancel</div>
 	<% end %>
 	<div class="clear"></div>

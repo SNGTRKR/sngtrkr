@@ -1,5 +1,7 @@
 class SuggestsController < ApplicationController
 
+  load_and_authorize_resource
+
   def create
     @suggest = current_user.suggest_artist params[:artist_id]
     respond_to do |format|

@@ -12,7 +12,7 @@
 
 <% @feedbacks.each do |feedback| %>
   <tr>
-    <td><%= feedback.user_id %></td>
+    <td><%= feedback.user.email %></td>
     <td><%= feedback.feedback %></td>
     <td><%= feedback.url %></td>
     <td><%= link_to 'Show', feedback %></td>
