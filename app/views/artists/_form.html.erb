@@ -89,7 +89,28 @@ image_height = 100
 		<div id="picture-line"></div>
 	</div>
 </fieldset>
+<fieldset class="step">
+	<div class="step-back manage-itunes-step">
+		<div class="step-left left">
 
+		</div>
+		<div class="step-right right">
+
+		</div>
+		<div id="picture-line"></div>
+	</div>
+</fieldset>
+<fieldset class="step">
+	<div class="step-back manage-7digital-step">
+		<div class="step-left left">
+
+		</div>
+		<div class="step-right right">
+
+		</div>
+		<div id="picture-line"></div>
+	</div>
+</fieldset>
 <fieldset class="step">
 	<div class="step-back manage-summary-step">
 		<div class="step-left left">
@@ -143,20 +164,26 @@ image_height = 100
 <div id="navigation" style="display:none;">
 			<ul>
 				<li class="selected signika-font o-button norm-o-pad">
-					<a href="#" class="manage-details"><h3>1. Details</h3><div class="white-tint"></div></a>
+					<a href="#" class="manage-details"><h3>1. Details</h3><div class="swhite-tint"></div></a>
 				</li>
 				<li class="signika-font o-button norm-o-pad">
-					<a href="#" class="manage-picture"><h3>2. Picture</h3><div class="white-tint-2"></div></a>
+					<a href="#" class="manage-picture"><h3>2. Picture</h3><div class="swhite-tint-2"></div></a>
 				</li>
 				<li class="signika-font o-button norm-o-pad">
-					<a href="#" class="manage-summary"><h3>3. Summary</h3><div class="white-tint-3"></div></a>
+					<a href="#" class="manage-itunes"><h3>3. iTunes</h3><div class="swhite-tint-2"></div></a>
+				</li>
+				<li class="signika-font o-button norm-o-pad">
+					<a href="#" class="manage-7digital"><h3>4. 7Digital</h3><div class="swhite-tint-2"></div></a>
+				</li>
+				<li class="signika-font o-button norm-o-pad">
+					<a href="#" class="manage-summary"><h3>5. Summary</h3><div class="swhite-tint-3"></div></a>
 				</li>
 			</ul>
 		</div>
 		<div id="progress-bar">
 			<div class="progress o-button">
 				<div class="percent instruct-font">
-					50%
+					20%
 				</div>
 			</div>
 		</div>
@@ -170,7 +197,7 @@ image_height = 100
 				height : 510
 			}, "slow");
 			$(".progress").animate({
-				width : 130
+				width : 53
 			}, "slow");
 			$('#bulge-left').animate({
 					height : 609
@@ -184,7 +211,7 @@ image_height = 100
 				$('#bulge-right').animate({
 					width : 48
 				}, 10);
-			$('.percent').html('50%');
+			$('.percent').html('20%');
 			$('.white-tint').hide();
 			$('.white-tint-2').show();
 			$('.white-tint-3').show();
@@ -197,7 +224,7 @@ image_height = 100
 				height : 275
 			}, "slow");
 			$(".progress").animate({
-				width : 195
+				width : 106
 			}, "slow");
 			$('#bulge-left').animate({
 					height : 374
@@ -211,10 +238,64 @@ image_height = 100
 				$('#bulge-right').animate({
 					width : 48
 				}, 10);
-			$('.percent').html('75%');
+			$('.percent').html('40%');
 			$('.white-tint-2').hide();
 			$('.white-tint-3').show();
 			$('.white-tint').show();
+		});
+				$(".manage-itunes").click(function() {
+			$(".step-back").animate({
+				height : 421
+			}, "slow");
+			$(".step").animate({
+				height : 510
+			}, "slow");
+			$(".progress").animate({
+				width : 159
+			}, "slow");
+			$('#bulge-left').animate({
+					height : 609
+				}, "slow");
+				$('#bulge-left').animate({
+					width : 48
+				}, 10);
+				$('#bulge-right').animate({
+					height : 609
+				}, "slow");
+				$('#bulge-right').animate({
+					width : 48
+				}, 10);
+			$('.percent').html('60%');
+			$('.white-tint').hide();
+			$('.white-tint-2').show();
+			$('.white-tint-3').show();
+		});
+				$(".manage-7digital").click(function() {
+			$(".step-back").animate({
+				height : 421
+			}, "slow");
+			$(".step").animate({
+				height : 510
+			}, "slow");
+			$(".progress").animate({
+				width : 212
+			}, "slow");
+			$('#bulge-left').animate({
+					height : 609
+				}, "slow");
+				$('#bulge-left').animate({
+					width : 48
+				}, 10);
+				$('#bulge-right').animate({
+					height : 609
+				}, "slow");
+				$('#bulge-right').animate({
+					width : 48
+				}, 10);
+			$('.percent').html('80%');
+			$('.white-tint').hide();
+			$('.white-tint-2').show();
+			$('.white-tint-3').show();
 		});
 		$(".manage-summary").click(function() {
 			$(".step-back").animate({
