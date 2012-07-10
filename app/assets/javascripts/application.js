@@ -129,13 +129,13 @@ $(document).ready(function () {
 function artist_suggestion_replace() {
   // Sharing options
 	$(".mini-share").click(function() {
-		$(this).parent().parent().find('.opac-50').fadeIn("normal").parent().find('.share-artist').animate({right : 0}, "slow");
+		$(this).parent().parent().find('.opac-50').fadeIn("normal").parent().find('.share-artist').animate({right : 0}, "slow").parent().find('.recommend-info').fadeOut("normal");
 	});
 	$(".share-cancel").click(function() {
-		$(this).parent().parent().find('.opac-50').fadeOut("normal").parent().find('.share-artist').animate({right : -202}, "slow");
+		$(this).parent().parent().find('.opac-50').fadeOut("normal").parent().find('.share-artist').animate({right : -202}, "slow").parent().find('.recommend-info').fadeIn("normal");;
 	});
 	$(".sm-trigger").click(function() {
-		$(this).parent().parent().find('.opac-50').fadeOut("normal").parent().find('.share-artist').animate({right : -202}, "slow");
+		$(this).parent().parent().parent().parent().find('.opac-50').fadeOut("normal").parent().find('.share-artist').animate({right : -202}, "slow").parent().find('.recommend-info').fadeIn("normal");;
 	});
 
   $('.add-trkr, a.ajax-ignore-artist').bind('ajax:complete', function () {
