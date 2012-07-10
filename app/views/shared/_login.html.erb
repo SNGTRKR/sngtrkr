@@ -10,8 +10,11 @@
 	<p>
 	We love feedback. Feel free to tell us what you think about the site or report a bug.
 	</p>
-	<textarea name="fedbox" id="fedbox" rows="4" class="form-text"></textarea>
-	<div class="button left">Submit</div><div class="button right cancel">Cancel</div>
+	<%= form_for Feedback.new, :remote => true do |f| %>
+	<%= f.text_area :feedback, :id => "fedbox", :class => "form-text", :rows => 4 %>
+	<%= f.submit "Submit", :class => :left, :disable_with => 'Submitted!' %>
+	<div class="button right cancel">Cancel</div>
+	<% end %>
 	<div class="clear"></div>
 </div>
 </div>

@@ -1,4 +1,7 @@
 class ManagesController < ApplicationController
+
+  load_and_authorize_resource
+
   def create
     @manage = Manage.new(params[:manage])
     @manage.user_id = current_user.id

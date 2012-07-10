@@ -1,4 +1,7 @@
 class TimelineController < ApplicationController
+
+  load_and_authorize_resource
+
   def index
     user_timeline = Timeline.new current_user.id
     @timeline = user_timeline.user params[:page]
