@@ -3,15 +3,16 @@
   <% artist = Artist.find(activity[:id]) %>
   <div class="each-activity">
   <div class="activity-image" style="background-image:url(<%= artist.image :friend_activity_artist %>);background-repeat:no-repeat;background-position:center;"><i class="icon-screenshot"></i></div>
-    <h4 class="follow-info"><div class="instruct-font font-15 a-name"><%= link_to artist.name, artist %></div><div class="orange-txt line-height-1-25"><%= artist.genre %></div>
-    <div class="font-11"><%= time_ago_in_words(activity[:time]) %> ago.</div></h4>
+    <div class="follow-info"><strong><h4><%= link_to artist.name, artist %></h4></strong><% if artist.genre? %><%= artist.genre %><br/><% else %><% end %>
+    <div class="orange-txt instruct-font followers"><%= artist.followers %> TRKRS</div>
+    <div class="font-11 light-gray"><%= time_ago_in_words(activity[:time]) %> ago.</div></div>
   </div>
   <%= render :partial => 'shared/activity_trk_artist', :object => artist %>
 <% elsif activity[:action] == 'rate' %>
   <% release = Release.find(activity[:id]) %>
   <div class="each-activity">
   <div class="activity-image" style="background-image:url(<%= release.image :friend_activity_release %>);background-repeat:no-repeat;background-position:center;"><i class="icon-star-empty"></i></div>
-    <h4 class="rate-info"><div class="instruct-font font-15 a-name"><%= link_to release.artist.name, release.artist %></div><div class="orange-txt line-height-1-25 release"><%= link_to release.artist.name, [release.artist, release] %></div><strong><%= activity[:stars] %> stars</strong> - <span class="font-11"><%= time_ago_in_words(activity[:time]) %> ago.</span></h4>
+    <div class="rate-info"><strong><h4><%= link_to release.artist.name, release.artist %></h4></strong><div class="orange-txt release"><%= link_to release.name, [release.artist, release] %></div><%= activity[:stars] %> stars<br/><div class="font-11 light-gray"><%= time_ago_in_words(activity[:time]) %> ago.</div></div>
   </div>
     <div class="activity-play o-button"><i class="icon-play"></i></div>
   <% end %>
