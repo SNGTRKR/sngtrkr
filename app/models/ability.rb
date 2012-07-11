@@ -4,7 +4,8 @@ class Ability
   def initialize(user)
     # Logged in user permissions
     if !user.blank?
-      can :manage, [User, Rate]
+      can :manage, [User, Rate, Manage]
+      can [:edit, :scrape_confirm], [Artist]
       can :create, [Feedback]
     end
     
