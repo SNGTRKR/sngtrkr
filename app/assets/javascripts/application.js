@@ -22,6 +22,7 @@
 //= require rotate/jQueryRotate.2.2
 // BOOTSTRAP REQUIRES
 //= require bootstrap-popover
+//= require bootstrap-tooltip
 String.prototype.commafy = function () {
   return this.replace(/(^|[^\w.])(\d{4,})/g, function ($0, $1, $2) {
     return $1 + $2.replace(/\d(?=(?:\d\d\d)+(?!\d))/g, "$&,");
@@ -32,10 +33,7 @@ Number.prototype.commafy = function () {
   return String(this).commafy();
 }
 
-
 $(document).ready(function () {
-
-$('.nav-tabs').button()
 	//Feedback
 	$('#feedback > #trigger > .icon-bullhorn').click(function () {
 	$('#feedback').animate({width: 170}, "normal");
