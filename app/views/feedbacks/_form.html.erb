@@ -18,10 +18,7 @@
   <div class="field">
     <%= f.label :feedback %><br />
     <%= f.text_area :feedback %>
-  </div>
-  <div class="field">
-    <%= f.label :url %><br />
-    <%= f.text_field :url %>
+    <%= f.hidden :url, "http://#{request.host+request.fullpath}" %>
   </div>
   <div class="actions">
     <%= f.submit %>
