@@ -68,7 +68,7 @@ margin:-1px 0 25px 0;
 .step{
     float:left;
     width:649px;
-  height:510px;
+    height:510px;
 }
 .manage-itunes-step, .manage-7digital-step {
 	a {
@@ -218,7 +218,7 @@ margin:-1px 0 25px 0;
     }
 }
 }
-#steps form fieldset{
+#steps form .step{
     border:none;
     padding-bottom:20px;
 }
