@@ -40,22 +40,18 @@ position:relative;
               position:relative;
                background:transparent;
             }
-            input[type=submit] {
-                background:none;
-                border:0;
-                color:#fff;
-                font-size:1em            
-            }
             #submit-pad {
               position:relative;
               top:-1px;
               left:-90px;
+              @extend .right;
             }
      textarea {
        resize:none;
      }
     .step-left {
       width:290px;
+      @extend .left;
       .type-pad {
 	      position:relative;
 	      top:-4px;
@@ -64,6 +60,7 @@ position:relative;
     .step-right {
       width:226px;
       margin-top:-2px;
+      @extend .right;
     }
     #avail-line {
       position:absolute;
@@ -125,12 +122,12 @@ position:relative;
     left:37px;
     top:2px;
  li{
-  float:left;
+  @extend .left;
+  @extend .button;
   position:relative;
   margin-right:25px;
   height:25px;
   width:95px;
-  font-size:1.1em;
   a {
     color:#fff;
   }
@@ -161,25 +158,30 @@ position:relative;
   background:rgba(255,255,255,0.75);
   @include border-radius(12px);
   @include box-shadow(0px 2px 5px rgba(0, 0, 0, 0.25));
-    top:19px;
-    margin-bottom:25px;
+  top:19px;
+  margin-bottom:25px;
+ 
 .progress {
   width:66px;
   height:20px;
   @include border-radius(12px);
   margin-left:-1px;
+  @extend .o-button;
 }
 .percent {
   text-align:center;
   line-height:17px;
   color:#fff;
   font-size:1.1em;
+  @extend .instruct-font;
 }
 }
 }
-.default-button {
+#manage-image-restore {
       position:relative;
       left:-53px;
+      @extend .right;
+      @extend .button;
 }
 span.checked{
     background:transparent url(/images/checkedn.png) no-repeat top left;

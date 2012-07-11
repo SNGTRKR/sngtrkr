@@ -10,7 +10,7 @@ image_height = 100
 <span id="fields">
 <fieldset class="step">
 	<div class="step-back manage-details-step">
-		<div class="step-left left">
+		<div class="step-left">
 			<ul>
 				<li>
 					<strong><%= f.label "Artist Name*" %></strong>
@@ -46,7 +46,7 @@ image_height = 100
 				</li>
 			</ul>
 		</div>
-		<div class="step-right right">
+		<div class="step-right">
 			Here is the information we have managed to gather from your Facebook fan page. Please check this information, by completing any missing or incorrect fields.
 			<br/>
 			<br/>
@@ -66,60 +66,56 @@ image_height = 100
 </fieldset>
 <fieldset class="step">
 	<div class="step-back manage-picture-step">
-		<div class="step-left left">
+		<div class="step-left">
 			<strong><%= f.label :picture %></strong>
 			<%= f.file_field 'image', :tabindex => -1 %></br/><br/>
 			<strong>Preview:</strong><br/>
 			<div class="manage-image"><%= image_tag (@artist.image :manage), :id => 'manage-image-current' %>
 			<canvas id="canvas" width="<%= image_width %>" height="<%= image_height %>"></canvas></div>
 		</div>
-		<div class="step-right right">
+		<div class="step-right">
 			Please upload a picture which would best represent you as an artist.
 			<br/>
 			</br/>
 			The artwork needs to be at least 365px width by 300px height. The file size can be no bigger than 1MB.
 			<br/>
 			</br/>
-			<div class="default-button">
-			 <div class="o-button norm-o-pad right signika-font font-13" id="manage-image-restore">
-					<span>Restore to default</span>
-				</div>
+			 <div id="manage-image-restore">
+					Restore to default
 			</div>
-		</div>
 		<div id="picture-line"></div>
 	</div>
 </fieldset>
 <fieldset class="step">
 	<div class="step-back manage-itunes-step">
-		<div class="step-left left">
-		<strong>Confirm iTunes Identity</strong>
-		<br/>
+		<div class="step-left">
 <% if !@artist.itunes_id? %>
-  We couldn't find you on iTunes. If you aren't on there don't worry, you don't need to do anything.
+  <strong>We couldn't find you on iTunes</strong>. If you aren't on there don't worry, you don't need to do anything.
 <% else %>
-  <strong>Artist:</strong><%= link_to @itunes_info['results'][0]['artistName'] + " on iTunes", @itunes_info['results'][0]['artistLinkUrl'] %>
+  <strong>Artist:</strong> <%= link_to @itunes_info['results'][0]['artistName'], @itunes_info['results'][0]['artistLinkUrl'], :target => "_blank" %>
   <br/>
  <strong>Genre:</strong> <%=  @itunes_info['results'][0]['primaryGenreName'] %>
- <br/>
+ <br/><br/>
  <div id="itunes-buttons">
-  <%= button_to "This isn't me" %>
+  <%= link_to "This isn't me" %>
   <%= form_for @artist, :remote => true do |f| %>
     <%= hidden_field_tag "itunes_id_delete" %>
     <%= f.submit "I'm not on iTunes" %>
   <% end %>
+  <div class="clear"></div>
  </div>
- <div id="itunes-search">
+ <br/>
   <%=form_for @artist, :url => artist_scrape_confirm_path(:artist_id => @artist.id, :format => :js), :remote => true do |f| %>
-    <%= text_field_tag :search, @artist.name %>
+    <%= text_field_tag :search, @artist.name, :class => "form-text" %>
     <%= hidden_field_tag :store, "itunes" %>
     <%= submit_tag "Search" %>
   <% end %>
- </div>
+   <br/><br/>
   <div id="ajax-itunes-search-results"></div>
 <% end %>
 		</div>
-		<div class="step-right right">
-		To ensure we have the correct artist profile on our partner sites associated with <strong><%= @artist.name %></strong>, please select and confirm the correct profile using the search tool provided.
+		<div class="step-right">
+		To ensure we have the correct artist profile for <strong><%= @artist.name %></strong> on <strong>iTunes</strong>, please select and confirm the correct profile using the search tool provided.
 		<br/>
 		<br/>
 		If all information is already correct, please move onto the next step. 
@@ -127,33 +123,37 @@ image_height = 100
 		<br/>
 		However if you are having trouble finding the correct profile please contact us at <a href="mailto:support@sngtrkr.com">support@sngtrkr.com</a>.
 		</div>
-		<div id="picture-line"></div>
+		<div id="summary-line"></div>
 	</div>
 </fieldset>
 <fieldset class="step">
 	<div class="step-back manage-7digital-step">
-		<div class="step-left left">
-		<strong>Confirm 7Digital Identity</strong>
+		<div class="step-left">
 <% if !@artist.sdid? %>
-  We couldn't find you on 7Digital. If you aren't on there don't worry, you don't need to do anything.
+  <strong>We couldn't find you on 7Digital</strong>. If you aren't on there don't worry, you don't need to do anything.
 <% else %>
-  <%= image_tag @sd_info['response']['artist']['image'] %> 
-  <p><%= link_to @sd_info['response']['artist']['name'] + " on 7digital", @sd_info['response']['artist']['url'] %></p>
-  <%= link_to "This isn't me" %>
+  <div id="profile-7d"><%= image_tag @sd_info['response']['artist']['image'], :class => "image-7d" %> 
+  <div class="name-7d"><strong>Artist:</strong> <%= link_to @sd_info['response']['artist']['name'], @sd_info['response']['artist']['url'], :target => "_blank" %></div><div class="clear"></div></div>
+  <br/>
+  <div id="digital7-buttons"><%= link_to "This isn't me" %>
   <%= form_for @artist, :remote => true do |f| %>
     <%= hidden_field_tag "sdid_delete" %>
     <%= f.submit "I'm not on 7digital" %>
   <% end %>
+  <div class="clear"></div>
+    </div>
+	<br/>
   <%= form_for @artist, :url => artist_scrape_confirm_path(:artist_id => @artist.id, :format => :js), :remote => true do |f| %>
-    <%= text_field_tag :search, @artist.name %>
+    <%= text_field_tag :search, @artist.name, :class => "form-text" %>
     <%= hidden_field_tag :store, "7digital" %>
     <%= f.submit "Search" %>
   <% end %>
+  <br/><br/>
   <div id="ajax-7digital-search-results"></div>
 <% end %>
 		</div>
-		<div class="step-right right">
-		To ensure we have the correct artist profile on our partner sites associated with <strong><%= @artist.name %></strong>, please select and confirm the correct profile using the search tool provided.
+		<div class="step-right">
+		To ensure we have the correct artist profile for <strong><%= @artist.name %></strong> on <strong>7Digital</strong>, please select and confirm the correct profile using the search tool provided.
 		<br/>
 		<br/>
 		If all information is already correct, please move onto the next step. 
@@ -161,12 +161,12 @@ image_height = 100
 		<br/>
 		However if you are having trouble finding the correct profile, please contact us at <a href="mailto:support@sngtrkr.com">support@sngtrkr.com</a>.
 		</div>
-		<div id="picture-line"></div>
+		<div id="summary-line"></div>
 	</div>
 </fieldset>
 <fieldset class="step">
 	<div class="step-back manage-summary-step">
-		<div class="step-left left">
+		<div class="step-left">
 						<ul id="artist-summary">
 							<li>
 								<strong>Artist Name:</strong> <span id="name"></span>
@@ -194,7 +194,7 @@ image_height = 100
 							</li>
 						</ul>
 					</div>
-					<div class="step-right right">
+					<div class="step-right">
 						Here is a summary of all the information you have entered for your artist profile. Please read over and check everything.
 						<br/>
 						<br/>
@@ -214,26 +214,26 @@ image_height = 100
 </div>
 <div id="navigation" style="display:none;">
 			<ul>
-				<li class="selected signika-font o-button norm-o-pad">
+				<li class="selected">
 					<a href="#" class="manage-details"><h3>1. Details</h3><div class="swhite-tint"></div></a>
 				</li>
-				<li class="signika-font o-button norm-o-pad">
+				<li>
 					<a href="#" class="manage-picture"><h3>2. Picture</h3><div class="swhite-tint-2"></div></a>
 				</li>
-				<li class="signika-font o-button norm-o-pad">
+				<li>
 					<a href="#" class="manage-itunes"><h3>3. iTunes</h3><div class="swhite-tint-3"></div></a>
 				</li>
-				<li class="signika-font o-button norm-o-pad">
+				<li>
 					<a href="#" class="manage-7digital"><h3>4. 7Digital</h3><div class="swhite-tint-4"></div></a>
 				</li>
-				<li class="signika-font o-button norm-o-pad">
+				<li>
 					<a href="#" class="manage-summary"><h3>5. Summary</h3><div class="swhite-tint-5"></div></a>
 				</li>
 			</ul>
 		</div>
 		<div id="progress-bar">
-			<div class="progress o-button">
-				<div class="percent instruct-font">
+			<div class="progress">
+				<div class="percent">
 					20%
 				</div>
 			</div>
@@ -300,22 +300,22 @@ image_height = 100
 		});
 				$(".manage-itunes").click(function() {
 			$(".step-back").animate({
-				height : 421
+				height : 283
 			}, "slow");
 			$(".step").animate({
-				height : 510
+				height : 371
 			}, "slow");
 			$(".progress").animate({
 				width : 159
 			}, "slow");
 			$('#bulge-left').animate({
-					height : 609
+					height : 470
 				}, "slow");
 				$('#bulge-left').animate({
 					width : 48
 				}, 10);
 				$('#bulge-right').animate({
-					height : 609
+					height : 470
 				}, "slow");
 				$('#bulge-right').animate({
 					width : 48
@@ -329,22 +329,22 @@ image_height = 100
 		});
 				$(".manage-7digital").click(function() {
 			$(".step-back").animate({
-				height : 421
+				height : 283
 			}, "slow");
 			$(".step").animate({
-				height : 510
+				height : 371
 			}, "slow");
 			$(".progress").animate({
 				width : 212
 			}, "slow");
 			$('#bulge-left').animate({
-					height : 609
+					height : 470
 				}, "slow");
 				$('#bulge-left').animate({
 					width : 48
 				}, 10);
 				$('#bulge-right').animate({
-					height : 609
+					height : 470
 				}, "slow");
 				$('#bulge-right').animate({
 					width : 48
