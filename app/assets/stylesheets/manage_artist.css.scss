@@ -111,10 +111,69 @@ margin:-1px 0 25px 0;
      }
     .step-left {
       width:290px;
+      @extend .left;
+      #itunes-buttons {
+	      a {
+		      @extend .left;
+		      margin-right:15px;
+		      @extend .button;
+	      } 
+	      form {
+		      @extend .left;
+	      }
+      }
+      #ajax-itunes-search-results {
+	      height:147px;
+	      width:287px;
+	      @extend .scrollbar;
+	      ul {
+		      list-style-type:none;
+		      overflow-y:scroll;
+		      li {
+			      @extend .left;
+		      }
+	      }
+      }
+      #profile-7d {
+	     width:287px;
+	     height:75px;
+      .image-7d {
+	      height:75px;
+	      width:75px;
+	      @extend .left;
+      }
+      .name-7d {
+	      margin-left:10px;
+	      @extend .left;
+      }
+      }
+            #digital7-buttons {
+	      a {
+		      @extend .left;
+		      margin-right:15px;
+		      @extend .button;
+	      } 
+	      form {
+		      @extend .left;
+	      }
+      }
+            #ajax-7digital-search-results {
+	      height:108px;
+	      width:287px;
+	      @extend .scrollbar;
+	      ul {
+		      list-style-type:none;
+		      overflow-y:scroll;
+		      li {
+			      @extend .left;
+		      }
+	      }
+      }
     }
     .step-right {
       width:226px;
       margin-top:-2px;
+      @extend .right;
     }
     #artist-line {
       position:absolute;
@@ -171,12 +230,12 @@ margin:-1px 0 25px 0;
     left:20px;
     top:2px;
  li{
-  float:left;
+  @extend .left;
+  @extend .button;
   position:relative;
   margin-right:25px;
   height:25px;
   width:71px;
-  font-size:1.1em;
   a {
     color:#fff;
   }
@@ -208,19 +267,21 @@ margin:-1px 0 25px 0;
   background:rgba(255,255,255,0.75);
   @include border-radius(12px);
   @include box-shadow(0px 2px 5px rgba(0, 0, 0, 0.25));
-    top:19px;
-    margin-bottom:25px;
+  top:19px;
+  margin-bottom:25px; 
 .progress {
   width:53px;
   height:20px;
   @include border-radius(12px);
   margin-left:-1px;
+  @extend .o-button;
 }
 .percent {
   text-align:center;
   line-height:17px;
   color:#fff;
   font-size:1.1em;
+  @extend .instruct-font;
 }
 }
 }
