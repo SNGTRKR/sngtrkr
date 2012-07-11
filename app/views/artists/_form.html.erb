@@ -92,21 +92,29 @@ image_height = 100
 <fieldset class="step">
 	<div class="step-back manage-itunes-step">
 		<div class="step-left left">
+		<strong>Confirm iTunes Identity</strong>
+		<br/>
 <% if !@artist.itunes_id? %>
-  <p>We couldn't find you on iTunes, if you aren't on there, don't worry, you don't need to do anything.</p>
+  We couldn't find you on iTunes. If you aren't on there don't worry, you don't need to do anything.
 <% else %>
-  <p><%= link_to @itunes_info['results'][0]['artistName'] + " on iTunes", @itunes_info['results'][0]['artistLinkUrl'] %></p>
-  <p>Genre: <%=  @itunes_info['results'][0]['primaryGenreName'] %></p>
-  <%= link_to "This isn't me" %>
+  <strong>Artist:</strong><%= link_to @itunes_info['results'][0]['artistName'] + " on iTunes", @itunes_info['results'][0]['artistLinkUrl'] %>
+  <br/>
+ <strong>Genre:</strong> <%=  @itunes_info['results'][0]['primaryGenreName'] %>
+ <br/>
+ <div id="itunes-buttons">
+  <%= button_to "This isn't me" %>
   <%= form_for @artist, :remote => true do |f| %>
     <%= hidden_field_tag "itunes_id_delete" %>
     <%= f.submit "I'm not on iTunes" %>
   <% end %>
+ </div>
+ <div id="itunes-search">
   <%=form_for @artist, :url => artist_scrape_confirm_path(:artist_id => @artist.id, :format => :js), :remote => true do |f| %>
     <%= text_field_tag :search, @artist.name %>
     <%= hidden_field_tag :store, "itunes" %>
     <%= submit_tag "Search" %>
   <% end %>
+ </div>
   <div id="ajax-itunes-search-results"></div>
 <% end %>
 		</div>
@@ -114,7 +122,10 @@ image_height = 100
 		To ensure we have the correct artist profile on our partner sites associated with <strong><%= @artist.name %></strong>, please select and confirm the correct profile using the search tool provided.
 		<br/>
 		<br/>
-		If all information is already correct, please move onto the next step. However if you are having trouble finding the correct profile please contact us at <a href="mailto:support@sngtrkr.com">support@sngtrkr.com</a>.
+		If all information is already correct, please move onto the next step. 
+		<br/>
+		<br/>
+		However if you are having trouble finding the correct profile please contact us at <a href="mailto:support@sngtrkr.com">support@sngtrkr.com</a>.
 		</div>
 		<div id="picture-line"></div>
 	</div>
@@ -122,8 +133,9 @@ image_height = 100
 <fieldset class="step">
 	<div class="step-back manage-7digital-step">
 		<div class="step-left left">
+		<strong>Confirm 7Digital Identity</strong>
 <% if !@artist.sdid? %>
-  <p>We couldn't find you on 7digital, if you aren't on there, don't worry, you don't need to do anything.</p>
+  We couldn't find you on 7Digital. If you aren't on there don't worry, you don't need to do anything.
 <% else %>
   <%= image_tag @sd_info['response']['artist']['image'] %> 
   <p><%= link_to @sd_info['response']['artist']['name'] + " on 7digital", @sd_info['response']['artist']['url'] %></p>
@@ -144,7 +156,10 @@ image_height = 100
 		To ensure we have the correct artist profile on our partner sites associated with <strong><%= @artist.name %></strong>, please select and confirm the correct profile using the search tool provided.
 		<br/>
 		<br/>
-		If all information is already correct, please move onto the next step. However if you are having trouble finding the correct profile, please contact us at <a href="mailto:support@sngtrkr.com">support@sngtrkr.com</a>.
+		If all information is already correct, please move onto the next step. 
+		<br/>
+		<br/>
+		However if you are having trouble finding the correct profile, please contact us at <a href="mailto:support@sngtrkr.com">support@sngtrkr.com</a>.
 		</div>
 		<div id="picture-line"></div>
 	</div>
@@ -188,9 +203,7 @@ image_height = 100
 						<br/>
 						<strong>If you would like information on how to get started with using your artist timeline, and adding new releases, then head on over to our help page.</strong>
 						<div id="submit-pad">
-							<div class="o-button right norm-o-pad signika-font">
 										<%= f.submit "Submit", :class => 'submit-button', :tabindex => -1 %>
-							</div>
 						</div>
 					</div>
 					<div id="summary-line"></div>
@@ -208,13 +221,13 @@ image_height = 100
 					<a href="#" class="manage-picture"><h3>2. Picture</h3><div class="swhite-tint-2"></div></a>
 				</li>
 				<li class="signika-font o-button norm-o-pad">
-					<a href="#" class="manage-itunes"><h3>3. iTunes</h3><div class="swhite-tint-2"></div></a>
+					<a href="#" class="manage-itunes"><h3>3. iTunes</h3><div class="swhite-tint-3"></div></a>
 				</li>
 				<li class="signika-font o-button norm-o-pad">
-					<a href="#" class="manage-7digital"><h3>4. 7Digital</h3><div class="swhite-tint-2"></div></a>
+					<a href="#" class="manage-7digital"><h3>4. 7Digital</h3><div class="swhite-tint-4"></div></a>
 				</li>
 				<li class="signika-font o-button norm-o-pad">
-					<a href="#" class="manage-summary"><h3>5. Summary</h3><div class="swhite-tint-3"></div></a>
+					<a href="#" class="manage-summary"><h3>5. Summary</h3><div class="swhite-tint-5"></div></a>
 				</li>
 			</ul>
 		</div>
@@ -253,6 +266,8 @@ image_height = 100
 			$('.swhite-tint').hide();
 			$('.swhite-tint-2').show();
 			$('.swhite-tint-3').show();
+			$('.swhite-tint-4').show();
+			$('.swhite-tint-5').show();
 		});
 		$(".manage-picture").click(function() {
 			$(".step-back").animate({
@@ -280,6 +295,8 @@ image_height = 100
 			$('.swhite-tint-2').hide();
 			$('.swhite-tint-3').show();
 			$('.swhite-tint').show();
+			$('.swhite-tint-4').show();
+			$('.swhite-tint-5').show();
 		});
 				$(".manage-itunes").click(function() {
 			$(".step-back").animate({
@@ -304,9 +321,11 @@ image_height = 100
 					width : 48
 				}, 10);
 			$('.percent').html('60%');
-			$('.swhite-tint').hide();
+			$('.swhite-tint-3').hide();
 			$('.swhite-tint-2').show();
-			$('.swhite-tint-3').show();
+			$('.swhite-tint').show();
+			$('.swhite-tint-4').show();
+			$('.swhite-tint-5').show();
 		});
 				$(".manage-7digital").click(function() {
 			$(".step-back").animate({
@@ -331,9 +350,11 @@ image_height = 100
 					width : 48
 				}, 10);
 			$('.percent').html('80%');
-			$('.swhite-tint').hide();
+			$('.swhite-tint-4').hide();
 			$('.swhite-tint-2').show();
 			$('.swhite-tint-3').show();
+			$('.swhite-tint').show();
+			$('.swhite-tint-5').show();
 		});
 		$(".manage-summary").click(function() {
 			$(".step-back").animate({
@@ -358,9 +379,11 @@ image_height = 100
 					width : 48
 				}, 10);
 			$('.percent').html('100%');
-			$('.swhite-tint-3').hide();
+			$('.swhite-tint-5').hide();
 			$('.swhite-tint-2').show();
 			$('.swhite-tint').show();
+			$('.swhite-tint-3').show();
+			$('.swhite-tint-4').show();
 			// Fill in summary info
 			$('#artist-summary #name').html($('#artist_name').val());
 			$('#artist-summary #genre').html($('#artist_genre').val());
