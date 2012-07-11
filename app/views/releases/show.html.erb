@@ -51,13 +51,13 @@
  </div>
 <div class="release-right right">
 <div id="release-info">
-	<h2 class="font-22 release-name"><strong>
+	<strong><h2 class="font-22 release-name">
   	<% if @manager %>
   	<%= best_in_place [@artist, @release], :name, :type => :input, :class => 'form-text' %>
   	<% else %>
   	<%= @release.name %>
   	<% end %>
-  	</strong></h2>
+  	</h2></strong>
 	<h3 class="font-15 orange-txt artist-release-name"><%= link_to @artist.name, @artist %></h3>
 	<i class="icon-music i-info" title="Genre"></i>
 	<% if @manager %>
@@ -136,8 +136,9 @@
 <div id="no-preview"><strong>No track preview available for this release.</strong></div><% end %>
 </div> <! -- release-i-player -->
   <ul class="menu-user">
-  <li class="left o-button signika-font norm-o-pad font-13 buy-release"><i class="icon-shopping-cart"></i>Buy</li>
-  <li class="left o-button signika-font norm-o-pad font-13 share-release"><i class="icon-share-alt"></i>Share</li>
+  <li class="buy-release"><i class="icon-shopping-cart"></i>Buy</li>
+  <li class="share-release"><i class="icon-share-alt"></i>Share</li>
+  <li class="report-release"><i class="icon-flag"></i></li>
   </ul>
 </div><!-- release-info -->
 <div class="clear"></div>

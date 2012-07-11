@@ -70,6 +70,14 @@ margin:-1px 0 25px 0;
     width:649px;
   height:510px;
 }
+.manage-itunes-step, .manage-7digital-step {
+	a {
+		color:$orange;
+	}
+	a:hover {
+		color:$gray;
+	}
+}
 .step-back {
   margin:5px 22px 5px 22px;
   width:545px;
@@ -92,16 +100,11 @@ margin:-1px 0 25px 0;
               margin-left:-67px;
                background:transparent;
             }
-            input[type=submit] {
-                background:none;
-                border:0;
-                color:#fff;
-                font-size:1em            
-            }
             #submit-pad {
               position:relative;
               top:16px;
               left:-77px;
+              @extend .right;
             }
      textarea {
 	       resize:none;
@@ -232,7 +235,7 @@ margin:-1px 0 25px 0;
     @include border-radius(7px);
     z-index:2;
 } 
-.swhite-tint-2, .swhite-tint-3, .swhite-tint-4 {
+.swhite-tint-2, .swhite-tint-3, .swhite-tint-4, .swhite-tint-5 {
   position:absolute;
     top:0px;
     left:0px;
