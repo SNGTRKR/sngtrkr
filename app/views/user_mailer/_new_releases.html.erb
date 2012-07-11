@@ -169,16 +169,7 @@
 		.bodyContent div a:link,.bodyContent div a:visited,.bodyContent div a .yshortcuts{
 			color:#F15A24;
 		}
-		.releases {
-			margin-left:-10px;
-		}
-		.r-artwork {
-			height:83px;
-			width:83px;
-		}
-		.r-info {
-			line-height:1.4em;
-		}
+		
 		.releases tr .r-info a:link { color:#000; text-decoration: none; }
 		.releases tr .r-info a:active { color:#000; text-decoration: none;  }
 		.releases tr .r-info a:visited { color:#000; text-decoration: none;  }
@@ -188,17 +179,8 @@
 		.releases tr .r-info .artist a:active { color:#F15A24; text-decoration: none;  }
 		.releases tr .r-info .artist a:visited { color:#F15A24; text-decoration: none;  }
 		.releases tr .r-info .artist a:hover { color:#000; text-decoration: none;  }
-		 .r-date {
-			text-align:center;
-		}
 		strong {
 			font-weight:bold;
-		}
-		.day {
-			font-size:45px;
-		}
-		.month {
-			font-size:22px;
 		}
 </style></head>
     
@@ -259,14 +241,14 @@
 	<br>
 	<span style="font-size: 22px; line-height: 100%; ">Hello <%= @user.first_name %> <%= @user.last_name %>,</span></h1>
 	Here is your <%= @date_adjective %> personal digest of artist releases, for <strong><%= Date.today.strftime("#{Date.today.day.ordinalize} %B %Y ") %></strong>
-	<table class="releases" border="0" cellpadding="10" cellspacing="0" width="570px">
+	<table style="margin-left:-10px;" border="0" cellpadding="10" cellspacing="0" width="100%">
 <% @releases.each do |release| %>
 <tr>
-<td class="r-artwork" style="background-image:url(<%= release.image :release_email %>);background-repeat:no-repeat;background-position:center;"></td>
-<td class="r-info"><h2><%= link_to release.name, [release.artist, release], :target => "_blank" %></h2><strong>Artist</strong>: <span class="artist"><%= link_to release.artist.name, release.artist, :target => "_blank" %></span></br>
+<td style="background-image:url(http://www.sngtrkr.com<%= release.image :release_email %>);background-repeat:no-repeat;background-position:center;height:83px; width:83px;"></td>
+<td style="line-height:1.4em;"><h2><%= link_to release.name, [release.artist, release], :target => "_blank" %></h2><strong>Artist</strong>: <span class="artist"><%= link_to release.artist.name, release.artist, :target => "_blank" %></span></br>
 <strong>Label</strong>: <%= release.label_name %><br/>
 <strong>Catalogue No</strong>: <%= release.cat_no %></td>
-<td class="r-date"><span class="day"><%= release.date.strftime("%d") %></span><br/><span class="month"><%= release.date.strftime("%b") %></span></td>
+<td style="text-align:center;"><span style="font-size:45px;"><%= release.date.strftime("%d") %></span><br/><span style="font-size:22px;"><%= release.date.strftime("%b") %></span></td>
 </tr>
 <% end %>
 </table>

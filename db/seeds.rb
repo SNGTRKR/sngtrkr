@@ -17,7 +17,7 @@ u.roles = [r]
 u.skip_confirmation!
 u.save
 
-u = User.new(:first_name => 'Barry', :last_name => 'Smith', :fbid => "123456789", :email => "matt@sngtrkr.com",:password => 'test42343egy76df', :last_sign_in_at => Time.now, 
+u = User.new(:first_name => 'Barry', :last_name => 'Smith', :fbid => "123456789", :email => "tom.alan.dallimore+1@googlemail.com",:password => 'test42343egy76df', :last_sign_in_at => Time.now, 
   :email_frequency => 1)
 u.skip_confirmation!
 u.save
