@@ -5,7 +5,9 @@
     {
         position:relative;
         height:25px;
-        margin:0 15px 0 15px;
+        margin:-15px 15px 0 15px;
+        @extend .right;
+        @extend .o-button;
         #profile-pad {
 	        padding:2px 7px 0 6px;
         }
@@ -32,7 +34,7 @@
     }
     .mini-search {
         @extend .mini-search-common;
-        margin-top:-1px;
+        margin-top:-15px;
     }
     .mini-search-2 {
         @extend .mini-search-common;

@@ -290,6 +290,8 @@ input.o-button {
 }
 .logout-button {
   margin:-15px 0 0 0;
+  @extend .right;
+  @extend .button;
   a {
 	  color:#fff;
   }
@@ -299,6 +301,7 @@ input.o-button {
 }
 .fb-login {
 	    margin:-16px 0 0 5px;
+	    @extend .right;
 }
 .fb-home-login {
 	margin-top:-2px;

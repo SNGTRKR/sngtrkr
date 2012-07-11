@@ -248,6 +248,7 @@ DEPENDENCIES
   ajaxful_rating (~> 3.0.0.beta8)
   amazon-ecs
   best_in_place
+  bootstrap-sass (~> 2.0.4.0)
   cancan
   capistrano
   compass-rails (>= 1.0.0.rc.2)
