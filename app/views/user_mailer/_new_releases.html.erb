@@ -9,6 +9,10 @@
         <title>Your personal <%= @date_adjective %> digest - <%= Date.today.strftime("#{Date.today.day.ordinalize} %B %Y ") %></title>
 		
 	<style type="text/css">
+	div a:link {text-decoration:none;}
+	div a:visited {text-decoration:none;}
+	div a:active {text-decoration:none;}
+	div a:hover {text-decoration:none;}
 		body{
 			width:100% !important;
 		}
@@ -165,39 +169,26 @@
 		.bodyContent div a:link,.bodyContent div a:visited,.bodyContent div a .yshortcuts{
 			color:#F15A24;
 		}
-		.release-list {
-			list-style-type:none;
-			margin-left:-40px;
-			width:558px;
-			position:relative;
+		.releases {
+			margin-left:-10px;
 		}
-		.release-list li {
-			height:100px;
-			position:relative;
-		}
-		.release-list li .r-artwork {
-			position:relative;
+		.r-artwork {
 			height:83px;
 			width:83px;
-			background-color:black;
-			top:3px;
-			
 		}
-		.release-list li .r-info {
-			position:relative;
-			left:98px;
-			top:-83px;
+		.r-info {
 			line-height:1.4em;
 		}
-		.release-list li .r-info a:link { color:#000; text-decoration: none; }
-		.release-list li .r-info a:active { color:#000; text-decoration: none;  }
-		.release-list li .r-info a:visited { color:#000; text-decoration: none;  }
-		.release-list li .r-info a:hover { color:#F15A24; text-decoration: none;  }
+		.releases tr .r-info a:link { color:#000; text-decoration: none; }
+		.releases tr .r-info a:active { color:#000; text-decoration: none;  }
+		.releases tr .r-info a:visited { color:#000; text-decoration: none;  }
+		.releases tr .r-info a:hover { color:#F15A24; text-decoration: none;  }
 		
-		.release-list li .r-date {
-			position:absolute;
-			left:480px;
-			top:32px;
+		.releases tr .r-info .artist a:link { color:#F15A24; text-decoration: none; }
+		.releases tr .r-info .artist a:active { color:#F15A24; text-decoration: none;  }
+		.releases tr .r-info .artist a:visited { color:#F15A24; text-decoration: none;  }
+		.releases tr .r-info .artist a:hover { color:#000; text-decoration: none;  }
+		 .r-date {
 			text-align:center;
 		}
 		strong {
@@ -268,19 +259,17 @@
 	<br>
 	<span style="font-size: 22px; line-height: 100%; ">Hello <%= @user.first_name %> <%= @user.last_name %>,</span></h1>
 	Here is your <%= @date_adjective %> personal digest of artist releases, for <strong><%= Date.today.strftime("#{Date.today.day.ordinalize} %B %Y ") %></strong>
-	<ul class="release-list">
+	<table class="releases" border="0" cellpadding="10" cellspacing="0" width="570px">
 <% @releases.each do |release| %>
-<li class="left">
-<hr>
-<%= link_to [release.artist, release], :target => "_blank" do %><div class="r-artwork" style="background-image:url(<%= release.image :release_email %>);background-repeat:no-repeat;background-position:center;"></div><% end %>
-<div class="r-info"><h2><%= link_to release.name, [release.artist, release], :target => "_blank" %></h2>
-<strong>Artist</strong>: <%= link_to release.artist.name, release.artist, :target => "_blank" %></br>
+<tr>
+<td class="r-artwork" style="background-image:url(<%= release.image :release_email %>);background-repeat:no-repeat;background-position:center;"></td>
+<td class="r-info"><h2><%= link_to release.name, [release.artist, release], :target => "_blank" %></h2><strong>Artist</strong>: <span class="artist"><%= link_to release.artist.name, release.artist, :target => "_blank" %></span></br>
 <strong>Label</strong>: <%= release.label_name %><br/>
-<strong>Catalogue No</strong>: <%= release.cat_no %></div>
-<div class="r-date instruct-font"><span class="day"><%= release.date.strftime("%d") %></span><br/><span class="month"><%= release.date.strftime("%b") %></span></div>
-</li>
+<strong>Catalogue No</strong>: <%= release.cat_no %></td>
+<td class="r-date"><span class="day"><%= release.date.strftime("%d") %></span><br/><span class="month"><%= release.date.strftime("%b") %></span></td>
+</tr>
 <% end %>
-	</ul>
+</table>
 </div>                                                 </td>
                                                     </tr>
                                                 </table>
