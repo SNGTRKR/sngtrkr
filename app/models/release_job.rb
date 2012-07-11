@@ -25,7 +25,7 @@ class ReleaseJob
 
     releases.each do |release|
       begin
-        if release["id"].blank? or !Release.where("sd_id = ?",release["id"]).empty? 
+        if release["id"].blank? or !artist.releases.where("sd_id = ?",release["id"]).empty? 
           next
         end
       rescue
@@ -35,7 +35,7 @@ class ReleaseJob
       r = Release.new
       
       # Check for duplicate and skip if present
-      existing_duplicates = Release.where(:artist_id => artist.id, :name => release["title"])
+      existing_duplicates = artist.releases.where(:name => release["title"])
       if !existing_duplicates.empty?
         existing_duplicate = existing_duplicates.first
         # If the new release came out earlier, change the release date of the existing release in the DB.
