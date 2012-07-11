@@ -6,509 +6,499 @@ image_width = 100
 image_height = 100
 %>
 <div id="steps">
-<%= form_for @artist do |f| %>
-<span id="fields">
-<fieldset class="step">
-	<div class="step-back manage-details-step">
-		<div class="step-left">
-			<ul>
-				<li>
-					<strong><%= f.label "Artist Name*" %></strong>
-					<%= f.text_field :name, :class => 'form-text mfvalidate' %>
-				</li>
-				<li>
-					<strong><%= f.label "Genre*" %></strong>
-					<%= f.text_field :genre, :class => 'form-text mfvalidate' %>
-				</li>
-				<li>
-					<strong><%= f.label "Label*" %></strong>
-					<%= f.text_field :label_name, :class => 'form-text mfvalidate' %>
-				</li>
-				<li>
-					<strong><%= f.label "Bio*" %></strong>
-					<%= f.text_area :bio, :rows => 8, :cols => 40, :class => 'form-text mfvalidate' %>
-				</li>
-				<li>
-					<strong><%= f.label "Website" %></strong>
-					<%= f.text_field :website, :class => 'form-text' %>
-				</li>
-				<li>
-					<strong><%= f.label "Twitter" %></strong>
-					<%= f.text_field :twitter, :class => 'form-text' %>
-				</li>
-				<li>
-					<strong><%= f.label "Soundcloud" %></strong>
-					<%= f.text_field :soundcloud, :class => 'form-text' %>
-				</li>
-				<li>
-					<strong><%= f.label "Youtube" %></strong>
-					<%= f.text_field :youtube, :class => 'form-text' %>
-				</li>
-			</ul>
-		</div>
-		<div class="step-right">
-			Here is the information we have managed to gather from your Facebook fan page. Please check this information, by completing any missing or incorrect fields.
-			<br/>
-			<br/>
-			We recommend a maximum of 330 characters for the biography, making it short but sweet.
-			<br/>
-			<br/>
-			Furthermore, please only enter your username for the Twitter, Soundcloud and Youtube fields.
-			<br/>
-			<br/>
-			Please be aware, all of this information will be available to the public.
-			<br/>
-			<br/>
-			<strong>* Required fields.</strong>
-		</div>
-		<div id="details-line"></div>
-	</div>
-</fieldset>
-<fieldset class="step">
-	<div class="step-back manage-picture-step">
-		<div class="step-left">
-			<strong><%= f.label :picture %></strong>
-			<%= f.file_field 'image', :tabindex => -1 %></br/><br/>
-			<strong>Preview:</strong><br/>
-			<div class="manage-image"><%= image_tag (@artist.image :manage), :id => 'manage-image-current' %>
-			<canvas id="canvas" width="<%= image_width %>" height="<%= image_height %>"></canvas></div>
-		</div>
-		<div class="step-right">
-			Please upload a picture which would best represent you as an artist.
-			<br/>
-			</br/>
-			The artwork needs to be at least 365px width by 300px height. The file size can be no bigger than 1MB.
-			<br/>
-			</br/>
-			 <div id="manage-image-restore">
-					Restore to default
-			</div>
-		<div id="picture-line"></div>
-	</div>
-</fieldset>
-<fieldset class="step">
-	<div class="step-back manage-itunes-step">
-		<div class="step-left">
-<% if !@artist.itunes_id? %>
-  <strong>We couldn't find you on iTunes</strong>. If you aren't on there don't worry, you don't need to do anything.
-<% else %>
-  <strong>Artist:</strong> <%= link_to @itunes_info['results'][0]['artistName'], @itunes_info['results'][0]['artistLinkUrl'], :target => "_blank" %>
-  <br/>
- <strong>Genre:</strong> <%=  @itunes_info['results'][0]['primaryGenreName'] %>
- <br/><br/>
- <div id="itunes-buttons">
-  <%= link_to "This isn't me" %>
-  <%= form_for @artist, :remote => true do |f| %>
-    <%= hidden_field_tag "itunes_id_delete" %>
-    <%= f.submit "I'm not on iTunes" %>
-  <% end %>
-  <div class="clear"></div>
- </div>
- <br/>
-  <%=form_for @artist, :url => artist_scrape_confirm_path(:artist_id => @artist.id, :format => :js), :remote => true do |f| %>
-    <%= text_field_tag :search, @artist.name, :class => "form-text" %>
-    <%= hidden_field_tag :store, "itunes" %>
-    <%= submit_tag "Search" %>
-  <% end %>
+  <span id="fields">
+  <%= form_for @artist do |f| %>
+  <div class="step">
+  	<div class="step-back manage-details-step">
+  		<div class="step-left">
+  			<ul>
+  				<li>
+  					<strong><%= f.label "Artist Name*" %></strong>
+  					<%= f.text_field :name, :class => 'form-text mfvalidate' %>
+  				</li>
+  				<li>
+  					<strong><%= f.label "Genre*" %></strong>
+  					<%= f.text_field :genre, :class => 'form-text mfvalidate' %>
+  				</li>
+  				<li>
+  					<strong><%= f.label "Label*" %></strong>
+  					<%= f.text_field :label_name, :class => 'form-text mfvalidate' %>
+  				</li>
+  				<li>
+  					<strong><%= f.label "Bio*" %></strong>
+  					<%= f.text_area :bio, :rows => 8, :cols => 40, :class => 'form-text mfvalidate' %>
+  				</li>
+  				<li>
+  					<strong><%= f.label "Website" %></strong>
+  					<%= f.text_field :website, :class => 'form-text' %>
+  				</li>
+  				<li>
+  					<strong><%= f.label "Twitter" %></strong>
+  					<%= f.text_field :twitter, :class => 'form-text' %>
+  				</li>
+  				<li>
+  					<strong><%= f.label "Soundcloud" %></strong>
+  					<%= f.text_field :soundcloud, :class => 'form-text' %>
+  				</li>
+  				<li>
+  					<strong><%= f.label "Youtube" %></strong>
+  					<%= f.text_field :youtube, :class => 'form-text' %>
+  				</li>
+  			</ul>
+  		</div>
+  		<div class="step-right">
+  			Here is the information we have managed to gather from your Facebook fan page. Please check this information, by completing any missing or incorrect fields.
+  			<br/>
+  			<br/>
+  			We recommend a maximum of 330 characters for the biography, making it short but sweet.
+  			<br/>
+  			<br/>
+  			Furthermore, please only enter your username for the Twitter, Soundcloud and Youtube fields.
+  			<br/>
+  			<br/>
+  			Please be aware, all of this information will be available to the public.
+  			<br/>
+  			<br/>
+  			<strong>* Required fields.</strong>
+  		</div>
+  		<div id="details-line"></div>
+  	</div>
+  </div>
+  <div class="step">
+  	<div class="step-back manage-picture-step">
+  		<div class="step-left">
+  			<strong><%= f.label :picture %></strong>
+  			<%= f.file_field 'image', :tabindex => -1 %></br/><br/>
+  			<strong>Preview:</strong><br/>
+  			<div class="manage-image"><%= image_tag (@artist.image :manage), :id => 'manage-image-current' %>
+  			<canvas id="canvas" width="<%= image_width %>" height="<%= image_height %>"></canvas></div>
+  		</div>
+  		<div class="step-right">
+  			Please upload a picture which would best represent you as an artist.
+  			<br/>
+  			</br/>
+  			The artwork needs to be at least 365px width by 300px height. The file size can be no bigger than 1MB.
+  			<br/>
+  			</br/>
+  			 <div id="manage-image-restore">
+  					Restore to default
+  			</div>
+  		<div id="picture-line"></div>
+  	</div>
+  </div>
+  </div>
+<% end %>
+  <div class="step">
+  	<div class="step-back manage-itunes-step">
+  		<div class="step-left">
+  <% if !@artist.itunes_id? %>
+    <strong>We couldn't find you on iTunes</strong>. If you aren't on there don't worry, you don't need to do anything.
+  <% else %>
+    <strong>Artist:</strong> <%= link_to @itunes_info['results'][0]['artistName'], @itunes_info['results'][0]['artistLinkUrl'], :target => "_blank" %>
+    <br/>
+   <strong>Genre:</strong> <%=  @itunes_info['results'][0]['primaryGenreName'] %>
    <br/><br/>
-  <div id="ajax-itunes-search-results"></div>
-<% end %>
-		</div>
-		<div class="step-right">
-		To ensure we have the correct artist profile for <strong><%= @artist.name %></strong> on <strong>iTunes</strong>, please select and confirm the correct profile using the search tool provided.
-		<br/>
-		<br/>
-		If all information is already correct, please move onto the next step. 
-		<br/>
-		<br/>
-		However if you are having trouble finding the correct profile please contact us at <a href="mailto:support@sngtrkr.com">support@sngtrkr.com</a>.
-		</div>
-		<div id="summary-line"></div>
-	</div>
-</fieldset>
-<fieldset class="step">
-	<div class="step-back manage-7digital-step">
-		<div class="step-left">
-<% if !@artist.sdid? %>
-  <strong>We couldn't find you on 7Digital</strong>. If you aren't on there don't worry, you don't need to do anything.
-<% else %>
-  <div id="profile-7d"><%= image_tag @sd_info['response']['artist']['image'], :class => "image-7d" %> 
-  <div class="name-7d"><strong>Artist:</strong> <%= link_to @sd_info['response']['artist']['name'], @sd_info['response']['artist']['url'], :target => "_blank" %></div><div class="clear"></div></div>
-  <br/>
-  <div id="digital7-buttons"><%= link_to "This isn't me" %>
-  <%= form_for @artist, :remote => true do |f| %>
-    <%= hidden_field_tag "sdid_delete" %>
-    <%= f.submit "I'm not on 7digital" %>
+   <div id="itunes-buttons">
+    <%= link_to "This isn't me" %>
+    <%= form_for @artist, :remote => true do |f| %>
+      <%= hidden_field_tag "itunes_id_delete" %>
+      <%= f.submit "I'm not on iTunes" %>
+    <% end %>
+    <div class="clear"></div>
+   </div>
+   <br/>
+    <%=form_for @artist, :url => artist_scrape_confirm_path(:artist_id => @artist.id, :format => :js), :remote => true do |f| %>
+      <%= text_field_tag :search, @artist.name, :class => "form-text" %>
+      <%= hidden_field_tag :store, "itunes" %>
+      <%= submit_tag "Search" %>
+    <% end %>
+     <br/><br/>
+    <div id="ajax-itunes-search-results"></div>
   <% end %>
-  <div class="clear"></div>
-    </div>
-	<br/>
-  <%= form_for @artist, :url => artist_scrape_confirm_path(:artist_id => @artist.id, :format => :js), :remote => true do |f| %>
-    <%= text_field_tag :search, @artist.name, :class => "form-text" %>
-    <%= hidden_field_tag :store, "7digital" %>
-    <%= f.submit "Search" %>
+  		</div>
+  		<div class="step-right">
+  		To ensure we have the correct artist profile for <strong><%= @artist.name %></strong> on <strong>iTunes</strong>, please select and confirm the correct profile using the search tool provided.
+  		<br/>
+  		<br/>
+  		If all information is already correct, please move onto the next step. 
+  		<br/>
+  		<br/>
+  		However if you are having trouble finding the correct profile please contact us at <a href="mailto:support@sngtrkr.com">support@sngtrkr.com</a>.
+  		</div>
+  		<div id="summary-line"></div>
+  	</div>
+  </div>
+  <div class="step">
+  	<div class="step-back manage-7digital-step">
+  		<div class="step-left">
+  <% if !@artist.sdid? %>
+    <strong>We couldn't find you on 7Digital</strong>. If you aren't on there don't worry, you don't need to do anything.
+  <% else %>
+    <div id="profile-7d"><%= image_tag @sd_info['response']['artist']['image'], :class => "image-7d" %> 
+    <div class="name-7d"><strong>Artist:</strong> <%= link_to @sd_info['response']['artist']['name'], @sd_info['response']['artist']['url'], :target => "_blank" %></div><div class="clear"></div></div>
+    <br/>
+    <div id="digital7-buttons"><%= link_to "This isn't me" %>
+    <%= form_for @artist, :remote => true do |f| %>
+      <%= hidden_field_tag "sdid_delete" %>
+      <%= f.submit "I'm not on 7digital" %>
+    <% end %>
+    <div class="clear"></div>
+      </div>
+  	<br/>
+    <%= form_for @artist, :url => artist_scrape_confirm_path(:artist_id => @artist.id, :format => :js), :remote => true do |f| %>
+      <%= text_field_tag :search, @artist.name, :class => "form-text" %>
+      <%= hidden_field_tag :store, "7digital" %>
+      <%= f.submit "Search" %>
+    <% end %>
+    <br/><br/>
+    <div id="ajax-7digital-search-results"></div>
   <% end %>
-  <br/><br/>
-  <div id="ajax-7digital-search-results"></div>
-<% end %>
-		</div>
-		<div class="step-right">
-		To ensure we have the correct artist profile for <strong><%= @artist.name %></strong> on <strong>7Digital</strong>, please select and confirm the correct profile using the search tool provided.
-		<br/>
-		<br/>
-		If all information is already correct, please move onto the next step. 
-		<br/>
-		<br/>
-		However if you are having trouble finding the correct profile, please contact us at <a href="mailto:support@sngtrkr.com">support@sngtrkr.com</a>.
-		</div>
-		<div id="summary-line"></div>
-	</div>
-</fieldset>
-<fieldset class="step">
-	<div class="step-back manage-summary-step">
-		<div class="step-left">
-						<ul id="artist-summary">
-							<li>
-								<strong>Artist Name:</strong> <span id="name"></span>
-							</li>
-							<li>
-								<strong>Genre:</strong> <span id="genre"></span>
-							</li>
-							<li>
-								<strong>Label:</strong> <span id="label"></span>
-							</li>
-							<li>
-								<strong>Bio:</strong> <span id="bio"></span>
-							</li> 
-							<li>
-								<strong>Website:</strong> <span id="website"></span>
-							</li>
-							<li>
-								<strong>Twitter:</strong> <span id="twitter"></span>
-							</li>
-							<li>
-								<strong>Soundcloud:</strong> <span id="soundcloud"></span>
-							</li>
-							<li>
-								<strong>Youtube:</strong> <span id="youtube"></span>
-							</li>
-						</ul>
-					</div>
-					<div class="step-right">
-						Here is a summary of all the information you have entered for your artist profile. Please read over and check everything.
-						<br/>
-						<br/>
-						If you wish to change anything, please use the menu below to return to previous stages. Once you are happy with your artist profile settings,  click the submit button below.
-						<br/>
-						<br/>
-						<strong>If you would like information on how to get started with using your artist timeline, and adding new releases, then head on over to our help page.</strong>
-						<div id="submit-pad">
-										<%= f.submit "Submit", :class => 'submit-button', :tabindex => -1 %>
-						</div>
-					</div>
-					<div id="summary-line"></div>
-	</div>
-</fieldset>
-</span>
-<% end %>
+  		</div>
+  		<div class="step-right">
+  		To ensure we have the correct artist profile for <strong><%= @artist.name %></strong> on <strong>7Digital</strong>, please select and confirm the correct profile using the search tool provided.
+  		<br/>
+  		<br/>
+  		If all information is already correct, please move onto the next step. 
+  		<br/>
+  		<br/>
+  		However if you are having trouble finding the correct profile, please contact us at <a href="mailto:support@sngtrkr.com">support@sngtrkr.com</a>.
+  		</div>
+  		<div id="summary-line"></div>
+  	</div>
+  </div>
+  <div class="step">
+  	<div class="step-back manage-summary-step">
+  		<div class="step-left">
+  						<ul id="artist-summary">
+  							<li>
+  								<strong>Artist Name:</strong> <span id="name"></span>
+  							</li>
+  							<li>
+  								<strong>Genre:</strong> <span id="genre"></span>
+  							</li>
+  							<li>
+  								<strong>Label:</strong> <span id="label"></span>
+  							</li>
+  							<li>
+  								<strong>Bio:</strong> <span id="bio"></span>
+  							</li> 
+  							<li>
+  								<strong>Website:</strong> <span id="website"></span>
+  							</li>
+  							<li>
+  								<strong>Twitter:</strong> <span id="twitter"></span>
+  							</li>
+  							<li>
+  								<strong>Soundcloud:</strong> <span id="soundcloud"></span>
+  							</li>
+  							<li>
+  								<strong>Youtube:</strong> <span id="youtube"></span>
+  							</li>
+  						</ul>
+  					</div>
+  					<div class="step-right">
+  						Here is a summary of all the information you have entered for your artist profile. Please read over and check everything.
+  						<br/>
+  						<br/>
+  						If you wish to change anything, please use the menu below to return to previous stages. Once you are happy with your artist profile settings,  click the submit button below.
+  						<br/>
+  						<br/>
+  						<strong>If you would like information on how to get started with using your artist timeline, and adding new releases, then head on over to our help page.</strong>
+  						<div id="submit-pad">
+  										<%= submit_tag "Submit", :class => 'submit-button', :tabindex => -1 %>
+  						</div>
+  					</div>
+  					<div id="summary-line"></div>
+      	</div>
+      </div>
+    </span>
 </div>
 <div id="navigation" style="display:none;">
-			<ul>
-				<li class="selected">
-					<a href="#" class="manage-details"><h3>1. Details</h3><div class="swhite-tint"></div></a>
-				</li>
-				<li>
-					<a href="#" class="manage-picture"><h3>2. Picture</h3><div class="swhite-tint-2"></div></a>
-				</li>
-				<li>
-					<a href="#" class="manage-itunes"><h3>3. iTunes</h3><div class="swhite-tint-3"></div></a>
-				</li>
-				<li>
-					<a href="#" class="manage-7digital"><h3>4. 7Digital</h3><div class="swhite-tint-4"></div></a>
-				</li>
-				<li>
-					<a href="#" class="manage-summary"><h3>5. Summary</h3><div class="swhite-tint-5"></div></a>
-				</li>
-			</ul>
+	<ul>
+		<li class="selected">
+			<a href="#" class="manage-details"><h3>1. Details</h3><div class="swhite-tint"></div></a>
+		</li>
+		<li>
+			<a href="#" class="manage-picture"><h3>2. Picture</h3><div class="swhite-tint-2"></div></a>
+		</li>
+		<li>
+			<a href="#" class="manage-itunes"><h3>3. iTunes</h3><div class="swhite-tint-3"></div></a>
+		</li>
+		<li>
+			<a href="#" class="manage-7digital"><h3>4. 7Digital</h3><div class="swhite-tint-4"></div></a>
+		</li>
+		<li>
+			<a href="#" class="manage-summary"><h3>5. Summary</h3><div class="swhite-tint-5"></div></a>
+		</li>
+	</ul>
+</div>
+<div id="progress-bar">
+	<div class="progress">
+		<div class="percent">
+			20%
 		</div>
-		<div id="progress-bar">
-			<div class="progress">
-				<div class="percent">
-					20%
-				</div>
-			</div>
-		</div>
+	</div>
+</div>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$(".manage-details").click(function() {
-			$(".step-back").animate({
-				height : 421
-			}, "slow");
-			$(".step").animate({
-				height : 510
-			}, "slow");
-			$(".progress").animate({
-				width : 53
-			}, "slow");
-			$('#bulge-left').animate({
-					height : 609
-				}, "slow");
-				$('#bulge-left').animate({
-					width : 48
-				}, 10);
-				$('#bulge-right').animate({
-					height : 609
-				}, "slow");
-				$('#bulge-right').animate({
-					width : 48
-				}, 10);
-			$('.percent').html('20%');
-			$('.swhite-tint').hide();
-			$('.swhite-tint-2').show();
-			$('.swhite-tint-3').show();
-			$('.swhite-tint-4').show();
-			$('.swhite-tint-5').show();
-		});
-		$(".manage-picture").click(function() {
-			$(".step-back").animate({
-				height : 187
-			}, "slow");
-			$(".step").animate({
-				height : 275
-			}, "slow");
-			$(".progress").animate({
-				width : 106
-			}, "slow");
-			$('#bulge-left').animate({
-					height : 374
-				}, "slow");
-				$('#bulge-left').animate({
-					width : 48
-				}, 10);
-				$('#bulge-right').animate({
-					height : 374
-				}, "slow");
-				$('#bulge-right').animate({
-					width : 48
-				}, 10);
-			$('.percent').html('40%');
-			$('.swhite-tint-2').hide();
-			$('.swhite-tint-3').show();
-			$('.swhite-tint').show();
-			$('.swhite-tint-4').show();
-			$('.swhite-tint-5').show();
-		});
-				$(".manage-itunes").click(function() {
-			$(".step-back").animate({
-				height : 283
-			}, "slow");
-			$(".step").animate({
-				height : 371
-			}, "slow");
-			$(".progress").animate({
-				width : 159
-			}, "slow");
-			$('#bulge-left').animate({
-					height : 470
-				}, "slow");
-				$('#bulge-left').animate({
-					width : 48
-				}, 10);
-				$('#bulge-right').animate({
-					height : 470
-				}, "slow");
-				$('#bulge-right').animate({
-					width : 48
-				}, 10);
-			$('.percent').html('60%');
-			$('.swhite-tint-3').hide();
-			$('.swhite-tint-2').show();
-			$('.swhite-tint').show();
-			$('.swhite-tint-4').show();
-			$('.swhite-tint-5').show();
-		});
-				$(".manage-7digital").click(function() {
-			$(".step-back").animate({
-				height : 283
-			}, "slow");
-			$(".step").animate({
-				height : 371
-			}, "slow");
-			$(".progress").animate({
-				width : 212
-			}, "slow");
-			$('#bulge-left').animate({
-					height : 470
-				}, "slow");
-				$('#bulge-left').animate({
-					width : 48
-				}, 10);
-				$('#bulge-right').animate({
-					height : 470
-				}, "slow");
-				$('#bulge-right').animate({
-					width : 48
-				}, 10);
-			$('.percent').html('80%');
-			$('.swhite-tint-4').hide();
-			$('.swhite-tint-2').show();
-			$('.swhite-tint-3').show();
-			$('.swhite-tint').show();
-			$('.swhite-tint-5').show();
-		});
-		$(".manage-summary").click(function() {
-			$(".step-back").animate({
-				height : 283
-			}, "slow");
-			$(".step").animate({
-				height : 371
-			}, "slow");
-			$(".progress").animate({
-				width : 265
-			}, "slow");
-			$('#bulge-left').animate({
-					height : 470
-				}, "slow");
-				$('#bulge-left').animate({
-					width : 48
-				}, 10);
-				$('#bulge-right').animate({
-					height : 470
-				}, "slow");
-				$('#bulge-right').animate({
-					width : 48
-				}, 10);
-			$('.percent').html('100%');
-			$('.swhite-tint-5').hide();
-			$('.swhite-tint-2').show();
-			$('.swhite-tint').show();
-			$('.swhite-tint-3').show();
-			$('.swhite-tint-4').show();
-			// Fill in summary info
-			$('#artist-summary #name').html($('#artist_name').val());
-			$('#artist-summary #genre').html($('#artist_genre').val());
-			$('#artist-summary #label').html($('#artist_label_name').val());
-			$('#artist-summary #bio').html($('#artist_bio').val().substring(0,100));
-			$('#artist-summary #website').html($('#artist_website').val());
-			$('#artist-summary #twitter').html($('#artist_twitter').val());
-			$('#artist-summary #soundcloud').html($('#artist_soundcloud').val());
-			$('#artist-summary #youtube').html($('#artist_youtube').val());			
-		});
-			$('.submit-button').bind('click',function(){
-		if($('#fields').data('errors')){
-			alert('Please go back and complete required fields.');
-			return false;
-		}	
-	});
-	}); 
-	$(function() {
-	var fieldsetCount = $('#fields').children().length;
-	var current 	= 1;
-	var stepsWidth	= 0;
-    var widths 		= new Array();
-	$('#steps .step').each(function(i){
-        var $step 		= $(this);
-		widths[i]  		= stepsWidth;
-        stepsWidth	 	+= $step.width();
+$(document).ready(function () {
+  $(".manage-details").click(function () {
+    $(".step-back").animate({
+      height: 421
+    }, "slow");
+    $(".step").animate({
+      height: 510
+    }, "slow");
+    $(".progress").animate({
+      width: 53
+    }, "slow");
+    $('#bulge-left').animate({
+      height: 609
+    }, "slow");
+    $('#bulge-left').animate({
+      width: 48
+    }, 10);
+    $('#bulge-right').animate({
+      height: 609
+    }, "slow");
+    $('#bulge-right').animate({
+      width: 48
+    }, 10);
+    $('.percent').html('20%');
+    $('.swhite-tint').hide();
+    $('.swhite-tint-2').show();
+    $('.swhite-tint-3').show();
+    $('.swhite-tint-4').show();
+    $('.swhite-tint-5').show();
+  });
+  $(".manage-picture").click(function () {
+    $(".step-back").animate({
+      height: 187
+    }, "slow");
+    $(".step").animate({
+      height: 275
+    }, "slow");
+    $(".progress").animate({
+      width: 106
+    }, "slow");
+    $('#bulge-left').animate({
+      height: 374
+    }, "slow");
+    $('#bulge-left').animate({
+      width: 48
+    }, 10);
+    $('#bulge-right').animate({
+      height: 374
+    }, "slow");
+    $('#bulge-right').animate({
+      width: 48
+    }, 10);
+    $('.percent').html('40%');
+    $('.swhite-tint-2').hide();
+    $('.swhite-tint-3').show();
+    $('.swhite-tint').show();
+    $('.swhite-tint-4').show();
+    $('.swhite-tint-5').show();
+  });
+  $(".manage-itunes").click(function () {
+    $(".step-back").animate({
+      height: 283
+    }, "slow");
+    $(".step").animate({
+      height: 371
+    }, "slow");
+    $(".progress").animate({
+      width: 159
+    }, "slow");
+    $('#bulge-left').animate({
+      height: 470
+    }, "slow");
+    $('#bulge-left').animate({
+      width: 48
+    }, 10);
+    $('#bulge-right').animate({
+      height: 470
+    }, "slow");
+    $('#bulge-right').animate({
+      width: 48
+    }, 10);
+    $('.percent').html('60%');
+    $('.swhite-tint-3').hide();
+    $('.swhite-tint-2').show();
+    $('.swhite-tint').show();
+    $('.swhite-tint-4').show();
+    $('.swhite-tint-5').show();
+  });
+  $(".manage-7digital").click(function () {
+    $(".step-back").animate({
+      height: 283
+    }, "slow");
+    $(".step").animate({
+      height: 371
+    }, "slow");
+    $(".progress").animate({
+      width: 212
+    }, "slow");
+    $('#bulge-left').animate({
+      height: 470
+    }, "slow");
+    $('#bulge-left').animate({
+      width: 48
+    }, 10);
+    $('#bulge-right').animate({
+      height: 470
+    }, "slow");
+    $('#bulge-right').animate({
+      width: 48
+    }, 10);
+    $('.percent').html('80%');
+    $('.swhite-tint-4').hide();
+    $('.swhite-tint-2').show();
+    $('.swhite-tint-3').show();
+    $('.swhite-tint').show();
+    $('.swhite-tint-5').show();
+  });
+  $(".manage-summary").click(function () {
+    $(".step-back").animate({
+      height: 283
+    }, "slow");
+    $(".step").animate({
+      height: 371
+    }, "slow");
+    $(".progress").animate({
+      width: 265
+    }, "slow");
+    $('#bulge-left').animate({
+      height: 470
+    }, "slow");
+    $('#bulge-left').animate({
+      width: 48
+    }, 10);
+    $('#bulge-right').animate({
+      height: 470
+    }, "slow");
+    $('#bulge-right').animate({
+      width: 48
+    }, 10);
+    $('.percent').html('100%');
+    $('.swhite-tint-5').hide();
+    $('.swhite-tint-2').show();
+    $('.swhite-tint').show();
+    $('.swhite-tint-3').show();
+    $('.swhite-tint-4').show();
+    // Fill in summary info
+    $('#artist-summary #name').html($('#artist_name').val());
+    $('#artist-summary #genre').html($('#artist_genre').val());
+    $('#artist-summary #label').html($('#artist_label_name').val());
+    $('#artist-summary #bio').html($('#artist_bio').val().substring(0, 100));
+    $('#artist-summary #website').html($('#artist_website').val());
+    $('#artist-summary #twitter').html($('#artist_twitter').val());
+    $('#artist-summary #soundcloud').html($('#artist_soundcloud').val());
+    $('#artist-summary #youtube').html($('#artist_youtube').val());
+  });
+  $('.submit-button').bind('click', function () {
+    if ($('#fields').data('errors')) {
+      alert('Please go back and complete required fields.');
+      return false;
+    }
+  });
+});
+$(function () {
+  var fieldsetCount = $('#fields').children().length;
+  var current = 1;
+  var stepsWidth = 0;
+  var widths = new Array();
+  $('#steps .step').each(function (i) {
+    var $step = $(this);
+    widths[i] = stepsWidth;
+    stepsWidth += $step.width();
+  });
+  $('#steps').width(stepsWidth);
+  $('#fields').children(':first').find(':input:first').focus();
+  $('#navigation').show();
+  $('#navigation a').bind('click', function (e) {
+    var $this = $(this);
+    var prev = current;
+    $this.closest('ul').find('li').removeClass('selected');
+    $this.parent().addClass('selected');
+    current = $this.parent().index() + 1;
+    $('#steps').stop().animate({
+      marginLeft: '-' + widths[current - 1] + 'px'
+    }, 500, function () {
+      if (current == fieldsetCount) validateSteps();
+      else validateStep(prev);
+      $('#fields').children(':nth-child(' + parseInt(current) + ')').find(':input:first').focus();
     });
-	$('#steps').width(stepsWidth);
-	$('#fields').children(':first').find(':input:first').focus();	
-	$('#navigation').show();
-    $('#navigation a').bind('click',function(e){
-		var $this	= $(this);
-		var prev	= current;
-		$this.closest('ul').find('li').removeClass('selected');
-        $this.parent().addClass('selected');
-		current = $this.parent().index() + 1;
-        $('#steps').stop().animate({
-            marginLeft: '-' + widths[current-1] + 'px'
-        },500,function(){
-			if(current == fieldsetCount)
-				validateSteps();
-			else
-				validateStep(prev);
-			$('#fields').children(':nth-child('+ parseInt(current) +')').find(':input:first').focus();	
-		});
-        e.preventDefault();
+    e.preventDefault();
+  });
+
+  function validateSteps() {
+    var FormErrors = false;
+    for (var i = 1; i < fieldsetCount; ++i) {
+      var error = validateStep(i);
+      if (error == -1) FormErrors = true;
+    }
+    $('#fields').data('errors', FormErrors);
+  }
+
+  function validateStep(step) {
+    if (step == fieldsetCount) return;
+
+
+    var error = 1;
+    var hasError = false;
+    $('#fields').children(':nth-child(' + parseInt(step) + ')').find(':input.mfvalidate:not("button")').each(function () {
+      var $this = $(this);
+      var valueLength = jQuery.trim($this.val()).length;
+
+      if (valueLength == '') {
+        hasError = true;
+
+      }
     });
-    			   /*   $('#fields > fieldset').each(function() {
-                                var $fieldset = $(this);
-                                $fieldset.children(':last').find(':li').keydown(function(e) {
-                              if(e.which == 9) {
-                             $('#navigation li:nth-child(' + (parseInt(current) + 1) + ') a').click();
-                                $(this).blur();
-                                e.preventDefault();
-                                }
-                                });
-                                }); */
-	function validateSteps(){
-		var FormErrors = false;
-		for(var i = 1; i < fieldsetCount; ++i){
-			var error = validateStep(i);
-			if(error == -1)
-				FormErrors = true;
-		}
-		$('#fields').data('errors',FormErrors);	
-	}
-			function validateStep(step) {
-				if(step == fieldsetCount)
-					return;
-	
+    var $link = $('#navigation li:nth-child(' + parseInt(step) + ') a');
+    $link.parent().find('.error,.checked').remove();
 
-				var error = 1;
-				var hasError = false;
-		$('#fields').children(':nth-child('+ parseInt(step) +')').find(':input.mfvalidate:not("button")').each(function(){
-			var $this 		= $(this);
-			var valueLength = jQuery.trim($this.val()).length;
-			
-			if(valueLength == ''){
-				hasError = true;
-			
-			}	
-		});
-				var $link = $('#navigation li:nth-child(' + parseInt(step) + ') a');
-				$link.parent().find('.error,.checked').remove();
-				
-				var valclass = 'checked';
-				if(hasError) {
-					error = -1;
-					valclass = 'error';
-				}
-				$('<span class="' + valclass + '"></span>').insertAfter($link);
+    var valclass = 'checked';
+    if (hasError) {
+      error = -1;
+      valclass = 'error';
+    }
+    $('<span class="' + valclass + '"></span>').insertAfter($link);
 
-				return error;
-			}
-	// Image Preview 
+    return error;
+  }
+  // Image Preview 
   function draw(ev) {
-      var ctx = document.getElementById('canvas').getContext('2d'),
-          img = new Image(),
-          f = document.getElementById("artist_image").files[0],
-          url = window.URL || window.webkitURL,
-          src = url.createObjectURL(f),
-          canvasCopy = document.getElementById('canvas');
-      var ctx2 = canvas.getContext("2d");
-      img.src = src;
-      img.onload = function() {
-        $('#manage-image-current').hide();
-        var maxWidth = <%= image_width %>, maxHeight = <%= image_height %>, ratio = 1;
+    var ctx = document.getElementById('canvas').getContext('2d'),
+      img = new Image(),
+      f = document.getElementById("artist_image").files[0],
+      url = window.URL || window.webkitURL,
+      src = url.createObjectURL(f),
+      canvasCopy = document.getElementById('canvas');
+    var ctx2 = canvas.getContext("2d");
+    img.src = src;
+    img.onload = function () {
+      $('#manage-image-current').hide();
+      var maxWidth = <%= image_width %> ,
+        maxHeight = <%= image_height %> ,
+        ratio = 1;
 
-        if(img.width > maxWidth)
-          ratio = maxWidth / img.width;
-          else if(img.height > maxHeight) ratio = maxHeight / img.height;
-  
-          canvasCopy.width = img.width;
-          canvasCopy.height = img.height;
-          
-          canvas.width = img.width * ratio;
-          canvas.height = img.height * ratio;
-          ctx.drawImage(img, 0, 0, canvasCopy.width, canvasCopy.height);
-          url.revokeObjectURL(src);
-        }      
+      if (img.width > maxWidth) ratio = maxWidth / img.width;
+      else if (img.height > maxHeight) ratio = maxHeight / img.height;
+
+      canvasCopy.width = img.width;
+      canvasCopy.height = img.height;
+
+      canvas.width = img.width * ratio;
+      canvas.height = img.height * ratio;
+      ctx.drawImage(img, 0, 0, canvasCopy.width, canvasCopy.height);
+      url.revokeObjectURL(src);
+    }
   };
   document.getElementById("artist_image").addEventListener("change", draw, false);
-  
+
   // Image Restore (Reset to existing image)
-  $('#manage-image-restore').click(function(){
+  $('#manage-image-restore').click(function () {
     document.getElementById('artist_image').value = "";
     $('#manage-image-current').show();
     document.getElementById('canvas').getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
