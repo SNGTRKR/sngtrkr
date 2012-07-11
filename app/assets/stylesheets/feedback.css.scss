@@ -1,5 +1,5 @@
 #feedback {
-	margin:0 -1px 0 15px;
+	margin:-14px -1px 0 15px;
 	position:relative;
 	height:26px;
 	width:33px;
@@ -45,6 +45,9 @@
 			margin-top:3px;
 			resize:none;
 			width:140px;
+		}
+		.cancel {
+			@extend .right;
 		}
 	}
 }
