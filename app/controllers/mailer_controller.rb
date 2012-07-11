@@ -1,5 +1,7 @@
 class MailerController < ApplicationController
 
+  skip_authorization_check
+
   before_filter :authenticate_user!, :only => []
 
   def welcome
@@ -17,7 +19,7 @@ class MailerController < ApplicationController
     @releases = Release.all[1,3]
     @date = Date.today
     @date_adjective = 'weekly'
-    render :file => 'user_mailer/new_releases.html.erb', :layout => false  
+    render :file => 'user_mailer/new_releases_deliver.html.erb', :layout => false  
   end
 
 end
