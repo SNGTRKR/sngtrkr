@@ -135,7 +135,7 @@ function artist_suggestion_replace() {
 	$(".share-cancel").click(function() {
 		$(this).parent().parent().find('.opac-50').fadeOut("normal").parent().find('.share-artist').animate({right : -202}, "slow").parent().find('.recommend-info').fadeIn("normal");;
 	});
-	$(".sm-trigger").click(function() {
+	$(".share-artist ul a li").click(function() {
 		$(this).parent().parent().parent().parent().find('.opac-50').fadeOut("normal").parent().find('.share-artist').animate({right : -202}, "slow").parent().find('.recommend-info').fadeIn("normal");;
 	});
 

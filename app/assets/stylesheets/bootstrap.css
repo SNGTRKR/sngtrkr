@@ -85,7 +85,6 @@ sub {
 }
 img {
   max-width: 100%;
-  vertical-align: middle;
   border: 0;
   -ms-interpolation-mode: bicubic;
 }
@@ -130,14 +129,6 @@ input[type="search"]::-webkit-search-cancel-button {
 textarea {
   overflow: auto;
   vertical-align: top;
-}
-body {
-  margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
-  color: #333333;
-  background-color: #ffffff;
 }
 a {
   color: #0088cc;

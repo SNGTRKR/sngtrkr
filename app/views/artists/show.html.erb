@@ -73,7 +73,7 @@ content_for :og_id, @artist.id.to_s
 	<i class="icon-tag" title="Record Label"></i><% if @artist.label_name? %><%= truncate((strip_tags @artist.label_name || "" ), :length => 50) %><% else %><span>No label set</span><% end %><br/><br/>
 <div id="artist-bio">
   <% if @artist.bio? %>
-    <%= raw(truncate((strip_tags @artist.bio || "" ), :length => 480, :omission => "...<a href='#bio-full'>Read more</a>")) %>
+    <%= raw(truncate((strip_tags @artist.bio || "" ), :length => 450, :omission => "...<a href='#bio-full'>Read more</a>")) %>
   <% else %>
     <span>No biography set</span>
   <% end %>
