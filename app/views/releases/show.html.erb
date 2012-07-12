@@ -1,13 +1,14 @@
 <% content_for :title do %><%= @release.name %> release information by <%= @artist.name %><% end %>
 <% content_for :description do %><%= @release.name %> release information by <%= @artist.name %>. <%= @artist.bio %> <% end %>
-<div class="content content-pad-187-bottom">
-<div id="artist-release">
-<div class="release-left left">
+<div class="container">
+<div class="row"><div class="span8 offset2">
+<div class="row">
+<div class="span4">
 <div id="release-image" style="background-image:url(<%= @release.image :release_i %>);background-repeat:no-repeat;background-position:center;">
 <% if @manager %>
-<i class="icon-edit edit-image"></i>
+<i class="icon-edit"></i>
 <div id="release-image-options">
-<i class="icon-remove edit-image-close"></i>
+<i class="icon-remove"></i>
   <% if !@release.image? %>
       <%= form_for [@artist,@release] do |f| %> 
         <%= f.file_field :image %> 
@@ -27,71 +28,69 @@
 <% end %>
 <div id="opac-50"></div>
 <div id="share-release">
-<h5 class="signika-txt font-22 center-txt share-header">Share this track</h5>
-<ul class="share-list">
-<a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [@artist, @release] %>%2F&t=SNGTRKR','ShareSNGTRKRonFacebook','scrollbars=no,width=620,height=340'); return false;"><li class="left fb-icon sm-trigger fb-button"><i class="icon-facebook"></i></li></a>
-<a href="#" title="Share on Twitter" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [@artist, @release] %>&text=<%= @artist.name %>+&#45;+<%= @release.name %>+released+on+<%= @release.label_name %>.+Check+out+<%= @artist.name %>+on+SNGTRKR+&#45;+www.sngtrkr.com<%= url_for [@artist, @release] %>&via=SNGTRKR','ShareSNGTRKRonTwitter','scrollbars=no,width=620,height=340'); return false;"><li class="left twit-icon sm-trigger twitter-button"><i class="icon-twitter"></i></li></a>
-<a href="#" title="Share on Google Plus" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [@artist, @release] %>','ShareSNGTRKRonGooglePlus','scrollbars=no,width=620,height=340'); return false;"><li class="left goo-icon sm-trigger google-button"><i class="icon-google-plus"></i></li></a>
-</ul>
+<h3>Share this track</h3>
+<ul>
+<a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [@artist, @release] %>%2F&t=SNGTRKR','ShareSNGTRKRonFacebook','scrollbars=no,width=620,height=340'); return false;"><li class="fb-icon fb-button"><i class="icon-facebook"></i></li></a>
+<a href="#" title="Share on Twitter" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [@artist, @release] %>&text=<%= @artist.name %>+&#45;+<%= @release.name %>+released+on+<%= @release.label_name %>.+Check+out+<%= @artist.name %>+on+SNGTRKR+&#45;+www.sngtrkr.com<%= url_for [@artist, @release] %>&via=SNGTRKR','ShareSNGTRKRonTwitter','scrollbars=no,width=620,height=340'); return false;"><li class="twit-icon twitter-button"><i class="icon-twitter"></i></li></a>
+<a href="#" title="Share on Google Plus" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [@artist, @release] %>','ShareSNGTRKRonGooglePlus','scrollbars=no,width=620,height=340'); return false;"><li class="goo-icon google-button"><i class="icon-google-plus"></i></li></a>
 <div class="clear"></div>
-<div class="font-13 o-button norm-o-pad signika-font left share-cancel">Cancel</div>
+</ul>
+<div class="share-cancel">Cancel</div>
 </div>
 <div id="buy-release">
-<h5 class="signika-txt font-22 center-txt buy-header">Buy this track</h5>
+<h3>Buy this track</h3>
 <%= render :partial => 'shared/buy_links', :object => @release %>
-<div class="clear"></div>
-<div class="font-13 o-button norm-o-pad signika-font left buy-cancel">Cancel</div>
+<div class="buy-cancel">Cancel</div>
 </div>
 </div>
-<div class="release-rating font-13">
+<div class="release-rating">
 <%= ratings_for(@release, :remote_options => {:url => rate_artist_release_path(@artist,@release)}) %>
 <div class="clear"></div>
-<span id="rating-txt"><% if @release.rates.count > 0 %><%= @release.rates.count %> fan rating<% if @release.rates.count > 1 %>s<% else %><% end %><% else %>No fan ratings. Be the first!<% end %></span>
+<span><% if @release.rates.count > 0 %><%= @release.rates.count %> fan rating<% if @release.rates.count > 1 %>s<% else %><% end %><% else %>No fan ratings. Be the first!<% end %></span>
 </div>
  </div>
-<div class="release-right right">
+<div class="span4">
 <div id="release-info">
-	<strong><h2 class="font-22 release-name">
+	<h2>
   	<% if @manager %>
   	<%= best_in_place [@artist, @release], :name, :type => :input, :class => 'form-text' %>
   	<% else %>
   	<%= @release.name %>
   	<% end %>
-  	</h2></strong>
-	<h3 class="font-15 orange-txt artist-release-name"><%= link_to @artist.name, @artist %></h3>
-	<i class="icon-music i-info" title="Genre"></i>
+  	</h2>
+	<h3><%= link_to @artist.name, @artist %></h3>
+	<i class="icon-music" title="Genre"></i>
 	<% if @manager %>
   	<%= best_in_place [@artist, @release], :genre, :type => :input, :class => 'form-text' %>
   <% else %>
   	<% if @release.genre? %>
     	<%= @release.genre %>
   	<% else %>
-  	 <span class="light-gray">Unknown</span>
+  	 <span>Unknown</span>
   	<% end %>
 	<% end %><br/>
-	<i class="icon-tag i-info" title="Record Label"></i>
+	<i class="icon-tag" title="Record Label"></i>
   	<% if @manager %>
   	<%= best_in_place [@artist, @release], :label_name, :type => :input, :class => 'form-text' %>
 	<% else %>
   	<% if @release.label_name? %>
     	<%= @release.label_name %>
   	<% else %>
-  	<span class="light-gray">Unknown</span>
+  	<span>Unknown</span>
   	<% end %>
   <% end %>	 
 	<br/>
-	<i class="icon-calendar i-info" title="Release Date"></i><strong>
+	<i class="icon-calendar" title="Release Date"></i><strong>
   	<% if @manager %>
   	 <%= best_in_place [@artist, @release], :date, :display_as => 'pretty_date', :type => :date, :class => 'form-text' %>
   	<% else %>
   	 <%= @release.date.strftime("#{Date.today.day.ordinalize} %B %Y ") %>
-  	<% end %>
-	</strong><br/>
+  	<% end %></strong><br/>
 	<% if !@release.tracks.count.zero? %>
   <div id="release_jplayer_1" class="jp-jplayer"></div>
   <div id="release-i-player">
   <div id="jp_container_1" class="jp-audio">
-  <i class="icon-list-ul i-info" title="Tracklistings"></i>Tracklisting:
+  <i class="icon-list-ul" title="Tracklistings"></i>Tracklisting:
       	<div class="scrollbar">
 	<div id="tracklist">
       <div class="jp-playlist">
@@ -133,7 +132,7 @@
   </div> <!-- type-single -->
 	  </div> <! -- jp_container -->
 <% else %>
-<div id="no-preview"><strong>No track preview available for this release.</strong></div><% end %>
+<div id="no-preview">No track preview available for this release.</div><% end %>
 </div> <! -- release-i-player -->
   <ul class="menu-user">
   <li class="buy-release pop-over" rel="popover" data-content="Hello!" data-original-title="Here is your tip"><i class="icon-shopping-cart"></i>Buy</li>
@@ -142,10 +141,12 @@
   </ul>
 </div><!-- release-info -->
 <div class="clear"></div>
-</div> <!-- release-right -->
-<h4 class="signika-txt font-25 also-by">Also by <%= link_to @artist.name, @artist %></h4>
-<div class="release-carousel <% if @releases.count < 5 %>under-5<% else %><% end %>">
-<ul class="release-list" >
+</div></div></div>
+<div class="row">
+<div class="span8 offset2">
+<h4 class="also-by">Also by <%= link_to @artist.name, @artist %></h4>
+<div class="release-carousel <% if @releases.count < 6 %>under-5<% else %><% end %>">
+<ul>
 	<% @releases.each do |release|
   	 if release == @release 
     	 next
@@ -156,65 +157,29 @@
 	</ul>
 	
 	<div class="clearfix"></div>
-	<a class="c-prev o-button" id="rel_prev" href="#"><i class="icon-chevron-left"></i></a>
-	<a class="c-next o-button" id="rel_next" href="#"><i class="icon-chevron-right"></i></a>
+	<a class="c-prev" id="rel_prev" href="#"><i class="icon-chevron-left"></i></a>
+	<a class="c-next" id="rel_next" href="#"><i class="icon-chevron-right"></i></a>
 </div>
+</div></div>
 <script type="text/javascript">
 	$(document).ready(function () {
-	  $(".share-release").click(function () {
-	    $('#opac-50').fadeIn("normal");
-	    $('#share-release').animate({
-	      right: 0
-	    }, "slow");
-	    $('#buy-release').animate({
-	      left: -310
-	    }, "slow");
-	  });
-	  $(".share-cancel").click(function () {
-	    $('#opac-50').fadeOut("normal");
-	    $('#share-release').animate({
-	      right: -310
-	    }, "slow");
-	  });
-	  $(".sm-trigger").click(function () {
-	    $('#opac-50').fadeOut("normal");
-	    $('#share-release').animate({
-	      right: -310
-	    }, "slow");
-	  });
-
-	  $(".buy-release").click(function () {
-	    $('#opac-50').fadeIn("normal");
-	    $('#buy-release').animate({
-	      left: 0
-	    }, "slow");
-	    $('#share-release').animate({
-	      right: -310
-	    }, "slow");
-	  });
-	  $(".buy-cancel").click(function () {
-	    $('#opac-50').fadeOut("normal");
-	    $('#buy-release').animate({
-	      left: -310
-	    }, "slow");
-	  });
-	  $(".buy-trigger").click(function () {
-	    $('#opac-50').fadeOut("normal");
-	    $('#buy-release').animate({
-	      left: -310
-	    }, "slow");
-	  });
-	  $(".edit-image").click(function () {
+			$(".share-release").click(function() { $('#opac-50').fadeIn("normal"); $('#share-release').animate({right : 0}, "slow"); $('#buy-release').animate({left : -310}, "slow");});
+		$(".share-cancel").click(function() { $('#opac-50').fadeOut("normal"); $('#share-release').animate({right : -310}, "slow"); });
+		$("#share-release ul a li").click(function() { $('#opac-50').fadeOut("normal"); $('#share-release').animate({right : -310}, "slow"); });
+	    $(".buy-release").click(function() { $('#opac-50').fadeIn("normal"); $('#buy-release').animate({left : 0}, "slow"); $('#share-release').animate({right : -310}, "slow"); });
+		$(".buy-cancel").click(function() { $('#opac-50').fadeOut("normal"); $('#buy-release').animate({left : -310}, "slow"); });
+		$("#buy-release ul li").click(function() { $('#opac-50').fadeOut("normal"); $('#buy-release').animate({left : -310}, "slow"); });
+	  $("#release-image > .icon-edit").click(function () {
 	    $('#release-image-options').animate({
 	      bottom: 0
 	    }, "slow");
 	  });
-	  $(".edit-image-close").click(function () {
+	  $("#release-image > #release-image-options > .icon-remove").click(function () {
 	    $('#release-image-options').animate({
 	      bottom: -70
 	    }, "slow");
 	  });
-	  $(".release-list").carouFredSel({
+	  $(".release-carousel > ul").carouFredSel({
 	    circular: false,
 	    infinite: false,
 	    auto: false,

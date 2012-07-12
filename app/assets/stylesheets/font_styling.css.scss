@@ -10,12 +10,8 @@
   src: local("?"),
     url("/font/lucida_grande.otf") format("opentype");
 }
-.italic {
-  font-style:italic;
-}
 .tab-indent {
   padding-left: 2em;
-
 }
 .light-gray {
 	color:$light-gray;
@@ -76,6 +72,9 @@
 }
 .red-txt {
   color:red;
+}
+strong {
+	font-weight:bold;
 }
 .signika-txt { /* white text - signikia */
         color:#fff;

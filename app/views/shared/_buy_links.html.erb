@@ -1,13 +1,14 @@
 <% release = buy_links %>
 <% buy_count = [release.itunes?, release.amazon?, release.sdigital?].count(true) %>
-<ul class="buy-list buy-count-<%= buy_count %>">
+<ul class="buy-count-<%= buy_count %>">
   <% if release.itunes? %>
-  <li class="left buy-trigger white-button"><%= link_to image_tag("/images/itunes.png", :alt => "iTunes", :title => "iTunes"), release.itunes, :target => "_blank" %></li>
+  <li><%= link_to image_tag("/images/itunes.png", :alt => "iTunes", :title => "iTunes"), release.itunes, :target => "_blank" %></li>
   <% end %>
   <% if release.amazon? %>
-  <li class="left buy-trigger white-button"><%= link_to image_tag("/images/amazon.png", :alt => "Amazon", :title => "Amazon"), release.amazon, :target => "_blank" %></li>
+  <li><%= link_to image_tag("/images/amazon.png", :alt => "Amazon", :title => "Amazon"), release.amazon, :target => "_blank" %></li>
   <% end %>
   <% if release.sdigital? %>
-  <li class="left buy-trigger white-button"><%= link_to image_tag("/images/7digital.png", :alt => "7Digital", :title => "7Digital"), release.sdigital, :target => "_blank" %></li>
+  <li><%= link_to image_tag("/images/7digital.png", :alt => "7Digital", :title => "7Digital"), release.sdigital, :target => "_blank" %></li>
   <% end %>
+  <div class="clear"></div>
 </ul>
