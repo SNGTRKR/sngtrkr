@@ -53,8 +53,7 @@
 					<%= render :partial => 'layouts/artist_mini_search', :locals => { :css => 'mini-search-2'} %>
 					<% end %>
 					<div class="clear"></div>
-				</div><% if content_for?(:content_class) %>
-  				<div class="content <%= yield :content_class  %>"><% end %><%= yield %>
+				</div><div class="container"><%= yield %>
 			</div></div></div>
 		<div id="footer"><div id="fcontainer">
 				<ul class="footer-menu">
