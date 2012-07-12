@@ -11,7 +11,8 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!, :except => [:splash,:home,:sitemap]
   before_filter :timer_start
   
-  check_authorization  :unless => :devise_controller?
+  #check_authorization  :unless => :devise_controller? # Breaks rails admin
+
   
   def timer_start
     @start_time = Time.now
