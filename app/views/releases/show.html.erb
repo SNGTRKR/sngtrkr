@@ -5,26 +5,30 @@
 <div class="span4">
 <div id="release-image" style="background-image:url(<%= @release.image :release_i %>);background-repeat:no-repeat;background-position:center;">
 <% if @manager %>
-<i class="icon-edit"></i>
-<div id="release-image-options">
-<i class="icon-remove"></i>
-  <% if !@release.image? %>
-      <%= form_for [@artist,@release] do |f| %> 
-        <%= f.file_field :image %> 
-        <%= f.submit "Upload Artwork", :class => "left o-button norm-o-pad font-13 signika-font add" %> 
-      <% end %>
-  <% else %>
-      <%= form_for [@artist,@release] do |f| %> 
-        <%= f.file_field :image %> 
-        <%= f.submit "Replace Artwork", :class => "left o-button norm-o-pad font-13 signika-font edit" %> 
-      <% end %>
-      <%= form_for [@artist,@release] do |f| %>
-        <%= f.hidden_field :delete_image, :value => true %>
-        <%= f.submit "Delete Artwork", :class => "left o-button norm-o-pad font-13 signika-font del" %>
-      <% end %>
-  <% end %>
+  <i class="icon-edit"></i>
+  <div id="release-image-options">
+  <i class="icon-remove"></i>
+    <% if !@release.image? %>
+        <%= form_for [@artist,@release] do |f| %> 
+          <%= f.file_field :image %> 
+          <%= f.submit "Upload Artwork", :class => "left o-button norm-o-pad font-13 signika-font add" %> 
+        <% end %>
+    <% else %>
+        <%= form_for [@artist,@release] do |f| %> 
+          <%= f.file_field :image %> 
+          <%= f.submit "Replace Artwork", :class => "left o-button norm-o-pad font-13 signika-font edit" %> 
+        <% end %>
+        <%= form_for [@artist,@release] do |f| %>
+          <%= f.hidden_field :delete_image, :value => true %>
+          <%= f.submit "Delete Artwork", :class => "left o-button norm-o-pad font-13 signika-font del" %>
+        <% end %>
+    <% end %>
   </div>
 <% end %>
+<div id="report-form">
+  <% @feedback = Feedback.new %>
+  <%= render 'feedbacks/form' %>
+</div>
 <div id="opac-50"></div>
 <div id="share-release">
 <h3>Share this track</h3>
