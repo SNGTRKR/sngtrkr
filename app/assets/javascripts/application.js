@@ -125,7 +125,11 @@ $(document).ready(function () {
       }
     })
   });
-});
+  
+  $('.popover-parent').popover();
+  $(".alert").alert()
+
+}); // DOCUMENT READY ENDS HERE
 
 function artist_suggestion_replace() {
   // Sharing options
