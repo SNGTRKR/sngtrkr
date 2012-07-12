@@ -16,7 +16,8 @@ class Ability
     # Admin permissions
     if user.role? :admin
       can :manage, :all
-      can :read, :rails_admin       # only allow admin users to access Rails Admin
+      can :access, :rails_admin   # grant access to rails_admin
+      can :dashboard              # grant access to the dashboard
       can :manage, Resque
     else
       
