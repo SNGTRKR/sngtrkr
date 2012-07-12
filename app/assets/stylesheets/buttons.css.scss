@@ -4,6 +4,19 @@
   @extend .signika-font;
   @extend .font-13;
 }
+.facebook-button {
+	@extend .fb-button;
+	@extend .fb-o-pad;
+	@extend .lucida-font;
+	@extend .font-14;
+	span {
+	    position:relative;
+	    bottom:5px;
+    }
+}
+input[type="button"], input[type="submit"]{
+  @extend .button;
+}
 .o-button {
 			color:white;
 			cursor: pointer;
@@ -215,14 +228,6 @@ input.o-button {
 		$experimental-support-for-svg: true;
         @include background-image(linear-gradient(top, #f8310e 0%, #f8991d 100%)); 
 }
-    .search {
-	    position:relative;
-	    top:0px;
-	    height:25px;
-	    #search-pad {
-		    padding:3px 6px 0 7px;
-	    }
-    }
 .search-button {
 			color:white;
 			@include border-top-right-radius(7px);
@@ -263,18 +268,11 @@ input.o-button {
     }
 }
 .fb-o-pad {
-    line-height: 28px;
     height:30px;
-    position:relative;
-    padding:0 23px 0 16px;
+    padding:0 15px 0 15px;
     i {
 	    font-size:1.8em;
-	    margin-top:1px;
-    }
-    span {
-	    position:relative;
-	    left:7px;
-	    top:-4px;
+	    margin:6px 6px 0 0;
     }
 }
 .trkr-o-pad {
@@ -288,24 +286,6 @@ input.o-button {
 	    color:#fff;
     }
 }
-.logout-button {
-  margin:-15px 0 0 0;
-  @extend .right;
-  @extend .button;
-  a {
-	  color:#fff;
-  }
-  a:hover {
-	  color:#fff;
-  }
-}
-.fb-login {
-	    margin:-16px 0 0 5px;
-	    @extend .right;
-}
-.fb-home-login {
-	margin-top:-2px;
-}
 .mini-trkr-button, .mini-share, .mini-ignore-trk-artist {
             line-height:25px;
             height:25px;
@@ -317,4 +297,3 @@ input.o-button {
             float:left;
             margin-right:15px;
           }
-          

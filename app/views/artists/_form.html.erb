@@ -14,35 +14,35 @@ image_height = 100
   			<ul>
   				<li>
   					<strong><%= f.label "Artist Name*" %></strong>
-  					<%= f.text_field :name, :class => 'form-text mfvalidate' %>
+  					<%= f.text_field :name, :class => 'mfvalidate' %>
   				</li>
   				<li>
   					<strong><%= f.label "Genre*" %></strong>
-  					<%= f.text_field :genre, :class => 'form-text mfvalidate' %>
+  					<%= f.text_field :genre, :class => 'mfvalidate' %>
   				</li>
   				<li>
   					<strong><%= f.label "Label*" %></strong>
-  					<%= f.text_field :label_name, :class => 'form-text mfvalidate' %>
+  					<%= f.text_field :label_name, :class => 'mfvalidate' %>
   				</li>
   				<li>
   					<strong><%= f.label "Bio*" %></strong>
-  					<%= f.text_area :bio, :rows => 8, :cols => 40, :class => 'form-text mfvalidate' %>
+  					<%= f.text_area :bio, :rows => 5, :cols => 40, :class => 'mfvalidate' %>
   				</li>
   				<li>
   					<strong><%= f.label "Website" %></strong>
-  					<%= f.text_field :website, :class => 'form-text' %>
+  					<%= f.text_field :website %>
   				</li>
   				<li>
   					<strong><%= f.label "Twitter" %></strong>
-  					<%= f.text_field :twitter, :class => 'form-text' %>
+  					<%= f.text_field :twitter %>
   				</li>
   				<li>
   					<strong><%= f.label "Soundcloud" %></strong>
-  					<%= f.text_field :soundcloud, :class => 'form-text' %>
+  					<%= f.text_field :soundcloud %>
   				</li>
   				<li>
   					<strong><%= f.label "Youtube" %></strong>
-  					<%= f.text_field :youtube, :class => 'form-text' %>
+  					<%= f.text_field :youtube %>
   				</li>
   			</ul>
   		</div>
@@ -69,7 +69,7 @@ image_height = 100
   		<div class="step-left">
   			<strong><%= f.label :picture %></strong>
   			<%= f.file_field 'image', :tabindex => -1 %></br/><br/>
-  			<strong>Preview:</strong><br/>
+  			<strong>Preview:</strong>
   			<div class="manage-image"><%= image_tag (@artist.image :manage), :id => 'manage-image-current' %>
   			<canvas id="canvas" width="<%= image_width %>" height="<%= image_height %>"></canvas></div>
   		</div>
@@ -216,20 +216,21 @@ image_height = 100
 <div id="navigation" style="display:none;">
 	<ul>
 		<li class="selected">
-			<a href="#" class="manage-details"><h3>1. Details</h3><div class="swhite-tint"></div></a>
+			<a href="#" class="manage-details">1. Details<div class="swhite-tint"></div></a>
 		</li>
 		<li>
-			<a href="#" class="manage-picture"><h3>2. Picture</h3><div class="swhite-tint-2"></div></a>
+			<a href="#" class="manage-picture">2. Picture<div class="swhite-tint-2"></div></a>
 		</li>
 		<li>
-			<a href="#" class="manage-itunes"><h3>3. iTunes</h3><div class="swhite-tint-3"></div></a>
+			<a href="#" class="manage-itunes">3. iTunes<div class="swhite-tint-3"></div></a>
 		</li>
 		<li>
-			<a href="#" class="manage-7digital"><h3>4. 7Digital</h3><div class="swhite-tint-4"></div></a>
+			<a href="#" class="manage-7digital">4. 7Digital<div class="swhite-tint-4"></div></a>
 		</li>
 		<li>
-			<a href="#" class="manage-summary"><h3>5. Summary</h3><div class="swhite-tint-5"></div></a>
+			<a href="#" class="manage-summary">5. Summary<div class="swhite-tint-5"></div></a>
 		</li>
+		<div class="clear"></div>
 	</ul>
 </div>
 <div id="progress-bar">
@@ -243,10 +244,10 @@ image_height = 100
 $(document).ready(function () {
   $(".manage-details").click(function () {
     $(".step-back").animate({
-      height: 421
+      height: 543
     }, "slow");
     $(".step").animate({
-      height: 510
+      height: 632
     }, "slow");
     $(".progress").animate({
       width: 53

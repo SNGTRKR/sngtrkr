@@ -15,7 +15,7 @@ $overlap: $width*0.25;
   height:43px;
   width:100%;
 }
-#timeline-outer {
+.timeline-outer {
   position:relative;
   height:1.9*($height+$v-line-length+$h-v-space)+$h-line-height+20px;
   background-image: url(/images/grid2.png);
@@ -264,4 +264,7 @@ $overlap: $width*0.25;
   border-bottom-width:3px;
   border-bottom-color:#000;
   }
+}
+.a-timeline {
+	margin-top:-116px;
 }

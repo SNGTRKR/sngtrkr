@@ -20,13 +20,13 @@
 </div>
 <% elsif %>
 <%= link_to(user_omniauth_authorize_path(:facebook)) do %>
-<div class="fb-button fb-o-pad lucida-font font-13 fb-login"><i class="icon-facebook"></i><span class="login-txt">Login</span></div>
+<div class="fb-login"><i class="icon-facebook"></i><span>Login</span></div>
 <%  end %>
 <% end %>
 <script type="text/javascript">
 $(document).ready(function() {
   $('.fb-login').click(function(){
-    $('.login-txt').html('Logging in...');
+    $('.fb-login > span').html('Logging in...');
   });
 });
 

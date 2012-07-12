@@ -56,9 +56,6 @@
 .font-100 {
   font-size:9.2em;
 }
-.font-logout {
-  font-size:1.208em;
-}
 .instruct-font {
   font-family: "Instruction", Helvetica, Arial, sans-serif;
 }
@@ -71,17 +68,11 @@
 .line-height-1-25 {
   line-height:1.25em;
 }
-strong{
-    font-weight:bold;
-}
 .right{
   float:right;
 }
 .left{
   float:left;
-}
-.center-txt {
-  text-align:center;
 }
 .red-txt {
   color:red;
@@ -126,4 +117,8 @@ strong{
       border-radius: 10px;
       background-color: rgba(0,0,0,0.3);
   }
+}
+h1 {
+	@extend .signika-txt;
+	@extend .font-35
 }

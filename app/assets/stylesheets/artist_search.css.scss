@@ -1,5 +1,18 @@
 #artist-search {
-   position:relative;
+margin-left:8px;
+h2 {
+   margin:0 0 2px 0;
+   @extend .font-15;
+   @extend .instruct-font;
+      a
+  {
+    color:#000;
+  }
+  a:hover {
+    color:$orange;
+  }
+}
+ul {
    margin:20px 0 26px 0;
    li {
    	   position:relative;
@@ -29,16 +42,10 @@
        position:relative;
        left:64px;
        top:1px;
-  .artist-search-name {
-    margin:0 0 2px 0;
-      a
-  {
-    color:#000;
-  }
-  a:hover {
-    color:$orange;
-  }
-  }
+          div {
+	  @extend .instruct-font;
+	  @extend .orange-txt;
+   }
   }
   .search-trkr-button {
     position:absolute;
@@ -58,6 +65,7 @@
 	line-height:75px;
 }
 }
+}
 .pagination {
   position:relative;
   text-align:center;
@@ -75,21 +83,6 @@
       }
     }
   }
-    .content-search-top {
-  position:relative;
-  width:604px;
-  height:128px;
-  .top-header {
-    float:left;
-    width:302px;
-  }
-  .content-top-right {
-    float:right;
-    width:302px;
-    margin-top:9px;
-    line-height:1.4em;
-  }
-}
 .fb-result-header {
 	margin:0 0 16px -2px;
 }

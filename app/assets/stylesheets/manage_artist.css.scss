@@ -57,18 +57,18 @@ left:23px;
 		}
 	}
 #manage-form{
-  position:relative;
+  	position:relative;
     width:649px;
     overflow:hidden;
-margin:-1px 0 25px 0;
+    margin:-1px 0 25px 45px;
 #steps{
     width:649px;
     overflow:hidden;
-    margin-top:14px;
+    margin-top:-4px;
 .step{
-    float:left;
+    @extend .left;
     width:649px;
-    height:510px;
+    height:632px;
 }
 .manage-itunes-step, .manage-7digital-step {
 	a {
@@ -79,25 +79,19 @@ margin:-1px 0 25px 0;
 	}
 }
 .step-back {
-  margin:5px 22px 5px 22px;
-  width:545px;
-  background:rgba(255,255,255,0.75);
+  	margin:5px 22px 5px 22px;
+  	width:545px;
+  	background:rgba(255,255,255,0.75);
     @include border-radius(8px);
     @include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.25));
-    height:421px;
+    height:543px;
     padding:44px 30px 44px 30px;
     position:relative;
-    label {
-                width:118px; 
-                display:block;
-                float:left;
-                margin-top:4px;
-            }
-            li {
-                padding:0 0 18px 0;
+            ul {
+            list-style-type:none;
             }
             input[type="file"] {
-              margin-left:-67px;
+             
                background:transparent;
             }
             #submit-pad {
@@ -213,7 +207,7 @@ margin:-1px 0 25px 0;
     }
     .manage-image {
       position:relative;
-      top:17px;
+      top:-44px;
       left:114px;
     }
 }
@@ -223,17 +217,17 @@ margin:-1px 0 25px 0;
     padding-bottom:20px;
 }
 #navigation{
+	position:relative;
     height:45px;
+    top:2px;
  ul{
     list-style:none;
-    position:relative;
-    left:20px;
-    top:2px;
+    margin-left:-3px;
  li{
   @extend .left;
   @extend .button;
   position:relative;
-  margin-right:25px;
+  margin-left:25px;
   height:25px;
   width:71px;
   a {
@@ -286,7 +280,7 @@ margin:-1px 0 25px 0;
 }
 }
  .swhite-tint {
-   display:none;
+   	display:none;
     position:absolute;
     top:0px;
     left:0px;

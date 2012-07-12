@@ -1,11 +1,9 @@
-#artist-profile {
-margin:6px 0 31px 0;
-	.profile-left {
-		width:310px;
+
 		#profile-image {
 			position:relative;
 			height:368px;
 			width:309px;
+			margin-left:7px;
 			@include box-shadow(0px 2px 8px rgba(0,0,0,0.45));
 			@include border-radius(12px);
 			overflow:hidden;
@@ -39,7 +37,7 @@ margin:6px 0 31px 0;
 	      bottom:0px;
 	      height:120px;
 	      z-index:1;
-      .artist-sm {
+      ul {
 	      position:relative;
 	      top:30px;
       		 .fb-icon, .twit-icon, .sc-icon, .web-icon, .yt-icon, .music-icon {
@@ -51,8 +49,8 @@ margin:6px 0 31px 0;
 	      font-size:2.5em;
       }
       li {
-      float:left;
-      .sm-pop {
+      @extend .left;
+      div {
 	      position:relative;
 	      bottom:-78px;
       }
@@ -89,21 +87,23 @@ margin:6px 0 31px 0;
 	      z-index:4;
 	      right:-310px;
 	      top:87px;
-	      .share-header {
-		      position:relative;
-		      top:29px;
+	      h3 {
+		      margin-top:29px;
 		      text-align:center;
-	      }
-	      .share-list {
+		      @extend .signika-txt; 
+		      @extend .font-22;
+      	      }
+	      ul {
 		      position:relative;
 		      left:83px;
-		      top:44px;
+		      top:12px;
 		 .fb-icon, .twit-icon, .goo-icon {
 	      height:38px;
 	      width:38px;
 	      line-height:38px;
 	      @include border-radius(4px);
 	      margin-right:15px;
+	      @extend .left;
       }
       .goo-icon {
 		overflow:hidden;
@@ -128,7 +128,10 @@ margin:6px 0 31px 0;
 	      .share-cancel {
 		      position:relative;
 		      left:121px;
-		      top:67px;
+		      top:35px;
+		      @extend .font-13;
+		      @extend .button;
+		      @extend .left; 
 	      }
       }
                  #buy-profile {
@@ -138,20 +141,23 @@ margin:6px 0 31px 0;
 	      z-index:4;
 	      left:-310px;
 	      top:87px;
-	      .buy-header {
-		      position:relative;
-		      top:29px;
+	      h3 {
+		      margin-top:29px;
 		      text-align:center;
+		      @extend .signika-txt; 
+		      @extend .font-22;
 	      }
-	      .buy-list {
+	      ul {
 		      position:relative;
-		      top:44px;
+		      top:12px;
 		      left:109px;
 		      li {
 			      height:38px;
 			      width:38px;
 			      @include border-radius(4px);
 			      margin-right:15px;
+			      @extend .white-button;
+			      @extend .left;
 			      img {
 				      position:relative;
 				      top:1px;
@@ -162,16 +168,15 @@ margin:6px 0 31px 0;
 	      .buy-cancel {
 		      position:relative;
 		      left:121px;
-		      top:67px;
+		      top:35px;
+		      @extend .font-13;
+		      @extend .button;
+		      @extend .left; 
 	      }
       }
               
 		}
-			}
-	.profile-right {
-		width:280px;
 		#profile-info {
-			position:relative;
 			width:246px;
 			background:rgba(255,255,255,0.75);
 			height:294px;
@@ -179,15 +184,22 @@ margin:6px 0 31px 0;
 			@include border-radius(12px);
 			padding:17px;
 			line-height:1.7em;
+			@extend .right;
+			margin-right:7px;
+			span {
+				@extend .light-gray;
+			}
 			#artist-bio {
 				line-height:1.45em;
 			}
-			.i-info {
+			.icon-music, .icon-tag {
 				margin-right:10px;
 			}
-			.profile-name {
+			h2 {
 				margin-bottom:3px;
 				line-height:1em;
+				@extend .font-22;
+				font-weight:bold;
 			}
 			a {
 				color:$orange;
@@ -198,8 +210,9 @@ margin:6px 0 31px 0;
 		}
 		.menu-user {
 			list-style-type:none;
-			margin-top:15px;
+			margin:15px -13px 0 0;
 			width:300px;
+			@extend .right;
 			.icon-shopping-cart, .icon-share-alt {
 				margin-right:5px;
 			}
@@ -212,5 +225,27 @@ margin:6px 0 31px 0;
 				@extend .left;
 			}
 		}
-		}
-}
+	#bio-full {
+  display:none;
+  background: url(/images/box-bk-431.png) no-repeat;
+      -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;   
+  color:$gray; 
+  @include border-radius(8px);
+  #bio {
+    position:relative;
+	  width:401px;
+	  padding:30px 20px 30px 20px;
+	  h1 {
+		  margin-bottom:8px;
+	  }
+	  a {
+		  color:$gray;
+	  }
+	  a:hover {
+		  color:$gray;
+	  }
+  }
+}	

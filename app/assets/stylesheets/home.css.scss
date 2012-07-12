@@ -1,34 +1,26 @@
-    #content-home {
-    position:relative;
-    width:766px;
-    height:254px;
-    .home-left {
-	    width:328px;
-	    .home-txt-1 {
-		    /* text-shadow: #1A1A1A 0 0.5px 1px; */
+		 .home-txt-1 {
 		    line-height:1.3em;
+		    @extend .font-14;
 	    }
-    }
-    .home-right {
-	    width:412px;
-	    #macbook {
-		    position:relative;
-		    top:-1px;
-		    right:4px;
+	    
+	    #home-macbook {
+		   margin-left:5px;
 	    }
-    }
-  }
-  #home-points {
-	  position:relative;
-	  height:289px;
-	  width:780px;
-	  top:15px;
-	  ul {
+	   #home-points {
 	  list-style-type: none;
-	  margin-left:-30px;
+	  margin:13px 0 56px -30px;
+	  h2 {
+		  	@extend .signika-txt;
+		  	@extend .font-25;
+		  	margin:0 0 -5px -2px;
+	  }
 		  li {
 			  width:240px;
 			  margin-left:30px;
+			  @extend .left;
+			  div {
+				  @extend .font-13;
+			  }
 			  #home1 {
 			  	position:relative;
 				  top:32px;
@@ -46,7 +38,3 @@
 			  }
 		  }
 	  }
-	  .home-titles {
-		  margin-left:-2px;
-	  }
-  }
