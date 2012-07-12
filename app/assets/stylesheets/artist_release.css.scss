@@ -1,15 +1,12 @@
-#artist-release {
-margin:6px 0 31px 0;
-	.release-left {
-		width:310px;
 		#release-image {
 			position:relative;
 			height:310px;
 			width:309px;
+			margin-left:7px;
 			@include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.45));
 			@include border-radius(12px);
 			overflow:hidden;
-									.icon-edit {
+			.icon-edit {
 				color:#fff;
 				font-size:2em;
 				position:absolute;
@@ -65,21 +62,23 @@ margin:6px 0 31px 0;
 	      z-index:2;
 	      right:-310px;
 	      top:58px;
-	      .share-header {
-		      position:relative;
-		      top:29px;
+	      h3 {
+		      margin-top:28px;
 		      text-align:center;
-	      }
-	      .share-list {
+		      @extend .signika-txt; 
+		      @extend .font-22;
+      	      }
+	      ul {
 		      position:relative;
 		      left:83px;
-		      top:44px;
-    		 .fb-icon, .twit-icon, .goo-icon {
+		      top:11px;
+    		 li {
     	      height:38px;
     	      width:38px;
     	      line-height:38px;
     	      @include border-radius(4px);
     	      margin-right:15px;
+    	      @extend .left;
           }
           .goo-icon {
         		overflow:hidden;
@@ -104,7 +103,9 @@ margin:6px 0 31px 0;
 	      .share-cancel {
 		      position:relative;
 		      left:121px;
-		      top:67px;
+		      top:34px;
+		      @extend .left;
+		      @extend .button;
 	      }
       }
       #buy-release {
@@ -114,11 +115,12 @@ margin:6px 0 31px 0;
 	      z-index:2;
 	      left:-310px;
 	      top:49px;
-	      .buy-header {
-		      position:relative;
-		      top:29px;
+	      h3 {
+		      margin-top:28px;
 		      text-align:center;
-	      }
+		      @extend .signika-txt; 
+		      @extend .font-22;
+      	      }
 	      .buy-count-1 {
 		      left:136px;
 	      }
@@ -128,14 +130,16 @@ margin:6px 0 31px 0;
 	      .buy-count-3 {
 		      left:83px;
 	      }
-	      .buy-list {
+	      ul {
 		      position:relative;
-		      top:44px;
+		      top:11px;
 		      li {
 			      height:38px;
 			      width:38px;
 			      @include border-radius(4px);
 			      margin-right:15px;
+			      @extend .left;
+			      @extend .white-button;
 			      img {
 				      position:relative;
 				      top:1px;
@@ -146,26 +150,30 @@ margin:6px 0 31px 0;
 	      .buy-cancel {
 		      position:relative;
 		      left:121px;
-		      top:67px;
+		      top:34px;
+		      @extend .left;
+		      @extend .button;
 	      }
       }
 		}
 		.release-rating {
 		text-align:center;
+		@extend .font-13;
 			ul {
 			position:relative;
-			left:61px;
+			left:69px;
 			top:10px;
 			}
-			#rating-txt {
+			span {
 				position:relative;
 				top:15px;
+				width:309px;
+				display:block;
+				margin-left:7px;
 			}
 		}
-	}
-	.release-right {
-		width:280px;
 		#release-info {
+			@extend .right;
 			position:relative;
 			width:246px;
 			background:rgba(255,255,255,0.75);
@@ -174,18 +182,27 @@ margin:6px 0 31px 0;
 			@include border-radius(12px);
 			padding:17px;
 			line-height:1.7em;
+			margin-right:7px;
 			#no-preview {
 				position:absolute;
 				bottom:15px;
+				font-weight:bold;
 			}
-			.i-info {
+			.icon-music, .icon-tag, .icon-calendar, .icon-list-ul {
 				margin-right:10px;
 			}
-			.release-name {
+			span {
+				@extend .light-gray;
+			}
+			h2 {
 				margin-bottom:3px;
 				line-height:1em;
+				font-weight:bold;
+				@extend .font-22;
 			}
-			.artist-release-name {
+			h3 {
+			@extend .font-15;
+			@extend .orange-txt;
   			a {
   				color:$orange;
   			}
@@ -217,28 +234,29 @@ margin:6px 0 31px 0;
 				@extend .left;
 			}
 		}
-	}
-}
 .also-by {
-	margin-top:-2px;
+	margin:25px 0 0 6px;
+	@extend .signika-txt;
+	@extend .font-25;
 }
 .under-5 {
-	left:-42px;
+	left:-43px;
 }
 .release-carousel {
 	padding: 5px 0 15px 33px; 
 	position: relative;
-	width:567px;
+	width:566px;
 	height:150px;
 	top:12px;
-	margin-bottom:23px;
+    margin-bottom:33px;
+    margin-left:7px;
 	ul {
 		list-style-type:none;
 		width:550px;
  li {
 	height:145px;
 	width:115px;
-	float: left;
+	@extend .left;
 	position:relative;
     margin:3px 10px 3px 10px;
     background:rgba(255,255,255,0.75);
@@ -274,21 +292,20 @@ margin:6px 0 31px 0;
 }
 }
 .c-prev, .c-next {
-position:absolute;
+	position:absolute;
 	width: 33px;
 	height: 161px;
 	top:0px;
 	font-size:2em;
-	i {
-		position:relative;
-		top:66px;
-	}
+	@extend .o-button;
+	line-height:161px;
 }
 .c-prev {
 	left:0px;
 }
 .c-next {
 	right:-6px;
+	
 }
 #tracklist {
   height:60px;
