@@ -1,11 +1,24 @@
 #about-txt{
-  position:relative;
-  top:16px;
+  margin:0 0 25px 58px;
+  width:666px;
+  h1 {
+	  margin-bottom:16px;
+  }
+  span {
+	  font-style:italic;
+  }
 }
 #terms-txt{
-  position:relative;
-  top:16px;
-  padding:0 0 18px 0;
+  margin:0 0 18px 58px;
+  width:666px;
+  div {
+	margin-bottom:7px;
+	@extend .font-13;
+	font-weight:bold;
+  }
+  h1 {
+	  margin-bottom:16px;
+  }
   ul {
     list-style-type: disc;
     margin-left: 20px;
@@ -27,24 +40,24 @@
   margin-bottom:16px;
 }
 }
-#social-media-about {
-  position:relative;
-  top:38px;
-  width:666px;
-  height:193px;
 .boxes {
   list-style-type:none;
-  margin-left:-30px;
-}
+  margin:0 0 32px 28px;
+  width:696px;
 .box {
-  margin:0 0 67px 30px;
+  margin-left:30px;
   background:rgba(255,255,255,0.75);
   @include border-radius(8px);
   @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
   width:171px;
   height:93px;
   padding:15px 15px 15px 15px;
-  .text-nudge {
+  @extend .left;
+  h2 {
+	  font-weight:bold;
+	  @extend .font-13;
+  }
+  .nudge {
     position:relative;
     top:5px;
   }
@@ -54,7 +67,7 @@
   a:hover {
     color:$orange;
   }
-  ul.sm {
+  .sm {
     list-style-type:none;
     margin-top:7px;
      a {
@@ -63,10 +76,11 @@
         a:hover {
           color:$orange;
         }
-    .som {
-      width:171px;
+    li {
+	    width:171px;
 		position:relative;     
 		margin-bottom:4px; 
+		@extend .left;
       #fb-icon, #twit-icon, #goo-icon {
 	      height:20px;
 	      width:20px;
@@ -103,7 +117,7 @@
 	      position:relative;
 	      right:1px;
       }
-      .text-nudge-2 {
+      span {
         position:absolute;
         top:2px;        
         left:34px;
@@ -112,13 +126,12 @@
   }
 }
 }
-  .i-title {
-	  margin-bottom:7px;
-  }
 #privacy-txt{
-  position:relative;
-  top:16px;
-  padding:0 0 18px 0;
+  width:666px;
+  padding:0 0 12px 38px;
+  h1 {
+	  margin-bottom:16px;
+  }
   ul {
     list-style-type: disc;
     margin-left: 20px;
@@ -134,10 +147,18 @@
   p {
   margin-bottom:16px;
 }
+div {
+	margin-bottom:7px;
+	@extend .font-13;
+	font-weight:bold;
+}
 }
 #team-txt{
-  position:relative;
-  top:16px;
+ width:666px;
+ margin-left:58px;
+ h1 {
+	 margin-bottom:16px;
+ }
   a
   {
     color:#fff;
@@ -150,27 +171,27 @@
 }
 }
 #team {
-  position:relative;
-  padding:5px 0 22px 0;
-.team-members {
-  position:relative;
-  width:668px;  
-  padding:7px 0 0 0;
-.team-pic-left {
+  list-style-type:none;
+  width:666px;
+  margin:0 0 20px 58px;
+li { 
+margin-bottom:3px;
+.team-pic {
   width:168px;
   height:153px;
   margin-left:-10px;
-}
-.team-pic-right {
-  width:168px;
-  height:153px;
-  margin-right:-2px;
+  @extend .left;
 }
 .team-desc {
   width:490px;
   height:133px;
   padding:13px 0 0 0;
   margin-top:-3px;
+  @extend .right;
+  div {
+	  @extend .font-15;
+	  font-weight:bold;
+  }
 }
 }
 }

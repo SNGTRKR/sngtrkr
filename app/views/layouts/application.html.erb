@@ -45,9 +45,7 @@
 					#wrap {display:table;height:100%}
 					</style>
 					<![endif]-->
-					<div class="logo-home">
-						<a href="/"><%= image_tag "/images/logo-55.png", :alt => "SNGTRKR" %></a>
-					</div>
+					<div class="logo-home"><a href="/"><%= image_tag "/images/logo-55.png", :alt => "SNGTRKR" %></a></div>
 					<%= render 'shared/login' %>
 					<% if(user_signed_in?) %>
 					<%= render :partial => 'layouts/artist_mini_search', :locals => { :css => 'mini-search'} %>
@@ -55,49 +53,24 @@
 					<%= render :partial => 'layouts/artist_mini_search', :locals => { :css => 'mini-search-2'} %>
 					<% end %>
 					<div class="clear"></div>
-				</div>
-				<% if content_for?(:content_class) %>
-  				<div class="content <%= yield :content_class  %>">
-				<% end %>
-				<%= yield %>
-			</div>
-		</div></div>
-		<div id="footer">
-			<div id="fcontainer">
+				</div><% if content_for?(:content_class) %>
+  				<div class="content <%= yield :content_class  %>"><% end %><%= yield %>
+			</div></div></div>
+		<div id="footer"><div id="fcontainer">
 				<ul class="footer-menu">
-					<li>
-						<a href="/about">About Us</a>
-					</li>
-					<li>
-						<!-- <a href="http://blog.sngtrkr.com">Blog</a> -->
-						<a href="#">Blog</a>
-					</li>
-					<li>
-						<a href="/team">Team</a>
-					</li>
-					<li>
-						<a href="/help">Help</a>
-					</li>
-					<li>
-						<a href="/terms">Terms of Use</a>
-					</li>
-					<li>
-						<a href="/privacy">Privacy Policy</a>
-					</li>
+					<li><a href="/about">About Us</a></li>
+					<li><a href="http://blog.sngtrkr.com">Blog</a></li>
+					<li><a href="/team">Team</a></li>
+					<li><a href="/help">Help</a></li>
+					<li><a href="/terms">Terms of Use</a></li>
+					<li><a href="/privacy">Privacy Policy</a></li>
 					<% if can? :manage, Resque %>
-					<li>
-						<a href="/admin/rails">Administration</a>
-					</li>
-					<li>
-						<a href="/resque">Resque</a>
-					</li>
+					<li><a href="/admin/rails">Administration</a></li>
+					<li><a href="/resque">Resque</a></li>
 					<% end %>
-				</ul>
-				<p>
-					© Copyright SNGTRKR 2012. All Rights Reserved - Artist and release images are the property Last.fm					
-				</p>
-			</div>
-		</div>
+			   </ul>
+				<p>© Copyright SNGTRKR 2012. All Rights Reserved - Artist and release images are the property Last.fm</p>
+			</div></div>
 		<script type="text/javascript">
 		  // Google Analytics
     	var _gaq = _gaq || [];
