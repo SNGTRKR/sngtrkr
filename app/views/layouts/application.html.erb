@@ -13,7 +13,16 @@
 		<title><% if content_for?(:title) %><%= yield :title %> - SNGTRKR <% else %>SNGTRKR<% end %></title>
 		<meta name="description" content="<%= yield :description %>">
 		<link rel="icon" type="image/ico" href="<%= asset_path "/images/icon.png" %>" >
-		<%= render :partial => 'layouts/all_js_css' %>
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= stylesheet_link_tag "/bootstrap.css", :media => "all" %>
+    <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Signika+Negative:400,600' %>
+    <%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js' %>
+    <script>window.jQuery || document.write("<%=j javascript_include_tag "/jquery-1.7.2.min.js" %>")</script> 
+    <!-- <%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js' %>-->
+    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "/bootstrap.min.js" %>
+    
+    <%= csrf_meta_tags %>
 		<%= yield :extra_head %>
 	</head>
 	<body>
@@ -24,18 +33,18 @@
 		<div id="wrapper">
 		<%= image_tag "/images/beta.png", :alt => "BETA", :id => "beta-corner" %>
 		<% if flash[:notice] or flash[:error] or flash[:success] %>
-		<div class="flash-outer <% if flash[:success] then %>flash-outer-success<% end %>" <% if flash[:disappear_after] then %>data-disappear-after="<%= flash[:disappear_after] %>"<% end %>>
-  		<div id="flash-inner">
-  		  <p>
-  		  <% if flash[:error] and !flash[:notice] %>
-    		  <%= raw flash[:error] %>
-  		  <% end %>
-  		  <%= raw flash[:notice] %>
-  		  <%= raw flash[:success] %>
-  		  </p>
+  		<div class="flash-outer <% if flash[:success] then %>flash-outer-success<% end %>" <% if flash[:disappear_after] then %>data-disappear-after="<%= flash[:disappear_after] %>"<% end %>>
+    		<div id="flash-inner">
+    		  <p>
+    		  <% if flash[:error] and !flash[:notice] %>
+      		  <%= raw flash[:error] %>
+    		  <% end %>
+    		  <%= raw flash[:notice] %>
+    		  <%= raw flash[:success] %>
+    		  </p>
+    		</div>
+    		<div class="flash-close"><i class="icon-remove"></i></div>
   		</div>
-  		<div class="flash-close"><i class="icon-remove"></i></div>
-		</div>
 		<% end %>
 			<div class="wrapper2">
 				<div class="header">
