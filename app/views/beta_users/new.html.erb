@@ -1,7 +1,7 @@
 <% content_for :title do %>Track your favourite artists and never miss another release - Beta Invite Signup<% end %>
 <% content_for :description do %>Sign up free now to receive an exclusive beta release invite and get the latest updates. Quickly find and track artists you already like, with Facebook integration.<% end %>
-<div class="content content-pad-115-bottom">
-	<h2 class="signika-txt top-header font-35 beta-white-header">Sign up for an exclusive BETA invite....</h2>		
+<div class="row"><div class="span10 offset1">
+	<h1 class="beta-header">Sign up for an exclusive BETA invite....</h1>		
 	<%= image_tag "/images/imac.png", :alt => "iMac", :id => "imac" %>
 	<div id="mc_embed_signup">
   <%= form_for(@beta_user) do |f| %>
@@ -17,27 +17,25 @@
   	</div>
   	</div>
   <% end %>
-</div>
-<div class="clear"></div>
-<div id="beta-points">
-<ul>
-<li class="left"><h3 class="signika-txt font-25 home-titles">Find artists you like</h3><br/>
+</div></div></div>
+<div class="row"><div class="span10 offset1">
+<ul id="beta-points">
+<li><h2>Find artists you like</h2><br/>
 <div class="font-13">SNGTRKR intuitively recognises which artists you've liked on Facebook, and supplies you with recommendations to build up your TRK'd artists.</div></li>
-<li class="left"><h3 class="signika-txt font-25 home-titles">Discover new music</h3><br/>
+<li><h2>Discover new music</h2><br/>
 <div class="font-13">Looking to expand your music library? SNGTRKR makes it fun and exciting to discover new music with track previews, recommendations and purchase links.</div></li>
-<li class="left"><h3 class="signika-txt font-25 home-titles">Keep up to date</h3><br/>
+<li><h2>Keep up to date</h2><br/>
 <div class="font-13">Stay in the loop with your personalised timeline of artist releases, old and new. Alongside regular notifications straight to your inbox.</div></li>
-</ul>
-</div>
 <div class="clear"></div>
-<div id="beta-social-media">
-<ul>
-<a href="https://www.facebook.com/sngtrkr" target="_blank"><li class="left"><%= image_tag "/images/trk-fb.png", :alt => "Facebook" %></li></a>
-<a href="https://twitter.com/#!/SNGTRKR" target="_blank"><li class="left"><%= image_tag "/images/trk-twit.png", :alt => "Twitter" %></li></a>
-<a href="https://plus.google.com/111951759053908858363/posts" target="_blank"><li class="left"><%= image_tag "/images/trk-goo.png", :alt => "Google+" %></li></a>
-<a href="mailto:info@sngtrkr.com" target="_blank"><li class="left"><%= image_tag "/images/trk-email.png", :alt => "Email" %></li></a>
-</div>
+</ul></div></div>
+<div class="row"><div class="span10 offset1">
+<ul id="beta-social-media">
+<a href="https://www.facebook.com/sngtrkr" target="_blank"><li><%= image_tag "/images/trk-fb.png", :alt => "Facebook" %></li></a>
+<a href="https://twitter.com/#!/SNGTRKR" target="_blank"><li><%= image_tag "/images/trk-twit.png", :alt => "Twitter" %></li></a>
+<a href="https://plus.google.com/111951759053908858363/posts" target="_blank"><li><%= image_tag "/images/trk-goo.png", :alt => "Google+" %></li></a>
+<a href="mailto:info@sngtrkr.com" target="_blank"><li><%= image_tag "/images/trk-email.png", :alt => "Email" %></li></a>
 <div class="clear"></div>
+</ul></div></div>
 <% if @beta_user.errors.any? %>
   <% @beta_user.errors.full_messages.each do |msg| %>
     <script language="Javascript">

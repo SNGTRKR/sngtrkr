@@ -6,7 +6,6 @@ content_for :og_id, @artist.id.to_s
 %>
 <% content_for :description do %><%= truncate((strip_tags @artist.bio || "" ), :length => 150) %><% end %>
 <% content_for :title do %><%= @artist.name %> information and releases 2012<% end %>
-<div class="container">
 <div class="row">
 <div class="span8 offset2">
 <% if can? :manage, Resque %>
