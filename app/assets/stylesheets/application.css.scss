@@ -20,7 +20,7 @@ $orange:#F15A24;
 $gray:#1A1A1A;
 $light-gray:#666666;
 $footer:166px;
-//@import "bootstrap";
+@import "bootstrap.css";
 // SNGTRKR Imports
 /* Flash (System Notification)  CSS */
 @import "flash.css.scss";
@@ -98,13 +98,14 @@ body{
     background-size: cover;    
     color:$gray;
 }
-input[type="button"], input[type="submit"]{
-  @extend .button;
-}
 #loading {
 position:relative;
 margin-top:-3px;
-	text-align:center;
+text-align:center;
+	h3 {
+		@extend .signika-txt; 
+		@extend .font-25;
+	}
 	.icon-refresh {
 		font-size:10em;
 		color:$orange;
@@ -121,70 +122,10 @@ margin-top:-3px;
   min-height:100%;
 }
 .wrapper2 {
-  width:980px;
+  width:960px;
   margin:0 auto;
   min-height:100%;
 }
-.content {
-  padding:0px 73px 0px 73px;
-  .artist-name { /* Artist name - Instruction font */
-    position:relative;
-    width:200px;
-    display:block;
-    text-transform:uppercase;
-    margin-top:-2px;
-    padding:0 0 14px 0;
-  }
-} 
-/* END OF CONTENT */
-.content-pad-bottom {
-    padding-bottom:166px;
-    @extend .content;
-}
-.content-pad-160 {
-  padding:4px 160px 0 160px;
-    @extend .content;
-}
-.content-pad-187{
-  padding:4px 187px 0 187px;
-    @extend .content;
-}
-/* HOME */
-.content-pad-115-bottom {
-  padding:14px 103px 166px 103px;
-    @extend .content;
-}
-/* STANDARD */
-.content-pad-160-bottom {
-    padding:4px 160px 166px 160px;
-    @extend .content;
-}
-/* SEARCH RESULT */
-.content-pad-187-bottom {
-  padding:4px 187px 166px 187px;
-    @extend .content;
-}
-#bio-full {
-  display:none;
-  background: url(/images/box-bk-431.png) no-repeat;
-      -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;   
-  color:$gray; 
-  @include border-radius(8px);
-  #bio {
-    position:relative;
-	  width:401px;
-	  padding:30px 20px 30px 20px;
-	  .bio-title {
-		  margin-bottom:8px;
-	  }
-	  a {
-		  color:$gray;
-	  }
-	  a:hover {
-		  color:$gray;
-	  }
-  }
+.container {
+	padding-bottom:166px;
 }

@@ -1,9 +1,7 @@
 .header{
-    padding:0px 42px 0px 42px;
-    height:105px;
+    height:110px;
     .p-head
     {
-        position:relative;
         height:25px;
         margin:-15px 15px 0 15px;
         @extend .right;
@@ -23,9 +21,8 @@
         background:rgba(255,255,255,0.75);
         input{
             background:transparent;
-            padding:0.6em;
             border:none;
-            width:100px;
+            width:110px;
             outline:none;
         }
         input:focus ~ .results { 
@@ -119,9 +116,9 @@ a:before {
 }
 
 a:hover {
-    text-decoration: none;
-    color: #fff;
-    background:$orange; 
+    		text-decoration: none;
+			color: #fff;
+    		background:$orange; 
 		    $experimental-support-for-svg: true;
             @include background-image(linear-gradient(top, #F37244 0%, #F15A24 100%));
 		    text-shadow: #FF6103 0 1px 3px;
@@ -150,4 +147,33 @@ a:hover {
         height:55px;
         left:-3px;
     }
+}
+    .search {
+    	@extend .right;
+    	@extend .search-button;
+	    height:25px;
+	    #search-pad {
+		    padding:3px 6px 0 7px;
+	    }
+    }
+.logout-button {
+  margin:-15px 0 0 0;
+  @extend .right;
+  @extend .button;
+  a {
+	  color:#fff;
+  }
+  a:hover {
+	  color:#fff;
+  }
+}
+.fb-login {
+	    margin:-16px 0 0 5px;
+	    @extend .right;
+	    @extend .facebook-button;
+}
+.fb-home-login {
+	margin-top:-2px;
+	@extend .left; 
+	@extend .facebook-button;
 }

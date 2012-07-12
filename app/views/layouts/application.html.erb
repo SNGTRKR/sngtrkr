@@ -48,7 +48,6 @@
 					<div class="logo-home">
 						<a href="/"><%= image_tag "/images/logo-55.png", :alt => "SNGTRKR" %></a>
 					</div>
-
 					<%= render 'shared/login' %>
 					<% if(user_signed_in?) %>
 					<%= render :partial => 'layouts/artist_mini_search', :locals => { :css => 'mini-search'} %>
