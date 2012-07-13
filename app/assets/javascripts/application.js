@@ -126,6 +126,7 @@ $(document).ready(function () {
   });
   
   $('.popover-parent').popover();
+  $('.tooltip-parent').tooltip();
   $(".alert").alert()
 
 }); // DOCUMENT READY ENDS HERE

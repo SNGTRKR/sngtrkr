@@ -63,7 +63,7 @@
   	<% end %>
   	</h2>
 	<h3><%= link_to @artist.name, @artist %></h3>
-	<i class="icon-music" title="Genre"></i>
+	<span class="tooltip-parent" data-title="Genre" data-placement="left"><i class="icon-music" title="Genre"></i></span>
 	<% if @manager %>
   	<%= best_in_place [@artist, @release], :genre, :type => :input, :class => 'form-text' %>
   <% else %>
@@ -73,7 +73,7 @@
   	 <span>Unknown</span>
   	<% end %>
 	<% end %><br/>
-	<i class="icon-tag" title="Record Label"></i>
+	<span class="tooltip-parent" data-title="Record Label" data-placement="left"><i class="icon-tag" title="Record Label"></i></span>
   	<% if @manager %>
   	<%= best_in_place [@artist, @release], :label_name, :type => :input, :class => 'form-text' %>
 	<% else %>
@@ -84,7 +84,7 @@
   	<% end %>
   <% end %>	 
 	<br/>
-	<i class="icon-calendar" title="Release Date"></i><strong>
+	<span class="tooltip-parent" data-title="Release Date" data-placement="left"><i class="icon-calendar" title="Release Date"></i></span><strong>
   	<% if @manager %>
   	 <%= best_in_place [@artist, @release], :date, :display_as => 'pretty_date', :type => :date, :class => 'form-text' %>
   	<% else %>
