@@ -139,9 +139,9 @@
 <div id="no-preview">No track preview available for this release.</div><% end %>
 </div> <! -- release-i-player -->
   <ul class="menu-user">
-  <li class="buy-release pop-over" rel="popover" data-content="Hello!" data-original-title="Here is your tip"><i class="icon-shopping-cart"></i>Buy</li>
+  <li class="buy-release"><i class="icon-shopping-cart"></i>Buy</li>
   <li class="share-release"><i class="icon-share-alt"></i>Share</li>
-  <li class="report-release"><i class="icon-flag"></i></li>
+  <li class="report-release popover-parent" data-content="If this release has an issue such as an incorrect name or artist, then please flag it for out attention." data-original-title="Flag Release"><i class="icon-flag"></i></li>
   </ul>
 </div><!-- release-info -->
 <div class="clear"></div>
@@ -167,8 +167,10 @@
 </div></div>
 <script type="text/javascript">
 	$(document).ready(function () {
-			$(".share-release").click(function() { $('#opac-50').fadeIn("normal"); $('#share-release').animate({right : 0}, "slow"); $('#buy-release').animate({left : -310}, "slow");});
+		$(".share-release").click(function() { $('#opac-50').fadeIn("normal"); $('#share-release').animate({right : 0}, "slow"); $('#buy-release').animate({left : -310}, "slow");});
 		$(".share-cancel").click(function() { $('#opac-50').fadeOut("normal"); $('#share-release').animate({right : -310}, "slow"); });
+		$(".report-release").click(function(){ $('#opac-50').fadeIn("normal"); $('#report-form ').animate({top : 60}, "slow"); });
+		$("#report-release-cancel").click(function() { $('#opac-50').fadeOut("normal"); $('#report-form').animate({top : -310}, "slow"); });
 		$("#share-release ul a li").click(function() { $('#opac-50').fadeOut("normal"); $('#share-release').animate({right : -310}, "slow"); });
 	    $(".buy-release").click(function() { $('#opac-50').fadeIn("normal"); $('#buy-release').animate({left : 0}, "slow"); $('#share-release').animate({right : -310}, "slow"); });
 		$(".buy-cancel").click(function() { $('#opac-50').fadeOut("normal"); $('#buy-release').animate({left : -310}, "slow"); });

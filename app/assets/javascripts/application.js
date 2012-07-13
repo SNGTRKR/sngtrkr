@@ -17,7 +17,6 @@
 //= require jplayer/jquery.jplayer
 //= require jplayer/jplayer.playlist
 //= require carousel/jquery.carousel-packed.js
-//= require jquery.purr
 //= require best_in_place
 //= require rotate/jQueryRotate.2.2
 // BOOTSTRAP REQUIRES
@@ -125,7 +124,11 @@ $(document).ready(function () {
       }
     })
   });
-});
+  
+  $('.popover-parent').popover();
+  $(".alert").alert()
+
+}); // DOCUMENT READY ENDS HERE
 
 function artist_suggestion_replace() {
   // Sharing options
@@ -147,9 +150,7 @@ function artist_suggestion_replace() {
     $(this).closest('li').fadeOut(300);
     $('#user-following-count').html(parseInt($('#user-following-count').html(), 10) - 1);
   });
-  // Disables buttons by hiding them after they are clicked.
-  $('.add-trkr, a.untrk-artist, a.ignore-trk-artist').click(function () {
-    $(this).hide()
-  });
-
+  // Disables buttons after they are clicked.
+  $('.recommend-buttons a').click(function(){$(this).removeAttr('href');});
+  
 }

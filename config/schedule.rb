@@ -17,3 +17,5 @@ end
 every 1.day, :at => '1:00 pm' do 
   runner "ReleaseJob.daily_release"
 end
+
+set :output, 'log/schedule.log'
