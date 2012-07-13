@@ -54,3 +54,6 @@
 $(document).ready(function() {
   $('.fb-home-login').click(function(){ $('.fb-home-login > span').html('Logging in...'); }); });
 </script>
+
+     <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+<div>
