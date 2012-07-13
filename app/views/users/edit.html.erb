@@ -77,7 +77,7 @@
 			<br/>
 			<%= link_to edit_artist_path(@user.managing.first) do %><div>
 			Edit</div><% end %>
-			<span><a href="#unmanage-confirmation">Delete</a></span>
+			<span><a href="#unmanage-confirmation" class="light-box-parent">Delete</a></span>
 				</div></div></div>
 				<% else %><% end %>
 	<div class="row"><div class="span10 offset1">
@@ -85,7 +85,7 @@
 			<h3>Delete Your Account</h3>
 			<br/>
 			Your account, tracked artists and all personal details will be permanently removed.<br/><br/>
-				<span><a href="#delete-confirmation">Delete Account</a></span>
+				<span><a href="#delete-confirmation" class="light-box-parent">Delete Account</a></span>
 		</div></div></div>
 	<div id="delete-confirmation">
 		<%= render :partial => 'delete_confirm' %>

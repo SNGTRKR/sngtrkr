@@ -1,72 +1,62 @@
-#content-profile-top {
-  position:relative;
-  width:666px;
-  height:114px;
-  .profile-menu {
-    float:left;
+.profile-menu {
     width:147px;
-    margin:7px 9px 0 0;
-    a {
-	    color:#fff;
+    margin:5px 0 0 56px;
+    li {
+	    @extend .o-button;
+	    @extend .signika-font;
+	    @extend .font-13;
+	    width:147px;
+	    margin-bottom:15px;
+	    line-height:28px;
+	    height:25px;
     }
-    a:hover {
-	    color:#fff;
-    }
-	    .p-menu {
-		    width:147px;
-		    height:25px;
-		    margin:0 0 15px 0;
-		    line-height: 28px;
-	    }
     .trkrs-button {
       @extend  .instruct-font;
-      @extend .o-button;
-      position:relative;
       height:68px;
-      width:147px;
-      margin-bottom:15px;
-      .trkr-txt {
-	      position:relative;
-	      top:10px;
+      line-height:18px;
+     span {
+     position:relative;
+     top:7px;
+	      div {
+		      @extend .font-25
+	      }
+	      .trkrs {
+		      @extend .font-15;
+	      }
       }
+			    }
+			  }
+    .user, .artist {
+        width:495px;
+    div {
+	    @extend .font-15;
     }
-  }
-  .profile-welcome {
-    float:right;
-    width:494px;
-    margin-top:4px;
-    margin-left:14px;
-    .user {
-	    position:relative;
-	    top:6px;
-    }
-    .artist {
-	   position:relative;
-	    top:5px; 
-	    a {
-		    color:#000;
+    	    a {
+		    color:$gray !important;
 	    }
 	    a:hover {
-		    color:$orange;
+		    color:#fff !important;
 	    }
     }
-  }
-  .artist-text-nudge {
-    margin-top:3px;
-  }
-}
-#track-num-search {
-  position:relative;
-  width:666px;
-  top:20px;
-  margin-bottom:23px;
+    .artist {
+		margin:6px 0 0 66px;
+    }
+    .user {
+	    margin:8px 0 0 66px;
+    }
+.user-trkrs {
+margin-bottom:38px;
   .no-trk {
-    position:relative;
-    top:28px;
+    @extend .font-15;
+    font-weight:bold;
+    margin:48px 0 0 57px;
   }
-          .artist-trkr-list-search {
-        position:absolute;
-        right:0px;
+     .p-bulge-t {
+	  position:absolute;
+	  width:666px;
+	  margin:-7px 0 0 57px;
+    }
+.artist-trkr-list-search {
         height:25px;
         width:155px;
         background:rgba(255,255,255,0.75);
@@ -74,7 +64,8 @@
         @include box-shadow(inset 0px 1px 6px rgba(0, 0, 0, 0.25));
         border: 1px solid #50A6C2;
         border-bottom: 1px solid #B0E0E6;
-        input{
+        margin:37px 0 0 6px;
+        input[type=text]{
             background:transparent;
             padding:0.3em;
             border:none;
@@ -83,21 +74,18 @@
         input:focus{
             outline:none;
         }
+        div {
+	        @extend .search;
+	        @extend .right;
+	        @extend .search-button;
+        }
     }
-     .p-bulge-t {
-      position:absolute;
-      left:12px;
-      top:-27px;
+  #tracked-artists {
+	list-style-type:none;
+	margin:0 0 9px 42px;
+    .no-trk-notify {
+      margin:15px 0 0 15px;
     }
-}
-#tracked-artists {
-  position:relative;
-  top:25px;
-  width:666px;
-  ul {
-  list-style-type:none;
-margin-left:-15px;
-
     li {
       width:155px;
       height:28px;
@@ -133,14 +121,8 @@ margin-left:-15px;
     }
   }
       .p-bulge-b {
-      position:relative;
-      left:12px;
-      margin-top:9px;
-    }
-    
-    .no-trk-notify {
-    position:relative;
-    top:10px;
-      margin:0 0 6px 15px;
+      position:absolute;
+      width:666px;
+      margin-left:57px;
     }
 }
