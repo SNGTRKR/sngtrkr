@@ -10,28 +10,28 @@ a > div {
 }
 			}
 .manage-point {
-				h2 {
-					@extend .signika-txt;
-					@extend .font-25;
-					margin:23px 0 10px 0;
-					}
-				span {
-					width:372px;
-					display:block;
-				}
-				}
-				#manage1 {
-					position:absolute;
-					margin:30px 0 0 -67px;
-						}
-				#manage2 {
-					position:absolute;
-					margin:62px 0 0 -43px;
-						}
-				#manage3 {
-					position:absolute;
-					margin:30px 0 0 -37px;
-						}
+	h2 {
+	@extend .signika-txt;
+	@extend .font-25;
+	margin:23px 0 10px 0;
+		}
+	span {
+		width:372px;
+		display:block;
+	}
+			}
+	#manage1 {
+		position:absolute;
+		margin:30px 0 0 -67px;
+			}
+	#manage2 {
+		position:absolute;
+		margin:62px 0 0 -43px;
+			}
+	#manage3 {
+		position:absolute;
+		margin:30px 0 0 -37px;
+			}
 #manage-form{
   	position:relative;
     width:649px;
