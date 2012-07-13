@@ -6,6 +6,7 @@
 			@include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.45));
 			@include border-radius(12px);
 			overflow:hidden;
+			color:white;
 			.icon-edit {
 				color:#fff;
 				font-size:2em;
@@ -151,6 +152,14 @@
 		       width:40px;
 		       @extend .button;
 	      }
+      }
+      #report-form {
+	      position:absolute;
+	      height:310px;
+	      width:310px;
+	      z-index:2;
+	      top:-310px;
+	      left:49px;
       }
 		}
 		.release-rating {

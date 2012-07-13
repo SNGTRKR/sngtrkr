@@ -10,13 +10,13 @@
       </ul>
     </div>
   <% end %>
-
+  <p>Please report any errors you have spotted.</p>
   <div class="field">
-    <%= f.label :feedback %><br />
-    <%= f.text_area :feedback %>
-    <%= f.hidden_field :url, :value => "http://#{request.host+request.fullpath}" %>
+    <%= f.text_area :feedback, :rows => 5 %>
+    <%= f.hidden_field :url, :value => "http://#{request.host}:#{request.port}#{request.fullpath}" %>
   </div>
   <div class="actions">
-    <%= f.submit "Leave Feedback" %>
+    <%= f.submit "Leave Feedback", :class => 'left', :style => "margin-right:15px " %> 
+    <%= link_to 'Cancel', '#', :class => 'left button', :id => "report-release-cancel" %>
   </div>
 <% end %>
