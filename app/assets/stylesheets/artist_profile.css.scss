@@ -180,7 +180,7 @@
 			line-height:1.7em;
 			@extend .right;
 			margin-right:7px;
-			span {
+			.gray {
 				@extend .light-gray;
 			}
 			#artist-bio {
