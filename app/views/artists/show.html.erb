@@ -46,6 +46,7 @@ content_for :og_id, @artist.id.to_s
 <ul>
   <li><%= link_to image_tag("/images/itunes.png", :alt => "iTunes", :title => "iTunes"), @artist.itunes, :target => "_blank" %></li>
   <li><%= link_to image_tag("/images/7digital.png", :alt => "7Digital", :title => "7Digital"), @artist.sd, :target => "_blank" %></li>
+  <div class="clear"></div>
 </ul>
 <div class="clear"></div>
 <div class="buy-cancel">Cancel</div>

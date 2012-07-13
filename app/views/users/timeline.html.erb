@@ -1,7 +1,6 @@
 <% content_for :title do %>Your Timeline<% end %>
 <% content_for :description do %><%= current_user.first_name %>'s personalised timeline of artist releases, where they can view new and old releases while being able to listen to and buy tracks.<% end %>
 <% content_for :extra_head do %> <%= javascript_include_tag "timeline" %> <% end %>
-<div class="content content-pad-160">
 </div>
 </div>
 <div class="timeline-outer">
@@ -18,4 +17,4 @@
 </div>
 <%= image_tag "/images/shadow-line-bot.png", :id => 'shadow-bot' %>
 </div>
-<div class="content content-pad-160-bottom">
+<div class="container">

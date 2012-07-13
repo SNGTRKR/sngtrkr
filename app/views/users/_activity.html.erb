@@ -3,17 +3,17 @@
   <% artist = Artist.find(activity[:id]) %>
   <div class="each-activity">
   <div class="activity-image" style="background-image:url(<%= artist.image :friend_activity_artist %>);background-repeat:no-repeat;background-position:center;"><i class="icon-screenshot"></i></div>
-    <div class="follow-info"><strong><h4><%= link_to artist.name, artist %></h4></strong><% if artist.genre? %><%= artist.genre %><br/><% else %><% end %>
-    <div class="orange-txt instruct-font followers"><%= artist.followers %> TRKRS</div>
-    <div class="font-11 light-gray"><%= time_ago_in_words(activity[:time]) %> ago.</div></div>
+    <div class="follow-info"><h2><%= link_to artist.name, artist %></h2><% if artist.genre? %><%= artist.genre %><br/><% else %><% end %>
+    <div><%= artist.followers %> TRKRS</div>
+    <span><%= time_ago_in_words(activity[:time]) %> ago.</span></div>
   </div>
   <%= render :partial => 'shared/activity_trk_artist', :object => artist %>
 <% elsif activity[:action] == 'rate' %>
   <% release = Release.find(activity[:id]) %>
   <div class="each-activity">
   <div class="activity-image" style="background-image:url(<%= release.image :friend_activity_release %>);background-repeat:no-repeat;background-position:center;"><i class="icon-star-empty"></i></div>
-    <div class="rate-info"><strong><h4><%= link_to release.artist.name, release.artist %></h4></strong><div class="orange-txt release"><%= link_to release.name, [release.artist, release] %></div><%= activity[:stars] %> stars<br/><div class="font-11 light-gray"><%= time_ago_in_words(activity[:time]) %> ago.</div></div>
+    <div class="rate-info"><h2><%= link_to release.artist.name, release.artist %></h2><div><%= link_to release.name, [release.artist, release] %></div><%= activity[:stars] %> stars<br/><span><%= time_ago_in_words(activity[:time]) %> ago.</span></div>
   </div>
-    <div class="activity-play o-button"><i class="icon-play"></i></div>
+    <div class="activity-play"><i class="icon-play"></i></div>
   <% end %>
 </li>

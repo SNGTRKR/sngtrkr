@@ -44,11 +44,13 @@ $overlap: $width*0.25;
  		height:$height + $v-line-length+$h-v-space;
  		margin-right: -$overlap/2;
  		margin-left: -$overlap/2;
+ 		@extend .left;
     .release-date{
       font-size: 1.25em;
       text-align:center;
       color:#000;
       position: relative;
+      @extend .instruct-font;
     }
     .release-join{
       position:absolute;
@@ -80,10 +82,6 @@ $overlap: $width*0.25;
   		      margin-top:29px;
   		      text-align:center;
 	      }
-	      .cancel {
-	       width:40px;
-	       margin:25px auto;
-	      }
         .release-info {
   	      color:#fff;
   	      display:block;
@@ -103,6 +101,9 @@ $overlap: $width*0.25;
             a {
               color: $orange;
             }
+          }
+          span {
+	          @extend .font-11;
           }
           a {
   		      color:#fff;
@@ -124,18 +125,18 @@ $overlap: $width*0.25;
           bottom:-25px;
           left:0px;
           z-index:2;
-          .menu {
-            margin: auto;
-            width:($width*0.8);
-            height:23px;
-            .menu-item {
-              text-align: center;
+          @extend .font-13;
+          div {
+          margin-left:27px;
+          li {
+              text-align:center;
               width:($width*0.8)/3;
               cursor:pointer;
   	          color:#fff;
-  	          line-height:23px; 
+  	          line-height:23px;
+  	          @extend .left; 
             }
-          }
+            }
         }
         .r-grad {
   	      position:absolute;
@@ -161,16 +162,23 @@ $overlap: $width*0.25;
   	      width:$width;
   	      z-index:2;
   	      right:-$width;
-  	      .share-list {
+  	      h4 {
+  	      	  margin-top:29px;
+	  	      @extend .signika-txt;
+	  	      @extend .font-22;
+	  	      text-align:center;
+  	      }
+  	      ul {
   	        margin:auto;
   	        width: 52px * 3;
   	        padding:15px;
-            .fb-icon, .twit-icon, .goo-icon {
+            li {
               height:38px;
               width:38px;
               line-height:38px;
               @include border-radius(4px);
               margin:0 7px 0 7px;
+              @extend .left;
             }
             .goo-icon {
           		overflow:hidden;
@@ -192,6 +200,11 @@ $overlap: $width*0.25;
       	      top:6px;
             }
   	      }
+  	      .share-cancel {
+      	       margin:11px auto;
+		       width:40px;
+		       @extend .button;
+  	      }
         }
         #buy-release {
           $buy-width: 52px;
@@ -200,6 +213,12 @@ $overlap: $width*0.25;
   	      width:$width;
   	      z-index:2;
   	      left:-$width;
+  	     h4 {
+  	      	  margin-top:29px;
+	  	      @extend .signika-txt;
+	  	      @extend .font-22;
+	  	      text-align:center;
+  	      }
   	      .buy-count-1 {
   		      width:$buy-width * 1;
   	      }
@@ -209,7 +228,7 @@ $overlap: $width*0.25;
   	      .buy-count-3 {
   		      width:$buy-width * 3;
   	      }
-  	      .buy-list {
+  	      ul {
   		      margin:auto;
   		      padding:15px;
   		      li {
@@ -217,16 +236,23 @@ $overlap: $width*0.25;
   			      width:38px;
   			      @include border-radius(4px);
   			      margin:0px 7px 0px 7px;
+  			      @extend .left;
+			      @extend .white-button;
   		      }
+  	      }
+  	         .buy-cancel {
+      	       margin:11px auto;
+		       width:40px;
+		       @extend .button;
   	      }
         }
   	  }
     }
 	  .release-outer:nth-child(2n) {
 		  top:$height+$v-line-length + $h-v-space + 5px;
-  	  .release-line {
-  		  top:$h-v-space;
-  	  }
+		  	  .release-line {
+		  		  top:$h-v-space;
+						  	  }
   	  .release-date {
   	    margin-top:-($height + $v-line-length + $h-v-space + 10px);
   	  }
