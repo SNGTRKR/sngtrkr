@@ -1,6 +1,8 @@
-<h1>Listing feedbacks</h1>
-
-<table class="table ">
+<% content_for :title do %>Feedback list<% end %>
+<div class="row"><div class="span12"><div id="feedlist">
+<h1>Feedback List</h1>
+<br/>
+<table class="table well table-striped">
 <thead>
   <tr>
     <th>User</th>
@@ -24,7 +26,5 @@
 <% end %>
 </tbody>
 </table>
-
-<br />
-
-<%= link_to 'New Feedback', new_feedback_path %>
+<%= button_to 'New Feedback', new_feedback_path %>
+</div></div></div>
