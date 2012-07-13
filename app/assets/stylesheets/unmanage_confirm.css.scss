@@ -4,28 +4,22 @@
     background: url(/images/box-bk-431.png) no-repeat;
     @include border-radius(8px);
     color:$gray;
-    .sure {
-        font-size:2.8em;
+    h1 {
+	    top:28px;
         position:relative;
-        top:28px;
         text-align:center;
       }
-      #unmanage-txt-1 {
+      #unmanage-txt {
         position:relative;
         text-align:center;
         width:237px;
-        display:block;
         left:97px;
         top:34px;
-      }
-      #unmanage-txt-2 {
-        position:relative;
-        text-align:center;
-        width:237px;
-        display:block;
-        left:97px;
-        top:44px;
-          a {
+        span {
+	        display:block;
+	        margin-top:-8px;
+        }
+                  a {
 	    color:#fff;
     }
     a:hover {
@@ -33,13 +27,19 @@
     }
       }
       .unmanage-buttons {
-      position:absolute;
-      top:227px;
+      position:relative;
+      top:51px;
       left:159px;
-      .unmanage-artist-button {
-        margin-right:15px;  
+      div {
+        margin-right:15px;
+        @extend .left;
+        @extend .button;  
       }
-}
+      span {
+	      @extend .left;
+	      @extend .button;
+      	}
+      }
 }
   #unmanage-confirmation {
     display:none;

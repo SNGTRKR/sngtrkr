@@ -1,18 +1,11 @@
 <div class="unmanage-confirm">
-	<div class="sure signika-txt">
-		Are you sure?
-	</div>
-	<div id="unmanage-txt-1">
-		Are you sure you wish to stop managing <strong><%= @user.managing.first.name %></strong>? You can always come back to it, if you change your mind.
-	</div>
-	<div id="unmanage-txt-2">
-		<strong>If you need help getting started or managing your artist account, please visit our help page or contact us at</strong> <a href="mailto:support@sngtrkr.com" target="_blank">support@sngtrkr.com</a>
-	</div>
+	<h1>Are you sure?</h1>
+	<div id="unmanage-txt">
+		Are you sure you wish to stop managing <strong><%= @user.managing.first.name %></strong>? You can always come back to it, if you change your mind.<br/><br/>
+		<span><strong>If you need help getting started or managing your artist account, please visit our help page or contact us at</strong> <a href="mailto:support@sngtrkr.com" target="_blank">support@sngtrkr.com</a></span></div>
 	<div class="unmanage-buttons">
-	<%= link_to user_manage_path(@user,@user.manage.first), :method => :delete do %><div class="o-button norm-o-pad left signika-font font-13 unmanage-artist-button">Yes<% end %>
-					
-				</div>
-		<a href="javascript:$.fancybox.close();"><div class="o-button norm-o-pad right signika-font unmanage-artist-cancel font-13">
-			No</div></a>
+	<%= link_to user_manage_path(@user,@user.manage.first), :method => :delete do %><div>Yes<% end %></div>
+		<a href="javascript:$.fancybox.close();"><span>
+			No</span></a>
 	</div>
 </div>
