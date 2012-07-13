@@ -93,15 +93,15 @@
 		      @extend .font-22;
       	      }
 	      ul {
-		      position:relative;
-		      left:83px;
-		      top:12px;
+		    margin:auto;
+  	        width: 52px * 3;
+  	        padding:15px;
 		 li {
 	      height:38px;
 	      width:38px;
 	      line-height:38px;
 	      @include border-radius(4px);
-	      margin-right:15px;
+	      margin:0 7px 0 7px;
 	      @extend .left;
       }
       .goo-icon {
@@ -125,12 +125,9 @@
       }
 	      }
 	      .share-cancel {
-		      position:relative;
-		      left:121px;
-		      top:35px;
-		      @extend .font-13;
+		      margin:11px auto;
+		      width:40px;
 		      @extend .button;
-		      @extend .left; 
 	      }
       }
                  #buy-profile {
@@ -149,12 +146,13 @@
 	      ul {
 		      position:relative;
 		      top:12px;
-		      left:109px;
+		      left:102px;
+		      margin-bottom:36px;
 		      li {
 			      height:38px;
 			      width:38px;
 			      @include border-radius(4px);
-			      margin-right:15px;
+			      margin:0px 7px 0px 7px;
 			      @extend .white-button;
 			      @extend .left;
 			      img {
@@ -165,12 +163,9 @@
 		      }
 	      }
 	      .buy-cancel {
-		      position:relative;
-		      left:121px;
-		      top:35px;
-		      @extend .font-13;
+		      margin:11px auto;
+		      width:40px;
 		      @extend .button;
-		      @extend .left; 
 	      }
       }
               

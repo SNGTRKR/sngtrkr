@@ -126,33 +126,49 @@
 				position:relative;
 				left:100px;
 				top:10px;	
+				h2 {
+					font-weight:bold;
+				}
 				a {
 					color:$gray;
 				}
 				a:hover {
 					color:$orange;
 				}
-				.followers {
+				div {
 					margin:-2px 0 -1px 0;
+					@extend .orange-txt;
+					@extend .instruct-font; 
+				}
+				span {
+					@extend .font-11;
+					@extend .light-gray;
 				}
 			}
 			.rate-info {
 				position:relative;
 				left:100px;
 				top:10px;
+				h2 {
+					font-weight:bold;
+				}
 				a {
 					color:$gray;
 				}
 				a:hover {
 					color:$orange;
 				}
-				.release {
+				div {
 					a {
 						color:$orange;
 					}
 					a:hover {
 						color:$gray;
 					}
+				}
+				span {
+					@extend .font-11;
+					@extend .light-gray;
 				}
 			}
 		}
@@ -179,7 +195,7 @@
 			    list-style-type:none;
 			    margin-left:-11px; 
 			    overflow-y:scroll;
-			        .each-friend {
+.each-friend {
       width:135px;
       height:120px;
       margin:0 0 32px 20px;
@@ -244,22 +260,22 @@
 	      z-index:2;
 	      right:-202px;
 	      top:10px;
-	      .share-header {
-		      position:relative;
+	      h3 {
 		      text-align:center;
 		      @extend .signika-txt;
 		      @extend .font-15;
 	      }
-	      .share-list {
+	      ul {
 		      position:relative;
 		      left:20px;
 		      top:5px;
-		 .fb-icon, .twit-icon, .goo-icon {
+		 li {
 	      height:25px;
 	      width:25px;
 	      line-height:25px;
 	      @include border-radius(3px);
 	      margin-right:10px;
+	      @extend .left;
       }
       .goo-icon {
 		overflow:hidden;
@@ -282,7 +298,8 @@
 		      position:relative;
 		      left:37px;
 		      top:15px;
-		      @extend .font-11;
+		      @extend .button;
+		      @extend .left;
 	      }
       }
       }

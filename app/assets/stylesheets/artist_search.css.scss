@@ -63,6 +63,7 @@ ul {
 	text-align:center;
 	font-size:3em;
 	line-height:75px;
+	@extend .o-button;
 }
 }
 }

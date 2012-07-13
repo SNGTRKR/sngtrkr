@@ -34,7 +34,7 @@
  <% if @friend.following.empty? %>
    <p><%= @friend.first_name %> hasn't tracked any artists yet.</p>
  <% end %>
-	<ul id ="friend-trkr-list">
+	<ul id="friend-trkr-list">
 	 <%= render :partial => 'shared/friend_artist_suggestion', :collection => @friend.following.ordered %>	
 	 <div class="clear"></div>
 	</ul>	

@@ -10,18 +10,16 @@
     a:hover {
 	    color:#fff;
     }
-    .goodbye {
-        font-size:2.8em;
-        position:relative;
+    h1 {
         top:28px;
-        left:101px;
-        width:260px;
+        position:relative;
+        text-align:center;
+        
       }
       #delete-txt-1 {
         position:relative;
         text-align:center;
         width:237px;
-        display:block;
         left:97px;
         top:34px;
         #delete-reason {
@@ -32,25 +30,22 @@
         position:relative;
         text-align:center;
         width:237px;
-        display:block;
         left:97px;
-        top:47px;
-        margin-top:2px;
+        top:37px;
       }
-      .delete-account-button {
-        position:absolute;
+      .delete-account-buttons {
+        position:relative;
         left:115px;
-        top:227px;
-        input[type=submit] {
-                border:0;
-                color:#fff;
-                font-size:1em;
-            }
-      }
-      .delete-account-cancel {
-        position:absolute;
-        left:248px;
-        top:227px;
+        top:47px;
+        input {
+	        @extend .left;
+	        @extend .button;
+	        margin-right:15px;
+        }
+        div {
+	        @extend .left;
+	        @extend .button;
+        }
       }
 }
   #delete-confirmation {

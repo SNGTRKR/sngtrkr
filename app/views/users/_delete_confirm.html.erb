@@ -1,7 +1,5 @@
 <div class="delete-confirm">
-	<div class="goodbye signika-txt">
-		Is this goodbye?
-	</div>
+	<h1>Is this goodbye?</h1>
   <%= form_for(@user, :url => { :action => :destroy_with_reason }, :method => :post) do |f| %>
 	<div id="delete-txt-1">
 		We are sad to see you leave us, please take a few minutes to say why you’re leaving.
@@ -11,12 +9,6 @@
 	<div id="delete-txt-2">
 		<strong>Are you sure you want to delete your account?</strong> The artists you are tracking and your profile will be gone forever!
 	</div>
-	<div class="delete-account-button font-13">
-			<%= f.submit 'Delete Account', :class => "o-button norm-o-pad left signika-font" %>
-	</div>
-	<div class="delete-account-cancel font-13">
-		<a href="javascript:$.fancybox.close();"><div class="o-button norm-o-pad right signika-font">
-			Cancel</div></a>
-	</div>
+	<div class="delete-account-buttons"><%= f.submit 'Delete Account'%><a href="javascript:$.fancybox.close();"><div>Cancel</div></a></div>
 	<% end %>
 </div>
