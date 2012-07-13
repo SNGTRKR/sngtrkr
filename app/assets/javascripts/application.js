@@ -42,7 +42,7 @@ $(document).ready(function () {
 	$('#feedback > #content').slideDown(850);
 	$('#feedback > #trigger > .icon-bullhorn').css("pointer-events","none");
 	});
-	$('#feedback > #content > .cancel').click(function () {
+	$('#feedback > #content > #new_feedback > .cancel').click(function () {
 	$('#feedback').animate({width: 31}, "normal");
 	$('#feedback > #trigger').animate({width: 31}, "normal");
 	$('#feedback > #trigger > span').css("margin-left","0px");
