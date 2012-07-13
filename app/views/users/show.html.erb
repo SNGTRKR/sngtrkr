@@ -1,26 +1,22 @@
 <% content_for :title do %>Friend: <%= @friend.first_name %> <%= @friend.last_name %><% end %>
 <% content_for :description do %>Public profile page for your friend, <%= @friend.first_name %> <%= @friend.last_name %>. You can see when they last logged in, how many artists they are tracking and who they are tracking.<% end %>
-<div class="content content-pad-115-bottom">
-	<div id="friend-wrapper">
+<div class="row"><div class="span10 offset1">
+<div id="friend-information">
 	<div id="friend-cover">
 		<div id="friend-trkr-search">
 			<input type="text" id="filter" placeholder="Search TRKRs..."/>
 			<div class="search right search-button"><%= image_tag "/images/white-search-2.png", :alt => "Search", :id => "search-pad" %></div>
-		</div>
-		
+		</div></div>
+	<div class="friend-info">
+			<h2><%= link_to @friend.first_name + " " + @friend.last_name, "http://facebook.com/#{@friend.fbid}", :target => "_blank" %></h2>
+			<span><%= @friend.following.count %> TRKINGS</span>
 	</div>
-			<div class="friend-info">
-			<div id="f-info">
-				<h2><div class="font-14"><strong><%= link_to @friend.first_name + " " + @friend.last_name, "http://facebook.com/#{@friend.fbid}", :target => "_blank" %></strong></div></h2>
-				<div class="orange-txt instruct-font">
-					<%= @friend.following.count %> TRKINGS</div>
-			</div>
-			</div>
-	<div id="friend-image"  style="background-image:url(<%= "//graph.facebook.com/"+@friend.fbid+"/picture?type=normal" %>);background-repeat:no-repeat;background-position:center;"></div>
-	</div>
-	<div id="friend-data">
-	<div id="friend-activity">
-	<ul>
+	<div id="friend-image" style="background-image:url(<%= "//graph.facebook.com/"+@friend.fbid+"/picture?type=normal" %>);"></div>
+</div>
+</div></div>
+<div class="row"><div class="span10 offset1">
+	<div class="row"><div class="span5">
+	<ul id="friend-activity">
 	 <% if @friend.recent_activity.empty? %>
   	 <li>   
        <p><%= @friend.first_name %> hasn't peformed any actions yet.</p>
@@ -30,6 +26,7 @@
   	<div class="clear"></div>
 	</ul>
 	</div>
+	<div class="span5">
 	<div id="friend-trkrs">
  <% if @friend.following.empty? %>
    <p><%= @friend.first_name %> hasn't tracked any artists yet.</p>
@@ -38,8 +35,9 @@
 	 <%= render :partial => 'shared/friend_artist_suggestion', :collection => @friend.following.ordered %>	
 	 <div class="clear"></div>
 	</ul>	
-	</div>
-	</div>
+	<%= image_tag "/images/p-bulge-bot.png", :alt => "Shadow", :class => "f-bulge-b" %>
+	</div></div>
+</div></div></div>
 	<script>
 		window.fbAsyncInit = function() {
 FB.init({
