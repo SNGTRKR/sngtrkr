@@ -1,61 +1,37 @@
-#manage-content {
-position:relative;
-left:23px;
-	#manage-top {
-	position:relative;
-	width:617px;
-	height:186px;
-		.content-left {
-			width:309px;
-			.button-margin {
-				margin-top:2px;
+.manage-top {
+margin-bottom:11px;
+img {
+			position:absolute;
 			}
-		}
-		.content-right {
-			width:304px;
-		}
-		}
-		#manage-points {
-		position:relative;
-		top:4px;
-			ul {
-				list-style-type:none;
-				.middle {
-					margin-bottom:33px;
-				}
-				.bottom {
-					margin-bottom:40px;
-				}
-				li {
-					.point-left {
-						width:374px;
-						span {
-							position:relative;
-							top:10px;
-						}
-					}
-					.point-right {
-						width:205px;
-						#manage1 {
-							position:relative;
-							left:31px;
-							top:8px;
-						}
-						#manage2 {
-							position:relative;
-							left:55px;
-							top:43px;
-						}
-						#manage3 {
-							position:relative;
-							top:8px;
-							left:62px;
-						}
-					}
-				}
+a > div {
+	@extend .left;
+	@extend .button;
+	margin-top:2px;
+}
 			}
-		}
-	}
+.manage-point {
+				h2 {
+					@extend .signika-txt;
+					@extend .font-25;
+					margin:23px 0 10px 0;
+					}
+				span {
+					width:372px;
+					display:block;
+				}
+				}
+				#manage1 {
+					position:absolute;
+					margin:30px 0 0 -67px;
+						}
+				#manage2 {
+					position:absolute;
+					margin:62px 0 0 -43px;
+						}
+				#manage3 {
+					position:absolute;
+					margin:30px 0 0 -37px;
+						}
 #manage-form{
   	position:relative;
     width:649px;
