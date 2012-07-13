@@ -11,7 +11,7 @@
 	</div>
 			<div class="friend-info">
 			<div id="f-info">
-				<h2><div class="font-14"><strong><%= @friend.first_name + " " + @friend.last_name %></strong></div></h2>
+				<h2><div class="font-14"><strong><%= link_to @friend.first_name + " " + @friend.last_name, "http://facebook.com/#{@friend.fbid}", :target => "_blank" %></strong></div></h2>
 				<div class="orange-txt instruct-font">
 					<%= @friend.following.count %> TRKINGS</div>
 			</div>
