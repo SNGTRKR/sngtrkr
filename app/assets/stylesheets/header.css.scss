@@ -25,6 +25,9 @@
             width:110px;
             outline:none;
         }
+        input[type=text]:focus {
+            @include box-shadow(inset 0px 1px 1px rgba(0, 0, 0, 0));
+        }
         input:focus ~ .results { 
           display: block;
         }
