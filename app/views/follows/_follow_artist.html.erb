@@ -1,6 +1,4 @@
-<% css_class ||= nil %>
-<% id ||= nil %>
-<% icon ||= 'icon-add' %>
-<%= link_to artist_follows_path(follow_artist), :method => :post, :class => "mini-trkr-button add-trkr #{css_class}", :remote => true, :method => :post, :id => id do %>
+<% icon ||= 'icon-plus' %>
+<%= link_to artist_follows_path(follow_artist), :method => :post, :class => "mini-trkr-button add-trkr", :remote => true do %>
   <i class="<%= icon %>"></i>
 <% end %>

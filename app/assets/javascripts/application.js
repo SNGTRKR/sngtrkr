@@ -132,7 +132,7 @@ function artist_suggestion_replace() {
 		$(this).parent().parent().parent().parent().find('.opac-50').fadeOut("normal").parent().find('.share-artist').animate({right : -202}, "slow").parent().find('.recommend-info').fadeIn("normal");;
 	});
 
-  $('.add-trkr, a.ajax-ignore-artist').bind('ajax:complete', function () {
+  $('.recommend-buttons a.add-trkr, .recommend-buttons a.ajax-ignore-artist').bind('ajax:complete', function () {
     // Hide the suggestion itself
     $(this).closest('li').fadeOut(300);
   });
