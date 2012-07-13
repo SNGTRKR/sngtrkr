@@ -1,5 +1,5 @@
 <% artist_page ||= 'false' %>
-<li class="release-outer left">
+<li class="release-outer">
   <div class=" each-release" style="background-image:url(<%= release.image :medium %>)">
     <div class="r-grad">
       <div class="release-info">
@@ -7,58 +7,50 @@
         <% if artist_page == 'false' %>
         <h3><%= link_to release.artist.name, release.artist %></h3>
         <% end %>
-        <span class="font-11"><%= release.label_name %></span>
+        <span><%= release.label_name %></span>
       </div>
-      <div class="release-menu font-13">
-        <div class="menu">
-          <span class="left menu-item buy-release">
-            Buy
-          </span>
-          <span class="left menu-item">
-            Listen
-          </span>
-          <span class="left menu-item share-release">
-            Share
-          </span>
-        </div>
-      </div>
+      <ul class="release-menu">
+      <div>
+          <li class="buy-release">Buy</li>
+          <li>Listen</li>
+          <li class="share-release">Share</li>
+          </div>
+      </ul>
     </div>
     <!-- r-grad -->
     <div class="opac-50"></div>
     <div id="share-release">
-      <h5 class="signika-txt font-22 share-header">Share this track</h5>
-      <ul class="share-list">
+      <h4>Share this track</h4>
+      <ul>
         <a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com<%= url_for release.artist %>%2F&t=SNGTRKR','ShareSNGTRKRonFacebook','scrollbars=no,width=620,height=340'); return false;">
-        <li class="left fb-icon sm-trigger fb-button">
+        <li class="fb-icon fb-button">
           <i class="icon-facebook"></i>
         </li></a>
         <a href="#" title="Share on Twitter" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.sngtrkr.com&text=<%= release.artist.name%>+&#45;+<%= release.name %>+released+on+<%= release.label_name %>.+Check+out+<%= release.artist.name %>+on+SNGTRKR+&#45;+www.sngtrkr.com<%= url_for [release.artist, release] %>&via=SNGTRKR','ShareSNGTRKRonTwitter','scrollbars=no,width=620,height=340'); return false;">
-        <li class="left twit-icon sm-trigger twitter-button">
+        <li class="twit-icon twitter-button">
           <i class="icon-twitter"></i>
         </li></a>
         <a href="#" title="Share on Google Plus" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for release.artist %>','ShareSNGTRKRonGooglePlus','scrollbars=no,width=620,height=340'); return false;">
-        <li class="left goo-icon sm-trigger google-button">
+        <li class="goo-icon google-button">
           <i class="icon-google-plus"></i>
         </li></a>
+         <div class="clear"></div>
       </ul>
-      <div class="clear"></div>
-      <div class="font-13 o-button norm-o-pad signika-font share-cancel cancel">
+      <div class="share-cancel">
         Cancel
       </div>
     </div>
     <div id="buy-release">
-      <h5 class="signika-txt font-22 buy-header">Buy this track</h5>
+      <h4>Buy this track</h4>
       <%= render :partial => 'shared/buy_links', :object => release %>
       <div class="clear"></div>
-      <div class="font-13 o-button norm-o-pad signika-font buy-cancel cancel">
-        Cancel
-      </div>
+      <div class="buy-cancel">Cancel</div>
     </div>
   </div>
   <div class="release-line"></div>
   <% date_format ||= " %b." %>
   <% date_class ||= "font-20" %>
-  <div class="instruct-font <%= date_class %> release-date">
+  <div class="<%= date_class %> release-date">
     <%== release.date.strftime("#{release.date.day.ordinalize} "+date_format)%>
   </div>
   <div class="release-join"></div>

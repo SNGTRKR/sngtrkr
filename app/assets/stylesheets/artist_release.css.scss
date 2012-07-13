@@ -69,15 +69,15 @@
 		      @extend .font-22;
       	      }
 	      ul {
-		      position:relative;
-		      left:83px;
-		      top:11px;
+		    margin:auto;
+  	        width: 52px * 3;
+  	        padding:15px;
     		 li {
     	      height:38px;
     	      width:38px;
     	      line-height:38px;
     	      @include border-radius(4px);
-    	      margin-right:15px;
+    	      margin:0 7px 0 7px;
     	      @extend .left;
           }
           .goo-icon {
@@ -101,11 +101,9 @@
           }
 	      }
 	      .share-cancel {
-		      position:relative;
-		      left:121px;
-		      top:34px;
-		      @extend .left;
-		      @extend .button;
+		       margin:11px auto;
+		       width:40px;
+		       @extend .button;
 	      }
       }
       #buy-release {
@@ -133,6 +131,7 @@
 	      ul {
 		      position:relative;
 		      top:11px;
+		      margin-bottom:33px;
 		      li {
 			      height:38px;
 			      width:38px;
@@ -148,11 +147,9 @@
 		      }
 	      }
 	      .buy-cancel {
-		      position:relative;
-		      left:121px;
-		      top:34px;
-		      @extend .left;
-		      @extend .button;
+		       margin:11px auto;
+		       width:40px;
+		       @extend .button;
 	      }
       }
 		}
