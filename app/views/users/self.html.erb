@@ -1,33 +1,27 @@
 <% content_for :title do %><%= @user.first_name %> on SNGTRKR<% end %>
 <% content_for :description do %>Profile page for <%= @user.first_name %>. You will be able to change the settings of your profile, manage any Facebook artists you control and view the list of artists you are currently tracking. <% end %>
-<div class="content-pad-160-bottom">
-	<div id="content-profile-top">
-		<div class="profile-menu">
-			<ul>
+<div class="row"><div class="span10 offset1">
+<div class="row"><div class="span2">
+			<ul class="profile-menu">
 				<% if @user.manager? %>
-				<%= link_to @artist do %><li class="trkrs-button">
-				<span class="trkr-txt">
-							<div class="font-25"><%= @trackers %></div>
-							<br/>
-							<div class="font-15 instruct-font">TRKRS</div>
-				</span>
-				</li>
+				<%= link_to @artist do %>
+				<li class="trkrs-button"><span><div><%= @trackers %></div><br/><div class="trkrs">TRKRS</span></span></li>
 				<% end %>
 				<% else %>
 				<% end %>
-				<%= link_to friends_user_path(@user) do %><li class="font-13 signika-font o-button p-menu">Friends</li><% end %>
+				<%= link_to friends_user_path(@user) do %><li>Friends</li><% end %>
 				<% if @user.manager? %>
-				<%= link_to new_artist_release_path(@artist) do %><li class="font-13 signika-font o-button p-menu">Add Release</li><% end %>
+				<%= link_to new_artist_release_path(@artist) do %><li>Add Release</li><% end %>
 				<% else %>
-				<%= link_to managing_user_path(@user) do %><li class="font-13 signika-font o-button p-menu">Manage Artist</li><% end %>
+				<%= link_to managing_user_path(@user) do %><li>Manage Artist</li><% end %>
 				<% end %>
-				<%= link_to edit_user_path(@user) do %><li class="font-13 signika-font o-button p-menu">Profile Settings</li><% end %>
+				<%= link_to edit_user_path(@user) do %><li>Profile Settings</li><% end %>
 			</ul>
 		</div>
-		<div class="profile-welcome">
+		<div class="span8">
 			<% if @user.manager? %>
-			<span class="artist">
-			<div class="font-15">
+			<div class="artist">
+			<div>
 				Welcome, <strong><%= link_to @artist.name, @artist %></strong>
 			</div>
 			<br/>
@@ -40,33 +34,32 @@
 			artists we think you will find interesting.
 			<br/>
 			<br/>
-			If you need further help with anything, then be sure to visit our Help page.</span>
+			If you need further help with anything, then be sure to visit our Help page.</div>
 						<% else %>
-			<span class="user">
-			<div class="font-15">
+			<div class="user">
+			<div>
 			Welcome to your profile, <strong><%= @user.first_name %> <%= @user.last_name %></strong>!
 			</div>
 			<br/>
 			Here you will be able to change the settings of your profile, manage any Facebook artists you control and view the list of artists you are currently tracking.
 			<br/>
 			<br/>
-			If you need further help with anything, then be sure to visit our Help page.</span>
+			If you need further help with anything, then be sure to visit our Help page.</div>
 			<% end %>
-		</div>
+		</div></div>
+</div></div>
+<div class="row user-trkrs"><div class="span10 offset1">
+<%= image_tag "/images/p-bulge-top.png", :alt => "Shadow", :class => "p-bulge-t" %>
+	<div class="row"><div class="span7">
+		<div class="no-trk"><%= @user.following.count %> TRKED Artists</div>
 	</div>
-	<div class="clear"></div>
-	<div id="track-num-search">
-		<div class="font-15 no-trk">
-			<strong><span id="user-following-count"><%= @user.following.count %></span> TRKED Artists</strong>
-		</div>
-		<div class="artist-trkr-list-search">
+		<div class="span3">
+			<div class="artist-trkr-list-search">
 			<input type="text" id="filter" placeholder="Search TRKRs..."/>
-			<div class="search right search-button"><%= image_tag "/images/white-search-2.png", :alt => "Search", :id => "search-pad" %></div></div>
-			<%= image_tag "/images/p-bulge-top.png", :alt => "Shadow", :class => "p-bulge-t" %>
-	</div>
-	<div id="tracked-artists">
-	
-		<ul>
+			<div><%= image_tag "/images/white-search-2.png", :alt => "Search", :id => "search-pad" %></div></div>
+	</div></div>
+	<div class="row"><div class="span10">
+	<ul id="tracked-artists">
 		<% if @user.following.count.zero? %>
 		<div class="no-trk-notify">
 			You are not TRKing anyone yet.
@@ -74,33 +67,35 @@
 		<% else %>
 		  <%= render :partial => 'shared/artist_tracked', :collection => @following.ordered %>
 		<% end %>
+		<div class="clear"></div>
 		</ul>
-		<%= image_tag "/images/p-bulge-bot.png", :alt => "Shadow", :class => "p-bulge-b" %>
-	</div>
-	<div class="clear"></div>
-	<div class="content-top recommend-text-nudge">
-		<div class="signika-txt top-header font-35 left">Here are a few artists we have recommended for you...</div>
-		<div class="content-top-right">
-			We noticed you’ve already liked a few artists on Facebook, so decided to recommend some you might want to track.
-			With one simple click, it’s easy to add and remove artists to your tracking timeline.
-			<br/>
-			<br/>
-			Navigate to the home page, where you will able to view your personalized
-			timeline of releases, old and new...
-		</div>
-	</div>
-	<div class="clear"></div>
-	<div class="recommended-artists-outer">
-	 <% if @user.suggested.count.zero? %>
-	 <p>Sorry, we have no suggestions for you at the moment... </p>
-	 <% else %>
-		<div class="recommended-artists">
+	</div></div>
+<%= image_tag "/images/p-bulge-bot.png", :alt => "Shadow", :class => "p-bulge-b" %>
+</div></div>
+<div class="row recommend-top"><div class="span10 offset1">
+<div class="row"><div class="span5">
+<h1>Here are a few artists you already like, just to get you started...</h1>	
+</div>
+<div class="span5">
+<span>We noticed you’ve already liked a few artists on Facebook, so decided to recommend some you might want to TRK. 
+With one simple click, it’s easy to add and remove artists to your TRKing timeline.<br/><br/>Continue to the home page, 
+where you will able to view your personalised timeline of releases, old and new...</span>
+</div></div>	
+</div></div>
+<div class="row recommendations"><div class="span10 offset1">
 			<ul id="ajax-recommended-artists">
+  		<% if @user.suggested.count >= 6 %>
 				<%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 6] %>
+    		<% else %>
+      		<div id="loading">
+      		<h3>Please wait...</h3>
+      		<i class="icon-refresh"></i><br/>
+      		...while we work our magic and find which artists you’ve already liked on Facebook.
+      		</div>		  
+  		<% end %>
+			<div class="clear"></div>
 			</ul>
-		</div>
-		<% end %>
-	</div>
+</div></div>
 	<script>
   	artist_suggestion_replace();
 	</script>

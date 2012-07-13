@@ -1,33 +1,20 @@
-    .content-top {
-  position:relative;
-  width:666px;
-  height:128px;
-  .top-header {
-    float:left;
-    width:340px;
-  }
-  .content-top-right {
-    float:right;
-    width:302px;
-    margin-top:9px;
-    line-height:1.4em;
-  }
+.recommend-top {
+	h1 {
+		width:340px;
+		margin-left:56px;
+		
+	}
+	span {
+		width:302px;
+		line-height:1.4em;
+		margin:9px 0 0 30px;
+		display:block;
+	}
 }
-.recommend-text-nudge {
-  top:13px;
-}
-.recommended-artists-outer {
-  position:relative;
-  height:443px;
-  margin-top:31px;
-  .recommended-artists {
-  position:relative;
-  top:0px;
-  width:667px;
-  height:410px; 
+.recommendations {
   ul {
     list-style-type:none;
-    margin-left:-30px;
+    margin:19px 0 0 26px;
     .each-recommend {
     @extend .left;
     position:relative;
@@ -146,14 +133,9 @@
           }
    }
   }
+span {
+	@extend .button;
+	@extend .right;
+	margin:-3px 113px 31px 0;
 }
-}
-.recommend-continue {
-  position:relative;
-  right:-6px;
-  bottom:1px;
-  height:54px;
-}
-.other-recommend-nudge {
-  margin-top:19px;
 }

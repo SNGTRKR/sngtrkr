@@ -83,27 +83,16 @@ $(document).ready(function () {
     $(".ajaxful-rating-wrapper").replaceWith(status.responseText)
   });
 
-  $("#delete-account span a").fancybox({
+  $(".light-box-parent").fancybox({
     width: 431,
     height: 286,
     autoSize: false,
     closeClick: false
-  });
-  $("#manage-artist span a").fancybox({
-    width: 431,
-    height: 286,
-    autoSize: false,
-    closeClick: false
-  });
-  $(".release-menu a").fancybox({
-    width: 543,
-    height: 315,
-    autoSize: false
   });
   $("#artist-bio a").fancybox({
     autoScale: true,
   });
-  $("#manage-top a").fancybox({
+  $(".manage-top a").fancybox({
     autoScale: true,
   });
   $('#artist-mini-search-submit').click(function(){

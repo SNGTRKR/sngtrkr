@@ -1,36 +1,31 @@
 <% content_for :title do %>Artist recommendations<% end %>
 <% content_for :description do %>We noticed you’ve already liked a few artists on Facebook, so decided to recommend some you might want to track. With one simple click, it’s easy to add and remove artists to your tracking timeline.<% end %>
 <% content_for :extra_head do  javascript_include_tag "/jquery-rotate-compressed.2.2" end %>
-<div class="content content-pad-160-bottom">
-<div class="content-top">
-<h2 class="signika-txt top-header font-35">Here are a few artists you already like, just to get you started...</h2>	
-<div class="content-top-right">
-We noticed you’ve already liked a few artists on Facebook, so decided to recommend some you might want to TRK. 
-With one simple click, it’s easy to add and remove artists to your TRKing timeline.<br/><br/>Continue to the home page, 
-where you will able to view your personalised timeline of releases, old and new...
-</div>	
+<div class="row recommend-top"><div class="span10 offset1">
+<div class="row"><div class="span5">
+<h1>Here are a few artists you already like, just to get you started...</h1>	
 </div>
-<div class="clear"></div>
-	<div class="recommended-artists-outer other-recommend-nudge">
-		<div class="recommended-artists">
+<div class="span5">
+<span>We noticed you’ve already liked a few artists on Facebook, so decided to recommend some you might want to TRK. 
+With one simple click, it’s easy to add and remove artists to your TRKing timeline.<br/><br/>Continue to the home page, 
+where you will able to view your personalised timeline of releases, old and new...</span>
+</div></div>	
+</div></div>
+<div class="row recommendations"><div class="span10 offset1">
 			<ul id="ajax-recommended-artists">
   		<% if @user.suggested.count >= 6 %>
 				<%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 6] %>
     		<% else %>
       		<div id="loading">
-<h2 class="signika-txt font-25">Please wait...</h2>
-	<i class="icon-refresh"></i><br/>
-	...while we work our magic and find which artists you’ve already liked on Facebook.
-</div>		  
+      		<h3>Please wait...</h3>
+      		<i class="icon-refresh"></i><br/>
+      		...while we work our magic and find which artists you’ve already liked on Facebook.
+      		</div>		  
   		<% end %>
+			<div class="clear"></div>
 			</ul>
-		</div>
-	</div>
-<div class="recommend-continue">
-  <div class="o-button norm-o-pad right signika-font font-13">
-    <a href="/">Continue</a>
-  </div>
-</div>
+<span><a href="/">Continue</a></span>
+</div></div>
 <script>
   $(document).ready(function(){
     artist_suggestion_replace();
