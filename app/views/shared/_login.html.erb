@@ -10,8 +10,8 @@
 	<%= form_for Feedback.new, :remote => true do |f| %>
 	<%= f.text_area :feedback, :id => "fedbox", :class => "form-text", :rows => 4, :placeholder => "Tell us what you think..." %>
 	<%= f.submit "Submit", :class => :left, :id => 'ajax-feedback-submit-button' %>
+	<div class="cancel">Cancel</div>
 	<% end %>
-	<div class="button cancel">Cancel</div>
 	<div class="clear"></div>
 </div>
 </div>

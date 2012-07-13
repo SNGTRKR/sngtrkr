@@ -1,5 +1,5 @@
 #feedback {
-	margin:-15px -1px 0 15px;
+	margin:-15px 0 0 15px;
 	position:relative;
 	height:26px;
 	width:33px;
@@ -32,7 +32,7 @@
 		padding:10px;
 		width:150px;
 		position:relative;
-		height:147px;
+		height:125px;
 		background-color:rgba(255,255,255,0.75);
 		@include border-bottom-left-radius(8px);
 		@include border-bottom-right-radius(8px);
@@ -41,13 +41,46 @@
 		top:-3px;
 		left:0px;
 		z-index:-1;
+		text-align:center;
 		textarea {
-			margin-top:3px;
+			margin-top:5px;
 			resize:none;
 			width:140px;
 		}
+		input[type=submit] {
+			margin-top:10px;
+			@extend .left;
+		}
 		.cancel {
+			margin-top:10px;
 			@extend .right;
+			@extend .button;
 		}
 	}
 }
+#report-form {
+	      position:absolute;
+	      height:310px;
+	      width:310px;
+	      z-index:2;
+	      top:-310px;
+	      text-align:center;
+	      	      h3 {
+		      margin:55px 0 15px 0;
+		      @extend .signika-txt; 
+		      @extend .font-22;
+      	      }
+      	      .actions {
+      	      width:199px;
+      	      margin:15px auto;
+	      	      input, span {
+		      	      @extend .left;
+		      	      margin:0 7px 0 7px;
+	      	      }
+	      	      span {
+		      	      @extend .left;
+		      	      @extend .button;
+	      	      }
+	      	      
+      	      }
+      }
