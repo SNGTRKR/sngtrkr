@@ -70,7 +70,7 @@
   	<% if @release.genre? %>
     	<%= @release.genre %>
   	<% else %>
-  	 <span>Unknown</span>
+  	 <span class="gray">Unknown</span>
   	<% end %>
 	<% end %><br/>
 	<span class="tooltip-parent" data-title="Record Label" data-placement="left"><i class="icon-tag" title="Record Label"></i></span>
@@ -80,7 +80,7 @@
   	<% if @release.label_name? %>
     	<%= @release.label_name %>
   	<% else %>
-  	<span>Unknown</span>
+  	<span class="gray">Unknown</span>
   	<% end %>
   <% end %>	 
 	<br/>

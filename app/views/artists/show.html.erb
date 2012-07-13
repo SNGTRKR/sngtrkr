@@ -71,16 +71,16 @@ content_for :og_id, @artist.id.to_s
 	<h2><%= @artist.name %></h2>
 	<span class="tooltip-parent icon" data-title="Genre" data-placement="left">
   	<i class="icon-music"></i>
-	</span><% if @artist.genre? %><%= @artist.genre %><% else %><span>No genre set</span><% end %><br/>
+	</span><% if @artist.genre? %><%= @artist.genre %><% else %><span class="gray">No genre set</span><% end %><br/>
 	<span class="tooltip-parent icon" data-title="Label" data-placement="left">
   	<i class="icon-tag"></i>
 	</span>	
-  <% if @artist.label_name? %><%= truncate((strip_tags @artist.label_name || "" ), :length => 50) %><% else %><span>No label set</span><% end %><br/><br/>
+  <% if @artist.label_name? %><%= truncate((strip_tags @artist.label_name || "" ), :length => 50) %><% else %><span class="gray">No label set</span><% end %><br/><br/>
 <div id="artist-bio">
   <% if @artist.bio? %>
     <%= raw(truncate((strip_tags @artist.bio || "" ), :length => 450, :omission => "...<a href='#bio-full'>Read more</a>")) %>
   <% else %>
-    <span>No biography set</span>
+    <span class="gray">No biography set</span>
   <% end %>
 </div>
 </div>
