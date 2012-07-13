@@ -159,7 +159,25 @@
 	      width:310px;
 	      z-index:2;
 	      top:-310px;
-	      left:49px;
+	      text-align:center;
+	      	      h3 {
+		      margin:55px 0 15px 0;
+		      @extend .signika-txt; 
+		      @extend .font-22;
+      	      }
+      	      .actions {
+      	      width:199px;
+      	      margin:15px auto;
+	      	      input, span {
+		      	      @extend .left;
+		      	      margin:0 7px 0 7px;
+	      	      }
+	      	      span {
+		      	      @extend .left;
+		      	      @extend .button;
+	      	      }
+	      	      
+      	      }
       }
 		}
 		.release-rating {
