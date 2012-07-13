@@ -1,25 +1,28 @@
 <h1>Listing feedbacks</h1>
 
-<table>
+<table class="table ">
+<thead>
   <tr>
     <th>User</th>
     <th>Feedback</th>
-    <th>Url</th>
+    <th>URL</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
-
+</thead>
+<tbody>
 <% @feedbacks.each do |feedback| %>
   <tr>
     <td><%= feedback.user.email %></td>
     <td><%= feedback.feedback %></td>
     <td><%= feedback.url %></td>
-    <td><%= link_to 'Show', feedback %></td>
-    <td><%= link_to 'Edit', edit_feedback_path(feedback) %></td>
-    <td><%= link_to 'Destroy', feedback, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', feedback, :class => 'btn btn-success' %></td>
+    <td><%= link_to 'Edit', edit_feedback_path(feedback), :class => 'btn btn-warning  ' %></td>
+    <td><%= link_to 'Destroy', feedback, confirm: 'Are you sure?', method: :delete, :class => 'btn btn-danger' %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
 
 <br />
