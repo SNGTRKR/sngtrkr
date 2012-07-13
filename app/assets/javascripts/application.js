@@ -83,13 +83,13 @@ $(document).ready(function () {
     $(".ajaxful-rating-wrapper").replaceWith(status.responseText)
   });
 
-  $("#delete-account a").fancybox({
+  $("#delete-account span a").fancybox({
     width: 431,
     height: 286,
     autoSize: false,
     closeClick: false
   });
-  $("#delete-artist-trigger a").fancybox({
+  $("#manage-artist span a").fancybox({
     width: 431,
     height: 286,
     autoSize: false,

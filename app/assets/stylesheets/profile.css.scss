@@ -76,7 +76,7 @@
         border-bottom: 1px solid #B0E0E6;
         input{
             background:transparent;
-            padding:0.6em;
+            padding:0.3em;
             border:none;
             width:100px;
         }
@@ -113,7 +113,7 @@ margin-left:-15px;
 	      @extend .font-13;
 	      font-weight:bold;
       }
-      span {
+      .followers {
 	      @extend .instruct-font;
 	      @extend .orange-txt;
       }

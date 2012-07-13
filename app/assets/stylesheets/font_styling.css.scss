@@ -119,5 +119,6 @@ strong {
 }
 h1 {
 	@extend .signika-txt;
-	@extend .font-35
+	@extend .font-35;
+	margin-left:-2px;
 }

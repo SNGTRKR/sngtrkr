@@ -1,5 +1,5 @@
 <li>
-		<%= link_to artist_path(artist_tracked) do %><div><%= truncate(artist_tracked.name, :length => 20) %></div><% end %>
-		<span><%= artist_tracked.followers %> TRKRs</span>
+		<%= link_to artist_path(artist_tracked) do %><div class="name"><%= truncate(artist_tracked.name, :length => 20) %></div><% end %>
+		<span class="followers"><%= artist_tracked.followers %> TRKRs</span>
 		<%= link_to artist_unfollow_path(artist_tracked), :remote => true, :class => 'untrk-artist' do %><i class="icon-remove"></i><% end %>
 </li>
