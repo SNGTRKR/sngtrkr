@@ -167,8 +167,10 @@
 </div></div>
 <script type="text/javascript">
 	$(document).ready(function () {
-			$(".share-release").click(function() { $('#opac-50').fadeIn("normal"); $('#share-release').animate({right : 0}, "slow"); $('#buy-release').animate({left : -310}, "slow");});
+		$(".share-release").click(function() { $('#opac-50').fadeIn("normal"); $('#share-release').animate({right : 0}, "slow"); $('#buy-release').animate({left : -310}, "slow");});
 		$(".share-cancel").click(function() { $('#opac-50').fadeOut("normal"); $('#share-release').animate({right : -310}, "slow"); });
+		$(".report-release").click(function(){ $('#opac-50').fadeIn("normal"); $('#report-form ').animate({top : 60}, "slow"); });
+		$("#report-release-cancel").click(function() { $('#opac-50').fadeOut("normal"); $('#report-form').animate({top : -310}, "slow"); });
 		$("#share-release ul a li").click(function() { $('#opac-50').fadeOut("normal"); $('#share-release').animate({right : -310}, "slow"); });
 	    $(".buy-release").click(function() { $('#opac-50').fadeIn("normal"); $('#buy-release').animate({left : 0}, "slow"); $('#share-release').animate({right : -310}, "slow"); });
 		$(".buy-cancel").click(function() { $('#opac-50').fadeOut("normal"); $('#buy-release').animate({left : -310}, "slow"); });

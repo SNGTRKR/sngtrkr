@@ -17,7 +17,6 @@
 //= require jplayer/jquery.jplayer
 //= require jplayer/jplayer.playlist
 //= require carousel/jquery.carousel-packed.js
-//= require jquery.purr
 //= require best_in_place
 //= require rotate/jQueryRotate.2.2
 // BOOTSTRAP REQUIRES
