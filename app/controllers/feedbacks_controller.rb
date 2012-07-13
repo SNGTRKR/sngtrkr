@@ -48,7 +48,7 @@ class FeedbacksController < ApplicationController
 
     respond_to do |format|
       if @feedback.save
-        format.html { redirect_to @feedback, notice: 'Feedback was successfully created.' }
+        format.html { redirect_to @feedback.url, notice: 'Your feedback has been saved and we\'ll read it shortly. Thank you!' }
         format.json { render json: @feedback, status: :created, location: @feedback }
         format.js { render 'confirm' }
       else

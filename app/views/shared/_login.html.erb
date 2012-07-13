@@ -2,17 +2,14 @@
 <%= link_to(destroy_user_session_path, :method => :delete) do %><div class="logout-button">Logout</div><% end %>
 <a href="/users/me"><div class="p-head"><%= image_tag "/images/profile.png", :alt => "Profile", :id => "profile-pad" %></div></a>
 <div id="feedback">
-<div id="trigger">
+<div id="trigger" class="popover-parent" data-title="Submit feedback" data-content="We love feedback. Feel free to tell us what you think about the site or report a bug.">
 <i class="icon-bullhorn"></i>
 <span></span>
 </div>
 <div id="content">
-	<p>
-	We love feedback. Feel free to tell us what you think about the site or report a bug.
-	</p>
 	<%= form_for Feedback.new, :remote => true do |f| %>
 	<%= f.text_area :feedback, :id => "fedbox", :class => "form-text", :rows => 4, :placeholder => "Tell us what you think..." %>
-	<%= f.submit "Submit", :class => :left, :disable_with => 'Submitted!' %>
+	<%= f.submit "Submit", :class => :left, :id => 'ajax-feedback-submit-button' %>
 	<% end %>
 	<div class="button cancel">Cancel</div>
 	<div class="clear"></div>

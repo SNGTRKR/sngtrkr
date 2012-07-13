@@ -4,6 +4,7 @@ $v-line-length: 30px;
 $h-line-height: 50px;
 $h-v-space: 20px;
 $overlap: $width*0.25;
+
 #shadow-top {
   position:absolute;
   height:43px;
@@ -19,7 +20,7 @@ $overlap: $width*0.25;
   position:relative;
   height:1.9*($height+$v-line-length+$h-v-space)+$h-line-height+20px;
   background-image: url(/images/grid2.png);
-  margin-bottom:30px;
+  margin:-166px 0 30px 0;
   @extend .scrollbar;
 }
 #timelime-trim {
@@ -38,7 +39,7 @@ $overlap: $width*0.25;
 	  list-style-type: none;
 	  position:relative;
 	  margin:0 0 0 159px;
-    width:11800px; 
+    //width:11800px; 
 	 
   .release-outer {
  		height:$height + $v-line-length+$h-v-space;
@@ -278,14 +279,14 @@ $overlap: $width*0.25;
   }
   #left-logo {
 	  position:absolute;
-	  left:24px;
-	  top:250px;
+	  left:33px;
+    top:$height + $h-line-height/2 + 12px;
   }
   #left-line {
   position:relative;
-  top:277px;
+  top:$height + $h-line-height + $h-v-space/2 - 4px;
   left:77px;
-  width:147px;
+  width:$width/2 - 25px;
   border-style:solid;
   border-bottom-width:3px;
   border-bottom-color:#000;

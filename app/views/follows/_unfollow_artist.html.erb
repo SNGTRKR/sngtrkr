@@ -1,3 +1,5 @@
 <% css_class ||= nil %>
 <% id ||= nil %>
-<%= link_to artist_unfollow_path(unfollow_artist), :method => :post, :class => "remove-trkr #{css_class}", :remote => true, :id => id do %><i class="icon-minus"></i><% end %>
+<%= link_to artist_unfollow_path(unfollow_artist), :method => :post, :class => "remove-trkr #{css_class}", :remote => true, :id => id do %>
+  <i class="icon-minus"></i>
+<% end %>
