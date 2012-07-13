@@ -1,18 +1,18 @@
-//= require jquery.scrollto-1.4.2-min
 
+//= require jquery.scrollto-1.4.2-min
+var page, old_width, new_width
 $(document).ready(function () {
   // Scroll to end of timeline
-  $("#timeline").scrollTo('max');
   // Set global AJAX load variable
   var last_load = new Date().getTime();;
   $('.release-list').width(timeline_widths());
-  var page = 2
+  $("#timeline").scrollTo('max');
+  page = 2
   // Ajax scroll load
   $('#timeline').scroll(function () {
-    if ($(this).scrollLeft() < 500 && (new Date().getTime() - last_load) > 300) {
+    if ($(this).scrollLeft() < 500 && (new Date().getTime() - last_load) > 1000) {
       last_load = new Date().getTime();;
       $(this).trigger('mouseup');
-      console.log('Scrolled to end!');
       $.get('/users/me/timeline/' + page);
       page++;
     }
@@ -27,7 +27,7 @@ function timeline_widths() {
     var $step = $(this);
     stepsWidth += $step.width() - 75;
   });
-  return stepsWidth + 75
+  return stepsWidth + 50
 }
 
 function timeline_setup() {
@@ -134,11 +134,6 @@ function timeline_setup() {
     if ($(this).data('down') == true) {
       this.scrollLeft = $(this).data('scrollLeft') + $(this).data('x') - event.clientX;
     }
-  }).mousewheel(function (event, delta) {
-    this.scrollLeft -= (delta * 30);
-  }).css({
-    'overflow': 'hidden',
-    'cursor': '-moz-grab'
   });
 
   $(window).mouseout(function (event) {
