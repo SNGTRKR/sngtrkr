@@ -1,12 +1,11 @@
 <% content_for :title do %>Profile Settings<% end %>
 <% content_for :description do %>Editing the profile settings for <%= @user.first_name %>. You can change your email address, update your email notification settings and delete your account.<% end %>
-<div class="content content-pad-160-bottom">
-	<h2 class="signika-txt top-header font-35">Profile Settings</h2>
-	<div id="p-settings">
+<div class="row"><div class="span10 offset1">
 		<div id="change-email">
-			<h3><div class="font-13"><strong>Change Email</strong></div></h3>
+			<h1>Profile Settings</h1>
+			<h3>Change Email</h3>
 			<br/>
-			Your current email address is <strong><%= @user.email %></strong></ENTER>.
+			Your current email address is <strong><%= @user.email %></strong>.
 			<br/>
 			<br/>
 			<%= form_for(@user) do |f| %>
@@ -26,76 +25,68 @@
 			<ul>
 				<li>
 					<%= f.label :email %>
-					<%= f.text_field :email, :value => '', :class => 'form-text' %>
+					<%= f.text_field :email, :value => '' %>
 				</li>
-				<li id="change-email-submit-pad">
-						<%= f.submit "Change Email", :class => "o-button left norm-o-pad signika-font" %>
-				</li>
+				<div class="clear"></div>
 			</ul>
+			<%= f.submit "Change Email" %>
 			<% end %>
 			<%= form_for(@user) do |f| %>
-		</div>
-		<div class="clear"></div>
+		</div></div></div>
+	<div class="row"><div class="span10 offset1">
 		<div id="email-notify">
-			<h3><div class="font-13"><strong>Email Notifications</strong></div></h3>
+			<h3>Email Notifications</h3>
 			<br/>
 			You can change how often you receive emails for new releases, from the options provided below.
 			The default setting is <strong>Daily</strong>.
 			<br/>
 			<br/>
 			<ul>
-				<li class="radio-pad">
-					<%= f.radio_button :email_frequency, 0, :class => 'form-text left' %>
+				<li>
+					<%= f.radio_button :email_frequency, 0 %>
 					<%= f.label :instant %>
 				</li>
-				<li class="radio-pad">
-					<%= f.radio_button :email_frequency, 1, :class => 'form-text left' %>
+				<li>
+					<%= f.radio_button :email_frequency, 1 %>
 					<%= f.label :daily %>
 				</li>
-				<li class="radio-pad">
-					<%= f.radio_button :email_frequency, 2, :class => 'form-text left' %>
+				<li>
+					<%= f.radio_button :email_frequency, 2 %>
 					<%= f.label :weekly %>
 				</li>
-				<li class="radio-pad">
-					<%= f.radio_button :email_frequency, 3, :class => 'form-text left' %>
+				<li>
+					<%= f.radio_button :email_frequency, 3 %>
 					<%= f.label :fortnightly %>
 				</li>
 				<li>
-					<%= f.radio_button :email_frequency, 4, :class => 'form-text left' %>
+					<%= f.radio_button :email_frequency, 4 %>
 					<%= f.label :monthly %>
 				</li>
 				<div class="clear"></div>
-				<div id="save-settings-submit-pad">
-						<%= f.submit 'Save Email Changes', :class => "o-button left norm-o-pad signika-font" %>
-				</div>
 			</ul>
+			<%= f.submit 'Save Email Changes' %>
 			<% end %>
-		</div>
-		<div class="clear"></div>
+		</div></div></div>
 		<% if @user.manager? %>
+	<div class="row"><div class="span10 offset1">
 				<div id="manage-artist">
-			<h3><div class="font-13"><strong>Artist management</strong></div></h3>
+			<h3>Artist management</h3>
 			<br/>
 			You are currently managing the artist known as <strong><%= @user.managing.first.name %></strong>.
 			<br/>
 			<br/>
-			<%= link_to edit_artist_path(@user.managing.first) do %><div class="o-button norm-o-pad left signika-font font-13">
+			<%= link_to edit_artist_path(@user.managing.first) do %><div>
 			Edit</div><% end %>
-			<div id="delete-artist-trigger"><a href="#unmanage-confirmation"><div class="o-button norm-o-pad left signika-font font-13 delete-artist-pad">
-					Delete</div></a>
-				</div></div>
-				<div class="clear"></div>
+			<span><a href="#unmanage-confirmation">Delete</a></span>
+				</div></div></div>
 				<% else %><% end %>
+	<div class="row"><div class="span10 offset1">
 		<div id="delete-account">
-			<h3><div class="font-13"><strong>Delete Your Account</strong></div></h3>
+			<h3>Delete Your Account</h3>
 			<br/>
-			Your account, tracked artists and all personal details will be permanently removed.
-			<div id="delete-submit-pad">
-				<a href="#delete-confirmation"><div class="o-button norm-o-pad left signika-font font-13">
-					Delete Account</div></a>
-			</div>
-		</div>
-	</div>
+			Your account, tracked artists and all personal details will be permanently removed.<br/><br/>
+				<span><a href="#delete-confirmation">Delete Account</a></span>
+		</div></div></div>
 	<div id="delete-confirmation">
 		<%= render :partial => 'delete_confirm' %>
 	</div>

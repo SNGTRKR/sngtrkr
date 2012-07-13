@@ -1,18 +1,24 @@
-.share-bank {
-  position:relative;
-  height:95px;
-  width:400px;
-  top:34px;
-  left:171px;
-  ul {
+#share-friends {
+text-align:center;
+margin-bottom:26px;
+	div {
+		@extend .font-14;
+		font-weight:bold;
+	}
+	span {
+		@extend .font-11;
+	}
+  #share-bank {
     list-style-type:none;
-    margin-left:-30px;
-    .fb-icon, .twit-icon, .goo-icon {
+    margin:30px auto;
+    width:350px;
+    li {
 	      height:86px;
 	      width:86px;
 	      line-height:86px;
 	      @include border-radius(10px);
-	      margin-left:30px;
+	      margin:0 15px 0 15px;
+	      @extend .left;
       }
       .goo-icon {
 		overflow:hidden;
@@ -35,19 +41,12 @@
       }
   }
 }
-.share-warning {
-  position:relative;
-  width:378px;
-  left:141px;
-  top:62px;
-  text-align:center;
-  height:121px;
-}
 #friends-list {
-  position:relative;
   width:667px;
-  top:14px;
-  margin-bottom:25px;
+  margin:0 0 12px 56px;
+  h1 {
+	  margin-bottom:19px;
+  }
   ul {
     list-style-type:none;
     margin-left:-20px;
@@ -60,13 +59,14 @@
       background:rgba(255,255,255,0.75);
       @include border-radius(8px);
       @include box-shadow(0px 2px 5px rgba(0, 0, 0, 0.25));
-      
+      @extend .left;
+      position:relative;
     }
     .friends-image {
-      position:relative;
+      position:absolute;
       @include border-top-left-radius(8px);
       @include border-bottom-left-radius(8px);
-      bottom:26px;
+      top:0px;
       left:0px;
       height:90px;
       width:80px;
@@ -76,10 +76,16 @@
       background:$gray;
     }
     .friends-info {
-      position:relative;
-      left:92px;
-      bottom:89px;
+      margin-left:92px;
       width:105px;
+      h3 {
+	      font-weight:bold;
+	      @extend .font-13;
+      }
+      span {
+	      @extend .orange-txt;
+	      @extend .instruct-font;
+      }
     }
     a {
       color:#000;
@@ -89,11 +95,10 @@
     }
   }
         .friends-search {
-        position:absolute;
-        right:-1px;
-        bottom:21px;
+		@extend .right;
         height:25px;
         width:209px;
+        margin:-56px -2px 0 0;
         background:rgba(255,255,255,0.75);
         @include border-radius(7px);
         @include box-shadow(inset 0px 1px 6px rgba(0, 0, 0, 0.25));
@@ -101,15 +106,17 @@
         border-bottom: 1px solid #B0E0E6;
         input{
             background:transparent;
-            padding:0.6em;
+            padding:0.3em;
             border:none;
-            width:150px;
+            width:160px;
         }
         input:focus{
             outline:none;
         }
+        div {
+	        @extend .right;
+	        @extend .search-button;
+	        @extend .search;
+        }
     }
-}
-#friends-buffer {
-	margin-bottom:25px;
 }
