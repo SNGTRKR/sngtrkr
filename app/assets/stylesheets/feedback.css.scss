@@ -48,11 +48,9 @@
 			width:140px;
 		}
 		input[type=submit] {
-			margin-top:10px;
 			@extend .left;
 		}
 		.cancel {
-			margin-top:10px;
 			@extend .right;
 			@extend .button;
 		}
