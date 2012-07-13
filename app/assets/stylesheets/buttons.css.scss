@@ -298,3 +298,15 @@ input.o-button {
             float:left;
             margin-right:15px;
           }
+.popover {
+arrow {
+	background-color:$gray !important;
+}
+.popover-inner {
+	background-color:$gray !important;
+	h3 {
+		color:#fff;
+		font-weight:bold;
+		background-color:$orange !important;
+	}
+} }
