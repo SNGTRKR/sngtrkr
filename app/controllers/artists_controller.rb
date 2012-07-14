@@ -11,7 +11,9 @@ class ArtistsController < ApplicationController
   end
   
   def index
-    @search = params[:search]
+    @search = params[:search].dup # Don't want the original string
+    if @search["and "] then @search["and "] = "" end # remove ands from search
+    if @search["& "] then @search["& "] = "" end # remove & from search
     if params[:search].blank?
       @empty_search = true
     elsif(params[:search].length < 2)
