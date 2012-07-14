@@ -49,10 +49,12 @@
 		}
 		input[type=submit] {
 			@extend .left;
+			@extend .font-13;
 		}
 		.cancel {
 			@extend .right;
 			@extend .button;
+			@extend .font-13;
 		}
 	}
 }
