@@ -1,2 +1,2 @@
-$('.ajax-artist-track a.remove-trkr').parent().html("<%=j render :partial => "follows/follow_artist", :object => @artist, :locals => { :css_class => "left", :id => "add-trkr" } %>");
+$('.ajax-artist-track a.remove-trkr, .friend-trkr-buttons a.remove-trkr').parent().html("<%=j render :partial => "follows/follow_artist", :object => @artist, :locals => { :css_class => "left", :id => "add-trkr" } %>");
 console.log('Untrked Artist ID <%= @artist_id %>');
