@@ -62,6 +62,7 @@ input.o-button {
 
 .fb-button {
 			color:white;
+			cursor: pointer;
 			@include border-radius(7px);
 			text-align:center;
 		    background:#375A98;
@@ -90,6 +91,7 @@ input.o-button {
 }
 .google-button {
 			color:white;
+			cursor: pointer;
 			@include border-radius(7px);
 			text-align:center;
 		    background:#a5281a;
@@ -118,6 +120,7 @@ input.o-button {
 }
 .twitter-button {
 			color:white;
+			cursor: pointer;
 			@include border-radius(7px);
 			text-align:center;
 		    background:#33CCFF;
@@ -146,6 +149,7 @@ input.o-button {
 }
 .white-button {
 			color:white;
+			cursor: pointer;
 			@include border-radius(7px);
 			text-align:center;
 		    background:#FFFFFF;
@@ -174,6 +178,7 @@ input.o-button {
 }
 .black-button {
 			color:white;
+			cursor: pointer;
 			@include border-radius(7px);
 			text-align:center;
 		    background:#000000;
@@ -202,6 +207,7 @@ input.o-button {
 }
 .soundcloud-button {
 			color:white;
+			cursor: pointer;
 			@include border-radius(7px);
 			text-align:center;
 		    background: #f8991d;
@@ -230,6 +236,7 @@ input.o-button {
 }
 .search-button {
 			color:white;
+			cursor: pointer;
 			@include border-top-right-radius(7px);
 			@include border-bottom-right-radius(7px);
 			text-align:center;
