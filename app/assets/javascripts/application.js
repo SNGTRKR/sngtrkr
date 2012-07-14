@@ -99,6 +99,7 @@ $(document).ready(function () {
     $(this).closest('form').submit();
     return false;
   });
+  /*
   $('#mini_search_field').keyup(function () {
     $.get("/artists/search.json", {
       search: $('#mini_search_field').val()
@@ -112,6 +113,29 @@ $(document).ready(function () {
         });
       }
     })
+  });*/
+
+  $('#mini_search_field').typeahead({
+      source: function(typeahead, query) {
+          $.ajax({
+              url: "/artists/search.json",
+              dataType: "json",
+              type: "POST",
+              data: {
+                  query: query
+              },
+              success: function(data) {
+                  var return_list = [], i = data.length;
+                  while (i--) {
+                      return_list[i] = {id: data[i].id, value: data[i].name};
+                  }
+                  typeahead.process(return_list);
+              }
+          });
+      },
+      onselect: function(obj) {
+          window.location = "/artists/"+ obj.id;
+      }
   });
   
   $('.popover-parent').popover();

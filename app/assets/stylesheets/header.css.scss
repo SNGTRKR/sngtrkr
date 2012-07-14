@@ -40,6 +40,7 @@
         @extend .mini-search-common;
         margin:-15px 11px 0 0;
     }
+    /*
     .results:hover {
       display: block;
     }
@@ -142,7 +143,7 @@ a:hover {
 		    0 0px 1px #ccc;
 }
 }
-
+*/
     .logo-home{
         position:relative;
         top:26px;
@@ -170,6 +171,7 @@ a:hover {
 	  color:#fff;
   }
 }
+
 .fb-login {
 	    margin:-16px 0 0 5px;
 	    @extend .right;

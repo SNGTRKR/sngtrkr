@@ -39,8 +39,8 @@ class ArtistsController < ApplicationController
   end
   
   def search
-    @artists = Artist.real_only.search(params[:search])
-    if(params[:search].length < 2)
+    @artists = Artist.real_only.search(params[:query])
+    if(params[:query].length < 2)
       flash.now[:message] = "Please enter at least 2 characters into the search box"
       @artists = [];
     elsif @artists.empty?
