@@ -3,6 +3,27 @@
 <div class="row"><div class="span8 offset2">
 <div class="row">
 <div class="span4">
+<% if can? :manage, Resque %>
+  <div class="super-admin">
+  <%= form_for [@artist,@release] do |f| %>
+  <div class="ignore">
+    <% if !@release.ignore? %>
+      <%= f.hidden_field :ignore, :value => true %>
+      <%= f.submit "Ignore Release", :type => :image, :src => "/images/ignore.png", :class => "i-artist" %>
+    <% else %>
+      <%= f.hidden_field :ignore, :value => false %>
+      <%= f.submit "Unignore Release", :type => :image, :src => "/images/unignore.png", :class => "ui-artist" %>
+  
+    <% end %>
+    </div>
+  <% end %>
+  <!--
+  <div class="edit">
+  <%= link_to edit_artist_path(@artist) do %><i class="icon-edit"></i><% end %>
+  </div>
+  -->
+  </div>
+<% end %>
 <div id="release-image" style="background-image:url(<%= @release.image :release_i %>);background-repeat:no-repeat;background-position:center;">
 <% if @manager %>
   <i class="icon-edit"></i>
@@ -167,6 +188,7 @@
 </div></div>
 <script type="text/javascript">
 	$(document).ready(function () {
+		$(".ignore").mouseover(function(){ $('.ignore').stop().animate({left : 60}, "slow");}).mouseout(function(){$('.ignore').stop().animate({left : 0}, "slow");});
 		$(".share-release").click(function() { $('#opac-50').fadeIn("normal"); $('#share-release').animate({right : 0}, "slow"); $('#buy-release').animate({left : -310}, "slow"); $('#report-form').animate({top : -310}, "slow");});
 		$(".share-cancel").click(function() { $('#opac-50').fadeOut("normal"); $('#share-release').animate({right : -310}, "slow"); });
 		$(".report-release").click(function(){ $('#opac-50').fadeIn("normal"); $('#report-form ').animate({top : 0}, "slow"); $('#buy-release').animate({left : -310}, "slow"); $('#share-release').animate({right : -310}, "slow"); });
