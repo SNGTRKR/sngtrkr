@@ -6,7 +6,9 @@ class ArtistSubJob
     graph = Koala::Facebook::API.new(access_token)
     artist = graph.api("/#{page_id}?fields=name,general_manager,booking_agent,record_label,genre,hometown,website,bio,picture,likes")
     Rails.logger.info(artist)
-    self.perform(access_token, user_id, artist)
+    db_artist = self.perform(access_token, user_id, artist)
+    User.find(user_id).following << db_artist
+    return db_artist
   end
   
   def self.perform access_token, user_id, artist
@@ -90,7 +92,7 @@ class ArtistSubJob
       a.image = io
       end
     end
-    a.save
+    a.save!
     user.suggest_artist a.id
     if !a.sdid.nil?
       Resque.enqueue(ReleaseJob, a.id)
