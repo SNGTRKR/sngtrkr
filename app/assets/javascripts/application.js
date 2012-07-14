@@ -141,8 +141,26 @@ $(document).ready(function () {
   $('.popover-parent').popover();
   $('.tooltip-parent').tooltip();
   $(".alert").alert()
-
+  add_remove_trkr_bind();
+  
 }); // DOCUMENT READY ENDS HERE
+
+function add_remove_trkr_bind() {
+
+  $('a.remove-trkr').bind('ajax:complete', function () {
+    console.log('Added tracker');
+    var artist_id = $(this).data('id');
+    $(this).replaceWith('<a href="/artists/'+artist_id+'/follows" class="mini-trkr-button add-trkr" data-id="'+artist_id+'" data-method="post" data-remote="true" rel="nofollow"><i class="icon-plus"></i></a>');
+    add_remove_trkr_bind()
+  });
+  $('a.add-trkr').bind('ajax:complete', function () {
+    console.log('Removed tracker');
+    var artist_id = $(this).data('id');
+    $(this).replaceWith('<a href="/artists/'+artist_id+'/unfollow" class="mini-trkr-button  remove-trkr" data-id="'+artist_id+'" data-method="post" data-remote="true" rel="nofollow"><i class="icon-minus"></i></a>');
+    add_remove_trkr_bind();
+  });
+
+};
 
 function artist_suggestion_replace() {
   // Sharing options
@@ -160,6 +178,7 @@ function artist_suggestion_replace() {
     // Hide the suggestion itself
     $(this).closest('li').fadeOut(300);
   });
+
   $('a.untrk-artist').bind('ajax:complete', function () {
     $(this).closest('li').fadeOut(300);
     $('#user-following-count').html(parseInt($('#user-following-count').html(), 10) - 1);

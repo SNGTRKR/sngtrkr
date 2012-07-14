@@ -1,3 +1,3 @@
-<%= link_to artist_unfollow_path(unfollow_artist), :method => :post, :class => "mini-trkr-button  remove-trkr", :remote => true do %>
+<%= link_to artist_unfollow_path(unfollow_artist), :method => :post, :class => "mini-trkr-button  remove-trkr", :remote => true, :'data-id' => unfollow_artist.id do %>
   <i class="icon-minus"></i>
 <% end %>
