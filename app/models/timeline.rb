@@ -2,7 +2,7 @@ class Timeline
   def self.artist id
     a = Artist.find(id)
     if(a != nil)
-    a.releases
+    a.real_releases
     else
     []
     end
@@ -14,7 +14,7 @@ class Timeline
   end
 
   def self.user page = 0
-    Release.joins(:artist).order("date DESC").where("artist_id in (?)",@@artists).page(page).per(20)
+    Release.where(:ignore => false).joins(:artist).order("date DESC").where(" artist_id in (?)",@@artists).page(page).per(20)
   end
 
 end

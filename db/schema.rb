@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120710221558) do
+ActiveRecord::Schema.define(:version => 20120714200748) do
 
   create_table "artists", :force => true do |t|
     t.string   "name"
@@ -140,6 +140,7 @@ ActiveRecord::Schema.define(:version => 20120710221558) do
     t.text     "genre"
     t.integer  "upc"
     t.integer  "itunes_id"
+    t.boolean  "ignore"
   end
 
   create_table "roles", :force => true do |t|

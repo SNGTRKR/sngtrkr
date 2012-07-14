@@ -22,6 +22,13 @@ class Release < ActiveRecord::Base
   
   after_create :notify_followers
 
+  before_save :default_values
+  def default_values
+    # Don't ignore new artists!
+    self.ignore ||= false
+    true
+  end
+
   # Notify users that follow this release's artist of this release.
   def notify_followers
     self.artist.followed_users.each do |user|
