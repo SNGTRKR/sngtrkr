@@ -20,7 +20,7 @@ class ReleasesController < ApplicationController
   def show
     @artist = Artist.find(params[:artist_id])
     @release = @artist.releases.find(params[:id])
-    @releases = @artist.releases.all
+    @releases = @artist.real_releases.all
     if current_user.managing.first == @artist 
       @manager = true
     else
