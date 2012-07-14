@@ -9,23 +9,23 @@ content_for :og_id, @artist.id.to_s
 <div class="row">
 <div class="span8 offset2">
 <% if can? :manage, Resque %>
-<div class="super-admin">
-<%= form_for @artist do |f| %>
-<div class="ignore">
-  <% if !@artist.ignore? %>
-    <%= f.hidden_field :ignore, :value => true %>
-    <%= f.submit "Ignore Arist", :type => :image, :src => "/images/ignore.png", :class => "i-artist" %>
-  <% else %>
-    <%= f.hidden_field :ignore, :value => false %>
-    <%= f.submit "Unignore Arist", :type => :image, :src => "/images/unignore.png", :class => "ui-artist" %>
-
+  <div class="super-admin">
+  <%= form_for @artist do |f| %>
+  <div class="ignore">
+    <% if !@artist.ignore? %>
+      <%= f.hidden_field :ignore, :value => true %>
+      <%= f.submit "Ignore Arist", :type => :image, :src => "/images/ignore.png", :class => "i-artist" %>
+    <% else %>
+      <%= f.hidden_field :ignore, :value => false %>
+      <%= f.submit "Unignore Arist", :type => :image, :src => "/images/unignore.png", :class => "ui-artist" %>
+  
+    <% end %>
+    </div>
   <% end %>
+  <div class="edit">
+  <%= link_to edit_artist_path(@artist) do %><i class="icon-edit"></i><% end %>
   </div>
-<% end %>
-<div class="edit">
-<%= link_to edit_artist_path(@artist) do %><i class="icon-edit"></i><% end %>
-</div>
-</div>
+  </div>
 <% end %>
 <div class="row">
 <div class="span4">
