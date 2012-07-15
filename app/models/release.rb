@@ -26,6 +26,7 @@ class Release < ActiveRecord::Base
   def default_values
     # Don't ignore new artists!
     self.ignore ||= false
+    self.scraped ||= false
     true
   end
 
