@@ -179,7 +179,7 @@ function artist_suggestion_replace() {
     $(this).closest('li').fadeOut(300);
   });
 
-  $('a.untrk-artist').bind('ajax:complete', function () {
+  $('a.untrk-artist').bind('ajax:beforeSend', function () {
     $(this).closest('li').fadeOut(300);
     $('#user-following-count').html(parseInt($('#user-following-count').html(), 10) - 1);
   });
