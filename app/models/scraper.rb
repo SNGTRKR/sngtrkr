@@ -118,6 +118,18 @@ class Scraper
     end
     return results
   end
+  
+  def self.similar_artists_7digital artist_id
+    xml =  Hash.from_xml open("http://api.7digital.com/1.2/artist/similar?artistid=#{artist_id}&oauth_consumer_key=#{@sevendigital_apikey}&country=GB", :proxy => @proxy)
+    results = xml["response"]["artists"]["artist"]
+    i = 0
+    ret = Array.new
+    while !results[i].nil? do
+      ret[i] = { :score => results[i]['score'] }
+      i += 1
+    end
+    return results
+  end
 
   # Stores: 1 => itunes, 2 => 7digital, 3 => juno
   def self.find_release_info url, store
