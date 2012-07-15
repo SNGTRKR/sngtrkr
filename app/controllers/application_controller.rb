@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
       end
       return redirect_to '/beta_unauthorized'      
     else
-      redirect_to '/beta_users/new'
+      redirect_to '/beta'
     end
   
   end
