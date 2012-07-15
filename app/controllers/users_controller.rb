@@ -41,7 +41,7 @@ class UsersController < ApplicationController
 
   # GET /users/1
   # GET /users/1.json
-  def show
+  def show  
     # Check if this is your page
     if current_user.id == params[:id].to_i
       api = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
@@ -60,9 +60,10 @@ class UsersController < ApplicationController
       @friend = User.find(params[:id])
       @your_friends = User.where(:fbid => session["friend_ids"])
       @their_friends = User.where(:fbid => session["friend_ids"])
-      if !current_user.friends_with? @friend, session["friend_ids"]
-        return redirect_to :root, :error => "You do not have permissions to view this user"
-      end
+      # Do we want to stop users viewing other users if they aren't facebook friends?
+      #      if !current_user.friends_with? @friend, session["friend_ids"]
+      #        return redirect_to :root, :error => "You do not have permissions to view this user"
+      #      end
       respond_to do |format|
         format.html # show.html.erb
       end
