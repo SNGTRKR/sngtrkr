@@ -21,7 +21,8 @@ SNGTRKR::Application.routes.draw do
     mount RailsAdmin::Engine => '/rails', :as => 'rails_admin' # Feel free to change '/admin' to any namespace you need.
   end
 
-  devise_for :users, :controllers => { :registrations => "users/registrations", :omniauth_callbacks => "users_controller/omniauth_callbacks"}
+  devise_for :users, :controllers => { :registrations => "users/registrations",
+    :omniauth_callbacks => "users_controller/omniauth_callbacks"}
   devise_scope :user do
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   end
@@ -65,7 +66,7 @@ SNGTRKR::Application.routes.draw do
     resources :follows, :except => [:destroy,:edit]
     match 'unfollow' => 'Follows#destroy'
     #resources :suggests, :except => [:destroy,:edit]
-    #match 'unsuggest' => 'Suggests#destroy'
+    match 'unsuggest' => 'Suggests#destroy'
   end
   resources :releases do 
     member do 
