@@ -35,6 +35,51 @@ $overlap: $width*0.25;
   overflow-y: hidden;
   padding:$height*0.025;
   /*cursor: -moz-grab !important;*/ /* should this be applied with JS? */
+
+  #timeline-empty{
+    margin:auto;
+    margin-top:$height - 100px;
+    width: 430px;
+    padding: 30px;
+    border: 3px solid black;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.68);
+    position: relative;
+    h1{
+      margin-top:-10px;
+    }
+    p { 
+      text-align: center;
+      color: #fff;
+      font-size: 1.1em;
+    }
+    a {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    #left-logo{
+      top:40px;
+      left:-100px;
+    }
+    #right-logo{
+      position: absolute;;
+      top:40px ;
+      right:-100px ;
+    }
+    #left-line{
+      top: 37px;
+      left: -80px;
+      width: 47px;
+    }
+    #right-line{
+      border-top: 3px solid black;
+      position: relative;
+      top: 34px;
+      left: 463px;
+      width: 47px;
+    }
+  }
+
   .release-list {
 	  list-style-type: none;
 	  position:relative;

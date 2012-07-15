@@ -21,7 +21,8 @@ class ApplicationController < ActionController::Base
       return true
     end
     # But users can only edit themselves
-    if(params[:user_id]) then id = params[:user_id].to_i else id = params[:id].to_i end
+    if(params[:user_id]) then id = params[:user_id] else id = params[:id] end
+    if(id == "me") then id = current_user.id else id = id.to_i end
     if(id != current_user.id)
       redirect_to :root, :flash => { :error => "You cannot change the settings of another user. If you are seeing
         this message when you are this user, contact us at support@sngtrkr.com" }
