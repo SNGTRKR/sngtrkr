@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   end
 
   def timeline
+    @user = current_user
     # FIXME: This works, but it shouldn't really be in this
     if(current_user.sign_in_count == 1)
       current_user.sign_in_count = 2
