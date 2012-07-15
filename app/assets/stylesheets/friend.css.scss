@@ -80,7 +80,7 @@ margin:5px 0 22px 42px;
 	list-style-type:none;
 	width:446px;
 	margin-left:67px;
-	li {
+	.new-activity {
 	@extend .left;
 	position:relative;
 	height:86px;
@@ -179,6 +179,9 @@ margin:5px 0 22px 42px;
 				line-height:86px;
 				font-size:3em;
 				@extend .o-button;
+		}
+		.activity-play {
+			@import "friend_player.css.scss";
 		}
 			}
 	}	
