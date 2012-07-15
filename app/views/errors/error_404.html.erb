@@ -1,12 +1,16 @@
 <% content_for :title do %>Page not found - ERROR 404<% end %>
-<div class="content content-pad-187-bottom">
-<div id="content-404">
-<div id="content-404-left">
-<h2 class="signika-txt font-100">Oops!</h2>
-<h3 class="txt-404 font-18">Page not found</h3><br/>
-<div class="font-20 txt-404-2">ERROR 404</div></div>
-<div id="content-404-right">
-<%= image_tag "/images/notfound.png", :alt => "Page not found", :id => "not-found" %>
+<div class="row">
+  <div class="span8 offset2">
+    <div id="content-404">
+      <div id="content-404-left">
+        <h2 class="signika-txt font-100">Oops!</h2>
+        <h3 class="txt-404 font-18">Page not found</h3><br/>
+        <div class="font-20 txt-404-2">ERROR 404</div>
+      </div>
+      <div id="content-404-right">
+        <%= image_tag "/images/notfound.png", :alt => "Page not found", :id => "not-found" %>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
 </div>
-</div>
-<div class="clear"></div>
