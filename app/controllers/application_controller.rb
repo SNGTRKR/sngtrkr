@@ -22,6 +22,19 @@ class ApplicationController < ActionController::Base
     flash[:error] = exception.message
     redirect_to root_url
   end
+  
+  def home
+  
+    if user_signed_in?
+      if !current_user.roles.empty? # No roles would mean they are not a beta user
+        return redirect_to '/tl'
+      end
+      return redirect_to '/beta_unauthorized'      
+    else
+      redirect_to '/beta_users/new'
+    end
+  
+  end
 
   def default_url_options
     if Rails.env.production?
