@@ -3,7 +3,7 @@ class Ability
   include Devise
   def initialize(user)
     # Logged in user permissions
-    if !user.blank?
+    if !user.blank? and user.role? :user
       can :manage, [User, Rate, Manage]
       can [:edit, :scrape_confirm], [Artist]
       can :create, [Feedback]

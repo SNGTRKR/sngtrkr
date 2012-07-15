@@ -6,6 +6,8 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Emanuel', :city => cities.first)
 r = Role.create(:name => 'Admin')
+r2 = Role.create(:name => 'User')
+
 u = User.new(:first_name => 'Billy', :last_name => 'Dallimore', :fbid => "660815460", :email => "tom.alan.dallimore@googlemail.com",:password => 'test42343egysfdf', :last_sign_in_at => Time.now, 
   :email_frequency => 1)
 u.roles = [r]
@@ -19,6 +21,7 @@ u.save
 
 u = User.new(:first_name => 'Barry', :last_name => 'Smith', :fbid => "123456789", :email => "tom.alan.dallimore+1@googlemail.com",:password => 'test42343egy76df', :last_sign_in_at => Time.now, 
   :email_frequency => 1)
+u.roles = [r2]
 u.skip_confirmation!
 u.save
 
