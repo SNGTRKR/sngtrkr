@@ -1,5 +1,5 @@
 <li class="each-recommend" style="background-image:url(<%= artist_suggestion.image.url :recommend %>);background-repeat:no-repeat;background-position:center;">
-<div class="new-recommend">
+	<div class="new-recommend">
 		<div class="black-tint"></div>
 		<div class="recommend-info <% if artist_suggestion.name.length > 14 %>twoline<% else %>oneline<% end %>">
 			<%= link_to artist_suggestion.name, artist_suggestion  %>
@@ -8,17 +8,26 @@
 		<div class="share-artist">
 		<h3>Share this artist</h3>
 		<ul>
-		<a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com<%= url_for artist_suggestion %>						%2F&t=SNGTRKR','ShareSNGTRKRonFacebook','scrollbars=no,width=620,height=340'); return false;"><li class="fb-icon fb-button"><i class="icon-facebook"></i></li></a>
-		<a href="#" title="Share on Twitter" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.sngtrkr.com&text=<%= artist_suggestion.name %>+is		+using+SNGTRKR+to+keep+their+fans+up+to+date+with+releases.+Check+them+out+&#45;+www.sngtrkr.com<%= url_for artist_suggestion 																	%>&via=SNGTRKR','ShareSNGTRKRonTwitter','scrollbars=no,width=620,height=340'); return false;"><li class="twit-icon twitter-button"><i class="icon-twitter"></i></li></a>
-		<a href="#" title="Share on Google Plus" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for artist_suggestion 							%>','ShareSNGTRKRonGooglePlus','scrollbars=no,width=620,height=340'); return false;"><li class="goo-icon google-button"><i class="icon-google-plus"></i></li></a>
-		<div class="clear"></div>
+			<a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com<%= url_for artist_suggestion %>						%2F&t=SNGTRKR','ShareSNGTRKRonFacebook','scrollbars=no,width=620,height=340'); return false;">
+				<li class="fb-icon fb-button"><i class="icon-facebook"></i></li>
+			</a>
+			<a href="#" title="Share on Twitter" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.sngtrkr.com&text=<%= artist_suggestion.name %>+is		+using+SNGTRKR+to+keep+their+fans+up+to+date+with+releases.+Check+them+out+&#45;+www.sngtrkr.com<%= url_for artist_suggestion 																	%>&via=SNGTRKR','ShareSNGTRKRonTwitter','scrollbars=no,width=620,height=340'); return false;">
+				<li class="twit-icon twitter-button"><i class="icon-twitter"></i></li>
+			</a>
+			<a href="#" title="Share on Google Plus" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for artist_suggestion 							%>','ShareSNGTRKRonGooglePlus','scrollbars=no,width=620,height=340'); return false;">
+				<li class="goo-icon google-button"><i class="icon-google-plus"></i></li>
+			</a>
+			<div class="clear"></div>
 		</ul>
 		<div class="share-cancel">Cancel</div>
 		</div>
-		</div>
-		<div class="recommend-buttons">
+	</div>
+	<div class="recommend-buttons">
 		<%= render :partial => 'shared/trk_artist', :object => artist_suggestion, :locals => { :icon => 'icon-ok' } %>
-		<div class="mini-share"><i class="icon-share-alt"></i></div>
-		<%= link_to artist_unsuggest_path(artist_suggestion), :remote => true, :class => 'mini-ignore-trk-artist ajax-ignore-artist' do %><i class="icon-remove"></i><% end %>
-		</div>
-		</li>
+		<div class="mini-share tooltip-parent" data-title="Share" data-placement="bottom"><i class="icon-share-alt"></i></div>
+		<%= link_to artist_unsuggest_path(artist_suggestion), :remote => true, 
+			:class => 'mini-ignore-trk-artist ajax-ignore-artist' do %>
+			<i class="icon-remove"></i>
+		<% end %>
+	</div>
+</li>

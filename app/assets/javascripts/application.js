@@ -174,16 +174,16 @@ function artist_suggestion_replace() {
 		$(this).parent().parent().parent().parent().find('.opac-50').fadeOut("normal").parent().find('.share-artist').animate({right : -202}, "slow").parent().find('.recommend-info').fadeIn("normal");;
 	});
 
-  $('.recommend-buttons a.add-trkr, .recommend-buttons a.ajax-ignore-artist').bind('ajax:complete', function () {
+  $('.recommend-buttons a.add-trkr, .recommend-buttons a.ajax-ignore-artist').bind('ajax:beforeSend', function () {
     // Hide the suggestion itself
     $(this).closest('li').fadeOut(300);
   });
 
-  $('a.untrk-artist').bind('ajax:complete', function () {
+  $('a.untrk-artist').bind('ajax:beforeSend', function () {
     $(this).closest('li').fadeOut(300);
     $('#user-following-count').html(parseInt($('#user-following-count').html(), 10) - 1);
   });
   // Disables buttons after they are clicked.
-  $('.recommend-buttons a').click(function(){$(this).removeAttr('href');});
+  $('a').bind('ajax:beforeSend', function(){$(this).removeAttr('href');});
   
 }

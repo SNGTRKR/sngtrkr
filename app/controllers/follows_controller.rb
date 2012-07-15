@@ -16,9 +16,11 @@ class FollowsController < ApplicationController
     # Generate suggestions based on this
     if @tracked_artist.sdid?
       suggestions = Scraper.similar_artists_7digital(@tracked_artist.sdid)
-      suggestions.each do |suggestion|
-        if !Artist.where(:sdid => suggestion.id).empty?
-          current_user.suggest_artist(Artist.where(:sdid => suggestion.id).first.id)
+      if suggestions
+        suggestions.each do |suggestion|
+          if !Artist.where(:sdid => suggestion["id"]).empty?
+            current_user.suggest_artist(Artist.where(:sdid => suggestion["id"]).first.id)
+          end
         end
       end
     end
