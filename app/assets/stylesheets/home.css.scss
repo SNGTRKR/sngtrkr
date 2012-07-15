@@ -50,6 +50,7 @@
 	@extend .left; 
 	@extend .facebook-button;
 }
+#beta-form {
 	input[type=text] {
 		margin-left:2px;
 		margin-bottom:6px !important;
@@ -57,3 +58,4 @@
 	input[type=submit] {
 		margin:-7px 0 0 5px;
 	}
+}
