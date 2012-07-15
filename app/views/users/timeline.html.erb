@@ -7,11 +7,24 @@
 <%= image_tag "/images/shadow-line.png", :id => 'shadow-top' %>
 <div id="timelime-trim">
 <div id="timeline">
-<%= image_tag "/images/timeline-left.png", :alt => "SNGTRKR", :id => "left-logo" %>
-<div id="left-line"></div>
-<ul class="release-list">
-<%= render :partial => 'timeline/release', :collection => @timeline %>
-</ul>
+<% if @timeline.empty? %>
+	<div id="timeline-empty">
+		<%= image_tag "/images/timeline-left.png", :alt => "SNGTRKR", :id => "left-logo" %>
+		<div id="left-line"></div>
+		<%= image_tag "/images/timeline-right.png", :alt => "SNGTRKR", :id => "right-logo" %>
+		<div id="right-line"></div>
+		<h1>Oh dear...</h1>
+		<p>Looks like you aren't tracking anyone yet, or the people you are tracking have no releases out. Why not search for an artist,
+			or head over to the <%= link_to "recommendations page", '/users/me/recommend' %> to see suggested artists you can track?
+		</p>
+	</div>
+<% else %>
+	<%= image_tag "/images/timeline-left.png", :alt => "SNGTRKR", :id => "left-logo" %>
+	<div id="left-line"></div>
+	<ul class="release-list">
+	<%= render :partial => 'timeline/release', :collection => @timeline %>
+	</ul>
+<% end %>
 <div class="clear"></div>
 </div>
 </div>
