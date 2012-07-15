@@ -2,12 +2,9 @@ SNGTRKR::Application.routes.draw do
 
   match 'sitemap.xml' => 'sitemaps#sitemap'
 
-  if(Rails.env.development?)
-    root :to => "Pages#home"
-    match '/beta' => "beta_users#new"
-  else
-    root :to => "beta_users#new"
-  end
+  root :to => "application#home"
+  
+  match 'pages/:action' => 'pages#:action'
   
   match '/about' => "Pages#about"
   match '/terms' => "Pages#terms"
