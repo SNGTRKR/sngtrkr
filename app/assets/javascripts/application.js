@@ -184,6 +184,6 @@ function artist_suggestion_replace() {
     $('#user-following-count').html(parseInt($('#user-following-count').html(), 10) - 1);
   });
   // Disables buttons after they are clicked.
-  $('.recommend-buttons a').click(function(){$(this).removeAttr('href');});
+  $('a').bind('ajax:beforeSend', function(){$(this).removeAttr('href');});
   
 }

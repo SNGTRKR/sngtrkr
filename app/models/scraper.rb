@@ -124,7 +124,7 @@ class Scraper
     results = xml["response"]["artists"]["artist"]
     i = 0
     ret = Array.new
-    while !results[i].nil? do
+    while !results.blank? do
       ret[i] = { :score => results[i]['score'] }
       i += 1
     end
