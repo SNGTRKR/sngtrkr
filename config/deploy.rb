@@ -35,8 +35,6 @@ set :deploy_via, :remote_cache
 default_run_options[:pty] = true  # Forgo errors when deploying from windows
 ssh_options[:forward_agent] = true
 ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "id_rsa")]
-
-# If you are using ssh_keysset :chmod755, "app config db lib public vendor script script/* public/disp*"set :use_sudo, false
  
 set :synchronous_connect, true
 
@@ -59,7 +57,7 @@ namespace :deploy do
   end
 end
 
-#after("deploy:update_code", "deploy:build_missing_paperclip_styles")
+after("deploy:update_code", "deploy:build_missing_paperclip_styles")
 
 ##
 # Rake helper task.

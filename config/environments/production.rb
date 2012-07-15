@@ -18,7 +18,7 @@ SNGTRKR::Application.configure do
   config.assets.compile = false
 
   # Debugging on production
-  config.assets.debug = true
+  config.assets.debug = false
 
   # Generate digests for assets URLs
   config.assets.digest = true
