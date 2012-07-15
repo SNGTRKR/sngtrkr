@@ -107,6 +107,9 @@ appId      : <%= '\''+FB_APP_ID+'\'' %>
 		});
 		totalheight = $("#friend-activity").height();
 		friendheight = totalheight-13;
+		if(friendheight < 500){
+			friendheight = 500;
+		}
 		$("#friend-trkrs").css("height", friendheight );
 		$("#friend-trkr-list").css("height", friendheight );
 
