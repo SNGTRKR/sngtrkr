@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
-  before_filter :self_only, :only => [:edit, :manage, :managing, :unmanage, :friends]
+  before_filter :self_only, :except => [:show, :timeline, :self]
   
   load_and_authorize_resource
 
@@ -10,7 +10,8 @@ class UsersController < ApplicationController
   def self_only
     @user = current_user
     if(params[:id].to_i != current_user.id)
-      redirect_to :root, :error => "You should not try to tamper with other users things..."
+      redirect_to :root, :flash => { :error => "You cannot change the settings of another user. If you feel you are seeing
+        this error when you do manage an artist, contact us at support@sngtrkr.com" }
     end
   end
   
@@ -41,29 +42,35 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @friend = User.find(params[:id])
-    @your_friends = User.where(:fbid => session["friend_ids"])
-    @their_friends = User.where(:fbid => session["friend_ids"])
-    if !current_user.friends_with? @friend, session["friend_ids"]
-      return redirect_to :root, :error => "You do not have permissions to view this user"
-    end
-    respond_to do |format|
-      format.html # show.html.erb
+    # Check if this is your page
+    if current_user.id == params[:id].to_i
+      api = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
+      @user = current_user
+      if @user.managing.count > 0
+        @artist = @user.managing.first
+        @trackers = @artist.followed_users.count
+      end
+      @following = @user.following
+      respond_to do |format|
+        format.html { render '/users/self' }
+      end
+      
+    else
+    
+      @friend = User.find(params[:id])
+      @your_friends = User.where(:fbid => session["friend_ids"])
+      @their_friends = User.where(:fbid => session["friend_ids"])
+      if !current_user.friends_with? @friend, session["friend_ids"]
+        return redirect_to :root, :error => "You do not have permissions to view this user"
+      end
+      respond_to do |format|
+        format.html # show.html.erb
+      end
     end
   end
 
   def self
-    api = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
-    @user = current_user
-    if @user.managing.count > 0
-      @artist = @user.managing.first
-      @trackers = @artist.followed_users.count
-    end
-    @following = @user.following
-
-    respond_to do |format|
-      format.html # show.html.erb
-    end
+    redirect_to "/users/#{current_user.id}"
   end
 
   def friends

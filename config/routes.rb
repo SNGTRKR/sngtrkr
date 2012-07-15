@@ -36,9 +36,10 @@ SNGTRKR::Application.routes.draw do
       get 'managing'
       get 'friends'
       get 'recommend'
+      get 'timeline/:page' => 'Timeline#index'
     end
     collection do
-      get 'me', :action => 'self'
+      match 'me', :action => 'self'
       match 'me/timeline/:page' => 'Timeline#index'
     end
     resources :manages
