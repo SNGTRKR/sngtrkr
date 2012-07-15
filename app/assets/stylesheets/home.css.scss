@@ -1,14 +1,21 @@
 		 .home-txt-1 {
 		    line-height:1.3em;
 		    @extend .font-14;
+		    width:328px;
+		    margin-left:2px;
 	    }
-	    
+	    .home-header {
+		    width:328px;
+		    margin-left:2px;
+	    }
 	    #home-macbook {
-		   margin-left:5px;
+	       position:absolute;
+		   margin:-3px 0 0 -45px;
 	    }
 	   #home-points {
 	  list-style-type: none;
-	  margin:13px 0 56px -30px;
+	  margin:13px 0 56px -28px;
+	  width:810px;
 	  h2 {
 		  	@extend .signika-txt;
 		  	@extend .font-25;
@@ -38,3 +45,15 @@
 			  }
 		  }
 	  }
+.fb-home-login {
+	margin:-3px 0 25px 0;
+	@extend .left; 
+	@extend .facebook-button;
+}
+	input[type=text] {
+		margin-left:2px;
+		margin-bottom:6px !important;
+	}
+	input[type=submit] {
+		margin:-7px 0 0 5px;
+	}
