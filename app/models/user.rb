@@ -40,12 +40,11 @@ class User < ActiveRecord::Base
     if user = self.find_by_fbid(data.id)
       user
     else # Create a user with a stub password.
-      user = self.create!(:email => data.email, :password => Devise.friendly_token[0,20], :fbid => data.id, :first_name => data.first_name, :last_name => data.last_name)
+      user = self.new(:email => data.email, :password => Devise.friendly_token[0,20], :fbid => data.id, :first_name => data.first_name, :last_name => data.last_name)
+      user.confirm! 
+      user.save!
       UserMailer.welcome_email(user).deliver
     end
-    # Confirm the user's email address automatically
-    user.confirm! 
-    user.save!
 
     Scraper.importFbLikes(access_token.credentials.token, user.id)
     user
