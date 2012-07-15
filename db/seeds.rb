@@ -25,11 +25,16 @@ u.roles = [r2]
 u.skip_confirmation!
 u.save
 
-Artist.create!(:name =>"JellyFishBoy", :fbid => "204842319549165", :genre => "Dubstep", :hometown => "Bristol", :booking_email => "billy@jellyfishboy.co.uk")
+a = Artist.create!(:name =>"JellyFishBoy", :fbid => "204842319549165", :genre => "Dubstep", :hometown => "Bristol", :booking_email => "billy@jellyfishboy.co.uk")
 Artist.create!(:name =>"False Economy", :fbid => "193078984080645", :genre => "Dubstep", :hometown => "Bristol", :booking_email => "bessey@gmail.com")
 
-User.find(1).following.build(:id => Artist.find(1).id).save
-User.find(2).following.build(:id => Artist.find(1).id).save
+u = User.find(1)
+u.following << a
+u.save
+
+u = User.find(2)
+u.following << a
+u.save
 
 r1 = Release.create!(:name => "Test", :date => Date.today, :artist_id => Artist.find(1))
 r2 = Release.create!(:name => "Second Test", :date => Date.today, :artist_id => Artist.find(2))

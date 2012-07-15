@@ -88,9 +88,8 @@ appId      : <%= '\''+FB_APP_ID+'\'' %>
 			js.src = "//connect.facebook.net/en_US/all.js";
 			ref.parentNode.insertBefore(js, ref);
 		}(document));
-	</script>
-<script type="text/javascript">
-$(document).ready(function () {
+
+	$(document).ready(function () {
 		$(".mini-share").click(function() {
 			$(this).closest(".each-friend").find('.opac-50').fadeIn("normal");
 			$(this).closest(".each-friend").find('.share-artist').animate({right : 0}, "slow");
@@ -110,5 +109,24 @@ $(document).ready(function () {
 		friendheight = totalheight-13;
 		$("#friend-trkrs").css("height", friendheight );
 		$("#friend-trkr-list").css("height", friendheight );
-});
+
+		function add_remove_friend_trkr_bind(){
+			// Ajax track replacement
+	    	$('a.friend-remove-trkr').bind('ajax:complete', function () {
+	    	  console.log('Added tracker');
+	    	  var artist_id = $(this).data('id');
+	    	  $(this).replaceWith('<a href="/artists/'+artist_id+'/follows" class="friend-add-trkr" data-id="'+artist_id+'" data-method="post" data-remote="true" rel="nofollow"><div class="activity-trkr"><i class="icon-plus"></i></div></a>');
+	    	  add_remove_friend_trkr_bind()
+	    	});
+	    	$('a.friend-add-trkr').bind('ajax:complete', function () {
+	    	  console.log('Removed tracker');
+	    	  var artist_id = $(this).data('id');
+	    	  $(this).replaceWith('<a href="/artists/'+artist_id+'/unfollow" class="friend-remove-trkr" data-id="'+artist_id+'" data-method="post" data-remote="true" rel="nofollow"><div class="activity-trkr"><i class="icon-minus"></i></div></a>');
+	    	  add_remove_friend_trkr_bind();
+	    	});
+	    };
+	    add_remove_friend_trkr_bind();
+
+
+	});
 </script>

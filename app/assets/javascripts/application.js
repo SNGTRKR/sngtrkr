@@ -99,21 +99,6 @@ $(document).ready(function () {
     $(this).closest('form').submit();
     return false;
   });
-  /*
-  $('#mini_search_field').keyup(function () {
-    $.get("/artists/search.json", {
-      search: $('#mini_search_field').val()
-    }, function (data) {
-      if (data == null) {
-        $('#mini_search_results').html("<a>Sorry, we found no results...</a>")
-      } else {
-        $('#mini_search_results').html("")
-        $.each(data, function () {
-          $('#mini_search_results').append("<li><a href=\"/artists/" + this.id + "\">" + this.name + "<br /><span>" + this.genre + "</span></a></li>");
-        });
-      }
-    })
-  });*/
 
   $('#mini_search_field').typeahead({
       source: function(typeahead, query) {
