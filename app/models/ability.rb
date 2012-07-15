@@ -26,7 +26,10 @@ class Ability
     can :read, [User]
     can :manage, [User, Rate, Manage]
     can [:edit, :scrape_confirm], [Artist]
+
+    can [:create, :destroy], [Follow]
     can :create, [Feedback]
+
     can :search, [Artist]
   end
   
