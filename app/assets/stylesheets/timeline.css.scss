@@ -35,46 +35,164 @@ $overlap: $width*0.25;
   overflow-y: hidden;
   padding:$height*0.025;
   /*cursor: -moz-grab !important;*/ /* should this be applied with JS? */
-
+.timeline-recommendations {
+  ul {
+    list-style-type:none;
+    margin:19px 0 0 -32px;
+    .each-recommend {
+    @extend .left;
+    position:relative;
+    height:178px;
+    width:202px;
+    @include border-radius(8px);
+    margin:0 0 42px 30px;
+   .new-recommend {
+      width:202px;
+      height:178px;
+      @include border-radius(8px);
+      @include box-shadow(0px 2px 8px rgba(0,0,0,0.45));
+	  position:relative;
+	  overflow:hidden;
+	            .black-tint {
+            position:absolute; 
+            height:178px;
+          width:202px;
+          @include border-radius(8px);
+          $experimental-support-for-svg: true;
+          @include background-image(linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 94%, rgba(0,0,0,1) 100%));
+          }
+          .oneline{
+	          top:129px;
+          }
+          .twoline {
+	          top:98px;
+          }
+          .recommend-info {
+            @extend .instruct-font;
+            @extend .font-20;
+            position:relative;
+            text-align:center;
+            line-height:1.4em;
+            z-index:0;
+            width:202px;
+            display:block;
+            height:30px;
+            a {
+              color:#fff;
+            }
+            a:hover {
+              color:$orange;
+            }
+          }
+          .opac-50 {
+	      position:absolute;
+	      z-index:1;
+	      top:0px;
+	      width:202px;
+	      height:178px;
+	      @include border-radius(8px);
+	      background:rgba(0,0,0,0.75);
+	      display:none;
+      }
+          .share-artist {
+	      position:absolute;
+	      height:178px;
+	      width:202px;
+	      z-index:2;
+	      right:-202px;
+	      top:17px;
+	      h3 {
+		      @extend .signika-txt;
+		      @extend .font-20;
+		      text-align:center;
+	      }
+	      ul {
+		      margin:auto;
+	  	      width: 52px * 3;
+  	          padding:15px;
+		 li {
+	      height:38px;
+	      width:38px;
+	      line-height:38px;
+	      @include border-radius(4px);
+	      margin:0 7px 0 7px;
+	      @extend .left;
+      }
+      .goo-icon {
+		overflow:hidden;
+		font-size:4.8em;	
+      }
+      .icon-twitter {
+	      position:relative;
+	      bottom:2px;
+	      font-size:2.5em;
+      }
+      .icon-facebook {
+	      position:relative;
+	      right:1px;
+	      font-size:2.5em;
+      }
+      .icon-google-plus {
+	      position:relative;
+	      right:20px;
+	      top:6px;
+      }
+	      }
+	      .share-cancel {
+		       margin:10px auto;
+		       width:40px;
+		       @extend .button;
+	      }
+      }
+    }
+             .recommend-buttons {
+	          position:absolute;
+	          height:25px;
+	          width:138px;
+	          top:165px;
+	          left:39px;
+	          z-index:3;
+          }
+   }
+  }
+span {
+	@extend .button;
+	@extend .right;
+	margin:-3px 113px 31px 0;
+}
+}
   #timeline-empty{
     margin:auto;
-    margin-top:$height - 100px;
+    margin-top:$height - 238px;
     width: 430px;
-    padding: 30px;
+    padding:19px 30px 2px 30px;
     border: 3px solid black;
     border-radius: 15px;
     background: rgba(0, 0, 0, 0.68);
     position: relative;
-    h1{
-      margin-top:-10px;
-    }
+    color:#fff;
     p { 
-      text-align: center;
-      color: #fff;
-      font-size: 1.1em;
-    }
-    a {
-      font-weight: bold;
-      text-decoration: underline;
+      margin-top:5px;
+      @extend .font-13;
     }
     #left-logo{
-      top:40px;
+      top:264px;
       left:-100px;
     }
     #right-logo{
-      position: absolute;;
-      top:40px ;
+      position:absolute;
+      top:265px ;
       right:-100px ;
     }
     #left-line{
-      top: 37px;
+	  position:relative;
       left: -80px;
       width: 47px;
     }
     #right-line{
       border-top: 3px solid black;
       position: relative;
-      top: 34px;
+      top:75%;
       left: 463px;
       width: 47px;
     }
