@@ -15,9 +15,6 @@ class BetaUsersController < ApplicationController
   # GET /beta_users/new
   # GET /beta_users/new.json
   def new
-    if user_signed_in?
-      return redirect_to '/tl'
-    end
     @beta_user = BetaUser.new
 
     respond_to do |format|
