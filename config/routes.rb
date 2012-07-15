@@ -63,8 +63,8 @@ SNGTRKR::Application.routes.draw do
     match 'scrape_confirm' => 'Artists#scrape_confirm'
     resources :follows, :except => [:destroy,:edit]
     match 'unfollow' => 'Follows#destroy'
-    resources :suggests, :except => [:destroy,:edit]
-    match 'unsuggest' => 'Suggests#destroy'
+    #resources :suggests, :except => [:destroy,:edit]
+    #match 'unsuggest' => 'Suggests#destroy'
   end
   resources :releases do 
     member do 

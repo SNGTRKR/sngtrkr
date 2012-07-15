@@ -7,13 +7,6 @@ class ReleasesController < ApplicationController
   
   before_filter :managed_artists_only, :only => [:edit, :update, :create, :destroy, :new]
   
-  def managed_artists_only
-    if current_user.managing.first != Artist.find(params[:artist_id])
-      redirect_to :root, :notice => "I'm sorry but you can't edit release for artists that you don't manage! If you feel you are seeing
-        this error when you do manage an artist, contact us at support@sngtrkr.com"
-    end
-  end
-
   def index
     @artist = Artist.find(params[:artist_id])
     @releases = @artist.releases.all

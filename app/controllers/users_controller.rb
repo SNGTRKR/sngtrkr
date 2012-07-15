@@ -4,16 +4,6 @@ class UsersController < ApplicationController
   before_filter :self_only, :except => [:show, :timeline, :self]
   
   load_and_authorize_resource
-
-    
-  # This action is to ensure a user cannot simply hack a URL to view another user's area
-  def self_only
-    @user = current_user
-    if(params[:id].to_i != current_user.id)
-      redirect_to :root, :flash => { :error => "You cannot change the settings of another user. If you feel you are seeing
-        this error when you do manage an artist, contact us at support@sngtrkr.com" }
-    end
-  end
   
   def index
     @users = User.limit(50).all

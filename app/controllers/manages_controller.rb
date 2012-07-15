@@ -2,6 +2,8 @@ class ManagesController < ApplicationController
 
   load_and_authorize_resource
 
+  before_filter :self_only, :all
+
   def create
     @manage = Manage.new(params[:manage])
     @manage.user_id = current_user.id
@@ -15,7 +17,7 @@ class ManagesController < ApplicationController
     @user = User.find(params[:user_id])
     @manage = @user.manage.find(params[:id])
     @manage.destroy
-    redirect_to edit_user_path(@user), :notice => '<p>You are no longer managing any artists. Should you wish to manage a different artist, or resume managing the same artist, just pay a visit to your profile settings page.</p>'
+    redirect_to edit_user_path(@user), :notice => 'You are no longer managing any artists. Should you wish to manage a different artist, or resume managing the same artist, just pay a visit to your profile settings page.'
   end
 
 end

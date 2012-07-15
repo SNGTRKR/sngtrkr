@@ -8,11 +8,6 @@ class ArtistsController < ApplicationController
   
   before_filter :managed_artists_only, :only => [:edit, :update]
   
-  def managed_artists_only
-    if current_user.managing.first != Artist.find(params[:id])
-      redirect_to :root, :notice => "I'm sorry but you can't edit artists that you don't manage!"
-    end
-  end
   
   def index
     if params[:search].blank?
