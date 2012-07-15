@@ -51,6 +51,7 @@ class User < ActiveRecord::Base
     if BetaUser.beta_user?(data.email, Date.strptime("{ 16, 7, 2012 }", "{ %d, %m, %Y }"))
       Rails.logger.info("BetaUser added to Users: #{data.email}")
       user.roles << Role.where(:name => 'User').first
+      BetaUser.where(:email => data.email).first.destroy
     end
 
     Scraper.importFbLikes(access_token.credentials.token, user.id)
