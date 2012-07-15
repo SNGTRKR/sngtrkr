@@ -1,53 +1,23 @@
-#content-404 {
-	position:relative;
-	width:480px;
-	top:48px;
-	margin-bottom:24px;
-	left:52px;
+.error-pages {
+text-align:center;
+	h2 {
+		@extend .signika-txt;
+		@extend .font-100;
+		margin-left:46px;
 	}
-	#content-500 {
-	position:relative;
-	width:480px;
-	top:48px;
-	height:349px;
-	left:56px;
+	h3 {
+		@extend .font-18;
+		margin-left:52px;
 	}
-#content-403 {
-	position:relative;
-	width:500px;
-	top:48px;
-	height:347px;
-	left:40px;
+	span {
+		margin-left:50px;
+		display:block;
+		width:252px;
 	}
 	#not-found {
-	  position:relative;
-	  left:44px;
-	  top:16px;
-  }
-  #gears {
-	  position:relative;
-	  left:17px;
-	  top:17px;
-  }
-  #lock {
-	  position:relative;
-	  left:28px;
-	  top:39px;
-  }
-#content-404-left {
-  float:left;
-.txt-404 {
-  text-align:center;
-  width:258px;
-  line-height:1.4em;
-}
-.txt-404-2 {
-  color:red;
-  width:258px;
-  text-align:center;
-  line-height:1.4em;
-  }
-}
-#content-404-right {
-  float:right;
+		margin:15px 0 35px 0;
+	}
+	#gears {
+		margin:17px 0 38px 0;
+	}
 }

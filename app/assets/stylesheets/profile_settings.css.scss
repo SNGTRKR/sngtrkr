@@ -17,7 +17,7 @@
                 padding:0 0 18px 0;
             }
             input[type=submit] {
-	            margin-top:-6px;
+	            margin:-3px 4px 0 0;
             }
 }
 #email-notify {
@@ -29,18 +29,16 @@
             label { 
                 width:110px; 
                 display:block;
-                position:relative;
-                bottom:15px;
-                left:30px;
+                margin:-18px 0 22px 30px;
             }
             li {
                 @extend .left;
                 display:block;
                 width:67px;
-                 padding:0 52px 0 0;
+                padding:0 52px 0 0;
             }
             input[type=submit] {
-	            margin-top:-3px;
+	           margin:-3px 4px 0 0;
             }
 }
 #manage-artist {
@@ -49,13 +47,13 @@ margin:0 0 54px 57px;
 	  			@extend .font-13;
 	  			font-weight:bold;
 	  			}
-div, span {
-	@extend .button;
-	@extend .left;
-}
-div {
-	margin-right:15px;
-}
+			div, span {
+				@extend .button;
+				@extend .left;
+			}
+			div {
+				margin-right:15px;
+			}
 }
 #delete-account {
 margin:0 0 57px 57px;

@@ -1,12 +1,11 @@
 <% content_for :title do %>Internal Server Error - ERROR 500<% end %>
-<div class="content content-pad-187-bottom">
-<div id="content-500">
-<div id="content-404-left">
-<h2 class="signika-txt font-100">Oops!</h2>
-<h3 class="txt-404 font-18">Server Error</h3><br/>
-<div class="font-20 txt-404-2">ERROR 500</div></div>
-<div id="content-404-right">
-<%= image_tag "/images/gears.png", :alt => "Server Error", :id => "gears" %>
-</div>
-</div>
-<div class="clear"></div>
+<div class="row error-pages"><div class="span8 offset2">
+	<div class="row"><div class="span4">
+        <h2>Oops!</h2>
+        <h3>Server Error</h3><br/>
+        <span>It seems something went wrong somewhere... <br/>our team has been notified.</span>
+	</div>
+	<div class="span4">
+        <%= image_tag "/images/gears.png", :alt => "Server Error", :id => "gears" %>
+	</div></div>
+</div></div>
