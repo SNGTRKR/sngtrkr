@@ -97,7 +97,22 @@ body{
     background-size: cover;    
     color:$gray;
 }
-#loading {
+.load-recommend {
+	margin:-3px 0 20px 31px;
+	width:666px;
+}
+.load-timeline {
+	margin:-3px 0 24px 33px;
+	width:420px;
+}
+.load-profile {
+	margin:-3px 0 26px 32px;
+	width:666px;
+}
+.load-facebook {
+	width:602px;
+}
+.loading {
 position:relative;
 margin-top:-3px;
 text-align:center;
