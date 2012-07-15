@@ -16,7 +16,7 @@ where you will able to view your personalised timeline of releases, old and new.
   		<% if @user.suggested.count >= 6 %>
 				<%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 6] %>
     		<% else %>
-      		<div id="loading">
+      		<div class="loading load-recommend">
       		<h3>Please wait...</h3>
       		<i class="icon-refresh"></i><br/>
       		...while we work our magic and find which artists you’ve already liked on Facebook.

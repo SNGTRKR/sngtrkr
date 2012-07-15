@@ -22,14 +22,14 @@
   		<% if @user.suggested.count >= 4 %>
 				<%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 4] %>
     		<% else %>
-      		<div id="loading">
+      		<div class="loading load-timeline">
       		<h3>Please wait...</h3>
       		<i class="icon-refresh"></i><br/>
       		...while we work our magic and find which artists you?ve already liked on Facebook.
       		</div>		  
   		<% end %>
-			<div class="clear"></div>
 			</ul>
+			<div class="clear"></div>
 			</div></div>
 	</div>
 <!--	<script type="text/javascript">

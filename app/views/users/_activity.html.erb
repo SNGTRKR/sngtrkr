@@ -1,4 +1,4 @@
-<li>
+<li class="new-activity">
  <% if activity[:action] == 'follow' %>
   <% artist = Artist.find(activity[:id]) %>
   <div class="each-activity">
@@ -14,6 +14,38 @@
   <div class="activity-image" style="background-image:url(<%= release.image :friend_activity_release %>);background-repeat:no-repeat;background-position:center;"><i class="icon-star-empty"></i></div>
     <div class="rate-info"><h2><%= link_to release.artist.name, release.artist %></h2><div><%= link_to release.name, [release.artist, release] %></div><%= activity[:stars] %> stars<br/><span><%= time_ago_in_words(activity[:time]) %> ago.</span></div>
   </div>
-    <div class="activity-play"><i class="icon-play"></i></div>
+      <% if !release.tracks.count.zero? %>
+      <div class="activity-play"> 
+    <div id="release_jplayer_1" class="jp-jplayer"></div>
+  <div id="friend-ticker-player">
+  <div id="jp_container_1" class="jp-audio">
+    <div class="jp-type-single">
+      <div class="jp-gui jp-interface">
+        <ul class="jp-controls">
+          <li><a href="javascript:;" class="jp-play" tabindex="1"><i class="icon-play"></i></a></li>
+          <li><a href="javascript:;" class="jp-pause icon-pause" tabindex="1"></a></li>
+        </ul>
+      </div><!-- jp-interface -->
+      <div class="jp-no-solution"></div> <!-- no-solution -->
+    </div> <!-- jp-single -->
+  </div> <!-- jp-container -->
+	  </div> <! -- friend-ticker-player -->
+ <script type="text/javascript">
+    $(document).ready(function(){
+      $("#release_jplayer_1").jPlayer({
+        ready: function () {
+          $(this).jPlayer("setMedia", {
+            m4a: "<%= release.tracks.first.preview %>"
+          });
+        },
+        swfPath: "/js",
+        supplied: "m4a, oga"
+      });
+    });
+  </script>
+  <% else %>
+  <div class="activity-play popover-parent" data-content="Unfortunately there is no audio available for this release. To find out more information on this release, click the release name to the left." data-original-title="No audio track available" data-placement="right"><i class="icon-volume-off"></i>
+  <% end %>
+  </div>
   <% end %>
 </li>
