@@ -107,15 +107,15 @@ $overlap: $width*0.25;
 		      text-align:center;
 	      }
 	      ul {
-		      position:relative;
-		      left:59px;
-		      top:15px;
+		      margin:auto;
+	  	      width: 52px * 3;
+  	          padding:15px;
 		 li {
 	      height:38px;
 	      width:38px;
 	      line-height:38px;
 	      @include border-radius(4px);
-	      margin-right:15px;
+	      margin:0 7px 0 7px;
 	      @extend .left;
       }
       .goo-icon {
@@ -139,11 +139,9 @@ $overlap: $width*0.25;
       }
 	      }
 	      .share-cancel {
-		      position:relative;
-		      left:67px;
-		      top:39px;
-		      @extend .button;
-		      @extend .left;
+		       margin:10px auto;
+		       width:40px;
+		       @extend .button;
 	      }
       }
     }
