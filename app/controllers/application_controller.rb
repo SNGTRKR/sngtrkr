@@ -13,6 +13,32 @@ class ApplicationController < ActionController::Base
   
   #check_authorization  :unless => :devise_controller? # Breaks rails admin
 
+  # This action is to ensure a user cannot simply hack a URL to view another user's area
+  def self_only
+    @user = current_user
+    # Admins can do anything to anyone
+    if current_user.role? :admin
+      return true
+    end
+    # But users can only edit themselves
+    if(params[:user_id]) then id = params[:user_id].to_i else id = params[:id].to_i end
+    if(id != current_user.id)
+      redirect_to :root, :flash => { :error => "You cannot change the settings of another user. If you are seeing
+        this message when you are this user, contact us at support@sngtrkr.com" }
+    end
+  end
+
+  def managed_artists_only
+    @user = current_user
+
+    if(params[:artist_id]) then id = params[:artist_id].to_i else id = params[:id].to_i end
+
+    if !@user.role? :admin and (@user.managing.count.zero? or @user.managing.first.id != id)
+      redirect_to :root, :notice => "I'm sorry but you can't edit artists that you don't manage! If you are seeing
+        this message when you are the artist's manager, contact us at support@sngtrkr.com"
+    end
+  end
+
   
   def timer_start
     @start_time = Time.now
