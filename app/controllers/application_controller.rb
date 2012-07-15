@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   end
   
   def home
-  
+    flash.keep
     if user_signed_in?
       if !current_user.roles.empty? # No roles would mean they are not a beta user
         return redirect_to '/tl'
