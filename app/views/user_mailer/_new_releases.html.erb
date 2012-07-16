@@ -51,27 +51,8 @@
 			font-family:Arial;
 			font-size:34px;
 			font-weight:bold;
-			line-height:100%;
-			margin-top:0;
-			margin-right:0;
-			margin-bottom:10px;
-			margin-left:0;
 			text-align:left;
 		}
-		h2,.h2{
-			color:#202020;
-			display:block;
-			font-family:Arial;
-			font-size:22px;
-			font-weight:bold;
-			line-height:100%;
-			margin-top:0;
-			margin-right:0;
-			margin-bottom:10px;
-			margin-left:0;
-			text-align:left;
-	
-                }
 		#templatePreheader{
 			background-color:#51AECB;
 		}
@@ -169,16 +150,6 @@
 		.bodyContent div a:link,.bodyContent div a:visited,.bodyContent div a .yshortcuts{
 			color:#F15A24;
 		}
-		
-		.releases tr .r-info a:link { color:#000; text-decoration: none; }
-		.releases tr .r-info a:active { color:#000; text-decoration: none;  }
-		.releases tr .r-info a:visited { color:#000; text-decoration: none;  }
-		.releases tr .r-info a:hover { color:#F15A24; text-decoration: none;  }
-		
-		.releases tr .r-info .artist a:link { color:#F15A24; text-decoration: none; }
-		.releases tr .r-info .artist a:active { color:#F15A24; text-decoration: none;  }
-		.releases tr .r-info .artist a:visited { color:#F15A24; text-decoration: none;  }
-		.releases tr .r-info .artist a:hover { color:#000; text-decoration: none;  }
 		strong {
 			font-weight:bold;
 		}
@@ -238,16 +209,16 @@
                                                     <tr>
                                                         <td valign="top" style="border-collapse: collapse;">
                                                             <div style="color: #000000;font-family: Arial;font-size: 14px;line-height: 150%;text-align: left;"><h1 class="h1" style="color: #202020;display: block;font-family: Arial;font-size: 34px;font-weight: bold;line-height: 100%;margin-top:-30px;margin-right: 0;margin-bottom: 10px;margin-left: 0;text-align: left;">
-	<br>
 	<span style="font-size: 22px; line-height: 100%; ">Hello <%= @user.first_name %> <%= @user.last_name %>,</span></h1>
-	Here is your <%= @date_adjective %> personal digest of artist releases, for <strong><%= Date.today.strftime("#{Date.today.day.ordinalize} %B %Y ") %></strong>
+	Here is your <%= @date_adjective %> personal digest of artist releases, for <b><%= Date.today.strftime("#{Date.today.day.ordinalize} %B %Y ") %></b>
 	<table style="margin-left:-10px;" border="0" cellpadding="10" cellspacing="0" width="100%">
 <% @releases.each do |release| %>
 <tr>
 <td style="height:83px;width:83px;"><img src="http://www.sngtrkr.com<%= release.image :release_email %>"/></td>
-<td style="line-height:1.4em;"><h2><%= link_to release.name, [release.artist, release], :target => "_blank" %></h2><strong>Artist</strong>: <span class="artist"><%= link_to release.artist.name, release.artist, :target => "_blank" %></span></br>
-<strong>Label</strong>: <%= release.label_name %><br/>
-<strong>Catalogue No</strong>: <%= release.cat_no %></td>
+<td style="line-height:1.4em;"><%= link_to release.name, artist_release_url(release.artist, release), :target => "_blank", :style => "color: #F15A24;text-decoration:none;font-weight:bold;font-size:22px;" %><br/>
+<b>Artist</b>: <%= link_to release.artist.name, artist_url(release.artist), :target => "_blank", :style => "color: #F15A24;text-decoration:none;" %><br/>
+<b>Label</b>: <%= release.label_name %><br/>
+<b>Catalogue No</b>: <%= release.cat_no %></td>
 <td style="text-align:center;"><span style="font-size:45px;"><%= release.date.strftime("%d") %></span><br/><span style="font-size:22px;"><%= release.date.strftime("%b") %></span></td>
 </tr>
 <% end %>
@@ -285,7 +256,7 @@
                                                     <tr>
                                                         <td valign="top" width="350" style="border-collapse: collapse;">
                                                             <div style="color: #707070;font-family: Arial;font-size: 12px;line-height: 125%;text-align: left;"><div style="text-align:center;color: #707070;font-family: Arial;font-size: 12px;line-height: 125%;">
-	<span style="color:#ffffff;"><em>Copyright &copy; 2012 SNGTRKR, All rights reserved.<br/>You are receiving this email since you opted in for updates on new artist releases at <a href="http://sngtrkr.com" target="_blank">sngtrkr.com</a>.<br/>To change your email settings, please click <a href="http://sngtrkr.com/users/1/edit" target="_blank">here</a></em><br>
+	<span style="color:#ffffff;"><em>Copyright &copy; 2012 SNGTRKR, All rights reserved.<br/>You are receiving this email since you opted in for updates on new artist releases at <a href="http://sngtrkr.com" target="_blank" style="color: #F15A24;font-weight: normal;text-decoration: underline;">sngtrkr.com</a>.<br/>To change your email settings, please click <%= link_to "here", edit_user_path(@user), :target => "_blank", :style => "color: #F15A24;font-weight: normal;text-decoration: underline;" %>.</em><br>
 	</span></div>
 </div>
                                                         </td>
