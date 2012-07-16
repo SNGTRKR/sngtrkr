@@ -160,7 +160,7 @@ div {
 }
 }
 
-.team{
+/* .team{
 #team-pic {
 	@include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.45));
     @include border-radius(12px);
@@ -192,6 +192,9 @@ h3 {
 	margin:0 0 5px 0;
 	@include text-shadow(0 0.1em 1px rgba(255, 255, 255, 0.31));
 }
+} */
+.about-header {
+	margin:0 0 19px 58px;
 }
 .about-tabs {
   width:666px;
