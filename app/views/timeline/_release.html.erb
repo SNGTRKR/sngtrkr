@@ -12,7 +12,11 @@
       <ul class="release-menu">
       <div>
           <li class="buy-release">Buy</li>
-          <li class="play-release">Listen</li>
+          <% if release.tracks.count > 0 %>
+            <li class="play-release">Listen</li>
+          <% else %>
+            <li>&nbsp;</li>
+          <% end %>
           <li class="share-release">Share</li>
           </div>
       </ul>
