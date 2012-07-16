@@ -685,7 +685,6 @@ input,
 button,
 select,
 textarea {
-  font-weight: normal;
   line-height: 18px;
 }
 input,

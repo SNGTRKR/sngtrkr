@@ -96,7 +96,7 @@ content_for :og_id, @artist.id.to_s
   <li class="share-profile"><i class="icon-share-alt"></i>Share</li>
   <li class="popover-parent ajax-artist-track" data-title="Add TRKR" 
 	<% if !user_signed_in? %><%=raw 'data-content="You must login before you can start tracking artists."' %><% end %>
-    data-content="Keep up to date with <%= @artist.name %> and their releases, by adding them to your TRKing timeline." >
+    data-content="Keep up to date with <%= @artist.name %> and their releases, by adding them to your tracking timeline." >
     <%= render :partial => 'shared/trk_artist', :object => @artist %>
   </li>
   </ul>
