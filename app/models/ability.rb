@@ -25,6 +25,7 @@ class Ability
     guest_permissions(user)
     can :read, [User]
     can :manage, [User, Rate, Manage]
+    can :destroy, [Suggest]
     can [:edit, :scrape_confirm], [Artist]
 
     can [:create, :destroy], [Follow]
