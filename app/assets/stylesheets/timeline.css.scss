@@ -428,10 +428,18 @@ span {
 	  	      text-align:center;
   	      }
   	      @import "timeline_player.css.scss";
-  	      .icon-remove {
+  	      .close-player-playing {
   	      	cursor:pointer;
   	      	position:absolute;
-  	      	top:6px;
+  	      	top:-212px;
+  	      	left:250px;
+  	      	color:$orange;
+  	      	font-size:1.4em;
+  	      }
+  	      .close-player {
+  	      	cursor:pointer;
+  	      	position:absolute;
+  	      	top:5px;
   	      	right:4px;
   	      	color:$orange;
   	      	font-size:1.4em;
