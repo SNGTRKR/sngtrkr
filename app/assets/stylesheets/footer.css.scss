@@ -1,11 +1,4 @@
 #footer{
-    background-image: url(/images/footer.png);
-    //@include background-image(linear-gradient(top, #414040 1%,$gray 100%));
-   // border-top:4px solid $orange;
-  //  *{
-  //      color:white;
- //       opacity: 0.90;
-  //  }
     position:relative;
     margin-top:-($footer);
     height:$footer;
@@ -21,19 +14,23 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     margin-top:-32767px;/* thank you Erik J - negate effect of float*/
 }
 #fcontainer{
-    width:960px;
-    margin:0 auto;
+    background-image: url(/images/footer.png);
+    background-position-y: 48%;
+    background-color: rgba(3, 48, 70, 0.5);
+    @include border-radius(10px);
+    @include box-shadow(inset 0px 3px 8px black);
     padding:20px 0 0 0;
     text-align:center; 
-    color:#fff;
+    border: 0 solid #A8EEFF;
+    border-width: 0 1px 2px 1px;
+    span,p,a{
+        color: rgba(255, 255, 255, 0.86);
+    }
     .footer-menu {
         list-style-type:none;
         padding-top:10px;
-        a {
-	        color:#fff;
-        }
         a:hover {
-	        color:$orange;
+            text-decoration:underline;
         }
         li {
             font-size:1.1em;
@@ -43,6 +40,9 @@ body:before {/* thanks to Maleika (Kohoutec)*/
     } 
     p {
       font-size:0.9em;
-      margin-top:95px;
+      margin-top:65px;
     }
+}
+#footer-pad{
+    margin-bottom: 20px;
 }
