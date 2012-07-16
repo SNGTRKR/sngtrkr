@@ -1,13 +1,10 @@
 <% content_for :title do %>Profile Settings<% end %>
 <% content_for :description do %>Editing the profile settings for <%= @user.first_name %>. You can change your email address, update your email notification settings and delete your account.<% end %>
-<div class="row"><div class="span10 offset1">
+<div class="row profile-settings"><div class="span10 offset1">
 		<div id="change-email">
 			<h1>Profile Settings</h1>
 			<h3>Change Email</h3>
-			<br/>
-			Your current email address is <strong><%= @user.email %></strong>.
-			<br/>
-			<br/>
+			<p>Your current email address is <strong><%= @user.email %></strong>.</p>
 			<%= form_for(@user) do |f| %>
 			<% if @user.errors.any? %>
 			<div id="error_explanation">
@@ -33,15 +30,12 @@
 			<% end %>
 			<%= form_for(@user) do |f| %>
 		</div></div></div>
-	<div class="row"><div class="span10 offset1">
+	<div class="row profile-settings"><div class="span10 offset1">
 		<div id="email-notify">
 			<h3>Email Notifications</h3>
-			<br/>
+			<p>
 				You can change how often you receive emails for new releases, from the options provided below. The recommended setting is <strong>Daily</strong>. 
-			<br/>
-				Please note, <strong>we will only email you if there are new releases</strong>.
-			<br/>
-			<br/>
+			</p>
 			<ul>
 				<li>
 					<%= f.radio_button :email_frequency, 0 %>
@@ -69,34 +63,33 @@
 				</li>
 				<div class="clear"></div>
 			</ul>
+			<p>
+				Please note, <strong>we will only email you if there are new releases</strong>.
+			</p>
 			<%= f.submit 'Save Email Changes' %>
 			<% end %>
 		</div></div></div>
 		<% if @user.manager? %>
-	<div class="row"><div class="span10 offset1">
+	<div class="row profile-settings"><div class="span10 offset1">
 				<div id="manage-artist">
 			<h3>Artist management</h3>
-			<br/>
-			You are currently managing the artist known as <strong><%= @user.managing.first.name %></strong>.
-			<br/>
-			<br/>
-			<%= link_to edit_artist_path(@user.managing.first) do %><div>
-			Edit</div><% end %>
+			<p>You are currently managing the artist known as <strong><%= @user.managing.first.name %></strong>.</p>
+			<%= link_to edit_artist_path(@user.managing.first) do %><span>
+			Edit</span><% end %>
 			<span><a href="#unmanage-confirmation" class="light-box-parent">Delete</a></span>
 				</div></div></div>
 				<% else %><% end %>
-	<div class="row"><div class="span10 offset1">
+	<div class="row profile-settings"><div class="span10 offset1">
 		<div id="delete-account">
 			<h3>Delete Your Account</h3>
-			<br/>
-			Your account, tracked artists and all personal details will be permanently removed.<br/><br/>
+			<p>Your account, tracked artists and all personal details will be permanently removed.</p>
 				<span><a href="#delete-confirmation" class="light-box-parent">Delete Account</a></span>
 		</div></div></div>
-	<div id="delete-confirmation">
+	<div class="row profile-settings" id="delete-confirmation">
 		<%= render :partial => 'delete_confirm' %>
 	</div>
 	<% if @user.manager? %>
-	<div id="unmanage-confirmation">
+	<div class="row profile-settings" id="unmanage-confirmation">
   	<%= render :partial => 'unmanage_confirm' %>
 	</div>
 	<% end %>
