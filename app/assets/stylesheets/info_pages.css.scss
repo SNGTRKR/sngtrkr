@@ -8,6 +8,7 @@
     font-weight:bold;
     font-size: 1.3em;
     margin-bottom:7px;
+    @include text-shadow(0 0.1em 1px rgba(255, 255, 255, 0.31));
   }
   span {
 	  font-style:italic;
@@ -172,12 +173,10 @@ div {
     margin:5px 10px 15px 0;
 }
 #top-text{
-  font-size:1.3em;
+  font-size:1.2em;
   font-weight: bold;
 }
-.row{
-  margin-bottom:20px;
-}
+
 h1 {
 	margin:0 0 16px 0;
 }
@@ -185,10 +184,12 @@ h2 {
 	font-weight: bold;
 	font-size:1.6em;
 	line-height:1.5em;
+	@include text-shadow(0 0.1em 1px rgba(255, 255, 255, 0.31));
 }
 h3 {
 	font-size:1.2em;
 	line-height:1.8em;
 	margin:0 0 5px 0;
+	@include text-shadow(0 0.1em 1px rgba(255, 255, 255, 0.31));
 }
 }
