@@ -40,7 +40,7 @@ function timeline_setup() {
     }, "slow");
     $(this).closest(".each-release").find('.r-grad').fadeOut("normal");
     $(this).closest(".each-release").find('.opac-50').fadeIn("normal");
-    $(this).closest(".each-release").find('#share-release').animate({
+    $(this).closest(".each-release").find('.share-release-list').animate({
       right: 0
     }, "slow");
   });
@@ -68,11 +68,11 @@ function timeline_setup() {
     }, "slow");
     $(this).closest(".each-release").find('.r-grad').fadeIn("normal");
     $(this).closest(".each-release").find('.opac-50').fadeOut("normal");
-    $(this).closest(".each-release").find('#share-release').animate({
+    $(this).closest(".each-release").find('.share-release-list').animate({
       right: -310
     }, "slow");
   });
-  $(".sm-trigger").click(function () {
+  $(".release-outer .each-release .share-release-list ul a li").click(function () {
     $(this).closest(".each-release").find('.release-info').animate({
       bottom: 13
     }, "slow");
@@ -81,7 +81,7 @@ function timeline_setup() {
     }, "slow");
     $(this).closest(".each-release").find('.r-grad').fadeIn("normal");
     $(this).closest(".each-release").find('.opac-50').fadeOut("normal");
-    $(this).closest(".each-release").find('#share-release').animate({
+    $(this).closest(".each-release").find('.share-release-list').animate({
       right: -310
     }, "slow");
   });
@@ -94,7 +94,7 @@ function timeline_setup() {
     }, "slow");
     $(this).closest(".each-release").find('.r-grad').fadeOut("normal");
     $(this).closest(".each-release").find('.opac-50').fadeIn("normal");
-    $(this).closest(".each-release").find('#buy-release').animate({
+    $(this).closest(".each-release").find('.buy-release-list').animate({
       left: 0
     }, "slow");
   });
@@ -107,11 +107,11 @@ function timeline_setup() {
     }, "slow");
     $(this).closest(".each-release").find('.r-grad').fadeIn("normal");
     $(this).closest(".each-release").find('.opac-50').fadeOut("normal");
-    $(this).closest(".each-release").find('#buy-release').animate({
+    $(this).closest(".each-release").find('.buy-release-list').animate({
       left: -310
     }, "slow");
   });
-  $(".buy-trigger").click(function () {
+  $(".release-outer .each-release .buy-release-list ul li").click(function () {
     $(this).closest(".each-release").find('.release-info').animate({
       bottom: 13
     }, "slow");
@@ -120,12 +120,12 @@ function timeline_setup() {
     }, "slow");
     $(this).closest(".each-release").find('.r-grad').fadeIn("normal");
     $(this).closest(".each-release").find('.opac-50').fadeOut("normal");
-    $(this).closest(".each-release").find('#buy-release').animate({
+    $(this).closest(".each-release").find('.buy-release-list').animate({
       left: -310
     }, "slow");
   });
 
-  $('#timeline').mousedown(function (event) {
+ /* $('#timeline').mousedown(function (event) {
     $(this).data('down', true).data('x', event.clientX).data('scrollLeft', this.scrollLeft);
     return false;
   }).mouseup(function (event) {
@@ -144,5 +144,5 @@ function timeline_setup() {
         }
       } catch (e) {}
     }
-  });
+  }); */
 }
