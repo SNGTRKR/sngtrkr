@@ -31,19 +31,6 @@ function timeline_widths() {
 }
 
 function timeline_setup() {
-    $(".share-release").click(function () {
-    $(this).closest(".each-release").find('.release-info').animate({
-      bottom: -100
-    }, "slow");
-    $(this).closest(".each-release").find('.release-menu').animate({
-      bottom: -25
-    }, "slow");
-    $(this).closest(".each-release").find('.r-grad').fadeOut("normal");
-    $(this).closest(".each-release").find('.opac-50').fadeIn("normal");
-    $(this).closest(".each-release").find('.share-release-list').animate({
-      right: 0
-    }, "slow");
-  });
   $(".r-grad").mouseover(function () {
     $(this).closest(".each-release").find('.release-info').stop().animate({
       bottom: 33
@@ -57,6 +44,19 @@ function timeline_setup() {
     }, "slow");
     $(this).closest(".each-release").find('.release-menu').stop().animate({
       bottom: -25
+    }, "slow");
+  });
+    $(".share-release").click(function () {
+    $(this).closest(".each-release").find('.release-info').animate({
+      bottom: -100
+    }, "slow");
+    $(this).closest(".each-release").find('.release-menu').animate({
+      bottom: -25
+    }, "slow");
+    $(this).closest(".each-release").find('.r-grad').fadeOut("normal");
+    $(this).closest(".each-release").find('.opac-50').fadeIn("normal");
+    $(this).closest(".each-release").find('.share-release-list').animate({
+      right: 0
     }, "slow");
   });
   $(".share-cancel").click(function () {
@@ -122,6 +122,46 @@ function timeline_setup() {
     $(this).closest(".each-release").find('.opac-50').fadeOut("normal");
     $(this).closest(".each-release").find('.buy-release-list').animate({
       left: -310
+    }, "slow");
+  });
+  
+      $(".play-release").click(function () {
+    $(this).closest(".each-release").find('.release-info').animate({
+      bottom: -100
+    }, "slow");
+    $(this).closest(".each-release").find('.release-menu').animate({
+      bottom: -25
+    }, "slow");
+    $(this).closest(".each-release").find('.r-grad').fadeOut("normal");
+    $(this).closest(".each-release").find('.opac-50').fadeIn("normal");
+    $(this).closest(".each-release").find('.play-release-list').animate({
+      top: 0
+    }, "slow");
+  });
+  $(".play-release-list .icon-remove").click(function () {
+    $(this).closest(".each-release").find('.release-info').animate({
+      bottom: 13
+    }, "slow");
+    $(this).closest(".each-release").find('.release-menu').animate({
+      bottom: -25
+    }, "slow");
+    $(this).closest(".each-release").find('.r-grad').fadeIn("normal");
+    $(this).closest(".each-release").find('.opac-50').fadeOut("normal");
+    $(this).closest(".each-release").find('.play-release-list').animate({
+      top : -310
+    }, "slow");
+  });
+  $(".release-outer .each-release .play-release-list ul a li").click(function () {
+    $(this).closest(".each-release").find('.release-info').animate({
+      bottom: 13
+    }, "slow");
+    $(this).closest(".each-release").find('.release-menu').animate({
+      bottom: -25
+    }, "slow");
+    $(this).closest(".each-release").find('.r-grad').fadeIn("normal");
+    $(this).closest(".each-release").find('.opac-50').fadeOut("normal");
+    $(this).closest(".each-release").find('.play-release-list').animate({
+      top: -310
     }, "slow");
   });
 

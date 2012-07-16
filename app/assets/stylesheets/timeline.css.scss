@@ -21,7 +21,7 @@ $overlap: $width*0.25;
   height:1.9*($height+$v-line-length+$h-v-space)+$h-line-height+20px;
   background-image: url(/images/grid2.png);
   margin:-166px 0 30px 0;
-  @extend .scrollbar2;
+  @extend .scrollbar-timeline;
 }
 #timelime-trim {
   position:relative;
@@ -415,6 +415,44 @@ span {
 		       @extend .button;
   	      }
         }
+        .play-release-list {
+  	      position:absolute;
+  	      height:$height;
+  	      width:$width;
+  	      z-index:2;
+  	      top:-$width;
+  	      h4 {
+  	      	  margin-top:20px;
+	  	      @extend .signika-txt;
+	  	      @extend .font-22;
+	  	      text-align:center;
+  	      }
+  	      @import "timeline_player.css.scss";
+  	      .icon-remove {
+  	      	cursor:pointer;
+  	      	position:absolute;
+  	      	top:6px;
+  	      	right:4px;
+  	      	color:$orange;
+  	      	font-size:1.4em;
+  	      }
+  	      .icon-remove:hover {
+	  	      color:$blue;
+  	      }
+  	      #no-preview {
+				text-align:center;
+				color:#fff;
+				i {
+					font-size:7em;
+					margin-top:10px;
+					color:$orange;
+				}
+				p {
+					margin-top:17px;
+				}
+			}
+        }
+        
   	  }
     }
 	  .release-outer:nth-child(2n) {
