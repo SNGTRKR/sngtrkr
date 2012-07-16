@@ -55,6 +55,10 @@ background: url(/images/box-bk-431.png) no-repeat;
             a {
 	            margin-left:15px;
             }
+            div {
+	            @extend .button;
+	            float:right;
+            }
 	          }
             }
 }

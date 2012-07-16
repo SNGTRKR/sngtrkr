@@ -1,29 +1,61 @@
-.profile-settings{
-	h3 {
-		@extend .font-14;
-		font-weight:bold;
-		padding: 1em 0 0.5em 0;
-	}
-
-	span, input[type="submit"] {
-		float: left;
-		@extend .button;
-		margin-right: 15px;
-		margin-bottom: 10px;
-		//margin-top:-0.5em;
-	}
-
-	li {
-	    float: left;
-	    display:block;
-	    width:80px;
-	    padding:0 30px 0 0;
-	    input,label{
-	    	padding:0 5px 0 3px;
-	    	float:left;
-	    }
-	    label{
-	    	margin-top:1px;
-	    }
-	}
+.profile-settings {
+  			h3 {
+	  			@extend .font-14;
+	  			font-weight:bold;
+	  			margin-bottom:5px;
+	  			}
+#change-email {
+  margin:0 0 25px 62px;
+		  h1 {
+			  margin-bottom:16px;
+		  }
+            label { 
+                width:110px; 
+                display:block;
+                float:left;
+                margin-top:6px;
+            }
+            li {
+                padding:0 0 18px 0;
+            }
+            input[type=submit] {
+	            margin:-13px 4px 0 0;
+            }
+}
+#email-notify {
+  margin:0 0 27px 62px;
+  width:666px;
+            label { 
+                width:110px; 
+                display:block;
+                margin:-18px 0 11px 20px;
+            }
+            li {
+                float:left;
+                display:block;
+                width:67px;
+                padding:0 44px 0 0;
+            }
+            input[type=submit] {
+	           margin:-3px 4px 0 0;
+            }
+            p {
+	            margin-bottom:3px;
+            }
+}
+#manage-artist {
+margin:0 0 53px 62px;
+			div, span {
+				@extend .button;
+				float:left;
+				margin-right:15px;
+			}
+}
+#delete-account {
+margin:0 0 55px 62px;
+		span {
+			float:left;
+			@extend .button;
+}
+}
 }

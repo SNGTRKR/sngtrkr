@@ -15,11 +15,14 @@
 				top:10px;
 				cursor:pointer;
 			}
+			.icon-edit:hover {
+				color:$orange;
+			}
 			#release-image-options {
 				position:absolute;
-				bottom:-70px;
+				bottom:-84px;
 				background-color:rgba(0,0,0,0.75);
-				height:70px;
+				height:84px;
 				width:309px;
 				@include border-bottom-left-radius(12px);
 				@include border-bottom-right-radius(12px);
@@ -49,6 +52,9 @@
 					right:4px;
 					z-index:2;
 					cursor:pointer;
+				}
+				.icon-remove:hover {
+					color:$orange;
 				}
 			}
       #opac-50 {
