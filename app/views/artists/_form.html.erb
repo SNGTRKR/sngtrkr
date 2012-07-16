@@ -70,6 +70,7 @@ image_height = 100
     <div class="step">
     	<div class="step-back manage-picture-step">
     		<div class="step-left">
+	    		<label for="file_browser"><strong>Picture:</strong></label>	
     			<%= f.file_field 'image', :tabindex => -1 %></br/><br/>
     			<strong>Preview:</strong>
     			<div class="manage-image"><%= image_tag (@artist.image :manage), :id => 'manage-image-current' %>

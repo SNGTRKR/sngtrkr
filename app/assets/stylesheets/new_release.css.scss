@@ -4,7 +4,7 @@
 #master-form-wrapper {
   position:relative;
   width:650px;
-  left:8px;
+  left:68px;
 #new-release-form{
     width:649px;
     overflow:hidden;
@@ -16,7 +16,7 @@ position:relative;
 .step{
     float:left;
     width:649px;
-  height:239px;
+  height:275px;
 }
 .step-back {
   margin:5px 22px 5px 22px;
@@ -24,7 +24,7 @@ position:relative;
   background:rgba(255,255,255,0.75);
     @include border-radius(8px);
     @include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.25));
-    height:151px;
+    height:187px;
     padding:44px 30px 44px 30px;
     position:relative;
     label { 
@@ -53,6 +53,16 @@ position:relative;
 	      position:relative;
 	      top:-4px;
       }
+      #release-summary {
+	      li {
+		      margin-bottom:18px;
+	      }
+      }
+      .manage-image {
+	      position:relative;
+	      top:0px;
+	      left:114px;
+      }
     }
     .step-right {
       width:226px;
@@ -61,7 +71,7 @@ position:relative;
     }
     #avail-line {
       position:absolute;
-      height:206px;
+      height:244px;
       border-style:solid;
       border-right-width:1px;
       border-right-color:$orange;
@@ -70,7 +80,7 @@ position:relative;
     }
     #details-line {
       position:absolute;
-      height:287px;
+      height:433px;
       border-style:solid;
       border-right-width:1px;
       border-right-color:$orange;
@@ -137,13 +147,13 @@ position:relative;
 }
 #bulge-left {
   position:absolute;
-  height:337px;
+  height:376px;
   top:5px;
   left:-10px;
 }
 #bulge-right {
   position:absolute;
-  height:338px;
+  height:376px;
   top:5px;
   right:-2px;
 }

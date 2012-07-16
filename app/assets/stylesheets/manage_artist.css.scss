@@ -36,33 +36,33 @@ a > div {
   	position:relative;
     width:649px;
     overflow:hidden;
-    margin:-1px 0 25px 45px;
-#steps{
-    width:649px;
-    overflow:hidden;
-    margin-top:-4px;
-.step{
-    float: left;
-    width:649px;
-    height:632px;
-}
-.manage-itunes-step, .manage-7digital-step {
-	a {
-		color:$orange;
-	}
-	a:hover {
-		color:$gray;
-	}
-}
-.step-back {
-  	margin:5px 22px 5px 22px;
-  	width:545px;
-  	background:rgba(255,255,255,0.75);
-    @include border-radius(8px);
-    @include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.25));
-    height:543px;
-    padding:44px 30px 44px 30px;
-    position:relative;
+    margin:-1px 0 25px 65px;
+			#steps{
+			    width:649px;
+			    overflow:hidden;
+			    margin-top:-4px;
+			.step{
+			    float: left;
+			    width:649px;
+			    height:632px;
+			}
+			.manage-itunes-step, .manage-7digital-step {
+				a {
+					color:$orange;
+				}
+				a:hover {
+					color:$gray;
+				}
+			}
+			.step-back {
+			  	margin:5px 22px 5px 22px;
+			  	width:545px;
+			  	background:rgba(255,255,255,0.75);
+			    @include border-radius(8px);
+			    @include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.25));
+			    height:543px;
+			    padding:44px 30px 44px 30px;
+			    position:relative;
             ul {
             list-style-type:none;
             }
@@ -81,7 +81,7 @@ a > div {
      }
     .step-left {
       width:290px;
-      @extend .left;
+      float:left;
       #artist-summary {
 	      li {
 		      margin-bottom:18px;
@@ -107,7 +107,7 @@ a > div {
 		      overflow-x:hidden;
 		      height:166px;
 		      li {
-			      @extend .left;
+			      float:left;
 			      width:287px;
 		      }
 	      }
@@ -145,15 +145,15 @@ a > div {
 		      overflow-x:hidden;
 		      height:166px;
 		      li {
-			      @extend .left;
+			      floafet:left;
 			      width:287px;
 			      .info {
-				      @extend .right;
+				      float:right;
 				      width:150px;
 				      margin-right:25px;
 			      }
 			      .image {
-				      @extend .left;
+				      float:left;
 				      width:100px;
 			      }
 		      }
@@ -163,7 +163,7 @@ a > div {
     .step-right {
       width:226px;
       margin-top:-2px;
-      float: right;
+      float:right;
     }
     #artist-line {
       position:absolute;
