@@ -191,12 +191,10 @@ margin:5px 0 22px 42px;
 		@extend .left;
 		@extend .scrollbar;
 		margin:0 0 30px 18px;
-		min-height:152px !important;
 		  #friend-trkr-list {
 			    list-style-type:none;
 			    margin-left:-11px; 
 			    overflow-y:scroll;
-				min-height:152px !important;
 		.each-friend {
 		      width:135px;
 		      height:120px;
@@ -297,11 +295,9 @@ margin:5px 0 22px 42px;
       }
 	      }
 	      .share-cancel {
-		      position:relative;
-		      left:37px;
-		      top:15px;
-		      @extend .button;
-		      @extend .left;
+		       margin:17px auto;
+		       width:40px;
+		       @extend .button;
 	      }
       }
       }
