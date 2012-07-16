@@ -77,12 +77,13 @@ strong {
 	font-weight:bold;
 }
 .signika-txt { /* white text - signikia */
-        color:#fff;
-        @include text-shadow(0px 2.83px 8px rgba(0,0,0,0.28));
-        font-family: 'Signika Negative', sans-serif;
-        font-weight:400;
-        line-height:1.3em;
-    }
+  color:#fff;
+  // @include text-shadow(0px 2.83px 8px rgba(0,0,0,0.28));
+  @include text-shadow(0px 2px 6px rgba(0, 0, 0, 0.78));
+  font-family: 'Signika Negative', sans-serif;
+  font-weight:400;
+  line-height:1.3em;
+}
 .scrollbar {
   ::-webkit-scrollbar {
       width: 10px;
