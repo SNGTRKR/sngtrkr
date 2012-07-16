@@ -204,11 +204,16 @@
 			a:hover {
 				color:#000;
 			}
-			#edit-profile{
+			.icon-edit {
 				position: absolute;
-				right: 20px;
-				font-size: 2.4em;
-				top: 20px;
+				right: 8px;
+				font-size: 2em;
+				top: 8px;
+				cursor:pointer;
+				color:$gray;
+			}
+			.icon-edit:hover {
+				color:$orange;
 			}
 		}
 		.menu-user {
