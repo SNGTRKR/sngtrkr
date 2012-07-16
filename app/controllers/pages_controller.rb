@@ -33,6 +33,10 @@ class PagesController < ApplicationController
   
   end
   
+  def limbo
+  
+  end
+  
   def splash
     if(user_signed_in?)
       flash.keep

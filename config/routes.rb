@@ -12,7 +12,7 @@ SNGTRKR::Application.routes.draw do
   match '/privacy' => "Pages#privacy"
   match '/help' => "Pages#help"
   match '/welcome_email' => "UserMailer#welcome_email"
-  match '/player' => "Pages#player"
+  match '/limbo' => "Pages#limbo"
   match '/release_magic/:store/:url' => "Releases#magic"
 
   match 'mailer(/:action(/:id(.:format)))' => 'mailer#:action'
