@@ -87,7 +87,7 @@ class Scraper
   end
 
   def self.importFbLikes access_token, user_id
-    Resque.enqueue(ArtistJob,access_token,user_id)
+    ArtistJob.perform_async(access_token,user_id)
   end
 
   def self.artist_sevendigital artist_name

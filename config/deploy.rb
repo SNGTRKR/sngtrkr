@@ -24,6 +24,9 @@ require "whenever/capistrano"
 # Load RVM's capistrano plugin.    
 #require "rvm/capistrano"
 
+# Sidekiq
+require 'sidekiq/capistrano'
+
 #set :rvm_ruby_string, '1.9.3'
 #set :rvm_type, :user  # Copy the exact line. I really mean :system here
 
@@ -72,17 +75,3 @@ def run_remote_rake(rake_cmd)
   set :rakefile, nil if exists?(:rakefile)
 end
 
-#after "deploy:restart", "deploy:restart_workers" 
-#after "deploy:restart_workers", "deploy:restart_scheduler"
-
-namespace :deploy do
-  desc "Restart Resque Workers"
-  task :restart_workers, :roles => :db do
-    run_remote_rake "resque:restart_workers"
-  end
-
-  desc "Restart Resque scheduler"
-  task :restart_scheduler, :roles => :db do
-    run_remote_rake "resque:restart_scheduler"
-  end
-end

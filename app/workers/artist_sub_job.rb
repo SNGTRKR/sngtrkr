@@ -1,7 +1,8 @@
 class ArtistSubJob
-  @queue = :artistsubjob
   @@sevendigital_apikey = "7dufgm34849u"
-  
+  include Sidekiq::Worker  
+  sidekiq_options :queue => :artist
+
   def self.single_import access_token, page_id, user_id
     graph = Koala::Facebook::API.new(access_token)
     artist = graph.api("/#{page_id}?fields=name,general_manager,booking_agent,record_label,genre,hometown,website,bio,picture,likes")
@@ -11,7 +12,7 @@ class ArtistSubJob
     return db_artist
   end
   
-  def self.perform access_token, user_id, artist
+  def perform access_token, user_id, artist
     begin
       if artist["likes"] < 100
         Rails.logger.info "J002: Skipping #{artist["name"]}, as they have only #{artist["likes"]} likes"
@@ -95,7 +96,7 @@ class ArtistSubJob
     a.save!
     user.suggest_artist a.id
     if !a.sdid.nil?
-      Resque.enqueue(ReleaseJob, a.id)
+      ReleaseJob.perform_async(a.id)
     end
     artist_end_time = Time.now
     artist_elapsed_time = artist_end_time - artist_start_time

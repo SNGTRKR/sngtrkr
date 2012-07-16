@@ -32,9 +32,12 @@ gem 'capistrano'
 # gem 'rvm-capistrano'  -- THIS MUST BE INSTALLED LOCALLY, IT WILL NOT WORK IN A GEMFILE.
 
 # BACKGROUND TASKS
-gem 'redis'
-gem "resque", "~> 1.20.0"
+gem 'sidekiq'
 gem 'whenever', :require => false
+
+# SIDEKIQ MONITORING
+gem 'slim'
+gem 'sinatra', :require => nil
 
 gem "paperclip"
 
@@ -56,10 +59,11 @@ group :assets do
   # gem 'therubyracer'
 
   gem 'uglifier', '>= 1.0.3'
+  gem 'jquery-rails'
+  gem 'jquery_datepicker'
+  gem 'bootstrap-sass', '~> 2.0.4.0'
 end
 
-gem 'jquery-rails'
-gem 'jquery_datepicker'
 
 gem "koala"
 
@@ -72,7 +76,6 @@ gem 'kaminari'
 
 gem 'dynamic_sitemaps'
 
-gem 'bootstrap-sass', '~> 2.0.4.0'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
