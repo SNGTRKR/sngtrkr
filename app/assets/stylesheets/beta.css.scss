@@ -25,7 +25,7 @@
   		  li {
   			  width:240px;
   			  margin-left:30px;
-  			  @extend .left;
+  			  float: left;
   			  h2 {
 	  			 @extend .signika-txt;
 	  			 @extend .font-25;
@@ -39,6 +39,6 @@
 	    width:500px;
 		    li {
 			    margin-left:50px;
-			    @extend .left;
+			    float: left;
 		    }
 	    }

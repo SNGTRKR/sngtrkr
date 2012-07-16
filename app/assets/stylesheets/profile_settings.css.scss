@@ -32,7 +32,7 @@
                 margin:-18px 0 22px 30px;
             }
             li {
-                @extend .left;
+                float: left;
                 display:block;
                 width:67px;
                 padding:0 52px 0 0;
@@ -49,7 +49,7 @@ margin:0 0 54px 57px;
 	  			}
 			div, span {
 				@extend .button;
-				@extend .left;
+				float: left;
 			}
 			div {
 				margin-right:15px;
@@ -62,7 +62,7 @@ margin:0 0 57px 57px;
 	  			font-weight:bold;
 	  			}
 span {
-	@extend .left;
+	float: left;
 	@extend .button;
 }
 }

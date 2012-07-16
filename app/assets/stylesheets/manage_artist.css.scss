@@ -4,7 +4,7 @@ img {
 			position:absolute;
 			}
 a > div {
-	@extend .left;
+	float: left;
 	@extend .button;
 	margin-top:2px;
 }
@@ -42,7 +42,7 @@ a > div {
     overflow:hidden;
     margin-top:-4px;
 .step{
-    @extend .left;
+    float: left;
     width:649px;
     height:632px;
 }
@@ -74,7 +74,7 @@ a > div {
               position:relative;
               top:16px;
               left:-77px;
-              @extend .right;
+              float: right;
             }
      textarea {
 	       resize:none;
@@ -89,12 +89,12 @@ a > div {
       }
       #itunes-buttons {
 	      a {
-		      @extend .left;
+		      float: left;
 		      margin-right:15px;
 		      @extend .button;
 	      } 
 	      form {
-		      @extend .left;
+		      float: left;
 	      }
       }
       #itunes-results {
@@ -118,21 +118,21 @@ a > div {
       .image-7d {
 	      height:75px;
 	      width:75px;
-	      @extend .left;
+	      float: left;
       }
       .name-7d {
 	      margin-left:10px;
-	      @extend .left;
+	      float: left;
       }
       }
             #digital7-buttons {
 	      a {
-		      @extend .left;
+		      float: left;
 		      margin-right:15px;
 		      @extend .button;
 	      } 
 	      form {
-		      @extend .left;
+		      float: left;
 	      }
       }
             #digital7-results {
@@ -163,7 +163,7 @@ a > div {
     .step-right {
       width:226px;
       margin-top:-2px;
-      @extend .right;
+      float: right;
     }
     #artist-line {
       position:absolute;
@@ -229,7 +229,7 @@ a > div {
     list-style:none;
     margin-left:-3px;
  li{
-  @extend .left;
+  float: left;
   @extend .button;
   position:relative;
   margin-left:25px;

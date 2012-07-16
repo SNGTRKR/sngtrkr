@@ -27,7 +27,7 @@
 				z-index:1;
 				.add, .del, .edit {
 					@extend .button;
-					@extend .left;
+					float: left;
 				}
 				.add {
 					margin:5px 15px 0 0;
@@ -83,7 +83,7 @@
     	      line-height:38px;
     	      @include border-radius(4px);
     	      margin:0 7px 0 7px;
-    	      @extend .left;
+    	      float: left;
           }
           .goo-icon {
         		overflow:hidden;
@@ -142,7 +142,7 @@
 			      width:38px;
 			      @include border-radius(4px);
 			      margin-right:15px;
-			      @extend .left;
+			      float: left;
 			      @extend .white-button;
 			      img {
 				      position:relative;
@@ -175,7 +175,7 @@
 			}
 		}
 		#release-info {
-			@extend .right;
+			float: right;
 			position:relative;
 			width:246px;
 			background:rgba(255,255,255,0.75);
@@ -233,7 +233,7 @@
 				@extend .o-button;
 			}
 			li {
-				@extend .left;
+				float: left;
 			}
 		}
 .also-by {
@@ -258,7 +258,7 @@
  li {
 	height:145px;
 	width:115px;
-	@extend .left;
+	float: left;
 	position:relative;
     margin:3px 10px 3px 10px;
     background:rgba(255,255,255,0.75);

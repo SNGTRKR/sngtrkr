@@ -68,6 +68,13 @@ content_for :og_id, @artist.id.to_s
 
 <div class="span4">
 <div id="profile-info">
+	<% if current_user.managing? @artist.id %>
+		<%= link_to edit_artist_path(@artist) do %>
+		<div id="edit-profile">
+			<i class="icon-edit"></i>
+		</div>
+		<% end %>
+	<% end %>
 	<h2><%= @artist.name %></h2>
 	<span class="tooltip-parent icon" data-title="Genre" data-placement="left">
   	<i class="icon-music"></i>
