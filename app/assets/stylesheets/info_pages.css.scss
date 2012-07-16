@@ -155,14 +155,23 @@ div {
 }
 
 .team{
-  margin-bottom: 30px;
-  margin-top: 10px;
+  margin-bottom: 40px;
+  margin-top: 0px;
   a{
     font-weight: strong;
   }
   p{
     font-size: 1.2em;
     line-height: 1.6em;
+  }
+  img{
+    $border: 10px;
+    padding: $border;
+    border: solid 1px #EFEFEF;
+    background-color: #F1F1F0;
+    margin-left: -2*$border;
+    margin-top:-$border;    
+    @include box-shadow(1px 1px 5px rgba(63, 63, 63, 0.54));
   }
   #header{
     margin-bottom: -80px;
