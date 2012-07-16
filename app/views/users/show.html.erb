@@ -100,7 +100,7 @@ appId      : <%= '\''+FB_APP_ID+'\'' %>
 			$(this).closest(".each-friend").find('.share-artist').animate({right : -202}, "slow");
 			 $(this).closest(".each-friend").find('.friend-info').fadeIn("normal");
 		});
-		$(".sm-trigger").click(function() {
+		$(".each-friend .share-artist a li").click(function() {
 			$(this).closest(".each-friend").find('.opac-50').fadeOut("normal");
 			$(this).closest(".each-friend").find('.share-artist').animate({right : -202}, "slow");
 			 $(this).closest(".each-friend").find('.friend-info').fadeIn("normal");

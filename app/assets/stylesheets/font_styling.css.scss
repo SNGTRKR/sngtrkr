@@ -88,8 +88,8 @@ strong {
 }
 .signika-txt { /* white text - signikia */
   color:#fff;
-  // @include text-shadow(0px 2.83px 8px rgba(0,0,0,0.28));
-  @include text-shadow(0px 2px 6px rgba(0, 0, 0, 0.78));
+  @include text-shadow(0px 2.83px 8px rgba(0,0,0,0.35));
+  //@include text-shadow(0px 2px 6px rgba(0, 0, 0, 0.78));
   font-family: 'Signika Negative', sans-serif;
   font-weight:400;
   line-height:1.3em;

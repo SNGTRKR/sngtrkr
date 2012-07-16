@@ -70,8 +70,11 @@
 		      @extend .signika-txt; 
 		      @extend .font-22;
       	      }
+      	      textarea {
+	      	      resize:none;
+      	      }
       	      .actions {
-      	      width:199px;
+      	      width:166px;
       	      margin:15px auto;
 	      	      input, span {
 		      	      @extend .left;

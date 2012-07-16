@@ -32,16 +32,16 @@
     <% if !@release.image? %>
         <%= form_for [@artist,@release] do |f| %> 
           <%= f.file_field :image %> 
-          <%= f.submit "Upload Artwork", :class => "left o-button norm-o-pad font-13 signika-font add" %> 
+          <%= f.submit "Upload Artwork", :class => "add" %> 
         <% end %>
     <% else %>
         <%= form_for [@artist,@release] do |f| %> 
           <%= f.file_field :image %> 
-          <%= f.submit "Replace Artwork", :class => "left o-button norm-o-pad font-13 signika-font edit" %> 
+          <%= f.submit "Replace Artwork", :class => "edit" %> 
         <% end %>
         <%= form_for [@artist,@release] do |f| %>
           <%= f.hidden_field :delete_image, :value => true %>
-          <%= f.submit "Delete Artwork", :class => "left o-button norm-o-pad font-13 signika-font del" %>
+          <%= f.submit "Delete Artwork", :class => "del" %>
         <% end %>
     <% end %>
   </div>

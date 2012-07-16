@@ -25,6 +25,10 @@
 				@include border-bottom-right-radius(12px);
 				color:#fff;
 				z-index:1;
+				.add, .del, .edit {
+					@extend .button;
+					@extend .left;
+				}
 				.add {
 					margin:5px 15px 0 0;
 				}
