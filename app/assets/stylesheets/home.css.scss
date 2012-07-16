@@ -1,54 +1,54 @@
-		 .home-txt-1 {
-		    line-height:1.3em;
-		    @extend .font-14;
-		    width:328px;
-		    margin-left:2px;
-		    span {
-			    margin:11px 0 5px 0;
-			    display:block;
-		    }
-	    }
-	    .home-header {
-		    width:328px;
-		    margin-left:2px;
-	    }
-	    #home-macbook {
-	       position:absolute;
-		   margin:-3px 0 0 -45px;
-	    }
-	   #home-points {
-	  list-style-type: none;
-	  margin:13px 0 56px -28px;
-	  width:810px;
-	  h2 {
-		  	@extend .signika-txt;
-		  	@extend .font-25;
-		  	margin:0 0 -5px -2px;
+.home-txt-1 {
+    line-height:1.3em;
+    @extend .font-14;
+    margin:0 15px 0 2px;
+    span {
+	    margin:11px 0 5px 0;
+	    display:block;
+    }
+}
+.home-header {
+    width:328px;
+    margin-left:2px;
+}
+#home-macbook {
+   position:absolute;
+   margin:-3px 0 0 -45px;
+}
+#home-points {
+	list-style-type: none;
+	margin:13px 0 26px -28px;
+	width:810px;
+
+	h2 {
+	  	@extend .signika-txt;
+	  	@extend .font-25;
+	  	margin:10px 0 10px 0;
 	  }
-		  li {
-			  width:240px;
-			  margin-left:30px;
-			  @extend .left;
-			  div {
-				  @extend .font-13;
-			  }
-			  #home1 {
-			  	position:relative;
-				  top:32px;
-				  left:40px;
-			  }
-			  #home2 {
-			  position:relative;
-				  top:53px;
-				  left:34px;
-			  }
-			  #home3 {
-			  position:relative;
-				  top:30px;
-				  left:34px;
-			  }
-		  }
+    li {
+	  width:240px;
+	  margin-left:30px;
+	  @extend .left;
+	  p {
+		  font-size: 1.2em;
 	  }
+	  #home1 {
+	  	position:relative;
+		  top:32px-10px;
+		  left:40px;
+	  }
+	  #home2 {
+	  position:relative;
+		  top:53px-10px;
+		  left:34px;
+	  }
+	  #home3 {
+	  position:relative;
+		  top:30px-10px;
+		  left:34px;
+	  }
+  }
+}
 .fb-home-login {
 	margin:-3px 0 25px 0;
 	@extend .left; 

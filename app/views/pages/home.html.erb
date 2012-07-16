@@ -3,11 +3,12 @@
 <div class="row"><div class="span10 offset1">
 <div class="row">
 <div class="span5">
-	<h1 class="home-header">Track your favourite artists and never miss another release...</h1><br/>
-	<div class="home-txt-1">Keep up to date with your favourite artists, and discover a new and exciting way to find music online.</div><br/>
+	<h1 class="home-header">Track your favourite artists and never miss another release...</h1>
+	<p class="home-txt-1">Keep up to date with your favourite artists, and discover a new and exciting way to find music online.</p>
 	<%= link_to(user_omniauth_authorize_path(:facebook)) do %>
 	<div class="fb-home-login"><i class="icon-facebook"></i><span>Login with Facebook</span></div>
 	<% end %>
+	<br/><br/><br/><br/>
 </div>
 <div class="span5">
 	<%= image_tag "/images/macbook.png", :alt => "Macbook", :id => "home-macbook" %>
@@ -15,15 +16,15 @@
 <div class="row">
 <div class="span10">
 <ul id="home-points">
-	<li><h2>Find artists you like</h2><br/>
-	<div>SNGTRKR intuitively recognises which artists you've liked on Facebook, and supplies you with recommendations to build up your TRK'd artists.</div>
+	<li><h2>Find artists you like</h2>
+	<p>SNGTRKR intuitively recognises which artists you've liked on Facebook, and supplies you with recommendations to build up your tracked artists.</p>
 	<%= image_tag "/images/home1.png", :alt => 'Recommendations', :id => 'home1' %></li>
-	<li><h2>Discover new music</h2><br/>
-	<div>Looking to expand your music library? SNGTRKR makes it fun and exciting to discover new music with track previews, recommendations and purchase links.</div>
-	<%= image_tag "/images/home2.png", :alt => 'Music', :id => 'home2' %></li>
-	<li><h2>Keep up to date</h2><br/>
-	<div>Stay in the loop with your personalised timeline of artist releases, old and new. Alongside regular notifications straight to your inbox.</div>
+	<li><h2>Keep up to date</h2>
+	<p>Stay in the loop with <strong>your personalised timeline</strong> of artist releases, old and new. We'll email you whenever an artist you follow releases a new album or single.</p>
 	<%= image_tag "/images/home3.png", :alt => 'Timeline', :id => 'home3' %></li>
+	<li><h2>Discover new music</h2>
+	<p>Looking to expand your music library? SNGTRKR makes it easy to discover new music with user ratings, track previews, similar artists and purchase links.</p>
+	<%= image_tag "/images/home2.png", :alt => 'Music', :id => 'home2' %></li>
 <div class="clear"></div>
 </ul>
 </div></div></div></div>
