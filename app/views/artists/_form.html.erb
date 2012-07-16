@@ -244,11 +244,6 @@ $(document).ready(function () {
   // Focus on the first field on page load
   $('#artist_name').focus();
 
-  // Submit the artist form using the button at the end of the form
-  $("#artist-form-submit").click(function(){
-    $(".ajax-artist-form").children('form').submit();
-  });
-
   $(".manage-details").click(function () {
     $(".step-back").animate({
       height: 543
@@ -411,7 +406,8 @@ $(document).ready(function () {
   $('#artist-form-submit').bind('click', function () {
     if ($('#fields').data('errors')) {
       alert('Please go back and complete the required fields.');
-      return false;
+    } else {
+	    $(".ajax-artist-form").children('form').submit();
     }
   });
 
