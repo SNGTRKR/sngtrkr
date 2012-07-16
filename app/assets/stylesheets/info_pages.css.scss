@@ -52,7 +52,7 @@
   width:171px;
   height:93px;
   padding:15px 15px 15px 15px;
-  @extend .left;
+  float: left;
   h2 {
 	  font-weight:bold;
 	  @extend .font-13;
@@ -80,7 +80,7 @@
 	    width:171px;
 		position:relative;     
 		margin-bottom:4px; 
-		@extend .left;
+		float: left;
       #fb-icon, #twit-icon, #goo-icon {
 	      height:20px;
 	      width:20px;

@@ -28,7 +28,7 @@
     li {
 	  width:240px;
 	  margin-left:30px;
-	  @extend .left;
+	  float: left;
 	  p {
 		  font-size: 1.2em;
 	  }
@@ -51,7 +51,7 @@
 }
 .fb-home-login {
 	margin:-3px 0 25px 0;
-	@extend .left; 
+	float: left; 
 	@extend .facebook-button;
 }
 #beta-form {

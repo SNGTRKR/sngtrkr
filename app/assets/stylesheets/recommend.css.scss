@@ -16,7 +16,7 @@
     list-style-type:none;
     margin:19px 0 0 26px;
     .each-recommend {
-    @extend .left;
+    float: left;
     position:relative;
     height:178px;
     width:202px;
@@ -92,7 +92,7 @@
 	      line-height:38px;
 	      @include border-radius(4px);
 	      margin:0 7px 0 7px;
-	      @extend .left;
+	      float: left;
       }
       .goo-icon {
 		overflow:hidden;
@@ -134,7 +134,7 @@
   }
 span {
 	@extend .button;
-	@extend .right;
+	float: right;
 	margin:-3px 58px 31px 0;
 }
 }
