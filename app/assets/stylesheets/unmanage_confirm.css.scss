@@ -32,11 +32,11 @@
       left:159px;
       div {
         margin-right:15px;
-        @extend .left;
+        float: left;
         @extend .button;  
       }
       span {
-	      @extend .left;
+	      float: left;
 	      @extend .button;
       	}
       }

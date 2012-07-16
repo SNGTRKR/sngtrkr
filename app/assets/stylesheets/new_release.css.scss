@@ -44,14 +44,14 @@ position:relative;
               position:relative;
               top:-1px;
               left:-90px;
-              @extend .right;
+              float: right;
             }
      textarea {
        resize:none;
      }
     .step-left {
       width:290px;
-      @extend .left;
+      float: left;
       .type-pad {
 	      position:relative;
 	      top:-4px;
@@ -60,7 +60,7 @@ position:relative;
     .step-right {
       width:226px;
       margin-top:-2px;
-      @extend .right;
+      float: right;
     }
     #avail-line {
       position:absolute;
@@ -122,7 +122,7 @@ position:relative;
     left:37px;
     top:2px;
  li{
-  @extend .left;
+  float: left;
   @extend .button;
   position:relative;
   margin-right:25px;
@@ -180,7 +180,7 @@ position:relative;
 #manage-image-restore {
       position:relative;
       left:-53px;
-      @extend .right;
+      float: right;
       @extend .button;
 }
 span.checked{

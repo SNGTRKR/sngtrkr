@@ -37,12 +37,12 @@
         left:115px;
         top:47px;
         input {
-	        @extend .left;
+	        float: left;
 	        @extend .button;
 	        margin-right:15px;
         }
         div {
-	        @extend .left;
+	        float: left;
 	        @extend .button;
         }
       }
