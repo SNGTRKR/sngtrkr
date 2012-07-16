@@ -82,6 +82,11 @@ a > div {
     .step-left {
       width:290px;
       @extend .left;
+      #artist-summary {
+	      li {
+		      margin-bottom:18px;
+	      }
+      }
       #itunes-buttons {
 	      a {
 		      @extend .left;
@@ -92,15 +97,18 @@ a > div {
 		      @extend .left;
 	      }
       }
-      #ajax-itunes-search-results {
-	      height:147px;
+      #itunes-results {
+	      height:166px;
 	      width:287px;
 	      @extend .scrollbar;
 	      ul {
 		      list-style-type:none;
 		      overflow-y:scroll;
+		      overflow-x:hidden;
+		      height:166px;
 		      li {
 			      @extend .left;
+			      width:287px;
 		      }
 	      }
       }
@@ -127,15 +135,27 @@ a > div {
 		      @extend .left;
 	      }
       }
-            #ajax-7digital-search-results {
-	      height:108px;
+            #digital7-results {
+	      height:166px;
 	      width:287px;
 	      @extend .scrollbar;
 	      ul {
 		      list-style-type:none;
 		      overflow-y:scroll;
+		      overflow-x:hidden;
+		      height:166px;
 		      li {
 			      @extend .left;
+			      width:287px;
+			      .info {
+				      @extend .right;
+				      width:150px;
+				      margin-right:25px;
+			      }
+			      .image {
+				      @extend .left;
+				      width:100px;
+			      }
 		      }
 	      }
       }
@@ -156,7 +176,7 @@ a > div {
     }
     #details-line {
       position:absolute;
-      height:477px;
+      height:599px;
       border-style:solid;
       border-right-width:1px;
       border-right-color:$orange;
@@ -181,9 +201,18 @@ a > div {
       top:16px;
       left:333px;
     }
+    #store-line {
+      position:absolute;
+      height:399px;
+      border-style:solid;
+      border-right-width:1px;
+      border-right-color:$orange;
+      top:16px;
+      left:333px;
+    }
     .manage-image {
       position:relative;
-      top:-44px;
+      top:0px;
       left:114px;
     }
 }
@@ -217,17 +246,19 @@ a > div {
 }
 #bulge-left {
   position:absolute;
-  height:609px;
+  height:731px;
   top:5px;
   left:-13px;
   z-index:50;
+  width:48px;
 }
 #bulge-right {
   position:absolute;
-  height:609px;
+  height:731px;
   top:5px;
   right:-12px;
   z-index:50;
+  width:48px;
 }
 #progress-bar {
   left:175px;
