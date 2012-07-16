@@ -48,7 +48,7 @@
 	      font-size:2.5em;
       }
       li {
-      @extend .left;
+      float: left;
       div {
 	      position:relative;
 	      bottom:-78px;
@@ -102,7 +102,7 @@
 	      line-height:38px;
 	      @include border-radius(4px);
 	      margin:0 7px 0 7px;
-	      @extend .left;
+	      float: left;
       }
       .goo-icon {
 		overflow:hidden;
@@ -154,7 +154,7 @@
 			      @include border-radius(4px);
 			      margin:0px 7px 0px 7px;
 			      @extend .white-button;
-			      @extend .left;
+			      float: left;
 			      img {
 				      position:relative;
 				      top:1px;
@@ -178,8 +178,9 @@
 			@include border-radius(12px);
 			padding:17px;
 			line-height:1.7em;
-			@extend .right;
+			float: right;
 			margin-right:7px;
+			position: relative;
 			.gray {
 				@extend .light-gray;
 			}
@@ -203,12 +204,18 @@
 			a:hover {
 				color:#000;
 			}
+			#edit-profile{
+				position: absolute;
+				right: 20px;
+				font-size: 2.4em;
+				top: 20px;
+			}
 		}
 		.menu-user {
 			list-style-type:none;
 			margin:15px -13px 0 0;
 			width:300px;
-			@extend .right;
+			float: right;
 			.icon-shopping-cart, .icon-share-alt {
 				margin-right:5px;
 			}
@@ -218,7 +225,7 @@
 				@extend .button;
 			}
 			li {
-				@extend .left;
+				float: left;
 			}
 		}
 	#bio-full {

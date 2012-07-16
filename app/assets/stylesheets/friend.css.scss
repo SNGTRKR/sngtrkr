@@ -21,7 +21,7 @@ margin:5px 0 22px 42px;
         border: 1px solid #50A6C2;
         border-bottom: 1px solid #B0E0E6;
         z-index:1;
-        @extend .right;
+        float: right;
         margin:270px -1px 0 0;
                 input{
 		            background:transparent;
@@ -81,7 +81,7 @@ margin:5px 0 22px 42px;
 	width:446px;
 	margin-left:67px;
 	.new-activity {
-	@extend .left;
+	float: left;
 	position:relative;
 	height:86px;
 	width:332px;
@@ -188,7 +188,7 @@ margin:5px 0 22px 42px;
 	#friend-trkrs {
 		width:320px;
 		position:relative;
-		@extend .left;
+		float: left;
 		@extend .scrollbar;
 		margin:0 0 30px 18px;
 		  #friend-trkr-list {
@@ -201,7 +201,7 @@ margin:5px 0 22px 42px;
 		      margin:0 0 32px 20px;
 		      position: relative; 
 		      @include border-radius(7px);
-		      @extend .left;
+		      float: left;
 		      .new-friend {
 		      @include box-shadow(0px 2px 8px rgba(0,0,0,0.45));
 		      position:relative;
@@ -275,7 +275,7 @@ margin:5px 0 22px 42px;
 	      line-height:25px;
 	      @include border-radius(3px);
 	      margin-right:10px;
-	      @extend .left;
+	      float: left;
       }
       .goo-icon {
 		overflow:hidden;

@@ -40,7 +40,7 @@ $overlap: $width*0.25;
     list-style-type:none;
     margin:19px 0 0 -32px;
     .each-recommend {
-    @extend .left;
+    float: left;
     position:relative;
     height:178px;
     width:202px;
@@ -116,7 +116,7 @@ $overlap: $width*0.25;
 	      line-height:38px;
 	      @include border-radius(4px);
 	      margin:0 7px 0 7px;
-	      @extend .left;
+	      float: left;
       }
       .goo-icon {
 		overflow:hidden;
@@ -157,7 +157,7 @@ $overlap: $width*0.25;
   }
 span {
 	@extend .button;
-	@extend .right;
+	float: right;
 	margin:-3px 113px 31px 0;
 }
 }
@@ -208,7 +208,7 @@ span {
  		height:$height + $v-line-length+$h-v-space;
  		margin-right: -$overlap/2;
  		margin-left: -$overlap/2;
- 		@extend .left;
+ 		float: left;
     .release-date{
       font-size: 1.25em;
       text-align:center;
@@ -298,7 +298,7 @@ span {
               cursor:pointer;
   	          color:#fff;
   	          line-height:23px;
-  	          @extend .left; 
+  	          float: left; 
             }
             }
         }
@@ -343,7 +343,7 @@ span {
               line-height:38px;
               @include border-radius(4px);
               margin:0 7px 0 7px;
-              @extend .left;
+              float: left;
             }
             .goo-icon {
           		overflow:hidden;
@@ -402,7 +402,7 @@ span {
   			      width:38px;
   			      @include border-radius(4px);
   			      margin:0px 7px 0px 7px;
-  			      @extend .left;
+  			      float: left;
 			      @extend .white-button;
   		      }
   	      }

@@ -3,7 +3,7 @@
 	position:relative;
 	height:26px;
 	width:33px;
-	@extend .right;
+	float: right;
 	z-index:50;
 	@include border-radius(8px);
 #trigger {
@@ -48,11 +48,11 @@
 			width:140px;
 		}
 		input[type=submit] {
-			@extend .left;
+			float: left;
 			@extend .font-13;
 		}
 		.cancel {
-			@extend .right;
+			float: right;
 			@extend .button;
 			@extend .font-13;
 		}
@@ -77,11 +77,11 @@
       	      width:166px;
       	      margin:15px auto;
 	      	      input, span {
-		      	      @extend .left;
+		      	      float: left;
 		      	      margin:0 7px 0 7px;
 	      	      }
 	      	      span {
-		      	      @extend .left;
+		      	      float: left;
 		      	      @extend .button;
 	      	      }
 	      	      
