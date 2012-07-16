@@ -11,16 +11,13 @@
     	<!-- JSON URL: <%= url_for artists_url(:search => @search, :format => :json)  %> -->
       <% if @empty_search or @short_search or @artists.empty? %>
       <div class="row result-warning">
-        <span class="span1">
-          <i class="icon-warning-sign"></i>
-        </span>
         <span class="span7">
       	<% if @empty_search %>
-        	<p> Your search was empty, you have to type <strong>something</strong>! We think that's pretty reasonable.</p>
+        	<p> Your search was empty, you have to type <strong>something</strong>! </p>
         <% elsif @short_search %>
           <p> Your search word wasn't long enough, you must type at least <strong>two characters</strong>.</p>
       	<% elsif @artists.empty? %>
-          <p> Sorry, your search returned no results, but see below for facebook artists with that name.</p>
+          <p> Sorry, your search returned no results, but see below for Facebook artists with that name.</p>
         <% end %>
         </span>
       </div>
