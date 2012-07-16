@@ -29,23 +29,20 @@
 	  width:240px;
 	  margin-left:30px;
 	  float: left;
-	  p {
-		  font-size: 1.2em;
-	  }
 	  #home1 {
 	  	position:relative;
-		  top:32px-10px;
-		  left:40px;
+		  top:9px;
+		  left:42px;
 	  }
 	  #home2 {
 	  position:relative;
-		  top:53px-10px;
-		  left:34px;
+		  top:30px;
+		  left:33px;
 	  }
 	  #home3 {
 	  position:relative;
-		  top:30px-10px;
-		  left:34px;
+		  top:6px;
+		  left:36px;
 	  }
   }
 }
@@ -55,6 +52,7 @@
 	@extend .facebook-button;
 }
 #beta-form {
+	margin-top:19px;
 	input[type=text] {
 		margin-left:2px;
 		margin-bottom:6px !important;
