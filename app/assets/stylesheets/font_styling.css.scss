@@ -20,6 +20,12 @@ p{
   }
 }
 
+p {
+  @include text-shadow(0 0.1em 1px rgba(255, 255, 255, 0.31));
+}
+h2, h3, h4, h5{
+  //@include text-shadow(0 0.1em 1px rgba(255, 255, 255, 0.81));
+}
 .tab-indent {
   padding-left: 2em;
 }

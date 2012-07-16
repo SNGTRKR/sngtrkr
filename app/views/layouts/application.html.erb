@@ -63,9 +63,15 @@
 					<%= render :partial => 'layouts/artist_mini_search', :locals => { :css => 'mini-search-2'} %>
 					<% end %>
 					<div class="clear"></div>
-				</div><div class="container"><%= yield %>
-			</div></div></div>
-		<div id="footer"><div id="fcontainer">
+				</div>
+				<div class="container">
+					<%= yield %>
+					<div id="footer-pad"></div>
+				</div>
+			</div>
+		</div>
+		<div id="footer" class="container">
+		<div  class="row"><div id="fcontainer" class="span10 offset1">
 				<ul class="footer-menu">
 					<li><a href="/about">About Us</a></li>
 					<li><a href="http://blog.sngtrkr.com">Blog</a></li>
@@ -79,7 +85,9 @@
 					<% end %>
 			   </ul>
 				<p>© Copyright SNGTRKR 2012. All Rights Reserved - Artist and release images are the property Last.fm</p>
-			</div></div>
+			</div>
+		</div>
+		</div>
 		<script type="text/javascript">
 		  // Google Analytics
     	var _gaq = _gaq || [];
