@@ -1,12 +1,13 @@
 #about-txt{
-  margin:0 0 25px 58px;
+  margin:0 0 9px 58px;
   width:666px;
   h1 {
 	  margin-bottom:16px;
   }
   h2 {
-    @extend h1;
-    font-size: 2em;
+    font-weight:bold;
+    font-size: 1.3em;
+    margin-bottom:7px;
   }
   span {
 	  font-style:italic;
@@ -17,7 +18,7 @@
   width:666px;
   div {
 	margin-bottom:7px;
-	@extend .font-13;
+	@extend .font-15;
 	font-weight:bold;
   }
   h1 {
@@ -35,10 +36,10 @@
   }
   a
   {
-    color:#fff;
+    color:$gray;
   }
   a:hover {
-    color:$gray;
+    color:$orange;
   }
   p {
   margin-bottom:16px;
@@ -143,17 +144,17 @@
   }
   a
   {
-    color:#fff;
+    color:$gray;
   }
   a:hover {
-    color:$gray;
+    color:$orange;
   }
   p {
   margin-bottom:16px;
 }
 div {
 	margin-bottom:7px;
-	@extend .font-13;
+	@extend .font-15;
 	font-weight:bold;
 }
 }
