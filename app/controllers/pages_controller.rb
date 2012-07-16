@@ -38,6 +38,10 @@ class PagesController < ApplicationController
   
   end
   
+  def intro 
+  
+  end
+  
   def splash
     if(user_signed_in?)
       flash.keep
