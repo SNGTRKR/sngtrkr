@@ -1,39 +1,32 @@
 <% content_for :title do %>Team<% end %>
 <% content_for :description do %>SNGTRKR is built and run by a collective of music enthusiastic fans, who want to make it more fun to discover new music and track artists.<% end %>
 <div class="team row">
-	<span class="span10 offset1">
-		<div class="row">
-			<span class="span7">
-			<h1 id="header">The Team</h1>
-			<%= image_tag "/images/team.jpg", :alt => "Matt and Billy at Global Gathering 2011" %>
-			</span>
-			<span class="span3" id="headliner">
-			<p>SNGTRKR is primarily built and run by two music enthusiastic fans, who want to make discovering great new music as easy and enjoyable as possible. To find out more information about SNGTRKR, or how to get involved, head on over to our About Us page.</p>
-			<p>Get in touch and email us at <a href="mailto:info@sngtrkr.com">info@sngtrkr.com</a>.</p>
-			</span>
-		</div>
-	</span>
+<span class="span10 offset1">
+<h1>The Team</h1>	
+<p id="top-text">SNGTRKR is primarily built and run by two music enthusiasts, who want to make discovering great new music as easy and enjoyable as possible. To find out more information about SNGTRKR, or how to get involved, head on over to our <%= link_to 'about us', "/about" %> page.</p>
+<p id="top-text">If you'd like to get in touch you can email us at <a href="mailto:info@sngtrkr.com">info@sngtrkr.com</a>.</p>
+<div id="team-pic-container">
+	<div id="team-pic" style="background-image:url(/images/team.jpg);"></div>
 </div>
-<div class="team row">
-	<span class="span10 offset1">
-		<div class="row">
-			<span class="span5">
-				<h2>Billy Dallimore </h2>
-				<h3>Co-Founder, Chief Designer</h3>
-				<p>Billy was brought up within a family run Graphic Design business from an early age, which in turn inspired him to turn to web design &amp; development.
-				Being self taught amongst several web languages from the early age of 16, Billy has reaffirmed, improved and certified his skills within the web development 
-				&amp; design business over the course of 6 years. Billy also shares a passion for the EDM music scene, and has been actively DJing anything with a bassline for the past couple of years.</p>
-			</span>
-			<span class="span5">
-				<h2>Matt Bessey</h2>
-				<h3>Co-Founder, Chief Developer</h3>
-				<p>Matt has been using a keyboard and mouse since he was 4, or so his university application says anyway. Like Tom he taught himself web development from an early age, and
-				went on to study Computer Science at Bristol University. He's in his 2nd year right now. When not busy with deadlines and general hackery, he enjoys DJing a
-				variety of music.</p>
-			</span>
-		</div>
-	</span>
-</div>
+<div class="row">
+<span class="span5">
+<h2>Billy Dallimore</h2> 
+<h3>Co-Founder, Chief Designer</h3>
+<p>Billy was brought up within a family run Graphic Design business from an early age, which in turn inspired him to turn to web design &amp; development. 
+Being self taught amongst several web languages from the early age of 16, Billy has reaffirmed, improved and certified his skills within the web development 
+&amp; design business over the course of 6 years. Billy also shares a passion for the EDM music scene, and has been actively DJing anything with a bassline for the past couple of years.</p>
+</span>
+
+<span class="span5">
+<div id="second">
+<h2>Matt Bessey</h2> <h3>Co-Founder, Chief Developer</h3>
+<p>Matt has been using a keyboard and mouse since he was 4, or so his university application says anyway. Like Billy he taught himself web development from an early age, and
+went on to study Computer Science at Bristol University. He's in his 2nd year right now. When not busy with deadlines and general hackery, he enjoys DJing a
+variety of music.</p></div>
+</span></div>
+
+</span></div>
+
 <div class="team row">
 	<span class="span10 offset1">
 		<h2>Our story</h2>

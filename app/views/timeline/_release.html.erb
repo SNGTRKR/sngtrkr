@@ -12,7 +12,7 @@
       <ul class="release-menu">
       <div>
           <li class="buy-release">Buy</li>
-          <li>Listen</li>
+          <li class="play-release">Listen</li>
           <li class="share-release">Share</li>
           </div>
       </ul>
@@ -23,7 +23,7 @@
     <!-- r-grad -->
     <div class="opac-50"></div>
     <div class="share-release-list">
-      <h4>Share this track</h4>
+      <h4>Share this release</h4>
       <ul>
         <a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com<%= url_for release.artist %>%2F&t=SNGTRKR','ShareSNGTRKRonFacebook','scrollbars=no,width=620,height=340'); return false;">
         <li class="fb-icon fb-button">
@@ -44,10 +44,85 @@
       </div>
     </div>
     <div class="buy-release-list">
-      <h4>Buy this track</h4>
+      <h4>Buy this release</h4>
       <%= render :partial => 'shared/buy_links', :object => release %>
       <div class="clear"></div>
       <div class="buy-cancel">Cancel</div>
+    </div>
+    <div class="play-release-list">
+    <h4>Play this release</h4>
+    <i class="icon-remove"></i>
+    	<% if !release.tracks.count.zero? %>
+  <div id="release_jplayer_<%= release.id %>" class="jp-jplayer"></div>
+  <div class="timeline-i-player">
+  <div id="jp_container_<%= release.id %>" class="jp-audio">
+  <div class="tracklister"><i class="icon-list-ul"></i>Tracklisting:</div>
+      	<div class="scrollbar">
+	<div id="timeline-tracklist">
+      <div class="jp-playlist">
+					<ul>
+						<li></li>
+					</ul>
+				</div>
+	</div>
+      	</div>
+      	 
+    <div class="jp-type-single">
+      <div class="jp-gui jp-interface">
+        <ul class="jp-controls">
+          <li><a href="javascript:;" class="jp-play" tabindex="1"><i class="icon-play"></i></a></li>
+          <li><a href="javascript:;" class="jp-pause icon-pause" tabindex="1"></a></li>
+          <li><a href="javascript:;" class="jp-mute icon-volume-off" tabindex="1" title="mute"></a></li>
+          <li><a href="javascript:;" class="jp-unmute icon-volume-down" tabindex="1" title="unmute"></a></li>
+          <li><a href="javascript:;" class="jp-volume-max icon-volume-up" tabindex="1" title="max volume"></a></li>
+        </ul>
+        <div class="jp-progress">
+          <div class="jp-seek-bar">
+            <div class="jp-play-bar"></div>
+          </div>
+        </div>
+        <div class="jp-volume-bar">
+          <div class="jp-volume-bar-value"></div>
+        </div>
+        <div class="jp-time-holder">
+          <div class="jp-current-time"></div>
+          <div class="jp-duration"></div>
+        </div>
+      </div>
+
+      <div class="jp-no-solution">
+        <span>Update Required</span>
+        To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+      </div> <!-- no-solution -->
+    </div> <!-- jp-interface -->
+  </div> <!-- type-single -->
+	  </div> <! -- jp_container -->
+		<script type="text/javascript">
+    $(document).ready(function(){
+        new jPlayerPlaylist({
+		jPlayer: "#release_jplayer_<%= release.id %>",
+		cssSelectorAncestor: "#jp_container_<%= release.id %>"
+	}, [
+	<% 
+  	i = 1
+  	release.tracks.ordered.each do |track| %>
+		{
+			title:"<%= i %> - <%= track.name %>",
+			m4a:"<%= track.preview %>"
+		},
+		<% 
+		i += 1
+		end %>
+		
+	], {
+        swfPath: "/js",
+        supplied: "m4a, oga",
+        wmode: "window"
+      });
+    });
+  </script>
+<% else %>
+<div id="no-preview"><i class="icon-volume-off"></i><p>No track preview available for this release.</p></div><% end %>
     </div>
   </div>
   <div class="release-line"></div>
