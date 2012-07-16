@@ -1,3 +1,17 @@
 <% content_for :title do %>Help<% end %>
 <% content_for :description do %>Help and frequently asked questions for the SNGTRKR platform.<% end %>
-<h1>Help</h1>	
+<div class="span10 offset1">
+<h1>Help</h1>
+<p style="font-size:1.5em;">
+	We don't have any help articles just yet. If there's something you're having difficulty with, please leave some feedback.
+</p>
+<%= form_for Feedback.new do |f| %>
+<div class="row span5 offset3">
+	<%= f.text_area :feedback, :rows => 10,  :placeholder => "Please tell us what you would like help with"  %>
+    <%= f.hidden_field :url, :value => "http://#{request.host}:#{request.port}#{request.fullpath}" %>
+</div>
+<div class="row  span5 offset3">
+	<%= f.submit "Submit Feedback" %>
+</div>
+<% end %>
+</div>
