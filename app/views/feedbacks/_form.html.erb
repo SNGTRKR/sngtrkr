@@ -13,7 +13,7 @@
     <%= f.text_area :feedback, :rows => 5, :placeholder => "Please report any errors you have spotted..." %>
     <%= f.hidden_field :url, :value => "http://#{request.host}:#{request.port}#{request.fullpath}" %>
   <div class="actions">
-    <%= f.submit "Submit Error" %> 
+    <%= f.submit "Submit" %> 
     <span>Cancel</span>
     <div class="clear"></div>
   </div>
