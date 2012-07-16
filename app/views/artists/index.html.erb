@@ -4,37 +4,53 @@
 <% else %>
   <% content_for :description do %>Search results empty<% end %>
 <% end %>
-<div class="row"><div class="span8 offset2"><div id="artist-search">
-	<h1>Search Results</h1>
-	<!-- JSON URL: <%= url_for artists_url(:search => @search, :format => :json)  %> -->
-	<% if @empty_search %>
-  	<p> Error: your search was empty </p>
-  <% elsif @short_search %>
-    <p> Error: your search must be at least 2 characters long </p>
-	<% else %>
-  	<ul>
-  		<% @artists.each do |artist| %>
-  		<li>
-  		<div class="artist-search-row">
-  			<div class="artist-search-image" style="background-image:url(<%= artist.image.url :thumb %>);background-repeat:no-repeat;background-position:center;"></div>
-  			<div class="artist-search-info">
-  				<h2><%= link_to artist.name, artist %></h2>
-  				<div><%= artist.followers %> TRKRS</div>
-  				<%= artist.genre %>
-  			</div>
-  		</div>
-  		<%= render :partial => 'shared/search_trk_artist', :object => artist %>
-  		</li>
-  		<% end %>
-  	</ul>
-  	<%= if @artists then paginate @artists end %>
-  	<% if user_signed_in? %>
-    	<h1 class="fb-result-header">Facebook Results</h1>
-    	<p>If you don't see the artist you were looking for above, you can add their facebook page to SNGTRKR here. Make sure to choose the artist's offical page, and not a fan page.</p>
-      <%= render 'artists/fb_search' %>
-      <%= render 'shared/fb_async' %>
-    <% else %>
-      <!-- content to show in replacement of facebook search results, if not logged in -->
-    <% end %>
-  <% end %>  
-</div></div></div>
+<div class="row">
+  <div class="span8 offset2">
+    <div id="artist-search">
+    	<h1>Search Results</h1>
+    	<!-- JSON URL: <%= url_for artists_url(:search => @search, :format => :json)  %> -->
+      <% if @empty_search or @short_search or @artists.empty? %>
+      <div class="row result-warning">
+        <span class="span1">
+          <i class="icon-warning-sign"></i>
+        </span>
+        <span class="span7">
+      	<% if @empty_search %>
+        	<p> Your search was empty, you have to type <strong>something</strong>! We think that's pretty reasonable.</p>
+        <% elsif @short_search %>
+          <p> Your search word wasn't long enough, you must type at least <strong>two characters</strong>.</p>
+      	<% elsif @artists.empty? %>
+          <p> Sorry, your search returned no results, but see below for facebook artists with that name.</p>
+        <% end %>
+        </span>
+      </div>
+      <% else %>
+      	<ul>
+      		<% @artists.each do |artist| %>
+      		<li>
+      		<div class="artist-search-row">
+      			<div class="artist-search-image" style="background-image:url(<%= artist.image.url :thumb %>);background-repeat:no-repeat;background-position:center;"></div>
+      			<div class="artist-search-info">
+      				<h2><%= link_to artist.name, artist %></h2>
+      				<div><%= artist.followers %> TRKRS</div>
+      				<%= artist.genre %>
+      			</div>
+      		</div>
+      		<%= render :partial => 'shared/search_trk_artist', :object => artist %>
+      		</li>
+      		<% end %>
+      	</ul>
+      	<%= if @artists then paginate @artists end %>
+  	  <% end %>
+      <% if user_signed_in? and !@empty_search and !@short_search  %>
+      	<h1 class="fb-result-header">Facebook Results</h1>
+      	<p>If you don't see the artist you were looking for above, you can add their facebook page to SNGTRKR here. Make sure to choose the artist's offical page, and not a fan page.</p>
+        <%= render 'artists/fb_search' %>
+        <%= render 'shared/fb_async' %>
+      <% else %>
+        <!-- content to show in replacement of facebook search results, if not logged in -->
+      <% end %>
+
+    </div>
+  </div>
+</div>
