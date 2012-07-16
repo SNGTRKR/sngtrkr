@@ -214,6 +214,12 @@ h3 {
 		  font-size:1.2em;
 		  margin-bottom:5px;
 	  }
+	    a {
+		  color:$orange;
+		  }
+	  a:hover {
+		  color:$gray;
+		  }
 	  #team-pic {
     height:285px;
     background:$gray;
@@ -221,7 +227,37 @@ h3 {
     background-size: cover;
     background-position:bottom;
     background-position:center;
-    width:474px;}
+    width:474px;
+    }
+    	      ul {
+		 li {
+	      height:38px;
+	      width:38px;
+	      line-height:38px;
+	      @include border-radius(4px);
+	      margin-right:15px;
+	      float: left;
+      }
+      .goo-icon {
+		overflow:hidden;
+		font-size:4.8em;	
+      }
+      .icon-twitter {
+	      position:relative;
+	      bottom:2px;
+	      font-size:2.5em;
+      }
+      .icon-facebook {
+	      position:relative;
+	      right:1px;
+	      font-size:2.5em;
+      }
+      .icon-google-plus {
+	      position:relative;
+	      right:20px;
+	      top:6px;
+      }
+      }
   }
   .each-tab {
 	  height:649px;
