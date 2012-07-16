@@ -109,6 +109,7 @@ strong {
   }
   ::-webkit-scrollbar-thumb {
       border-radius: 10px;
+      background-color:$orange;
       $experimental-support-for-svg: true;
       @include background-image(linear-gradient(top, #F37244 0%, #F15A24 100%));
 	  	    -webkit-box-shadow:
