@@ -9,7 +9,6 @@ class Artist < ActiveRecord::Base
 
   has_attached_file :image, :styles => {
     :large => "310x369#",
-    :thumb => "76x76#",
     :recommend => "202x178#",
     :manage => "100x100#",
     :friend_activity_artist => "87x87#",
