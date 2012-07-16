@@ -1,6 +1,8 @@
 # Load the rails application
 require File.expand_path('../application', __FILE__)
 
+$proxy = nil
+
 ENV['AMAZON_ACCESS_KEY'] = 'AKIAIEBWHRBGTD5XBYMA'
 ENV['AMAZON_SECRET_KEY'] = '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'
 
