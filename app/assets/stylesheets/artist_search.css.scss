@@ -1,5 +1,17 @@
 #artist-search {
-margin-left:8px;
+  .result-warning{
+    margin-top:20px;
+    margin-bottom:20px;
+    p{
+      text-align: center;
+      font-size: 1.8em;      
+    }
+    .icon-warning-sign{
+      font-size: 6em;
+      line-height: 1em;
+      opacity: 0.8;
+    }
+  }
 h2 {
    margin:0 0 2px 0;
    @extend .font-15;
