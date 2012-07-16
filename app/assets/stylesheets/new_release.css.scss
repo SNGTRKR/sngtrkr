@@ -33,9 +33,6 @@ position:relative;
                 float:left;
                 margin-top:4px;
             }
-            li {
-                padding:0 0 18px 0;
-            }
             input[type="file"] {
               position:relative;
                background:transparent;
@@ -64,7 +61,7 @@ position:relative;
     }
     #avail-line {
       position:absolute;
-      height:196px;
+      height:206px;
       border-style:solid;
       border-right-width:1px;
       border-right-color:$orange;

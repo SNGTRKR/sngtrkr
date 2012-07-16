@@ -5,7 +5,7 @@ image_height = 100
 %>
 <div class="container">
 <div id="master-form-wrapper">
-<h2 class="signika-txt top-header font-35 add-release-header">Add new release</h2>
+<h2 class="signika-txt top-header font-35 add-release-header">Add new release for <%= @artist.name %></h2>
 <div id="new-release-form">
 <div id="steps">
 <%= form_for [@artist, @release] do |f| %>
@@ -32,7 +32,7 @@ image_height = 100
 				Add the purchase URLs for your release, then we will work our magic and try to get as much info on the release from these sources.
 				<br/>
 				<br/>
-				<strong>If your track has yet to be released on these music outlets, or you are not planning to, then please ignore this section.</strong>
+				<strong>If your track has yet to be released on these music outlets, or you are not planning to, then you can skip this section.</strong>
 			</div>
 			<div id="avail-line"></div>
 			<div class="clear"></div>
