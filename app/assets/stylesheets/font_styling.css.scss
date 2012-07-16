@@ -10,6 +10,16 @@
   src: local("?"),
     url("/font/lucida_grande.otf") format("opentype");
 }
+
+p{
+  font-size:1.1em;
+  line-height: 1.5em;
+  padding-bottom: 1em;
+  a{
+    @include text-shadow(0px 2px gray);
+  }
+}
+
 .tab-indent {
   padding-left: 2em;
 }
