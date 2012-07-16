@@ -1,28 +1,29 @@
+.profile-settings{
+	h3 {
+		@extend .font-15;
+		font-weight:bold;
+		padding: 1em 0 0.5em 0;
+	}
 
-h3 {
-	@extend .font-15;
-	font-weight:bold;
-	padding: 1em 0 0.5em 0;
-}
+	span, input[type="submit"] {
+		float: left;
+		@extend .button;
+		margin-right: 15px;
+		margin-bottom: 10px;
+		//margin-top:-0.5em;
+	}
 
-span, input[type="submit"] {
-	float: left;
-	@extend .button;
-	margin-right: 15px;
-	margin-bottom: 10px;
-	margin-top:-0.5em;
-}
-
-li {
-    float: left;
-    display:block;
-    width:80px;
-    padding:0 30px 0 0;
-    input,label{
-    	padding:0 5px 0 3px;
-    	float:left;
-    }
-    label{
-    	margin-top:1px;
-    }
+	li {
+	    float: left;
+	    display:block;
+	    width:80px;
+	    padding:0 30px 0 0;
+	    input,label{
+	    	padding:0 5px 0 3px;
+	    	float:left;
+	    }
+	    label{
+	    	margin-top:1px;
+	    }
+	}
 }
