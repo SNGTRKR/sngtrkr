@@ -68,7 +68,7 @@ content_for :og_id, @artist.id.to_s
 
 <div class="span4">
 <div id="profile-info">
-	<% if current_user.managing? @artist.id %>
+	<% if user_signed_in? and current_user.managing? @artist.id %>
 		<%= link_to edit_artist_path(@artist) do %><i class="icon-edit"></i><% end %>
 	<% end %>
 	<h2><%= @artist.name %></h2>

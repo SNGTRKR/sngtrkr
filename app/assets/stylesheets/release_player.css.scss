@@ -104,8 +104,8 @@ ul {
 }
 }
 }
-	  a {
-	  color:$gray;
+a {
+color:$gray;
   }
   a:hover {
 	  color:$orange;
@@ -118,4 +118,13 @@ ul {
 }
 .jp-seeking-bg {
 	background: $blue;
+}
+#tracklist{
+	a{
+		color:$gray;
+	}
+	a.jp-playlist-current{
+		color:$orange;
+		font-weight: bold;
+	}
 }
