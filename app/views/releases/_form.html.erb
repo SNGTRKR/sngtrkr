@@ -3,7 +3,6 @@ image_width = 100
 image_height = 100
 @release = Release.new
 %>
-<div class="container">
 <div id="master-form-wrapper">
 <h2 class="signika-txt top-header font-35 add-release-header">Add new release for <%= @artist.name %></h2>
 <div id="new-release-form">
@@ -29,7 +28,7 @@ image_height = 100
 				</ul>
 			</div>
 			<div class="step-right">
-				Add the purchase URLs for your release, then we will work our magic and try to get as much info on the release from these sources.
+				Add the purchase URLs for your release, from the music retailers supplied. If you think a different music retailer should be available, leave a message in our feedback tool above.
 				<br/>
 				<br/>
 				<strong>If your track has yet to be released on these music outlets, or you are not planning to, then you can skip this section.</strong>
@@ -191,22 +190,22 @@ image_height = 100
 		$(document).ready(function() {
 			$(".new-avail").click(function() {
 				$(".step-back").animate({
-					height : 151
+					height : 187
 				}, "slow");
 				$(".step").animate({
-					height : 239
+					height : 275
 				}, "slow");
 				$(".progress").animate({
 					width : 65
 				}, "slow");
 				$('#bulge-left').animate({
-					height : 338
+					height : 376
 				}, "slow");
 				$('#bulge-left').animate({
 					width : 27
 				}, 10);
 				$('#bulge-right').animate({
-					height : 338
+					height : 376
 				}, "slow");
 				$('#bulge-right').animate({
 					width : 27
@@ -219,22 +218,22 @@ image_height = 100
 			});
 			$(".new-details").click(function() {
 				$(".step-back").animate({
-					height : 233
+					height : 377
 				}, "slow");
 				$(".step").animate({
-					height : 321
+					height : 465
 				}, "slow");
 				$(".progress").animate({
 					width : 130
 				}, "slow");
 				$('#bulge-left').animate({
-					height : 420
+					height : 565
 				}, "slow");
 				$('#bulge-left').animate({
 					width : 27
 				}, 10);
 				$('#bulge-right').animate({
-					height : 420
+					height : 565
 				}, "slow");
 				$('#bulge-right').animate({
 					width : 27
