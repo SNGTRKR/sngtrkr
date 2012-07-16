@@ -19,7 +19,7 @@
     </div>
     <!-- r-grad -->
     <div class="opac-50"></div>
-    <div id="share-release">
+    <div class="share-release-list">
       <h4>Share this track</h4>
       <ul>
         <a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com<%= url_for release.artist %>%2F&t=SNGTRKR','ShareSNGTRKRonFacebook','scrollbars=no,width=620,height=340'); return false;">
@@ -40,7 +40,7 @@
         Cancel
       </div>
     </div>
-    <div id="buy-release">
+    <div class="buy-release-list">
       <h4>Buy this track</h4>
       <%= render :partial => 'shared/buy_links', :object => release %>
       <div class="clear"></div>

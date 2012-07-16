@@ -21,16 +21,16 @@ $overlap: $width*0.25;
   height:1.9*($height+$v-line-length+$h-v-space)+$h-line-height+20px;
   background-image: url(/images/grid2.png);
   margin:-166px 0 30px 0;
-  @extend .scrollbar;
+  @extend .scrollbar2;
 }
 #timelime-trim {
   position:relative;
-  height:1.9*($height+$v-line-length+$h-v-space)+$h-line-height+5px;
+  height:1.9*($height+$v-line-length+$h-v-space)+$h-line-height+50px;
   overflow:hidden;
 }
 #timeline {
 	position:relative;
-  height:1.9*($height+$v-line-length+$h-v-space)+$h-line-height+13px;
+  height:1.9*($height+$v-line-length+$h-v-space)+$h-line-height+26px;
   overflow-x:scroll;
   overflow-y: hidden;
   padding:$height*0.025;
@@ -320,12 +320,13 @@ span {
   	      background:rgba(0,0,0,0.75);
   	      display:none;
         }
-        #share-release {
+        .share-release-list {
   	      position:absolute;
   	      height:$height;
   	      width:$width;
   	      z-index:2;
   	      right:-$width;
+  	      top:51px;
   	      h4 {
   	      	  margin-top:29px;
 	  	      @extend .signika-txt;
@@ -370,13 +371,14 @@ span {
 		       @extend .button;
   	      }
         }
-        #buy-release {
+        .buy-release-list {
           $buy-width: 52px;
   	      position:absolute;
   	      height:$height;
   	      width:$width;
   	      z-index:2;
   	      left:-$width;
+  	      top:51px;
   	     h4 {
   	      	  margin-top:29px;
 	  	      @extend .signika-txt;
