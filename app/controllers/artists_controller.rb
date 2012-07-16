@@ -144,7 +144,7 @@ class ArtistsController < ApplicationController
   
   # Used to import a single artist at a time
   def import
-    @artist = ArtistSubJob.single_import(params[:access_token], params[:fb_id], current_user.id)
+    @artist = Artist.fb_single_import(params[:access_token], params[:fb_id], current_user.id)
     @url = artist_path(@artist)
     respond_to do |format|
       format.js
