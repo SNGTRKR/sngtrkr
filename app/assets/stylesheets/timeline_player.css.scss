@@ -1,17 +1,38 @@
-#release-i-player {
+.timeline-i-player {
+color:#fff;
+.tracklister {
+margin:6px 0 0 25px;
+	i{
+		margin-right:10px;
+	}
+}
+#timeline-tracklist {
+  height:133px;
+  width:248px;
+  overflow-y: scroll;
+  @extend .scrollbar;
+  margin:5px 0 0 25px;
+  ul {
+	
+  }
+}
 .jp-no-solution {
-	a {
-		color:$orange;
-	}
-	a:hover {
-		color:$gray;
-	}
+margin:-88px 0 0 25px;
+width:248px;
+text-align:center;	
+a {
+	color:$orange;
+}
+a:hover {
+	color:#fff;
+}
 }
 .jp-type-single {
 	.jp-interface {
-		position:absolute;
-	bottom:15px;
+	position:absolute;
+	bottom:23px;
 	height:60px; 
+	left:25px;
 .jp-progress {
 	overflow:hidden;
 	background-color: #ccc;
@@ -105,7 +126,7 @@ ul {
 }
 }
 	  a {
-	  color:$gray;
+	  color:#fff;
   }
   a:hover {
 	  color:$orange;

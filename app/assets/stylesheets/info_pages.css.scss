@@ -155,37 +155,40 @@ div {
 }
 
 .team{
-  margin-bottom: 30px;
-  margin-top: 10px;
-  a{
-    font-weight: strong;
-  }
-  p{
-    font-size: 1.2em;
-    line-height: 1.6em;
-  }
-  #header{
-    margin-bottom: -80px;
-    margin-top:15px;
-    margin-left: 30px;
-    position: relative;
-    z-index: 50;
-    @include text-shadow(0px 2px 6px rgba(0, 0, 0, 0.78));
-    font-size: 4em;
-  }
-  h2{
-    @extend h1;
-    font-size: 2.5em;
-  }
-  h3{
-    font-weight: bold;
-    padding-bottom: 15px;
-    font-size: 1.3em;
-    color: $gray;
-  }
-  #headliner{
-    font-weight: bold;
-    font-size: 1.2em;
-    line-height: 1.8em;
-  }
+#team-pic {
+	width:666px;
+	@include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.45));
+    @include border-radius(12px);
+    height:450px;
+    background:$gray;
+    background-repeat:no-repeat;
+    background-position:center;
+    margin:5px 0 15px 56px;
+}
+p {
+	width:666px;
+	margin-left:56px;
+}
+span {
+	width:320px;
+	display:block;
+	margin-left:56px;
+}
+h1 {
+	margin:0 0 16px 56px;
+}
+h2 {
+	font-weight: bold;
+	font-size:1.6em;
+	line-height:1.5em;
+	margin-left:56px;
+}
+h3 {
+	font-size:1.2em;
+	line-height:1.8em;
+	margin:0 0 5px 56px;
+}
+#second {
+	margin:0 0 61px -47px;
+}
 }
