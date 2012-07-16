@@ -1,6 +1,6 @@
 <% content_for :title do %>Profile Settings<% end %>
 <% content_for :description do %>Editing the profile settings for <%= @user.first_name %>. You can change your email address, update your email notification settings and delete your account.<% end %>
-<div class="row"><div class="span10 offset1">
+<div class="row profile-settings"><div class="span10 offset1">
 		<div id="change-email">
 			<h1>Profile Settings</h1>
 			<h3>Change Email</h3>
@@ -30,7 +30,7 @@
 			<% end %>
 			<%= form_for(@user) do |f| %>
 		</div></div></div>
-	<div class="row"><div class="span10 offset1">
+	<div class="row profile-settings"><div class="span10 offset1">
 		<div id="email-notify">
 			<h3>Email Notifications</h3>
 			<p>
@@ -70,7 +70,7 @@
 			<% end %>
 		</div></div></div>
 		<% if @user.manager? %>
-	<div class="row"><div class="span10 offset1">
+	<div class="row profile-settings"><div class="span10 offset1">
 				<div id="manage-artist">
 			<h3>Artist management</h3>
 			<p>You are currently managing the artist known as <strong><%= @user.managing.first.name %></strong>.</p>
@@ -79,17 +79,17 @@
 			<span><a href="#unmanage-confirmation" class="light-box-parent">Delete</a></span>
 				</div></div></div>
 				<% else %><% end %>
-	<div class="row"><div class="span10 offset1">
+	<div class="row profile-settings"><div class="span10 offset1">
 		<div id="delete-account">
 			<h3>Delete Your Account</h3>
 			<p>Your account, tracked artists and all personal details will be permanently removed.</p>
 				<span><a href="#delete-confirmation" class="light-box-parent">Delete Account</a></span>
 		</div></div></div>
-	<div id="delete-confirmation">
+	<div class="row profile-settings" id="delete-confirmation">
 		<%= render :partial => 'delete_confirm' %>
 	</div>
 	<% if @user.manager? %>
-	<div id="unmanage-confirmation">
+	<div class="row profile-settings" id="unmanage-confirmation">
   	<%= render :partial => 'unmanage_confirm' %>
 	</div>
 	<% end %>
