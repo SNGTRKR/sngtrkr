@@ -22,18 +22,18 @@
 			<% if @user.manager? %>
 			<div class="artist">
 			<div>
-				Welcome, <strong><%= link_to @artist.name, @artist %></strong>
+				<p>Welcome, <strong><%= link_to @artist.name, @artist %></strong></p>
 			</div>
 			<p>
-			Here you will be able to view how many of your fans are TRKing you, along with adding releases, new and old, to your personalized artist timeline.
+			Here you will be able to view how many of your fans are tracking you, along with adding releases, new and old, to your personal timeline.
 			</p>
 			<p>
 			Even as an artist, you still want to keep up to
-			date with artists releasing content, old and new.  Below you will find  a list of the artists you are currently tracking, alongside recommended
-			artists we think you will find interesting.
+			date with artists releasing content, old and new.  Below you will find a list of the artists you are currently tracking, alongside recommended
+			artists we think you will be interested in.
 			</p>
 			<p>
-				If you need further help with anything, then be sure to visit our Help page.
+				If you need further help with anything, then be sure to visit our <%= link_to "help","/help" %> page.
 			</p>
 			</div>
 						<% else %>
