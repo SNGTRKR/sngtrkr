@@ -48,7 +48,7 @@
   margin-left:30px;
   background:rgba(255,255,255,0.75);
   @include border-radius(8px);
-  @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
+  @include box-shadow(0px 2px 8px rgba(0,0,0,0.45));
   width:171px;
   height:93px;
   padding:15px 15px 15px 15px;
