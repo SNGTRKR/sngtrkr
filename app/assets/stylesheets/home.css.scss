@@ -1,7 +1,8 @@
 .home-txt-1 {
     line-height:1.3em;
     @extend .font-14;
-    margin:0 15px 0 2px;
+    margin:8px 15px 8px 2px;
+    width:320px;
     span {
 	    margin:11px 0 5px 0;
 	    display:block;
@@ -29,32 +30,30 @@
 	  width:240px;
 	  margin-left:30px;
 	  float: left;
-	  p {
-		  font-size: 1.2em;
-	  }
 	  #home1 {
 	  	position:relative;
-		  top:32px-10px;
-		  left:40px;
+		  top:9px;
+		  left:42px;
 	  }
 	  #home2 {
 	  position:relative;
-		  top:53px-10px;
-		  left:34px;
+		  top:30px;
+		  left:33px;
 	  }
 	  #home3 {
 	  position:relative;
-		  top:30px-10px;
-		  left:34px;
+		  top:6px;
+		  left:36px;
 	  }
   }
 }
 .fb-home-login {
-	margin:-3px 0 25px 0;
+	margin:-1px 0 25px 0;
 	float: left; 
 	@extend .facebook-button;
 }
 #beta-form {
+	margin-top:1px;
 	input[type=text] {
 		margin-left:2px;
 		margin-bottom:6px !important;

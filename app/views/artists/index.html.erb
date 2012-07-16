@@ -10,8 +10,7 @@
     	<h1>Search Results</h1>
     	<!-- JSON URL: <%= url_for artists_url(:search => @search, :format => :json)  %> -->
       <% if @empty_search or @short_search or @artists.empty? %>
-      <div class="row result-warning">
-        <span class="span7">
+	<div class="result-warning">
       	<% if @empty_search %>
         	<p> Your search was empty, you have to type <strong>something</strong>! </p>
         <% elsif @short_search %>
@@ -19,8 +18,7 @@
       	<% elsif @artists.empty? %>
           <p> Sorry, your search returned no results, but see below for Facebook artists with that name.</p>
         <% end %>
-        </span>
-      </div>
+        </div>
       <% else %>
       	<ul>
       		<% @artists.each do |artist| %>
