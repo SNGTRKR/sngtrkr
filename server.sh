@@ -1,3 +1,4 @@
 killall -9 ruby
 rails server -d
-rake resque:restart_workers
+nohup sidekiq -q release,1 -q artist,2 -q artists,3 -c 2
+
