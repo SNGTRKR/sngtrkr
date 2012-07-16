@@ -1,4 +1,7 @@
 SNGTRKR::Application.configure do
+
+  $proxy = 'http://localhost:3128'
+
 # Settings specified here will take precedence over those in config/application.rb
 
   # Code is not reloaded between requests
