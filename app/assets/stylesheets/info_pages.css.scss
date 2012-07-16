@@ -4,6 +4,10 @@
   h1 {
 	  margin-bottom:16px;
   }
+  h2 {
+    @extend h1;
+    font-size: 2em;
+  }
   span {
 	  font-style:italic;
   }
@@ -156,39 +160,34 @@ div {
 
 .team{
 #team-pic {
-	width:666px;
 	@include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.45));
     @include border-radius(12px);
-    height:450px;
+    height:500px;
     background:$gray;
     background-repeat:no-repeat;
+    background-size: cover;
+    background-position: bottom;
     background-position:center;
-    margin:5px 0 15px 56px;
+    margin:5px 10px 15px 0;
 }
-p {
-	width:666px;
-	margin-left:56px;
+#top-text{
+  font-size:1.3em;
+  font-weight: bold;
 }
-span {
-	width:320px;
-	display:block;
-	margin-left:56px;
+.row{
+  margin-bottom:20px;
 }
 h1 {
-	margin:0 0 16px 56px;
+	margin:0 0 16px 0;
 }
 h2 {
 	font-weight: bold;
 	font-size:1.6em;
 	line-height:1.5em;
-	margin-left:56px;
 }
 h3 {
 	font-size:1.2em;
 	line-height:1.8em;
-	margin:0 0 5px 56px;
-}
-#second {
-	margin:0 0 61px -47px;
+	margin:0 0 5px 0;
 }
 }
