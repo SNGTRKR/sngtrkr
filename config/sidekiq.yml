@@ -1,0 +1,10 @@
+# Sample configuration file for Sidekiq.
+# Options here can still be overridden by cmd line args.
+#   sidekiq -C config.yml
+---
+:verbose: false
+:concurrency:  25
+:queues:
+  - [artists, 10]
+  - [artist, 5]
+  - [release, 1]

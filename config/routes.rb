@@ -20,6 +20,9 @@ SNGTRKR::Application.routes.draw do
     mount RailsAdmin::Engine => '/rails', :as => 'rails_admin' # Feel free to change '/admin' to any namespace you need.
   end
 
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+
   devise_for :users, :controllers => { :registrations => "users/registrations",
     :omniauth_callbacks => "users_controller/omniauth_callbacks"}
   devise_scope :user do
@@ -85,11 +88,6 @@ SNGTRKR::Application.routes.draw do
   resources :feedbacks
 
   #resources :labels, :only => [:show] # Not implemented in v1 so no access to it
-
-  require 'resque/server'
-  constraints CanAccessResque do
-    mount Resque::Server, at: 'resque'
-  end
 
   #  Use this line for production
   # unless Rails.application.config.consider_all_requests_local

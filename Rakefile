@@ -4,11 +4,3 @@
 
 require File.expand_path('../config/application', __FILE__)
 SNGTRKR::Application.load_tasks
-
-#unless ENV['RESQUE_WORKER'] == 'true'
-#  require File.expand_path('../config/application', __FILE__)
-#  SNGTRKR::Application.load_tasks
-#else
-#  ROOT_PATH = File.expand_path("..", __FILE__)
-#  load File.expand_path('../lib/tasks/resque.rake')
-#end

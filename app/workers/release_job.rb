@@ -1,7 +1,9 @@
 class ReleaseJob
 
-  @queue = :releasejob
   @sevendigital_apikey = "7dufgm34849u"
+  include Sidekiq::Worker
+  sidekiq_options :queue => :release
+
   if Rails.env.production?
     @proxy = 'http://localhost:3128'
   else
@@ -10,7 +12,7 @@ class ReleaseJob
 
   def self.daily_release
     Artist.where(:ignore => false).each do |artist|
-      Resque.enqueue(ReleaseJob, artist.id)
+      ReleaseJob.perform_async(artist.id)
     end
   end
 
@@ -176,7 +178,7 @@ class ReleaseJob
     end
   end
 
-  def self.perform(artist_id)
+  def perform(artist_id)
     if artist_id.blank? 
       raise "No Artist ID given"
     end
