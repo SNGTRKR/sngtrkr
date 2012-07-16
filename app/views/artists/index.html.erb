@@ -24,7 +24,7 @@
       		<% @artists.each do |artist| %>
       		<li>
       		<div class="artist-search-row">
-      			<div class="artist-search-image" style="background-image:url(<%= artist.image.url :thumb %>);background-repeat:no-repeat;background-position:center;"></div>
+      			<div class="artist-search-image" style="background-image:url(<%= artist.image.url :friend_activity_artist %>);background-repeat:no-repeat;background-position:center;"></div>
       			<div class="artist-search-info">
       				<h2><%= link_to artist.name, artist %></h2>
       				<div><%= artist.followers %> TRKRS</div>
