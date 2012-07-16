@@ -70,7 +70,6 @@ image_height = 100
     <div class="step">
     	<div class="step-back manage-picture-step">
     		<div class="step-left">
-    			<strong><%= f.label :picture %></strong>
     			<%= f.file_field 'image', :tabindex => -1 %></br/><br/>
     			<strong>Preview:</strong>
     			<div class="manage-image"><%= image_tag (@artist.image :manage), :id => 'manage-image-current' %>
@@ -109,14 +108,12 @@ image_height = 100
         <% end %>
         <div class="clear"></div>
         </div>
-        <br/>
         <%=form_for @artist, :url => artist_scrape_confirm_path(:artist_id => @artist.id, :format => :js), :remote => true do |f| %>
           <%= text_field_tag :search, @artist.name, :class => "form-text" %>
           <%= hidden_field_tag :store, "itunes" %>
           <%= submit_tag "Search" %>
         <% end %>
-        <br/><br/>
-        <div id="ajax-itunes-search-results"></div>
+        <div id="itunes-results"><ul id="ajax-itunes-search-results"></ul></div>
       <% end %>
   		</div>
   		<div class="step-right">
@@ -128,7 +125,7 @@ image_height = 100
   		<br/>
   		However if you are having trouble finding the correct profile please contact us at <a href="mailto:support@sngtrkr.com">support@sngtrkr.com</a>.
   		</div>
-  		<div id="summary-line"></div>
+  		<div id="store-line"></div>
   	</div>
   </div>
   <div class="step">
@@ -147,14 +144,12 @@ image_height = 100
         <% end %>
         <div class="clear"></div>
           </div>
-      	<br/>
         <%= form_for @artist, :url => artist_scrape_confirm_path(:artist_id => @artist.id, :format => :js), :remote => true do |f| %>
           <%= text_field_tag :search, @artist.name, :class => "form-text" %>
           <%= hidden_field_tag :store, "7digital" %>
           <%= f.submit "Search" %>
         <% end %>
-        <br/><br/>
-        <div id="ajax-7digital-search-results"></div>
+        <div id="digital7-results"><ul id="ajax-7digital-search-results"></ul></div>
       <% end %>
   		</div>
   		<div class="step-right">
@@ -166,7 +161,7 @@ image_height = 100
   		<br/>
   		However if you are having trouble finding the correct profile, please contact us at <a href="mailto:support@sngtrkr.com">support@sngtrkr.com</a>.
   		</div>
-  		<div id="summary-line"></div>
+  		<div id="store-line"></div>
   	</div>
   </div>
   <div class="step">
@@ -264,13 +259,13 @@ $(document).ready(function () {
       width: 53
     }, "slow");
     $('#bulge-left').animate({
-      height: 609
+      height: 731
     }, "slow");
     $('#bulge-left').animate({
       width: 48
     }, 10);
     $('#bulge-right').animate({
-      height: 609
+      height: 731
     }, "slow");
     $('#bulge-right').animate({
       width: 48
@@ -315,22 +310,22 @@ $(document).ready(function () {
 
   $(".manage-itunes").click(function () {
     $(".step-back").animate({
-      height: 283
+      height: 343
     }, "slow");
     $(".step").animate({
-      height: 371
+      height: 431
     }, "slow");
     $(".progress").animate({
       width: 159
     }, "slow");
     $('#bulge-left').animate({
-      height: 470
+      height: 531
     }, "slow");
     $('#bulge-left').animate({
       width: 48
     }, 10);
     $('#bulge-right').animate({
-      height: 470
+      height: 531
     }, "slow");
     $('#bulge-right').animate({
       width: 48
@@ -345,22 +340,22 @@ $(document).ready(function () {
 
   $(".manage-7digital").click(function () {
     $(".step-back").animate({
-      height: 283
+      height: 381
     }, "slow");
     $(".step").animate({
-      height: 371
+      height: 469
     }, "slow");
     $(".progress").animate({
       width: 212
     }, "slow");
     $('#bulge-left').animate({
-      height: 470
+      height: 570
     }, "slow");
     $('#bulge-left').animate({
       width: 48
     }, 10);
     $('#bulge-right').animate({
-      height: 470
+      height: 570
     }, "slow");
     $('#bulge-right').animate({
       width: 48
