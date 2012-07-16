@@ -246,6 +246,12 @@
 	margin:25px 0 0 6px;
 	@extend .signika-txt;
 	@extend .font-25;
+	a {
+		color:#fff;
+	}
+	a:hover {
+		color:#fff;
+	}
 }
 .under-5 {
 	left:-43px;
