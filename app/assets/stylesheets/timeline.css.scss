@@ -518,4 +518,10 @@ span {
 }
 .a-timeline {
 	margin-top:-116px;
+  #timeline .release-list .release-outer:nth-child(2n) .release-date{
+    margin-top:-369px;
+  }
+  #timeline .release-list .release-outer:nth-child(2n+1) .release-date{
+    margin-top:34px;
+  }
 }
