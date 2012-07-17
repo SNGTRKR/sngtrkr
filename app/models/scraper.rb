@@ -19,6 +19,10 @@ class Scraper
     @artist_name = artist_name
   end
 
+  def self.improve_artist
+    return true
+  end
+
   def self.musicBrainzSearch search
     search = MusicBrainz::Webservice::ArtistFilter.new :name => search
     # Gets the top musicbrainz result
