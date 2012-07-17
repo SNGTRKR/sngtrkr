@@ -25,7 +25,7 @@ require "whenever/capistrano"
 #require "rvm/capistrano"
 
 # Sidekiq
-require "sidekiq/capistrano"
+#require "sidekiq/capistrano"
 
 #set :rvm_ruby_string, '1.9.3'
 #set :rvm_type, :user  # Copy the exact line. I really mean :system here
