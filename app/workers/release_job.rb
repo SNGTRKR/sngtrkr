@@ -15,7 +15,7 @@ class ReleaseJob
     Release.sdigital_import artist
     
     # STAGE 2 - ITUNES IMPORT
-    #Release.itunes_import artist
+    Release.itunes_import artist
       
     end_time = Time.now
     elapsed_time = end_time - start_time
