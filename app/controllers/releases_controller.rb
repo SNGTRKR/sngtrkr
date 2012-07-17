@@ -6,6 +6,7 @@ class ReleasesController < ApplicationController
   load_and_authorize_resource
   
   before_filter :managed_artists_only, :only => [:edit, :update, :create, :destroy, :new]
+  skip_before_filter :authenticate_user!, :only => [:show]
   
   def index
     @artist = Artist.find(params[:artist_id])
@@ -23,7 +24,7 @@ class ReleasesController < ApplicationController
     @artist = Artist.find(params[:artist_id])
     @release = @artist.releases.find(params[:id])
     @releases = @artist.real_releases.all
-    if current_user.managing.first == @artist 
+    if user_signed_in? and current_user.managing.first == @artist 
       @manager = true
     else
       @manager = false
