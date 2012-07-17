@@ -113,7 +113,8 @@
   	release.tracks.ordered.each do |track| %>
 		{
 			title:"<%= i %> - <%= track.name %>",
-			m4a:"<%= track.preview %>"
+			m4a:"<%= #track.preview # NEEDS TO BE RENABLED
+      %>"
 		},
 		<% 
 		i += 1
