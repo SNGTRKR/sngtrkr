@@ -261,6 +261,16 @@ span {
             font-size: 1.4em;
             padding-bottom: 3px;
     	      font-weight: bold;
+            a{
+              // Make the header cover the release
+              display: block;
+              width: $width*0.9;
+              padding-top: $height;
+              
+            }
+            a:hover{
+                color:inherit;
+            }
   	      }
   	      h3 {
             color: $orange;
