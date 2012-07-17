@@ -131,7 +131,7 @@ class ReleasesController < ApplicationController
     @artist = Artist.find(params[:artist_id])
     @release = @artist.releases.find(params[:id])
     respond_to do |format|
-      format.json
+      format.json 
     end
   end
   
