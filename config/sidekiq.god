@@ -7,7 +7,7 @@ God.watch do |w|
   w.interval = 30.seconds
   w.env      = {"RAILS_ENV" => rails_env}
   w.interval = 30.seconds
-  w.start = "#{rails_root}/ sidekiq -q release,1 -q artist,2 -q artists,3 -c 20"
+  w.start = "bundle exec sidekiq -q release,1 -q artist,2 -q artists,3 -c 20"
 
 
   w.uid = 'deploy'
