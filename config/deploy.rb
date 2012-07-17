@@ -41,23 +41,25 @@ ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "id_rsa")]
  
 set :synchronous_connect, true
 
-# Passenger
 namespace :deploy do
+  # Passenger
   task :start do 
     run ""
   end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-  end
-end
 
-# Paperclip regeneration
-namespace :deploy do
+    # God
+    run "cd #{current_path}; god restart sidekiq"
+
+  end
+
+  # Paperclip regeneration
   desc "build missing paperclip styles"
   task :build_missing_paperclip_styles, :roles => :app do
     run "cd #{current_path}; RAILS_ENV=production bundle exec rake paperclip:refresh:missing_styles"
-  end
+  end 
 end
 
 #after("deploy:update_code", "deploy:build_missing_paperclip_styles")
