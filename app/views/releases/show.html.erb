@@ -116,7 +116,7 @@
   <div id="release-i-player">
   <div id="jp_container_1" class="jp-audio">
   <i class="icon-list-ul"></i>Tracklisting:
-      	<div class="scrollbar">
+	<div class="scrollbar">
 	<div id="tracklist">
       <div class="jp-playlist">
 					<ul>
@@ -155,10 +155,10 @@
       </div> <!-- no-solution -->
     </div> <!-- jp-interface -->
   </div> <!-- type-single -->
-	  </div> <! -- jp_container -->
+	  </div> <!-- jp_container -->
 <% else %>
 <div id="no-preview">No track preview available for this release.</div><% end %>
-</div> <! -- release-i-player -->
+</div> <!-- release-i-player -->
   <ul class="menu-user">
   <li class="buy-release"><i class="icon-shopping-cart"></i>Buy</li>
   <li class="share-release"><i class="icon-share-alt"></i>Share</li>
@@ -229,6 +229,7 @@
 		<% if !@release.tracks.count.zero? %>
 		<script type="text/javascript">
     $(document).ready(function(){
+
         new jPlayerPlaylist({
 		jPlayer: "#release_jplayer_1",
 		cssSelectorAncestor: "#jp_container_1"

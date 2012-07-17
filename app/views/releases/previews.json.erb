@@ -1,5 +1,13 @@
 [
-	<% @release.tracks.each do |track| %>
-	{"<%= track.name %>": "<%= track.preview %>"},
-	<% end %>
-]
+	<% 
+  	i = 1
+  	@release.tracks.ordered.each do |track| %>
+		{
+			title:"<%= i %> - <%= track.name %>",
+			m4a:"<%= track.preview %>"
+		},
+		<% 
+		i += 1
+		end %>
+		
+	]
