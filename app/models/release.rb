@@ -188,28 +188,20 @@ class Release < ActiveRecord::Base
         r.scraped = 1
         
         album_info = Scraper.lastfm_album_info(artist.name, r.name)
-        best_artwork = album_info['image'].last rescue best_artwork = nil
-        if best_artwork
-          begin
-            io = open(best_artwork, :proxy => @proxy)
-            if io
-              def io.original_filename; base_uri.path.split('/').last; end
-              io.original_filename.blank? ? nil : io      
-              r.image = io
-            end
-          rescue
-            Rails.logger.warn "ARTWORK EXCEPTION: " + best_artwork.inspect
-          end
-        else  
-          # Itunes artwork is really shit quality so only use it if we must...
-          if itunes_releases[i]["artworkUrl100"]
-            io = open(itunes_releases[i]["artworkUrl100"], :proxy => @proxy)
-            if io
-              def io.original_filename; base_uri.path.split('/').last; end
-              io.original_filename.blank? ? nil : io      
-              r.image = io
-            end
-          end
+        # If Last.fm doesn't have artwork for it, it's probably not
+        # actually a real release! So skip to the next release
+        begin
+          best_artwork = album_info['image'].last 
+        rescue
+          i += 1
+          next
+        end
+
+        io = open(best_artwork, :proxy => @proxy)
+        if io
+          def io.original_filename; base_uri.path.split('/').last; end
+          io.original_filename.blank? ? nil : io      
+          r.image = io
         end
         r.save
         i += 1
