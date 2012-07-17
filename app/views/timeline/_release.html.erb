@@ -12,18 +12,16 @@
       <ul class="release-menu">
       <div>
           <li class="buy-release">Buy</li>
-          <% if release.tracks.count > 0 %>
+          <!--<% if release.tracks.count > 0 %>
             <li class="play-release">Listen</li>
           <% else %>
             <li>&nbsp;</li>
-          <% end %>
+          <% end %> -->
+          <li>&nbsp;</li>
           <li class="share-release">Share</li>
           </div>
       </ul>
     </div>
-    <!--<div class="release-rating">
-      <%= ratings_for release %>
-    </div>-->
     <!-- r-grad -->
     <div class="opac-50"></div>
     <div class="share-release-list">
@@ -56,7 +54,7 @@
     <div class="play-release-list">
     <h4>Play this release</h4>
     <i class="icon-remove close-player"></i>
-    	<% if !release.tracks.count.zero? %>
+ <!--   	<% if !release.tracks.count.zero? %>
   <div id="release_jplayer_<%= release.id %>" class="jp-jplayer"></div>
   <div class="timeline-i-player">
   <div id="jp_container_<%= release.id %>" class="jp-audio">
@@ -98,10 +96,10 @@
       <div class="jp-no-solution">
         <span>Update Required</span>
         To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
-      </div> <!-- no-solution -->
-    </div> <!-- jp-interface -->
-  </div> <!-- type-single -->
-	  </div> <! -- jp_container -->
+      </div> 
+    </div> 
+  </div>
+	  </div> 
 		<script type="text/javascript">
     $(document).ready(function(){
         new jPlayerPlaylist({
@@ -127,9 +125,8 @@
         preload: "none"
       });
     });
-  </script>
-<% else %>
-<div id="no-preview"><i class="icon-volume-off"></i><p>No track preview available for this release.</p></div><% end %>
+  </script> 
+<% end %> -->
     </div>
   </div>
   <div class="release-line"></div>
