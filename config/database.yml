@@ -23,7 +23,7 @@ production:
   encoding: utf8
   database: sngtrkr_db
   host: localhost 
-  pool: 5
+  pool: 30
   username: root
   password: nepGtwtxFlUodrX1SYD87dTm2U62ud
   socket: /var/run/mysqld/mysqld.sock
