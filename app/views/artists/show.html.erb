@@ -193,6 +193,13 @@ $(document).ready(function(){
 	    $(this).closest(".each-release").find('.play-release-list').animate({
 	      top: 0
 	    }, "slow");
+	   	ReleaseIdGet = document.getElementById('release-parent');
+	    ReleaseId = ReleaseIdGet.getAttribute('data-release-id'); 
+	    alert(ReleaseId);
+	    	  $.get('/artists/<%= @artist.id %>/releases//previews.json').complete(function(data){
+		      console.log(data);
+		      });
+		     
 	  });
 	  $(".play-release-list .icon-remove").click(function () {
 	    $(this).closest(".each-release").find('.release-info').animate({
@@ -244,13 +251,6 @@ $(document).ready(function () {
   });
   timeline_setup();
 
-	// AJAX TRACK PREVIEW FETCHER
-	$("#play-release").click(function(){
-	  $(this).hide();
-	  $.get('/artists/<%= @artist.id %>/releases//previews.json').complete(function(data){
-	    console.log(data);
-	  });
-	});
 
 });
 
@@ -264,4 +264,5 @@ function timeline_widths() {
   return stepsWidth + 50
 }
 		</script>
+
 		<%= render 'shared/fb_async' %>
