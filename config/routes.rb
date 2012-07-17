@@ -62,6 +62,7 @@ SNGTRKR::Application.routes.draw do
     resources :releases do 
       member do 
         post 'rate'
+        get 'previews'
       end
     end
     resources :manages

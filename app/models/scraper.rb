@@ -13,16 +13,16 @@ class Scraper
   # Last.fm (Scrobbler) - http://scrobbler.rubyforge.org/docs/
   # MusicBrainz - http://rbrainz.rubyforge.org/api-0.5.2/
   # 7digital -
+
+  def initialize artist_name
+    @artist_info = Hash.from_xml( open("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=#{CGI.escape(artist_name)}&api_key=6541dc514e866d40539bfe4eddde211c&autocorrect=1", :proxy => @proxy))
+    @artist_name = artist_name
+  end
+
   def self.musicBrainzSearch search
     search = MusicBrainz::Webservice::ArtistFilter.new :name => search
     # Gets the top musicbrainz result
     artist = MusicBrainz::Webservice::Query.new.get_artists(search).to_collection[0]
-  end
-
-  def self.new artist_name
-    @artist_info = Hash.from_xml( open("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=#{CGI.escape(artist_name)}&api_key=6541dc514e866d40539bfe4eddde211c&autocorrect", :proxy => @proxy))
-    @artist_name = artist_name
-    self
   end
   
   def self.lastfm_album_info(artist_name, album_name)
@@ -32,7 +32,7 @@ class Scraper
       raise "Artist or album names are not strings: #{artist_name.inspect},  #{album_name.inspect}"
     end
     begin
-      album_info = Hash.from_xml( open("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&artist=#{CGI.escape(artist_name)}&album=#{CGI.escape(album_name)}&api_key=6541dc514e866d40539bfe4eddde211c&autocorrect", :proxy => @proxy))
+      album_info = Hash.from_xml( open("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&artist=#{CGI.escape(artist_name)}&album=#{CGI.escape(album_name)}&api_key=6541dc514e866d40539bfe4eddde211c&autocorrect=1", :proxy => @proxy))
     rescue
       Rails.logger.error("URL Issue for artist_name: '#{artist_name.inspect}' and album-name: '#{album_name.inspect}'")
       return false
@@ -45,7 +45,7 @@ class Scraper
     return album_info
   end
   
-  def self.lastFmArtistImage
+  def lastFmArtistImage
     begin
       image = @artist_info["lfm"]["artist"]["image"].last
       if !image.is_a? String
@@ -57,7 +57,7 @@ class Scraper
     end
   end
 
-  def self.real_artist?
+  def real_artist?
     begin
       if @artist_info["lfm"]["artist"]["bio"]["summary"] =~ /is not an artist/
       false
@@ -69,15 +69,15 @@ class Scraper
     end
   end
 
-  def self.real_name
+  def real_name
     begin
       @artist_info["lfm"]["artist"]["name"]
     rescue
-    @artist_name
+      @artist_name
     end
   end
 
-  def self.bio
+  def bio
     begin
     #ActionView::Helpers::SanitizeHelper.strip_tags(         )
       @artist_info["lfm"]["artist"]["bio"]["summary"].to_s

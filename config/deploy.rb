@@ -25,7 +25,7 @@ require "whenever/capistrano"
 #require "rvm/capistrano"
 
 # Sidekiq
-require "sidekiq/capistrano"
+#require "sidekiq/capistrano"
 
 #set :rvm_ruby_string, '1.9.3'
 #set :rvm_type, :user  # Copy the exact line. I really mean :system here
@@ -56,7 +56,7 @@ end
 namespace :deploy do
   desc "build missing paperclip styles"
   task :build_missing_paperclip_styles, :roles => :app do
-    run "cd #{release_path}; RAILS_ENV=production bundle exec rake paperclip:refresh:missing_styles"
+    run "cd #{current_path}; RAILS_ENV=production bundle exec rake paperclip:refresh:missing_styles"
   end
 end
 
