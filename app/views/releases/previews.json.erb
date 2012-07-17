@@ -1,0 +1,5 @@
+[
+	<% @release.tracks.each do |track| %>
+	{"<%= track.name %>": "<%= track.preview %>"},
+	<% end %>
+]
