@@ -89,6 +89,11 @@ class Artist < ActiveRecord::Base
   end
 
   def self.import access_token, user_id, artist
+    # Check artist isn't already in database
+    if Artist.where(:fbid => artist["id"]).count > 0
+      Rails.logger.info "Tried to log an artist that is already in the database: '#{artist["name"]}'"
+      return true
+    end
     begin
       if artist["likes"] < 100
         Rails.logger.info "J002: Skipping #{artist["name"]}, as they have only #{artist["likes"]} likes"
