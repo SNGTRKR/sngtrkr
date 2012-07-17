@@ -12,7 +12,7 @@
   <% release = Release.find(activity[:id]) %>
   <div class="each-activity">
   <div class="activity-image" style="background-image:url(<%= release.image :friend_activity_release %>);background-repeat:no-repeat;background-position:center;"><i class="icon-star-empty"></i></div>
-    <div class="rate-info"><h2><%= link_to release.artist.name, release.artist %></h2><div><%= link_to release.name, [release.artist, release] %></div><%= activity[:stars] %> stars<br/><span><%= time_ago_in_words(activity[:time]) %> ago.</span></div>
+    <div class="rate-info"><h2><%= link_to release.artist.name, release.artist %></h2><div><%= link_to truncate((strip_tags release.name || "" ), :length => 26), [release.artist, release] %></div><%= activity[:stars] %> stars<br/><span><%= time_ago_in_words(activity[:time]) %> ago.</span></div>
   </div>
       <%  if !release.tracks.count.zero? %>
       <div class="activity-play"> 
