@@ -27,6 +27,7 @@ class Ability
     can :manage, [User, Rate, Manage]
     can :destroy, [Suggest]
     can [:edit, :scrape_confirm], [Artist]
+    can [:edit, :previews, :create], Release
 
     can [:create, :destroy], [Follow]
     can :create, [Feedback]

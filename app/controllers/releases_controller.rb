@@ -3,7 +3,7 @@ class ReleasesController < ApplicationController
   # GET /releases.json
 
   skip_authorization_check
-  load_and_authorize_resource :only => [:show]
+  load_and_authorize_resource
   
   before_filter :managed_artists_only, :only => [:edit, :update, :create, :destroy, :new]
   
@@ -125,6 +125,14 @@ class ReleasesController < ApplicationController
     @release = @artist.releases.find(params[:id])
     @release.rate(params[:stars], current_user, params[:dimension])
     render :update, :layout => false
+  end
+
+  def previews
+    @artist = Artist.find(params[:artist_id])
+    @release = @artist.releases.find(params[:id])
+    respond_to do |format|
+      format.json
+    end
   end
   
 end
