@@ -198,6 +198,9 @@ class Release < ActiveRecord::Base
         end
 
         io = open(best_artwork, :proxy => @proxy)
+        if(!io.is_a(String))
+          raise "Artwork Error: Release: '#{r.name}'. Expected String, actually got: '#{io.inspect}'"
+        end
         if io
           def io.original_filename; base_uri.path.split('/').last; end
           io.original_filename.blank? ? nil : io      
