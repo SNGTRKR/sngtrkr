@@ -1,14 +1,15 @@
 rails_env = ENV['RAILS_ENV'] || "production"
 rails_root = ENV['RAILS_ROOT'] || "/var/www/sngtrkr/current"
+workers = 3
 
 God.watch do |w|
   w.dir      = "#{rails_root}"
   w.name     = "sidekiq"
   w.interval = 30.seconds
   w.env      = {"RAILS_ENV" => rails_env}
-  w.start = "bundle exec sidekiq -q release,1 -q artist,2 -q artists,3 -c 20 -P log/sidekiq.pid >> log/sidekiq.log 2>&1"
+  w.start = "bundle exec sidekiq -q release,1 -q artist,2 -q artists,3 -c #{workers} -P log/sidekiq.pid >> log/sidekiq.log 2>&1"
   w.stop = "kill $(cat log/sidekiq.pid)"
-  w.restart = "kill $(cat log/sidekiq.pid); bundle exec sidekiq -q release,1 -q artist,2 -q artists,3 -c 20 -P log/sidekiq.pid >> log/sidekiq.log 2>&1"
+  w.restart = "kill $(cat log/sidekiq.pid); bundle exec sidekiq -q release,1 -q artist,2 -q artists,3 -c #{workers} -P log/sidekiq.pid >> log/sidekiq.log 2>&1"
   w.uid = 'deploy'
   w.pid_file = File.join(rails_root, "log/sidekiq.pid")
 
