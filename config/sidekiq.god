@@ -6,8 +6,7 @@ God.watch do |w|
   w.name     = "sidekiq"
   w.interval = 30.seconds
   w.env      = {"RAILS_ENV" => rails_env}
-  w.start = "bundle exec sidekiq -q release,1 -q artist,2 -q artists,3 -c 20"
-  w.log = '#{rails_root}/log/sidekiq.log'
+  w.start = "bundle exec sidekiq -q release,1 -q artist,2 -q artists,3 -c 20 >> log/sidekiq.log 2>&1"
   w.uid = 'deploy'
 
   # determine the state on startup
