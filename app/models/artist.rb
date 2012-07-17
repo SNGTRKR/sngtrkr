@@ -40,10 +40,18 @@ class Artist < ActiveRecord::Base
   end
 
   before_save :default_values
+  before_save :delete_children_for_ignored
   def default_values
     # Don't ignore new artists!
     self.ignore ||= false
     true
+  end
+
+  def delete_children_for_ignored
+    if self.ignore
+      self.follow.destroy_all
+      self.suggest.destroy_all
+    end
   end
 
   def self.search(search)

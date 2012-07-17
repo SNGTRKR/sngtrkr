@@ -109,7 +109,7 @@
   	<% if @manager %>
   	 <%= best_in_place [@artist, @release], :date, :display_as => 'pretty_date', :type => :date, :class => 'form-text' %>
   	<% else %>
-  	 <%= @release.date.strftime("#{Date.today.day.ordinalize} %B %Y ") %>
+  	 <%= @release.date.strftime("#{@release.date.day.ordinalize} %B %Y ") %>
   	<% end %></strong><br/>
 	<% if !@release.tracks.count.zero? %>
   <div id="release_jplayer_1" class="jp-jplayer"></div>
