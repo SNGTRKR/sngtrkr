@@ -3,6 +3,7 @@ content_for :og_url, request.url
 content_for :og_image, File.join(root_url , @artist.image.url(:profile))
 content_for :og_description, @artist.name + " is telling fans about their new releases on SNGTRKR. Why don't you follow them too?"
 content_for :og_id, @artist.id.to_s
+content_for :og_type, "sngtrkr:artist"
 %>
 <% content_for :description do %><%= truncate((strip_tags @artist.bio || "" ), :length => 150) %><% end %>
 <% content_for :title do %><%= @artist.name %> information and releases 2012<% end %>

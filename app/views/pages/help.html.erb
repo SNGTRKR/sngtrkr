@@ -1,3 +1,9 @@
+<% content_for :og_name, "Help"
+content_for :og_url, request.url
+content_for :og_image, File.join(root_url , "/images/icon.png")
+content_for :og_description, "Help and frequently asked questions for the SNGTRKR platform."
+content_for :og_type, "website"
+%>
 <% content_for :title do %>Help<% end %>
 <% content_for :description do %>Help and frequently asked questions for the SNGTRKR platform.<% end %>
 <%= javascript_include_tag "/slider/modernizr.custom.28468.js" %>

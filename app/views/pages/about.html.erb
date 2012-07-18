@@ -1,4 +1,10 @@
-<% content_for :title do %>About SNGTRKR<% end %>
+<% content_for :og_name, "About"
+content_for :og_url, request.url
+content_for :og_image, File.join(root_url , "/images/icon.png")
+content_for :og_description, "Inspired by the passion and appreciation that we have for music and artists alike, we built SNGTRKR - a webapp to enable other music lovers to easily track artists."
+content_for :og_type, "website"
+%>
+<% content_for :title do %>About<% end %>
 <% content_for :description do %>Inspired by the passion and appreciation that we have for music and artists alike, we built SNGTRKR - a webapp to enable other music lovers to easily track artists.<% end %>
 <div class="row">
 <div class="span10 offset1">

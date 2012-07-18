@@ -2,15 +2,15 @@
 <html>
 	<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# sngtrkr: http://ogp.me/ns/fb/sngtrkr#">
 	 	<!-- TradeDoubler site verification 2098473 -->
-	 <% if content_for? :og_name %>
-		<meta property="fb:app_id"        content="344989472205984" />
-		<meta property="og:type"          content="sngtrkr:artist" />
+	    <meta property="fb:app_id"        content="344989472205984" />
 		<meta property="og:url"           content="<%= yield :og_url %>" />
 		<meta property="og:title"         content="<%= yield :og_name %>" />
 		<meta property="og:description"   content="<%= yield :og_description %>" />
 		<meta property="og:image"   content="<%= yield :og_image %>" />
+		<meta property="og:type"          content="<%= yield :og_type %>" />
+		<% if content_for? :og_id %>
 		<meta property="sngtrkr:id" content="<%= yield :og_id %>" />
-	<% end %>
+		<% end %>
 		<title><% if content_for?(:title) %><%= yield :title %> - SNGTRKR <% else %>SNGTRKR<% end %></title>
 		<meta name="description" content="<%= yield :description %>">
 		<link rel="icon" type="image/ico" href="<%= asset_path "/images/icon.png" %>" >

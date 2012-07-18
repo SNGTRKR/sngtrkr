@@ -21,6 +21,12 @@
 
 <% end %></script>
 <%= render 'shared/fb_async' %>
+<% content_for :og_name, "Please login to gain access to more exciting features..."
+content_for :og_url, request.url
+content_for :og_image, File.join(root_url , "/images/icon.png")
+content_for :og_description, "Sign up free now to receive an exclusive beta release invite and get the latest updates. Quickly find and track artists you already like, with Facebook integration."
+content_for :og_type, "website"
+%>
 <% content_for :title do %>Please login to gain access to more exciting features...<% end %>
 <% content_for :description do %>Sign up free now to receive an exclusive beta release invite and get the latest updates. Quickly find and track artists you already like, with Facebook integration.<% end %>
 <div class="row"><div class="span10 offset1">
