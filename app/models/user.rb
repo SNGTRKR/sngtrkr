@@ -158,12 +158,15 @@ class User < ActiveRecord::Base
     recent_actions = (recent_rates + recent_follows).sort_by!{|action| action[:time]}.reverse!
   end
 
+  # This works but is a very SQL heavy solution
   def self.recent_activities users
-    if users.empty?
-      return false
+    activities = []
+    users.each do |user|
+      u = User.find(user)
+      activities = activities | u.recent_activity
     end
-    ids = users.map { |user| user.id }
-    User.joins(:follow).select("follows.*").order('updated_at DESC').limit(10).where(:id => ids).all
+    activities.sort_by!{|action| action[:time]}.reverse!
+    return activities[0,10]
   end
 
 end
