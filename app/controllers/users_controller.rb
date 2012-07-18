@@ -15,12 +15,7 @@ class UsersController < ApplicationController
 
   def timeline
     @user = current_user
-    # FIXME: This works, but it shouldn't really be in this
-    if(current_user.sign_in_count == 1)
-      current_user.sign_in_count = 2
-      current_user.save
-      return redirect_to recommend_user_path(current_user)
-    end
+    @activities = User.recent_activities session["friends"]
 
     tl = Timeline.new(current_user.id)
     @timeline = tl.user(params[:page])

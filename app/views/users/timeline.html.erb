@@ -41,7 +41,9 @@
 	$("#left-logo").css("top", tlheight );
 	</script> -->
 		<script>
-  	artist_suggestion_replace();
+		$(document).ready(function(){
+		  	artist_suggestion_replace();
+		})
 	</script>
 <% else %>
 	<%= image_tag "/images/timeline-left.png", :alt => "SNGTRKR", :id => "left-logo" %>
@@ -55,4 +57,11 @@
 </div>
 </div>
 <div class="container">
-
+	<div class="row">
+		<div class="span6 offset3">
+		<h1>Recent friend activity</h1>
+		<ul id="friend-activity">
+		<%= render :partial => 'users/group_activity', :collection => @activities %>
+		</ul>
+		</div>
+	</div>
