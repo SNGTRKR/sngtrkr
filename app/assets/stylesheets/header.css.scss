@@ -53,7 +53,8 @@
 	    }
     }
 .logout-button {
-  @extend .button;
+  @extend .mini-trkr-button;
+
   a {
 	  color:#fff;
   }
