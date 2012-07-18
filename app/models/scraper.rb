@@ -19,14 +19,31 @@ class Scraper
     @artist_name = artist_name
   end
 
-  #def self.improve_artists
-  #  Artist.all.each do |artist|
-  #    artist.image
-  #    s = Scraper.new(artist.name)
-  #    image_url = s.lastFmArtistImage
-  #  end
-  #  return true
-  #end
+  def self.improve_artists
+    Artist.all.each do |artist|
+      if artist.image.to_s == "/images/original/missing.png"
+        next
+      end
+      image = 'public'+artist.image.to_s.split('?')[0]
+      begin
+        open(Rails.root.join(image))
+        Rails.logger.info("Artist fine '#{artist.name}'")
+      rescue
+        Rails.logger.warn("No image for artist '#{artist.name}'")
+        s = Scraper.new artist.name
+        lfm_image = s.lastFmArtistImage
+        if lfm_image
+          io = open(URI.escape(lfm_image))
+          if io
+            def io.original_filename; base_uri.path.split('/').last; end
+            io.original_filename.blank? ? nil : io
+            artist.image = io
+          end
+        end
+        artist.save!
+      end
+    end
+  end
 
   def self.musicBrainzSearch search
     search = MusicBrainz::Webservice::ArtistFilter.new :name => search
