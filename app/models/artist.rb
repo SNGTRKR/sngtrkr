@@ -185,8 +185,8 @@ class Artist < ActiveRecord::Base
     else
       Rails.logger.warn "Invalid image: #{image.inspect}"
     end
-    a.save!
-    user.suggest_artist a.id
+    a.save
+    user.suggests << a
     if !a.sdid.nil?
       ReleaseJob.perform_async(a.id)
     end
