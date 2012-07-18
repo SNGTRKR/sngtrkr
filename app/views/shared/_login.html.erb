@@ -1,23 +1,8 @@
 <% if(user_signed_in?) %>
-<%= link_to(destroy_user_session_path, :method => :delete) do %><div class="logout-button">Logout</div><% end %>
-<a href="/users/me"><div class="p-head"><%= image_tag "/images/profile.png", :alt => "Profile", :id => "profile-pad" %></div></a>
-<div id="feedback">
-<div id="trigger" class="popover-parent" data-title="Submit feedback" data-content="We love feedback. Feel free to tell us what you think about the site or report a bug." data-placement="bottom">
-<i class="icon-bullhorn"></i>
-<span></span>
-</div>
-<div id="content">
-	<%= form_for Feedback.new, :remote => true do |f| %>
-	<%= f.text_area :feedback, :id => "fedbox", :rows => 4, :placeholder => "Tell us what you think..." %>
-	<%= f.submit "Submit", :id => 'ajax-feedback-submit-button' %>
-	<div class="cancel">Cancel</div>
-	<% end %>
-	<div class="clear"></div>
-</div>
-</div>
+<%= link_to(destroy_user_session_path, :method => :delete) do %><div class="logout-button item">Logout</div><% end %>
 <% elsif %>
 <%= link_to(user_omniauth_authorize_path(:facebook)) do %>
-<div class="fb-login"><i class="icon-facebook"></i><span>Login</span></div>
+<div class="fb-login item"><i class="icon-facebook"></i><span>Login</span></div>
 <%  end %>
 <% end %>
 <script type="text/javascript">
