@@ -49,8 +49,6 @@ class UsersController < ApplicationController
     else
     
       @friend = User.find(params[:id])
-      @your_friends = User.where(:fbid => session["friend_ids"])
-      @their_friends = User.where(:fbid => session["friend_ids"])
       # Do we want to stop users viewing other users if they aren't facebook friends?
       #      if !current_user.friends_with? @friend, session["friend_ids"]
       #        return redirect_to :root, :error => "You do not have permissions to view this user"
@@ -184,7 +182,7 @@ class UsersController < ApplicationController
 
   def recommend
     @user = current_user
-    if @user.sign_in_count == 1
+    if @user.sign_in_count <= 2
       @first_time = true
     else
       @first_time = false
