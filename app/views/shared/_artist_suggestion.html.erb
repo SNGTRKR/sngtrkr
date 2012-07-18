@@ -1,7 +1,7 @@
 <li class="each-recommend" style="background-image:url(<%= artist_suggestion.image.url :recommend %>);background-repeat:no-repeat;background-position:center;">
 	<div class="new-recommend">
 		<div class="black-tint"></div>
-		<div class="recommend-info <% if artist_suggestion.name.length > 14 %>twoline<% else %>oneline<% end %>">
+		<div class="recommend-info">
 			<%= link_to artist_suggestion.name, artist_suggestion  %>
 		</div>
 		<div class="opac-50"></div>

@@ -3,13 +3,9 @@ class Release < ActiveRecord::Base
   validates :date, :presence => true
 
   has_attached_file :image, :styles => { 
-  :medium => "300x300>", 
-  :thumb => "100x100>",
-  :release => "210x210#",
   :release_i => "310x311#",
   :release_carousel => "116x116#",
   :friend_activity_release => "87x87#" }
-  #:default_url => "/images/release/:style/missing.png"
 
 
   has_many :tracks, :dependent => :delete_all

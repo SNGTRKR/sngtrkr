@@ -1,7 +1,7 @@
 <li class="each-friend" style="background-image:url(<%= friend_artist_suggestion.image.url :friend_trkrs %>);background-repeat:no-repeat;background-position:center;">
 <div class="new-friend">
 		<div class="black-tint"></div>
-		<div class="friend-info <% if friend_artist_suggestion.name.length > 14 %>twoline<% else %>oneline<% end %>">
+		<div class="friend-info">
 			<%= link_to friend_artist_suggestion.name, friend_artist_suggestion, :class => 'name'  %>
 		</div>
 		<div class="opac-50"></div>

@@ -8,6 +8,16 @@
 	    display:block;
     }
 }
+.limbo-txt-1 {
+	line-height:1.3em;
+    @extend .font-14;
+    margin:1px 15px 8px 2px;
+    width:320px;
+    span {
+	    margin:11px 0 5px 0;
+	    display:block;
+    }
+}
 .home-header {
     width:328px;
     margin-left:2px;

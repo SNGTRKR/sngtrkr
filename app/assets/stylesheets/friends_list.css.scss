@@ -46,7 +46,6 @@ margin-bottom:26px;
   margin:0 0 9px 56px;
   h1 {
 	  margin-bottom:19px;
-	  width:160px;
   }
   ul {
     list-style-type:none;
@@ -75,6 +74,8 @@ margin-bottom:26px;
       border-right-width:3px;
       border-right-color:$orange;
       background:$gray;
+      background-position:center;
+      background-repeat:no-repeat;
     }
     .friends-info {
       margin-left:92px;
