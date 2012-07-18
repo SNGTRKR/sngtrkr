@@ -25,7 +25,10 @@ class Scraper
         next
       end
       image = 'public'+artist.image.to_s.split('?')[0]
-      if !open(Rails.root.join(image))
+      begin
+        open(Rails.root.join(image))
+        Rails.logger.info("Artist fine '#{artist.name}'")
+      rescue
         Rails.logger.warn("No image for artist '#{artist.name}'")
         s = Scraper.new artist.name
         lfm_image = s.lastFmArtistImage
@@ -38,7 +41,6 @@ class Scraper
           end
         end
         artist.save!
-
       end
     end
   end
