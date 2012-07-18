@@ -1,5 +1,11 @@
+<% content_for :og_name, "Getting Started"
+content_for :og_url, request.url
+content_for :og_image, File.join(root_url , "/images/icon.png")
+content_for :og_description, "Quick getting started guide to help you understand how to use the SNGTRKR platform and help you with any potential issues you may encounter. In a few moments you'll be discovering, listening to and embracing new music!"
+content_for :og_type, "website"
+%>
 <% content_for :title do %>Getting Started<% end %>
-<% content_for :description do %>Right from the start SNGTRKR will have a few artist suggestions based on your facebook likes, so your can quickly fill your timeline. Tracking a new artist could not be easier; you simply use the search tools provided to discover new and exciting content.<% end %>
+<% content_for :description do %>Quick getting started guide to help you understand how to use the SNGTRKR platform and help you with any potential issues you may encounter. In a few moments you'll be discovering, listening to and embracing new music!<% end %>
 <%= javascript_include_tag "/slider/modernizr.custom.28468.js" %>
 <%= javascript_include_tag "/slider/jquery.cslider.js" %>
 </div></div>

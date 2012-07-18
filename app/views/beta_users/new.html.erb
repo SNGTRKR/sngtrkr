@@ -1,3 +1,9 @@
+<% content_for :og_name, "Track your favourite artists and never miss another release..."
+content_for :og_url, request.url
+content_for :og_image, File.join(root_url , "/images/icon.png")
+content_for :og_description, "Sign up free now to receive an exclusive beta release invite and get the latest updates. Login with Facebook to find artists you like. Listen to & buy tracks, with an easy to use timeline. Free notifications when artists release new tracks."
+content_for :og_type, "website"
+%>
 <% content_for :title do %>Track your favourite artists and never miss another release...<% end %>
 <% content_for :description do %>Sign up free now to receive an exclusive beta release invite and get the latest updates. Login with Facebook to find artists you like. Listen to & buy tracks, with an easy to use timeline. Free notifications when artists release new tracks.<% end %>
 <div class="row"><div class="span10 offset1">

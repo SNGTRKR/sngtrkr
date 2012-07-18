@@ -1,3 +1,9 @@
+<% content_for :og_name, "Privacy Policy"
+content_for :og_url, request.url
+content_for :og_image, File.join(root_url , "/images/icon.png")
+content_for :og_description, "SNGTRKR knows that you care about how your personal information is used and shared, and we take your privacy seriously. Please read the following to learn more about our privacy policy."
+content_for :og_type, "website"
+%>
 <% content_for :title do %>Privacy Policy<% end %>
 <% content_for :description do %>SNGTRKR knows that you care about how your personal information is used and shared, and we take your privacy seriously. Please read the following to learn more about our privacy policy.<% end %>
 <div class="span10 offset1">
