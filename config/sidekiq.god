@@ -8,8 +8,8 @@ God.watch do |w|
   w.interval = 30.seconds
   w.env      = {"RAILS_ENV" => rails_env}
   w.start = "bundle exec sidekiq -q release,1 -q artist,2 -q artists,3 -c #{workers} -P log/sidekiq.pid >> log/sidekiq.log 2>&1"
-  w.stop = "kill $(cat log/sidekiq.pid)"
-  w.restart = "kill $(cat log/sidekiq.pid); bundle exec sidekiq -q release,1 -q artist,2 -q artists,3 -c #{workers} -P log/sidekiq.pid >> log/sidekiq.log 2>&1"
+  w.stop = "kill -9 $(cat log/sidekiq.pid)"
+  w.restart = "kill -9 $(cat log/sidekiq.pid); bundle exec sidekiq -q release,1 -q artist,2 -q artists,3 -c #{workers} -P log/sidekiq.pid >> log/sidekiq.log 2>&1"
   w.uid = 'deploy'
   w.pid_file = File.join(rails_root, "log/sidekiq.pid")
 

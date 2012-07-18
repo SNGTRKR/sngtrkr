@@ -13,7 +13,7 @@ class Release < ActiveRecord::Base
   has_many :user_notifications, :through => :notification, :source => :user
   belongs_to :artist
   
-  ajaxful_rateable :stars => 5, :allow_update => true
+  ajaxful_rateable :stars => 5, :allow_update => true, :dependent => :destroy
   
   after_create :notify_followers
 
