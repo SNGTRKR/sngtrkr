@@ -1,7 +1,7 @@
 DynamicSitemaps::Sitemap.draw do
   
   # default per_page is 50.000 which is the specified maximum.
-   per_page 10
+   per_page 1000
 
    url root_url, :last_mod => DateTime.now, :change_freq => 'daily', :priority => 1
    
@@ -22,7 +22,7 @@ DynamicSitemaps::Sitemap.draw do
    end
    
    Release.all.each do |release|
-     url release_url(release), :last_mod => artist.updated_at, :change_freq => 'weekly', :priority => 1
+     url release_url(release), :last_mod => release.updated_at, :change_freq => 'weekly', :priority => 1
    end
  
    new_page!

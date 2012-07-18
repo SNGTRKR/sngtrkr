@@ -11,7 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery_ujs
-
+//= require jquery-ui
 //= require fancy-box/jquery.fancybox
 //= require instant-search/instant-search
 //= require jplayer/jquery.jplayer
