@@ -38,7 +38,7 @@ gem 'whenever', :require => false
 # SIDEKIQ MONITORING
 gem 'slim'
 gem 'sinatra', :require => nil
-gem 'god'
+gem 'god', :require => false
 
 gem "paperclip"
 
