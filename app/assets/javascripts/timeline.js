@@ -6,6 +6,7 @@ $(document).ready(function () {
   // Set global AJAX load variable
   var last_load = new Date().getTime();;
   $('.release-list').width(timeline_widths());
+  $('#timeline-activity').width(timeline_widths());
   $("#timeline").scrollTo('max');
   page = 2
   // Ajax scroll load

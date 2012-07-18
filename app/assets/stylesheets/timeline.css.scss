@@ -18,19 +18,14 @@ $overlap: $width*0.25;
 }
 .timeline-outer {
   position:relative;
-  height:1.9*($height+$v-line-length+$h-v-space)+$h-line-height+20px;
+  height:1.9*($height+$v-line-length+$h-v-space)+$h-line-height+150px;
   background-image: url(/images/grid2.png);
   margin:-161px 0 49px 0;
   @extend .scrollbar-timeline;
 }
-#timelime-trim {
-  position:relative;
-  height:1.9*($height+$v-line-length+$h-v-space)+$h-line-height+50px;
-  overflow:hidden;
-}
 #timeline {
 	position:relative;
-  height:1.9*($height+$v-line-length+$h-v-space)+$h-line-height+26px;
+  height:1.9*($height+$v-line-length+$h-v-space)+$h-line-height+155px;
   overflow-x:scroll;
   overflow-y: hidden;
   padding:$height*0.025;
@@ -528,3 +523,114 @@ span {
     margin-top:34px;
   }
 }
+#timeline-activity  {
+	list-style-type:none;
+	height:95px;
+	bottom:0px;
+	position:absolute;
+     overflow-y: hidden;
+	.new-activity {
+	float: left;
+	position:relative;
+	height:86px;
+	width:332px;
+	margin:0 15px 15px 0;
+		.each-activity {
+			top:0px;
+			left:0px;
+			width:274px;
+			height:86px;
+			background-color:rgba(255,255,255,0.75);
+			@include box-shadow(0px 2px 5px rgba(0, 0, 0, 0.25));
+			position:relative;
+			@include border-radius(8px);
+			.activity-image {
+				height:86px;
+				width:86px;
+				position:absolute;
+				left:0px;
+				top:0px;
+				border-style:solid;
+				border-right-width:3px;
+				border-right-color:$orange;
+				@include border-top-left-radius(8px);
+				@include border-bottom-left-radius(8px);
+				color:#fff;
+				font-size:2em;
+				text-shadow: $gray 0 2px 2px;
+				.icon-screenshot {
+					position:absolute;
+					bottom:5px;
+					left:1px;
+				}
+				.icon-star-empty {
+					position:absolute;
+					bottom:5px;
+					left:1px;
+				}
+			}
+			.follow-info {
+				position:relative;
+				left:100px;
+				top:10px;	
+				h2 {
+					font-weight:bold;
+				}
+				a {
+					color:$gray;
+				}
+				a:hover {
+					color:$orange;
+				}
+				div {
+					margin:-2px 0 -1px 0;
+					@extend .orange-txt;
+					@extend .instruct-font; 
+				}
+				span {
+					@extend .font-11;
+					@extend .light-gray;
+				}
+			}
+			.rate-info {
+				position:relative;
+				left:100px;
+				top:10px;
+				h2 {
+					font-weight:bold;
+				}
+				a {
+					color:$gray;
+				}
+				a:hover {
+					color:$orange;
+				}
+				div {
+					a {
+						color:$orange;
+					}
+					a:hover {
+						color:$gray;
+					}
+				}
+				span {
+					@extend .font-11;
+					@extend .light-gray;
+				}
+			}
+		}
+		.activity-trkr, .activity-play {
+				position:absolute;
+				top:0px;
+				right:0px;
+				height:86px;
+				width:50px;
+				line-height:86px;
+				font-size:3em;
+				@extend .o-button;
+		}
+		.activity-play {
+			@import "activity_player.css.scss";
+		}
+			}
+	}	
