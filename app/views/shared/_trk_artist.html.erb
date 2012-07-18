@@ -8,5 +8,5 @@
     <%= render :partial => "follows/follow_artist", :object => trk_artist, :locals => { :icon => icon } %>
   <% end %>
 <% else %>
-<a href="<%= user_omniauth_authorize_path(:facebook) %>"><div class="artist-trkr-search button"><i class="icon-signin"></i></div></a>
+<a href="<%= user_omniauth_authorize_path(:facebook) %>"><div class="mini-trkr-button"><i class="icon-signin"></i></div></a>
 <% end %>
