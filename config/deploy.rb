@@ -41,6 +41,15 @@ ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "id_rsa")]
  
 set :synchronous_connect, true
 
+namespace :sidekiq do
+  task :stop do
+    run "cd #{current_path}; god stop sidekiq"
+  end
+  task :start do
+    run "cd #{current_path}; god start sidekiq"
+  end
+end
+
 namespace :deploy do
   # Passenger
   task :start do 
