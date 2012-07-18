@@ -150,11 +150,23 @@ class User < ActiveRecord::Base
     end
   end
   
-  def recent_activity
+  def recent_activity(opts={:specify_id => false})
     recent_follows = self.follow.order('updated_at DESC').limit(10)
-    recent_follows.map! { |follow| {:action => 'follow', :time => follow.updated_at, :object => 'artist', :id => follow.artist_id } }
+    if :specify_id
+      recent_follows.map! { |follow| {:action => 'follow', :time => follow.updated_at, :object => 'artist', :id => follow.artist_id,
+        :user_id => self.id, :user_first_name => self.first_name, :user_last_name => self.last_name } }
+    else
+      recent_follows.map! { |follow| {:action => 'follow', :time => follow.updated_at, :object => 'artist', :id => follow.artist_id } }
+    end
+
     recent_rates = Rate.where(:rater_id => self.id, :rateable_type => 'Release').order('updated_at DESC').limit(10)
-    recent_rates.map! { |rate| {:action => 'rate', :time => rate.updated_at, :object => 'release', :id => rate.rateable_id, :stars => rate.stars}}
+    if :specify_id
+      recent_rates.map! { |rate| {:action => 'rate', :time => rate.updated_at, :object => 'release', :id => rate.rateable_id, :stars => rate.stars,
+        :user_id => self.id, :user_first_name => self.first_name, :user_last_name => self.last_name }}
+    else
+      recent_rates.map! { |rate| {:action => 'rate', :time => rate.updated_at, :object => 'release', :id => rate.rateable_id, :stars => rate.stars}}
+    end
+
     recent_actions = (recent_rates + recent_follows).sort_by!{|action| action[:time]}.reverse!
   end
 
@@ -163,7 +175,7 @@ class User < ActiveRecord::Base
     activities = []
     users.each do |user|
       u = User.find(user)
-      activities = activities | u.recent_activity
+      activities = activities | u.recent_activity(:specify_id => true)
     end
     activities.sort_by!{|action| action[:time]}.reverse!
     return activities[0,10]
