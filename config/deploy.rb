@@ -25,7 +25,7 @@ require "whenever/capistrano"
 #require "rvm/capistrano"
 
 # Sidekiq
-#require "sidekiq/capistrano"
+require "sidekiq/capistrano"
 
 #set :rvm_ruby_string, '1.9.3'
 #set :rvm_type, :user  # Copy the exact line. I really mean :system here
@@ -41,15 +41,6 @@ ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "id_rsa")]
  
 set :synchronous_connect, true
 
-namespace :sidekiq do
-  task :stop do
-    run "cd #{current_path}; god stop sidekiq"
-  end
-  task :start do
-    run "cd #{current_path}; god start sidekiq"
-  end
-end
-
 namespace :deploy do
   # Passenger
   task :start do 
@@ -58,9 +49,6 @@ namespace :deploy do
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-
-    # God
-    run "cd #{current_path}; god restart sidekiq"
 
   end
 

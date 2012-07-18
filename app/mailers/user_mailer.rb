@@ -2,7 +2,7 @@ class UserMailer < ActionMailer::Base
   default from: "SNGTRKR <noreply@sngtrkr.com>"
   def welcome_email(user)
     @user = user # For the view
-    mail(:to => "#{@user.first_name} #{@user.last_name} <#{@user.email}>", :subject => "The wait is finally over...")
+    mail(:to => "#{@user.email}", :subject => "The wait is finally over...")
   end
   
   def beta_email(user)

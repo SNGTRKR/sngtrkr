@@ -15,7 +15,9 @@ p{
   font-size:1em;
   line-height: 1.45em;
   padding-bottom: 1em;
-  a{
+  a:link{
+    text-decoration: underline;
+    font-weight: bold;
     //@include text-shadow(0 0.1em rgba(90, 88, 88, 0.57));
   }
 }
