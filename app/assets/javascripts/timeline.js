@@ -167,7 +167,7 @@ function timeline_setup() {
     }, "slow");
   });
 
- /* $('#timeline').mousedown(function (event) {
+ $('#timeline').mousedown(function (event) {
     $(this).data('down', true).data('x', event.clientX).data('scrollLeft', this.scrollLeft);
     return false;
   }).mouseup(function (event) {
@@ -186,5 +186,5 @@ function timeline_setup() {
         }
       } catch (e) {}
     }
-  }); */
+  });
 }

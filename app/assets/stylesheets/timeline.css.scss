@@ -15,13 +15,19 @@ $overlap: $width*0.25;
   position:relative;
   height:43px;
   width:100%;
+  top:-10px;
 }
 .timeline-outer {
   position:relative;
-  height:1.9*($height+$v-line-length+$h-v-space)+$h-line-height+150px;
+  height:1.9*($height+$v-line-length+$h-v-space)+$h-line-height+30px;
   background-image: url(/images/grid2.png);
-  margin:-161px 0 49px 0;
+  margin:-155px 0 28px 0;
   @extend .scrollbar-timeline;
+}
+#timeline-trim {
+  position:relative;
+  height:1.9*($height+$v-line-length+$h-v-space)+$h-line-height+28px;
+  overflow:hidden;
 }
 #timeline {
 	position:relative;
@@ -29,6 +35,7 @@ $overlap: $width*0.25;
   overflow-x:scroll;
   overflow-y: hidden;
   padding:$height*0.025;
+  margin-top:10px;
   /*cursor: -moz-grab !important;*/ /* should this be applied with JS? */
 .timeline-recommendations {
   ul {
