@@ -1,17 +1,28 @@
 .header{
     height:105px;
-    .p-head {
-        @extend .o-button;
-        #profile-pad {
-	        padding:2px 7px 0 6px;
-        }
-    }
     #right-navbar{
         float:right;
         margin-top:-16px;
         .item{
             float:left;
             margin-left:15px;
+            a {
+	            color:#fff;
+            }
+            a:hover {
+	            color:#fff;
+            }
+        }
+        .nav-button {
+            border:none;
+            line-height:25px;
+            height:25px;
+            width:31px;
+            font-size:1.5em;
+            @extend .o-button; 
+            position:relative;
+            display:block;
+            float:left;
         }
     }
     .mini-search {
