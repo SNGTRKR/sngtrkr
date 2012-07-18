@@ -61,13 +61,33 @@
 					</style>
 					<![endif]-->
 					<div class="logo-home"><a href="/"><%= image_tag "/images/logo-55.png", :alt => "SNGTRKR" %></a></div>
-					<%= render 'shared/login' %>
-					<% if(user_signed_in?) %>
-					<%= render :partial => 'layouts/artist_mini_search', :locals => { :css => 'mini-search'} %>
-					<% else %>
-					<%= render :partial => 'layouts/artist_mini_search', :locals => { :css => 'mini-search-2'} %>
-					<% end %>
-					<div class="clear"></div>
+					<div id="right-navbar">
+						<%= render :partial => 'layouts/artist_mini_search'%>
+						<% if(user_signed_in?) %>
+							<div class="item" id="feedback">
+								<div id="trigger" class="popover-parent" data-title="Submit feedback" data-content="We love feedback. Feel free to tell us what you think about the site or report a bug." data-placement="bottom">
+								<i class="icon-bullhorn"></i>
+								<span></span>
+								</div>
+								<div id="content">
+									<%= form_for Feedback.new, :remote => true do |f| %>
+									<%= f.text_area :feedback, :id => "fedbox", :rows => 4, :placeholder => "Tell us what you think..." %>
+									<%= f.submit "Submit", :id => 'ajax-feedback-submit-button' %>
+									<div class="cancel">Cancel</div>
+									<% end %>
+									<div class="clear"></div>
+								</div>
+							</div>
+							<div class="item">
+								<a href="/users/me"><div class="p-head"><%= image_tag "/images/profile.png", :alt => "Profile", :id => "profile-pad" %></div></a>
+							</div>
+							<div class="item">
+								<%= button_to "Friends", friends_user_path(current_user), :method => 'get', :class => "button" %>
+							</div>
+						<% end %>
+						<%= render 'shared/login' %>
+						<div class="clear"></div>
+					</div>
 				</div>
 				<div class="container">
 					<%= yield %>
