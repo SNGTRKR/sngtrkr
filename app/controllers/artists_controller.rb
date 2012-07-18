@@ -18,7 +18,7 @@ class ArtistsController < ApplicationController
       @search = params[:search].dup # Don't want the original string
       if @search["and "] then @search["and "] = "" end # remove ands from search
       if @search["& "] then @search["& "] = "" end # remove & from search
-      @artists = Artist.real_only.order(:name).page(params[:page]).per(10)
+      @artists = Artist.real_only.search(params[:search]).order(:name).page(params[:page]).per(10)
       @ids = @artists.map{|a| a.fbid}
     end
     
