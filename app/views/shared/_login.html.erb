@@ -1,5 +1,7 @@
 <% if(user_signed_in?) %>
-<%= link_to(destroy_user_session_path, :method => :delete) do %><div class="logout-button item">Logout</div><% end %>
+<%= link_to(destroy_user_session_path, :method => :delete) do %>
+	<div class="logout-button item mini-trk-artist tooltip-parent"  data-title="Logout"><i class="icon-signout"></i></div>
+<% end %>
 <% elsif %>
 <%= link_to(user_omniauth_authorize_path(:facebook)) do %>
 <div class="fb-login item"><i class="icon-facebook"></i><span>Login</span></div>
