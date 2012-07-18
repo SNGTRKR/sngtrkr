@@ -2566,7 +2566,7 @@ input[type="submit"].btn.btn-mini {
 }
 .pagination {
   height: 36px;
-  margin: 18px 0;
+  margin-bottom:20px;
 }
 .pagination ul {
   display: inline-block;
@@ -2586,17 +2586,61 @@ input[type="submit"].btn.btn-mini {
 .pagination li {
   display: inline;
 }
-.pagination a {
+.pagination span {
   float: left;
-  padding: 0 14px;
+  padding: 0 14px 0 14px;
   line-height: 34px;
   text-decoration: none;
-  border: 1px solid #ddd;
   border-left-width: 0;
+  background-color:rgba(255,255,255,0.75);
+  margin-right:15px;
+  -webkit-border-radius: 7px;
+-moz-border-radius: 7px;
+-ms-border-radius: 7px;
+-o-border-radius: 7px;
+border-radius: 7px;
+-webkit-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+-moz-box-shadow: 0px 2px 5px rgba(0,0,0,0.25);
+box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
 }
-.pagination a:hover,
+.pagination span a {
+	text-align:center;
+}
+.pagination span:hover,
 .pagination .active a {
-  background-color: #f5f5f5;
+  	background: #F15A24;
+	background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2YzNzI0NCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2YxNWEyNCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+	background-size: 100%;
+	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #F37244), color-stop(100%, #F15A24));
+	background-image: -webkit-linear-gradient(top, #F37244 0%,#F15A24 100%);
+	background-image: -moz-linear-gradient(top, #F37244 0%,#F15A24 100%);
+	background-image: -o-linear-gradient(top, #F37244 0%,#F15A24 100%);
+	background-image: linear-gradient(top, #F37244 0%,#F15A24 100%);
+	text-shadow: #FF6103 0 1px 3px;
+	-webkit-box-shadow:
+	inset 0 1px 0  #F15A24,
+	inset 0 2px 0 #F7931E,
+	0 1px 3px #777,
+	0 0px 1px #ccc;
+	-moz-box-shadow:
+	inset 0 1px 0  #F15A24,
+	inset 0 2px 0 #F7931E,
+	0 1px 3px #777,
+	0 0px 1px #ccc;
+	box-shadow:
+	inset 0 1px 0  #F15A24,
+	inset 0 2px 0 #F7931E,
+	0 1px 3px #777,
+	0 0px 1px #ccc;
+  -webkit-border-radius: 7px;
+-moz-border-radius: 7px;
+-ms-border-radius: 7px;
+-o-border-radius: 7px;
+border-radius: 7px;
+color:#fff;
+}
+.pagination span:hover a {
+	color:#fff;
 }
 .pagination .active a {
   color: #999999;
@@ -2605,17 +2649,17 @@ input[type="submit"].btn.btn-mini {
 .pagination .disabled span,
 .pagination .disabled a,
 .pagination .disabled a:hover {
-  color: #999999;
+  color: #fff;
   background-color: transparent;
   cursor: default;
 }
-.pagination li:first-child a {
+.pagination span:first {
   border-left-width: 1px;
   -webkit-border-radius: 3px 0 0 3px;
   -moz-border-radius: 3px 0 0 3px;
   border-radius: 3px 0 0 3px;
 }
-.pagination li:last-child a {
+.pagination span:last {
   -webkit-border-radius: 0 3px 3px 0;
   -moz-border-radius: 0 3px 3px 0;
   border-radius: 0 3px 3px 0;

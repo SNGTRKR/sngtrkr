@@ -76,22 +76,41 @@ ul {
 }
 }
 }
+#paginate-outer {
+position:relative;
+left:50%;
+float:left;
+clear:both;
+text-align:left;
 .pagination {
-  position:relative;
-  text-align:center;
-  bottom:7px;
-  height:38px;
-  left:15px;
-    .page-numbers {
-      padding:0 25px 0 0;
-      color:$orange;
-      a {
-        color:#000;
-      }
-      a:hover {
-        color:$orange;
-      }
-    }
+padding:0 10px 0 10px;
+position:relative;
+left:-50%;
+text-align:left;
+  .current {
+	  color:#fff;
+	  	    background:$orange; 
+	    $experimental-support-for-svg: true;
+	    @include background-image(linear-gradient(top, #F37244 0%, #F15A24 100%));
+	    text-shadow: #FF6103 0 1px 3px;
+	    -webkit-box-shadow:
+	    inset 0 1px 0  #F15A24,
+	    inset 0 2px 0 #F7931E,
+	    0 1px 3px #777,
+	    0 0px 1px #ccc;
+	    -moz-box-shadow:
+	    inset 0 1px 0  #F15A24,
+	    inset 0 2px 0 #F7931E,
+	    0 1px 3px #777,
+	    0 0px 1px #ccc;
+	    box-shadow:
+	    inset 0 1px 0  #F15A24,
+	    inset 0 2px 0 #F7931E,
+	    0 1px 3px #777,
+	    0 0px 1px #ccc;
+  }
+    
+  }
   }
 .fb-result-header {
 	margin:0 0 1px -2px;

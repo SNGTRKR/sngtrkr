@@ -35,7 +35,10 @@
       		</li>
       		<% end %>
       	</ul>
+      	<div id="paginate-outer">
       	<%= if @artists then paginate @artists end %>
+      	</div>
+      	<div class="clear"></div>
   	  <% end %>
       <% if user_signed_in? and !@empty_search and !@short_search  %>
       	<h1 class="fb-result-header">Facebook Results</h1>
