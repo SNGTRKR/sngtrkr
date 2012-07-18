@@ -174,13 +174,16 @@ class Artist < ActiveRecord::Base
       end
     end
     image = s.lastFmArtistImage
-    if image
+    if image and image.is_a?(String)
+      Rails.logger.warn "Valid image: #{image.inspect}"
       io = open(URI.escape(image))
       if io
         def io.original_filename; base_uri.path.split('/').last; end
         io.original_filename.blank? ? nil : io
       a.image = io
       end
+    else
+      Rails.logger.warn "Invalid image: #{image.inspect}"
     end
     a.save!
     user.suggest_artist a.id
