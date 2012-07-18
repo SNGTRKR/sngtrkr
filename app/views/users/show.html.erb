@@ -72,7 +72,12 @@ appId      : <%= '\''+FB_APP_ID+'\'' %>
 		// The response will literally just be the URL to the friend's profile picture
 	});
 	FB.api(<%= '\''+@friend.fbid+'?fields=cover\'' %>, function(response){
-	   $('#friend-cover').css("background-image","url("+response['cover']['source']+")");
+		if(response['cover']){
+		   $('#friend-cover').css("background-image","url("+response['cover']['source']+")");
+		} else {
+		   $('#friend-cover').fadeOut();
+		   $('#friend-information').animate({marginTop : -194}, "slow").css("width",400).css("overflow","hidden");
+		}
 	});
 	};
 
