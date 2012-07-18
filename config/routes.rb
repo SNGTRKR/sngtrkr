@@ -56,7 +56,7 @@ SNGTRKR::Application.routes.draw do
   match '/artists/search' => "Artists#search"
   resources :artists do
     collection do
-      get 'import/:fb_id/:access_token', :action => 'import'
+      get 'import/:fb_id/', :action => 'import'
       get 'first_suggestions'
     end
     resources :releases do 

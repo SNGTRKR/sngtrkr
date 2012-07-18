@@ -39,7 +39,7 @@ FB.api("search/?q=<%= CGI::escape(@search) %>&fields=id,picture,description,name
     });
   $('.facebook-result-single .fb-add').click(function(){
     $('#facebook-search-results').fadeOut(300,function(){$('#facebook-search-results').html("<div id=\"loading\"><h4 class=\"signika-txt font-25\">Importing...</h4><i class=\"icon-refresh\"></i><br/>...please wait while we import the artist into the SNGTRKR database.</div>")}).fadeIn();
-    $.ajax({ url: '/artists/import/'+$(this).data('fb-id')+'/'+FB.getAuthResponse()['accessToken']+'.js'});
+    $.ajax({ url: '/artists/import/'+$(this).data('fb-id')+'.js?token='+FB.getAuthResponse()['accessToken']});
   });
 });
 <% end %>
