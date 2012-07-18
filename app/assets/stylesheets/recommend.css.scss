@@ -40,22 +40,16 @@
           $experimental-support-for-svg: true;
           @include background-image(linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 94%, rgba(0,0,0,1) 100%));
           }
-          .oneline{
-	          top:129px;
-          }
-          .twoline {
-	          top:98px;
-          }
           .recommend-info {
             @extend .instruct-font;
             @extend .font-20;
-            position:relative;
+            position:absolute;
             text-align:center;
             line-height:1.4em;
             z-index:0;
             width:202px;
             display:block;
-            height:30px;
+            bottom:20px;
             a {
               color:#fff;
             }

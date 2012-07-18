@@ -74,6 +74,8 @@ margin:5px 0 22px 42px;
 	      border-color:rgba(255,255,255,0.75);
 	      border-width:2px;
 	      background:$gray;
+	      background-position:center;
+	      background-repeat:no-repeat;
       }
 }
 	#friend-activity  {
@@ -219,12 +221,6 @@ margin:5px 0 22px 42px;
 	          $experimental-support-for-svg: true;
 	          @include background-image(linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 94%, rgba(0,0,0,1) 100%));
           }
-          .oneline{
-	          top:77px;
-          }
-          .twoline {
-	          top:56px;
-          }
           .friend-info {
             @extend .instruct-font;
             @extend .font-15;
@@ -233,8 +229,8 @@ margin:5px 0 22px 42px;
             line-height:1.4em;
             width:135px;
             text-shadow: 0px 1px 7px $gray;
-            height:120px;
-            bottom:0px;
+            bottom:20px;
+            display:block;
             a {
               color:#fff;
             }

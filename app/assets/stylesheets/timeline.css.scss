@@ -238,10 +238,13 @@ span {
     	  background:white;
     	  background-size: cover;
     	  @include border-radius(8px 8px 10px 10px);
-        @include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.45));
-        height:$height;
-        width:$width;
-        position:relative;
+          @include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.45));
+          height:$height;
+          width:$width;
+          position:relative;
+          background-repeat:no-repeat;
+          background-position:center;
+          background:$gray;
 	      h5 {
   		      margin-top:29px;
   		      text-align:center;

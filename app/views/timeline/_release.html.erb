@@ -1,6 +1,6 @@
 <% artist_page ||= 'false' %>
 <li class="release-outer" id="release-parent" data-release-id="<%= release.id %>">
-  <div class=" each-release" style="background-image:url(<%= release.image :medium %>)">
+  <div class="each-release" style="background-image:url(<%= release.image :release_i %>)">
     <div class="r-grad">
       <div class="release-info">
         <h2><%= link_to release.name, [release.artist, release] %></h2>
