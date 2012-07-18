@@ -1,11 +1,11 @@
 <% content_for :og_name, @release.name
 content_for :og_url, request.url
 content_for :og_image, File.join(root_url , @release.image.url(:release_i))
-content_for :og_description, @release.name + " by " + @artist.name
+content_for :og_description, @release.name + " by " + @artist.name + ". Released " + @release.date.strftime("#{@release.date.day.ordinalize} %B %Y ") + " by " + @release.label_name
 content_for :og_id, @release.id.to_s
 %>
 <% content_for :title do %><%= @release.name %> release information by <%= @artist.name %><% end %>
-<% content_for :description do %><%= @release.name %> release information by <%= @artist.name %>. <%= @artist.bio %> <% end %>
+<% content_for :description do %><%= @release.name %> release information by <%= @artist.name %>. Releasd <%= @release.date.strftime("#{@release.date.day.ordinalize} %B %Y ") %> by <%= @release.label_name %> <% end %>
 <div class="row"><div class="span8 offset2">
 <div class="row">
 <div class="span4">
