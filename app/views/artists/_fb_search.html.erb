@@ -21,11 +21,14 @@ var artist_ids = <%= raw @ids.to_json %>
 
 FB.api("search/?q=<%= CGI::escape(@search) %>&fields=id,picture,description,name,bio,genre,likes,record_label,category&type=page&limit=10&size=large",function(pages){
   $('#facebook-search-results').html("");
+  console.log(pages['data']);
   $.each(pages['data'],function(){
     // Skip non music pages
     if(this['category'] != "Musician/band") return true;
     // Skip artists already in db
     if($.inArray(this['id'], artist_ids) == 0) return true;
+    // Ignore artists with < 100 likes
+    if(!this['likes'] || this['likes'] < 100) return true;
     if(this['bio'] == null) var bio = this['description'];
     else var bio = this['bio'];
     $('#facebook-search-results').append("<%=j render 'artists/fb_search_js' %>");
