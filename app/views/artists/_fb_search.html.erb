@@ -1,11 +1,18 @@
 <div id="facebook-search-results">
 <div class="loading load-facebook">
 <h3>Loading...</h3>
-	<i class="icon-refresh"></i><br/>
-	...please wait while we search Facebook for "<%= @search %>".
+	<%= image_tag "/images/loading.png", :id => "loading-icon" %><br/>
+	<p>...please wait while we search Facebook for "<%= @search %>".</p>
 </div>
 <div class="clear"></div>
-</div> 
+</div>
+<script type="text/javascript">
+var angle = 0;
+setInterval(function(){
+      angle+=3;
+     $("#loading-icon").rotate(angle);
+},25);
+</script>
 <script>
 var artist_ids = <%= raw @ids.to_json %>
 
