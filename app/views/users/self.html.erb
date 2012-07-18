@@ -97,13 +97,15 @@
 <div class="row recommendations"><div class="span10 offset1">
 			<ul id="ajax-recommended-artists">
   		<% if @user.suggested.count >= 6 %>
-				<%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 6] %>
-    		<% else %>
+			<%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 6] %>
+		<% elsif @user.following.count < 6 %>
       		<div class="loading load-profile">
       		<h3>Please wait...</h3>
       		<%= image_tag "/images/loading.png", :id => "loading-icon" %><br/>
       		<p>...while we work our magic and find which artists you’ve already liked on Facebook.</p>
-      		</div>		  
+      		</div>
+  		<% else %>
+  			<p> We're sorry to say we don't have anymore suggestions for you at the moment. </p>
   		<% end %>
 			</ul>
 			<div class="clear"></div>
