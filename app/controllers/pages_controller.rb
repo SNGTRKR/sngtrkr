@@ -35,7 +35,9 @@ class PagesController < ApplicationController
   end
   
   def limbo
-  
+    if(user_signed_in?)
+      return redirect_to '/'
+    end
   end
   
   def intro 
