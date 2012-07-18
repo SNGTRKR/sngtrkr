@@ -110,6 +110,7 @@ class Release < ActiveRecord::Base
         best_artwork = nil
       end
       if best_artwork.is_a?(String)
+        Rails.logger.warn "Valid image: #{best_artwork.inspect}"
         io = open(best_artwork, :proxy => @proxy)
         if io
           def io.original_filename; base_uri.path.split('/').last; end
@@ -117,6 +118,7 @@ class Release < ActiveRecord::Base
           r.image = io
         end
       elsif release["image"]
+        Rails.logger.warn "7d image: #{release["image"].inspect}"
         # Source the artwork from 7digital if last.fm don't have it.
         io = open(release["image"], :proxy => @proxy)
         if io
