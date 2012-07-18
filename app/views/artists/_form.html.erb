@@ -2,8 +2,8 @@
 <%= image_tag "/images/f-bulge-left.png", :alt => "Shadow", :id => "bulge-left" %>
 <%= image_tag "/images/f-bulge-right.png", :alt => "Shadow", :id => "bulge-right" %>
 <% 
-image_width = 100
-image_height = 100
+image_width = 200
+image_height = 200
 %>
 <div id="steps">
   <span id="fields" class="ajax-artist-form">
@@ -95,27 +95,27 @@ image_height = 100
   	<div class="step-back manage-itunes-step">
   		<div class="step-left">
       <% if !@artist.itunes_id? %>
-        <strong>We couldn't find you on iTunes</strong>. If you aren't on there don't worry, you don't need to do anything.
+        <p><strong>We couldn't find you on iTunes</strong>. If you aren't on there don't worry, you don't need to do anything.</p>
+        <p>If you are on iTunes, you can search for yourself below.</p>
       <% else %>
         <strong>Artist:</strong> <%= link_to @itunes_info['results'][0]['artistName'], @itunes_info['results'][0]['artistLinkUrl'], :target => "_blank" %>
         <br/>
        <strong>Genre:</strong> <%=  @itunes_info['results'][0]['primaryGenreName'] %>
        <br/><br/>
        <div id="itunes-buttons">
-        <%= link_to "This isn't me" %>
         <%= form_for @artist, :remote => true do |f| %>
           <%= hidden_field_tag "itunes_id_delete" %>
           <%= f.submit "I'm not on iTunes" %>
         <% end %>
         <div class="clear"></div>
-        </div>
+      </div>
+      <% end %>
         <%=form_for @artist, :url => artist_scrape_confirm_path(:artist_id => @artist.id, :format => :js), :remote => true do |f| %>
           <%= text_field_tag :search, @artist.name, :class => "form-text" %>
           <%= hidden_field_tag :store, "itunes" %>
           <%= submit_tag "Search" %>
         <% end %>
         <div id="itunes-results"><ul id="ajax-itunes-search-results"></ul></div>
-      <% end %>
   		</div>
   		<div class="step-right">
   		To ensure we have the correct artist profile for <strong><%= @artist.name %></strong> on <strong>iTunes</strong>, please select and confirm the correct profile using the search tool provided.
@@ -133,25 +133,27 @@ image_height = 100
   	<div class="step-back manage-7digital-step">
   		<div class="step-left">
       <% if !@artist.sdid? %>
-        <strong>We couldn't find you on 7Digital</strong>. If you aren't on there don't worry, you don't need to do anything.
+        <p><strong>We couldn't find you on 7Digital</strong>. If you aren't on there don't worry, you don't need to do anything.</p>
+        <p>If you are on 7Digital you can search for youself below.</p>
       <% else %>
         <div id="profile-7d"><%= image_tag @sd_info['response']['artist']['image'], :class => "image-7d" %> 
         <div class="name-7d"><strong>Artist:</strong> <%= link_to @sd_info['response']['artist']['name'], @sd_info['response']['artist']['url'], :target => "_blank" %></div><div class="clear"></div></div>
         <br/>
-        <div id="digital7-buttons"><%= link_to "This isn't me" %>
-        <%= form_for @artist, :remote => true do |f| %>
-          <%= hidden_field_tag "sdid_delete" %>
-          <%= f.submit "I'm not on 7digital" %>
-        <% end %>
-        <div class="clear"></div>
-          </div>
-        <%= form_for @artist, :url => artist_scrape_confirm_path(:artist_id => @artist.id, :format => :js), :remote => true do |f| %>
+        <div id="digital7-buttons">
+          <%= form_for @artist, :remote => true do |f| %>
+            <%= hidden_field_tag "sdid_delete" %>
+            <%= f.submit "I'm not on 7digital" %>
+          <% end %>
+          <div class="clear"></div>
+        </div>
+        
+      <% end %>
+      <%= form_for @artist, :url => artist_scrape_confirm_path(:artist_id => @artist.id, :format => :js), :remote => true do |f| %>
           <%= text_field_tag :search, @artist.name, :class => "form-text" %>
           <%= hidden_field_tag :store, "7digital" %>
           <%= f.submit "Search" %>
         <% end %>
         <div id="digital7-results"><ul id="ajax-7digital-search-results"></ul></div>
-      <% end %>
   		</div>
   		<div class="step-right">
   		To ensure we have the correct artist profile for <strong><%= @artist.name %></strong> on <strong>7Digital</strong>, please select and confirm the correct profile using the search tool provided.
