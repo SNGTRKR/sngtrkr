@@ -325,7 +325,7 @@ span {
   	      height:$height;
   	      @include border-radius(8px);
   	      $experimental-support-for-svg: true;
-          @include background-image(linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 94%, rgba(0,0,0,1) 100%));
+          @include background-image(linear-gradient(top, transparent 35%,rgba(0, 0, 0, 1) 100%));
         }
         .opac-50 {
   	      position:absolute;
