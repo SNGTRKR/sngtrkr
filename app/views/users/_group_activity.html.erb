@@ -5,8 +5,8 @@
   <div class="each-activity">
   <div class="activity-image" style="background-image:url(<%= artist.image :friend_activity_artist %>);background-repeat:no-repeat;background-position:center;"><i class="icon-screenshot"></i></div>
     <div class="follow-info">
-      <h2><%= link_to(activity[:user_first_name] +" "+ activity[:user_last_name], user_path(activity[:user_id])) %> tracked</h2>
-      <h2><%= link_to artist.name, artist %></h2><% if artist.genre? %><%= artist.genre %><br/><% else %><% end %>
+      <strong><%= link_to(activity[:user_first_name] +" "+ activity[:user_last_name], user_path(activity[:user_id])) %></strong> tracked
+      <h2><%= link_to artist.name, artist %></h2>
     <div><%= artist.followers %> TRKRS</div>
     <span><%= time_ago_in_words(activity[:time]) %> ago.</span></div>
   </div>
@@ -18,7 +18,7 @@
     <div class="rate-info">
       <h2><%= link_to(activity[:user_first_name] +" "+ activity[:user_last_name], user_path(activity[:user_id])) %> rated</h2>
 
-      <h2><%= link_to release.artist.name, release.artist %></h2><div><%= link_to truncate((strip_tags release.name || "" ), :length => 26), [release.artist, release] %></div><%= activity[:stars] %> stars<br/><span><%= time_ago_in_words(activity[:time]) %> ago.</span></div>
+      <h2><%= link_to release.artist.name, release.artist %></h2><div><%= link_to truncate((strip_tags release.name || "" ), :length => 26), [release.artist, release] %></div><%= activity[:stars] %> stars<br/><!--<span><%= time_ago_in_words(activity[:time]) %> ago.</span>--></div> 
   </div>
       <%  if !release.tracks.count.zero? %>
       <div class="activity-play"> 
@@ -46,19 +46,6 @@
         },
 		play: function() { // To avoid both jPlayers playing together.
 			$(this).jPlayer("pauseOthers");
-		},
-		repeat: function(event) { // Override the default jPlayer repeat event handler
-			if(event.jPlayer.options.loop) {
-				$(this).unbind(".jPlayerRepeat").unbind(".jPlayerNext");
-				$(this).bind($.jPlayer.event.ended + ".jPlayer.jPlayerRepeat", function() {
-					$(this).jPlayer("play");
-				});
-			} else {
-				$(this).unbind(".jPlayerRepeat").unbind(".jPlayerNext");
-				$(this).bind($.jPlayer.event.ended + ".jPlayer.jPlayerNext", function() {
-					$("#jquery_jplayer_1").jPlayer("play", 0);
-				});
-			}
 		},
         swfPath: "/js",
         supplied: "m4a, oga",

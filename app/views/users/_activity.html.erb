@@ -41,19 +41,6 @@
 		play: function() { // To avoid both jPlayers playing together.
 			$(this).jPlayer("pauseOthers");
 		},
-		repeat: function(event) { // Override the default jPlayer repeat event handler
-			if(event.jPlayer.options.loop) {
-				$(this).unbind(".jPlayerRepeat").unbind(".jPlayerNext");
-				$(this).bind($.jPlayer.event.ended + ".jPlayer.jPlayerRepeat", function() {
-					$(this).jPlayer("play");
-				});
-			} else {
-				$(this).unbind(".jPlayerRepeat").unbind(".jPlayerNext");
-				$(this).bind($.jPlayer.event.ended + ".jPlayer.jPlayerNext", function() {
-					$("#jquery_jplayer_1").jPlayer("play", 0);
-				});
-			}
-		},
         swfPath: "/js",
         supplied: "m4a, oga",
         cssSelectorAncestor: "#jp_container_<%= release.id %>",

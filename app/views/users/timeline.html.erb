@@ -5,7 +5,6 @@
 </div>
 <div class="timeline-outer">
 <%= image_tag "/images/shadow-line.png", :id => 'shadow-top' %>
-<div id="timelime-trim">
 <div id="timeline">
 <% if @timeline.empty? %>
 	<div id="timeline-empty">
@@ -53,15 +52,11 @@
 	</ul>
 <% end %>
 <div class="clear"></div>
-</div>
-</div>
-</div>
-<div class="container">
-	<div class="row">
-		<div class="span6 offset3">
-		<h1>Recent friend activity</h1>
-		<ul id="friend-activity">
+		<ul id="timeline-activity">
 		<%= render :partial => 'users/group_activity', :collection => @activities %>
 		</ul>
-		</div>
-	</div>
+</div>
+</div>
+
+<div class="wrapper2">
+<div class="container">
