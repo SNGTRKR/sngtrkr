@@ -11,8 +11,6 @@ DynamicSitemaps::Sitemap.draw do
    
    url privacy_url, :last_mod => DateTime.now, :change_freq => 'monthly', :priority => 1
    
-   url team_url, :last_mod => DateTime.now, :change_freq => 'monthly', :priority => 1
-   
    url terms_url, :last_mod => DateTime.now, :change_freq => 'monthly', :priority => 1
    
    
@@ -28,17 +26,4 @@ DynamicSitemaps::Sitemap.draw do
    end
  
    new_page!
-  
-   #autogenerate  :artists,
-   #              :last_mod => :updated_at,
-   #              :change_freq => 'monthly',
-   #              :priority => 0.8
-                
-  # new_page!
-  
-  # autogenerate  :users,
-  #               :last_mod => :updated_at,
-  #               :change_freq => lambda { |user| user.very_active? ? 'weekly' : 'monthly' },
-  #               :priority => 0.5
-  
 end

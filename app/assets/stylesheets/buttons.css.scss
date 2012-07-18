@@ -280,7 +280,7 @@ input.o-button {
     padding:0 15px 0 15px;
     i {
 	    font-size:1.8em;
-	    margin:7px 12px 0 -2px;
+	    margin:6px 12px 0 -2px;
     }
 }
 .trkr-o-pad {
@@ -293,6 +293,10 @@ input.o-button {
     a:hover {
 	    color:#fff;
     }
+}
+.fb-disabled {
+  opacity: 0.75;
+  filter: alpha(opacity=75);
 }
 .mini-trkr-button, .mini-share, .mini-ignore-trk-artist {
             border:none;
