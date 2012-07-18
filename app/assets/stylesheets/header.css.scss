@@ -1,9 +1,6 @@
 .header{
     height:105px;
-    .p-head
-    {
-        height:25px;
-        float: right;
+    .p-head {
         @extend .o-button;
         #profile-pad {
 	        padding:2px 7px 0 6px;
