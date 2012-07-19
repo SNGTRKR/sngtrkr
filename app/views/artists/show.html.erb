@@ -108,7 +108,7 @@ content_for :og_type, "sngtrkr:artist"
 <% if @timeline.empty? %>
 	<div id="timeline-empty">
 		<h1>Oh dear...</h1>
-		<p>It appears this artist has not released anything or we were unable to acquire anything from our partner stores. Why not check out some other artists which may be of interest to you?
+		<p>It appears <%= @artist.name %> have not released anything or we were unable to acquire anything from our partner stores. Why not check out some other artists which may be of interest to you?
 		</p>
 		<div class="row timeline-recommendations"><div class="span8">
 			<ul id="ajax-recommended-artists">
