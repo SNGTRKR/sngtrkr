@@ -68,10 +68,16 @@ padding-bottom:30px;
 float:left;
 .logout-button {
   @extend .button;
-   i {
+   .icon-sort-down {
 	   margin-left:5px;
 	   position:relative;
 	   bottom:2px;
+	   font-size:1.1em;
+   }
+      .icon-user {
+	   margin-right:5px;
+	   position:relative;
+	   top:1px;
 	   font-size:1.1em;
    }
    ul {
@@ -81,6 +87,9 @@ float:left;
 			   text-align:right;
 			   text-shadow: $gray 0 0 0;
 			   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			   i {
+				   margin-left:5px;
+			   }
 		   }
 		   a:hover {
 			   color:#fff !important;
@@ -102,11 +111,11 @@ float:left;
 .dropdown-menu:after {
 
   left: auto !important;
-  right: 13px !important;
+  right: 15px !important;
 }
 .dropdown-menu:before {
   left: auto !important;
-  right: 12px !important;
+  right: 14px !important;
 }
 }
 }
