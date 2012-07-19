@@ -1,7 +1,7 @@
 <% content_for :og_name, @release.name
 content_for :og_url, request.url
 content_for :og_image, File.join(root_url , @release.image.url(:release_i))
-content_for :og_description, @release.name + " by " + @artist.name + ". Released " + @release.date.strftime("#{@release.date.day.ordinalize} %B %Y ") + " by " + @release.label_name
+content_for :og_description, @release.name + " by " + @artist.name + ". Released " + @release.date.strftime("#{@release.date.day.ordinalize} %B %Y ") + " on " + @release.label_name
 content_for :og_id, @release.id.to_s
 content_for :og_type, "sngtrkr:release"
 %>
