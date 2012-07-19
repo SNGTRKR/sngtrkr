@@ -72,13 +72,13 @@ $overlap: $width*0.25;
           .recommend-info {
             @extend .instruct-font;
             @extend .font-20;
-            position:relative;
+            position:absolute;
             text-align:center;
             line-height:1.4em;
             z-index:0;
             width:202px;
             display:block;
-            height:30px;
+            bottom:20px;
             a {
               color:#fff;
             }
@@ -165,7 +165,7 @@ span {
 }
   #timeline-empty{
     margin:auto;
-    margin-top:$height - 238px;
+    margin-top:$height - 247px;
     width: 430px;
     padding:19px 30px 2px 30px;
     border: 3px solid black;
