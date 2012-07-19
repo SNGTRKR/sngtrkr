@@ -166,7 +166,7 @@ function artist_suggestion_replace() {
 
   $('.recommend-buttons a.add-trkr, .recommend-buttons a.ajax-ignore-artist').bind('ajax:beforeSend', function () {
     // Hide the suggestion itself
-    $(this).closest('li').animate("opacity",0.1);
+    $(this).closest('li').css("opacity",0.3);
   }).bind('ajax:success', function(xhr, data, status){
     $(this).closest('li').replaceWith(data); 
     // Reactivate click functionality for new suggestion
