@@ -34,6 +34,7 @@ SNGTRKR::Application.routes.draw do
   
   resources :users, :except =>[:index] do
     member do
+      match 'public'
       get 'unmanage'
       get 'destroy_confirm'
       post 'destroy_with_reason'

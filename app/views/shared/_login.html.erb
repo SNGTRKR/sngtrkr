@@ -1,5 +1,5 @@
 <% if(user_signed_in?) %>
-	<div id="logout-outer"><div class="logout-button item dropdown" ><a href="/users/me" class="dropdown-toggle" data-toggle="dropdown"><%= @user.first_name %> <%= @user.last_name %><i class="icon-sort-down"></i></a>  
+	<div id="logout-outer"><div class="logout-button item dropdown" ><%= link_to user_path(current_user) do %><%= @user.first_name %> <%= @user.last_name %><% end %><i class="icon-sort-down"></i></a>  
 	<ul class="dropdown-menu">
 	<li><a href="#">Feedback</a></li>
 	<li><a href="#">Settings</a></li>

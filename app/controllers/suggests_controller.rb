@@ -15,8 +15,7 @@ class SuggestsController < ApplicationController
     current_user.unsuggest_artist params[:artist_id]
     @artist = current_user.suggested[5] rescue nil
     respond_to do |format|
-      format.html { redirect_to artist_path(@artist) }
-      format.js { render "suggests/next", :format => :js  }
+      format.html { render "artists/ajax_suggestion", :layout => false }
       format.json { render :json => { :response => :success } }
     end
   end
