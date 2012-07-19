@@ -9,7 +9,6 @@ class FollowsController < ApplicationController
 
   def create
     current_user.follow_artist params[:artist_id]
-    current_user.unsuggest_artist(params[:artist_id])
     
     @tracked_artist = Artist.find(params[:artist_id])
 
