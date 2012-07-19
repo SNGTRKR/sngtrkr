@@ -103,7 +103,7 @@ content_for :og_type, "sngtrkr:artist"
 </div></div>
 <div class="timeline-outer a-timeline">
 <%= image_tag "/images/shadow-line.png", :id => 'shadow-top' %>
-<div id="timelime-trim">
+<div id="timeline-trim">
 <div id="timeline">
 <%= image_tag "/images/timeline-left.png", :alt => "SNGTRKR", :id => "left-logo" %>
 <div id="left-line"></div>
@@ -113,6 +113,7 @@ content_for :og_type, "sngtrkr:artist"
 </ul>
 </div>
 </div>
+<%= image_tag "/images/shadow-line-bot.png", :id => 'shadow-bot' %>
 </div>
 <div class="container">
 			<div id="bio-full">
@@ -253,7 +254,26 @@ $(document).ready(function () {
 
 
 });
+ $('#timeline').mousedown(function (event) {
+    $(this).data('down', true).data('x', event.clientX).data('scrollLeft', this.scrollLeft);
+    return false;
+  }).mouseup(function (event) {
+    $(this).data('down', false);
+  }).mousemove(function (event) {
+    if ($(this).data('down') == true) {
+      this.scrollLeft = $(this).data('scrollLeft') + $(this).data('x') - event.clientX;
+    }
+  });
 
+  $(window).mouseout(function (event) {
+    if ($('#timeline').data('down')) {
+      try {
+        if (event.originalTarget.nodeName == 'BODY' || event.originalTarget.nodeName == 'HTML') {
+          $('#timeline').data('down', false);
+        }
+      } catch (e) {}
+    }
+  });
 function timeline_widths() {
   // Width setting
   var stepsWidth = 0;
