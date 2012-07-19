@@ -65,7 +65,7 @@
 			<input type="text" id="filter" placeholder="Search TRKRs..."/>
 			<div><%= image_tag "/images/white-search-2.png", :alt => "Search", :id => "search-pad" %></div></div>
 	</div></div>
-	<div class="row"><div class="span10">
+	<div class="row"><div class="span10" id="tracked-artists-container">
 	<ul id="tracked-artists">
 		<% if @user.following.count.zero? %>
 		<div class="no-trk-notify">
