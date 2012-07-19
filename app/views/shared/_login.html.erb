@@ -1,7 +1,10 @@
 <% if(user_signed_in?) %>
-<%= link_to(destroy_user_session_path, :method => :delete) do %>
-	<div class="logout-button item nav-button tooltip-parent"  data-title="Logout"><i class="icon-signout"></i></div>
-<% end %>
+	<div id="logout-outer"><div class="logout-button item dropdown" ><a href="/users/me" class="dropdown-toggle" data-toggle="dropdown"><%= @user.first_name %> <%= @user.last_name %><i class="icon-sort-down"></i></a>  
+	<ul class="dropdown-menu">
+	<li><a href="#">Feedback</a></li>
+	<li><a href="#">Settings</a></li>
+    <li><%= link_to(destroy_user_session_path, :method => :delete) do %>Logout<% end %></li>
+    </ul></div></div>
 <% elsif %>
 <%= link_to(user_omniauth_authorize_path(:facebook)) do %>
 <div class="fb-login item"><i class="icon-facebook"></i><span>Login</span></div>

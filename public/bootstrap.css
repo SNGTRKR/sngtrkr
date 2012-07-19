@@ -2182,7 +2182,7 @@ input[type="submit"].btn.btn-mini {
   border-color: #ddd #ddd #ddd transparent;
   *border-left-color: #ffffff;
 }
-.navbar {
+	.navbar {
   *position: relative;
   *z-index: 2;
   overflow: visible;
@@ -2462,7 +2462,7 @@ input[type="submit"].btn.btn-mini {
 .btn-navbar .icon-bar + .icon-bar {
   margin-top: 3px;
 }
-.navbar .dropdown-menu:before {
+.logout-button .dropdown-menu:before {
   content: '';
   display: inline-block;
   border-left: 7px solid transparent;
@@ -2473,7 +2473,7 @@ input[type="submit"].btn.btn-mini {
   top: -7px;
   left: 9px;
 }
-.navbar .dropdown-menu:after {
+.logout-button .dropdown-menu:after {
   content: '';
   display: inline-block;
   border-left: 6px solid transparent;
