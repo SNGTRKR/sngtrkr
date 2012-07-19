@@ -36,6 +36,14 @@ class Release < ActiveRecord::Base
     date.strftime('%d/%m/%Y')
   end
 
+  def itunes
+    if itunes?
+      return "http://clk.tradedoubler.com/click?p=23708&a=2098473&url=#{CGI.escape(super)}"
+    else
+      return nil
+    end
+  end
+
   # SCRAPING METHODS
   @sevendigital_apikey = "7dufgm34849u"
 

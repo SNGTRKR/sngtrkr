@@ -58,6 +58,12 @@ class UsersController < ApplicationController
     redirect_to "/users/#{current_user.id}"
   end
 
+  # Allows a user to see their profile from an oustide perspective
+  def public
+      @friend = User.find(params[:id])
+      render :show
+  end
+
   def friends
     @app_friends = []
     @app_friends = session["friends"]

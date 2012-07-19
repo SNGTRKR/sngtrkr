@@ -1,9 +1,0 @@
-<% fade_time = 300 %>
-// JS Returned
-<% if !@artist.blank? %>
-$('#ajax-recommended-artists').append($("<%=j render :partial => 'shared/artist_suggestion', :object => @artist %>").hide().delay(<%= fade_time %>).fadeIn(<%= fade_time %>));
-$('#tracked-artists ul').append($("<%=j render :partial => 'shared/artist_tracked', :object => @tracked_artist %>"));
-artist_suggestion_replace();
-FB.api("/me/sngtrkr:track", 'post', {artist: "<%= "#{artist_url(@tracked_artist)}" %>"});
-<% end %>
-<%= render 'follows/trk_response' %>

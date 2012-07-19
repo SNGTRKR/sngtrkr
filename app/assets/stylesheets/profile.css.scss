@@ -50,6 +50,11 @@ margin-bottom:38px;
 	  width:666px;
 	  margin:-7px 0 0 57px;
     }
+    #tracked-artists-container{
+      max-height: 500px;
+      overflow-y:auto;
+      overflow-x:hidden;
+    }
 .artist-trkr-list-search {
         height:25px;
         width:155px;

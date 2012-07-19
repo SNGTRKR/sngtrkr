@@ -9,7 +9,6 @@ class FollowsController < ApplicationController
 
   def create
     current_user.follow_artist params[:artist_id]
-    current_user.unsuggest_artist(params[:artist_id])
     
     @tracked_artist = Artist.find(params[:artist_id])
 
@@ -28,7 +27,7 @@ class FollowsController < ApplicationController
 
     @artist = current_user.suggested[5] rescue nil
     respond_to do |format|
-      format.html { redirect_to artist_path(:id => params[:artist_id]) }
+      format.html { render "artists/ajax_suggestion", :layout => false }
       format.json { render("artists/show.json") }
       format.js { render "artists/show", :format => :js }
     end
