@@ -39,6 +39,14 @@ class Artist < ActiveRecord::Base
     order('updated_at DESC')
   end
 
+  def itunes
+    if itunes?
+      return "http://clk.tradedoubler.com/click?p=23708&a=2098473&url=#{CGI.escape(super)}"
+    else
+      return nil
+    end
+  end
+
   before_save :default_values
   before_save :delete_children_for_ignored
   def default_values

@@ -77,7 +77,9 @@
 								</div>
 							</div>
 							<div class="item ">
-								<a href="/users/me" class="nav-button"><i class="icon-user"></i></a>
+								<%= link_to user_path(current_user), :class => "nav-button" do %>
+									<i class="icon-user"></i>
+								<% end %>
 							</div>
 							<div class="item popover-parent" data-content="Check out which of your Facebook friends are using the SNGTRKR platform." data-original-title="SNGTRKR Friends" data-placement="bottom">
 								<%= link_to friends_user_path(current_user), :method => 'get', :class => "nav-button" do %><i class="icon-group"></i><% end %></div>

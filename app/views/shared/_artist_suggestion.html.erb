@@ -1,4 +1,4 @@
-<li class="each-recommend" style="background-image:url(<%= artist_suggestion.image.url :recommend %>);background-repeat:no-repeat;background-position:center;">
+<li class="each-recommend" style="background-image:url(<%= artist_suggestion.image.url :recommend %>);background-repeat:no-repeat;background-position:center;" data-id="<%= artist_suggestion.id %>">
 	<div class="new-recommend">
 		<div class="black-tint"></div>
 		<div class="recommend-info">
@@ -25,7 +25,7 @@
 	<div class="recommend-buttons">
 		<%= render :partial => 'shared/trk_artist', :object => artist_suggestion, :locals => { :icon => 'icon-ok' } %>
 		<div class="mini-share tooltip-parent" data-title="Share" data-placement="bottom"><i class="icon-share-alt"></i></div>
-		<%= link_to artist_unsuggest_path(artist_suggestion), :remote => true, 
+		<%= link_to artist_unsuggest_path(artist_suggestion), :remote => true,
 			:class => 'mini-ignore-trk-artist ajax-ignore-artist' do %>
 			<i class="icon-remove"></i>
 		<% end %>

@@ -160,9 +160,17 @@ function artist_suggestion_replace() {
 		$(this).parent().parent().parent().parent().find('.opac-50').fadeOut("normal").parent().find('.share-artist').animate({right : -202}, "slow").parent().find('.recommend-info').fadeIn("normal");;
 	});
 
+  $('.recommend-buttons a.add-trkr').bind('ajax:success', function(xhr, data, status){
+    FB.api("/me/sngtrkr:track", 'post', {artist: $(this).closest('li').data("id")});
+  });
+
   $('.recommend-buttons a.add-trkr, .recommend-buttons a.ajax-ignore-artist').bind('ajax:beforeSend', function () {
     // Hide the suggestion itself
-    $(this).closest('li').fadeOut(300);
+    $(this).closest('li').animate("opacity",0.1);
+  }).bind('ajax:success', function(xhr, data, status){
+    $(this).closest('li').replaceWith(data); 
+    // Reactivate click functionality for new suggestion
+    artist_suggestion_replace();
   });
 
   $('a.untrk-artist').bind('ajax:beforeSend', function () {
