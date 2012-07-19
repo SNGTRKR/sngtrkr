@@ -1,3 +1,9 @@
+<% if artist_suggestion.nil? %>
+<li class="each-recommend">
+	<p>No suggestions left.</p>
+</li>
+
+<% else %>
 <li class="each-recommend" style="background-image:url(<%= artist_suggestion.image.url :recommend %>);background-repeat:no-repeat;background-position:center;" data-id="<%= artist_suggestion.id %>">
 	<div class="new-recommend">
 		<div class="black-tint"></div>
@@ -31,3 +37,4 @@
 		<% end %>
 	</div>
 </li>
+<% end %>

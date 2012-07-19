@@ -6,10 +6,18 @@ class Suggest < ActiveRecord::Base
   validates :user_id, :uniqueness => {:scope => :artist_id}
 
   before_save :default_values
+  before_create :check_not_following
+
   def default_values
     # Don't ignore new suggestions
     self.ignore ||= false
     true
+  end
+
+  def check_not_following
+    if Follow.where(:user_id => user_id, :artist_id => artist_id).count > 0
+      return false
+    end
   end
 
   def self.search(user_id, artist_id)
