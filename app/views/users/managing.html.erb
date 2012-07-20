@@ -3,7 +3,7 @@
 <div class="row manage-top"><div class="span8 offset2">
 	<div class="row"><div class="span4">
 	<h1>Join now and build a closer relationship to your fans...</h1><br/>
-	<a href="#manage-choice"><div>Manage an artist</div></a>
+	<a href="#manage-choice" data-toggle="modal"><div>Manage an artist</div></a>
 	</div>
 	<div class="span4">
 	<%= image_tag "/images/macbook2.png", :alt => "Macbook Pro", :class => "macbook-2"%>
@@ -38,33 +38,34 @@
 		</div></div>
 </div></div>
 <div id="manage-buffer"></div>
-	<div id="manage-choice">
-	<div id="manage-options">
-	<h3 class="signika-txt font-25">Artist choice</h3>
-	<% if @manageable.count.zero? %>
-			<span class="font-13"><strong>If seems you don't have any Facebook artists to manage.</strong></span><br/><br/>
-			Please make sure you have a Facebook page for the artist, and set the category for the page to 'Musician/Band'.
-			<% else %>
-			<%= form_for [current_user, Manage.new] do |f| %>
+	<div id="manage-choice" class="modal hide">
+			<div class="modal-header">
+			<h3>Which artist would you like to manage?</h3>
+			</div>
+			<div class="modal-body">
+			<% if @manageable.count.zero? %>
+			<p><strong>If seems you don't have any Facebook artists to manage.</strong></p>
+			<p>Please make sure you have a Facebook page for the artist, and set the category for the page to 'Musician/Band'.</p>
+			<% else %>			
+			<p>Select which artist you wish to manage and let's get started!</p>
+						<%= form_for [current_user, Manage.new] do |f| %>
 					<ul>
 				<% @manageable.each do |artist| %>
 				<li class="left">
-					<div class="a-image" style='background-image:url(<%= "//graph.facebook.com/"+artist.fbid+"/picture?type=normal" %>);background-repeat:no-repeat;background-position:center;'></div>
-					<div class="artists-info">
-						<h3><strong><span class="font-13 name"><%= truncate((strip_tags f.label(:artist_id, artist.name) || "" ), :length => 17) %></span></span></strong></h3>
+					<%= image_tag "//graph.facebook.com/"+artist.fbid+"/picture?type=normal" %>
+					<div>
+						<h4><%= truncate((strip_tags f.label(:artist_id, artist.name) || "" ), :length => 17) %></h4>
 						Dubstep
 					</div>
-					<div class="artist-radio">
 						<%= f.radio_button(:artist_id, artist.id) %>
-					</div>
 				</li>
 				<% end %>
 				<div class="clear"></div>
 			</ul>
-			<div id="manage-buttons">
-				<a href="javascript:$.fancybox.close();"><%= f.submit "Manage" %></a>
-				<a href="javascript:$.fancybox.close();"><div>Cancel</div></a>
-				</div>
+			</div>
+			<div class="modal-footer">
+			<%= f.submit "Manage" %>
+			<div class="cancel" data-dismiss="modal">Cancel</div>
 			<% end %>
 			<% end %>
 			</div>
