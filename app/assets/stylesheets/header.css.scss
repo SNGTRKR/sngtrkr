@@ -99,11 +99,10 @@ float:left;
   }
   .dropdown-menu {
   right:0 !important;
-  min-width: 127px !important;
   margin: 12px 0 0 !important;
+  min-width:116px !important;
 }
 .dropdown-menu:after {
-
   left: auto !important;
   right: 15px !important;
 }

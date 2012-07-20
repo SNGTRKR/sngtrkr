@@ -239,27 +239,6 @@
 				float: left;
 			}
 		}
-	#bio-full {
-  display:none;
-  background: url(/images/box-bk-431.png) no-repeat;
-      -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;   
-  color:$gray; 
-  @include border-radius(8px);
-  #bio {
-    position:relative;
-	  width:401px;
-	  padding:30px 20px 30px 20px;
-	  h1 {
-		  margin-bottom:8px;
-	  }
-	  a {
-		  color:$gray;
-	  }
-	  a:hover {
-		  color:$gray;
-	  }
-  }
-}	
+#bio-full {
+	
+}

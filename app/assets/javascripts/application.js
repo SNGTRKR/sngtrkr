@@ -12,7 +12,6 @@
 //
 //= require jquery_ujs
 //= require jquery-ui
-//= require fancy-box/jquery.fancybox
 //= require instant-search/instant-search
 //= require jplayer/jquery.jplayer
 //= require jplayer/jplayer.playlist
@@ -34,41 +33,6 @@ Number.prototype.commafy = function () {
 }
 
 $(document).ready(function () {
-	//Feedback
-	$('#feedback > #trigger > .icon-bullhorn').click(function () {
-	$('#feedback').animate({width: 170}, "normal");
-	$('#feedback > #trigger').animate({width: 170}, "normal");
-	$('#feedback > #trigger > span').css("margin-left","7px");
-	$('#feedback > #trigger > span').html('Feedback');
-	$('#feedback > #content').slideDown(850);
-	$('#feedback > #trigger > .icon-bullhorn').css("pointer-events","none");
-	});
-	$('#feedback > #content > #new_feedback > .cancel').click(function () {
-	$('#feedback').animate({width: 31}, "normal");
-	$('#feedback > #trigger').animate({width: 31}, "normal");
-	$('#feedback > #trigger > span').css("margin-left","0px");
-	$('#feedback > #trigger > span').html('');
-	$('#feedback > #content').slideUp("normal");
-	$('#feedback > #trigger > .icon-bullhorn').css("pointer-events","auto");
-	});
-  // Release carousel
-  $(".artist-list").carouFredSel({
-    circular: false,
-    infinite: false,
-    auto: false,
-    scroll: {
-      items: "page"
-    },
-    prev: {
-      button: "#rel_prev",
-      key: "left"
-    },
-    next: {
-      button: "#rel_next",
-      key: "right"
-    },
-  });
-
   // Flash Dismissal
   $('.flash-outer').delay(300).slideDown(500, 'easeInQuad');
   $('.flash-close').click(function () {
@@ -81,20 +45,7 @@ $(document).ready(function () {
 
   // Release rating.
   $('a').live('ajax:complete', function (xhr, status) {
-    $(".ajaxful-rating-wrapper").replaceWith(status.responseText)
-  });
-
-  $(".light-box-parent").fancybox({
-    width: 431,
-    height: 286,
-    autoSize: false,
-    closeClick: false
-  });
-  $("#artist-bio a").fancybox({
-    autoScale: true,
-  });
-  $(".manage-top a").fancybox({
-    autoScale: true,
+    $(".ajaxful-rating-wrapper").replaceWith(status.responseText);
   });
   $('#artist-mini-search-submit').click(function(){
     $(this).closest('form').submit();
@@ -126,7 +77,7 @@ $(document).ready(function () {
   
   $('.popover-parent').popover();
   $('.tooltip-parent').tooltip();
-  $(".alert").alert()
+  $(".alert").alert();
   add_remove_trkr_bind();
   
 }); // DOCUMENT READY ENDS HERE
@@ -137,7 +88,7 @@ function add_remove_trkr_bind() {
     console.log('Added tracker');
     var artist_id = $(this).data('id');
     $(this).replaceWith('<a href="/artists/'+artist_id+'/follows" class="mini-trkr-button add-trkr" data-id="'+artist_id+'" data-method="post" data-remote="true" rel="nofollow"><i class="icon-plus"></i></a>');
-    add_remove_trkr_bind()
+    add_remove_trkr_bind();
   });
   $('a.add-trkr').bind('ajax:complete', function () {
     console.log('Removed tracker');
@@ -146,7 +97,7 @@ function add_remove_trkr_bind() {
     add_remove_trkr_bind();
   });
 
-};
+}
 
 function artist_suggestion_replace() {
   // Sharing options
