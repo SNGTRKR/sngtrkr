@@ -1,11 +1,11 @@
-<div class="unmanage-confirm">
-	<h1>Are you sure?</h1>
-	<div id="unmanage-txt">
-		Are you sure you wish to stop managing <strong><%= @user.managing.first.name %></strong>? You can always come back to it, if you change your mind.<br/><br/>
-		<strong>If you need help getting started or managing your artist account, please visit our help page or contact us at</strong> <a href="mailto:support@sngtrkr.com" target="_blank">support@sngtrkr.com</a></div>
-	<div class="unmanage-buttons">
-	<%= link_to user_manage_path(@user,@user.manage.first), :method => :delete do %><div>Yes<% end %></div>
-		<a href="javascript:$.fancybox.close();"><span>
-			No</span></a>
-	</div>
+<div class="modal-header">
+<h3>Are you sure?</h3>
+</div>
+<div class="modal-body">
+<p>Are you sure you wish to stop managing <strong><%= @user.managing.first.name %></strong>? You can always come back to it, if you change your mind.</p>
+<p><strong>If you need help getting started or managing your artist account, please visit our help page or contact us at</strong> <a href="mailto:support@sngtrkr.com" target="_blank">support@sngtrkr.com</a></p>
+</div>
+<div class="modal-footer">
+<%= link_to "Yes", user_manage_path(@user,@user.manage.first), :method => :delete  %>
+<div class="cancel" data-dismiss="modal">No</div>
 </div>

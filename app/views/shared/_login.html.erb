@@ -1,7 +1,7 @@
 <% if(user_signed_in?) %>
-	<div id="logout-outer"><div class="logout-button item dropdown" ><%= link_to user_path(current_user) do %><%= @user.first_name %> <%= @user.last_name %><% end %><i class="icon-sort-down"></i></a>  
+	<div id="logout-outer"><div class="logout-button item dropdown"><%= link_to user_path(current_user) do %><%= @user.first_name %> <%= @user.last_name %><% end %><i class="icon-sort-down"></i> 
 	<ul class="dropdown-menu">
-	<li><a href="#">Feedback<i class="icon-comment-alt"></i></a></li>
+	<li><a data-toggle="modal" href="#feedback">Feedback<i class="icon-comment-alt"></i></a></li>
 	<li><%= link_to edit_user_path(@user) do %>Settings<i class="icon-cog"></i><% end %></li>
     <li><%= link_to(destroy_user_session_path, :method => :delete) do %>Logout<i class="icon-signout"></i><% end %></li>
     </ul></div></div>
@@ -17,5 +17,4 @@ $(document).ready(function() {
     $(this).addClass('fb-disabled');
   });
 });
-
 </script>

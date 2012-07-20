@@ -82,7 +82,7 @@ content_for :og_type, "sngtrkr:artist"
   <% if @artist.label_name? %><%= truncate((strip_tags @artist.label_name || "" ), :length => 50) %><% else %><span class="gray">No label set</span><% end %><br/><br/>
 <div id="artist-bio">
   <% if @artist.bio? %>
-    <%= raw(truncate((strip_tags @artist.bio || "" ), :length => 450, :omission => "...<a href='#bio-full'>Read more</a>")) %>
+    <%= raw(truncate((strip_tags @artist.bio || "" ), :length => 450, :omission => "...<a href='#bio-full' data-toggle='modal'>Read more</a>")) %>
   <% else %>
     <span class="gray">No biography set</span>
   <% end %>
@@ -143,11 +143,14 @@ content_for :og_type, "sngtrkr:artist"
 <%= image_tag "/images/shadow-line-bot.png", :id => 'shadow-bot' %>
 </div>
 <div class="container">
-			<div id="bio-full">
-	<div id="bio">
-		<h1>Biography</h1>
-		<%= raw(@artist.bio) %></div>
-	</div>
+			<div id="bio-full" class="modal hide">
+			<div class="modal-header">
+				<h3>Biography</h3>
+				</div>
+			<div class="modal-body">
+				<p><%= raw(@artist.bio) %></p>
+				</div>
+			</div>
 	<script type="text/javascript">
 $(document).ready(function(){
   $('#bio a').attr('target', '_blank');

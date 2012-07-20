@@ -72,19 +72,19 @@
 			<p>You are currently managing the artist known as <strong><%= @user.managing.first.name %></strong>.</p>
 			<%= link_to edit_artist_path(@user.managing.first) do %><span>
 			Edit</span><% end %>
-			<span><a href="#unmanage-confirmation" class="light-box-parent">Delete</a></span>
+			<span><a href="#unmanage-confirmation" data-toggle="modal">Delete</a></span>
 				</div>
 				<% else %><% end %>
 		<div id="delete-account">
 			<h3>Delete Your Account</h3>
 			<p>Your account, tracked artists and all personal details will be permanently removed.</p>
-				<span><a href="#delete-confirmation" class="light-box-parent">Delete Account</a></span>
+				<span><a href="#delete-confirmation" data-toggle="modal">Delete Account</a></span>
 		</div></div></div>
-	<div id="delete-confirmation">
+	<div class="modal hide" id="delete-confirmation">
 		<%= render :partial => 'delete_confirm' %>
 	</div>
 	<% if @user.manager? %>
-	<div id="unmanage-confirmation">
+	<div class="modal hide" id="unmanage-confirmation">
   	<%= render :partial => 'unmanage_confirm' %>
 	</div>
 	<% end %>

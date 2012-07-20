@@ -1,46 +1,9 @@
-.unmanage-confirm {
-    width:431px;
-    height:286px;
-    background: url(/images/box-bk-431.png) no-repeat;
-    @include border-radius(8px);
-    color:$gray;
-    h1 {
-	    top:28px;
-        position:relative;
-        text-align:center;
-      }
-      #unmanage-txt {
-        position:relative;
-        text-align:center;
-        width:237px;
-        left:97px;
-        top:34px;
-        span {
-	        display:block;
-	        margin-top:-8px;
-        }
-                  a {
-	    color:#fff;
-    }
-    a:hover {
-	    color:$gray;
-    }
-      }
-      .unmanage-buttons {
-      position:relative;
-      top:51px;
-      left:159px;
-      div {
-        margin-right:15px;
-        float: left;
-        @extend .button;  
-      }
-      span {
-	      float: left;
-	      @extend .button;
-      	}
-      }
-}
-  #unmanage-confirmation {
-    display:none;
+#unmanage-confirmation {
+	.cancel, a[rel=nofollow] {
+		@extend .button;
+		float:right;
+	}
+	a[rel=nofollow] {
+		margin-left:15px;
+	}
   }

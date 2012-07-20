@@ -62,10 +62,26 @@
 					<div id="right-navbar">
 						<%= render :partial => 'layouts/artist_mini_search'%>
 						<% if(user_signed_in?) %>
-							<div class="item popover-parent" data-content="Check out which of your Facebook friends are using the SNGTRKR platform." data-original-title="SNGTRKR Friends" data-placement="bottom">
+						<div class="item popover-parent" data-content="Check out which of your Facebook friends are using the SNGTRKR platform." data-original-title="SNGTRKR Friends" data-placement="bottom">
 								<%= link_to friends_user_path(current_user), :method => 'get', :class => "nav-button" do %><i class="icon-group"></i><% end %></div>
 						<% end %>
 						<%= render 'shared/login' %>
+						<div class="modal hide" id="feedback">
+						  <div class="modal-header">
+						    <h3>Feedback</h3>
+						  </div>
+						  <div class="modal-body">
+						  <p>We love feedback. Feel free to tell us what you think of the site or report a bug!</p>
+						    <%= form_for Feedback.new, :remote => true do |f| %>
+									<%= f.text_area :feedback, :id => "fedbox", :rows => 4, :placeholder => "Tell us what you think..." %>
+						  </div>
+						  <div class="modal-footer">
+						  <%= f.submit "Submit", :id => 'ajax-feedback-submit-button' %>
+						    <div class="cancel" data-dismiss="modal">Cancel</div>
+						    
+						    <% end %>
+						  </div>
+						</div>
 						<div class="clear"></div>
 					</div>
 				</div>
