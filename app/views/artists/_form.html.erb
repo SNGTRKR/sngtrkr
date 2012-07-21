@@ -110,7 +110,7 @@ image_height = 200
         <div class="clear"></div>
       </div>
       <% end %>
-        <%=form_for @artist, :url => artist_scrape_confirm_path(:artist_id => @artist.id, :format => :js), :remote => true do |f| %>
+        <%=form_for @artist, :url => artist_scrape_confirm_path(:artist_id => @artist.id), :format => :js, :remote => true do |f| %>
           <%= text_field_tag :search, @artist.name, :class => "form-text" %>
           <%= hidden_field_tag :store, "itunes" %>
           <%= submit_tag "Search" %>
@@ -148,7 +148,7 @@ image_height = 200
         </div>
         
       <% end %>
-      <%= form_for @artist, :url => artist_scrape_confirm_path(:artist_id => @artist.id, :format => :js), :remote => true do |f| %>
+      <%= form_for @artist, :url => artist_scrape_confirm_path(:artist_id => @artist.id), :format => :js, :remote => true do |f| %>
           <%= text_field_tag :search, @artist.name, :class => "form-text" %>
           <%= hidden_field_tag :store, "7digital" %>
           <%= f.submit "Search" %>
