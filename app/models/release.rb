@@ -27,6 +27,7 @@ class Release < ActiveRecord::Base
 
   # Notify users that follow this release's artist of this release.
   def notify_followers
+    if self.date > (Date.today - 14)
     self.artist.followed_users.each do |user|
       user.release_notifications << self
     end  
