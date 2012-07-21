@@ -55,6 +55,9 @@ module SNGTRKR
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Default URL base for emails
+    config.action_mailer.default_url_options = { :host => "sngtrkr.com" }
     
     config.time_zone = 'London'
     
