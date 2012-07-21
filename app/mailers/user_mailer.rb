@@ -12,7 +12,7 @@ class UserMailer < ActionMailer::Base
   
   def new_releases_deliver(frequency)
     User.where(:email_frequency => frequency).each do |user|
-      user_releases(user,frequency)
+      new_releases(user,frequency)
     end
   end
 

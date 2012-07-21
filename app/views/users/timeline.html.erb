@@ -20,15 +20,15 @@
     		<% else %>
       		<div class="loading load-timeline">
       		<h3>Please wait...</h3>
-      		<i class="icon-refresh"></i><br/>
-      		...while we work our magic and find which artists you?ve already liked on Facebook.
+      		<%= image_tag "/images/loading.png", :id => "loading-icon" %><br/>
+      		<p>...while we work our magic and find which artists you?ve already liked on Facebook.</p>
       		</div>		  
   		<% end %>
 			</ul>
 			<div class="clear"></div>
 			</div></div>
 	</div>
-		<script>
+	<script>
 		$(document).ready(function(){
 		  	artist_suggestion_replace();
 		})
