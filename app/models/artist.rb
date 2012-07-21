@@ -4,7 +4,6 @@ class Artist < ActiveRecord::Base
 
   has_many :releases, :dependent => :delete_all
 
-
   belongs_to :label
 
   has_attached_file :image, :styles => {
@@ -30,7 +29,6 @@ class Artist < ActiveRecord::Base
     self.releases.where(:ignore => false)
   end
 
-  
   def self.ordered
     order('name')
   end
