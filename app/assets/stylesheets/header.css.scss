@@ -76,14 +76,21 @@ float:left;
    }
    ul {
 	   li {
+      position: relative;
+      margin-bottom: 1px solid gray;
+      border-bottom: 1px solid rgba(128, 128, 128, 0.28);
+      margin: 0 5px;
+       i {
+         position:absolute;
+         left:5px;
+         color:$gray !important;
+         text-shadow: $gray 0 0 0;
+       }
 		   a {
 			   color:$gray !important;
 			   text-align:right;
 			   text-shadow: $gray 0 0 0;
 			   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-			   i {
-				   margin-left:5px;
-			   }
 		   }
 		   a:hover {
 			   color:#fff !important;

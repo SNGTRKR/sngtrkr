@@ -62,8 +62,27 @@
 					<div id="right-navbar">
 						<%= render :partial => 'layouts/artist_mini_search'%>
 						<% if(user_signed_in?) %>
-						<div class="item popover-parent" data-content="Check out which of your Facebook friends are using the SNGTRKR platform." data-original-title="SNGTRKR Friends" data-placement="bottom">
-								<%= link_to friends_user_path(current_user), :method => 'get', :class => "nav-button" do %><i class="icon-group"></i><% end %></div>
+						
+						<div id="logout-outer"><div class="logout-button item dropdown"><%= link_to user_path(current_user) do %><%= @user.first_name %> <%= @user.last_name %><% end %><i class="icon-sort-down"></i> 
+							<ul class="dropdown-menu">
+								<li>
+									<i class="icon-comment-alt"></i>
+									<a data-toggle="modal" href="#feedback">Feedback</a>
+								</li>
+								<li class="popover-parent" data-content="Check out which of your Facebook friends are using the SNGTRKR platform." data-original-title="SNGTRKR Friends" data-placement="left">
+									<i class="icon-group"></i>
+									<%= link_to friends_user_path(@user) do %>Friends<% end %>
+								</li>
+							    <li>
+							    	<i class="icon-cog"></i>
+							    	<%= link_to edit_user_path(@user) do %>Settings<% end %>
+							    </li>
+							    <li>
+							    	<i class="icon-signout"></i>
+							    	<%= link_to(destroy_user_session_path, :method => :delete) do %>Logout<% end %>
+							    </li>
+						    </ul></div>
+						</div>
 						<% end %>
 						<%= render 'shared/login' %>
 						<div class="modal hide" id="feedback">
