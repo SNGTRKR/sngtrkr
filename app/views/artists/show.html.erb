@@ -26,6 +26,9 @@ content_for :og_type, "sngtrkr:artist"
   <div class="edit">
   <%= link_to edit_artist_path(@artist) do %><i class="icon-edit"></i><% end %>
   </div>
+  <div class="destroy">
+  <%= link_to artist_path(@artist), :method => :delete do %><i class="icon-trash"></i><% end %>
+  </div>
   </div>
 <% end %>
 <div class="row">
@@ -161,8 +164,13 @@ $(document).ready(function(){
 		$(".buy-cancel").click(function() { $('#opac-50').fadeOut("normal"); $('#buy-profile').animate({left : -310}, "slow"); });
 		$("#buy-profile ul li").click(function() { $('#opac-50').fadeOut("normal"); $('#buy-profile').animate({left : -310}, "slow"); });
 		$("#profile-image").mouseover(function(){ $('#social-hidden ul li a div').stop().animate({bottom : -47}, "normal"); }).mouseout(function(){$('#social-hidden ul li a 						div').stop().animate({bottom : -78}, "normal");});
-		$(".edit").mouseover(function(){ $('.edit').stop().animate({left : 60}, "slow");}).mouseout(function(){ $('.edit').stop().animate({left : 0}, "slow"); });
-		$(".ignore").mouseover(function(){ $('.ignore').stop().animate({left : 60}, "slow");}).mouseout(function(){$('.ignore').stop().animate({left : 0}, "slow");});
+		
+		$(".super-admin").mouseover(function(){ 
+			$(this).stop().animate({left : 0}, "slow");
+		}).mouseout(function(){ 
+			$(this).stop().animate({left : -40}, "slow"); 
+		});
+
 		$(".r-grad").mouseover(function(){
 			$(this).closest(".each-release").find('.release-info').stop().animate({bottom : 33}, "slow");
 			$(this).closest(".each-release").find('.release-menu').stop().animate({bottom : 0}, "slow");

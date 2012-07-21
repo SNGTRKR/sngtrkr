@@ -11,12 +11,12 @@ class ReleaseJob
     start_time = Time.now
     artist = Artist.find(artist_id)
 
-    # STAGE 1 - 7DIGITAL IMPORT
-    Release.sdigital_import artist
-    
-    # STAGE 2 - ITUNES IMPORT
+    # STAGE 1 - ITUNES IMPORT
     Release.itunes_import artist
-      
+    
+    # STAGE 2 - 7DIGITAL IMPORT
+    Release.sdigital_import artist
+
     end_time = Time.now
     elapsed_time = end_time - start_time
     Rails.logger.info "J003: Release import for #{artist.name} finished after #{elapsed_time}"

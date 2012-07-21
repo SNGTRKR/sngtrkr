@@ -48,6 +48,7 @@ class Release < ActiveRecord::Base
 
   # SCRAPING METHODS
   @sevendigital_apikey = "7dufgm34849u"
+  require 'open-uri'
 
   if Rails.env.production?
     @proxy = 'http://localhost:3128'
@@ -61,18 +62,19 @@ class Release < ActiveRecord::Base
     end
   end
 
-  def self.new_daily_release
-    date_start = Date.today.strftime("%Y%m%d")
-    date_end = (Date.today-1).strftime("%Y%m%d")
-    page = 1
-    page_size = 100
-    new_releases =  Hash.from_xml(open("http://api.7digital.com/1.2/release/bydate?fromDate=#{date_end}&toDate=#{date_start}&oauth_consumer_key=#{@sevendigital_apikey}&pageSize=#{page_size}%page=#{page}"))["response"]["releases"]
-    while new_releases["release"][0] do
-      puts("New page: #{page}")
-      page += 1
-      new_releases =  Hash.from_xml(open("http://api.7digital.com/1.2/release/bydate?fromDate=#{date_end}&toDate=#{date_start}&oauth_consumer_key=#{@sevendigital_apikey}&pageSize=#{page_size}%page=#{page}"))["response"]["releases"]
-    end
-  end
+  # Doesn't work well because 7digital search by the actual release date, not the date added to the db
+  #def self.new_daily_release
+  #  date_start = (Date.today-1).strftime("%Y%m%d")
+  #  date_end = (Date.today-2).strftime("%Y%m%d")
+  #  page = 1
+  #  page_size = 100
+  #  new_releases =  Hash.from_xml(open("http://api.7digital.com/1.2/release/bydate?fromDate=#{date_end}&toDate=#{date_start}&oauth_consumer_key=#{@sevendigital_apikey}&pageSize=#{page_size}&page=#{page}"))["response"]["releases"]
+  #  while new_releases["release"] do
+  #    puts("New page: #{page}")
+  #    page += 1
+  #    new_releases =  Hash.from_xml(open("http://api.7digital.com/1.2/release/bydate?fromDate=#{date_end}&toDate=#{date_start}&oauth_consumer_key=#{@sevendigital_apikey}&pageSize=#{page_size}&page=#{page}"))["response"]["releases"]
+  #  end
+  #end
 
   def self.sdigital_import artist
     if !artist.sdid?
@@ -209,23 +211,35 @@ class Release < ActiveRecord::Base
         r.scraped = 1
         
         album_info = Scraper.lastfm_album_info(artist.name, r.name)
+        puts "ALBUM INFO:"
+        puts album_info
         # If Last.fm doesn't have artwork for it, it's probably not
         # actually a real release! So skip to the next release
         begin
-          best_artwork = album_info['image'].last 
+          best_artwork = album_info['image'].last
         rescue
           i += 1
           next
         end
 
-        if(!best_artwork.is_a?(String))
-          raise "Artwork Error: Release: '#{r.name}'. Expected String, actually got: '#{best_artwork.inspect}'"
-        end
-        io = open(best_artwork, :proxy => @proxy)
-        if io
-          def io.original_filename; base_uri.path.split('/').last; end
-          io.original_filename.blank? ? nil : io      
-          r.image = io
+        if !best_artwork.is_a?(String)
+          puts "Artwork Error: Release: '#{r.name}'. Expected String, actually got: '#{best_artwork.inspect}'"
+          # Itunes artwork is really shit quality so only use it if we must...
+          if itunes_releases[i]["artworkUrl100"]
+            io = open(itunes_releases[i]["artworkUrl100"], :proxy => @proxy)
+            if io
+              def io.original_filename; base_uri.path.split('/').last; end
+              io.original_filename.blank? ? nil : io      
+              r.image = io
+            end
+          end
+        else
+          io = open(best_artwork, :proxy => @proxy)
+          if io
+            def io.original_filename; base_uri.path.split('/').last; end
+            io.original_filename.blank? ? nil : io      
+            r.image = io
+          end
         end
         r.save
         i += 1
