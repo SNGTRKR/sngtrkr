@@ -151,7 +151,8 @@ content_for :og_type, "sngtrkr:artist"
 				<h3>Biography</h3>
 				</div>
 			<div class="modal-body">
-				<p><%= raw(@artist.bio) %></p>
+				<p><%= sanitize @artist.bio, :tags => %w(a) %></p>
+				<p>Provided by <a href="http://last.fm">Last.fm</a></p>
 				</div>
 			</div>
 	<script type="text/javascript">

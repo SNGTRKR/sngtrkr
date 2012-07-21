@@ -75,6 +75,7 @@ float:left;
 	   font-size:1.1em;
    }
    ul {
+    padding-bottom: 2px;
 	   li {
       position: relative;
       margin-bottom: 1px solid gray;
@@ -96,6 +97,10 @@ float:left;
 			   color:#fff !important;
 		   }
 	   }
+     li:last-child{
+        border-bottom:0px;
+      }
+
    }
 
   a {
