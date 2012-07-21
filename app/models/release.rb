@@ -28,9 +28,10 @@ class Release < ActiveRecord::Base
   # Notify users that follow this release's artist of this release.
   def notify_followers
     if self.date > (Date.today - 14)
-    self.artist.followed_users.each do |user|
-      user.release_notifications << self
-    end  
+      self.artist.followed_users.each do |user|
+        user.release_notifications << self
+      end  
+    end
   end
   
   def pretty_date
@@ -57,6 +58,19 @@ class Release < ActiveRecord::Base
   def self.daily_release
     Artist.where(:ignore => false).each do |artist|
       ReleaseJob.perform_async(artist.id)
+    end
+  end
+
+  def self.new_daily_release
+    date_start = Date.today.strftime("%Y%m%d")
+    date_end = (Date.today-1).strftime("%Y%m%d")
+    page = 1
+    page_size = 100
+    new_releases =  Hash.from_xml(open("http://api.7digital.com/1.2/release/bydate?fromDate=#{date_end}&toDate=#{date_start}&oauth_consumer_key=#{@sevendigital_apikey}&pageSize=#{page_size}%page=#{page}"))["response"]["releases"]
+    while new_releases["release"][0] do
+      puts("New page: #{page}")
+      page += 1
+      new_releases =  Hash.from_xml(open("http://api.7digital.com/1.2/release/bydate?fromDate=#{date_end}&toDate=#{date_start}&oauth_consumer_key=#{@sevendigital_apikey}&pageSize=#{page_size}%page=#{page}"))["response"]["releases"]
     end
   end
 
