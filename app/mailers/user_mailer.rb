@@ -23,7 +23,7 @@ class UserMailer < ActionMailer::Base
 
     if ENV['TEST_MODE']
       puts("Test mode active.")
-      @releases = Release.limit(10)
+      @releases = Release.limit(22)
     end
 
     if @releases.empty?
@@ -36,6 +36,11 @@ class UserMailer < ActionMailer::Base
       when 4 then @date_adjective = "Monthly"
     end
     
+    if @releases.count > 20
+      @many_releases = true
+      @releases_count = @releases.count
+      @releases = @releases[0,20]
+    end
 
     # Building list of artist names for the email subject
     artist_names = @releases.select('DISTINCT artist_id')[0,2].collect{|r| r.artist.name}.join(', ')

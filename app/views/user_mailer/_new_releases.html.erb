@@ -223,7 +223,11 @@
 </tr>
 <% end %>
 </table>
-</div>                                                 </td>
+</div>  
+<% if @many_releases %>
+<p>There are even more new releases since your last email. To see the rest of them, check out your timeline</p>
+<% end %>
+                                               </td>
                                                     </tr>
                                                 </table>
                                                 <!-- // End Module: Standard Postcard Content \\ -->
