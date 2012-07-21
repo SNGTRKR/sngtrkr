@@ -10,12 +10,20 @@ class ApplicationController < ActionController::Base
   #end
   before_filter :authenticate_user!, :except => [:splash,:home,:sitemap]
   before_filter :timer_start
+  before_filter :define_user
   
   #check_authorization  :unless => :devise_controller? # Breaks rails admin
 
+  def define_user
+      if user_signed_in?
+        @user = current_user
+      else
+        @user = nil
+      end
+  end  
+
   # This action is to ensure a user cannot simply hack a URL to view another user's area
   def self_only
-    @user = current_user
     # Admins can do anything to anyone
     if current_user.role? :admin
       return true
