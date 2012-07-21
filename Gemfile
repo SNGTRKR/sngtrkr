@@ -60,10 +60,10 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
   gem 'jquery-rails'
-  gem 'jquery_datepicker'
   gem 'bootstrap-sass', '~> 2.0.4.0'
 end
 
+gem 'jquery_datepicker'
 
 gem "koala"
 
