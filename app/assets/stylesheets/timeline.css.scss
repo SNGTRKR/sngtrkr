@@ -1,169 +1,172 @@
 $height: 300px;
 $width: $height;
+$central-gap: 100px;
+$overlap: $height*0.9;
+
 $v-line-length: 30px;
 $h-line-height: 50px;
 $h-v-space: 20px;
-$overlap: $width*0.25;
 
-#shadow-top {
-  position:absolute;
-  height:43px;
-  width:100%;
-  top:-32px;
-}
-#shadow-bot {
-  position:relative;
-  height:43px;
-  width:100%;
-  top:-10px;
-}
 .timeline-outer {
   position:relative;
-  height:1.9*($height+$v-line-length+$h-v-space)+$h-line-height+30px;
   background-image: url(/images/grid2.png);
-  margin:-155px 0 28px 0;
   @extend .scrollbar-timeline;
+  .timeline-page{
+    ul.release-list{
+      margin: auto;
+      width:2*$width + $central-gap;
+
+      li.release-outer{
+        width:$width;
+        height:$height;
+        margin-bottom: (-$overlap)/2;
+        overflow: hidden;
+        .each-release{
+          @include border-radius(8px);
+          padding:20px;
+        }
+      }
+      li.release-outer:nth-child(2n){
+        margin-right: ($central-gap/2);
+      }
+      li.release-outer:nth-child(2n+1){
+        margin-left: $width + ($central-gap/2);
+      }
+    }
+  }
 }
-#timeline-trim {
-  position:relative;
-  height:1.9*($height+$v-line-length+$h-v-space)+$h-line-height+28px;
-  overflow:hidden;
-}
-#timeline {
-	position:relative;
-  height:1.9*($height+$v-line-length+$h-v-space)+$h-line-height+155px;
-  overflow-x:scroll;
-  overflow-y: hidden;
-  padding:$height*0.025;
-  margin-top:10px;
-  /*cursor: -moz-grab !important;*/ /* should this be applied with JS? */
+
+
+/*
+
+ 
 .timeline-recommendations {
   ul {
     list-style-type:none;
     margin:19px 0 0 -32px;
     .each-recommend {
-    float: left;
-    position:relative;
-    height:178px;
-    width:202px;
-    @include border-radius(8px);
-    margin:0 0 42px 30px;
-   .new-recommend {
-      width:202px;
+      float: left;
+      position:relative;
       height:178px;
+      width:202px;
       @include border-radius(8px);
-      @include box-shadow(0px 2px 8px rgba(0,0,0,0.45));
-	  position:relative;
-	  overflow:hidden;
-	            .black-tint {
-            position:absolute; 
-            height:178px;
+      margin:0 0 42px 30px;
+      .new-recommend {
+        width:202px;
+        height:178px;
+        @include border-radius(8px);
+        @include box-shadow(0px 2px 8px rgba(0,0,0,0.45));
+        position:relative;
+        overflow:hidden;
+        .black-tint {
+          position:absolute; 
+          height:178px;
           width:202px;
           @include border-radius(8px);
           $experimental-support-for-svg: true;
           @include background-image(linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 94%, rgba(0,0,0,1) 100%));
+        }
+        .oneline{
+          top:129px;
+        }
+        .twoline {
+          top:98px;
+        }
+        .recommend-info {
+          @extend .instruct-font;
+          @extend .font-20;
+          position:absolute;
+          text-align:center;
+          line-height:1.4em;
+          z-index:0;
+          width:202px;
+          display:block;
+          bottom:20px;
+          a {
+            color:#fff;
           }
-          .oneline{
-	          top:129px;
+          a:hover {
+            color:$orange;
           }
-          .twoline {
-	          top:98px;
-          }
-          .recommend-info {
-            @extend .instruct-font;
+        }
+        .opac-50 {
+          position:absolute;
+          z-index:1;
+          top:0px;
+          width:202px;
+          height:178px;
+          @include border-radius(8px);
+          background:rgba(0,0,0,0.75);
+          display:none;
+        }
+        .share-artist {
+          position:absolute;
+          height:178px;
+          width:202px;
+          z-index:2;
+          right:-202px;
+          top:17px;
+          h3 {
+            @extend .signika-txt;
             @extend .font-20;
-            position:absolute;
             text-align:center;
-            line-height:1.4em;
-            z-index:0;
-            width:202px;
-            display:block;
-            bottom:20px;
-            a {
-              color:#fff;
+          }
+          ul {
+            margin:auto;
+            width: 52px * 3;
+            padding:15px;
+            li {
+              height:38px;
+              width:38px;
+              line-height:38px;
+              @include border-radius(4px);
+              margin:0 7px 0 7px;
+              float: left;
             }
-            a:hover {
-              color:$orange;
+            .goo-icon {
+              overflow:hidden;
+              font-size:4.8em;
+            }
+            .icon-twitter {
+              position:relative;
+              bottom:2px;
+              font-size:2.5em;
+            }
+            .icon-facebook {
+              position:relative;
+              right:1px;
+              font-size:2.5em;
+            }
+            .icon-google-plus {
+              position:relative;
+              right:20px;
+              top:6px;
             }
           }
-          .opac-50 {
-	      position:absolute;
-	      z-index:1;
-	      top:0px;
-	      width:202px;
-	      height:178px;
-	      @include border-radius(8px);
-	      background:rgba(0,0,0,0.75);
-	      display:none;
+          .share-cancel {
+             margin:10px auto;
+             width:40px;
+             @extend .button;
+          }
+        }
       }
-          .share-artist {
-	      position:absolute;
-	      height:178px;
-	      width:202px;
-	      z-index:2;
-	      right:-202px;
-	      top:17px;
-	      h3 {
-		      @extend .signika-txt;
-		      @extend .font-20;
-		      text-align:center;
-	      }
-	      ul {
-		      margin:auto;
-	  	      width: 52px * 3;
-  	          padding:15px;
-		 li {
-	      height:38px;
-	      width:38px;
-	      line-height:38px;
-	      @include border-radius(4px);
-	      margin:0 7px 0 7px;
-	      float: left;
-      }
-      .goo-icon {
-		overflow:hidden;
-		font-size:4.8em;	
-      }
-      .icon-twitter {
-	      position:relative;
-	      bottom:2px;
-	      font-size:2.5em;
-      }
-      .icon-facebook {
-	      position:relative;
-	      right:1px;
-	      font-size:2.5em;
-      }
-      .icon-google-plus {
-	      position:relative;
-	      right:20px;
-	      top:6px;
-      }
-	      }
-	      .share-cancel {
-		       margin:10px auto;
-		       width:40px;
-		       @extend .button;
-	      }
+      .recommend-buttons {
+        position:absolute;
+        height:25px;
+        width:138px;
+        top:165px;
+        left:39px;
+        z-index:3;
       }
     }
-             .recommend-buttons {
-	          position:absolute;
-	          height:25px;
-	          width:138px;
-	          top:165px;
-	          left:39px;
-	          z-index:3;
-          }
-   }
   }
-span {
-	@extend .button;
-	float: right;
-	margin:-3px 113px 31px 0;
+  span {
+    @extend .button;
+    float: right;
+    margin:-3px 113px 31px 0;
+  }
 }
-}
-  #timeline-empty{
+ #timeline-empty{
     margin:auto;
     margin-top:$height - 247px;
     width: 430px;
@@ -208,9 +211,8 @@ span {
 	 
   .release-outer {
  		height:$height + $v-line-length+$h-v-space;
- 		margin-right: -$overlap/2;
- 		margin-left: -$overlap/2;
- 		float: left;
+ 		margin-top: -$overlap/2;
+ 		margin-bottom: -$overlap/2;
     .release-date{
       font-size: 1.25em;
       text-align:center;
@@ -641,3 +643,4 @@ span {
 		}
 			}
 	}	
+  */
