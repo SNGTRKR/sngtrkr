@@ -11,7 +11,7 @@ $(document).ready(function () {
   page = 2
   // Ajax scroll load
   $('#timeline').scroll(function () {
-    if ($(this).scrollLeft() < 500 && (new Date().getTime() - last_load) > 1000) {
+    if ($(this).scrollLeft() < 1000 && (new Date().getTime() - last_load) > 1000) {
       last_load = new Date().getTime();;
       $(this).trigger('mouseup');
       console.log("Mouseup");
