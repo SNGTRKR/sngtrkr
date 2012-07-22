@@ -71,7 +71,7 @@
 								</li>
 								<li>
 									<i class="icon-group"></i>
-									<%= link_to friends_user_path(@user) do %>Friends<% end %>
+									<%= link_to friends_user_path(@user) do %>Friends (<%= @app_friends.count %>)<% end %>
 								</li>
 							    <li>
 							    	<i class="icon-cog"></i>
