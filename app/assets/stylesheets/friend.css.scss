@@ -189,7 +189,6 @@ margin:5px 0 22px 42px;
 	}	
 	#friend-trkrs {
 		width:318px;
-		max-height: 500px;
 		position:relative;
 		float: left;
 		@extend .scrollbar;
@@ -198,6 +197,7 @@ margin:5px 0 22px 42px;
 			    list-style-type:none;
 			    margin-left:-11px; 
 			    overflow-y:scroll;
+	    		max-height: 500px;
 		.each-friend {
 		      width:135px;
 		      height:120px;
