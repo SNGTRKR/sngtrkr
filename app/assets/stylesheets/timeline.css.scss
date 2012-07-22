@@ -1,7 +1,9 @@
 $height: 300px;
 $width: $height;
-$central-gap: 100px;
+$central-gap: 30px;
 $overlap: $height*0.9;
+$offset: 100px;
+$shadow-padding: 10px;
 
 $v-line-length: 30px;
 $h-line-height: 50px;
@@ -9,28 +11,245 @@ $h-v-space: 20px;
 
 .timeline-outer {
   position:relative;
-  background-image: url(/images/grid2.png);
+  //background-image: url(/images/grid2.png);
   @extend .scrollbar-timeline;
   .timeline-page{
-    ul.release-list{
+    background: url(/images/timeline-line.png) top center repeat-y;
+    padding:$offset 0;
+    ol.release-list{
       margin: auto;
-      width:2*$width + $central-gap;
+      width:2*$width + $central-gap+$shadow-padding*4;
 
       li.release-outer{
-        width:$width;
+        position: relative;
+        display: block;
         height:$height;
-        margin-bottom: (-$overlap)/2;
         overflow: hidden;
+        padding:$shadow-padding;
+        margin-bottom: $height*0.1;
+        .joining-line{
+          width:$central-gap/2;
+          height:4px;
+          background-color: #2e708c;
+          position: absolute;
+          z-index: -1;
+          top: $height/2;
+        }
         .each-release{
-          @include border-radius(8px);
-          padding:20px;
+          overflow: hidden;
+          height:$height;
+          position: relative;
+          //@include border-radius(8px 8px 10px 10px);
+          @include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.45));
+          height:$height;
+          width:$width;
+          position:relative;
+          background-size: cover;
+          background-repeat:no-repeat;
+          background-position:center;
+          background:$gray;
+          .r-grad {
+            position:absolute;
+            z-index:1;
+            width:$width;
+            height:$height;
+            //@include border-radius(8px);
+            $experimental-support-for-svg: true;
+            @include background-image(linear-gradient(top, transparent 35%,rgba(0, 0, 0, 1) 100%));
+          }
+          .release-date{
+            position: absolute;
+            top: 0;
+            text-align: center;
+            width: $width;
+          }
+          .release-info {
+            color:#fff;
+            position: absolute;
+            bottom:0;
+            z-index: 2;
+            padding: 15px;
+            h2 {
+              font-size: 1.4em;
+              padding-bottom: 3px;
+              font-weight: bold;
+              a{
+                // Make the header cover the release
+                display: block;
+              }
+              a:hover{
+                  color:inherit;
+              }
+            }
+            h3 {
+              color: $orange;
+              font-size: 1.2em;
+              a {
+                color: $orange;
+              }
+            }
+            span {
+              @extend .font-11;
+            }
+            a {
+              color:#fff;
+            }
+            a:hover {
+              color:$orange;
+              text-decoration: underline;
+            }
+          }
+          .release-menu {
+            position:absolute;
+            height:23px;
+            width:$width;
+            background-color:$orange;
+            $experimental-support-for-svg: true;
+            @include background-image(linear-gradient(top, #F37244 0%, #F15A24 100%));
+            text-shadow: #FF6103 0 1px 3px;
+            //@include border-bottom-left-radius(8px);
+            //@include border-bottom-right-radius(8px);
+            bottom:-25px;
+            left:0px;
+            z-index:2;
+            @extend .font-12;
+            div {
+            margin-left:27px;
+            li {
+                font-weight: bold;
+                text-align:center;
+                width:($width*0.8)/3;
+                cursor:pointer;
+                color:#fff;
+                line-height:23px;
+                float: left; 
+              }
+            }
+          }
+        }
+        .opac-50 {
+          z-index:1;
+          width:100%;
+          height:100%;
+          background:rgba(0,0,0,0.75);
+          display:none;
+        }
+        .buy-release-list {
+          $buy-width: 52px;
+          position:absolute;
+          height:$height;
+          width:$width;
+          z-index:2;
+          left:-$width;
+          top:51px;
+         h4 {
+              margin-top:29px;
+            @extend .signika-txt;
+            @extend .font-22;
+            text-align:center;
+          }
+          .buy-count-1 {
+            width:$buy-width * 1;
+          }
+          .buy-count-2 {
+            width:$buy-width * 2;
+          }
+          .buy-count-3 {
+            width:$buy-width * 3;
+          }
+          ul {
+            margin:auto;
+            padding:15px;
+            li {
+              height:38px;
+              width:38px;
+              @include border-radius(4px);
+              margin:0px 7px 0px 7px;
+              float: left;
+            @extend .white-button;
+            }
+          }
+             .buy-cancel {
+               margin:11px auto;
+           width:40px;
+           @extend .button;
+          }
+        }
+        .share-release-list {
+          position:absolute;
+          height:$height;
+          width:$width;
+          z-index:2;
+          right:-$width;
+          top:51px;
+          h4 {
+              margin-top:29px;
+            @extend .signika-txt;
+            @extend .font-22;
+            text-align:center;
+          }
+          ul {
+            margin:auto;
+            width: 52px * 3;
+            padding:15px;
+            li {
+              height:38px;
+              width:38px;
+              line-height:38px;
+              @include border-radius(4px);
+              margin:0 7px 0 7px;
+              float: left;
+            }
+            .goo-icon {
+              overflow:hidden;
+              font-size:4.8em;  
+            }
+            .icon-twitter {
+              position:relative;
+              bottom:2px;
+              font-size:2.5em;
+            }
+            .icon-facebook {
+              position:relative;
+              right:1px;
+              font-size:2.5em;
+            }
+            .icon-google-plus {
+              position:relative;
+              right:20px;
+              top:6px;
+            }
+          }
+          .share-cancel {
+               margin:11px auto;
+           width:40px;
+           @extend .button;
+          }
+        }
+        .play-release-list{
+          display: none;
         }
       }
-      li.release-outer:nth-child(2n){
-        margin-right: ($central-gap/2);
+      li.release-outer:nth-of-type(even){
+        width:$width+ $central-gap/2;
+        .each-release{
+          margin-left:$central-gap/2;
+        }
+        .joining-line{
+          left: 0;
+        }
       }
-      li.release-outer:nth-child(2n+1){
-        margin-left: $width + ($central-gap/2);
+      li.release-outer:nth-of-type(odd){
+        width:$width + $central-gap/2;
+        .each-release{
+          margin-right:$central-gap/2;
+        }
+        .joining-line{
+          right: 0;
+        }
+        margin-top:-$offset;
+        clear: both;
+        float: left;
       }
     }
   }
