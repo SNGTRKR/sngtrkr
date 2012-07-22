@@ -13,9 +13,9 @@ class Artist < ActiveRecord::Base
     :friend_activity_artist => "87x87#",
     :friend_trkrs => "136x121#" }
 
-  has_many :follow, :dependent => :delete_all
-  has_many :suggest, :dependent => :delete_all
-  has_many :manage, :dependent => :delete_all
+  has_many :follow, :dependent => :destroy
+  has_many :suggest, :dependent => :destroy
+  has_many :manage, :dependent => :destroy
 
   has_many :followed_users, :through => :follow, :source => :user
   has_many :suggested_users, :through => :suggest, :source => :user
