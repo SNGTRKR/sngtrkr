@@ -43,19 +43,22 @@
 	<script>
 	$(document).ready(function () {
 		$(".mini-share").click(function() {
-			$(this).closest(".each-friend").find('.opac-50').fadeIn("normal");
-			$(this).closest(".each-friend").find('.share-artist').animate({right : 0}, "slow");
-			 $(this).closest(".each-friend").find('.friend-info').fadeOut("normal");
+			var each_friend = $(this).closest(".each-friend")
+			each_friend.find('.opac-50').fadeIn("normal");
+			each_friend.find('.share-artist').animate({right : 0}, "slow");
+			 each_friend.find('.friend-info').fadeOut("normal");
 		});
 		$(".share-cancel").click(function() {
-			$(this).closest(".each-friend").find('.opac-50').fadeOut("normal");
-			$(this).closest(".each-friend").find('.share-artist').animate({right : -202}, "slow");
-			 $(this).closest(".each-friend").find('.friend-info').fadeIn("normal");
+			var each_friend = $(this).closest(".each-friend")
+			each_friend.find('.opac-50').fadeOut("normal");
+			each_friend.find('.share-artist').animate({right : -202}, "slow");
+			 each_friend.find('.friend-info').fadeIn("normal");
 		});
 		$(".each-friend .share-artist a li").click(function() {
-			$(this).closest(".each-friend").find('.opac-50').fadeOut("normal");
-			$(this).closest(".each-friend").find('.share-artist').animate({right : -202}, "slow");
-			 $(this).closest(".each-friend").find('.friend-info').fadeIn("normal");
+			var each_friend = $(this).closest(".each-friend")
+			each_friend.find('.opac-50').fadeOut("normal");
+			each_friend.find('.share-artist').animate({right : -202}, "slow");
+			 each_friend.find('.friend-info').fadeIn("normal");
 		});
 		totalheight = $("#friend-activity").height();
 		friendheight = totalheight-13;
