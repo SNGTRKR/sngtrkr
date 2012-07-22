@@ -30,10 +30,9 @@
 			})
 		</script>
 	<% else %>
-		<%= image_tag "/images/timeline-left.png", :alt => "SNGTRKR", :id => "left-logo" %>
-		<ul class="release-list">
+		<ol class="release-list">
 		<%= render :partial => 'timeline/release', :collection => @timeline %>
-		</ul>
+		</ol>
 	<% end %>
 	<div class="clear"></div>
 	</div>
