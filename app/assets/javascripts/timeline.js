@@ -1,5 +1,6 @@
 
 //= require jquery.scrollto-1.4.2-min
+
 var page, old_width, new_width
 $(document).ready(function () {
   // Scroll to end of timeline

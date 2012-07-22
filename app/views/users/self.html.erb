@@ -58,7 +58,7 @@
 <div class="row user-trkrs"><div class="span10 offset1">
 <%= image_tag "/images/p-bulge-top.png", :alt => "Shadow", :class => "p-bulge-t" %>
 	<div class="row"><div class="span7">
-		<h2 class="no-trk"><%= @user.following.count %> TRKED Artists</h2>
+		<h2 class="no-trk"><span id="user-following-count"><%= @user.following.count %></span> TRKED Artists</h2>
 	</div>
 		<div class="span3">
 			<div class="artist-trkr-list-search">
