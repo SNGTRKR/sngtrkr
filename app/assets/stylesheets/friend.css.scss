@@ -189,6 +189,7 @@ margin:5px 0 22px 42px;
 	}	
 	#friend-trkrs {
 		width:318px;
+		max-height: 500px;
 		position:relative;
 		float: left;
 		@extend .scrollbar;
