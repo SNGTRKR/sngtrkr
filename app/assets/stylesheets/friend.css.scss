@@ -80,8 +80,8 @@ margin:5px 0 22px 42px;
 }
 	#friend-activity  {
 	list-style-type:none;
-	width:446px;
-	margin-left:67px;
+	width:353px;
+	margin-left:88px;
 	.new-activity {
 	float: left;
 	position:relative;
@@ -188,11 +188,11 @@ margin:5px 0 22px 42px;
 			}
 	}	
 	#friend-trkrs {
-		width:320px;
+		width:318px;
 		position:relative;
 		float: left;
 		@extend .scrollbar;
-		margin:0 0 30px 18px;
+		margin:0 0 30px 0;
 		  #friend-trkr-list {
 			    list-style-type:none;
 			    margin-left:-11px; 
@@ -319,4 +319,10 @@ position:absolute;
 width:331px;
 margin-top:-6px;
 z-index:100;
+}
+
+.friend-header{
+	@extend h1;
+	font-size: 1.4em;
+	padding:0 0 10px 10px;
 }

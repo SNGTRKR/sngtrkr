@@ -28,8 +28,7 @@ class FollowsController < ApplicationController
     @artist = current_user.suggested[5] rescue nil
     respond_to do |format|
       format.html { render "artists/ajax_suggestion", :layout => false }
-      format.json { render("artists/show.json") }
-      format.js { render "artists/show", :format => :js }
+      format.json { render("artists/show", :format => :json) }
     end
 
   end
