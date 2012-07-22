@@ -6,6 +6,7 @@ $(document).ready(function () {
   // Scroll to end of timeline
   // Set global AJAX load variable
   var last_load = new Date().getTime();;
+  /*
   $('.release-list').width(timeline_widths());
   $('#timeline-activity').width(timeline_widths());
   $("#timeline").scrollTo('max');
@@ -19,7 +20,7 @@ $(document).ready(function () {
       $.get('/users/me/timeline/' + page);
       page++;
     }
-  });
+  });*/
   timeline_setup();
 });
 
