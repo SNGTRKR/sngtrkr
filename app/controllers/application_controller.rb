@@ -17,6 +17,8 @@ class ApplicationController < ActionController::Base
   def define_user
       if user_signed_in?
         @user = current_user
+        @app_friends = []
+        @app_friends = session["friends"]
       else
         @user = nil
       end
