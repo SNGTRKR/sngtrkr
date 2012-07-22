@@ -1,13 +1,8 @@
 $height: 300px;
 $width: $height;
 $central-gap: 30px;
-$overlap: $height*0.9;
 $offset: 100px;
 $shadow-padding: 10px;
-
-$v-line-length: 30px;
-$h-line-height: 50px;
-$h-v-space: 20px;
 
 .timeline-outer {
   position:relative;
@@ -15,7 +10,7 @@ $h-v-space: 20px;
   @extend .scrollbar-timeline;
   .timeline-page{
     background: url(/images/timeline-line.png) top center repeat-y;
-    padding:$offset 0;
+    padding:$offset 0 0 0;
     ol.release-list{
       margin: auto;
       width:2*$width + $central-gap+$shadow-padding*4;
