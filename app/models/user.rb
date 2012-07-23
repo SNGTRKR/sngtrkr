@@ -12,9 +12,9 @@ class User < ActiveRecord::Base
 
   ajaxful_rater
 
-  has_many :follow, :dependent => :delete_all
-  has_many :suggest, :dependent => :delete_all
-  has_many :manage, :dependent => :delete_all
+  has_many :follow, :dependent => :destroy
+  has_many :suggest, :dependent => :destroy
+  has_many :manage, :dependent => :destroy
   has_many :super_manage
   has_many :feedbacks
   has_and_belongs_to_many :roles
@@ -37,6 +37,9 @@ class User < ActiveRecord::Base
   
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
+
+    beta_user = BetaUser.beta_user?(data.email, Date.strptime("{ 16, 7, 2012 }", "{ %d, %m, %Y }"))
+
     if user = self.find_by_fbid(data.id)
       user
     else # Create a user with a stub password.
@@ -44,11 +47,13 @@ class User < ActiveRecord::Base
       user.confirm! 
 
       user.save!
-      UserMailer.welcome_email(user).deliver
+      if !beta_user
+        UserMailer.welcome_email(user)
+      end
     end
 
     # Allows beta users that registered before this date to login.
-    if BetaUser.beta_user?(data.email, Date.strptime("{ 16, 7, 2012 }", "{ %d, %m, %Y }"))
+    if beta_user
       Rails.logger.info("BetaUser added to Users: #{data.email}")
       user.roles << Role.where(:name => 'User').first
       BetaUser.where(:email => data.email).first.destroy
@@ -56,6 +61,7 @@ class User < ActiveRecord::Base
 
     Scraper.importFbLikes(access_token.credentials.token, user.id)
     user
+
   end
 
   def self.new_with_session(params, session)

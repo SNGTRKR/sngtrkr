@@ -15,8 +15,9 @@
 </div>
 </div></div>
 <div class="row"><div class="span10 offset1">
-	<div class="row"><div class="span5">
-	<ul id="friend-activity">
+	<div class="row"><div class="span5" id="friend-activity">
+	<h2 class="friend-header">Recent Activity</h2>
+	<ul>
 	 <% if @friend.recent_activity.empty? %>
   	 <li>   
        <p><%= @friend.first_name %> hasn't peformed any actions yet.</p>
@@ -26,8 +27,9 @@
   	<div class="clear"></div>
 	</ul>
 	</div>
-	<div class="span5">
-	<div id="friend-trkrs">
+	<div class="span5" id="friend-trkrs">
+	<h2 class="friend-header">Tracked Artists</h2>
+	<div>
  <% if @friend.following.empty? %>
    <p><%= @friend.first_name %> hasn't tracked any artists yet.</p>
  <% end %>
@@ -39,17 +41,51 @@
 	</div></div>
 </div></div></div>
 	<script>
-		window.fbAsyncInit = function() {
-FB.init({
-appId      : <%= '\''+FB_APP_ID+'\'' %>
-	, // App ID
-	channelUrl : '//localhost/channel.html', // Channel File
-	status     : true, // check login status
-	cookie     : true, // enable cookies to allow the server to access the session
-	xfbml      : true  // parse XFBML
+	$(document).ready(function () {
+		$(".mini-share").click(function() {
+			var each_friend = $(this).closest(".each-friend")
+			each_friend.find('.opac-50').fadeIn("normal");
+			each_friend.find('.share-artist').animate({right : 0}, "slow");
+			 each_friend.find('.friend-info').fadeOut("normal");
+		});
+		$(".share-cancel").click(function() {
+			var each_friend = $(this).closest(".each-friend")
+			each_friend.find('.opac-50').fadeOut("normal");
+			each_friend.find('.share-artist').animate({right : -202}, "slow");
+			 each_friend.find('.friend-info').fadeIn("normal");
+		});
+		$(".each-friend .share-artist a li").click(function() {
+			var each_friend = $(this).closest(".each-friend")
+			each_friend.find('.opac-50').fadeOut("normal");
+			each_friend.find('.share-artist').animate({right : -202}, "slow");
+			 each_friend.find('.friend-info').fadeIn("normal");
+		});
+		totalheight = $("#friend-activity").height();
+		friendheight = totalheight-13;
+		$("#friend-trkrs").css("min-height", friendheight );
+		$("#friend-trkr-list").css("min-height", friendheight );
+
+		function add_remove_friend_trkr_bind(){
+			// Ajax track replacement
+	    	$('a.friend-remove-trkr').bind('ajax:complete', function () {
+	    	  console.log('Added tracker');
+	    	  var artist_id = $(this).data('id');
+	    	  $(this).replaceWith('<a href="/artists/'+artist_id+'/follows" class="friend-add-trkr" data-id="'+artist_id+'" data-method="post" data-remote="true" rel="nofollow"><div class="activity-trkr"><i class="icon-plus"></i></div></a>');
+	    	  add_remove_friend_trkr_bind()
+	    	});
+	    	$('a.friend-add-trkr').bind('ajax:complete', function () {
+	    	  console.log('Removed tracker');
+	    	  var artist_id = $(this).data('id');
+	    	  $(this).replaceWith('<a href="/artists/'+artist_id+'/unfollow" class="friend-remove-trkr" data-id="'+artist_id+'" data-method="post" data-remote="true" rel="nofollow"><div class="activity-trkr"><i class="icon-minus"></i></div></a>');
+	    	  add_remove_friend_trkr_bind();
+	    	});
+	    };
+	    add_remove_friend_trkr_bind();
+
+
 	});
 
-	// Additional initialization code here
+<% content_for :fb_js do %>
 	FB.getLoginStatus(function(response) {
 		if(response.status === 'connected') {
 			// the user is logged in and has authenticated your
@@ -79,62 +115,7 @@ appId      : <%= '\''+FB_APP_ID+'\'' %>
 		   $('#friend-information').animate({marginTop : -194}, "slow").css("width",400).css("overflow","hidden");
 		}
 	});
-	};
+<% end %>
 
-	// Load the SDK Asynchronously
-	( function(d) {
-			var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-			if(d.getElementById(id)) {
-				return;
-			}
-			js = d.createElement('script');
-			js.id = id;
-			js.async = true;
-			js.src = "//connect.facebook.net/en_US/all.js";
-			ref.parentNode.insertBefore(js, ref);
-		}(document));
-
-	$(document).ready(function () {
-		$(".mini-share").click(function() {
-			$(this).closest(".each-friend").find('.opac-50').fadeIn("normal");
-			$(this).closest(".each-friend").find('.share-artist').animate({right : 0}, "slow");
-			 $(this).closest(".each-friend").find('.friend-info').fadeOut("normal");
-		});
-		$(".share-cancel").click(function() {
-			$(this).closest(".each-friend").find('.opac-50').fadeOut("normal");
-			$(this).closest(".each-friend").find('.share-artist').animate({right : -202}, "slow");
-			 $(this).closest(".each-friend").find('.friend-info').fadeIn("normal");
-		});
-		$(".each-friend .share-artist a li").click(function() {
-			$(this).closest(".each-friend").find('.opac-50').fadeOut("normal");
-			$(this).closest(".each-friend").find('.share-artist').animate({right : -202}, "slow");
-			 $(this).closest(".each-friend").find('.friend-info').fadeIn("normal");
-		});
-		totalheight = $("#friend-activity").height();
-		friendheight = totalheight-13;
-		if(friendheight < 500){
-			friendheight = 500;
-		}
-		$("#friend-trkrs").css("height", friendheight );
-		$("#friend-trkr-list").css("height", friendheight );
-
-		function add_remove_friend_trkr_bind(){
-			// Ajax track replacement
-	    	$('a.friend-remove-trkr').bind('ajax:complete', function () {
-	    	  console.log('Added tracker');
-	    	  var artist_id = $(this).data('id');
-	    	  $(this).replaceWith('<a href="/artists/'+artist_id+'/follows" class="friend-add-trkr" data-id="'+artist_id+'" data-method="post" data-remote="true" rel="nofollow"><div class="activity-trkr"><i class="icon-plus"></i></div></a>');
-	    	  add_remove_friend_trkr_bind()
-	    	});
-	    	$('a.friend-add-trkr').bind('ajax:complete', function () {
-	    	  console.log('Removed tracker');
-	    	  var artist_id = $(this).data('id');
-	    	  $(this).replaceWith('<a href="/artists/'+artist_id+'/unfollow" class="friend-remove-trkr" data-id="'+artist_id+'" data-method="post" data-remote="true" rel="nofollow"><div class="activity-trkr"><i class="icon-minus"></i></div></a>');
-	    	  add_remove_friend_trkr_bind();
-	    	});
-	    };
-	    add_remove_friend_trkr_bind();
-
-
-	});
 </script>
+<%= render 'shared/fb_async' %>

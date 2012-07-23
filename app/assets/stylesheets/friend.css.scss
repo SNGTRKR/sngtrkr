@@ -78,21 +78,17 @@ margin:5px 0 22px 42px;
 	      background-repeat:no-repeat;
       }
 }
-	#friend-activity  {
-	list-style-type:none;
-	width:446px;
-	margin-left:67px;
-	}	
 	#friend-trkrs {
-		width:320px;
+		width:318px;
 		position:relative;
 		float: left;
 		@extend .scrollbar;
-		margin:0 0 30px 18px;
+		margin:0 0 30px 0;
 		  #friend-trkr-list {
 			    list-style-type:none;
 			    margin-left:-11px; 
 			    overflow-y:scroll;
+	    		max-height: 500px;
 		.each-friend {
 		      width:135px;
 		      height:120px;
@@ -215,4 +211,10 @@ position:absolute;
 width:331px;
 margin-top:-6px;
 z-index:100;
+}
+
+.friend-header{
+	@extend h1;
+	font-size: 1.4em;
+	padding:0 0 10px 10px;
 }
