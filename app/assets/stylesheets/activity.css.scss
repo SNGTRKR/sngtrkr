@@ -1,0 +1,35 @@
+.each-activity {
+			top:0px;
+			left:0px;
+			width:228px;
+			height:50px;
+			position:relative;
+			
+			img {
+			margin:5px 0 0 5px;
+				height:40px;
+				width:40px;
+				text-shadow: $gray 0 2px 2px;
+				float:left;
+			}
+			div {
+			margin-top:5px;
+			    font-size:0.9em;
+			    line-height:1.35em;
+				float:left;
+				width:177px;
+				margin-left:5px;
+				a {
+					color:$gray;
+				}
+				a:hover {
+					color:$orange;
+				}
+				span {
+					color:$light-gray
+									}
+			}
+		}
+.each-activity:hover {
+background-color: rgba(232,90,36,0.25);
+}
