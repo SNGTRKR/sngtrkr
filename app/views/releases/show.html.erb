@@ -1,13 +1,7 @@
-<% content_for :og_name, @release.name
-content_for :og_url, request.url
-content_for :og_image, File.join(root_url , @release.image.url(:release_i))
-content_for :og_description, @release.name + " by " + @artist.name + ". Released " + @release.date.strftime("#{@release.date.day.ordinalize} %B %Y ") + " on " + @release.label_name
-content_for :og_id, @release.id.to_s
-content_for :og_type, "sngtrkr:release"
-%>
+
 <% content_for :title do %><%= @release.name %> release information by <%= @artist.name %><% end %>
 <% content_for :description do %><%= @release.name %> release information by <%= @artist.name %>. Releasd <%= @release.date.strftime("#{@release.date.day.ordinalize} %B %Y ") %> by <%= @release.label_name %> <% end %>
-<div class="row"><div class="span8 offset2">
+<div class="row"><div id="artist-release"><div class="span9">
 <div class="row">
 <div class="span4">
 <% if can? :manage, :all %>
@@ -173,9 +167,9 @@ content_for :og_type, "sngtrkr:release"
   </ul>
 </div><!-- release-info -->
 <div class="clear"></div>
-</div></div></div>
+</div></div></div></div>
 <div class="row">
-<div class="span8 offset2">
+<div id="artist-carousel"><div class="span9">
 <h4 class="also-by">Also by <%= link_to @artist.name, @artist %></h4>
 <div class="release-carousel <% if (@releases.count - 1) < 5 %>under-5<% else %><% end %>">
 <ul>
@@ -192,7 +186,7 @@ content_for :og_type, "sngtrkr:release"
 	<a class="c-prev" id="rel_prev" href="#"><i class="icon-chevron-left"></i></a>
 	<a class="c-next" id="rel_next" href="#"><i class="icon-chevron-right"></i></a>
 </div>
-</div></div>
+</div></div></div>
 <script type="text/javascript">
 	$(document).ready(function () {
 		$(".ignore").mouseover(function(){ $('.ignore').stop().animate({left : 60}, "slow");}).mouseout(function(){$('.ignore').stop().animate({left : 0}, "slow");});

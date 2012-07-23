@@ -5,7 +5,7 @@ class Release < ActiveRecord::Base
   has_attached_file :image, :styles => { 
   :release_i => "310x311#",
   :release_carousel => "116x116#",
-  :friend_activity_release => "87x87#" }
+  :activity_release => "40x40#" }
 
 
   has_many :tracks, :dependent => :delete_all

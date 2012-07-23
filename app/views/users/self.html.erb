@@ -1,7 +1,7 @@
 <% content_for :title do %><%= @user.first_name %> on SNGTRKR<% end %>
 <% content_for :description do %>Profile page for <%= @user.first_name %>. You will be able to change the settings of your profile, manage any Facebook artists you control and view the list of artists you are currently tracking. <% end %>
-<div class="row"><div class="span10 offset1">
-<div class="row"><div class="span2">
+<div class="row"><div class="span9">
+<div class="row"><div class="span3">
 			<ul class="profile-menu">
 				<% if @user.manager? %>
 				<%= link_to @artist do %>
@@ -13,12 +13,12 @@
 				<% if @user.manager? %>
 				<%= link_to new_artist_release_path(@artist) do %><li>Add Release</li><% end %>
 				<% else %>
-				<%= link_to managing_user_path(@user) do %><li>Manage Artist</li><% end %>
+				<a href="#manage-choice" data-toggle="modal"><li>Manage Artist</li></a>
 				<% end %>
 				<%= link_to edit_user_path(@user) do %><li>Profile Settings</li><% end %>
 			</ul>
 		</div>
-		<div class="span8">
+		<div class="span6">
 			<% if @user.manager? %>
 			<div class="artist">
 			<div>
@@ -55,9 +55,8 @@
 	</div>
 </div>
 </div>
-<div class="row user-trkrs"><div class="span10 offset1">
-<%= image_tag "/images/p-bulge-top.png", :alt => "Shadow", :class => "p-bulge-t" %>
-	<div class="row"><div class="span7">
+<div class="row user-trkrs"><div class="span9">
+	<div class="row"><div class="span6">
 		<h2 class="no-trk"><%= @user.following.count %> TRKED Artists</h2>
 	</div>
 		<div class="span3">
@@ -65,7 +64,7 @@
 			<input type="text" id="filter" placeholder="Search TRKRs..."/>
 			<div><%= image_tag "/images/white-search-2.png", :alt => "Search", :id => "search-pad" %></div></div>
 	</div></div>
-	<div class="row"><div class="span10" id="tracked-artists-container">
+	<div class="row"><div class="span9" id="tracked-artists-container">
 	<ul id="tracked-artists">
 		<% if @user.following.count.zero? %>
 		<div class="no-trk-notify">
@@ -77,40 +76,38 @@
 	</ul>
 	<div class="clear"></div>
 	</div></div>
-<%= image_tag "/images/p-bulge-bot.png", :alt => "Shadow", :class => "p-bulge-b" %>
 </div></div>
-<div class="row recommend-top profile-recommend"><div class="span10 offset1">
-<div class="row"><div class="span5">
-<h1>Here are some artists we think you might be interested in...</h1>	
-</div>
-<div class="span5">
-<span>
-	<p>
-		We suggest artists based on your likes on Facebook, and artists similar to them based on information our partner stores provide.
-	</p>
-	<p>
-		If you run out of suggestions, why not have a look at the artists <%= link_to "your friends", friends_user_path(@user) %> are tracking?
-	</p>
-</span>
-</div></div>	
-</div></div>
-<div class="row recommendations"><div class="span10 offset1">
-			<ul id="ajax-recommended-artists">
-		<% if @user.following.count < 6 and @user.suggested.count < 6 %>
-      		<div class="loading load-profile">
-      		<h3>Please wait...</h3>
-      		<%= image_tag "/images/loading.png", :id => "loading-icon" %><br/>
-      		<p>...while we work our magic and find which artists you’ve already liked on Facebook.</p>
-      		</div>
-  		<% elsif @user.suggested.count > 0 %>
-			<%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 6] %>
-  		<% else %>
-  			<p> We're sorry to say we don't have anymore suggestions for you at the moment. </p>
-  		<% end %>
+<div id="manage-choice" class="modal hide">
+			<div class="modal-header">
+			<h3>Which artist would you like to manage?</h3>
+			</div>
+			<div class="modal-body">
+			<% if @manageable.count.zero? %>
+			<p><strong>If seems you don't have any Facebook artists to manage.</strong></p>
+			<p>Please make sure you have a Facebook page for the artist, and set the category for the page to 'Musician/Band'.</p>
+			<% else %>			
+			<p>Select which artist you wish to manage and let's get started!</p>
+						<%= form_for [current_user, Manage.new] do |f| %>
+					<ul>
+				<% @manageable.each do |artist| %>
+				<li class="left">
+					<%= image_tag "//graph.facebook.com/"+artist.fbid+"/picture?type=normal" %>
+					<div>
+						<h4><%= truncate((strip_tags f.label(:artist_id, artist.name) || "" ), :length => 17) %></h4>
+						Dubstep
+					</div>
+						<%= f.radio_button(:artist_id, artist.id) %>
+				</li>
+				<% end %>
+				<div class="clear"></div>
 			</ul>
-			<div class="clear"></div>
-</div></div>
-	<script>
-  	artist_suggestion_replace();
-	</script>
+			</div>
+			<div class="modal-footer">
+			<%= f.submit "Manage" %>
+			<div class="cancel" data-dismiss="modal">Cancel</div>
+			<% end %>
+			<% end %>
+			</div>
+	</div>
+
 	<%= render :partial => 'shared/fb_async' %>

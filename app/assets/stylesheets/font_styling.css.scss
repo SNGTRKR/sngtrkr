@@ -4,12 +4,6 @@
   src: local("?"),
     url("/font/instruction.otf") format("opentype");
 }
-@font-face {
-  font-family: "Lucida Grande";
-  src: url("/font/lucida_grande.otf");
-  src: local("?"),
-    url("/font/lucida_grande.otf") format("opentype");
-}
 
 p{
   font-size:1em;

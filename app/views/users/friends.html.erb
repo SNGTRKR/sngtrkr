@@ -1,7 +1,7 @@
 <% content_for :title do %><%= @user.first_name %>'s friends on SNGTRKR<% end %>
 <% content_for :description do %><%= @user.first_name %>'s Facebook friends who are using the SNGTRKR platform to track artist releases.<% end %>
 <% if !@app_friends.empty? %>
-	<div class="row"><div class="span10 offset1">
+	<div class="row"><div class="span9">
 		<div id="friends-list">
 		<h1>Friends (<%= @app_friends.count %>)</h1>
 		<div class="friends-search">
@@ -24,7 +24,7 @@
 </div></div>
 	<% else %>
 <div class="row">
-	<div class="span6 offset3">
+	<div class="span9">
 		<div id="share-friends">
 			<h1>Sharing is caring</h1><br/>
 			<div>None of your friends are using SNGTRKR.<br/>Get them involved now by sharing:</div>

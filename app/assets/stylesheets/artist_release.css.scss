@@ -1,3 +1,5 @@
+#artist-release {
+margin-left:40px;
 		#release-image {
 			position:relative;
 			height:310px;
@@ -242,6 +244,9 @@
 				float: left;
 			}
 		}
+		}
+#artist-carousel {
+margin-left:40px;
 .also-by {
 	margin:25px 0 0 6px;
 	@extend .signika-txt;
@@ -313,6 +318,12 @@
 	font-size:2em;
 	@extend .o-button;
 	line-height:161px;
+	a {
+		color:#fff;
+	}
+	a:hover {
+		color:#fff;
+	}
 }
 .c-prev {
 	left:0px;
@@ -320,6 +331,7 @@
 .c-next {
 	right:-6px;
 	
+}
 }
 #tracklist {
   height:60px;

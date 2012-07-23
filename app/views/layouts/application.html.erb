@@ -16,8 +16,8 @@
 		<link rel="icon" type="image/ico" href="<%= asset_path "/images/icon.png" %>" >
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= stylesheet_link_tag "/bootstrap.css", :media => "all" %>
-    <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Signika+Negative:400,600' %>
-    <%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js' %>
+  <!--  <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Signika+Negative:400,600' %>
+  <%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js' %>-->
     <script>window.jQuery || document.write("<%=j javascript_include_tag "/jquery-1.7.2.min.js" %>")</script> 
     <%= javascript_include_tag "application" %>
     <%= javascript_include_tag "/bootstrap.min.js" %>
@@ -34,7 +34,45 @@
 		chromium.org/developers/how-tos/chrome-frame-getting-started -->
 		<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or
 		<a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+		
 		<div id="wrapper">
+			<% if !user_signed_in? %><% else %><div id="sidebar"><%= render :partial => 'layouts/sidebar' %></div>
+			<script type="text/javascript">
+			function hideDiv(){
+
+			    if ($(window).width() < 1039) {
+			
+			            $("#sidebar").hide();
+			            $(".info-feed").show();
+			            $(".container").css("width", "700");
+			            $(".search-query").addClass("search-pad");
+			            $(".outer-tools").hide();
+			            $(".inner-tools").show();
+			            
+			    }else{
+			
+			        $("#sidebar").fadeIn("slow");
+			        $(".info-feed").fadeOut("slow");
+			        $(".container").css("width", "980");
+			        $(".search-query").removeClass("search-pad");
+			        $(".inner-tools").hide();
+			        $(".outer-tools").show();
+			    }
+			
+			}
+			$(document).ready(function () {
+					//sidebar
+					  //on load
+					    hideDiv();
+					
+					    //on resize
+					    $(window).resize(function(){
+					        hideDiv();
+					    });
+		    });
+		    </script>
+		    <% end %>
+			
 		<!-- <%= image_tag "/images/beta.png", :alt => "BETA", :id => "beta-corner" %> -->
 		<% if flash[:notice] or flash[:error] or flash[:success] %>
   		<div class="flash-outer <% if flash[:success] then %>flash-outer-success<% end %>" <% if flash[:disappear_after] then %>data-disappear-after="<%= flash[:disappear_after] %>"<% end %>>
@@ -50,69 +88,16 @@
     		<div class="flash-close"><i class="icon-remove"></i></div>
   		</div>
 		<% end %>
-			<div class="wrapper2">
-				<div class="header">
-					<!-- IE CSS for sticky footer -->
-					<!--[if !IE 7]>
-					<style type="text/css">
-					#wrap {display:table;height:100%}
-					</style>
-					<![endif]-->
-					<div class="logo-home"><a href="/"><%= image_tag "/images/logo-55.png", :alt => "SNGTRKR" %></a></div>
-					<div id="right-navbar">
-						<%= render :partial => 'layouts/artist_mini_search'%>
-						<% if(user_signed_in?) %>
-						
-						<div id="logout-outer"><div class="logout-button item dropdown"><%= link_to user_path(current_user) do %><%= @user.first_name %> <%= @user.last_name %><% end %><i class="icon-sort-down"></i> 
-							<ul class="dropdown-menu">
-								<li>
-									<i class="icon-comment-alt"></i>
-									<a data-toggle="modal" href="#feedback">Feedback</a>
-								</li>
-								<li class="popover-parent" data-content="Check out which of your Facebook friends are using the SNGTRKR platform." data-original-title="SNGTRKR Friends" data-placement="left">
-									<i class="icon-group"></i>
-									<%= link_to friends_user_path(@user) do %>Friends<% end %>
-								</li>
-							    <li>
-							    	<i class="icon-cog"></i>
-							    	<%= link_to edit_user_path(@user) do %>Settings<% end %>
-							    </li>
-							    <li>
-							    	<i class="icon-signout"></i>
-							    	<%= link_to(destroy_user_session_path, :method => :delete) do %>Logout<% end %>
-							    </li>
-						    </ul></div>
-						</div>
-						<% end %>
-						<%= render 'shared/login' %>
-						<div class="modal hide" id="feedback">
-						  <div class="modal-header">
-						    <h3>Feedback</h3>
-						  </div>
-						  <div class="modal-body">
-						  <p>We love feedback. Feel free to tell us what you think of the site or report a bug!</p>
-						    <%= form_for Feedback.new, :remote => true do |f| %>
-									<%= f.text_area :feedback, :id => "fedbox", :rows => 4, :placeholder => "Tell us what you think..." %>
-						  </div>
-						  <div class="modal-footer">
-						  <%= f.submit "Submit", :id => 'ajax-feedback-submit-button' %>
-						    <div class="cancel" data-dismiss="modal">Cancel</div>
-						    
-						    <% end %>
-						  </div>
-						</div>
-						<div class="clear"></div>
-					</div>
-				</div>
-				<div class="container">
+		<%= render :partial => 'layouts/navbar' %>
+<div class="wrapper2">
+				<div class="container content-padding">
 					<%= yield %>
-					<div id="footer-pad"></div>
 				</div>
 			</div>
 		</div>
-		<div id="footer" class="container">
-		<div  class="row"><div id="fcontainer" class="span10 offset1">
-				<ul class="footer-menu">
+		<div id="footer"> <!-- class="container" -->
+		<div id="fcontainer">
+			<!--	<ul class="footer-menu">
 					<li><a href="/about">About</a></li>
 					<li><a href="http://blog.sngtrkr.com">Blog</a></li>
 					<li><a href="/help">Help</a></li>
@@ -123,9 +108,8 @@
 					<li><a href="/sidekiq" target="_blank">Sidekiq</a></li>
 					<li><a href="/feedbacks" target="_blank">Feedback</a></li>
 					<% end %>
-			   </ul>
+			   </ul> -->
 				<p>© Copyright SNGTRKR 2012. All Rights Reserved - Artist and release images are the property Last.fm</p>
-			</div>
 		</div>
 		</div>
 		<script type="text/javascript">

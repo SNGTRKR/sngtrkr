@@ -1,22 +1,4 @@
-/* #about-txt{
-  margin:0 0 9px 58px;
-  width:666px;
-  h1 {
-	  margin-bottom:6px;
-  }
-  h2 {
-    font-weight:bold;
-    font-size: 1.3em;
-    margin-bottom:7px;
-    @include text-shadow(0 0.1em 1px rgba(255, 255, 255, 0.31));
-  }
-  span {
-	  font-style:italic;
-  }
-} */
 #terms-txt{
-  margin:0 0 0 58px;
-  width:666px;
   div {
 	margin-bottom:7px;
 	@extend .font-15;
@@ -46,95 +28,7 @@
   margin-bottom:16px;
 }
 }
-/*.boxes {
-  list-style-type:none;
-  margin:0 0 32px 28px;
-  width:696px;
-.box {
-  margin-left:30px;
-  background:rgba(255,255,255,0.75);
-  @include border-radius(8px);
-  @include box-shadow(0px 0px 8px rgba(0,0,0,0.45));
-  width:171px;
-  height:93px;
-  padding:15px 15px 15px 15px;
-  float: left;
-  h2 {
-	  font-weight:bold;
-	  @extend .font-13;
-  }
-  .nudge {
-    position:relative;
-    top:5px;
-  }
-  a {
-    color:$orange;
-  }
-  a:hover {
-    color:$orange;
-  }
-  .sm {
-    list-style-type:none;
-    margin-top:7px;
-     a {
-          color:$gray;
-        }
-        a:hover {
-          color:$orange;
-        }
-    li {
-	    width:171px;
-		position:relative;     
-		margin-bottom:4px; 
-		float: left;
-      #fb-icon, #twit-icon, #goo-icon {
-	      height:20px;
-	      width:20px;
-	      line-height:20px;
-	      text-align:center;
-	      color:#fff;
-      }
-      #fb-icon {
-	      background-color:#3F6CBA;
-	      font-size:1.3em;
-      }
-      #twit-icon {
-	      background-color:#33CCFF;
-	      font-size:1.3em;
-      }
-      #goo-icon {
-	      background: #da4a38;
-	      $experimental-support-for-svg: true;
-	      @include background-image(linear-gradient(top, #da4a38 0%, #a5281a 100%));
-		overflow:hidden;
-		font-size:2.3em;	
-      }
-      .icon-twitter {
-	      position:relative;
-	      right:1px;
-	      bottom:1px;
-      }
-      .icon-google-plus {
-	    position:relative;
-		top:2px;
-		right:9px;
-      }
-      .icon-facebook {
-	      position:relative;
-	      right:1px;
-      }
-      span {
-        position:absolute;
-        top:2px;        
-        left:34px;
-      }
-    }
-  }
-}
-} */
 #privacy-txt{
-  width:666px;
-  padding:0 0 0 38px;
   h1 {
 	  margin-bottom:16px;
   }
@@ -159,50 +53,15 @@ div {
 	font-weight:bold;
 }
 }
-
-/* .team{
-#team-pic {
-	@include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.45));
-    @include border-radius(12px);
-    height:500px;
-    background:$gray;
-    background-repeat:no-repeat;
-    background-size: cover;
-    background-position: bottom;
-    background-position:center;
-    margin:5px 10px 15px 0;
-}
-#top-text{
-  font-size:1.2em;
-  font-weight: bold;
-}
-
-h1 {
-	margin:0 0 16px 0;
-}
-h2 {
-	font-weight: bold;
-	font-size:1.6em;
-	line-height:1.5em;
-	@include text-shadow(0 0.1em 1px rgba(255, 255, 255, 0.31));
-}
-h3 {
-	font-size:1.2em;
-	line-height:1.8em;
-	margin:0 0 5px 0;
-	@include text-shadow(0 0.1em 1px rgba(255, 255, 255, 0.31));
-}
-} */
 .about-header {
-	margin:0 0 19px 58px;
+	margin-bottom:19px;
 }
 .about-tabs {
-  width:666px;
+  width:698px;
   background:rgba(255,255,255,0.75);
   @include border-radius(8px);
   @include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.25));
   height:649px;
-  margin:0 0 29px 57px;
   .tab-content {
   		  padding:30px 30px 15px 12px;
 	  h2 {
