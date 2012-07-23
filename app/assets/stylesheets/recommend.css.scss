@@ -1,13 +1,12 @@
 .recommend-top {
 	h1 {
 		width:340px;
-		margin-left:56px;
 		
 	}
 	span {
 		width:302px;
 		line-height:1.4em;
-		margin:9px 0 0 30px;
+		margin:9px 0 0 -33px;
 		display:block;
 	}
 }
@@ -17,7 +16,8 @@
 .recommendations {
   ul {
     list-style-type:none;
-    margin:19px 0 0 26px;
+    margin:19px 0 0 0;
+    width:666px;
     .each-recommend {
     float: left;
     position:relative;
@@ -138,6 +138,6 @@
 span {
 	@extend .button;
 	float: right;
-	margin:-3px 58px 31px 0;
+	margin:-3px 33px 31px 0;
 }
 }

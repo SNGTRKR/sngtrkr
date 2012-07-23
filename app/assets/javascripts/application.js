@@ -51,7 +51,6 @@ $(document).ready(function () {
     $(this).closest('form').submit();
     return false;
   });
-
   $('#mini_search_field').typeahead({
       source: function(typeahead, query) {
           $.ajax({

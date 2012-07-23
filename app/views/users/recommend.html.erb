@@ -1,11 +1,11 @@
 <% content_for :title do %>Artist recommendations<% end %>
 <% content_for :description do %>We noticed you’ve already liked a few artists on Facebook, so decided to recommend some you might want to track. With one simple click, it’s easy to add and remove artists to your tracking timeline.<% end %>
 <% content_for :extra_head do  javascript_include_tag "/jquery-rotate-compressed.2.2" end %>
-<div class="row recommend-top"><div class="span10 offset1">
+<div class="row recommend-top"><div class="span9">
 <div class="row"><div class="span5">
 <h1>Here are a few artists you already like, just to get you started...</h1>	
 </div>
-<div class="span5">
+<div class="span4">
 <span>	<p>
 		We suggest artists based on your likes on Facebook, and artists similar to them based on information our partner stores provide.
 	</p>
@@ -14,7 +14,7 @@
 	</p></span>
 </div></div>	
 </div></div>
-<div class="row recommendations"><div class="span10 offset1">
+<div class="row recommendations"><div class="span9">
 			<ul id="ajax-recommended-artists">
   		<% if @user.suggested.count >= 6 %>
 				<%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 6] %>

@@ -42,8 +42,6 @@ margin-bottom:26px;
   }
 }
 #friends-list {
-  width:667px;
-  margin:0 0 9px 56px;
   h1 {
 	  margin-bottom:19px;
   }
@@ -100,7 +98,7 @@ margin-bottom:26px;
 		float: right;
         height:25px;
         width:209px;
-        margin:-56px -2px 0 0;
+        margin-top:-56px;
         background:rgba(255,255,255,0.75);
         @include border-radius(7px);
         @include box-shadow(inset 0px 1px 6px rgba(0, 0, 0, 0.25));

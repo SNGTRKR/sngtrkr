@@ -10,8 +10,8 @@ class Artist < ActiveRecord::Base
     :profile => "310x369#",
     :recommend => "202x178#",
     :manage => "100x100#",
-    :friend_activity_artist => "87x87#",
-    :friend_trkrs => "136x121#" }
+    :sidebar_suggest => "50x50#"
+     }
 
   has_many :follow, :dependent => :delete_all
   has_many :suggest, :dependent => :delete_all

@@ -15,6 +15,7 @@ SNGTRKR::Application.routes.draw do
   match '/limbo' => "Pages#limbo"
   match '/release_magic/:store/:url' => "Releases#magic"
   match '/intro' => "Pages#intro"
+  match '/fixed' => "Pages#fixed"
 
   match 'mailer(/:action(/:id(.:format)))' => 'mailer#:action'
   namespace :admin do

@@ -1,7 +1,7 @@
 <% content_for :title do %>Profile Settings<% end %>
 <% content_for :description do %>Editing the profile settings for <%= @user.first_name %>. You can change your email address, update your email notification settings and delete your account.<% end %>
-<div class="row profile-settings"><div class="span10 offset1">
-		<div id="change-email">
+<div class="row profile-settings"><div class="span9">
+<div class="row change-email"><div class="span9">
 			<h1>Profile Settings</h1>
 			<h3>Change Email</h3>
 			<p>Your current email address is <strong><%= @user.email %></strong>.</p>
@@ -29,9 +29,9 @@
 			<%= f.submit "Change Email" %>
 			<div class="clear"></div>
 			<% end %>
+					</div></div>
+<div class="row email-notify"><div class="span9">
 			<%= form_for(@user) do |f| %>
-		</div>
-		<div id="email-notify">
 			<h3>Email Notifications</h3>
 			<p>
 				You can change how often you receive emails for new releases, from the options provided below. The recommended setting is <strong>Daily</strong>. Please note, <strong>we will only email you if there are new releases.</strong> 
@@ -65,21 +65,22 @@
 			</ul>
 			<%= f.submit 'Save Email Changes' %>
 			<% end %>
-		</div>
+		</div></div>
 		<% if @user.manager? %>
-				<div id="manage-artist">
+<div class="row manage-artist"><div class="span9">
 			<h3>Artist management</h3>
 			<p>You are currently managing the artist known as <strong><%= @user.managing.first.name %></strong>.</p>
 			<%= link_to edit_artist_path(@user.managing.first) do %><span>
 			Edit</span><% end %>
 			<span><a href="#unmanage-confirmation" data-toggle="modal">Delete</a></span>
-				</div>
+			
+				</div></div>
 				<% else %><% end %>
-		<div id="delete-account">
+<div class="row delete-account"><div class="span9">
 			<h3>Delete Your Account</h3>
 			<p>Your account, tracked artists and all personal details will be permanently removed.</p>
 				<span><a href="#delete-confirmation" data-toggle="modal">Delete Account</a></span>
-		</div></div></div>
+		</div></div></div></div>
 	<div class="modal hide" id="delete-confirmation">
 		<%= render :partial => 'delete_confirm' %>
 	</div>

@@ -16,9 +16,10 @@
 
 $blue:#45ADD2;
 $orange:#F15A24;
-$gray:#1A1A1A;
+$gray:#333333;
 $light-gray:#666666;
-$footer:166px;
+$footer:25px;
+$sidebar:228px;
 // SNGTRKR Imports
 /* Flash (System Notification)  CSS */
 @import "flash.css.scss";
@@ -72,6 +73,8 @@ $footer:166px;
 @import "friend.css.scss";
 /* Feedback CSS */
 @import "feedback.css.scss";
+/* Activity CSS */
+@import "activity.css.scss";
 a:link {text-decoration:none;}
 *{
   margin:0;
@@ -95,7 +98,7 @@ body{
     color:$gray;
 }
 .load-recommend {
-	margin:-3px 0 20px 31px;
+	margin:-3px 0 20px 0;
 	width:666px;
 }
 .load-timeline {
@@ -135,15 +138,18 @@ text-align:center;
   min-height:100%;
 }
 .wrapper2 {
-  width:960px;
-  margin:0 auto;
   min-height:100%;
+  min-width:666px;
 }
-
-#wrapper, .wrapper2{
-	.container {
-		padding-bottom:166px;
+.wrapper, .wrapper2 {
+	.content-padding {
+		padding-top:85px;
 	}
+}
+.container {
+	padding:0px 40px;
 }
 //Slider
 @import "intro.css.scss";
+//Sidebar 
+@import "sidebar.css.scss";

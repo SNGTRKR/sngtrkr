@@ -3,7 +3,9 @@
 <div class="row manage-top"><div class="span8 offset2">
 	<div class="row"><div class="span4">
 	<h1>Join now and build a closer relationship to your fans...</h1><br/>
-	<a href="#manage-choice" data-toggle="modal"><div>Manage an artist</div></a>
+	<%= link_to(user_omniauth_authorize_path(:facebook)) do %>
+	<div class="fb-home-login"><i class="icon-facebook"></i><span>Login with Facebook</span></div>
+	<% end %>
 	</div>
 	<div class="span4">
 	<%= image_tag "/images/macbook2.png", :alt => "Macbook Pro", :class => "macbook-2"%>
@@ -37,37 +39,4 @@
 		<%= image_tag "/images/manage3.png", :alt => "Music media", :id => "manage3" %>
 		</div></div>
 </div></div>
-<div id="manage-buffer"></div>
-	<div id="manage-choice" class="modal hide">
-			<div class="modal-header">
-			<h3>Which artist would you like to manage?</h3>
-			</div>
-			<div class="modal-body">
-			<% if @manageable.count.zero? %>
-			<p><strong>If seems you don't have any Facebook artists to manage.</strong></p>
-			<p>Please make sure you have a Facebook page for the artist, and set the category for the page to 'Musician/Band'.</p>
-			<% else %>			
-			<p>Select which artist you wish to manage and let's get started!</p>
-						<%= form_for [current_user, Manage.new] do |f| %>
-					<ul>
-				<% @manageable.each do |artist| %>
-				<li class="left">
-					<%= image_tag "//graph.facebook.com/"+artist.fbid+"/picture?type=normal" %>
-					<div>
-						<h4><%= truncate((strip_tags f.label(:artist_id, artist.name) || "" ), :length => 17) %></h4>
-						Dubstep
-					</div>
-						<%= f.radio_button(:artist_id, artist.id) %>
-				</li>
-				<% end %>
-				<div class="clear"></div>
-			</ul>
-			</div>
-			<div class="modal-footer">
-			<%= f.submit "Manage" %>
-			<div class="cancel" data-dismiss="modal">Cancel</div>
-			<% end %>
-			<% end %>
-			</div>
-	</div>
-	<div id="manage-form"></div>
+<div id="manage-form"></div>
