@@ -2,6 +2,7 @@
 <% content_for :description do %><%= current_user.first_name %>'s personalised timeline of artist releases, where they can view new and old releases while being able to listen to and buy tracks.<% end %>
 <% content_for :extra_head do %> <%= javascript_include_tag "timeline" %> <% end %>
 <div class="timeline-outer">
+	<div class="timeline-end"></div>
 	<div class="timeline-page">
 	<% if @timeline.empty? %>
 		<div id="timeline-empty">
@@ -34,7 +35,6 @@
 		<%= render :partial => 'timeline/release', :collection => @timeline %>
 		</ol>
 	<% end %>
-	<div class="clear"></div>
-	</div>
+	<div class="timeline-end"></div>
 </div>
 <%= render :partial => 'shared/fb_async' %>

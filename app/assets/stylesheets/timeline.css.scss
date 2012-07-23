@@ -1,13 +1,20 @@
-$height: 300px;
-$width: $height;
-$central-gap: 30px;
-$offset: 100px;
-$shadow-padding: 10px;
-
 .timeline-outer {
+  $height: 300px;
+  $width: $height;
+  $central-gap: 30px;
+  $offset: 100px;
+  $shadow-padding: 10px;
+  $line-color: #2e708c;
+
   position:relative;
   //background-image: url(/images/grid2.png);
   @extend .scrollbar-timeline;
+  .timeline-end{
+    width:20px;
+    height:4px;
+    background-color: $line-color;
+    margin:auto;
+  }
   .timeline-page{
     background: url(/images/timeline-line.png) top center repeat-y;
     padding:$offset 0 0 0;
@@ -25,7 +32,7 @@ $shadow-padding: 10px;
         .joining-line{
           width:$central-gap/2;
           height:4px;
-          background-color: #2e708c;
+          background-color: $line-color;
           position: absolute;
           z-index: -1;
           top: $height/2;
