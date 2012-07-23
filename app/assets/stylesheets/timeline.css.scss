@@ -15,6 +15,13 @@
     background-color: $line-color;
     margin:auto;
   }
+  #timeline-header{
+    text-align: center;
+    position: absolute;
+    top: 35px;
+    right: 65px;
+    width: $width;
+  }
   .timeline-page{
     background: url(/images/timeline-line.png) top center repeat-y;
     padding:$offset 0 0 0;
