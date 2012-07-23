@@ -1,16 +1,26 @@
 <% artist_page ||= 'false' %>
-<li class="release-outer" id="release-parent" data-release-id="<%= release.id %>">
+<% date_format ||= " %B" %>
+
+<li class="release-outer" data-release-id="<%= release.id %>">
+  <div class="joining-line"></div>
   <div class="each-release" style="background-image:url(<%= release.image :release_i %>)">
-    <div class="r-grad">
-      <div class="release-info">
-        <h2><%= link_to release.name, [release.artist, release] %></h2>
-        <% if artist_page == 'false' %>
-        <h3><%= link_to release.artist.name, release.artist %></h3>
-        <% end %>
-        <span><%= release.label_name %></span>
-      </div>
+    <div class="r-grad"></div>
+    <div class="release-date">
+      
+    </div>
+    <div class="release-info">
+      <h2><%= link_to release.name, [release.artist, release] %></h2>
+      <% if artist_page == 'false' %>
+      <h3><%= link_to release.artist.name, release.artist %></h3>
+      <% end %>
+      <p>
+        <strong><%== release.date.strftime("#{release.date.day.ordinalize} "+date_format)%></strong>
+          <% if release.label_name? %>
+            on <span class="tooltip-parent" data-title="Label Name" data-placement="right"><%= release.label_name %></span>
+          <% end %>
+      </p>
       <ul class="release-menu">
-      <div>
+        <div>
           <li class="buy-release">Buy</li>
           <!--<% if release.tracks.count > 0 %>
             <li class="play-release">Listen</li>
@@ -19,10 +29,9 @@
           <% end %> -->
           <li>&nbsp;</li>
           <li class="share-release">Share</li>
-          </div>
+        </div>
       </ul>
     </div>
-    <!-- r-grad -->
     <div class="opac-50"></div>
     <div class="share-release-list">
       <h4>Share this release</h4>
@@ -129,11 +138,4 @@
 <% end %> -->
     </div>
   </div>
-  <div class="release-line"></div>
-  <% date_format ||= " %b." %>
-  <% date_class ||= "font-20" %>
-  <div class="<%= date_class %> release-date">
-    <%== release.date.strftime("#{release.date.day.ordinalize} "+date_format)%>
-  </div>
-  <div class="release-join"></div>
 </li>

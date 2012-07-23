@@ -74,13 +74,16 @@ $(document).ready(function () {
       }
   });
   
+  // Bootstrap global classes.
   $('.popover-parent').popover();
   $('.tooltip-parent').tooltip();
   $(".alert").alert();
+
   add_remove_trkr_bind();
   
 }); // DOCUMENT READY ENDS HERE
 
+// Set up add / remove buttons to replace with remove / add buttons on click
 function add_remove_trkr_bind() {
 
   $('a.remove-trkr').bind('ajax:complete', function () {
@@ -98,20 +101,33 @@ function add_remove_trkr_bind() {
 
 }
 
+// All javascript needed for artist suggestion ajax replacement and general behaviour
 function artist_suggestion_replace() {
   // Sharing options
 	$(".mini-share").click(function() {
-		$(this).parent().parent().find('.opac-50').fadeIn("normal").parent().find('.share-artist').animate({right : 0}, "slow").parent().find('.recommend-info').fadeOut("normal");
+    var parent = $(this).parent().parent()
+		parent.find('.opac-50').fadeIn("normal");
+    parent.find('.share-artist').animate({right : 0}, "slow");
+    parent.find('.recommend-info').fadeOut("normal");
 	});
 	$(".share-cancel").click(function() {
-		$(this).parent().parent().find('.opac-50').fadeOut("normal").parent().find('.share-artist').animate({right : -202}, "slow").parent().find('.recommend-info').fadeIn("normal");;
+    var parent = $(this).parent().parent();
+		parent.find('.opac-50').fadeOut("normal");
+    parent.find('.share-artist').animate({right : -202}, "slow");
+    parent.find('.recommend-info').fadeIn("normal");
 	});
 	$(".share-artist ul a li").click(function() {
-		$(this).parent().parent().parent().parent().find('.opac-50').fadeOut("normal").parent().find('.share-artist').animate({right : -202}, "slow").parent().find('.recommend-info').fadeIn("normal");;
+    var parent = $(this).parent().parent().parent().parent();
+		parent.find('.opac-50').fadeOut("normal");
+    parent.find('.share-artist').animate({right : -202}, "slow");
+    parent.find('.recommend-info').fadeIn("normal");
 	});
 
   $('.recommend-buttons a.add-trkr').bind('ajax:success', function(xhr, data, status){
+    $('#user-following-count').html(parseInt($('#user-following-count').html(), 10) + 1);
+    $('.tracked-artists').append("");
     FB.api("/me/sngtrkr:track", 'post', {artist: $(this).closest('li').data("id")});
+
   });
 
   $('.recommend-buttons a.add-trkr, .recommend-buttons a.ajax-ignore-artist').bind('ajax:beforeSend', function () {

@@ -48,6 +48,7 @@ margin-bottom:38px;
   }
     #tracked-artists-container{
       max-height: 500px;
+      min-height: 100px;
       overflow-y:auto;
       overflow-x:hidden;
     }

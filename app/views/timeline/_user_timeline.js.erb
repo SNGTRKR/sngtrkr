@@ -1,16 +1,8 @@
 <% if @timeline.empty? %>
 console.log("No releases");
-$('#timeline').unbind("scroll");
 <% else %>
 
-old_width = timeline_widths();
-var real_old_width = $('.release-list').width();
-$('.release-list').prepend("<% @timeline.each do |release| %><%=j render :partial => 'timeline/release', :object => release %><% end %>");
-new_width = timeline_widths();
-var real_new_width = $('.release-list').width();
-$('#timeline').scrollLeft(new_width - old_width + $('#timeline').scrollLeft());
-console.log("Scrolled "+ (new_width - old_width + $('#timeline').scrollLeft()));
-$('.release-list').width(new_width);
+$('.release-list').append("<% @timeline.each do |release| %><%=j render :partial => 'timeline/release', :object => release %><% end %>");
 timeline_setup();
 
 <% end %>

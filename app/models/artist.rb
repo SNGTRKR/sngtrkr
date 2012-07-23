@@ -13,9 +13,9 @@ class Artist < ActiveRecord::Base
     :sidebar_suggest => "50x50#"
      }
 
-  has_many :follow, :dependent => :delete_all
-  has_many :suggest, :dependent => :delete_all
-  has_many :manage, :dependent => :delete_all
+  has_many :follow, :dependent => :destroy
+  has_many :suggest, :dependent => :destroy
+  has_many :manage, :dependent => :destroy
 
   has_many :followed_users, :through => :follow, :source => :user
   has_many :suggested_users, :through => :suggest, :source => :user
