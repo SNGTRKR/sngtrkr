@@ -55,7 +55,6 @@
 	</div>
 </div>
 </div>
-<<<<<<< HEAD
 <div class="row user-trkrs"><div class="span9">
 	<div class="row"><div class="span6">
 		<h2 class="no-trk"><%= @user.following.count %> TRKED Artists</h2>
@@ -83,7 +82,7 @@
 			<h3>Which artist would you like to manage?</h3>
 			</div>
 			<div class="modal-body">
-			<% if @manageable.count.zero? %>
+			<% if !@manageable %>
 			<p><strong>If seems you don't have any Facebook artists to manage.</strong></p>
 			<p>Please make sure you have a Facebook page for the artist, and set the category for the page to 'Musician/Band'.</p>
 			<% else %>			

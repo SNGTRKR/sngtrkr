@@ -123,6 +123,10 @@ class Release < ActiveRecord::Base
       itunes_release = ActiveSupport::JSON.decode( open("http://itunes.apple.com/lookup?upc=#{release["barcode"]}&country=GB", :proxy => @proxy))['results'][0]
       if !itunes_release.nil?
         r.itunes = itunes_release['collectionViewUrl']
+        itunes_date = Time.zone.parse itunes_release['releaseDate']
+        if itunes_date < r.date
+          r.date = itunes_date
+        end
       end
       
       Rails.logger.info("J003: Popularity of #{r.name} | #{release["popularity"]}")
