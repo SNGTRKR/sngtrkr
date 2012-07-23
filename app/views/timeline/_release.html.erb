@@ -13,12 +13,12 @@
       <% if artist_page == 'false' %>
       <h3><%= link_to release.artist.name, release.artist %></h3>
       <% end %>
-      <span>
+      <p>
         <strong><%== release.date.strftime("#{release.date.day.ordinalize} "+date_format)%></strong>
           <% if release.label_name? %>
-            - <span class="tooltip-parent" data-title="Label Name" data-placement="right"><%= release.label_name %></span>
+            on <span class="tooltip-parent" data-title="Label Name" data-placement="right"><%= release.label_name %></span>
           <% end %>
-      </span>
+      </p>
       <ul class="release-menu">
         <div>
           <li class="buy-release">Buy</li>
