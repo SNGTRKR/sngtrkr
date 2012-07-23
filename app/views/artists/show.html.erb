@@ -7,6 +7,8 @@ content_for :og_type, "sngtrkr:artist"
 %>
 <% content_for :description do %><%= truncate((strip_tags @artist.bio || "" ), :length => 150) %><% end %>
 <% content_for :title do %><%= @artist.name %> information and releases 2012<% end %>
+<% content_for :extra_head do %> <%= javascript_include_tag "timeline" %> <% end %>
+
 <div class="row">
 <div class="span8 offset2">
 <% if can? :manage, :all %>
@@ -102,12 +104,8 @@ content_for :og_type, "sngtrkr:artist"
 </div>
 <div class="clear"></div>
 </div>
-</div></div>
-</div></div>
-<div class="timeline-outer a-timeline">
-<%= image_tag "/images/shadow-line.png", :id => 'shadow-top' %>
-<div id="timeline-trim">
-<div id="timeline">
+</div>
+
 <% if @timeline.empty? %>
 	<div id="timeline-empty">
 		<h1>Oh dear...</h1>
@@ -134,194 +132,57 @@ content_for :og_type, "sngtrkr:artist"
 		})
 	</script>
 <% else %>
-<%= image_tag "/images/timeline-left.png", :alt => "SNGTRKR", :id => "left-logo" %>
-<div id="left-line"></div>
-<ul class="release-list">
-<%= render :partial => 'timeline/release', :collection => @timeline.order("date ASC"), :locals => { :date_format => "%b.<br>%Y ", :date_class => 'font-15', :artist_page => 'true' } %>
-<div class="clear"></div>
-</ul>
+<div class="row">
+	<div class="span9">
+		<div class="timeline-outer">
+			<div class="timeline-end"></div>
+			<div class="timeline-page">
+			<% if @timeline.empty? %>
+				<div id="timeline-empty">
+					<h1>Oh dear...</h1>
+					<p>Looks like you aren't tracking anyone yet, or the people you are tracking have no releases out. Why not search for an artist,
+						or look through some recommended artists below...
+					</p>
+					<div class="row timeline-recommendations"><div class="span8">
+						<ul id="ajax-recommended-artists">
+			  		<% if @user.suggested.count >= 4 %>
+							<%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 4] %>
+			    		<% else %>
+			      		<div class="loading load-timeline">
+			      		<h3>Please wait...</h3>
+			      		<%= image_tag "/images/loading.png", :id => "loading-icon" %><br/>
+			      		<p>...while we work our magic and find which artists you?ve already liked on Facebook.</p>
+			      		</div>		  
+			  		<% end %>
+						</ul>
+						<div class="clear"></div>
+						</div></div>
+				</div>
+				<script>
+					$(document).ready(function(){
+					  	artist_suggestion_replace();
+					})
+				</script>
+			<% else %>
+				<h1 id="timeline-header">Your Timeline</h1>
+				<ol class="release-list">
+					<%= render :partial => 'timeline/release', :collection => @artist.releases %>
+				</ol>
+			<% end %>
+			<div class="timeline-end"></div>
+		</div>
+	</div>
+</div>
+
 <% end %>
+<div id="bio-full" class="modal hide">
+<div class="modal-header">
+	<h3>Biography</h3>
+	</div>
+<div class="modal-body">
+	<p><%= sanitize @artist.bio, :tags => %w(a) %></p>
+	<p>Provided by <a href="http://last.fm">Last.fm</a></p>
+	</div>
 </div>
-</div>
-<%= image_tag "/images/shadow-line-bot.png", :id => 'shadow-bot' %>
-</div>
-<div class="container">
-			<div id="bio-full" class="modal hide">
-			<div class="modal-header">
-				<h3>Biography</h3>
-				</div>
-			<div class="modal-body">
-				<p><%= sanitize @artist.bio, :tags => %w(a) %></p>
-				<p>Provided by <a href="http://last.fm">Last.fm</a></p>
-				</div>
-			</div>
-	<script type="text/javascript">
-$(document).ready(function(){
-  $('#bio a').attr('target', '_blank');
-		$(".share-profile").click(function() { $('#opac-50').fadeIn("normal"); $('#share-profile').animate({right : 0}, "slow"); $('#buy-profile').animate({left : -310}, "slow");});
-		$(".share-cancel").click(function() { $('#opac-50').fadeOut("normal"); $('#share-profile').animate({right : -310}, "slow"); });
-		$("#share-profile ul a li").click(function() { $('#opac-50').fadeOut("normal"); $('#share-profile').animate({right : -310}, "slow"); });
-	    $(".buy-profile").click(function() { $('#opac-50').fadeIn("normal"); $('#buy-profile').animate({left : 0}, "slow"); $('#share-profile').animate({right : -310}, "slow"); });
-		$(".buy-cancel").click(function() { $('#opac-50').fadeOut("normal"); $('#buy-profile').animate({left : -310}, "slow"); });
-		$("#buy-profile ul li").click(function() { $('#opac-50').fadeOut("normal"); $('#buy-profile').animate({left : -310}, "slow"); });
-		$("#profile-image").mouseover(function(){ $('#social-hidden ul li a div').stop().animate({bottom : -47}, "normal"); }).mouseout(function(){$('#social-hidden ul li a 						div').stop().animate({bottom : -78}, "normal");});
-		
-		$(".super-admin").mouseover(function(){ 
-			$(this).stop().animate({left : 0}, "slow");
-		}).mouseout(function(){ 
-			$(this).stop().animate({left : -40}, "slow"); 
-		});
 
-		$(".r-grad").mouseover(function(){
-			$(this).closest(".each-release").find('.release-info').stop().animate({bottom : 33}, "slow");
-			$(this).closest(".each-release").find('.release-menu').stop().animate({bottom : 0}, "slow");
-		}).mouseout(function(){
-			$(this).closest(".each-release").find('.release-info').stop().animate({bottom : 13}, "slow");
-			$(this).closest(".each-release").find('.release-menu').stop().animate({bottom : -25}, "slow");
-		});
-		$(".share-release").click(function() {
-			$(this).closest(".each-release").find('.release-info').animate({bottom : -100}, "slow");
-			$(this).closest(".each-release").find('.release-menu').animate({bottom : -25}, "slow");
-			$(this).closest(".each-release").find('.r-grad').fadeOut("normal");
-			$(this).closest(".each-release").find('.opac-50').fadeIn("normal");
-			$(this).closest(".each-release").find('.share-release-list').animate({right : 0}, "slow");
-		});
-		$(".share-cancel").click(function() {
-			$(this).closest(".each-release").find('.release-info').animate({bottom : 13}, "slow");
-			$(this).closest(".each-release").find('.release-menu').animate({bottom : -25}, "slow");
-			$(this).closest(".each-release").find('.r-grad').fadeIn("normal");
-			$(this).closest(".each-release").find('.opac-50').fadeOut("normal");
-			$(this).closest(".each-release").find('.share-release-list').animate({right : -310}, "slow");
-		});
-		$(".release-outer .each-release .share-release-list ul a li").click(function() {
-			$(this).closest(".each-release").find('.release-info').animate({bottom : 13}, "slow");
-			$(this).closest(".each-release").find('.release-menu').animate({bottom : -25}, "slow");
-			$(this).closest(".each-release").find('.r-grad').fadeIn("normal");
-			$(this).closest(".each-release").find('.opac-50').fadeOut("normal");
-			$(this).closest(".each-release").find('.share-release-list').animate({right : -310}, "slow");
-		});
-		$(".buy-release").click(function() {
-			$(this).closest(".each-release").find('.release-info').animate({bottom : -100}, "slow");
-			$(this).closest(".each-release").find('.release-menu').animate({bottom : -25}, "slow");
-			$(this).closest(".each-release").find('.r-grad').fadeOut("normal");
-			$(this).closest(".each-release").find('.opac-50').fadeIn("normal");
-			$(this).closest(".each-release").find('.buy-release-list').animate({left : 0}, "slow");
-		});
-		$(".buy-cancel").click(function() {
-			$(this).closest(".each-release").find('.release-info').animate({bottom : 13}, "slow");
-			$(this).closest(".each-release").find('.release-menu').animate({bottom : -25}, "slow");
-			$(this).closest(".each-release").find('.r-grad').fadeIn("normal");
-			$(this).closest(".each-release").find('.opac-50').fadeOut("normal");
-			$(this).closest(".each-release").find('.buy-release-list').animate({left : -310}, "slow");
-		});
-		$(".release-outer .each-release .buy-release-list ul li").click(function() {
-			$(this).closest(".each-release").find('.release-info').animate({bottom : 13}, "slow");
-			$(this).closest(".each-release").find('.release-menu').animate({bottom : -25}, "slow");
-			$(this).closest(".each-release").find('.r-grad').fadeIn("normal");
-			$(this).closest(".each-release").find('.opac-50').fadeOut("normal");
-			$(this).closest(".each-release").find('buy-release-list').animate({left : -310}, "slow");
-		});
-			   $(".play-release").click(function () {
-	    $(this).closest(".each-release").find('.release-info').animate({
-	      bottom: -100
-	    }, "slow");
-	    $(this).closest(".each-release").find('.release-menu').animate({
-	      bottom: -25
-	    }, "slow");
-	    $(this).closest(".each-release").find('.r-grad').fadeOut("normal");
-	    $(this).closest(".each-release").find('.opac-50').fadeIn("normal");
-	    $(this).closest(".each-release").find('.play-release-list').animate({
-	      top: 0
-	    }, "slow");
-	   	ReleaseIdGet = document.getElementById('release-parent');
-	    ReleaseId = ReleaseIdGet.getAttribute('data-release-id'); 
-	    alert(ReleaseId);
-	    	  $.get('/artists/<%= @artist.id %>/releases//previews.json').complete(function(data){
-		      console.log(data);
-		      });
-		     
-	  });
-	  $(".play-release-list .icon-remove").click(function () {
-	    $(this).closest(".each-release").find('.release-info').animate({
-	      bottom: 13
-	    }, "slow");
-	    $(this).closest(".each-release").find('.release-menu').animate({
-	      bottom: -25
-	    }, "slow");
-	    $(this).closest(".each-release").find('.r-grad').fadeIn("normal");
-	    $(this).closest(".each-release").find('.opac-50').fadeOut("normal");
-	    $(this).closest(".each-release").find('.play-release-list').animate({
-	      top : -310
-	    }, "slow");
-	  });
-	  $(".release-outer .each-release .play-release-list ul a li").click(function () {
-	    $(this).closest(".each-release").find('.release-info').animate({
-	      bottom: 13
-	    }, "slow");
-	    $(this).closest(".each-release").find('.release-menu').animate({
-	      bottom: -25
-	    }, "slow");
-	    $(this).closest(".each-release").find('.r-grad').fadeIn("normal");
-	    $(this).closest(".each-release").find('.opac-50').fadeOut("normal");
-	    $(this).closest(".each-release").find('.play-release-list').animate({
-	      top: -310
-	    }, "slow");
-	  });
-
-});
-</script>
-<script type="text/javascript">
-//= require jquery.scrollto-1.4.2-min
-var page, old_width, new_width
-$(document).ready(function () {
-  // Scroll to end of timeline
-  // Set global AJAX load variable
-  var last_load = new Date().getTime();;
-  $('.release-list').width(timeline_widths());
-  $("#timeline").scrollTo('max');
-  page = 2
-  // Ajax scroll load
-  $('#timeline').scroll(function () {
-    if ($(this).scrollLeft() < 500 && (new Date().getTime() - last_load) > 1000) {
-      last_load = new Date().getTime();;
-      $(this).trigger('mouseup');
-      $.get('/users/me/timeline/' + page);
-      page++;
-    }
-  });
-  timeline_setup();
-
-
-});
- $('#timeline').mousedown(function (event) {
-    $(this).data('down', true).data('x', event.clientX).data('scrollLeft', this.scrollLeft);
-    return false;
-  }).mouseup(function (event) {
-    $(this).data('down', false);
-  }).mousemove(function (event) {
-    if ($(this).data('down') == true) {
-      this.scrollLeft = $(this).data('scrollLeft') + $(this).data('x') - event.clientX;
-    }
-  });
-
-  $(window).mouseout(function (event) {
-    if ($('#timeline').data('down')) {
-      try {
-        if (event.originalTarget.nodeName == 'BODY' || event.originalTarget.nodeName == 'HTML') {
-          $('#timeline').data('down', false);
-        }
-      } catch (e) {}
-    }
-  });
-function timeline_widths() {
-  // Width setting
-  var stepsWidth = 0;
-  $('.release-list .release-outer').each(function (i) {
-    var $step = $(this);
-    stepsWidth += $step.width() - 75;
-  });
-  return stepsWidth + 50
-}
-		</script>
-
-		<%= render 'shared/fb_async' %>
+<%= render 'shared/fb_async' %>
