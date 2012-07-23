@@ -15,7 +15,9 @@
       <% end %>
       <span>
         <strong><%== release.date.strftime("#{release.date.day.ordinalize} "+date_format)%></strong>
-         <% if release.label_name? %> - <%= release.label_name %> <% end %>
+          <% if release.label_name? %>
+            - <span class="tooltip-parent" data-title="Label Name" data-placement="right"><%= release.label_name %></span>
+          <% end %>
       </span>
       <ul class="release-menu">
         <div>

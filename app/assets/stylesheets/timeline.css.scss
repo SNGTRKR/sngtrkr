@@ -53,10 +53,8 @@
           height:$height;
           width:$width;
           position:relative;
+          background-color:$gray;
           background-size: cover;
-          background-repeat:no-repeat;
-          background-position:center;
-          background:$gray;
           .r-grad {
             position:absolute;
             z-index:1;
