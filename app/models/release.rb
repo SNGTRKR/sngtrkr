@@ -91,7 +91,7 @@ class Release < ActiveRecord::Base
           next
         end
       rescue
-        Rails.logger.error "J004: A release for artist '#{artist.name}' failed"
+        puts "J004: A release for artist '#{artist.name}' failed"
         next
       end
       r = Release.new
@@ -123,9 +123,14 @@ class Release < ActiveRecord::Base
       itunes_release = ActiveSupport::JSON.decode( open("http://itunes.apple.com/lookup?upc=#{release["barcode"]}&country=GB", :proxy => @proxy))['results'][0]
       if !itunes_release.nil?
         r.itunes = itunes_release['collectionViewUrl']
+        itunes_date = Time.zone.parse itunes_release['releaseDate']
+        if itunes_date < r.date
+          puts "7digital import: Reduced release date to further back in time, from #{r.date} to #{itunes_date}"
+          r.date = itunes_date
+        end
       end
       
-      Rails.logger.info("J003: Popularity of #{r.name} | #{release["popularity"]}")
+      puts("J003: Popularity of #{r.name} | #{release["popularity"]}")
 
       # Source the artwork from last.fm
       begin
@@ -135,7 +140,7 @@ class Release < ActiveRecord::Base
         best_artwork = nil
       end
       if best_artwork.is_a?(String)
-        Rails.logger.warn "Valid image: #{best_artwork.inspect}"
+        puts "Valid image: #{best_artwork.inspect}"
         io = open(best_artwork, :proxy => @proxy)
         if io
           def io.original_filename; base_uri.path.split('/').last; end
@@ -143,7 +148,7 @@ class Release < ActiveRecord::Base
           r.image = io
         end
       elsif release["image"]
-        Rails.logger.warn "7d image: #{release["image"].inspect}"
+        puts "7d image: #{release["image"].inspect}"
         # Source the artwork from 7digital if last.fm don't have it.
         io = open(release["image"], :proxy => @proxy)
         if io
@@ -159,7 +164,7 @@ class Release < ActiveRecord::Base
       begin
         tracks = Hash.from_xml(open("http://api.7digital.com/1.2/release/tracks?releaseid=#{r.sd_id}&oauth_consumer_key=#{@sevendigital_apikey}&country=GB", :proxy => @proxy))["response"]["tracks"]["track"]
       rescue
-        Rails.logger.error("J003: Track scrape failed for release #{r.name} by #{artist.name}")
+        puts("J003: Track scrape failed for release #{r.name} by #{artist.name}")
       end
       i = 1
       tracks.each do |track|
@@ -173,13 +178,13 @@ class Release < ActiveRecord::Base
           t = Track.create(:release_id => r.id, :number => i, :name => title, :sd_id => track["id"])
           i = i+1
         rescue
-          Rails.logger.error("J003: Individual track scrape failed for track: #{track.inspect}")
+          puts("J003: Individual track scrape failed for track: #{track.inspect}")
         end
       end
       
       # Get track previews from iTunes if you can't get them from 7digital
       if tracks.empty? and itunes_release
-        Rails.logger.info("J007: Scraping tracks from iTunes for #{r.name}")
+        puts("J007: Scraping tracks from iTunes for #{r.name}")
         i = 1
         itunes_release_tracks = ActiveSupport::JSON.decode( open("http://itunes.apple.com/lookup?id=#{itunes_release[0]['collectionId']}&entity=song&country=GB", :proxy => @proxy))['results']
         while !itunes_release_tracks[i].nil?
@@ -196,12 +201,20 @@ class Release < ActiveRecord::Base
       i = 1
       while !itunes_releases[i].nil?
         # Avoid importing the same album twice
-        if !artist.releases.where("name LIKE ?", "%#{itunes_releases[i]['collectionName']}%").empty?
+        existing = !artist.releases.where("name LIKE ?", "%#{itunes_releases[i]['collectionName']}%")
+        if existing.empty?
+
+          itunes_date = Time.zone.parse itunes_releases[i]['releaseDate']
+          if itunes_date < existing.first.date
+            puts "iTunes import: Reduced release date to further back in time"
+            existing.first.date = itunes_date
+            existing.first.save
+          end
           i += 1
           next
         end
         r = Release.new
-        Rails.logger.info("J004: new iTunes album found for #{artist.name} and #{itunes_releases[i]['collectionName']}")
+        puts("J004: new iTunes album found for #{artist.name} and #{itunes_releases[i]['collectionName']}")
         r.itunes = itunes_releases[i]['collectionViewUrl']
         r.artist_id = artist.id
         r.itunes_id = itunes_releases[i]["collectionId"]
@@ -211,8 +224,6 @@ class Release < ActiveRecord::Base
         r.scraped = 1
         
         album_info = Scraper.lastfm_album_info(artist.name, r.name)
-        puts "ALBUM INFO:"
-        puts album_info
         # If Last.fm doesn't have artwork for it, it's probably not
         # actually a real release! So skip to the next release
         begin
