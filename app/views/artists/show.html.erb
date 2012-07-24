@@ -108,24 +108,25 @@ content_for :og_type, "sngtrkr:artist"
 
 <% if @timeline.empty? %>
 	<div id="timeline-empty">
-		<div class="row timeline-recommendations">
+		<div class="row">
 			<div class="span8 offset1 recommendations">
-			<h1>Oh dear...</h1>
-			<p>It appears <%= @artist.name %> have not released anything or we were unable to acquire anything from our partner stores. Why not check out some other artists which may be of interest to you?
-			</p>
-			<ul id="ajax-recommended-artists">
-	  		<% if @user.suggested.count >= 4 %>
-				<%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 4] %>
-			<% else %>
-      		<div class="loading load-timeline">
-      		<h3>Please wait...</h3>
-      		<%= image_tag "/images/loading.png", :id => "loading-icon" %><br/>
-      		<p>...while we work our magic and find which artists you?ve already liked on Facebook.</p>
-      		</div>		  
-	  		<% end %>
-			</ul>
-			<div class="clear"></div>
-			</div></div>
+				<h1>Oh dear...</h1>
+				<p>It appears <%= @artist.name %> have not released anything or we were unable to acquire anything from our partner stores. Why not check out some other artists which may be of interest to you?
+				</p>
+				<ul id="ajax-recommended-artists">
+			  		<% if @user.suggested.count >= 4 %>
+						<%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 4] %>
+					<% else %>
+		      		<div class="loading load-timeline">
+		      		<h3>Please wait...</h3>
+		      		<%= image_tag "/images/loading.png", :id => "loading-icon" %><br/>
+		      		<p>...while we work our magic and find which artists you?ve already liked on Facebook.</p>
+		      		</div>		  
+			  		<% end %>
+				</ul>
+				<div class="clear"></div>
+			</div>
+		</div>
 	</div>
 <% else %>
 <div class="row">

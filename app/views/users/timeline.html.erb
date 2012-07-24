@@ -9,12 +9,12 @@
 			<div class="timeline-page">
 			<% if @timeline.empty? %>
 				<div id="timeline-empty">
-					<h1>Oh dear...</h1>
-					<p>Looks like you aren't tracking anyone yet, or the people you are tracking have no releases out. Why not search for an artist,
-						or look through some recommended artists below...
-					</p>
 					<div class="row timeline-recommendations">
 						<div class="span8 recommendations">
+							<h1>Oh dear...</h1>
+							<p>Looks like you aren't tracking anyone yet, or the people you are tracking have no releases out. Why not search for an artist,
+								or look through some recommended artists below...
+							</p>
 							<ul id="ajax-recommended-artists">
 					  		<% if @user.suggested.count >= 4 %>
 								<%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 4] %>
