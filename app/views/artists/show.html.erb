@@ -106,6 +106,8 @@ content_for :og_type, "sngtrkr:artist"
 </div>
 </div>
 
+<!-- ARTIST TIMELINE -->
+
 <% content_for :timeline_header do %>
 	<%= @artist.name %>'s Timeline
 <% end %>
@@ -119,6 +121,8 @@ content_for :og_type, "sngtrkr:artist"
 	<% end %>
 <% end %>
 <%= render 'timeline/timeline' %>
+
+<!-- END OF ARTIST TIMELINE -->
 
 <div id="bio-full" class="modal hide">
 <div class="modal-header">
