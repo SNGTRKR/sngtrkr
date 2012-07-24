@@ -2,7 +2,7 @@
 <% content_for :description do %><%= current_user.first_name %>'s personalised timeline of artist releases, where they can view new and old releases while being able to listen to and buy tracks.<% end %>
 <% content_for :extra_head do %> <%= javascript_include_tag "timeline" %> <% end %>
 <div class="row">
-	<div class="span9">
+	<div class="span10">
 		<h1 id="timeline-header">Your Timeline</h1>
 		<div class="timeline-outer">
 			<div class="timeline-end"></div>
@@ -13,20 +13,22 @@
 					<p>Looks like you aren't tracking anyone yet, or the people you are tracking have no releases out. Why not search for an artist,
 						or look through some recommended artists below...
 					</p>
-					<div class="row timeline-recommendations"><div class="span8">
-						<ul id="ajax-recommended-artists">
-			  		<% if @user.suggested.count >= 4 %>
-							<%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 4] %>
-			    		<% else %>
-			      		<div class="loading load-timeline">
-			      		<h3>Please wait...</h3>
-			      		<%= image_tag "/images/loading.png", :id => "loading-icon" %><br/>
-			      		<p>...while we work our magic and find which artists you?ve already liked on Facebook.</p>
-			      		</div>		  
-			  		<% end %>
-						</ul>
-						<div class="clear"></div>
-						</div></div>
+					<div class="row timeline-recommendations">
+						<div class="span8 recommendations">
+							<ul id="ajax-recommended-artists">
+					  		<% if @user.suggested.count >= 4 %>
+								<%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 4] %>
+				    		<% else %>
+				      		<div class="loading load-timeline">
+					      		<h3>Please wait...</h3>
+					      		<%= image_tag "/images/loading.png", :id => "loading-icon" %><br/>
+					      		<p>...while we work our magic and find which artists you?ve already liked on Facebook.</p>
+				      		</div>		  
+					  		<% end %>
+							</ul>
+							<div class="clear"></div>
+						</div>
+					</div>
 				</div>
 				<script>
 					$(document).ready(function(){
