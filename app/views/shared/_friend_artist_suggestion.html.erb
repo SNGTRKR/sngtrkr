@@ -1,21 +1,28 @@
-<li class="each-friend" style="background-image:url(<%= friend_artist_suggestion.image.url :friend_trkrs %>);background-repeat:no-repeat;background-position:center;">
-<div class="new-friend">
+<li class="each-friend-trkr" style="background-image:url(<%= friend_artist_suggestion.image.url :recommend %>);background-repeat:no-repeat;background-position:center;" data-id="<%= friend_artist_suggestion.id %>">
+	<div class="new-friend-trkr">
 		<div class="black-tint"></div>
-		<div class="friend-info">
-			<%= link_to friend_artist_suggestion.name, friend_artist_suggestion, :class => 'name'  %>
+		<div class="friend-trkr-info">
+			<%= link_to friend_artist_suggestion.name, friend_artist_suggestion  %>
 		</div>
 		<div class="opac-50"></div>
 		<div class="share-artist">
 		<h3>Share this artist</h3>
 		<ul>
-		<a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com<%= url_for friend_artist_suggestion %>						%2F&t=SNGTRKR','ShareSNGTRKRonFacebook','scrollbars=no,width=620,height=340'); return false;"><li class="fb-icon fb-button"><i class="icon-facebook"></i></li></a>
-		<a href="#" title="Share on Twitter" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.sngtrkr.com&text=<%= friend_artist_suggestion.name %>+is		+using+SNGTRKR+to+keep+their+fans+up+to+date+with+releases.+Check+them+out+&#45;+www.sngtrkr.com<%= url_for friend_artist_suggestion 																	%>&via=SNGTRKR','ShareSNGTRKRonTwitter','scrollbars=no,width=620,height=340'); return false;"><li class="twit-icon twitter-button"><i class="icon-twitter"></i></li></a>
-		<a href="#" title="Share on Google Plus" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for friend_artist_suggestion 							%>','ShareSNGTRKRonGooglePlus','scrollbars=no,width=620,height=340'); return false;"><li class="goo-icon google-button"><i class="icon-google-plus"></i></li></a>
-		<div class="clear"></div>
+			<a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com<%= url_for friend_artist_suggestion %>						%2F&t=SNGTRKR','ShareSNGTRKRonFacebook','scrollbars=no,width=620,height=340'); return false;">
+				<li class="fb-icon fb-button"><i class="icon-facebook"></i></li>
+			</a>
+			<a href="#" title="Share on Twitter" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.sngtrkr.com&text=<%= friend_artist_suggestion.name %>+is		+using+SNGTRKR+to+keep+their+fans+up+to+date+with+releases.+Check+them+out+&#45;+www.sngtrkr.com<%= url_for friend_artist_suggestion 																	%>&via=SNGTRKR','ShareSNGTRKRonTwitter','scrollbars=no,width=620,height=340'); return false;">
+				<li class="twit-icon twitter-button"><i class="icon-twitter"></i></li>
+			</a>
+			<a href="#" title="Share on Google Plus" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for friend_artist_suggestion 							%>','ShareSNGTRKRonGooglePlus','scrollbars=no,width=620,height=340'); return false;">
+				<li class="goo-icon google-button"><i class="icon-google-plus"></i></li>
+			</a>
+			<div class="clear"></div>
 		</ul>
 		<div class="share-cancel">Cancel</div>
 		</div>
-</div>
-<div class="friend-trkr-buttons"><%= render :partial => 'shared/trk_artist', :object => friend_artist_suggestion %>
-		<div class="mini-share"><i class="icon-share-alt"></i></div></div>
+	</div>
+	<div class="friend-trkr-buttons">
+		<%= render :partial => 'shared/trk_artist', :object => friend_artist_suggestion %>
+		<div class="mini-share tooltip-parent" data-title="Share" data-placement="bottom"><i class="icon-share-alt"></i></div></div>
 </li>

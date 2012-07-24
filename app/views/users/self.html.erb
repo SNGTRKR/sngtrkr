@@ -37,7 +37,7 @@
 	<ul id="tracked-artists">
 		<% if @user.following.count.zero? %>
 		<div class="no-trk-notify">
-			You are not TRKing anyone yet.
+			You are not TRKing anyone yet. Here are some recommendations...
 		</div>
 		<% else %>
 		  <%= render :partial => 'shared/artist_tracked', :collection => @following.ordered %>
@@ -46,6 +46,22 @@
 	<div class="clear"></div>
 	</div></div>
 </div></div>
+<% if @user.following.count.zero? %>
+<div class="row recommendations"><div class="span9">
+			<ul id="ajax-recommended-artists">
+  		<% if @user.suggested.count >= 6 %>
+				<%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 6] %>
+    		<% else %>
+      		<div class="loading load-recommend">
+      		<h3>Please wait...</h3>
+      		<%= image_tag "/images/loading.png", :id => "loading-icon" %><br/>
+      		<p>...while we work our magic and find which artists you’ve already liked on Facebook.</p>
+      		</div>		  
+  		<% end %>
+			</ul>
+      <div class="clear"></div>
+</div></div>
+<% end %>
 	<% if @user.manager? %>
 	<script>
 <% content_for :fb_js do %>

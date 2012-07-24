@@ -92,6 +92,7 @@ margin-bottom:38px;
         border: 1px solid #50A6C2;
         border-bottom: 1px solid #B0E0E6;
         float:right;
+        margin-right:-1px;
         input[type=text]{
             background:transparent;
             padding:0.3em;
@@ -115,7 +116,7 @@ margin-bottom:38px;
       margin:15px 0 0 13px;
     }
     li {
-      width:155px;
+      width:163px;
       height:28px;
       padding:11px 0 17px 0;
       background:rgba(255,255,255,0.75);
