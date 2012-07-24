@@ -125,6 +125,7 @@ class Release < ActiveRecord::Base
         r.itunes = itunes_release['collectionViewUrl']
         itunes_date = Time.zone.parse itunes_release['releaseDate']
         if itunes_date < r.date
+          puts "7digital import: Reduced release date to further back in time, from #{r.date} to #{itunes_date}"
           r.date = itunes_date
         end
       end
@@ -200,7 +201,15 @@ class Release < ActiveRecord::Base
       i = 1
       while !itunes_releases[i].nil?
         # Avoid importing the same album twice
-        if !artist.releases.where("name LIKE ?", "%#{itunes_releases[i]['collectionName']}%").empty?
+        existing = !artist.releases.where("name LIKE ?", "%#{itunes_releases[i]['collectionName']}%")
+        if existing.empty?
+
+          itunes_date = Time.zone.parse itunes_releases[i]['releaseDate']
+          if itunes_date < existing.first.date
+            puts "iTunes import: Reduced release date to further back in time"
+            existing.first.date = itunes_date
+            existing.first.save
+          end
           i += 1
           next
         end
@@ -215,8 +224,6 @@ class Release < ActiveRecord::Base
         r.scraped = 1
         
         album_info = Scraper.lastfm_album_info(artist.name, r.name)
-        puts "ALBUM INFO:"
-        puts album_info
         # If Last.fm doesn't have artwork for it, it's probably not
         # actually a real release! So skip to the next release
         begin
