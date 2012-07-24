@@ -1,244 +1,247 @@
-		#profile-image {
-			position:relative;
-			height:368px;
-			width:309px;
-			margin-left:7px;
-			@include box-shadow(0px 2px 8px rgba(0,0,0,0.45));
-			@include border-radius(12px);
-			overflow:hidden;
-		#opac-50 {
-	      position:absolute;
-	      z-index:3;
-	      height:368px;
-			width:310px;
-	      @include border-radius(12px);
-	      background:rgba(0,0,0,0.75);
-	      display:none;
-      }
-      #social-bar-shadow {
-	      width:309px;
-	      position:absolute;
-	      height:35px;
-	      bottom:0px;
-	      left:0px;
-	      z-index:2;
-	      opacity: 0.3;
-	      $experimental-support-for-svg: true;
-          @include background-image(linear-gradient(top,  rgba(0,0,0,0) 80%,rgba(0,0,0,1) 100%));
-          @include border-radius(12px);
-          pointer-events:none;
-      }
-      #social-hidden {
-      	  position:absolute;
-	      width:309px;
-	      overflow:hidden;
-	      left:10px;
-	      bottom:0px;
-	      height:120px;
-	      z-index:1;
-      ul {
-	      position:relative;
-	      top:30px;
-      		 .fb-icon, .twit-icon, .sc-icon, .web-icon, .yt-icon, .music-icon {
-	      height:50px;
-	      width:38px;
-	      line-height:38px;
-	      @include border-radius(4px);
-	      margin-right:12px;
-	      font-size:2.5em;
-      }
+.artist-info{
+	margin-bottom: 40px;
+}
+#profile-image {
+	position:relative;
+	height:368px;
+	width:309px;
+	margin-left:7px;
+	@include box-shadow(0px 2px 8px rgba(0,0,0,0.45));
+	@include border-radius(12px);
+	overflow:hidden;
+#opac-50 {
+  position:absolute;
+  z-index:3;
+  height:368px;
+	width:310px;
+  @include border-radius(12px);
+  background:rgba(0,0,0,0.75);
+  display:none;
+}
+#social-bar-shadow {
+  width:309px;
+  position:absolute;
+  height:35px;
+  bottom:0px;
+  left:0px;
+  z-index:2;
+  opacity: 0.3;
+  $experimental-support-for-svg: true;
+  @include background-image(linear-gradient(top,  rgba(0,0,0,0) 80%,rgba(0,0,0,1) 100%));
+  @include border-radius(12px);
+  pointer-events:none;
+}
+#social-hidden {
+	  position:absolute;
+  width:309px;
+  overflow:hidden;
+  left:10px;
+  bottom:0px;
+  height:120px;
+  z-index:1;
+ul {
+  position:relative;
+  top:30px;
+		 .fb-icon, .twit-icon, .sc-icon, .web-icon, .yt-icon, .music-icon {
+  height:50px;
+  width:38px;
+  line-height:38px;
+  @include border-radius(4px);
+  margin-right:12px;
+  font-size:2.5em;
+}
+li {
+float: left;
+div {
+  position:relative;
+  bottom:-78px;
+}
+img {
+  position:relative;
+  top:1px;
+  right:1px;
+}
+.icon-twitter {
+  position:relative;
+  bottom:2px;
+  
+}
+.icon-facebook {
+  position:relative;
+  right:1px;
+  
+}
+.icon-music {
+  position:relative;
+  right:1px;
+}
+icon-globe {
+  position:relative;
+  top:1px;
+}
+}
+}
+}
+        #share-profile {
+  position:absolute;
+  height:310px;
+  width:310px;
+  z-index:4;
+  right:-310px;
+  top:87px;
+  h3 {
+      margin-top:29px;
+      text-align:center;
+      @extend .signika-txt; 
+      @extend .font-22;
+	      }
+  ul {
+    margin:auto;
+        width: 52px * 3;
+        padding:15px;
+ li {
+  height:38px;
+  width:38px;
+  line-height:38px;
+  @include border-radius(4px);
+  margin:0 7px 0 7px;
+  float: left;
+}
+.goo-icon {
+overflow:hidden;
+font-size:4.8em;	
+}
+.icon-twitter {
+  position:relative;
+  bottom:2px;
+  font-size:2.5em;
+}
+.icon-facebook {
+  position:relative;
+  right:1px;
+  font-size:2.5em;
+}
+.icon-google-plus {
+  position:relative;
+  right:20px;
+  top:6px;
+}
+  }
+  .share-cancel {
+      margin:10px auto;
+      width:40px;
+      @extend .button;
+  }
+}
+         #buy-profile {
+  position:absolute;
+  height:310px;
+  width:310px;
+  z-index:4;
+  left:-310px;
+  top:87px;
+  h3 {
+      margin-top:29px;
+      text-align:center;
+      @extend .signika-txt; 
+      @extend .font-22;
+  }
+  ul {
+      position:relative;
+      top:12px;
+      left:102px;
+      margin-bottom:36px;
       li {
-      float: left;
-      div {
-	      position:relative;
-	      bottom:-78px;
-      }
-      img {
-	      position:relative;
-	      top:1px;
-	      right:1px;
-      }
-      .icon-twitter {
-	      position:relative;
-	      bottom:2px;
-	      
-      }
-      .icon-facebook {
-	      position:relative;
-	      right:1px;
-	      
-      }
-      .icon-music {
-	      position:relative;
-	      right:1px;
-      }
-      icon-globe {
-	      position:relative;
-	      top:1px;
-      }
-      }
-      }
-      }
-                #share-profile {
-	      position:absolute;
-	      height:310px;
-	      width:310px;
-	      z-index:4;
-	      right:-310px;
-	      top:87px;
-	      h3 {
-		      margin-top:29px;
-		      text-align:center;
-		      @extend .signika-txt; 
-		      @extend .font-22;
-      	      }
-	      ul {
-		    margin:auto;
-  	        width: 52px * 3;
-  	        padding:15px;
-		 li {
 	      height:38px;
 	      width:38px;
-	      line-height:38px;
 	      @include border-radius(4px);
-	      margin:0 7px 0 7px;
+	      margin:0px 7px 0px 7px;
+	      @extend .white-button;
 	      float: left;
-      }
-      .goo-icon {
-		overflow:hidden;
-		font-size:4.8em;	
-      }
-      .icon-twitter {
-	      position:relative;
-	      bottom:2px;
-	      font-size:2.5em;
-      }
-      .icon-facebook {
-	      position:relative;
-	      right:1px;
-	      font-size:2.5em;
-      }
-      .icon-google-plus {
-	      position:relative;
-	      right:20px;
-	      top:6px;
-      }
-	      }
-	      .share-cancel {
-		      margin:10px auto;
-		      width:40px;
-		      @extend .button;
-	      }
-      }
-                 #buy-profile {
-	      position:absolute;
-	      height:310px;
-	      width:310px;
-	      z-index:4;
-	      left:-310px;
-	      top:87px;
-	      h3 {
-		      margin-top:29px;
-		      text-align:center;
-		      @extend .signika-txt; 
-		      @extend .font-22;
-	      }
-	      ul {
+	      img {
 		      position:relative;
-		      top:12px;
-		      left:102px;
-		      margin-bottom:36px;
-		      li {
-			      height:38px;
-			      width:38px;
-			      @include border-radius(4px);
-			      margin:0px 7px 0px 7px;
-			      @extend .white-button;
-			      float: left;
-			      img {
-				      position:relative;
-				      top:1px;
-				      right:1px;
-			      }
-		      }
-	      }
-	      .buy-cancel {
-		      margin:11px auto;
-		      width:40px;
-		      @extend .button;
+		      top:1px;
+		      right:1px;
 	      }
       }
-              
-		}
-		#profile-info {
-			width:246px;
-			background:rgba(255,255,255,0.75);
-			height:294px;
-			@include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.25));
-			@include border-radius(12px);
-			padding:17px;
-			line-height:1.7em;
-			float: right;
-			margin-right:7px;
-			position: relative;
-			.gray {
-				@extend .light-gray;
-			}
-			#artist-bio {
-				line-height:1.45em;
-			}
-			.icon-music, .icon-tag {
-				margin-right:5px;
-				margin-left: -3px;
-				padding:3px
-			}
-			h2 {
-				margin-bottom:3px;
-				line-height:1em;
-				@extend .font-22;
-				font-weight:bold;
-			}
-			a {
-				color:$orange;
-			}
-			a:hover {
-				color:#000;
-			}
-			.icon-edit {
-				position: absolute;
-				right: 8px;
-				font-size: 2em;
-				top: 8px;
-				cursor:pointer;
-				color:$gray;
-			}
-			.icon-edit:hover {
-				color:$orange;
-			}
-		}
-		.menu-user {
-			list-style-type:none;
-			margin:15px -13px 0 0;
-			width:300px;
-			float: right;
-			a {
-	            color:#fff;
-            }
-            a:hover {
-	            color:#fff;
-            }
-			.icon-shopping-cart, .icon-share-alt {
-				margin-right:5px;
-			}
-			.buy-profile, .share-profile {
-				width:80px;
-				margin-right:15px;
-				@extend .button;
-			}
-			li {
-				float: left;
-			}
-		}
+  }
+  .buy-cancel {
+      margin:11px auto;
+      width:40px;
+      @extend .button;
+  }
+}
+      
+}
+#profile-info {
+	width:246px;
+	background:rgba(255,255,255,0.75);
+	height:294px;
+	@include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.25));
+	@include border-radius(12px);
+	padding:17px;
+	line-height:1.7em;
+	float: right;
+	margin-right:7px;
+	position: relative;
+	.gray {
+		@extend .light-gray;
+	}
+	#artist-bio {
+		line-height:1.45em;
+	}
+	.icon-music, .icon-tag {
+		margin-right:5px;
+		margin-left: -3px;
+		padding:3px
+	}
+	h2 {
+		margin-bottom:3px;
+		line-height:1em;
+		@extend .font-22;
+		font-weight:bold;
+	}
+	a {
+		color:$orange;
+	}
+	a:hover {
+		color:#000;
+	}
+	.icon-edit {
+		position: absolute;
+		right: 8px;
+		font-size: 2em;
+		top: 8px;
+		cursor:pointer;
+		color:$gray;
+	}
+	.icon-edit:hover {
+		color:$orange;
+	}
+}
+.menu-user {
+	list-style-type:none;
+	margin:15px -13px 0 0;
+	width:300px;
+	float: right;
+	a {
+        color:#fff;
+    }
+    a:hover {
+        color:#fff;
+    }
+	.icon-shopping-cart, .icon-share-alt {
+		margin-right:5px;
+	}
+	.buy-profile, .share-profile {
+		width:80px;
+		margin-right:15px;
+		@extend .button;
+	}
+	li {
+		float: left;
+	}
+}
 #bio-full {
-	
+
 }
