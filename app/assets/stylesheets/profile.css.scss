@@ -1,44 +1,61 @@
-.profile-menu {
-    width:147px;
-    margin-top:5px;
-    li {
-	    @extend .o-button;
-	    @extend .signika-font;
-	    @extend .font-13;
-	    width:147px;
-	    margin-bottom:15px;
-	    line-height:28px;
-	    height:25px;
-    }
-    .trkrs-button {
-      @extend  .instruct-font;
-      height:68px;
-      line-height:18px;
-     span {
-     position:relative;
-     top:7px;
-	      div {
-		      @extend .font-25
-	      }
-	      .trkrs {
-		      @extend .font-15;
-	      }
+#user-information {  
+position:relative;
+height:300px;
+margin:5px 0 22px 42px;
+  #user-cover {
+  position:absolute;
+  height:247px;
+  width:696px;
+  @include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.45));
+  @include border-radius(12px);
+  z-index:2;
+  background:$gray;
+  background-repeat:no-repeat;
+  background-position:center;
+}
+    .user-info {
+	   height:42px;
+	   width:215px;
+	   z-index:1;
+	   margin:196px 0 0 25px;
+	   background:rgba(255,255,255,0.75);
+	   @include border-radius(8px);
+	   @include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.25));
+	   padding:58px 0 0 116px;
+	   position:absolute;
+	   a {
+		   color:$gray;
+	   }
+	   a:hover {
+		   color:$orange;
+	   }
+	   h2 {
+		   @extend .font-14;
+		   font-weight:bold;
+		  
+	   }
+	   span {
+		   @extend .instruct-font;
+		   color:$orange;
+	   }
+  }
+        #user-image {
+          position:absolute;
+          margin:192px 0 0 25px;
+		  z-index:3;
+	      width:100px;
+	      height:100px;
+	      @include border-top-left-radius(8px);
+	      @include border-bottom-left-radius(8px);
+	      @include border-top-right-radius(8px);
+	      border-style:solid;
+	      border-color:rgba(255,255,255,0.75);
+	      border-width:2px;
+	      background:$gray;
+	      background-position:center;
+	      background-repeat:no-repeat;
       }
-			    }
-			  }
-    .user, .artist {
-        width:495px;
-    div {
-	    @extend .font-15;
-    }
-    }
-    .artist {
-		margin-top:17px;
-		float:right;
-    }
-    .user {
-	    margin-top:8px;
-    }
+}
 .user-trkrs {
 margin-bottom:38px;
   .no-trk {

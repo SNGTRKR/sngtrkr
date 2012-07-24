@@ -1,61 +1,16 @@
 <% content_for :title do %><%= @user.first_name %> on SNGTRKR<% end %>
 <% content_for :description do %>Profile page for <%= @user.first_name %>. You will be able to change the settings of your profile, manage any Facebook artists you control and view the list of artists you are currently tracking. <% end %>
 <div class="row"><div class="span9">
-<div class="row"><div class="span3">
-			<ul class="profile-menu">
-				<% if @user.manager? %>
-				<%= link_to @artist do %>
-				<li class="trkrs-button"><span><div><%= @trackers %></div><br/><div class="trkrs">TRKRS</span></span></li>
-				<% end %>
-				<% else %>
-				<% end %>
-				<%= link_to friends_user_path(@user) do %><li>Friends</li><% end %>
-				<% if @user.manager? %>
-				<%= link_to new_artist_release_path(@artist) do %><li>Add Release</li><% end %>
-				<% else %>
-				<a href="#manage-choice" data-toggle="modal"><li>Manage Artist</li></a>
-				<% end %>
-				<%= link_to edit_user_path(@user) do %><li>Profile Settings</li><% end %>
-			</ul>
-		</div>
-		<div class="span6">
-			<% if @user.manager? %>
-			<div class="artist">
-			<div>
-				<p>Welcome, <strong><%= link_to @artist.name, @artist %></strong></p>
-			</div>
-			<p>
-			Here you will be able to view how many of your fans are tracking you, along with adding releases, new and old, to your personal timeline.
-			</p>
-			<p>
-			Even as an artist, you still want to keep up to
-			date with artists releasing content, old and new.  Below you will find a list of the artists you are currently tracking, alongside recommended
-			artists we think you will be interested in.
-			</p>
-			<p>
-				If you need further help with anything, then be sure to visit our <%= link_to "help","/help" %> page.
-			</p>
-			</div>
-						<% else %>
-			<div class="user">
-			<div>
-			<p>
-				Welcome to your profile, <strong><%= @user.first_name %> <%= @user.last_name %></strong>!
-			</p>
-			</div>
-			<p>
-				Here you can see all your tracked artists, some suggestions from us, and manage your account settings.
-			</p>
-			<p>
-				If you need further help with anything, then be sure to visit our <%= link_to "help","/help" %> page.
-			</p>
-			</div>
-			<% end %>
-		</div>
+<div id="user-information">
+	<div id="user-cover"></div>
+	<div class="user-info">
+			<h2><%= link_to @user.first_name + " " + @user.last_name, "http://facebook.com/#{@user.fbid}", :target => "_blank" %></h2>
+			<span><%= @user.following.count %> TRKINGS</span>
 	</div>
+	<%= link_to "http://facebook.com/#{@user.fbid}" do %><div id="user-image" style="background-image:url(<%= "//graph.facebook.com/"+@user.fbid+"/picture?type=normal" %>);"></div><% end %>
 </div>
 </div>
-<<<<<<< HEAD
+</div>
 <div class="row user-trkrs"><div class="span9">
 	<div class="row"><div class="span6">
 		<h2 class="no-trk"><%= @user.following.count %> TRKED Artists</h2>
@@ -78,37 +33,39 @@
 	<div class="clear"></div>
 	</div></div>
 </div></div>
-<div id="manage-choice" class="modal hide">
-			<div class="modal-header">
-			<h3>Which artist would you like to manage?</h3>
-			</div>
-			<div class="modal-body">
-			<% if @manageable.count.zero? %>
-			<p><strong>If seems you don't have any Facebook artists to manage.</strong></p>
-			<p>Please make sure you have a Facebook page for the artist, and set the category for the page to 'Musician/Band'.</p>
-			<% else %>			
-			<p>Select which artist you wish to manage and let's get started!</p>
-						<%= form_for [current_user, Manage.new] do |f| %>
-					<ul>
-				<% @manageable.each do |artist| %>
-				<li class="left">
-					<%= image_tag "//graph.facebook.com/"+artist.fbid+"/picture?type=normal" %>
-					<div>
-						<h4><%= truncate((strip_tags f.label(:artist_id, artist.name) || "" ), :length => 17) %></h4>
-						Dubstep
-					</div>
-						<%= f.radio_button(:artist_id, artist.id) %>
-				</li>
-				<% end %>
-				<div class="clear"></div>
-			</ul>
-			</div>
-			<div class="modal-footer">
-			<%= f.submit "Manage" %>
-			<div class="cancel" data-dismiss="modal">Cancel</div>
-			<% end %>
-			<% end %>
-			</div>
-	</div>
 
-	<%= render :partial => 'shared/fb_async' %>
+	<script>
+<% content_for :fb_js do %>
+	FB.getLoginStatus(function(response) {
+		if(response.status === 'connected') {
+			// the user is logged in and has authenticated your
+			// app, and response.authResponse supplies
+			// the user's ID, a valid access token, a signed
+			// request, and the time the access token
+			// and signed request each expire
+			var uid = response.authResponse.userID;
+			var accessToken = response.authResponse.accessToken;
+		} else if(response.status === 'not_authorized') {
+			// the user is logged in to Facebook,
+			// but has not authenticated your app
+			FB.login();
+		} else {
+			// the user isn't logged in to Facebook.
+			FB.login();
+		}
+	});
+	FB.api(<%= '\''+@user.fbid+'/picture?type=large\'' %>, function(response) {
+		// The response will literally just be the URL to the friend's profile picture
+	});
+	FB.api(<%= '\''+@user.fbid+'?fields=cover\'' %>, function(response){
+		if(response['cover']){
+		   $('#friend-cover').css("background-image","url("+response['cover']['source']+")");
+		} else {
+		   $('#friend-cover').fadeOut();
+		   $('#friend-information').animate({marginTop : -194}, "slow").css("width",400).css("overflow","hidden");
+		}
+	});
+<% end %>
+
+</script>
+<%= render 'shared/fb_async' %>
