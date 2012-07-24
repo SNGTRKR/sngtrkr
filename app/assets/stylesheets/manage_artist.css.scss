@@ -1,5 +1,5 @@
 .manage-top {
-margin-bottom:11px;
+margin:0 0 11px 40px;
 img {
 			position:absolute;
 			}
@@ -9,6 +9,7 @@ a > div {
 }
 			}
 .manage-point {
+margin-left:40px;
 	h2 {
 	@extend .signika-txt;
 	@extend .font-25;

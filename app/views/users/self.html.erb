@@ -2,20 +2,36 @@
 <% content_for :description do %>Profile page for <%= @user.first_name %>. You will be able to change the settings of your profile, manage any Facebook artists you control and view the list of artists you are currently tracking. <% end %>
 <div class="row"><div class="span9">
 <div id="user-information">
+<% if @user.manager? %>
+<%= link_to new_artist_release_path(@artist) do %><div class="manage">Add Release</div><% end %>
+<% else %>
+ <%= link_to managing_user_path(@user) do %><div class="manage">Manage Artist</div><% end %>
+ <% end %>
+<%= link_to friends_user_path(@user) do %><div class="friends">Friends</div><% end %>
 	<div id="user-cover"></div>
 	<div class="user-info">
-			<h2><%= link_to @user.first_name + " " + @user.last_name, "http://facebook.com/#{@user.fbid}", :target => "_blank" %></h2>
-			<span><%= @user.following.count %> TRKINGS</span>
+			<% if @user.manager? %><h2><%= link_to @artist.name, "http://facebook.com/#{@artist.fbid}", :target => "_blank" %></h2>
+			<span><%= @trackers %> TRKRS</span>
+	</div>
+	<%= link_to "http://facebook.com/#{@artist.fbid}" do %><div id="user-image" style="background-image:url(<%= "//graph.facebook.com/"+@artist.fbid+"/picture?type=normal" %>);"></div><% end %>
+	<% else %>
+	<h2><%= link_to @user.first_name + " " + @user.last_name, "http://facebook.com/#{@user.fbid}", :target => "_blank" %></h2>
+			<span></span>
 	</div>
 	<%= link_to "http://facebook.com/#{@user.fbid}" do %><div id="user-image" style="background-image:url(<%= "//graph.facebook.com/"+@user.fbid+"/picture?type=normal" %>);"></div><% end %>
+	<% end %>
 </div>
 </div>
 </div>
 <div class="row user-trkrs"><div class="span9">
 	<div class="row"><div class="span9">
+	<div class="row"><div class="span6">
+                <h2 class="no-trk"><%= @user.following.count %> TRKED Artists</h2>
+        </div>
+        <div class="span3">
 			<div class="artist-trkr-list-search">
 			<input type="text" id="filter" placeholder="Search TRKRs..."/>
-			<div><%= image_tag "/images/white-search-2.png", :alt => "Search", :id => "search-pad" %></div></div>
+			<div><%= image_tag "/images/white-search-2.png", :alt => "Search", :id => "search-pad" %></div></div></div></div>
 	</div></div>
 	<div class="row"><div class="span9" id="tracked-artists-container">
 	<ul id="tracked-artists">
@@ -30,6 +46,41 @@
 	<div class="clear"></div>
 	</div></div>
 </div></div>
+	<% if @user.manager? %>
+	<script>
+<% content_for :fb_js do %>
+	FB.getLoginStatus(function(response) {
+		if(response.status === 'connected') {
+			// the user is logged in and has authenticated your
+			// app, and response.authResponse supplies
+			// the user's ID, a valid access token, a signed
+			// request, and the time the access token
+			// and signed request each expire
+			var uid = response.authResponse.userID;
+			var accessToken = response.authResponse.accessToken;
+		} else if(response.status === 'not_authorized') {
+			// the user is logged in to Facebook,
+			// but has not authenticated your app
+			FB.login();
+		} else {
+			// the user isn't logged in to Facebook.
+			FB.login();
+		}
+	});
+	FB.api(<%= '\''+@artist.fbid+'/picture?type=large\'' %>, function(response) {
+		// The response will literally just be the URL to the friend's profile picture
+	});
+	FB.api(<%= '\''+@artist.fbid+'?fields=cover\'' %>, function(response){
+		if(response['cover']){
+		   $('#user-cover').css("background-image","url("+response['cover']['source']+")");
+		} else {
+		   $('#user-cover').fadeOut();
+		   $('#user-information').animate({marginTop : -194}, "slow").css("width",400).css("overflow","hidden");
+		}
+	});
+<% end %>
+</script>
+<% else %>
 	<script>
 <% content_for :fb_js do %>
 	FB.getLoginStatus(function(response) {
@@ -55,13 +106,13 @@
 	});
 	FB.api(<%= '\''+@user.fbid+'?fields=cover\'' %>, function(response){
 		if(response['cover']){
-		   $('#friend-cover').css("background-image","url("+response['cover']['source']+")");
+		   $('#user-cover').css("background-image","url("+response['cover']['source']+")");
 		} else {
-		   $('#friend-cover').fadeOut();
-		   $('#friend-information').animate({marginTop : -194}, "slow").css("width",400).css("overflow","hidden");
+		   $('#user-cover').fadeOut();
+		   $('#user-information').animate({marginTop : -194}, "slow").css("width",400).css("overflow","hidden");
 		}
 	});
 <% end %>
-
 </script>
+<% end %>
 <%= render 'shared/fb_async' %>
