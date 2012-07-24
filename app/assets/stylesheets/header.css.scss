@@ -155,7 +155,7 @@ display:block;
 	display:none;
 }
 .outer-tools {
-margin:-56px 20px 0 0;
+margin:-45px 20px 0 0;
 }
 .facebook-login {
     padding:0 20px;
@@ -174,10 +174,4 @@ margin:-56px 20px 0 0;
 	    position:relative;
 	    bottom:10px;
     }
-}
-.brand {
-	@extend .button;
-	@extend .instruct-font;
-	@include border-radius(0px);
-	color:#fff !important;
 }
