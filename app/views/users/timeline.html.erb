@@ -3,6 +3,7 @@
 <% content_for :extra_head do %> <%= javascript_include_tag "timeline" %> <% end %>
 <div class="row">
 	<div class="span9">
+		<h1 id="timeline-header">Your Timeline</h1>
 		<div class="timeline-outer">
 			<div class="timeline-end"></div>
 			<div class="timeline-page">
@@ -33,12 +34,12 @@
 					})
 				</script>
 			<% else %>
-				<h1 id="timeline-header">Your Timeline</h1>
 				<ol class="release-list">
 					<%= render :partial => 'timeline/release', :collection => @timeline %>
 				</ol>
 			<% end %>
-			<div class="timeline-end"></div>
+				<div class="timeline-end"></div>
+			</div>
 		</div>
 	</div>
 </div>
