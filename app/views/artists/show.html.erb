@@ -10,7 +10,7 @@ content_for :og_type, "sngtrkr:artist"
 <% content_for :extra_head do %> <%= javascript_include_tag "timeline" %> <% end %>
 
 <div class="row">
-<div class="span8 offset2">
+<div class="span8 offset1 artist-info">
 <% if can? :manage, :all %>
   <div class="super-admin">
   <%= form_for @artist do |f| %>
@@ -126,14 +126,9 @@ content_for :og_type, "sngtrkr:artist"
 			<div class="clear"></div>
 			</div></div>
 	</div>
-		<script>
-		$(document).ready(function(){
-		  	artist_suggestion_replace();
-		})
-	</script>
 <% else %>
 <div class="row">
-	<div class="span9">
+	<div class="span10">
 		<div class="timeline-outer">
 			<div class="timeline-end"></div>
 			<div class="timeline-page">
@@ -158,11 +153,6 @@ content_for :og_type, "sngtrkr:artist"
 						<div class="clear"></div>
 						</div></div>
 				</div>
-				<script>
-					$(document).ready(function(){
-					  	artist_suggestion_replace();
-					})
-				</script>
 			<% else %>
 				<h1 id="timeline-header">Your Timeline</h1>
 				<ol class="release-list">
@@ -184,5 +174,10 @@ content_for :og_type, "sngtrkr:artist"
 	<p>Provided by <a href="http://last.fm">Last.fm</a></p>
 	</div>
 </div>
+<script>
+	$(document).ready(function(){
+	  	artist_suggestion_replace();
+	})
+</script>
 
 <%= render 'shared/fb_async' %>
