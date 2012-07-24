@@ -1,17 +1,24 @@
 <% content_for :title do %>Manage an artist<% end %>
 <% content_for :description do %>Joining SNGTRKR as an artist, could not be any easier. Increase record sales and web presence; keep your fans up to date with future releases with your personalised timeline.<% end %>
-<div class="row manage-top"><div class="span8 offset2">
+<div class="row"><div class="span9">
+<div class="manage-top">
 	<div class="row"><div class="span4">
 	<h1>Join now and build a closer relationship to your fans...</h1><br/>
+	<% if !user_signed_in? %>
 	<%= link_to(user_omniauth_authorize_path(:facebook)) do %>
 	<div class="fb-home-login"><i class="icon-facebook"></i><span>Login with Facebook</span></div>
+	<% end %>
+	<% else %>
+	<a href="#manage-choice" data-toggle="modal"><div class="button">Manage an artist</div></a>
 	<% end %>
 	</div>
 	<div class="span4">
 	<%= image_tag "/images/macbook2.png", :alt => "Macbook Pro", :class => "macbook-2"%>
 	</div></div>
+</div>
 </div></div>
-<div class="row manage-point"><div class="span8 offset2">
+<div class="row"><div class="span9">
+<div class="manage-point">
 <div class="row"><div class="span6">
 		<h2>Manage your profile</h2>
 		<span>Manage and update your personal profile with information such as genre, label, biography, social media links, 		website and much more. Create your personal, tailored timeline by adding releases, old and new, to deliver a rich 			source of information for your fans to experience and enjoy.</span>
@@ -19,9 +26,11 @@
 		<div class="span2">
 		<%= image_tag "/images/manage1.png", :alt => "Timeline", :id => "manage1" %>
 		</div></div>
+</div>
 </div></div>
 	</li>
-<div class="row manage-point"><div class="span8 offset2">
+<div class="row"><div class="span9">
+<div class="manage-point">
 <div class="row"><div class="span6">
 		<h2>Keep your fans up to date</h2>
 		<span>Keep your fans in the loop by adding new releases to your intuitive timeline, and automatically sending 				notifications straight to their inbox. All of this is supported by share, buy and listen links to easily keep exisiting 		fans up to date and also expand your fanbase even more.</span>
@@ -29,8 +38,10 @@
 		<div class="span2">
 		<%= image_tag "/images/manage2.png", :alt => "Discover new music", :id => "manage2" %>
 		</div></div>
+</div>
 </div></div>
-<div class="row manage-point"><div class="span8 offset2">
+<div class="row manage-point"><div class="span9">
+<div class="manage-point">
 <div class="row"><div class="span6">
 		<h2>Increase web presence</h2>
 		<span>Struggling to get yourself known and your music heard? SNGTRKR is the full package platform, to enable up and 		coming and popular artists alike, reinforce and grow their fanbase. A strong music community coupled with the social 		media platform makes it easy to gain presence, both on and offline.</span>
@@ -38,5 +49,38 @@
 		<div class="span2">
 		<%= image_tag "/images/manage3.png", :alt => "Music media", :id => "manage3" %>
 		</div></div>
+</div>
 </div></div>
+<div id="manage-choice" class="modal hide">
+			<div class="modal-header">
+			<h3>Which artist would you like to manage?</h3>
+			</div>
+			<div class="modal-body">
+			<% if @manageable.count.zero? %>
+			<p><strong>If seems you don't have any Facebook artists to manage.</strong></p>
+			<p>Please make sure you have a Facebook page for the artist, and set the category for the page to 'Musician/Band'.</p>
+			<% else %>			
+			<p>Select which artist you wish to manage and let's get started!</p>
+						<%= form_for [current_user, Manage.new] do |f| %>
+					<ul>
+				<% @manageable.each do |artist| %>
+				<li class="left">
+					<%= image_tag "//graph.facebook.com/"+artist.fbid+"/picture?type=normal" %>
+					<div>
+						<h4><%= truncate((strip_tags f.label(:artist_id, artist.name) || "" ), :length => 17) %></h4>
+						Dubstep
+					</div>
+						<%= f.radio_button(:artist_id, artist.id) %>
+				</li>
+				<% end %>
+				<div class="clear"></div>
+			</ul>
+			</div>
+			<div class="modal-footer">
+			<%= f.submit "Manage" %>
+			<div class="cancel" data-dismiss="modal">Cancel</div>
+			<% end %>
+			<% end %>
+			</div>
+	</div>
 <div id="manage-form"></div>

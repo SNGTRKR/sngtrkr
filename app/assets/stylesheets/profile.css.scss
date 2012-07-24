@@ -2,6 +2,20 @@
 position:relative;
 height:300px;
 margin-bottom:22px;
+.friends {
+	@extend .button;
+	position:absolute;
+	right:0px;
+	bottom:4px;
+	width:126px;
+}
+.manage {
+	@extend .button;
+	position:absolute;
+	right:171px;
+	bottom:4px;
+	width:126px;
+}
   #user-cover {
   position:absolute;
   height:247px;
@@ -58,6 +72,11 @@ margin-bottom:22px;
 }
 .user-trkrs {
 margin-bottom:38px;
+.no-trk {	
+    @extend .font-15;	
+    font-weight:bold;
+    margin:12px 0 0 0;
+  }
     #tracked-artists-container{
       max-height: 500px;
       min-height: 100px;
@@ -91,7 +110,7 @@ margin-bottom:38px;
     }
   #tracked-artists {
 	list-style-type:none;
-	margin:7px 0 0 -14px;
+	margin:8px 0 0 -14px;
     .no-trk-notify {
       margin:15px 0 0 13px;
     }
