@@ -14,12 +14,8 @@ class PagesController < ApplicationController
     #flash[:success] = "<p>I done a success!</p>"
   end
 
-  def manage
-
-  end
-
-  def recommended
-
+  def help 
+  render :layout => 'no_sidebar'
   end
   
   def about
@@ -35,11 +31,11 @@ class PagesController < ApplicationController
   end
   
   def limbo
-
+  render :layout => 'no_sidebar'
   end
   
   def intro 
-  
+  render :layout => 'no_sidebar'
   end
   
   def splash

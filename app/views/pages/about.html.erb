@@ -6,6 +6,16 @@ content_for :og_type, "website"
 %>
 <% content_for :title do %>About<% end %>
 <% content_for :description do %>Inspired by the passion and appreciation that we have for music and artists alike, we built SNGTRKR - a webapp to enable other music lovers to easily track artists.<% end %>
+<% if !user_signed_in? %>
+<style type="text/css">
+.about-tabs {
+margin-left:120px;
+}
+.about-header {
+margin-left:120px;
+}
+</style>
+<% else %><% end %>
 <div class="row">
 <div class="span9">
 <h1 class="about-header">About</h1>

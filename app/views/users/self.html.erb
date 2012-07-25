@@ -10,10 +10,10 @@
 <%= link_to friends_user_path(@user) do %><div class="friends">Friends</div><% end %>
 	<div id="user-cover"></div>
 	<div class="user-info">
-			<% if @user.manager? %><h2><%= link_to @artist.name, "http://facebook.com/#{@artist.fbid}", :target => "_blank" %></h2>
+			<% if @user.manager? %><h2><%= link_to @artist.name, @artist %></h2>
 			<span><%= @trackers %> TRKRS</span>
 	</div>
-	<%= link_to "http://facebook.com/#{@artist.fbid}" do %><div id="user-image" style="background-image:url(<%= "//graph.facebook.com/"+@artist.fbid+"/picture?type=normal" %>);"></div><% end %>
+	<%= link_to @artist do %><div id="user-image" style="background-image:url(<%= "//graph.facebook.com/"+@artist.fbid+"/picture?type=normal" %>);"></div><% end %>
 	<% else %>
 	<h2><%= link_to @user.first_name + " " + @user.last_name, "http://facebook.com/#{@user.fbid}", :target => "_blank" %></h2>
 			<span></span>

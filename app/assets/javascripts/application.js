@@ -32,7 +32,7 @@ Number.prototype.commafy = function () {
   return String(this).commafy();
 }
 
-$(document).ready(function () {
+$(document).ready(function () { 
   // Flash Dismissal
   $('.flash-outer').delay(300).slideDown(500, 'easeInQuad');
   $('.flash-close').click(function () {

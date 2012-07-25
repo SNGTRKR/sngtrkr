@@ -138,5 +138,18 @@ content_for :og_type, "sngtrkr:artist"
 	  	artist_suggestion_replace();
 	})
 </script>
-
+	<script type="text/javascript">
+$(document).ready(function(){
+		$(".share-profile").click(function() { $('#opac-50').fadeIn("normal"); $('#share-profile').animate({right : 0}, "slow"); $('#buy-profile').animate({left : -310}, "slow");});
+		$(".share-cancel").click(function() { $('#opac-50').fadeOut("normal"); $('#share-profile').animate({right : -310}, "slow"); });
+		$("#share-profile ul a li").click(function() { $('#opac-50').fadeOut("normal"); $('#share-profile').animate({right : -310}, "slow"); });
+	    $(".buy-profile").click(function() { $('#opac-50').fadeIn("normal"); $('#buy-profile').animate({left : 0}, "slow"); $('#share-profile').animate({right : -310}, "slow"); });
+		$(".buy-cancel").click(function() { $('#opac-50').fadeOut("normal"); $('#buy-profile').animate({left : -310}, "slow"); });
+		$("#buy-profile ul li").click(function() { $('#opac-50').fadeOut("normal"); $('#buy-profile').animate({left : -310}, "slow"); });
+		$("#profile-image").mouseover(function(){ $('#social-hidden ul li a div').stop().animate({bottom : -47}, "normal"); }).mouseout(function(){$('#social-hidden ul li a 						div').stop().animate({bottom : -78}, "normal");});
+		$(".edit").mouseover(function(){ $('.edit').stop().animate({left : 60}, "slow");}).mouseout(function(){ $('.edit').stop().animate({left : 0}, "slow"); });
+		$(".ignore").mouseover(function(){ $('.ignore').stop().animate({left : 60}, "slow");}).mouseout(function(){$('.ignore').stop().animate({left : 0}, "slow");});
+		$(".destroy").mouseover(function(){ $('.destroy').stop().animate({left : 60}, "slow");}).mouseout(function(){ $('.destroy').stop().animate({left : 0}, "slow"); });
+		});
+</script>
 <%= render 'shared/fb_async' %>
