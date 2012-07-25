@@ -1,10 +1,12 @@
 <% content_for :title do %>Your Timeline<% end %>
 <% content_for :description do %><%= current_user.first_name %>'s personalised timeline of artist releases, where they can view new and old releases while being able to listen to and buy tracks.<% end %>
 <% content_for :extra_head do %> <%= javascript_include_tag "timeline" %> <% end %>
-
-<% content_for :timeline_header do %>
-	Your Timeline
-<% end %>
+<style type="text/css">
+#wrapper {
+background:url("/images/grid2.png");
+background-repeat:repeat
+}
+</style>
 <% content_for :timeline do %>
 	<% if @timeline.empty? %>
 		<%= render 'timeline/user_empty' %>

@@ -10,9 +10,8 @@ $line-color: #2e708c;
 }
 .timeline-outer {
   margin-bottom: 40px;
-
+  margin-left:-78px;
   position:relative;
-  //background-image: url(/images/grid2.png);
   @extend .scrollbar-timeline;
   .timeline-end{
     width:20px;

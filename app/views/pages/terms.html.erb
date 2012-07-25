@@ -6,6 +6,13 @@ content_for :og_type, "website"
 %>
 <% content_for :title do %>Terms of Use<% end %>
 <% content_for :description do %>The Terms of use agreement for the use of the service owned and operated by sngtrkr.com, otherwise known as SNGTRKR.<% end %>
+<% if !user_signed_in? %>
+<style type="text/css">
+#terms-txt{
+margin-left:120px;
+}
+</style>
+<% else %><% end %>
 <div class="row">
 <div class="span9">
 <div id="terms-txt"><h1>Terms of Use</h1>

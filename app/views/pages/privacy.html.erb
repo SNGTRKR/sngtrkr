@@ -6,6 +6,13 @@ content_for :og_type, "website"
 %>
 <% content_for :title do %>Privacy Policy<% end %>
 <% content_for :description do %>SNGTRKR knows that you care about how your personal information is used and shared, and we take your privacy seriously. Please read the following to learn more about our privacy policy.<% end %>
+<% if !user_signed_in? %>
+<style type="text/css">
+#privacy-txt{
+margin-left:120px;
+}
+</style>
+<% else %><% end %>
 <div class="row"><div class="span9">
 <div id="privacy-txt"><h1>Privacy Policy</h1>
 <p>SNGTRKR knows that you care about how your personal information is used and shared, and we take your privacy seriously. Please read the following to learn more about our privacy policy. By visiting the www.SNGTRKR.com website and domain name (collectively, the “Website”), and/or using any other linked pages, features, content, or application services offered from time to time by SNGTRKR in connection therewith (collectively the “Service”), you acknowledge that you accept the practices and policies outlined in this Privacy Policy.</p>
