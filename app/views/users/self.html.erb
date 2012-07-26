@@ -48,7 +48,7 @@
 </div></div>
 <% if @user.following.count.zero? %>
 <div class="row recommendations"><div class="span9">
-			<ul id="ajax-recommended-artists">
+			<ul class="ajax-recommended-artists profile-recommendations">
   		<% if @user.suggested.count >= 6 %>
 				<%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 6] %>
     		<% else %>
@@ -61,6 +61,11 @@
 			</ul>
       <div class="clear"></div>
 </div></div>
+<script>
+  $(document).ready(function(){
+    artist_suggestion_replace();
+  });
+</script>
 <% end %>
 	<% if @user.manager? %>
 	<script>

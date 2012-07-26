@@ -1,6 +1,8 @@
-.artist-info{
-	margin-bottom: 40px;
+.artist-buffer {
+	margin-bottom:40px;
 }
+#artist-info {
+	margin-left:40px;
 #profile-image {
 	position:relative;
 	height:368px;
@@ -184,6 +186,10 @@ font-size:4.8em;
 	float: right;
 	margin-right:7px;
 	position: relative;
+	.trkrs {
+		@extend .instruct-font;
+		color:$orange;
+	}
 	.gray {
 		@extend .light-gray;
 	}
@@ -241,6 +247,7 @@ font-size:4.8em;
 	li {
 		float: left;
 	}
+}
 }
 #bio-full {
 

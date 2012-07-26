@@ -1,9 +1,0 @@
-<% if current_user.following? activity_trk_artist.id %>
-	<%= link_to artist_unfollow_path(activity_trk_artist), :format => :js, :remote => true, :class => 'friend-remove-trkr' do %>
-		<div class="activity-trkr"><i class="icon-minus untrk-artist"></i></div>
-	<% end %>
-<% else %>
-	<%= link_to artist_follows_path(activity_trk_artist), :format => :js, :remote => true, :method => :post, :class => 'friend-add-trkr' do %>
-		<div class="activity-trkr"><i class="icon-plus trk-artist"></i></div>
-	<% end %>
-<% end %>

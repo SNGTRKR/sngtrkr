@@ -2,41 +2,6 @@
 <div class="header"><%= image_tag "/images/side1.png", :id => "side1" %><h5>Recent Activity</h5></div>
 <ul>
 <%= render :partial => 'users/group_activity', :collection => @activities %>
-<li>
-<div class="each-activity">
-<%= image_tag "/images/box.png" %>
-<div>
-      <strong>Tom Dallimore</strong> tracked <strong>Sub Focus</strong><br/><span>3 mins ago</span></div>
-  </div>
-</li>
-<li>
-<div class="each-activity">
-<%= image_tag "/images/box.png" %>
-<div>
-      <strong>Matt Bessey</strong> tracked <strong>TC</strong><br/><span>10 mins ago</span></div>
-  </div>
-</li>
-<li>
-<div class="each-activity">
-<%= image_tag "/images/box.png" %>
-<div>
-      <strong>Matt Bessey</strong> rated <strong>Alignment EP</strong> with <strong>4 stars</strong><br/><span>15 mins ago</span></div>
-  </div>
-</li>
-<li>
-<div class="each-activity">
-<%= image_tag "/images/box.png" %>
-<div>
-      <strong>Ewan Gimson</strong> tracked <strong>Redlight</strong><br/><span>20 mins ago</span></div>
-  </div>
-</li>
-<li>
-<div class="each-activity">
-<%= image_tag "/images/box.png" %>
-<div>
-      <strong>Ben Reeves</strong> tracked <strong>System of a Down</strong><br/><span>3 hours ago</span></div>
-  </div>
-</li>
 <div class="clear"></div>
 </ul>
 <hr>
@@ -44,19 +9,7 @@
 <div id="recommendations">
 <div class="header"><%= image_tag "/images/side2.png", :id => "side2" %><h5>Recommendations</h5></div>
 <ul>
-<%= render :partial => 'shared/sidebar_suggestion', :collection => @user.suggested[0, 6] %>
-<li class="each-recommend">
-<%= image_tag "/images/box.png" %>
-		<div class="info"><div class="a-name"><strong>Rusko</strong></div><span>23k TRKRS</span><br/><div class="buttons">Track - Share - Ignore</div></div>
-</li>
-<li class="each-recommend">
-<%= image_tag "/images/box.png" %>
-		<div class="info"><div class="a-name"><strong>Loadstar</strong></div><span>12 TRKRS</span><br/><div class="buttons">Track - Share - Ignore</div></div>
-</li>
-<li class="each-recommend">
-<%= image_tag "/images/box.png" %>
-		<div class="info"><div class="a-name"><strong>Fred V & Grafix</strong></div><span>200 TRKRS</span><br/><div class="buttons">Track - Share - Ignore</div></div>
-</li>
+<%= render :partial => 'shared/sidebar_suggestion', :collection => @user.suggested[0, 4] %>
 <div class="clear"></div>
 </ul>
 <hr>

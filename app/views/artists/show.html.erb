@@ -13,9 +13,16 @@ content_for :og_type, "sngtrkr:artist"
 background:url("/images/grid2.png");
 background-repeat:repeat;
 }
+<% if !user_signed_in? %>
+#artist-info {
+margin-left:162px !important;
+}
+
+<% else %><% end %>
 </style>
-<div class="row">
-<div class="span8 offset1 artist-info">
+<div class="row artist-buffer">
+<div id="artist-info">
+<div class="span9">
 <% if can? :manage, :all %>
   <div class="super-admin">
   <%= form_for @artist do |f| %>
@@ -83,6 +90,7 @@ background-repeat:repeat;
 		<%= link_to edit_artist_path(@artist) do %><i class="icon-edit"></i><% end %>
 	<% end %>
 	<h2><%= @artist.name %></h2>
+	<span class="trkrs"><%= @artist.followers %> TRKRS</span><br/>
 	<span class="tooltip-parent icon" data-title="Genre" data-placement="left">
   	<i class="icon-music"></i>
 	</span><% if @artist.genre? %><%= @artist.genre %><% else %><span class="gray">No genre set</span><% end %><br/>
@@ -92,7 +100,7 @@ background-repeat:repeat;
   <% if @artist.label_name? %><%= truncate((strip_tags @artist.label_name || "" ), :length => 50) %><% else %><span class="gray">No label set</span><% end %><br/><br/>
 <div id="artist-bio">
   <% if @artist.bio? %>
-    <%= raw(truncate((strip_tags @artist.bio || "" ), :length => 450, :omission => "...<a href='#bio-full' data-toggle='modal'>Read more</a>")) %>
+    <%= raw(truncate((strip_tags @artist.bio || "" ), :length => 415, :omission => "...<a href='#bio-full' data-toggle='modal'>Read more</a>")) %>
   <% else %>
     <span class="gray">No biography set</span>
   <% end %>
@@ -110,7 +118,8 @@ background-repeat:repeat;
 <div class="clear"></div>
 </div>
 </div>
-
+</div>
+</div>
 <!-- ARTIST TIMELINE -->
 
 <% content_for :timeline_header do %>
@@ -129,7 +138,7 @@ background-repeat:repeat;
 
 <!-- END OF ARTIST TIMELINE -->
 
-<div id="bio-full" class="modal hide">
+<div id="bio-full" class="modal hide fade">
 <div class="modal-header">
 	<h3>Biography</h3>
 	</div>

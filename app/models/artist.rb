@@ -8,7 +8,7 @@ class Artist < ActiveRecord::Base
 
   has_attached_file :image, :styles => {
     :profile => "310x369#",
-    :recommend => "202x178#",
+    :recommend => "212x178#",
     :manage => "100x100#",
     :sidebar_suggest => "50x50#"
      }

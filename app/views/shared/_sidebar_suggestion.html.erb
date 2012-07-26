@@ -5,6 +5,6 @@
 <% else %>
 <li class="each-recommend">
 <%= image_tag sidebar_suggestion.image.url :sidebar_suggest %>
-		<div><div class="a-name"><strong><%= link_to sidebar_suggestion.name, sidebar_suggestion  %></strong></div><span><%= sidebar_suggestion.followers %></span> TRKRS<br/><div class="buttons">Track - Share - Ignore</div></div>
+		<div class="info"><div class="a-name"><strong><%= link_to sidebar_suggestion.name, sidebar_suggestion  %></strong></div><span><%= sidebar_suggestion.followers %> TRKRS</span><br/><div class="buttons">Track - Share - Ignore</div></div>
 </li>
 <% end %>

@@ -99,7 +99,21 @@
 						      <li class="active"><a href="/"><i class="icon-sitemap"></i>Timeline</a></li>
 						      <li><%= link_to user_path(current_user) do %><i class="icon-user"></i>You<% end %></li>
 						      </ul>
-										  <div class="modal hide" id="feedback">
+						<% end %>
+						      
+						      <%= form_tag artists_path , :method => 'get', :class => 'navbar-search pull-left' do %>
+							  <% if !user_signed_in? %>
+							  <%= text_field_tag(:search, params[:search], :autocomplete => 'off', :placeholder => "Search artists...", :id => 'mini_search_field', :class => 'search-query search-pad-2') %>
+							  <% else %>	
+							  <%= text_field_tag(:search, params[:search], :autocomplete => 'off', :placeholder => "Search artists...", :id => 'mini_search_field', :class => 'search-query') %>
+							  <% end %><% end %>
+								<% if !user_signed_in? %><%= link_to(user_omniauth_authorize_path(:facebook)) do %><div class="facebook-login nav pull-right"><i class="icon-facebook"></i> <span>Login</span></div><% end %>
+<% else %><div class="nav pull-right inner-tools"><%= link_to(destroy_user_session_path, :method => :delete, :class => "btn btn-navbar toolbutton tooltip-parent", "data-title" => "Logout", "data-placement" => "bottom" ) do %><i class="icon-signout"></i><% end %>
+			<%= link_to edit_user_path(@user), :class => "btn btn-navbar toolbutton tooltip-parent", "data-title" => "Settings", "data-placement" => "bottom" do %><i class="icon-cog"></i><% end %><a href="#feedback" data-toggle="modal" class="btn btn-navbar toolbutton tooltip-parent" data-title="Feedback" data-placement="bottom"><i class="icon-comment"></i></a></div><% end %>
+				      			</div></div></div>	
+				      			<%= render :partial => 'shared/nav_tools' %>
+  </div></div>
+  										  <div class="modal hide" id="feedback">
 										  <div class="modal-header">
 										    <h3>Feedback</h3>
 										  </div>
@@ -115,24 +129,6 @@
 										    <% end %>
 										  </div>
 										</div>
-						<% end %>
-						      
-						      <%= form_tag artists_path , :method => 'get', :class => 'navbar-search pull-left' do %>
-							  <% if !user_signed_in? %>
-							  <%= text_field_tag(:search, params[:search], :autocomplete => 'off', :placeholder => "Search artists...", :id => 'mini_search_field', :class => 'search-query search-pad-2') %>
-							  <% else %>	
-							  <%= text_field_tag(:search, params[:search], :autocomplete => 'off', :placeholder => "Search artists...", :id => 'mini_search_field', :class => 'search-query') %>
-							  <% end %><% end %>
-								<% if !user_signed_in? %><%= link_to(user_omniauth_authorize_path(:facebook)) do %><div class="facebook-login nav pull-right"><i class="icon-facebook"></i> <span>Login</span></div><% end %>
-<% else %><div class="nav pull-right inner-tools"><%= link_to(destroy_user_session_path, :method => :delete, :class => "btn btn-navbar toolbutton") do %><i class="icon-signout"></i><% end %>
-								<a class="btn btn-navbar info-feed">
-						        <span class="icon-bar"></span>
-						        <span class="icon-bar"></span>
-						        <span class="icon-bar"></span>
-						      </a><a href="#feedback" data-toggle="modal"><div class="btn btn-navbar toolbutton tooltip-parent" data-title="Feedback" data-placement="bottom"><i class="icon-comment"></i></div></a></div><% end %>
-				      			</div></div></div>	
-				      			<%= render :partial => 'shared/nav_tools' %>
-  </div></div>
 <div class="wrapper2">
 				<div class="container content-padding">
 					<%= yield %>
