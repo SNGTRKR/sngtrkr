@@ -15,7 +15,6 @@ class UsersController < ApplicationController
 
   def timeline
     @user = current_user
-    @activities = User.recent_activities session["friends"]
 
     tl = Timeline.new(current_user.id)
     @timeline = tl.user(params[:page])

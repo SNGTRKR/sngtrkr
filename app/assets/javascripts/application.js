@@ -296,6 +296,13 @@ function artist_suggestion_replace() {
     artist_suggestion_replace();
   });
 
+  $('a.sidebar-add-trkr, a.sidebar-ignore-trkr').bind('ajax:beforeSend', function () {
+    // Hide the suggestion itself
+    $(this).closest('li').hide();
+  }).bind('ajax:success', function(xhr, data, status){
+    artist_suggestion_replace();
+  });
+
   $('a.untrk-artist').bind('ajax:beforeSend', function () {
     $(this).closest('li').fadeOut(300);
     $('#user-following-count').html(parseInt($('#user-following-count').html(), 10) - 1);
