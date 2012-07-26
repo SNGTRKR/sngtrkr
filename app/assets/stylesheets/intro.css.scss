@@ -122,7 +122,7 @@
 	text-align: center;
 	left: 0px;
 	bottom: 20px;
-	z-index: 2000;
+	z-index: 1010;
 	-moz-user-select: none;
 	-webkit-user-select: none;
 }
@@ -172,7 +172,7 @@
     $experimental-support-for-svg: true;
     @include background-image(linear-gradient(top, #F37244 0%, #F15A24 100%));
 	cursor: pointer;
-	z-index: 2000;
+	z-index: 1010;
 	opacity: 0;
 	box-shadow: 
 		1px 1px 1px rgba(0,0,0,0.1) inset, 

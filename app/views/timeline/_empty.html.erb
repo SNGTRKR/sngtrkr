@@ -1,4 +1,4 @@
-<ul id="ajax-recommended-artists">
+<ul class="ajax-recommended-artists timeline-recommendations">
 		<% if @user.suggested.count >= 4 %>
 		<%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 4] %>
 	<% else %>

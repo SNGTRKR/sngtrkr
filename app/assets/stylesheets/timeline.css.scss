@@ -10,7 +10,6 @@ $line-color: #2e708c;
 }
 .timeline-outer {
   margin-bottom: 40px;
-  margin-left:-78px;
   position:relative;
   @extend .scrollbar-timeline;
   .timeline-end{
@@ -265,5 +264,12 @@ $line-color: #2e708c;
     padding: 30px;
     margin: -$offset*0.5 auto 40px auto;
     @include border-radius(8px);
+    .empty-message {
+	    width:453px;
+	    margin-left:18px !important;
+    }
+    h1 {
+	    margin-left:18px !important;
+    }
   }
 }

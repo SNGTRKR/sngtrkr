@@ -1,32 +1,15 @@
-.recommend-top {
-	h1 {
-		width:340px;
-		
-	}
-	span {
-		width:302px;
-		line-height:1.4em;
-		margin:9px 0 0 -33px;
-		display:block;
-	}
-}
-.profile-recommend {
-	margin-top:48px;
-}
 .recommendations {
   ul {
     list-style-type:none;
-    margin:19px 0 0 0;
-    width:666px;
     .each-recommend {
     float: left;
     position:relative;
     height:178px;
-    width:202px;
+    width:212px;
     @include border-radius(8px);
     margin:0 0 42px 30px;
    .new-recommend {
-      width:202px;
+      width:212px;
       height:178px;
       @include border-radius(8px);
       @include box-shadow(0px 2px 8px rgba(0,0,0,0.45));
@@ -35,7 +18,7 @@
 	            .black-tint {
             position:absolute; 
             height:178px;
-          width:202px;
+          width:212px;
           @include border-radius(8px);
           $experimental-support-for-svg: true;
           @include background-image(linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 94%, rgba(0,0,0,1) 100%));
@@ -47,7 +30,7 @@
             text-align:center;
             line-height:1.4em;
             z-index:0;
-            width:202px;
+            width:212px;
             display:block;
             bottom:20px;
             a {
@@ -61,7 +44,7 @@
 	      position:absolute;
 	      z-index:1;
 	      top:0px;
-	      width:202px;
+	      width:212px;
 	      height:178px;
 	      @include border-radius(8px);
 	      background:rgba(0,0,0,0.75);
@@ -70,7 +53,7 @@
           .share-artist {
 	      position:absolute;
 	      height:178px;
-	      width:202px;
+	      width:212px;
 	      z-index:2;
 	      right:-202px;
 	      top:17px;
@@ -139,5 +122,12 @@ span {
 	@extend .button;
 	float: right;
 	margin:-3px 33px 31px 0;
+}
+.profile-recommendations {
+	    margin:-80px 0 0 -28px;
+	    width:730px;
+}
+.timeline-recommendations {
+	margin-left:-11px;
 }
 }

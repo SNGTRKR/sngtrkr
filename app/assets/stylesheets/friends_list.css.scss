@@ -50,7 +50,7 @@ margin-bottom:26px;
     margin-left:-20px;
     position:relative;
     li {
-      width:199px;
+      width:209px;
       height:38px;
       padding:26px 10px 26px 0px;
       margin:0 0 20px 20px;
@@ -82,7 +82,7 @@ margin-bottom:26px;
 	      font-weight:bold;
 	      @extend .font-13;
       }
-      span {
+      .friend-trkr-no {
 	      @extend .orange-txt;
 	      @extend .instruct-font;
       }

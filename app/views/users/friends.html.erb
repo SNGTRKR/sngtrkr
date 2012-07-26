@@ -14,7 +14,7 @@
 				<div class="friends-image" style="background-image:url(<%= "//graph.facebook.com/"+friend.fbid+"/picture?type=normal" %>);background-repeat:no-repeat;background-position:center;"></div>
 				<div class="friends-info">
 					<%= link_to(friend) do %><h3 class="name"><%= friend.first_name + " " + friend.last_name %></h3><% end %>
-					<span><%= Follow.where('user_id = ?',friend.id).count %> TRKINGS</span>
+					<span class="friend-trkr-no"><%= Follow.where('user_id = ?',friend.id).count %> TRKINGS</span>
 				</div>
 			</li>
 			<% end %>

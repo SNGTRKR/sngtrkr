@@ -36,6 +36,8 @@
 	#activity-stream {
 		ul {
 			margin:2px 0 10px 0;
+			height:250px;
+			overflow-y:scroll;
 		}
 	}
 	#recommendations {
