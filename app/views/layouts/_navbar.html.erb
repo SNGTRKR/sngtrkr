@@ -13,25 +13,9 @@
 						      <%= image_tag "/images/logo-45.png" %></a>
 						      <% if !user_signed_in? %><% else %>
 						      <ul class="nav pull-left">
-						      <li class="active"><a href="/"><i class="icon-sitemap"></i>Timeline</a></li>
-						      <li><%= link_to user_path(current_user) do %><i class="icon-user"></i>You<% end %></li>
+						      <li class=""><a href="/"><i class="icon-sitemap"></i>Timeline</a></li>
+						      <li class=""><%= link_to user_path(current_user) do %><i class="icon-user"></i>You<% end %></li>
 						      </ul>
-										  <div class="modal hide" id="feedback">
-										  <div class="modal-header">
-										    <h3>Feedback</h3>
-										  </div>
-										  <div class="modal-body">
-										  <p>We love feedback. Feel free to tell us what you think of the site or report a bug!</p>
-										    <%= form_for Feedback.new, :remote => true do |f| %>
-													<%= f.text_area :feedback, :id => "fedbox", :rows => 4, :placeholder => "Tell us what you think..." %>
-										  </div>
-										  <div class="modal-footer">
-										  <%= f.submit "Submit", :id => 'ajax-feedback-submit-button' %>
-										    <div class="cancel" data-dismiss="modal">Cancel</div>
-										    
-										    <% end %>
-										  </div>
-										</div>
 						<% end %>
 						      
 						      <%= form_tag artists_path , :method => 'get', :class => 'navbar-search pull-left' do %>
@@ -50,3 +34,19 @@
 				      			</div></div></div>
 				      			<%= render :partial => 'shared/nav_tools' %>	
   </div></div>
+  <div class="modal hide fade" id="feedback">
+										  <div class="modal-header">
+										    <h3>Feedback</h3>
+										  </div>
+										  <div class="modal-body">
+										  <p>We love feedback. Feel free to tell us what you think of the site or report a bug!</p>
+										    <%= form_for Feedback.new, :remote => true do |f| %>
+													<%= f.text_area :feedback, :id => "fedbox", :rows => 4, :placeholder => "Tell us what you think..." %>
+										  </div>
+										  <div class="modal-footer">
+										  <%= f.submit "Submit", :id => 'ajax-feedback-submit-button' %>
+										    <div class="cancel" data-dismiss="modal">Cancel</div>
+										    
+										    <% end %>
+										  </div>
+										</div>

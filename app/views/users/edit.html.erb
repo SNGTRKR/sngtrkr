@@ -81,11 +81,11 @@
 			<p>Your account, tracked artists and all personal details will be permanently removed.</p>
 				<span><a href="#delete-confirmation" data-toggle="modal">Delete Account</a></span>
 		</div></div></div></div>
-	<div class="modal hide" id="delete-confirmation">
+	<div class="modal hide fade" id="delete-confirmation">
 		<%= render :partial => 'delete_confirm' %>
 	</div>
 	<% if @user.manager? %>
-	<div class="modal hide" id="unmanage-confirmation">
+	<div class="modal hide fade" id="unmanage-confirmation">
   	<%= render :partial => 'unmanage_confirm' %>
 	</div>
 	<% end %>
