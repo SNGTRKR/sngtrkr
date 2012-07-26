@@ -36,6 +36,36 @@
 		<a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 		
 		<div id="wrapper">
+					<% if !user_signed_in? %><% else %>
+			<script type="text/javascript">
+			function hideDiv(){
+
+			    if ($(window).width() < 1039) {
+		            $(".container").css("width", "700");
+		            $(".search-query").addClass("search-pad");
+		            $(".outer-tools").hide();
+		            $(".inner-tools").show();
+			            
+			    }else{
+			        $(".container").css("width", "980");
+			        $(".search-query").removeClass("search-pad");
+			        $(".inner-tools").hide();
+			        $(".outer-tools").show();
+			    }
+			
+			}
+			$(document).ready(function () {
+					//sidebar
+					  //on load
+					    hideDiv();
+					
+					    //on resize
+					    $(window).resize(function(){
+					        hideDiv();
+					    });
+		    });
+		    </script>
+		    <% end %>
 		<!-- <%= image_tag "/images/beta.png", :alt => "BETA", :id => "beta-corner" %> -->
 		<% if flash[:notice] or flash[:error] or flash[:success] %>
   		<div class="flash-outer <% if flash[:success] then %>flash-outer-success<% end %>" <% if flash[:disappear_after] then %>data-disappear-after="<%= flash[:disappear_after] %>"<% end %>>
@@ -101,6 +131,7 @@
 						        <span class="icon-bar"></span>
 						      </a><a href="#feedback" data-toggle="modal"><div class="btn btn-navbar toolbutton tooltip-parent" data-title="Feedback" data-placement="bottom"><i class="icon-comment"></i></div></a></div><% end %>
 				      			</div></div></div>	
+				      			<%= render :partial => 'shared/nav_tools' %>
   </div></div>
 <div class="wrapper2">
 				<div class="container content-padding">
