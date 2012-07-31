@@ -11,7 +11,6 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!, :except => [:splash,:home,:sitemap]
   before_filter :timer_start
   before_filter :define_user
-  before_filter :sidebar_variables
   
   #check_authorization  :unless => :devise_controller? # Breaks rails admin
 
@@ -20,14 +19,12 @@ class ApplicationController < ActionController::Base
         @user = current_user
         @app_friends = []
         @app_friends = session["friends"]
+        @activities = User.recent_activities session["friends"]
       else
+        @activities = []
         @user = nil
       end
   end  
-
-  def sidebar_variables    
-    @activities = User.recent_activities session["friends"]
-  end
 
   # This action is to ensure a user cannot simply hack a URL to view another user's area
   def self_only
