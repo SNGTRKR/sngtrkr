@@ -39,12 +39,6 @@ String.prototype.commafy = function () {
 Number.prototype.commafy = function () {
   return String(this).commafy();
 }
-function sectionsize() {
-		actrecheight = $("#recommendations").height();
-		actsideheight = $("#sidebar").height();
-		actheight = actsideheight - actrecheight;
-		$("#activity-stream ul").css("height", actheight );
-}
 
 $(document).ready(function () { 
 //Facebook login 
@@ -52,11 +46,6 @@ $(document).ready(function () {
     $('.facebook-login > span').html('Logging in...');
     $(this).addClass('fb-disabled');
   });
-//sidebar sectioning 
-sectionsize();
-$(window).resize(function(){
-					        sectionsize();
-					    });
 	//loading 
 	var angle = 0;
 setInterval(function(){

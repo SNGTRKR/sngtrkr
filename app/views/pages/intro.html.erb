@@ -13,7 +13,7 @@ content_for :og_type, "website"
 				<div class="da-slide">
 					<h2>Welcome</h2>
 					<p>Congratulations on becoming a member of SNGTRKR beta release! We would like to take a moment to help you understand <strong>how to use our site</strong> and help you with any potential issues you may encounter. In a few moments you'll be discovering, listening to and embracing new music!</p>
-					<div class="da-img"><img src="/images/slider/5.png" alt="Welcome"" /></div>
+					<div class="da-img"><img src="/images/slider/1.png" alt="Welcome"" /></div>
 				</div>
 				<div class="da-slide">
 					<h2>Getting Started</h2>
@@ -22,10 +22,9 @@ content_for :og_type, "website"
 		<% if @user.suggested.count >= 4 %>
 		<%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 2] %>
 	<% else %>
-		<div class="loading load-timeline">
+		<div class="loading">
 		<h3>Please wait...</h3>
 		<%= image_tag "/images/loading.png", :id => "loading-icon" %><br/>
-		<p>...while we work our magic and find which artists you?ve already liked on Facebook.</p>
 		</div>		  
 		<% end %>
 </ul>
