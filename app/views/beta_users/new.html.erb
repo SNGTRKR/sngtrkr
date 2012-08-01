@@ -32,10 +32,14 @@ content_for :og_type, "website"
 <div class="span12">
 <div id="featured" >
 		  <ul class="ui-tabs-nav">
-		  	<% @latest_releases.each do |release| %>
-	        <li class="ui-tabs-nav-item ui-tabs-selected" id="nav-fragment-1"><a href="#fragment-1" id="arrow-first">
+		  	<% @latest_releases.each_with_index do |release, i| %>
+	        <li class="ui-tabs-nav-item ui-tabs-selected" id="nav-fragment-<%= (i+1) %>">
+	        	<a href="#fragment-<%= (i+1) %>" <% if release == @latest_releases.first %> id="arrow-first" 
+	        		<% elsif release == @latest_releases.last %> id="arrow-last" <% end %>>
 	        	<h3><%= release.artist.name %> - <%= release.name %></h3>
-	        	<p>Released on <%= release.date.strftime("#{release.date.day.ordinalize} %B") %></p></a></li>
+	        	<p>Released on <%= release.date.strftime("#{release.date.day.ordinalize} %B") %></p>
+		        </a>
+		    </li>
 	        <% end %>
 	      </ul>
 
@@ -43,7 +47,7 @@ content_for :og_type, "website"
 	    <!-- <%= (i+1).ordinalize %> Content -->
 	    <% if i==0 then c = "ui-tabs-panel" else c = "ui-tabs-panel ui-tabs-hide" end %>
 	    <div id="fragment-<%= (i+1) %>" class="<%= c %>" style="">
-		    <div class="release" style="background-image:url(<%= release.image %>);"></div>
+		    <div class="release" style="background-image:url(<%= release.image :release_i %>);"></div>
 			<div class="artist" style="background-image:url(<%= release.artist.image %>);">
 				<div class="info" >
 				<h4><%= link_to "#{release.artist.name} - #{release.name}", [release.artist, release] %></h4>
