@@ -44,10 +44,10 @@ SNGTRKR::Application.configure do
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
 
-  config.middleware.use ExceptionNotifier,
-      :email_prefix => "[SNGTRKR DEV EXCEPTION] ",
-      :sender_address => %{"notifier" <notifier@sngtrkr.com>},
-      :exception_recipients => %w{bessey@gmail.com}
+  #config.middleware.use ExceptionNotifier,
+  #    :email_prefix => "[SNGTRKR DEV EXCEPTION] ",
+  #    :sender_address => %{"notifier" <notifier@sngtrkr.com>},
+  #    :exception_recipients => %w{bessey@gmail.com}
 
 end
 

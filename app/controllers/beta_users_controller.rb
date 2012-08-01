@@ -5,7 +5,6 @@ class BetaUsersController < ApplicationController
   before_filter :authenticate_user!, :except => [:create, :new]
   def index
     @beta_users = BetaUser.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @beta_users }
@@ -16,6 +15,7 @@ class BetaUsersController < ApplicationController
   # GET /beta_users/new.json
   def new
     @beta_user = BetaUser.new
+    @latest_releases = Release.order("date DESC").limit(4).all
 
     respond_to do |format|
       format.html

@@ -32,56 +32,30 @@ content_for :og_type, "website"
 <div class="span12">
 <div id="featured" >
 		  <ul class="ui-tabs-nav">
-	        <li class="ui-tabs-nav-item ui-tabs-selected" id="nav-fragment-1"><a href="#fragment-1" id="arrow-first"><h3>The Others - The Way You Make Me</h3><p>Released on 30th July 2012</p></a></li>
-	        <li class="ui-tabs-nav-item" id="nav-fragment-2"><a href="#fragment-2"><div class="arrow-right"></div><h3>Redlight - Get Out My Head</h3><p>Released on 22nd January 2012</p></a></li>
-	        <li class="ui-tabs-nav-item" id="nav-fragment-3"><a href="#fragment-3"><h3>Dismantle - The Warp EP</h3><p>Released on 15th July 2012</p></a></li>
-	        <li class="ui-tabs-nav-item" id="nav-fragment-4"><a href="#fragment-4" id="arrow-last"><h3>J:Kenzo - Invaderz/Depth Charge</h3><p>Released on 23rd July 2012</p></a></li>
+		  	<% @latest_releases.each do |release| %>
+	        <li class="ui-tabs-nav-item ui-tabs-selected" id="nav-fragment-1"><a href="#fragment-1" id="arrow-first">
+	        	<h3><%= release.artist.name %> - <%= release.name %></h3>
+	        	<p>Released on <%= release.date.strftime("#{release.date.day.ordinalize} %B") %></p></a></li>
+	        <% end %>
 	      </ul>
 
-	    <!-- First Content -->
-	    <div id="fragment-1" class="ui-tabs-panel" style="">
-	    <div class="release"></div>
-			<div class="artist">
+	    <% @latest_releases.each_with_index do |release, i| %>
+	    <!-- <%= (i+1).ordinalize %> Content -->
+	    <% if i==0 then c = "ui-tabs-panel" else c = "ui-tabs-panel ui-tabs-hide" end %>
+	    <div id="fragment-<%= (i+1) %>" class="<%= c %>" style="">
+		    <div class="release" style="background-image:url(<%= release.image %>);"></div>
+			<div class="artist" style="background-image:url(<%= release.artist.image %>);">
 				<div class="info" >
-				<h4><a href="#" >The Others - The Way You Make Me</a></h4>
-				<p>Released on Dub Police Recordings 30th July 2012</p>
+				<h4><%= link_to "#{release.artist.name} - #{release.name}", [release.artist, release] %></h4>
+				<p>Released on <%= release.date.strftime("#{release.date.day.ordinalize} %B") %>
+					<% if release.label_name? %>
+						on <%= release.label_name %>
+					<% end %>
+				</p>
 			 </div>
 			</div>			 
 	    </div>
-
-	    <!-- Second Content -->
-	    <div id="fragment-2" class="ui-tabs-panel ui-tabs-hide" style="">
-				    <div class="release"></div>
-			<div class="artist">
-				<div class="info" >
-				<h4><a href="#" >Redlight - Get Out My Head</a></h4>
-				<p>Released on Universal Music India Ltd 22nd January 2012</p>
-			 </div>
-			</div>	
-	    </div>
-
-	    <!-- Third Content -->
-	    <div id="fragment-3" class="ui-tabs-panel ui-tabs-hide" style="">
-				    <div class="release"></div>
-			<div class="artist">
-				<div class="info" >
-				<h4><a href="#" >Dismantle - The Warp EP</a></h4>
-				<p>Released on Digital Soundboy Recordings Ltd 15th July 2012</p>
-			 </div>
-			</div>	
-	    </div>
-
-	    <!-- Fourth Content -->
-	    <div id="fragment-4" class="ui-tabs-panel ui-tabs-hide" style="">
-				    <div class="release"></div>
-			<div class="artist">
-				<div class="info" >
-				<h4><a href="#" >J:Kenzo - Invaderz/Depth Charge</a></h4>
-				<p>Released on Tempa 23rd July 2012</p>
-			 </div>
-			</div>	
-	    </div>
-
+	    <% end %>
 		</div>
 	</div>
 </div>
