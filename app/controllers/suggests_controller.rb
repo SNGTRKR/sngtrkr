@@ -14,11 +14,14 @@ class SuggestsController < ApplicationController
   def destroy
     current_user.unsuggest_artist params[:artist_id]
     @artist = current_user.suggested[5] rescue nil
-    @artis
     respond_to do |format|
       format.html { render "artists/ajax_suggestion", :layout => false }
-      format.json {  render :json => {:artist => @artist, 
-          :image_url => @artist.image.url(:sidebar_suggest), :followers => @artist.followed_users.count}  }
+      if @artist
+        format.json { render :json => {:artist => @artist, 
+          :image_url => @artist.image.url(:sidebar_suggest), :followers => @artist.followed_users.count} }
+      else
+        format.json { render :nothing => true }
+      end
     end
   end
 
