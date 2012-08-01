@@ -109,7 +109,7 @@ margin-left:162px !important;
   <ul class="menu-user">
   <li class="buy-profile"><i class="icon-shopping-cart"></i>Buy</li>
   <li class="share-profile"><i class="icon-share-alt"></i>Share</li>
-  <% if current_user.following? @artist.id %><li class="ajax-artist-track"><%= render :partial => 'shared/trk_artist', :object => @artist %><% else %><li class="popover-parent ajax-artist-track" data-title="Add TRKR" 
+  <% if user_signed_in? and current_user.following? @artist.id %><li class="ajax-artist-track"><%= render :partial => 'shared/trk_artist', :object => @artist %><% else %><li class="popover-parent ajax-artist-track" data-title="Add TRKR" 
 	<% if !user_signed_in? %><%=raw 'data-content="You must login before you can start tracking artists."' %><% end %>
     data-content="Keep up to date with <%= @artist.name %> and their releases, by adding them to your tracking timeline." >
     <%= render :partial => 'shared/trk_artist', :object => @artist %><% end %></li>
