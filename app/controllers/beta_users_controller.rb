@@ -15,7 +15,8 @@ class BetaUsersController < ApplicationController
   # GET /beta_users/new.json
   def new
     @beta_user = BetaUser.new
-    @latest_releases = Release.order("date DESC").limit(4).all
+    top_artists = Artist.limit(1000).popular
+    @latest_releases = Release.order("date DESC").where(:artist_id => top_artists).limit(4)
 
     respond_to do |format|
       format.html

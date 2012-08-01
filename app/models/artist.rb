@@ -32,6 +32,18 @@ class Artist < ActiveRecord::Base
   def self.ordered
     order('name')
   end
+
+  def self.popular
+    if Rails.env.production?
+      count = 5
+    else
+      count = 1
+    end
+    artists_with_followers = Artist.find(:all, :select => 'artists.*, count(follows.id) as follow_count',
+             :joins => 'left outer join follows on follows.artist_id = artists.id',
+             :group => 'artists.id',
+             :having => "follow_count >= #{count}")
+  end
   
   def self.popularity 
     order('updated_at DESC')
