@@ -17,8 +17,20 @@ content_for :og_type, "website"
 				</div>
 				<div class="da-slide">
 					<h2>Getting Started</h2>
-					<p>Right from the start SNGTRKR will supply artist suggestions, based on your facebook likes so you can quickly fill your timeline. Tracking a new artist could not be easier; you simply use the <strong>search tools</strong> provided to discover new and exciting content.</p>
-					<div class="da-img"><img src="/images/slider/1.png" alt="Getting Started" /></div>
+					<p>Right from the start SNGTRKR will supply artist suggestions, based on your facebook likes so you can quickly fill your timeline. Tracking a new artist could not be easier; you simply use the <strong>search tools</strong> provided.<br/><br/><strong>Start adding artists now!</strong></p>
+					<div class="da-img"><div class="recommendations"><ul class="ajax-recommended-artists intro-recommendations">
+		<% if @user.suggested.count >= 4 %>
+		<%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 2] %>
+	<% else %>
+		<div class="loading load-timeline">
+		<h3>Please wait...</h3>
+		<%= image_tag "/images/loading.png", :id => "loading-icon" %><br/>
+		<p>...while we work our magic and find which artists you?ve already liked on Facebook.</p>
+		</div>		  
+		<% end %>
+</ul>
+<div class="clear"></div>
+					</div></div>
 				</div>
 				<div class="da-slide">
 					<h2>Timeline</h2>
@@ -43,10 +55,11 @@ content_for :og_type, "website"
 			</div>
 		<script type="text/javascript">
 			$(function() {
-			
 				$('#da-slider').cslider();
-				
 			});
+			  $(document).ready(function(){
+			    artist_suggestion_replace();
+			  });
 		</script>	
 <div class="wrapper2">
 <div class="container">

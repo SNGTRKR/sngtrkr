@@ -16,42 +16,6 @@ content_for :og_type, "website"
 <div class="row"><div class="span12">
 <div class="row">
 <div class="span5">
-<!--<canvas id="canvasId" width="320px" height="60px"></canvas>
-</canvas>
-<script type="text/javascript">
-var context = document.getElementById("canvasId").getContext("2d");
-var width = 320; // Triangle Width
-var height = 60; // Triangle Height
-
-var cornerRadius = 20;
-// Draw a path
-context.beginPath();
-context.moveTo(75,0);
-context.lineTo(width,0);
-context.lineTo(width,height);
-context.lineTo(75,height);
-context.lineTo(35,height/2);
-context.closePath();
-
-
-
-var gradient = context.createLinearGradient(0, 0, 0, height);
-gradient.addColorStop(0, "#F37244");
-gradient.addColorStop(1, "#F15A24");
-
-
-//context.stroke();
-context.lineWidth = 20;
-context.lineJoin = "round";	
-context.strokeStyle = gradient;
-context.stroke();
-
-
-// Fill the path
-context.fillStyle = gradient;
-context.fill();
-
-</script> -->
 	<h1 class="home-header">Sign up free now to receive an exclusive BETA invite...</h1>
 	<p class="home-txt-1">We will be releasing invites in waves; the next wave will be <strong>23rd July</strong>. You will be notified when you can log in. </p>
 	<div id="beta-form">
@@ -65,7 +29,7 @@ context.fill();
 	<%= image_tag "/images/home.png", :alt => "Macbook", :id => "home-macbook" %>
 </div></div>
 <div class="row">
-<div class="span10">
+<div class="span12">
 <div id="featured" >
 		  <ul class="ui-tabs-nav">
 	        <li class="ui-tabs-nav-item ui-tabs-selected" id="nav-fragment-1"><a href="#fragment-1" id="arrow-first"><h3>The Others - The Way You Make Me</h3><p>Released on 30th July 2012</p></a></li>
@@ -138,8 +102,4 @@ context.fill();
 <div class="clear"></div>
 	</div></div>
 </div></div></div></div>
-<script type="text/javascript">
-$(document).ready(function() {
-  $('.fb-home-login').click(function(){ $('.fb-home-login > span').html('Logging in...'); }); });
-</script>
 
