@@ -57,7 +57,12 @@ class Release < ActiveRecord::Base
   end
 
   def self.daily_release
-    Artist.where(:ignore => false).each do |artist|
+    if Rails.env.production?
+      rand = "RAND()"
+    else
+      rand = "RANDOM()"
+    end
+    Artist.where(:ignore => false).order(rand).each do |artist|
       ReleaseJob.perform_async(artist.id)
     end
   end

@@ -85,4 +85,11 @@ SNGTRKR::Application.configure do
 	  :openssl_verify_mode => 'none'
 	}
 
+
+  config.middleware.use ExceptionNotifier,
+      :email_prefix => "[SNGTRKR EXCEPTION] ",
+      :sender_address => %{"notifier" <notifier@sngtrkr.com>},
+      :exception_recipients => %w{bessey@gmail.com}
+
+
 end

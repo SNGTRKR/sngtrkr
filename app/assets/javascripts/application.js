@@ -26,6 +26,10 @@
 //= require scrollbar/jquery.jscrollpane.min.js
 //= require scrollbar/jquery.mousewheel.js
 //= require scrollbar/scroll-startstop.events.jquery.js
+
+// Matt's requires
+//= require ajax-replacements
+
 String.prototype.commafy = function () {
   return this.replace(/(^|[^\w.])(\d{4,})/g, function ($0, $1, $2) {
     return $1 + $2.replace(/\d(?=(?:\d\d\d)+(?!\d))/g, "$&,");
@@ -59,6 +63,11 @@ setInterval(function(){
       angle+=3;
      $("#loading-icon").rotate(angle);
 },25);
+
+  
+  artist_suggestion_replace();
+  
+
   // Flash Dismissal
   $('.flash-outer').delay(300).slideDown(500, 'easeInQuad');
   $('.flash-close').click(function () {
@@ -314,8 +323,10 @@ function artist_suggestion_replace() {
 
   $('a.sidebar-add-trkr, a.sidebar-ignore-trkr').bind('ajax:beforeSend', function () {
     // Hide the suggestion itself
-    $(this).closest('li').hide();
+    $(this).closest('li').css("opacity",0.3);
   }).bind('ajax:success', function(xhr, data, status){
+    $(this).closest('li').replaceWith(sidebar_new_suggestion(data)); 
+    // Reactivate click functionality for new suggestion
     artist_suggestion_replace();
   });
 
