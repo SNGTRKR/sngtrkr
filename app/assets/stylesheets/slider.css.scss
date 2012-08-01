@@ -56,7 +56,7 @@
 			width:240px;
 			position:absolute;
 			left:0px; top:0px;
-			background:url('/images/redlight3.png');
+			background-size: cover;
 			background-repeat:no-repeat;
 			@include border-top-left-radius(10px);
 			@include border-bottom-left-radius(10px);
@@ -66,7 +66,7 @@
 		width:421px;
 		position:absolute;
 		top:0px; right:0px;
-		background:url('/images/redlight4.png');
+		background-size: cover;
 		background-repeat:no-repeat;
 		.info {
 			position:absolute; 
