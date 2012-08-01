@@ -49,6 +49,7 @@ gem 'amazon-ecs'
 
 # ADMIN
 gem 'rails_admin'
+gem "exception_notification", :git => "http://github.com/rails/exception_notification.git", :branch => "master", :require => 'exception_notifier'
 
 # in production environments by default.
 gem 'compass-rails', '>= 1.0.0.rc.2'

@@ -1,23 +1,24 @@
 var page, old_width, new_width
-$(document).ready(function () {
-  // Scroll to end of timeline
-  // Set global AJAX load variable
-  var last_load = new Date().getTime();;
-  
-  page = 2
-  // Ajax scroll load
-  
-  $(document).scroll(function () {
-    if ($(this).scrollTop() > ($(this).height() - 1500) && (new Date().getTime() - last_load) > 1000) {
-      last_load = new Date().getTime();;
-      $(this).trigger('mouseup');
-      console.log("Mouseup");
-      $.get('/users/me/timeline/' + page);
-      page++;
-    }
+function timeline_scroll() {
+  $(document).ready(function () {
+    // Scroll to end of timeline
+    // Set global AJAX load variable
+    var last_load = new Date().getTime();;
+    
+    page = 2
+    // Ajax scroll load
+    
+    $(document).scroll(function () {
+      if ($(this).scrollTop() > ($(this).height() - 1500) && (new Date().getTime() - last_load) > 1000) {
+        last_load = new Date().getTime();;
+        $(this).trigger('mouseup');
+        console.log("Mouseup");
+        $.get('/users/me/timeline/' + page);
+        page++;
+      }
+    });
   });
-  timeline_setup();
-});
+}
 
 function timeline_widths() {
   // Width setting

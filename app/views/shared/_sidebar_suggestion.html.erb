@@ -10,9 +10,11 @@
 				<strong><%= link_to sidebar_suggestion.name, sidebar_suggestion  %></strong>
 			</div>
 			<span><%= sidebar_suggestion.followers %> TRKRS</span><br/>
-			<div class="buttons"><%= link_to 'Track', artist_follows_path(sidebar_suggestion), :remote => true, :class => 'sidebar-add-trkr', :method => :post %> - 
-				Share - 
-				<%= link_to 'Ignore', artist_unsuggest_path(sidebar_suggestion), :remote => true, :class => 'sidebar-ignore-trkr' %></div>
+			<div class="buttons"><%= link_to 'Track', artist_follows_path(sidebar_suggestion, :format => :json), 
+				:remote => true, :class => 'sidebar-add-trkr', :method => :post %> 
+				<!-- - Share --> - 
+				<%= link_to 'Ignore', artist_unsuggest_path(sidebar_suggestion, :format => :json), :remote => true, :class => 'sidebar-ignore-trkr' %></div>
 		</div>
 </li>
+
 <% end %>

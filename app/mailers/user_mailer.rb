@@ -61,6 +61,13 @@ class UserMailer < ActionMailer::Base
   
   def daily_releases
     new_releases_deliver(1)
+
+    # Notify Matt that the Cron job ran
+    mail(:to => "bessey@gmail.com", :subject => '[SNGTRKR Cron] Successfully ran.') do |format|
+      format.text do
+        render :text => 'The Cronjob has run as expected'
+      end
+    end
   end
 
   def weekly_releases
