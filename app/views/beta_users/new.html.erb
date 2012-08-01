@@ -33,6 +33,7 @@ content_for :og_type, "website"
 <div id="featured" >
 		  <ul class="ui-tabs-nav">
 		  	<% @latest_releases.each do |release| %>
+		  	
 	        <li class="ui-tabs-nav-item ui-tabs-selected" id="nav-fragment-1"><a href="#fragment-1" id="arrow-first">
 	        	<h3><%= release.artist.name %> - <%= release.name %></h3>
 	        	<p>Released on <%= release.date.strftime("#{release.date.day.ordinalize} %B") %></p></a></li>
