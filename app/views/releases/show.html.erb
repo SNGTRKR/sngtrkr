@@ -1,6 +1,12 @@
-
+<% content_for :og_name, @release.name	
+content_for :og_url, request.url	
+content_for :og_image, File.join(root_url , @release.image.url(:release_i))	
+content_for :og_description, @release.name + " by " + @artist.name + ". Released " + @release.date.strftime("#{@release.date.day.ordinalize} %B %Y ") + " by " + @release.label_name	
+content_for :og_id, @release.id.to_s	
+content_for :og_type, "sngtrkr:release"	
+%>
 <% content_for :title do %><%= @release.name %> release information by <%= @artist.name %><% end %>
-<% content_for :description do %><%= @release.name %> release information by <%= @artist.name %>. Releasd <%= @release.date.strftime("#{@release.date.day.ordinalize} %B %Y ") %> by <%= @release.label_name %> <% end %>
+<% content_for :description do %><%= @release.name %> release information by <%= @artist.name %>. Released <%= @release.date.strftime("#{@release.date.day.ordinalize} %B %Y ") %> by <%= @release.label_name %> <% end %>
 <% if !user_signed_in? %>
 <style type="text/css">
 #artist-release {
@@ -38,7 +44,7 @@ margin-left:162px!important;
 <div id="release-image" style="background-image:url(<%= @release.image :release_i %>);background-repeat:no-repeat;background-position:center;">
 <% if @manager %>
   <i class="icon-edit"></i>
-  <div id="release-image-options">
+  <div id="release-image-options">../beta_users/show.html.erb
   <i class="icon-remove"></i>
     <% if !@release.image? %>
         <%= form_for [@artist,@release] do |f| %> 

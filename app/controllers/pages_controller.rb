@@ -31,7 +31,7 @@ class PagesController < ApplicationController
   end
   
   def limbo
-  render :layout => 'no_sidebar'
+  render :layout => 'no_response'
   end
   
   def intro 
