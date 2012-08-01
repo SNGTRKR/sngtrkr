@@ -107,7 +107,7 @@
 	          height:25px;
 	          width:138px;
 	          top:165px;
-	          left:39px;
+	          left:44px;
 	          z-index:3;
 	          a {
 	            color:#fff;
@@ -118,10 +118,6 @@
           }
    }
   }
-span {
-	@extend .button;
-	float: right;
-	margin:-3px 33px 31px 0;
 }
 .profile-recommendations {
 	    margin:-80px 0 0 -28px;
@@ -130,4 +126,7 @@ span {
 .timeline-recommendations {
 	margin-left:-11px;
 }
+.intro-recommendations{
+margin:35px 0 0;
+width:424px;
 }

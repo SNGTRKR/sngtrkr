@@ -43,6 +43,11 @@ function sectionsize() {
 }
 
 $(document).ready(function () { 
+//Facebook login 
+  $('.facebook-login').click(function(){
+    $('.facebook-login > span').html('Logging in...');
+    $(this).addClass('fb-disabled');
+  });
 //sidebar sectioning 
 sectionsize();
 $(window).resize(function(){
