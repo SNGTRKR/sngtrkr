@@ -6,9 +6,52 @@ content_for :og_type, "website"
 %>
 <% content_for :title do %>Track your favourite artists and never miss another release...<% end %>
 <% content_for :description do %>Sign up free now to receive an exclusive beta release invite and get the latest updates. Login with Facebook to find artists you like. Listen to & buy tracks, with an easy to use timeline. Free notifications when artists release new tracks.<% end %>
-<div class="row"><div class="span10 offset1">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" ></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.5.3/jquery-ui.min.js" ></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#featured > ul").tabs({fx:{opacity: "toggle"}}).tabs("rotate", 5000, true);
+	});
+</script>
+<div class="row"><div class="span12">
 <div class="row">
 <div class="span5">
+<!--<canvas id="canvasId" width="320px" height="60px"></canvas>
+</canvas>
+<script type="text/javascript">
+var context = document.getElementById("canvasId").getContext("2d");
+var width = 320; // Triangle Width
+var height = 60; // Triangle Height
+
+var cornerRadius = 20;
+// Draw a path
+context.beginPath();
+context.moveTo(75,0);
+context.lineTo(width,0);
+context.lineTo(width,height);
+context.lineTo(75,height);
+context.lineTo(35,height/2);
+context.closePath();
+
+
+
+var gradient = context.createLinearGradient(0, 0, 0, height);
+gradient.addColorStop(0, "#F37244");
+gradient.addColorStop(1, "#F15A24");
+
+
+//context.stroke();
+context.lineWidth = 20;
+context.lineJoin = "round";	
+context.strokeStyle = gradient;
+context.stroke();
+
+
+// Fill the path
+context.fillStyle = gradient;
+context.fill();
+
+</script> -->
 	<h1 class="home-header">Sign up free now to receive an exclusive BETA invite...</h1>
 	<p class="home-txt-1">We will be releasing invites in waves; the next wave will be <strong>23rd July</strong>. You will be notified when you can log in. </p>
 	<div id="beta-form">
@@ -18,23 +61,82 @@ content_for :og_type, "website"
        <% end %>
    </div>
 </div>
-<div class="span5">
-	<%= image_tag "/images/macbook.png", :alt => "Macbook", :id => "home-macbook" %>
+<div class="span7">
+	<%= image_tag "/images/home.png", :alt => "Macbook", :id => "home-macbook" %>
 </div></div>
 <div class="row">
 <div class="span10">
-<ul id="home-points">
-	<li><h2>Find artists you like</h2>
+<div id="featured" >
+		  <ul class="ui-tabs-nav">
+	        <li class="ui-tabs-nav-item ui-tabs-selected" id="nav-fragment-1"><a href="#fragment-1" id="arrow-first"><h3>The Others - The Way You Make Me</h3><p>Released on 30th July 2012</p></a></li>
+	        <li class="ui-tabs-nav-item" id="nav-fragment-2"><a href="#fragment-2"><div class="arrow-right"></div><h3>Redlight - Get Out My Head</h3><p>Released on 22nd January 2012</p></a></li>
+	        <li class="ui-tabs-nav-item" id="nav-fragment-3"><a href="#fragment-3"><h3>Dismantle - The Warp EP</h3><p>Released on 15th July 2012</p></a></li>
+	        <li class="ui-tabs-nav-item" id="nav-fragment-4"><a href="#fragment-4" id="arrow-last"><h3>J:Kenzo - Invaderz/Depth Charge</h3><p>Released on 23rd July 2012</p></a></li>
+	      </ul>
+
+	    <!-- First Content -->
+	    <div id="fragment-1" class="ui-tabs-panel" style="">
+	    <div class="release"></div>
+			<div class="artist">
+				<div class="info" >
+				<h4><a href="#" >The Others - The Way You Make Me</a></h4>
+				<p>Released on Dub Police Recordings 30th July 2012</p>
+			 </div>
+			</div>			 
+	    </div>
+
+	    <!-- Second Content -->
+	    <div id="fragment-2" class="ui-tabs-panel ui-tabs-hide" style="">
+				    <div class="release"></div>
+			<div class="artist">
+				<div class="info" >
+				<h4><a href="#" >Redlight - Get Out My Head</a></h4>
+				<p>Released on Universal Music India Ltd 22nd January 2012</p>
+			 </div>
+			</div>	
+	    </div>
+
+	    <!-- Third Content -->
+	    <div id="fragment-3" class="ui-tabs-panel ui-tabs-hide" style="">
+				    <div class="release"></div>
+			<div class="artist">
+				<div class="info" >
+				<h4><a href="#" >Dismantle - The Warp EP</a></h4>
+				<p>Released on Digital Soundboy Recordings Ltd 15th July 2012</p>
+			 </div>
+			</div>	
+	    </div>
+
+	    <!-- Fourth Content -->
+	    <div id="fragment-4" class="ui-tabs-panel ui-tabs-hide" style="">
+				    <div class="release"></div>
+			<div class="artist">
+				<div class="info" >
+				<h4><a href="#" >J:Kenzo - Invaderz/Depth Charge</a></h4>
+				<p>Released on Tempa 23rd July 2012</p>
+			 </div>
+			</div>	
+	    </div>
+
+		</div>
+	</div>
+</div>
+<div class="row">
+<div class="span12">
+<div id="home-points">
+	<div class="row">
+	<div class="span4">
+	<h2>Find artists you like</h2>
 	<p>SNGTRKR intuitively recognises which artists you've liked on Facebook, and supplies you with recommendations to build up your tracked artists.</p>
-	<%= image_tag "/images/home1.png", :alt => 'Recommendations', :id => 'home1' %></li>
-	<li><h2>Keep up to date</h2>
+	<%= image_tag "/images/home1.png", :alt => 'Recommendations', :id => 'home1' %></div>
+	<div class="span4"><h2>Keep up to date</h2>
 	<p>Stay in the loop with <strong>your personalised timeline</strong> of artist releases, old and new. We'll email you whenever an artist you follow releases a new album or single.</p>
-	<%= image_tag "/images/home3.png", :alt => 'Timeline', :id => 'home3' %></li>
-	<li><h2>Discover new music</h2>
+	<%= image_tag "/images/home3.png", :alt => 'Timeline', :id => 'home3' %></div>
+	<div class="span4 discover"><h2>Discover new music</h2>
 	<p>Looking to expand your music library? SNGTRKR makes it easy to discover new music with user ratings, track previews, similar artists and purchase links.</p>
-	<%= image_tag "/images/home2.png", :alt => 'Music', :id => 'home2' %></li>
+	<%= image_tag "/images/home2.png", :alt => 'Music', :id => 'home2' %></div>
 <div class="clear"></div>
-</ul>
+	</div></div>
 </div></div></div></div>
 <script type="text/javascript">
 $(document).ready(function() {

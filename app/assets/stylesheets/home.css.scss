@@ -1,6 +1,6 @@
 .home-txt-1 {
     line-height:1.3em;
-    @extend .font-14;
+    font-size:1.2em;
     margin:8px 15px 8px 2px;
     width:320px;
     span {
@@ -24,38 +24,35 @@
 }
 #home-macbook {
    position:absolute;
-   margin:-3px 0 0 -45px;
+   margin:-23px 0 0 -100px;
 }
 #home-points {
-	list-style-type: none;
-	margin:13px 0 26px -28px;
-	width:810px;
-
+	position:relative;
+	margin:13px 0 100px 0px;
 	h2 {
 	  	@extend .signika-txt;
-	  	@extend .font-25;
+	  	font-size:2.3em;
 	  	margin:10px 0 10px 0;
 	  }
-    li {
-	  width:240px;
-	  margin-left:30px;
-	  float: left;
 	  #home1 {
 	  	position:relative;
 		  top:9px;
-		  left:42px;
+		  left:60px;
 	  }
 	  #home2 {
 	  position:relative;
 		  top:30px;
-		  left:33px;
+		  left:60px;
 	  }
 	  #home3 {
 	  position:relative;
 		  top:6px;
-		  left:36px;
+		  left:66px;
 	  }
-  }
+	  .discover {
+		  position:absolute;
+		  right:-16px;
+	  }
 }
 .fb-home-login {
 	margin:-1px 0 25px 0;
