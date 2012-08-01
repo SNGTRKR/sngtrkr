@@ -223,8 +223,9 @@ margin-left:40px;
 		}
 		.menu-user {
 			list-style-type:none;
-			margin-top:15px;
+			margin:15px -12px 0 0;
 			width:300px;
+			float:right;
 			.icon-shopping-cart, .icon-share-alt {
 				margin-right:5px;
 			}
