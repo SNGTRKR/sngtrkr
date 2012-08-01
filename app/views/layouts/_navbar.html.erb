@@ -13,8 +13,16 @@
 						      <%= image_tag "/images/logo-45.png" %></a>
 						      <% if !user_signed_in? %><% else %>
 						      <ul class="nav pull-left">
-						      <li class=""><a href="/"><i class="icon-sitemap"></i>Timeline</a></li>
-						      <li class=""><%= link_to user_path(current_user) do %><i class="icon-user"></i>You<% end %></li>
+							      <li class="<% if current_page?(tl_path) %>active<% end %>">
+							      	<%= link_to tl_path do %>
+							      	<i class="icon-sitemap"></i>Timeline
+							      	<% end %>
+							      </li>
+							      <li class="<% if current_page?(user_path(current_user)) %>active<% end %>">
+							      	<%= link_to user_path(current_user) do %>
+								      	<i class="icon-user"></i>You
+							      	<% end %>
+							      </li>
 						      </ul>
 						<% end %>
 						      
