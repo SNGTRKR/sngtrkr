@@ -92,7 +92,8 @@
 	});
 	FB.api(<%= '\''+@friend.fbid+'?fields=cover\'' %>, function(response){
 		if(response['cover']){
-		   $('#friend-cover').css("background-image","url("+response['cover']['source']+")");
+		   $('#friend-cover').css("background-image","url("+response['cover']['source']+")")
+		   	.css("background-position-y",-response['cover']['offset_y']);
 		} else {
 		   $('#friend-cover').fadeOut();
 		   $('#friend-information').animate({marginTop : -194}, "slow").css("width",400).css("overflow","hidden");
