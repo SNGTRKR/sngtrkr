@@ -24,8 +24,7 @@ margin-bottom:22px;
   @include border-radius(12px);
   z-index:2;
   background:$gray;
-  background-repeat:no-repeat;
-  background-position:center;
+  background-size: cover;
 }
     .user-info {
 	   height:42px;
