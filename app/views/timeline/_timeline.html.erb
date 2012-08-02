@@ -1,5 +1,6 @@
 <div class="row">
 	<div class="span9">
+	<% if !user_signed_in? %><div id="timeline-logout"><% else %><% end %>
 		<div class="timeline-outer">
 			<div class="timeline-end"></div>
 			<div class="timeline-page">
@@ -7,6 +8,7 @@
 				<div class="timeline-end"></div>
 			</div>
 		</div>
+		<% if !user_signed_in? %></div>><% else %><% end %>
 	</div>
 </div>
 <script>
