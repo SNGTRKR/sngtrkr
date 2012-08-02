@@ -65,6 +65,15 @@ class Release < ActiveRecord::Base
     Artist.where(:ignore => false).order(rand).each do |artist|
       ReleaseJob.perform_async(artist.id)
     end
+
+    # Notify Matt that the Cron job ran
+    m = ActionMailer::Base.mail(:from => "cron@sngtrkr.com", :to => "bessey@gmail.com", 
+        :subject => '[SNGTRKR Cron] Successfully ran.') do |format|
+      format.text { render :text => "The daily Release cronjob has run as expected" }
+    end
+    m.body = "The daily Release cronjob has run as expected"
+    m.deliver
+
   end
 
   # Doesn't work well because 7digital search by the actual release date, not the date added to the db
@@ -89,6 +98,8 @@ class Release < ActiveRecord::Base
     if releases.blank?
       return false
     end
+
+    import_count = 0
 
     releases.each do |release|
       begin
@@ -163,6 +174,7 @@ class Release < ActiveRecord::Base
         end
       end
       r.save
+      import_count += 1
 
 
       # Now get the track ID's for preview URLS
@@ -197,10 +209,12 @@ class Release < ActiveRecord::Base
           i += 1
         end
       end
-    end 
+    end
+    return import_count
   end
     
   def self.itunes_import artist
+    import_count = 0
     if artist.itunes_id?
       itunes_releases = ActiveSupport::JSON.decode( open("http://itunes.apple.com/lookup?id=#{artist.itunes_id}&entity=album&country=GB", :proxy => @proxy))['results']
       i = 1
@@ -258,10 +272,12 @@ class Release < ActiveRecord::Base
           end
         end
         r.save
+        import_count += 1
         i += 1
       end     
     end
-  end
 
+    return import_count
+  end
 
 end
