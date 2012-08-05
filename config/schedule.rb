@@ -1,5 +1,5 @@
 
-set :output, File.join(Rails.root,'log/schedule.log')
+set :output, '/var/log/sngtrkr/schedule.log'
 
 every 1.day, :at => '9:00 am' do 
   runner "UserMailer.daily_releases"
