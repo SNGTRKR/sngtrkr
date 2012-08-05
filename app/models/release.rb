@@ -73,7 +73,7 @@ class Release < ActiveRecord::Base
     end
     m.body = "The daily Release cronjob has run as expected"
     m.deliver
-
+    puts "SNGTRKR Daily release has been run successfully."
   end
 
   # Doesn't work well because 7digital search by the actual release date, not the date added to the db
