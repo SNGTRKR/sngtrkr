@@ -1,3 +1,6 @@
+
+set :output, File.join(Rails.root,'log/schedule.log')
+
 every 1.day, :at => '9:00 am' do 
   runner "UserMailer.daily_releases"
 end
@@ -17,5 +20,3 @@ end
 every 1.day, :at => '8:00 am' do 
   runner "Release.daily_release"
 end
-
-set :output, 'log/schedule.log'
