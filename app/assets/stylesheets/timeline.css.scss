@@ -44,6 +44,19 @@ $line-color: #2e708c;
           z-index: -1;
           top: $height/2;
         }
+        #today{
+          text-align: center;
+          padding: 10px 0px;
+          font-size: 13px;
+          font-weight: bold;
+          background-color: $gray;
+          color:white;
+          margin-top: 20px;
+          position: relative;
+          .joining-line{
+            top: 16px;
+          }
+        }
         .each-release{
           overflow: hidden;
           height:$height;
@@ -245,6 +258,12 @@ $line-color: #2e708c;
         .joining-line{
           left: 0;
         }
+        #today{
+          margin-left: 15px;
+          .joining-line{
+            left: -25px;
+          }
+        }
       }
       li.release-outer:nth-of-type(odd){
         width:$width + $central-gap/2;
@@ -254,10 +273,24 @@ $line-color: #2e708c;
         .joining-line{
           right: 0;
         }
+        #today{
+          margin-right: 15px;
+          .joining-line{
+            right: -25px;
+          }
+        }
         margin-top:-$offset;
         clear: both;
         float: left;
       }
+      li.before-today:nth-of-type(even){
+        height: $height + 60 !important; 
+        margin-bottom: 0 !important;
+      }
+      li.before-today:nth-of-type(odd){
+        height: $height + 125 !important; 
+      }
+
     }
   }
   #timeline-empty{
