@@ -2,7 +2,7 @@ class Timeline
   def self.artist id
     a = Artist.find(id)
     if(a != nil)
-    a.real_releases
+    a.real_releases.order("date DESC")
     else
     []
     end
