@@ -12,7 +12,29 @@
 	</div>
 </div>
 <script>
+function today(li,i){
+	$(li).addClass("before-today").append('<div id="today"><div class="joining-line"></div>Today</div>');
+	$('html, body').animate({
+         scrollTop: $(li).offset().top - 50
+     }, 1000);
+};
+
 $(document).ready(function(){
 	timeline_setup();
+
+	var this_date, previous_date, todays_date = new Date();
+	$('.release-list li.release-outer').each(function(index){
+		previous_date = this_date;
+		this_date = new Date($(this).data('release-date'));
+		if(this_date - todays_date < 10000 && this_date - todays_date > -10000){
+			console.log("Window: " + this_date);
+			today($('.release-list li.release-outer')[index-1],index);
+		};
+		if(this_date < todays_date && previous_date > todays_date){
+			console.log("Split: " + this_date);
+			today($('.release-list li.release-outer')[index-1],index);
+		};
+	});
+
 });
 </script>

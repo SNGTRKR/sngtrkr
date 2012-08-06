@@ -1,7 +1,7 @@
 <% artist_page ||= 'false' %>
 <% date_format ||= " %B" %>
 
-<li class="release-outer" data-release-id="<%= release.id %>">
+<li class="release-outer" data-release-id="<%= release.id %>" data-release-date="<%= release.date %>">
   <div class="joining-line"></div>
   <div class="each-release" style="background-image:url(<%= release.image :release_i %>)">
     <div class="r-grad"></div>
