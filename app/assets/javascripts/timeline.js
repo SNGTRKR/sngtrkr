@@ -1,33 +1,21 @@
 var page, old_width, new_width
 function timeline_scroll() {
   $(document).ready(function () {
-    // Scroll to end of timeline
     // Set global AJAX load variable
     var last_load = new Date().getTime();;
     
     page = 2
+
     // Ajax scroll load
-    
     $(document).scroll(function () {
       if ($(this).scrollTop() > ($(this).height() - 1500) && (new Date().getTime() - last_load) > 1000) {
-        last_load = new Date().getTime();;
-        $(this).trigger('mouseup');
-        console.log("Mouseup");
+        last_load = new Date().getTime();
+        console.log("AJAX page load: " + page);
         $.get('/users/me/timeline/' + page);
         page++;
       }
     });
   });
-}
-
-function timeline_widths() {
-  // Width setting
-  var stepsWidth = 0;
-  $('.release-list .release-outer').each(function (i) {
-    var $step = $(this);
-    stepsWidth += $step.width() - 75;
-  });
-  return stepsWidth + 50
 }
 
 function timeline_setup() {
@@ -141,17 +129,6 @@ function timeline_setup() {
     each_release.find('.play-release-list').animate({
       top: -310
     }, "slow");
-  });
-
- $('#timeline').mousedown(function (event) {
-    $(this).data('down', true).data('x', event.clientX).data('scrollLeft', this.scrollLeft);
-    return false;
-  }).mouseup(function (event) {
-    $(this).data('down', false);
-  }).mousemove(function (event) {
-    if ($(this).data('down') == true) {
-      this.scrollLeft = $(this).data('scrollLeft') + $(this).data('x') - event.clientX;
-    }
   });
 
   $(window).mouseout(function (event) {
