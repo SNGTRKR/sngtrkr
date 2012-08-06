@@ -29,6 +29,48 @@ $line-color: #2e708c;
       margin: auto;
       width:2*$width + $central-gap+$shadow-padding*4;
 
+      .joining-line{
+        width:$central-gap/2;
+        height:4px;
+        background-color: $line-color;
+        position: absolute;
+        z-index: -1;
+        top: 30px;
+      }
+
+      li.today{
+        font-size: 1.5em;
+        font-weight: bold;
+        background-color: $gray;
+        @include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.45));
+        color: white;
+        position: relative;
+        width: 300px;
+        text-align: center;
+        padding: 20px 0;
+        .joining-line{
+          top: 15px;
+        }
+        span{
+          opacity: 0.7;
+          padding-left: 25px;
+        }
+      }
+      li.today-odd{
+        float:left;
+        clear: both;
+        margin: -130px 25px 100px 10px;
+        .joining-line{
+          right: -25px;
+        }
+      }
+      li.today-even{
+        margin: -30px 0 0 360px;
+        .joining-line{
+          left: -25px;
+        }
+      }
+
       li.release-outer{
         position: relative;
         display: block;
@@ -36,27 +78,6 @@ $line-color: #2e708c;
         overflow: hidden;
         padding:$shadow-padding;
         margin-bottom: $height*0.1;
-        .joining-line{
-          width:$central-gap/2;
-          height:4px;
-          background-color: $line-color;
-          position: absolute;
-          z-index: -1;
-          top: $height/2;
-        }
-        #today{
-          text-align: center;
-          padding: 10px 0px;
-          font-size: 13px;
-          font-weight: bold;
-          background-color: $gray;
-          color:white;
-          margin-top: 20px;
-          position: relative;
-          .joining-line{
-            top: 16px;
-          }
-        }
         .each-release{
           overflow: hidden;
           height:$height;
@@ -250,7 +271,7 @@ $line-color: #2e708c;
           display: none;
         }
       }
-      li.release-outer:nth-of-type(even){
+      li.release-outer-even{
         width:$width+ $central-gap/2;
         .each-release{
           margin-left:$central-gap/2;
@@ -258,14 +279,8 @@ $line-color: #2e708c;
         .joining-line{
           left: 0;
         }
-        #today{
-          margin-left: 15px;
-          .joining-line{
-            left: -25px;
-          }
-        }
       }
-      li.release-outer:nth-of-type(odd){
+      li.release-outer-odd{
         width:$width + $central-gap/2;
         .each-release{
           margin-right:$central-gap/2;
@@ -273,22 +288,9 @@ $line-color: #2e708c;
         .joining-line{
           right: 0;
         }
-        #today{
-          margin-right: 15px;
-          .joining-line{
-            right: -25px;
-          }
-        }
         margin-top:-$offset;
         clear: both;
         float: left;
-      }
-      li.before-today:nth-of-type(even){
-        height: $height + 60 !important; 
-        margin-bottom: 0 !important;
-      }
-      li.before-today:nth-of-type(odd){
-        height: $height + 125 !important; 
       }
 
     }
