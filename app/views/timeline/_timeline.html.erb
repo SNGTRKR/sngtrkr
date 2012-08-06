@@ -13,7 +13,14 @@
 </div>
 <script>
 function today(li,i){
-	$(li).addClass("before-today").append('<div id="today"><div class="joining-line"></div>Today</div>');
+	if($(li).hasClass('release-outer-even')){
+		var cycle = "odd"
+	} else {
+		var cycle = "even"
+	}
+	$(li).after('<li class="today today-'+cycle+'"><div class="joining-line"></div>Your Timeline <span><%= 
+		Date.today.strftime("%B #{Date.today.day.ordinalize}") 
+		%></span></li>');
 	$('html, body').animate({
          scrollTop: $(li).offset().top - 50
      }, 1000);
@@ -28,11 +35,11 @@ $(document).ready(function(){
 		this_date = new Date($(this).data('release-date'));
 		if(this_date - todays_date < 10000 && this_date - todays_date > -10000){
 			console.log("Window: " + this_date);
-			today($('.release-list li.release-outer')[index-1],index);
+			today($('.release-list li.release-outer')[index],index);
 		};
 		if(this_date < todays_date && previous_date > todays_date){
 			console.log("Split: " + this_date);
-			today($('.release-list li.release-outer')[index-1],index);
+			today($('.release-list li.release-outer')[index],index);
 		};
 	});
 
