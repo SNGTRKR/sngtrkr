@@ -48,12 +48,12 @@ $(document).ready(function(){
 		this_date = new Date($(this).data('release-date'));
 		if(this_date - todays_date < 10000 && this_date - todays_date > -10000){
 			console.log("Window: " + this_date);
-			today($('.release-list li.release-outer')[index]);
+			today($('.release-list li.release-outer')[index-1]);
 			return false;
 		};
 		if(this_date < todays_date && previous_date > todays_date){
 			console.log("Split: " + this_date);
-			today($('.release-list li.release-outer')[index]);
+			today($('.release-list li.release-outer')[index-1]);
 			return false;
 		};
 	});
