@@ -130,7 +130,7 @@ margin-left:162px !important;
 		<%= render 'timeline/artist_empty' %>
 	<% else %>
 			<ol class="release-list">
-				<%= render :partial => 'timeline/release', :collection => @timeline %>
+				<%= render :partial => 'timeline/release', :collection => @timeline, :locals => {:date_format => "%B %Y"} %>
 			</ol>
 	<% end %>
 <% end %>
