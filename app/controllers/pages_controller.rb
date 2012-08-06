@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
   skip_authorization_check
-  skip_before_filter :authenticate_user!
+  skip_before_filter :authenticate_user!, :except => [:intro]
 
   def home
     if(user_signed_in?)
@@ -15,7 +15,7 @@ class PagesController < ApplicationController
   end
 
   def help 
-  render :layout => 'no_sidebar'
+    render :layout => 'no_sidebar'
   end
   
   def about
@@ -31,11 +31,11 @@ class PagesController < ApplicationController
   end
   
   def limbo
-  render :layout => 'no_response'
+    render :layout => 'no_response'
   end
   
   def intro 
-  render :layout => 'no_sidebar'
+    render :layout => 'no_sidebar'
   end
   
   def splash
