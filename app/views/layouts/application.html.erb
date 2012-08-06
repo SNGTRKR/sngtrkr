@@ -1,34 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# sngtrkr: http://ogp.me/ns/fb/sngtrkr#">
-	 	<!-- TradeDoubler site verification 2098473 -->
-	    <meta property="fb:app_id"        content="344989472205984" />
-		<meta property="og:url"           content="<%= yield :og_url %>" />
-		<meta property="og:title"         content="<%= yield :og_name %>" />
-		<meta property="og:description"   content="<%= yield :og_description %>" />
-		<meta property="og:image"   	  content="<%= yield :og_image %>" />
-		<meta property="og:type"          content="<%= yield :og_type %>" />
-		<% if content_for? :og_id %>
-		<meta property="sngtrkr:id" content="<%= yield :og_id %>" />
-		<% end %>
-		<title><% if content_for?(:title) %><%= yield :title %> - SNGTRKR <% else %>SNGTRKR<% end %></title>
-		<meta name="description" content="<%= yield :description %>">
-		<meta name="google-site-verification" content="ZZsezCrr3vgh_cZwliW6D-0q51Lm_fyvHBm9W2t0gpE" />
-		<link rel="icon" type="image/ico" href="<%= asset_path "/images/icon.png" %>" >
-    <%= stylesheet_link_tag "application", :media => "all" %>
-    <%= stylesheet_link_tag "/bootstrap.css", :media => "all" %>
-    <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Signika+Negative:400,600' %>
-    <%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js' %>
-    <!-- <script>window.jQuery || document.write("<%=j javascript_include_tag "/jquery-1.7.2.min.js" %>")</script> -->
-    <%= javascript_include_tag "application" %>
-    <%= javascript_include_tag "/bootstrap.min.js" %>
-    <%= javascript_include_tag "/bootstrap-ajax-typeahead.js" %>
-    <!-- Use Html5Shiv in order to allow IE render HTML5 -->
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <%= csrf_meta_tags %>
-	<%= yield :extra_head %>
+		<%= render 'layouts/head' %>
 	</head>
 	<body>
 		<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
