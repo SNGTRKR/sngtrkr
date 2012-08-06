@@ -26,7 +26,8 @@ SNGTRKR::Application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
 
   devise_for :users, :controllers => { :registrations => "users/registrations",
-    :omniauth_callbacks => "users_controller/omniauth_callbacks"}
+    :omniauth_callbacks => "users_controller/omniauth_callbacks",
+    :sessions => "users_controller/sessions"}
   devise_scope :user do
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   end

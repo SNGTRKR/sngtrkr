@@ -3,6 +3,7 @@ class BetaUsersController < ApplicationController
   # GET /beta_users.json
   skip_authorization_check
   before_filter :authenticate_user!, :except => [:create, :new]
+  before_filter :featured_artists, :only => [:new]
   def index
     @beta_users = BetaUser.all
     respond_to do |format|
@@ -15,9 +16,6 @@ class BetaUsersController < ApplicationController
   # GET /beta_users/new.json
   def new
     @beta_user = BetaUser.new
-    top_artists = Artist.limit(1000).popular
-    @latest_releases = Release.order("date DESC").where(:artist_id => top_artists).limit(4)
-
     respond_to do |format|
       format.html
     end

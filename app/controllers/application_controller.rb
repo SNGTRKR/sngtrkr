@@ -52,6 +52,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # For use in the featured content partial
+  def featured_artists
+    top_artists = Artist.limit(1000).popular
+    @latest_releases = Release.order("date DESC").where(:artist_id => top_artists).limit(4)
+  end
   
   def timer_start
     @start_time = Time.now
