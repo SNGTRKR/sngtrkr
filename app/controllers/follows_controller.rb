@@ -38,7 +38,7 @@ class FollowsController < ApplicationController
 
   end
   
-  def destroy
+  def user_destroy
     current_user.unfollow_artist params[:artist_id]
     @artist_id = params[:artist_id]
     respond_to do |format|

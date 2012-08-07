@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
-  before_filter :self_only, :except => [:show, :timeline, :self]
+  before_filter :self_only, :except => [:show, :timeline, :self, :local_new]
+  before_filter :authenticate_user!, :except => [:local_new]
   
-  load_and_authorize_resource
-  
+  load_and_authorize_resource :except => [:local_new]
+
   def index
     @users = User.limit(50).all
     respond_to do |format|
@@ -203,6 +204,10 @@ class UsersController < ApplicationController
   def unmanage
     current_user.managing.delete(current_user.managing.first)
     redirect_to :root
+  end
+
+  def local_new
+
   end
 
 end

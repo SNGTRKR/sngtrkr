@@ -3,6 +3,7 @@ require 'test_helper'
 class ArtistsControllerTest < ActionController::TestCase
   setup do
     @artist = artists(:one)
+    @user = users(:one)
   end
 
   test "should get index" do
@@ -17,6 +18,7 @@ class ArtistsControllerTest < ActionController::TestCase
   end
 
   test "should create artist" do
+    sign_in(@user)
     assert_difference('Artist.count') do
       post :create, :artist => @artist.attributes
     end
