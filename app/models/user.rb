@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :fbid, :first_name, :last_name, :last_sign_in_at, :email_frequency, :deleted_at, :leave_reason
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :fbid, :first_name, :last_name, 
+    :last_sign_in_at, :email_frequency, :deleted_at, :leave_reason, :confirmed_at
 
   validates :fbid, :uniqueness => true
   validates :email, :presence => true, :uniqueness => true
@@ -179,6 +180,9 @@ class User < ActiveRecord::Base
   # This works but is a very SQL heavy solution
   def self.recent_activities users
     activities = []
+    if !users 
+      return []
+    end
     users.each do |user|
       u = User.find(user)
       activities = activities | u.recent_activity(:specify_id => true)

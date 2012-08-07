@@ -136,7 +136,7 @@ class UsersController < ApplicationController
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to users_url, :notice => 'Account successfully destroyed.' }
+      format.html { redirect_to users_path, :notice => 'Account successfully destroyed.' }
       format.json { head :no_content }
     end
   end

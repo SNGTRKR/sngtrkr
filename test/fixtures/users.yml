@@ -6,10 +6,19 @@
 #
 
 one:
-  id: 1
   email: bessey@gmail.com
   first_name: Matt
   last_name: Bessey
-  type: 2
   email_frequency: 1
   fbid: 757635703
+  roles: admin
+  confirmed_at: <%= Time.now %>
+
+two:
+  email: bessey+test_user@gmail.com
+  first_name: Matt
+  last_name: Testey
+  email_frequency: 1
+  fbid: 111111111
+  roles: user
+  confirmed_at: <%= Time.now %>
