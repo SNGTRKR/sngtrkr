@@ -21,7 +21,7 @@ class ReleasesControllerTest < ActionController::TestCase
       post :create, :release => @release.attributes
     end
 
-    assert_redirected_to release_path(assigns(:release))
+    assert_redirected_to artist_release_path(assigns(:artist),assigns(:release))
   end
 
   test "should show release" do

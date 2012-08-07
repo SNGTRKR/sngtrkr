@@ -47,6 +47,7 @@ SNGTRKR::Application.routes.draw do
       get 'timeline/:page' => 'Timeline#index'
     end
     collection do
+      match 'local_sign_in' => 'Users#local_new'
       match 'me', :action => 'self'
       match 'me/timeline/:page' => 'Timeline#index'
     end
@@ -71,7 +72,7 @@ SNGTRKR::Application.routes.draw do
     resources :manages
     match 'scrape_confirm' => 'Artists#scrape_confirm'
     resources :follows, :except => [:destroy,:edit]
-    match 'unfollow' => 'Follows#destroy'
+    match 'unfollow' => 'Follows#user_destroy'
     #resources :suggests, :except => [:destroy,:edit]
     match 'unsuggest' => 'Suggests#destroy'
   end

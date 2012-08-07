@@ -1,8 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  date: 2012-03-31 01:44:46
+  name: FutureAlbum
+  date: <%= -1.days.ago.to_s(:db)%>
   cat_no: MyString
   itunes: MyString
   sdigital: MyString
@@ -13,6 +13,16 @@ one:
 two:
   name: Skroom
   date: 2012-03-31 01:44:46
+  cat_no: MyString
+  itunes: MyString
+  sdigital: MyString
+  amazon: MyString
+  youtube: MyString
+  artist_id: 2
+
+three:
+  name: FarFutureAlbum
+  date: <%= -10.days.ago.to_s(:db)%>
   cat_no: MyString
   itunes: MyString
   sdigital: MyString
