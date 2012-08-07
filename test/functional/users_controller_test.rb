@@ -9,10 +9,9 @@ class UsersControllerTest < ActionController::TestCase
   test "should not create user" do
 
     assert_no_difference('User.count') do
-      post :create, :user => @user.attributes
+      post :create, :user => {:email => "dsfd@example.com", :password => "test"}
     end
 
-    #assert_redirected_to user_path(assigns(:user))
   end
 
   test "should not show user" do
