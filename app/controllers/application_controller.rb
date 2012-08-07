@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
   # This action is to ensure a user cannot simply hack a URL to view another user's area
   def self_only
     # Admins can do anything to anyone
-    if current_user.role? :admin
+    if current_user and current_user.role? :admin
       return true
     end
     # But users can only edit themselves
