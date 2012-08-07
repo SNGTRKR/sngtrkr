@@ -17,3 +17,5 @@ nohup.out
 config/environments/personal/private.rb
 
 db/test.sqlite3
+
+*.log
