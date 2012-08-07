@@ -4,8 +4,6 @@ log/development.log
 log/test.log
 tmp/**/*
 tmp/*
-db/development.sqlite3
-db/test.sqlite3
 db/*.sqlite3
 doc/api
 doc/app
@@ -17,3 +15,5 @@ log/*
 dump.rdb
 nohup.out
 config/environments/personal/private.rb
+
+db/test.sqlite3
