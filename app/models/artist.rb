@@ -26,7 +26,7 @@ class Artist < ActiveRecord::Base
   end
 
   def real_releases
-    self.releases.where("ignore != ?", true)
+    self.releases.where("`releases`.`ignore` != ?", true)
   end
 
   def self.ordered
