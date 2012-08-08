@@ -47,10 +47,16 @@ class UserMailer < ActionMailer::Base
       @releases_count = total_count
     end
 
+    if Rails.env.development?
+      @domain = "http://localhost:3000"
+    else
+      @domain = "http://sngtrkr.com"
+    end
+
     mail(:to => "#{@user.first_name} #{@user.last_name} <#{@user.email}>", 
       :subject => "#{@date_adjective} Update | New releases from #{artist_names}",
       :from => "SNGTRKR Update <noreply@sngtrkr.com>").deliver
-    user.release_notifications.destroy_all
+    user.release_notifications.delete(@releases)
 
   end
   

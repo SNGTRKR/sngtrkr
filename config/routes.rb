@@ -20,9 +20,7 @@ SNGTRKR::Application.routes.draw do
     mount RailsAdmin::Engine => '/rails', :as => 'rails_admin' # Feel free to change '/admin' to any namespace you need.
   end
 
-  if Rails.env.development?
-    mount UserMailer::Preview => 'mailer'
-  end
+  mount UserMailer::Preview => 'mailer'
 
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
