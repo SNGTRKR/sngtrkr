@@ -149,11 +149,8 @@ margin-left:162px !important;
 </div>
 <script>
 	$(document).ready(function(){
-	  	artist_suggestion_replace();
-	})
-</script>
-	<script type="text/javascript">
-$(document).ready(function(){
+    timeline_setup();
+
 		$(".share-profile").click(function() { $('#opac-50').fadeIn("normal"); $('#share-profile').animate({right : 0}, "slow"); $('#buy-profile').animate({left : -310}, "slow");});
 		$(".share-cancel").click(function() { $('#opac-50').fadeOut("normal"); $('#share-profile').animate({right : -310}, "slow"); });
 		$("#share-profile ul a li").click(function() { $('#opac-50').fadeOut("normal"); $('#share-profile').animate({right : -310}, "slow"); });
