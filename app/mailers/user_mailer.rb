@@ -91,6 +91,9 @@ class UserMailer < ActionMailer::Base
     def welcome_email
       ::UserMailer.welcome_email(User.find(1))
     end
+    def beta_email
+      ::UserMailer.beta_email(User.find(1))
+    end
   end
 
 end
