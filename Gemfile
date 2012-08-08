@@ -50,10 +50,12 @@ gem 'amazon-ecs'
 # ADMIN
 gem 'rails_admin'
 gem "exception_notification", :git => "http://github.com/rails/exception_notification.git", :branch => "master", :require => 'exception_notifier'
+gem 'mail_view', :git => 'https://github.com/37signals/mail_view.git'
 
-# in production environments by default.
-gem 'compass-rails', '>= 1.0.0.rc.2'
+
 group :assets do
+  # in production environments by default.
+  gem 'compass-rails', '>= 1.0.0.rc.2'
   gem 'sass-rails',   '>= 3.2.3'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes

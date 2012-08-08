@@ -26,16 +26,14 @@ class UserMailer < ActionMailer::Base
   def new_releases(user,frequency)
     @user = user
 
-    @releases = user.release_notifications
-
-    if ENV['TEST_MODE']
-      puts("Test mode active.")
-      @releases = Release.limit(22)
-    end
-
+    @releases = user.release_notifications.order("date DESC").where("date < ?",Date.today+1).limit(20)
     if @releases.empty?
       return true
     end
+
+    # Building list of artist names for the email subject
+    artist_names = @releases.select('DISTINCT artist_id')[0,2].collect{|r| r.artist.name}.join(', ')
+
     case frequency
       when 1 then @date_adjective = "Daily"
       when 2 then @date_adjective = "Weekly"
@@ -43,19 +41,16 @@ class UserMailer < ActionMailer::Base
       when 4 then @date_adjective = "Monthly"
     end
     
-    if @releases.count > 20
+    total_count = user.release_notifications.where("date < ?",Date.today+1).count
+    if total_count > 20
       @many_releases = true
-      @releases_count = @releases.count
-      @releases = @releases[0,20]
+      @releases_count = total_count
     end
 
-    # Building list of artist names for the email subject
-    artist_names = @releases.select('DISTINCT artist_id')[0,2].collect{|r| r.artist.name}.join(', ')
-    
     mail(:to => "#{@user.first_name} #{@user.last_name} <#{@user.email}>", 
-      :subject => "#{@date_adjective} Update | New releases from #{artist_names}").deliver
+      :subject => "#{@date_adjective} Update | New releases from #{artist_names}",
+      :from => "SNGTRKR Update <noreply@sngtrkr.com>").deliver
     user.release_notifications.destroy_all
-    return true
 
   end
   
@@ -77,6 +72,19 @@ class UserMailer < ActionMailer::Base
   
   def instant_release(release)
     
+  end
+
+ class Preview < MailView
+    # Pull data from existing fixtures
+    def new_releases
+      user = User.find(3)
+      user.release_notifications = Release.limit(100).order("date DESC")
+      frequency = 1
+      ::UserMailer.new_releases(user,frequency)
+    end
+    def welcome_email
+      ::UserMailer.welcome_email(User.find(1))
+    end
   end
 
 end

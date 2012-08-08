@@ -11,15 +11,17 @@ SNGTRKR::Application.routes.draw do
   match '/team' => "Pages#team"
   match '/privacy' => "Pages#privacy"
   match '/help' => "Pages#help"
-  match '/welcome_email' => "UserMailer#welcome_email"
   match '/limbo' => "Pages#limbo"
   match '/release_magic/:store/:url' => "Releases#magic"
   match '/intro' => "Pages#intro"
   match '/fixed' => "Pages#fixed"
 
-  match 'mailer(/:action(/:id(.:format)))' => 'mailer#:action'
   namespace :admin do
     mount RailsAdmin::Engine => '/rails', :as => 'rails_admin' # Feel free to change '/admin' to any namespace you need.
+  end
+
+  if Rails.env.development?
+    mount UserMailer::Preview => 'mailer'
   end
 
   require 'sidekiq/web'

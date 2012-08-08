@@ -5,6 +5,13 @@ GIT
   specs:
     exception_notification (1.0.0)
 
+GIT
+  remote: https://github.com/37signals/mail_view.git
+  revision: 86a56c55143b3688add21ac95946c008df32c491
+  specs:
+    mail_view (1.0.1)
+      tilt
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -279,6 +286,7 @@ DEPENDENCIES
   json
   kaminari
   koala
+  mail_view!
   mysql2
   omniauth-facebook
   paperclip
