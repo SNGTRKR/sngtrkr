@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
 
-    beta_user = BetaUser.beta_user?(data.email, Date.strptime("{ 16, 7, 2012 }", "{ %d, %m, %Y }"))
+    beta_user = BetaUser.beta_user?(data.email, Date.strptime("{ 8, 8, 2012 }", "{ %d, %m, %Y }"))
 
     if user = self.find_by_fbid(data.id)
       user
