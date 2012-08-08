@@ -1,5 +1,7 @@
 class UserMailer < ActionMailer::Base
+  
   default from: "SNGTRKR <noreply@sngtrkr.com>"
+  
   def welcome_email(user)
     @user = user # For the view
     if @user.is_a?(BetaUser) and @user.emailed
