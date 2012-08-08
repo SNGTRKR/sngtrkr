@@ -85,16 +85,16 @@ class UserMailer < ActionMailer::Base
  class Preview < MailView
     # Pull data from existing fixtures
     def new_releases
-      user = User.find(3)
+      user = User.where(:fbid => 123456789).first
       user.release_notifications = Release.limit(100).order("date DESC")
       frequency = 1
       ::UserMailer.new_releases(user,frequency)
     end
     def welcome_email
-      ::UserMailer.welcome_email(User.find(1))
+      ::UserMailer.welcome_email(User.first)
     end
     def beta_email
-      ::UserMailer.beta_email(User.find(1))
+      ::UserMailer.beta_email(User.first)
     end
   end
 
