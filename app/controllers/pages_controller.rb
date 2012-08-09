@@ -4,14 +4,7 @@ class PagesController < ApplicationController
   skip_before_filter :authenticate_user!, :except => [:intro]
 
   def home
-    if(user_signed_in?)
-      flash.keep
-      return redirect_to '/tl'
-    end
-    # Used to auto log the user in.
-    require 'koala'
-    @graph = Koala::Facebook::API.new
-    #flash[:success] = "<p>I done a success!</p>"
+
   end
 
   def help 
