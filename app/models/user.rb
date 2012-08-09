@@ -46,17 +46,13 @@ class User < ActiveRecord::Base
     else # Create a user with a stub password.
       user = self.new(:email => data.email, :password => Devise.friendly_token[0,20], :fbid => data.id, :first_name => data.first_name, :last_name => data.last_name)
       user.confirm! 
+      user.roles << Role.where(:name => 'User').first
 
       user.save!
-      if !beta_user
-        UserMailer.welcome_email(user)
-      end
     end
 
     # Allows beta users that registered before this date to login.
     if beta_user
-      Rails.logger.info("BetaUser added to Users: #{data.email}")
-      user.roles << Role.where(:name => 'User').first
       BetaUser.where(:email => data.email).first.destroy
     end
 

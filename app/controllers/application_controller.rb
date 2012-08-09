@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   #  rescue_from ActiveRecord::RecordNotFound, with: :render_404
   #end
   before_filter :authenticate_user!, :except => [:splash,:home,:sitemap]
+  before_filter :featured_artists, :only => [:home]
   before_filter :timer_start
   before_filter :define_user
   
@@ -82,7 +83,7 @@ class ApplicationController < ActionController::Base
       end
       return redirect_to '/limbo'
     else
-      redirect_to '/beta'
+      render 'pages/home', :layout => 'no_sidebar'
     end
   
   end
