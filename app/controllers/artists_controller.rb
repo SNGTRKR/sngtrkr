@@ -144,7 +144,7 @@ class ArtistsController < ApplicationController
   
   # Used to import a single artist at a time
   def import
-    @artist = Artist.fb_single_import(params[:token], params[:fb_id], current_user.id)
+    @artist = ArtistScraper.fb_single_import(params[:token], params[:fb_id], current_user.id)
     @url = artist_path(@artist)
     respond_to do |format|
       format.js
@@ -175,6 +175,22 @@ class ArtistsController < ApplicationController
     end
     respond_to do |format| 
       format.js
+    end
+  end
+
+  # For seeing how an artist would be scraped with the latest Scraper settings, live, no Sidekiq.
+  def preview
+    @search = params[:search] || 157061704319736
+    if !params[:fb_access_token]
+      render 'artists/preview_form'
+    end
+    if params[:search]
+      graph = Koala::Facebook::API.new(params[:fb_access_token])
+      fb_data = graph.api("/#{params[:search]}?fields=name,general_manager,booking_agent,record_label,genre,hometown,website,bio,picture,likes")
+      
+      artist_scraper = ArtistScraper.new :facebook_info => fb_data
+      @artist = artist_scraper.import_info
+      @image_url = artist_scraper.image_url
     end
   end
   

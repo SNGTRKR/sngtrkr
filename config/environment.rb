@@ -24,3 +24,7 @@ end
 
 # Specify wether or not in development mode imported artists are reimported on every launch or not
 IMPORT_REPLACE = true
+
+require_dependency 'scraper'
+require_dependency 'release_scraper'
+require_dependency 'artist_scraper'

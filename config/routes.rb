@@ -61,6 +61,7 @@ SNGTRKR::Application.routes.draw do
   resources :artists do
     collection do
       match 'import/:fb_id', :action => 'import'
+      match 'preview'
       get 'first_suggestions'
     end
     resources :releases do 
