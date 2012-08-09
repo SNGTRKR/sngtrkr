@@ -24,7 +24,7 @@ class ReleasesController < ApplicationController
     @artist = Artist.find(params[:artist_id])
     @release = @artist.releases.find(params[:id])
     @releases = @artist.real_releases.all
-    if user_signed_in? and current_user.managing.first == @artist 
+    if user_signed_in? and current_user.managing.first == @artist or can? :manage, :release
       @manager = true
     else
       @manager = false
