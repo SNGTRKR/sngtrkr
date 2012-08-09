@@ -33,24 +33,28 @@ $(document).ready(function () {
     $(this).addClass('fb-disabled');
   });
 	//loading 
-	var angle = 0;
-setInterval(function(){
-      angle+=3;
-     $("#loading-icon").rotate(angle);
-},25);
+  if($("#loading-icon").length > 0){
+  	var angle = 0;
+    setInterval(function(){
+          angle+=3;
+         $("#loading-icon").rotate(angle);
+    },25);
+  }
 
   
   artist_suggestion_replace();
   
 
   // Flash Dismissal
-  $('.flash-outer').delay(300).slideDown(500, 'easeInQuad');
-  $('.flash-close').click(function () {
-    $('.flash-outer').slideUp(500, 'easeInQuad');
-  })
-  if ($('.flash-outer').data('disappear-after')) {
-    console.log("delay detected");
-    $('.flash-outer').delay($('.flash-outer').data('disappear-after')).slideUp(1000, 'easeInQuad');
+  if($('.flash-outer').length > 0){
+    $('.flash-outer').delay(300).slideDown(500, 'easeInQuad');
+    $('.flash-close').click(function () {
+      $('.flash-outer').slideUp(500, 'easeInQuad');
+    })
+    if ($('.flash-outer').data('disappear-after')) {
+      console.log("delay detected");
+      $('.flash-outer').delay($('.flash-outer').data('disappear-after')).slideUp(1000, 'easeInQuad');
+    }
   }
 
   // Release rating.
