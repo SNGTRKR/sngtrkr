@@ -1,0 +1,33 @@
+<style type="text/css">
+#wrapper {
+background:url("/images/grid2.png");
+background-repeat:repeat;
+}
+<% if !user_signed_in? %>
+#artist-info {
+margin-left:162px !important;
+}
+
+<% else %><% end %>
+</style>
+<div class="row artist-buffer">
+<div id="artist-info">
+<div class="span9">
+<%= form_tag "", :method => "get" do %>
+  <%= label_tag :search, "Artist facebook ID" %>
+  <%= text_field_tag :search, @search %>
+  <input type="hidden" id="fb_access_token" name="fb_access_token">
+<% end %>
+<% content_for :fb_js do %>
+  FB.getLoginStatus(function(response) {
+      if(response.status === 'connected') {
+        var accessToken = response.authResponse.accessToken;
+        $('#fb_access_token').val(accessToken);
+      }
+    });
+  
+<% end %>
+</div>
+</div>
+</div>
+<%= render 'shared/fb_async' %>

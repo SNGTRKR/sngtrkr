@@ -42,7 +42,7 @@ gem 'sinatra', :require => nil
 gem "paperclip"
 
 # SCRAPING GEMS
-gem 'rbrainz'
+# gem 'rbrainz'
 gem 'scrobbler'
 gem 'itunes-search-api'
 gem 'amazon-ecs'

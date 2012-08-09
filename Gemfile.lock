@@ -210,7 +210,6 @@ GEM
       rdoc (~> 3.4)
       thor (~> 0.14.6)
     rake (0.9.2.2)
-    rbrainz (0.5.2)
     rdoc (3.12)
       json (~> 1.4)
     redis (3.0.1)
@@ -293,7 +292,6 @@ DEPENDENCIES
   passenger
   rails (= 3.2.2)
   rails_admin
-  rbrainz
   ruby-prof
   sass-rails (>= 3.2.3)
   scrobbler

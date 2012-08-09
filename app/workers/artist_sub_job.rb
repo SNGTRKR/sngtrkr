@@ -4,7 +4,8 @@ class ArtistSubJob
   sidekiq_options :queue => :artist
 
   def perform access_token, user_id, artist
-    Artist.import(access_token, user_id, artist)
+    a = ArtistScraper.import_info(access_token, user_id, artist)
+    a.save
   end
 
 end
