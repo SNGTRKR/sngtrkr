@@ -1,10 +1,20 @@
 class ReleaseScraper
-
-  @sevendigital_apikey = "7dufgm34849u"
-  @proxy = Scraper.proxy
   require 'open-uri'
 
+  def initialize artist
+    @artist = artist
+    @sevendigital_apikey = "7dufgm34849u"
+    @proxy = Scraper.proxy
+    @releases = @artist.releases
+    @new_releases = []
+  end
+
+  def releases
+    return @new_releases + @releases
+  end
+
   def self.daily_release
+    # Randomise order of artists so that if we do run out of API calls some day, artists all still get checked eventually.
     if Rails.env.production?
       rand = "RAND()"
     else
@@ -24,25 +34,31 @@ class ReleaseScraper
     puts "SNGTRKR Daily release has been run successfully."
   end
 
-  # Doesn't work well because 7digital search by the actual release date, not the date added to the db
-  #def self.new_daily_release
-  #  date_start = (Date.today-1).strftime("%Y%m%d")
-  #  date_end = (Date.today-2).strftime("%Y%m%d")
-  #  page = 1
-  #  page_size = 100
-  #  new_releases =  Hash.from_xml(open("http://api.7digital.com/1.2/release/bydate?fromDate=#{date_end}&toDate=#{date_start}&oauth_consumer_key=#{@sevendigital_apikey}&pageSize=#{page_size}&page=#{page}"))["response"]["releases"]
-  #  while new_releases["release"] do
-  #    puts("New page: #{page}")
-  #    page += 1
-  #    new_releases =  Hash.from_xml(open("http://api.7digital.com/1.2/release/bydate?fromDate=#{date_end}&toDate=#{date_start}&oauth_consumer_key=#{@sevendigital_apikey}&pageSize=#{page_size}&page=#{page}"))["response"]["releases"]
-  #  end
-  #end
+  def duplicates? release
 
-  def self.sdigital_import artist
-    if !artist.sdid?
+      all_releases = releases.collect { |r| {:name => r.name, :date => r.date, :id => r.id} }
+
+      # Check for duplicate and skip if present
+      existing_duplicate = all_releases.detect {|f| f[:name] == release["title"]}
+
+      if existing_duplicate
+        # If the new release came out earlier, change the release date of the existing release in the DB.
+        if existing_duplicate[:date] > release["releaseDate"]
+          r = Release.find(existing_duplicate[:id])
+          r.date = release["releaseDate"]
+          puts "Rewound release date of #{existing_duplicate[:name]} to #{existing_duplicate[:date]}"
+          r.save
+        end
+        return true
+      end
+      return false
+  end
+
+  def sdigital_import
+    if !@artist.sdid?
       return false
     end
-    releases = Hash.from_xml( open("http://api.7digital.com/1.2/artist/releases?artistId=#{artist.sdid}&oauth_consumer_key=#{@sevendigital_apikey}&country=GB&imageSize=350", :proxy => @proxy))["response"]["releases"]["release"]
+    releases = Hash.from_xml( open("http://api.7digital.com/1.2/artist/releases?artistId=#{@artist.sdid}&oauth_consumer_key=#{@sevendigital_apikey}&country=GB&imageSize=350", :proxy => @proxy))["response"]["releases"]["release"]
     if releases.blank?
       return false
     end
@@ -51,29 +67,22 @@ class ReleaseScraper
 
     releases.each do |release|
       begin
-        if release["id"].blank? or !artist.releases.where("sd_id = ?",release["id"]).empty? 
+        if release["id"].blank? or !@artist.releases.where("sd_id = ?",release["id"]).empty? 
           next
         end
       rescue
-        puts "J004: A release for artist '#{artist.name}' failed"
+        puts "J004: A release for artist '#{@artist.name}' failed"
         next
       end
-      r = Release.new
       
-      # Check for duplicate and skip if present
-      existing_duplicates = artist.releases.where(:name => release["title"])
-      if !existing_duplicates.empty?
-        existing_duplicate = existing_duplicates.first
-        # If the new release came out earlier, change the release date of the existing release in the DB.
-        if existing_duplicate.date > release["releaseDate"]
-          existing_duplicate.date = release["releaseDate"]
-          existing_duplicate.save
-        end
+      if duplicates?
         next
       end
 
+      r = Release.new
+
       # Seven Digital
-      r.artist_id = artist.id
+      r.artist_id = @artist.id
       r.sd_id = release["id"]
       r.name = release["title"]
       r.label_name = release["label"]["name"]
@@ -98,7 +107,7 @@ class ReleaseScraper
 
       # Source the artwork from last.fm
       begin
-        album_info = Scraper.lastfm_album_info(artist.name, r.name) 
+        album_info = Scraper.lastfm_album_info(@artist.name, r.name) 
         best_artwork = album_info['image'].last
       rescue
         best_artwork = nil
@@ -121,7 +130,7 @@ class ReleaseScraper
           r.image = io
         end
       end
-      r.save
+      @new_releases << r
       import_count += 1
 
 
@@ -129,7 +138,7 @@ class ReleaseScraper
       begin
         tracks = Hash.from_xml(open("http://api.7digital.com/1.2/release/tracks?releaseid=#{r.sd_id}&oauth_consumer_key=#{@sevendigital_apikey}&country=GB", :proxy => @proxy))["response"]["tracks"]["track"]
       rescue
-        puts("J003: Track scrape failed for release #{r.name} by #{artist.name}")
+        puts("J003: Track scrape failed for release #{r.name} by #{@artist.name}")
       end
       i = 1
       tracks.each do |track|
@@ -140,8 +149,8 @@ class ReleaseScraper
           # Accounts for things like "Gold Dust (Netsky Remix)"
             track = "#{track["title"]} (#{track["version"]})"
           end
-          t = Track.create(:release_id => r.id, :number => i, :name => title, :sd_id => track["id"])
-          i = i+1
+          r.tracks.build(:number => i, :name => title, :sd_id => track["id"])
+          i += 1
         rescue
           puts("J003: Individual track scrape failed for track: #{track.inspect}")
         end
@@ -153,22 +162,24 @@ class ReleaseScraper
         i = 1
         itunes_release_tracks = ActiveSupport::JSON.decode( open("http://itunes.apple.com/lookup?id=#{itunes_release[0]['collectionId']}&entity=song&country=GB", :proxy => @proxy))['results']
         while !itunes_release_tracks[i].nil?
-          t = Track.create(:release_id => r.id, :number => i, :name => itunes_release_tracks[i], :itunes_preview => itunes_release_tracks[i]['previewUrl'])
+          r.tracks.build(:number => i, :name => itunes_release_tracks[i], :itunes_preview => itunes_release_tracks[i]['previewUrl'])
           i += 1
         end
       end
     end
+
     return import_count
+    
   end
     
-  def self.itunes_import artist
+  def itunes_import
     import_count = 0
-    if artist.itunes_id?
-      itunes_releases = ActiveSupport::JSON.decode( open("http://itunes.apple.com/lookup?id=#{artist.itunes_id}&entity=album&country=GB", :proxy => @proxy))['results']
+    if @artist.itunes_id?
+      itunes_releases = ActiveSupport::JSON.decode( open("http://itunes.apple.com/lookup?id=#{@artist.itunes_id}&entity=album&country=GB", :proxy => @proxy))['results']
       i = 1
       while !itunes_releases[i].nil?
         # Avoid importing the same album twice
-        existing = !artist.releases.where("name LIKE ?", "%#{itunes_releases[i]['collectionName']}%")
+        existing = !@releases.where("name LIKE ?", "%#{itunes_releases[i]['collectionName']}%")
         if existing.empty?
 
           itunes_date = Time.zone.parse itunes_releases[i]['releaseDate']
@@ -181,16 +192,16 @@ class ReleaseScraper
           next
         end
         r = Release.new
-        puts("J004: new iTunes album found for #{artist.name} and #{itunes_releases[i]['collectionName']}")
+        puts("J004: new iTunes album found for #{@artist.name} and #{itunes_releases[i]['collectionName']}")
         r.itunes = itunes_releases[i]['collectionViewUrl']
-        r.artist_id = artist.id
+        r.artist_id = @artist.id
         r.itunes_id = itunes_releases[i]["collectionId"]
         r.itunes = itunes_releases[i]['collectionViewUrl']
         r.name = itunes_releases[i]["collectionName"]
         r.date = itunes_releases[i]['releaseDate']
         r.scraped = 1
         
-        album_info = Scraper.lastfm_album_info(artist.name, r.name)
+        album_info = Scraper.lastfm_album_info(@artist.name, r.name)
         # If Last.fm doesn't have artwork for it, it's probably not
         # actually a real release! So skip to the next release
         begin
@@ -219,13 +230,28 @@ class ReleaseScraper
             r.image = io
           end
         end
-        r.save
+        @new_releases << r
         import_count += 1
         i += 1
       end     
     end
 
     return import_count
+  end
+
+  def save_all
+    @new_releases.each do |r|
+      r.save
+    end
+    @new_releases = []
+    @releases = @artist.releases
+  end
+
+  def import
+    sd_count = sdigital_import || 0
+    it_count = itunes_import || 0
+    puts "Imported #{sd_count} 7digital releases and #{it_count} iTunes releases for #{@artist.name}"
+    save_all
   end
 
 end

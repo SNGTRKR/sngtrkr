@@ -1,9 +1,6 @@
 class ArtistScraper
   attr_accessor :image_url, :artist
 
-  @sevendigital_apikey = "7dufgm34849u"
-  @proxy = Scraper.proxy
-
   require 'open-uri'
 
   def initialize opts={}
@@ -18,7 +15,6 @@ class ArtistScraper
     if opts[:access_token]
       @access_token = opts[:access_token]
     end
-
   end
 
   def self.fb_single_import access_token, page_id, user_id
@@ -65,9 +61,13 @@ class ArtistScraper
   end
 
   def scraper_initialise
-    if @scraper.nil?
-      @scraper = Scraper.new @facebook_info["name"]
+    if !@scraper.nil?
+      return true
     end
+    if !@facebook_info["name"]
+      raise "Scraper initialize error: no artist name given"
+    end
+    @scraper = Scraper.new @facebook_info["name"]
   end
 
   def import_info
@@ -137,7 +137,7 @@ class ArtistScraper
       end
     else
       puts "Invalid image: #{@image_url.inspect}"
-    end    
+    end
   end
 
   def import
