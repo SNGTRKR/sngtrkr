@@ -20,6 +20,7 @@ class Scraper
   # iTunes search api
 
   def initialize artist_name
+    @proxy = Scraper.proxy
     @artist_info = Hash.from_xml( open("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=#{CGI.escape(artist_name)}&api_key=6541dc514e866d40539bfe4eddde211c&autocorrect=1", :proxy => @proxy))
     @artist_name = artist_name
   end
