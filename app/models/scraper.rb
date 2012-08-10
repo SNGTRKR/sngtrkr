@@ -1,18 +1,23 @@
 class Scraper
-  include MusicBrainz
   
   @sevendigital_apikey = "7dufgm34849u"
+  
   if Rails.env.production?
     @proxy = 'http://localhost:3128'
   else
     @proxy = nil
   end
+
+  def self.proxy
+    return @proxy
+  end
+
   require 'open-uri'
 
   # DOCS FOR ALL THE SCRAPING MODULES
   # Last.fm (Scrobbler) - http://scrobbler.rubyforge.org/docs/
-  # MusicBrainz - http://rbrainz.rubyforge.org/api-0.5.2/
-  # 7digital -
+  # 7digital
+  # iTunes search api
 
   def initialize artist_name
     @artist_info = Hash.from_xml( open("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=#{CGI.escape(artist_name)}&api_key=6541dc514e866d40539bfe4eddde211c&autocorrect=1", :proxy => @proxy))
@@ -43,12 +48,6 @@ class Scraper
         artist.save!
       end
     end
-  end
-
-  def self.musicBrainzSearch search
-    search = MusicBrainz::Webservice::ArtistFilter.new :name => search
-    # Gets the top musicbrainz result
-    artist = MusicBrainz::Webservice::Query.new.get_artists(search).to_collection[0]
   end
   
   def self.lastfm_album_info(artist_name, album_name)

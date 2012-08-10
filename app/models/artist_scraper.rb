@@ -1,15 +1,23 @@
 class ArtistScraper
+  attr_accessor :image_url, :artist
 
   @sevendigital_apikey = "7dufgm34849u"
   @proxy = Scraper.proxy
-  @scraper
-  @facebook_info
+
   require 'open-uri'
 
   def initialize opts={}
+    @start_time = Time.now
+    if !opts[:facebook_info]
+      raise "ArtistScraper ERROR: No artist information given"
+    end
     @facebook_info = opts[:facebook_info]
-    @user_id = opts[:user_id]
-    @access_token = opts[:access_token]
+    if opts[:user_id]
+      @user = User.find(opts[:user_id])
+    end
+    if opts[:access_token]
+      @access_token = opts[:access_token]
+    end
 
   end
 
@@ -23,20 +31,16 @@ class ArtistScraper
     return db_artist
   end
 
-  def image_url
-    @image_url
-  end
-
   def error_checks
     # Check artist isn't already in database
-    if Artist.where(:fbid => @artist["id"]).count > 0
-      puts "Tried to log an artist that is already in the database: '#{@artist["name"]}'"
+    if Artist.where(:fbid => @facebook_info["id"]).count > 0
+      puts "Tried to log an artist that is already in the database: '#{@facebook_info["name"]}'"
       return false
     end
 
     begin
-      if @artist["likes"] < 100
-        puts "J002: Skipping #{@artist["name"]}, as they have only #{@artist["likes"]} likes"
+      if @facebook_info["likes"] < 100
+        puts "J002: Skipping #{@facebook_info["name"]}, as they have only #{@facebook_info["likes"]} likes"
         return false
       end
     rescue
@@ -44,7 +48,7 @@ class ArtistScraper
     end
 
     begin
-      @scraper = Scraper.new @artist["name"]
+      @scraper = Scraper.new @facebook_info["name"]
     rescue
     # Basically checks that we actually have a name for this artist.
       puts "J002: Failed, artist name could not be read."
@@ -53,17 +57,21 @@ class ArtistScraper
 
     if !@scraper.real_artist?
       # Skip artists that last.fm does not believe are real artists.
-      puts "J002: Failed, last.fm did not believe '#{@artist["name"]}' is a real artist"
+      puts "J002: Failed, last.fm did not believe '#{@facebook_info["name"]}' is a real artist"
       return false
     end
 
     return true
   end
 
-  def import_info
+  def scraper_initialise
     if @scraper.nil?
       @scraper = Scraper.new @facebook_info["name"]
     end
+  end
+
+  def import_info
+    scraper_initialise
     # Once we've covered the basic failing criteria, initialize variables (as late as possible)
     require 'open-uri'
     artist_start_time = Time.now
@@ -124,31 +132,33 @@ class ArtistScraper
       if io
         def io.original_filename; base_uri.path.split('/').last; end
         io.original_filename.blank? ? nil : io
-      a.image = io
+      @artist.image = io
+      @artist.save!
       end
     else
       puts "Invalid image: #{@image_url.inspect}"
     end    
   end
 
-  def self.import access_token, user, artist
-
-    if !error_checks artist
+  def import
+    scraper_initialise
+    
+    if !error_checks
       return false
     end
 
-    a = import_info(access_token, artist)
+    @artist = import_info
     save_image
-    a.save!
+    @artist.save!
 
-    user.suggest_artist a.id
-    if !a.sdid.nil?
-      ReleaseJob.perform_async(a.id)
+    @user.suggest_artist @artist.id
+    if !@artist.sdid.nil?
+      ReleaseJob.perform_async(@artist.id)
     end
-    artist_end_time = Time.now
-    artist_elapsed_time = artist_end_time - artist_start_time
-    puts "New artist import finished after #{artist_elapsed_time}"
-    return a
+    end_time = Time.now
+    elapsed_time = end_time - @start_time
+    puts "New artist import finished after #{elapsed_time}"
+    return @artist
   end
 
 end
