@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
       BetaUser.where(:email => data.email).first.destroy
     end
 
-    Scraper.importFbLikes(access_token.credentials.token, user.id)
+    ArtistJob.perform_async(access_token.credentials.token, user.id)
     user
 
   end

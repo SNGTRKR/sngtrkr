@@ -13,25 +13,13 @@ class ReleaseScraper
     return @new_releases + @releases
   end
 
-  def self.daily_release
-    # Randomise order of artists so that if we do run out of API calls some day, artists all still get checked eventually.
-    if Rails.env.production?
-      rand = "RAND()"
-    else
-      rand = "RANDOM()"
-    end
-    Artist.where(:ignore => false).order(rand).each do |artist|
-      ReleaseJob.perform_async(artist.id)
-    end
-
-    # Notify Matt that the Cron job ran
-    m = ActionMailer::Base.mail(:from => "cron@sngtrkr.com", :to => "bessey@gmail.com", 
-        :subject => '[SNGTRKR Cron] Successfully ran.') do |format|
-      format.text { render :text => "The daily Release cronjob has run as expected" }
-    end
-    m.body = "The daily Release cronjob has run as expected"
-    m.deliver
-    puts "SNGTRKR Daily release has been run successfully."
+  def import
+    sd_count = sdigital_import || 0
+    it_count = itunes_import || 0
+    
+    puts "Imported #{sd_count} 7digital releases and #{it_count} iTunes releases for #{@artist.name}"
+    
+    save_all
   end
 
   def duplicates? release
@@ -54,7 +42,7 @@ class ReleaseScraper
       return false
   end
 
-  def sdigital_import
+  def sdigital_import opts={}
     if !@artist.sdid?
       return false
     end
@@ -75,14 +63,13 @@ class ReleaseScraper
         next
       end
       
-      if duplicates?
+      if duplicates? release
         next
       end
 
-      r = Release.new
+      r = @artist.releases.build
 
       # Seven Digital
-      r.artist_id = @artist.id
       r.sd_id = release["id"]
       r.name = release["title"]
       r.label_name = release["label"]["name"]
@@ -166,13 +153,19 @@ class ReleaseScraper
           i += 1
         end
       end
+
+      # Limit number of releases imported for testing purposes
+      if opts[:limit] and import_count >= opts[:limit]
+        return
+      end
+
     end
 
     return import_count
-    
+
   end
     
-  def itunes_import
+  def itunes_import opts={}
     import_count = 0
     if @artist.itunes_id?
       itunes_releases = ActiveSupport::JSON.decode( open("http://itunes.apple.com/lookup?id=#{@artist.itunes_id}&entity=album&country=GB", :proxy => @proxy))['results']
@@ -191,7 +184,7 @@ class ReleaseScraper
           i += 1
           next
         end
-        r = Release.new
+        r = @artist.releases.build
         puts("J004: new iTunes album found for #{@artist.name} and #{itunes_releases[i]['collectionName']}")
         r.itunes = itunes_releases[i]['collectionViewUrl']
         r.artist_id = @artist.id
@@ -247,11 +240,26 @@ class ReleaseScraper
     @releases = @artist.releases
   end
 
-  def import
-    sd_count = sdigital_import || 0
-    it_count = itunes_import || 0
-    puts "Imported #{sd_count} 7digital releases and #{it_count} iTunes releases for #{@artist.name}"
-    save_all
+  def self.daily_release
+    # Randomise order of artists so that if we do run out of API calls some day, artists all still get checked eventually.
+    if Rails.env.production?
+      rand = "RAND()"
+    else
+      rand = "RANDOM()"
+    end
+    Artist.where(:ignore => false).order(rand).each do |artist|
+      ReleaseJob.perform_async(artist.id)
+    end
+
+    # Notify Matt that the Cron job ran
+    m = ActionMailer::Base.mail(:from => "cron@sngtrkr.com", :to => "bessey@gmail.com", 
+        :subject => '[SNGTRKR Cron] Successfully ran.') do |format|
+      format.text { render :text => "The daily Release cronjob has run as expected" }
+    end
+    m.body = "The daily Release cronjob has run as expected"
+    m.deliver
+    puts "SNGTRKR Daily release has been run successfully."
   end
 
-end
+
+  end
