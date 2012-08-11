@@ -16,18 +16,7 @@ margin-left:162px !important;
 <%= form_tag "", :method => "get" do %>
   <%= label_tag :search, "Artist facebook ID" %>
   <%= text_field_tag :search, @search %>
-  <input type="hidden" id="fb_access_token" name="fb_access_token">
-<% end %>
-<% content_for :fb_js do %>
-  FB.getLoginStatus(function(response) {
-      if(response.status === 'connected') {
-        var accessToken = response.authResponse.accessToken;
-        $('#fb_access_token').val(accessToken);
-      }
-    });
-  
 <% end %>
 </div>
 </div>
 </div>
-<%= render 'shared/fb_async' %>

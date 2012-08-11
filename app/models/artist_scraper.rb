@@ -4,7 +4,6 @@ class ArtistScraper
   require 'open-uri'
 
   def initialize opts={}
-    @start_time = Time.now
     if !opts[:facebook_info]
       raise "ArtistScraper ERROR: No artist information given"
     end
@@ -20,12 +19,38 @@ class ArtistScraper
   def self.fb_single_import access_token, page_id, user_id
     graph = Koala::Facebook::API.new(access_token)
     artist = graph.api("/#{page_id}?fields=name,general_manager,booking_agent,record_label,genre,hometown,website,bio,picture,likes")
-    Rails.logger.info(artist)
     db_artist = import_info(access_token, user_id, artist)
     db_artist.save
     User.find(user_id).following << db_artist
     return db_artist
   end
+
+  def self.improve_all
+    Artist.all.each do |artist|
+      if artist.image.to_s == "/images/original/missing.png"
+        next
+      end
+      image = 'public'+artist.image.to_s.split('?')[0]
+      begin
+        open(Rails.root.join(image))
+        puts "Artist fine '#{artist.name}'"
+      rescue
+        puts "No image for artist '#{artist.name}'"
+        s = Scraper.new artist.name
+        lfm_image = s.lastFmArtistImage
+        if lfm_image
+          io = open(URI.escape(lfm_image))
+          if io
+            def io.original_filename; base_uri.path.split('/').last; end
+            io.original_filename.blank? ? nil : io
+            artist.image = io
+          end
+        end
+        artist.save!
+      end
+    end
+  end
+  
 
   def error_checks
     # Check artist isn't already in database
@@ -71,29 +96,55 @@ class ArtistScraper
   end
 
   def import_info
+
+    @start_time = Time.now
+    puts "Starting import of #{@artist.name}".upcase
+
+    puts "Initializing Last.fm scraper"
     scraper_initialise
     # Once we've covered the basic failing criteria, initialize variables (as late as possible)
     require 'open-uri'
-    artist_start_time = Time.now
-
+    
+    puts "Importing facebook and last.fm data"
     split_regexp = /[,\/|+\.]/
     a = Artist.new
     a.name = @scraper.real_name
     a.fbid = @facebook_info["id"]
     a.bio = @scraper.bio
+    
     if @scraper.bio.nil?
       a.bio = @facebook_info["bio"]
     end
+    
     a.genre = @facebook_info["genre"].split(split_regexp).first rescue nil
     a.booking_email = @facebook_info["booking_agent"]
     a.manager_email = @facebook_info["general_manager"]
     a.hometown = @facebook_info["hometown"]
     a.label_name = @facebook_info["record_label"].split(split_regexp).first  rescue nil
+    
     if(@facebook_info["website"])
       websites = @facebook_info["website"].split(' ')
+
+      websites.each do |website|
+        if(website.length < 5)
+        next
+        end
+        if(website =~ /(?<=twitter\.com\/)(#!\/)?(.*)/)
+        a.twitter = $&
+        elsif(website =~ /(?<=youtube\.com\/)(#!\/)?(.*)/)
+        a.youtube = $&
+        elsif(website =~ /(?<=soundcloud\.com\/)(#!\/)?(.*)/)
+        a.soundcloud = $&
+        else
+        a.website = website
+        end
+      end
+
     else
     websites = [];
     end
+    
+    puts "Importing iTunes data"
     begin
       itunes_results = ITunesSearchAPI.search(:term => a.name, :country => "GB").first
       a.itunes = itunes_results['artistViewUrl']
@@ -101,26 +152,21 @@ class ArtistScraper
     rescue
       a.itunes = nil
     end
+
+    puts "Importing 7digital data"
     sd_info = Scraper.artist_sevendigital a.name
+    
     if !sd_info.nil?
     a.sdid = sd_info[0]
     a.sd = sd_info[1]
     end
-    websites.each do |website|
-      if(website.length < 5)
-      next
-      end
-      if(website =~ /(?<=twitter\.com\/)(#!\/)?(.*)/)
-      a.twitter = $&
-      elsif(website =~ /(?<=youtube\.com\/)(#!\/)?(.*)/)
-      a.youtube = $&
-      elsif(website =~ /(?<=soundcloud\.com\/)(#!\/)?(.*)/)
-      a.soundcloud = $&
-      else
-      a.website = website
-      end
-    end
+
+    puts "Importing Last.fm image"
     @image_url = @scraper.lastFmArtistImage
+
+    end_time = Time.now
+    elapsed_time = end_time - @start_time
+    puts "New artist import finished after #{elapsed_time}"
 
     return a
   end
@@ -155,9 +201,6 @@ class ArtistScraper
     if !@artist.sdid.nil?
       ReleaseJob.perform_async(@artist.id)
     end
-    end_time = Time.now
-    elapsed_time = end_time - @start_time
-    puts "New artist import finished after #{elapsed_time}"
     return @artist
   end
 

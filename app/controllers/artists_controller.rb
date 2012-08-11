@@ -180,17 +180,28 @@ class ArtistsController < ApplicationController
 
   # For seeing how an artist would be scraped with the latest Scraper settings, live, no Sidekiq.
   def preview
-    @search = params[:search] || 157061704319736
-    if !params[:fb_access_token]
+    if !params[:search]
       render 'artists/preview_form'
     end
+
+    @search = params[:search] || 157061704319736
+
     if params[:search]
-      graph = Koala::Facebook::API.new(params[:fb_access_token])
+      graph = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
       fb_data = graph.api("/#{params[:search]}?fields=name,general_manager,booking_agent,record_label,genre,hometown,website,bio,picture,likes")
       
+      puts "Creating new artist scraper object"
       artist_scraper = ArtistScraper.new :facebook_info => fb_data
+      puts "Importing artist's information"
       @artist = artist_scraper.import_info
       @image_url = artist_scraper.image_url
+
+      #release_scraper = ReleaseScraper.new @artist
+      #release_scraper.sdigital_import :limit => 1
+      #release_scraper.itunes_import
+      @timeline = []
+      #@timeline = release_scraper.releases
+
     end
   end
   

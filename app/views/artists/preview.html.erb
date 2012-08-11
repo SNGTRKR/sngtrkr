@@ -112,6 +112,26 @@ margin-left:162px !important;
 	<p>Provided by <a href="http://last.fm">Last.fm</a></p>
 	</div>
 </div>
+
+<!-- ARTIST TIMELINE -->
+
+<% content_for :timeline_header do %>
+  <%= @artist.name %>'s Timeline
+<% end %>
+<% content_for :timeline do %>
+  <% if @timeline.empty? %>
+    <%= render 'timeline/artist_empty' %>
+  <% else %>
+      <ol class="release-list">
+        <%= render :partial => 'timeline/preview_release', :collection => @timeline, :locals => {:date_format => "%B %Y"} %>
+      </ol>
+  <% end %>
+<% end %>
+<%= render 'timeline/timeline' %>
+
+<!-- END OF ARTIST TIMELINE -->
+
+
 <script>
 	$(document).ready(function(){
     timeline_setup();
