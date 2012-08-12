@@ -1,9 +1,11 @@
 <% artist_page ||= 'false' %>
 <% date_format ||= " %B" %>
-<% release = preview_release %>
+<% release = preview_release[0] %>
+<% release_image = preview_release[1] %>
+<% release_tracks = preview_release[2] %>
 <li class="release-outer release-outer-<%= cycle('odd','even') %>" data-release-id="<%= release.id %>" data-release-date="<%= release.date %>">
   <div class="joining-line"></div>
-  <div class="each-release" style="background-image:url(<%= release.image :release_i %>)">
+  <div class="each-release" <% if release_image %> style="background-image:url(<%= release_image %>)" <% end %>>
     <div class="r-grad"></div>
     <div class="release-date">
       
@@ -22,12 +24,11 @@
       <ul class="release-menu">
         <div>
           <li class="buy-release">Buy</li>
-          <!--<% if release.tracks.count > 0 %>
+          <% if release_tracks.length > 0 %>
             <li class="play-release">Listen</li>
           <% else %>
             <li>&nbsp;</li>
-          <% end %> -->
-          <li>&nbsp;</li>
+          <% end %>
           <li class="share-release">Share</li>
         </div>
       </ul>
@@ -63,7 +64,7 @@
     <div class="play-release-list">
     <h4>Play this release</h4>
     <i class="icon-remove close-player"></i>
- <!--   	<% if !release.tracks.count.zero? %>
+ <% if release_tracks.length > 0 %>
   <div id="release_jplayer_<%= release.id %>" class="jp-jplayer"></div>
   <div class="timeline-i-player">
   <div id="jp_container_<%= release.id %>" class="jp-audio">
@@ -117,11 +118,10 @@
 	}, [
 	<% 
   	i = 1
-  	release.tracks.ordered.each do |track| %>
+  	release_tracks.each do |track| %>
 		{
 			title:"<%= i %> - <%= track.name %>",
-			m4a:"<%= #track.preview # NEEDS TO BE RENABLED
-      %>"
+			m4a:"<%= track.preview %>"
 		},
 		<% 
 		i += 1
@@ -135,7 +135,7 @@
       });
     });
   </script> 
-<% end %> -->
+<% end %>
     </div>
   </div>
 </li>
