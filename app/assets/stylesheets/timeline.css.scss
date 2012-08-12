@@ -272,7 +272,7 @@ $line-color: #2e708c;
           }
         }
         .play-release-list{
-          display: none;
+          @extend .buy-release-list;
         }
       }
       li.release-outer-even{
