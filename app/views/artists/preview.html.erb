@@ -123,14 +123,15 @@ margin-left:162px !important;
     <%= render 'timeline/artist_empty' %>
   <% else %>
       <ol class="release-list">
-        <%= render :partial => 'timeline/preview_release', :collection => @timeline, :locals => {:date_format => "%B %Y"} %>
+        <% @timeline.each_with_index do |release, i| %>
+          <%= render :partial => 'timeline/preview_release', :object => [release,@timeline_images[i],@release_tracks[i]], :locals => {:date_format => "%B %Y"} %>
+        <% end %>
       </ol>
   <% end %>
 <% end %>
 <%= render 'timeline/timeline' %>
 
 <!-- END OF ARTIST TIMELINE -->
-
 
 <script>
 	$(document).ready(function(){
@@ -148,4 +149,3 @@ margin-left:162px !important;
 		$(".destroy").mouseover(function(){ $('.destroy').stop().animate({left : 60}, "slow");}).mouseout(function(){ $('.destroy').stop().animate({left : 0}, "slow"); });
 		});
 </script>
-<%= render 'shared/fb_async' %>
