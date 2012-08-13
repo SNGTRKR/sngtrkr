@@ -21,7 +21,12 @@ class Scraper
 
   def initialize artist_name
     @proxy = Scraper.proxy
-    @artist_info = Hash.from_xml( open("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=#{CGI.escape(artist_name)}&api_key=6541dc514e866d40539bfe4eddde211c&autocorrect=1", :proxy => @proxy))
+    safe_name = CGI.escape(artist_name)
+    begin
+      @artist_info = Hash.from_xml( open("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=#{safe_name}&api_key=6541dc514e866d40539bfe4eddde211c&autocorrect=1", :proxy => @proxy))
+    rescue
+      raise "SCRAPER INITIALISE ERROR ON ARTIST: #{artist_name} / CGI: #{safe_name}"
+    end
     @artist_name = artist_name
   end
 
