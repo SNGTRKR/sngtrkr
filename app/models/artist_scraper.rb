@@ -16,6 +16,24 @@ class ArtistScraper
     end
   end
 
+  def import
+    scraper_initialise
+    
+    if errors?
+      return false
+    end
+
+    @artist = import_info
+    save_image
+    @artist.save!
+
+    @user.suggest_artist @artist.id
+    if !@artist.sdid.nil?
+      ReleaseJob.perform_async(@artist.id)
+    end
+    return @artist
+  end
+
   def self.fb_single_import access_token, page_id, user_id
     graph = Koala::Facebook::API.new(access_token)
     artist = graph.api("/#{page_id}?fields=name,general_manager,booking_agent,record_label,genre,hometown,website,bio,picture,likes")
@@ -52,37 +70,43 @@ class ArtistScraper
   end
   
 
-  def error_checks
+  def errors? opts={}
     # Check artist isn't already in database
-    if Artist.where(:fbid => @facebook_info["id"]).count > 0
-      puts "Tried to log an artist that is already in the database: '#{@facebook_info["name"]}'"
-      return false
+    if Artist.where(:fbid => @facebook_info["id"]).count > 0 and !opts[:preview_mode]
+      puts "ARTIST ERROR: Tried to log an artist that is already in the database: '#{@facebook_info["name"]}'"
+      return true
+    end
+
+    # If they are a record label, do not import them into the database
+    if @facebook_info["name"].downcase["records"] and @facebook_info["name"].length > 15
+      puts "ARTIST ERROR: "
+      return true
     end
 
     begin
       if @facebook_info["likes"] < 100
-        puts "J002: Skipping #{@facebook_info["name"]}, as they have only #{@facebook_info["likes"]} likes"
-        return false
+        puts "ARTIST ERROR: They have only #{@facebook_info["likes"]} likes"
+        return true
       end
     rescue
-      puts "J002: Failed, artist's like count could not be read."
+      puts "ARTIST ERROR: Artist's like count could not be read."
     end
 
     begin
       @scraper = Scraper.new @facebook_info["name"]
     rescue
     # Basically checks that we actually have a name for this artist.
-      puts "J002: Failed, artist name could not be read."
-      return false
+      puts "ARTIST ERROR: Artist name could not be read."
+      return true
     end
 
     if !@scraper.real_artist?
       # Skip artists that last.fm does not believe are real artists.
-      puts "J002: Failed, last.fm did not believe '#{@facebook_info["name"]}' is a real artist"
-      return false
+      puts "ARTIST ERROR: Last.fm did not believe '#{@facebook_info["name"]}' is a real artist"
+      return true
     end
 
-    return true
+    return false
   end
 
   def scraper_initialise
@@ -98,7 +122,7 @@ class ArtistScraper
   def import_info
 
     @start_time = Time.now
-    puts "Starting import of #{@artist.name}".upcase
+    puts "Starting import of #{@facebook_info["name"]}".upcase
 
     puts "Initializing Last.fm scraper"
     scraper_initialise
@@ -146,11 +170,13 @@ class ArtistScraper
     
     puts "Importing iTunes data"
     begin
-      itunes_results = ITunesSearchAPI.search(:term => a.name, :country => "GB").first
-      a.itunes = itunes_results['artistViewUrl']
+      itunes_results = ITunesSearchAPI.search(:term => a.name, :country => "GB", :media => "music", :entity => "musicArtist").first
+      a.itunes = itunes_results['artistLinkUrl']
       a.itunes_id = itunes_results['artistId']
+      puts "Found artist with ID #{a.itunes_id}"
     rescue
-      a.itunes = nil
+     puts "Couldn't find artist on iTunes"
+     a.itunes = nil
     end
 
     puts "Importing 7digital data"
@@ -184,24 +210,6 @@ class ArtistScraper
     else
       puts "Invalid image: #{@image_url.inspect}"
     end
-  end
-
-  def import
-    scraper_initialise
-    
-    if !error_checks
-      return false
-    end
-
-    @artist = import_info
-    save_image
-    @artist.save!
-
-    @user.suggest_artist @artist.id
-    if !@artist.sdid.nil?
-      ReleaseJob.perform_async(@artist.id)
-    end
-    return @artist
   end
 
 end
