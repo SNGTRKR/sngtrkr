@@ -48,7 +48,7 @@ class ArtistScraper
 
   def self.improve_all
     Artist.all.each do |artist|
-      scraper = ArtistScraper.new :artist_id => artist.fbid
+      scraper = ArtistScraper.new :artist_id => artist.id
       new_artist = scraper.import_stores :improve_existing => true
       new_artist.save!
       ReleaseJob.perform_async(new_artist.id)
