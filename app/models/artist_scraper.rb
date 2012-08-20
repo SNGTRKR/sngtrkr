@@ -45,6 +45,15 @@ class ArtistScraper
 
   def self.improve_all
     Artist.all.each do |artist|
+      scraper = ArtistScraper.new artist.fbid
+      new_artist = scraper.import_info
+      new_artist.save!
+      ReleaseJob.perform_async(new_artist.id)
+    end
+  end
+
+  def self.improve_all_artwork
+    Artist.all.each do |artist|
       if artist.image.to_s == "/images/original/missing.png"
         next
       end
@@ -119,7 +128,7 @@ class ArtistScraper
     @scraper = Scraper.new @facebook_info["name"]
   end
 
-  def import_info
+  def import_info opts={}
 
     @start_time = Time.now
     puts "Starting import of #{@facebook_info["name"]}".upcase
@@ -131,7 +140,11 @@ class ArtistScraper
     
     puts "Importing facebook and last.fm data"
     split_regexp = /[,\/|+\.]/
-    a = Artist.new
+    if opts[:improve_existing]
+      a = Artist.where(:fbid => @facebook_info['id']).first
+    else
+      a = Artist.new
+    end
     a.name = @scraper.real_name
     a.fbid = @facebook_info["id"]
     a.bio = @scraper.bio
@@ -151,26 +164,30 @@ class ArtistScraper
 
       websites.each do |website|
         if(website.length < 5)
-        next
+          next
         end
         if(website =~ /(?<=twitter\.com\/)(#!\/)?(.*)/)
-        a.twitter = $&
+          a.twitter = $&
         elsif(website =~ /(?<=youtube\.com\/)(#!\/)?(.*)/)
-        a.youtube = $&
+          a.youtube = $&
         elsif(website =~ /(?<=soundcloud\.com\/)(#!\/)?(.*)/)
-        a.soundcloud = $&
+          a.soundcloud = $&
         else
-        a.website = website
+          a.website = website
         end
       end
 
     else
-    websites = [];
+    websites = []
     end
     
     puts "Importing iTunes data"
     begin
       itunes_results = ITunesSearchAPI.search(:term => a.name, :country => "GB", :media => "music", :entity => "musicArtist").first
+      # Delete existing releases by this artist if their artist_id on itunes has changed
+      if opts[:improve_existing] and a.itunes_id != itunes_results['artistId']
+        a.releases.where("itunes != ?", nil).delete_all
+      end
       a.itunes = itunes_results['artistLinkUrl']
       a.itunes_id = itunes_results['artistId']
       puts "Found artist with ID #{a.itunes_id}"
@@ -182,9 +199,14 @@ class ArtistScraper
     puts "Importing 7digital data"
     sd_info = Scraper.artist_sevendigital a.name
     
-    if !sd_info.nil?
-    a.sdid = sd_info[0]
-    a.sd = sd_info[1]
+    if sd_info
+      # Delete existing releases by this artist if their id on 7digital has changed
+      if opts[:improve_existing] and a.sdid != sd_info[0]
+        a.releases.where("sdid != ?", nil).delete_all
+      end
+
+      a.sdid = sd_info[0]
+      a.sd = sd_info[1]
     end
 
     puts "Importing Last.fm image"
