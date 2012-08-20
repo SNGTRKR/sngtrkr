@@ -4,8 +4,11 @@ class ArtistScraper
   require 'open-uri'
 
   def initialize opts={}
-    if !opts[:facebook_info]
+    if !opts[:facebook_info] and !opts[:artist_id]
       raise "ArtistScraper ERROR: No artist information given"
+    end
+    if opts[:artist_id]
+      @artist = Artist.find(opts[:artist_id])
     end
     @facebook_info = opts[:facebook_info]
     if opts[:user_id]
@@ -140,11 +143,7 @@ class ArtistScraper
     
     puts "Importing facebook and last.fm data"
     split_regexp = /[,\/|+\.]/
-    if opts[:improve_existing]
-      @artist = Artist.where(:fbid => @facebook_info['id']).first
-    else
-      @artist = Artist.new
-    end
+    @artist = Artist.new
     @artist.name = @scraper.real_name
     @artist.fbid = @facebook_info["id"]
     @artist.bio = @scraper.bio
