@@ -21,7 +21,6 @@ end
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'seed_dumper'
 end
 
 group :test do

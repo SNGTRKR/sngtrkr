@@ -14,9 +14,9 @@ class ReleaseScraper
     end
   end
 
-  def import
-    sd_count = sdigital_import || 0
-    it_count = itunes_import || 0
+  def import opts={}
+    sd_count = sdigital_import(opts) || 0
+    it_count = itunes_import(opts) || 0
     
     puts "Imported #{sd_count} 7digital releases and #{it_count} iTunes releases for #{@artist.name}"
     
@@ -72,20 +72,32 @@ class ReleaseScraper
 
     releases.each do |release|
       begin
-        if release["id"].blank? or !@artist.releases.where("sd_id = ?",release["id"]).empty? 
+        if release["id"].blank?
           next
+        end
+        existing_releases = @artist.releases.where("sd_id = ?",release["id"])
+        if !existing_releases.empty?
+          if opts[:improve_existing]
+            r = existing_releases.first
+          else
+            next
+          end
+        else
+          # Set so we can check if an existing release is being improved or not
+          r = nil
         end
       rescue
         puts "RELEASE 7DIGITAL: A release for #{@artist.name} FAILED"
         next
       end
       
-      if duplicates? release["title"], release["releaseDate"]
+      # Only skip if we AREN'T improving an existing release
+      if r.nil? and duplicates? release["title"], release["releaseDate"]
         next
       end
 
       puts("RELEASE 7DIGITAL: Scraping #{@artist.name} - #{release["title"]}")
-      r = @artist.releases.build
+      r ||= @artist.releases.build
 
       # Seven Digital
       r.sd_id = release["id"]
@@ -203,22 +215,29 @@ class ReleaseScraper
     end
 
     itunes_releases = ActiveSupport::JSON.decode( open("http://itunes.apple.com/lookup?id=#{@artist.itunes_id}&entity=album&country=GB", :proxy => @proxy))['results']
-    i = 1
-    while !itunes_releases[i].nil? and itunes_releases[i]['collectionName']   
+    itunes_releases.each do |itunes_release|
+      next if !itunes_release['collectionName']
+      existing_releases = @artist.releases.where(:itunes_id, itunes_release["collectionId"])
+      if !existing_releases.empty?
+        if opts[:improve_existing]
+          r = existing_releases.first
+        else
+          next
+        end
+      else
+        r = nil
+      end 
       
-      if duplicates? itunes_releases[i]['collectionName'], itunes_releases[i]['releaseDate']
-        i += 1
-        next
-      end
-
-      r = @artist.releases.build
-      puts("RELEASE ITUNES: #{@artist.name} and #{itunes_releases[i]['collectionName']}")
-      r.itunes = itunes_releases[i]['collectionViewUrl']
+      next if duplicates? itunes_release['collectionName'], itunes_release['releaseDate']
+        
+      r ||= @artist.releases.build
+      puts("RELEASE ITUNES: #{@artist.name} and #{itunes_release['collectionName']}")
+      r.itunes = itunes_release['collectionViewUrl']
       r.artist_id = @artist.id
-      r.itunes_id = itunes_releases[i]["collectionId"]
-      r.itunes = itunes_releases[i]['collectionViewUrl']
-      r.name = ReleaseScraper.improved_name itunes_releases[i]["collectionName"]
-      r.date = itunes_releases[i]['releaseDate']
+      r.itunes_id = itunes_release["collectionId"]
+      r.itunes = itunes_release['collectionViewUrl']
+      r.name = ReleaseScraper.improved_name itunes_release["collectionName"]
+      r.date = itunes_release['releaseDate']
       r.scraped = 1
       
       album_info = Scraper.lastfm_album_info(@artist.name, r.name)
@@ -226,12 +245,12 @@ class ReleaseScraper
         best_artwork = album_info['image'].last
         puts "Artwork Error: Release: '#{r.name}'. Expected String, actually got: '#{best_artwork.inspect}'"
         # Itunes artwork is really shit quality so only use it if we must...
-        if itunes_releases[i]["artworkUrl100"]
+        if itunes_release["artworkUrl100"]
           if @preview_mode
-          puts "IMAGE ITUNES: #{itunes_releases[i]["artworkUrl100"]}"
-            @new_releases_images << itunes_releases[i]["artworkUrl100"]
+          puts "IMAGE ITUNES: #{itunes_release["artworkUrl100"]}"
+            @new_releases_images << itunes_release["artworkUrl100"]
           else
-            io = open(itunes_releases[i]["artworkUrl100"], :proxy => @proxy)
+            io = open(itunes_release["artworkUrl100"], :proxy => @proxy)
             if io
               def io.original_filename; base_uri.path.split('/').last; end
               io.original_filename.blank? ? nil : io      
@@ -257,7 +276,6 @@ class ReleaseScraper
       end
       @new_releases << r
       import_count += 1
-      i += 1
 
       # Limit number of releases imported for testing purposes
       if opts[:limit] and import_count >= opts[:limit]
