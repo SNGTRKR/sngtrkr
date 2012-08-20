@@ -213,7 +213,7 @@ class ArtistScraper
     if sd_info
       # Delete existing releases by this artist if their id on 7digital has changed
       if opts[:improve_existing] and @artist.sdid != sd_info[0]
-        @artist.releases.where("sdid != ?", nil).delete_all
+        @artist.releases.where("sd_id != ?", nil).delete_all
       end
 
       @artist.sdid = sd_info[0]
