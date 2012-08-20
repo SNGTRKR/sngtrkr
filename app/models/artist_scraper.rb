@@ -31,7 +31,7 @@ class ArtistScraper
     @artist.save!
 
     @user.suggest_artist @artist.id
-    if !@artist.sdid.nil?
+    if !@artist.sdid.nil? or !@artist.itunes_id.nil?
       ReleaseJob.perform_async(@artist.id)
     end
     return @artist
@@ -48,7 +48,7 @@ class ArtistScraper
 
   def self.improve_all
     Artist.all.each do |artist|
-      scraper = ArtistScraper.new artist.fbid
+      scraper = ArtistScraper.new :artist_id => artist.fbid
       new_artist = scraper.import_stores :improve_existing => true
       new_artist.save!
       ReleaseJob.perform_async(new_artist.id)
