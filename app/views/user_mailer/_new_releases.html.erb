@@ -218,7 +218,7 @@
 <td style="line-height:1.4em;"><%= link_to release.name, artist_release_url(release.artist, release), :target => "_blank", :style => "color: #F15A24;text-decoration:none;font-weight:bold;font-size:22px;" %><br/>
 <b>Artist</b>: <%= link_to release.artist.name, artist_url(release.artist), :target => "_blank", :style => "color: #F15A24;text-decoration:none;" %><br/>
 <b>Label</b>: <%= release.label_name %><br/>
-<b>Catalogue No</b>: <%= release.cat_no %></td>
+</td>
 <td style="text-align:center;"><span style="font-size:45px;"><%= release.date.strftime("%d") %></span><br/><span style="font-size:22px;"><%= release.date.strftime("%b") %></span></td>
 </tr>
 <% end %>
