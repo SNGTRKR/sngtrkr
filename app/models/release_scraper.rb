@@ -25,14 +25,15 @@ class ReleaseScraper
 
   def duplicates? title, date = false
 
-      all_releases = @releases.collect { |r| {:name => r.name, :date => r.date, :id => r.id} }
+      title_processed = title.downcase
+      all_releases = @releases.collect { |r| {:name => r.name.downcase, :date => r.date, :id => r.id} }
 
       # Check for duplicate and skip if present
       existing_duplicate = all_releases.detect do |f| 
         # Ignore similar titles unless the longer one contains the word remix
-        if f[:name].include? title and !f[:name].downcase["remix"]
+        if f[:name].include? title_processed and !f[:name]["remix"]
           return true
-        elsif title.include? f[:name] and !title.downcase["remix"]
+        elsif title_processed.include? f[:name] and !title["remix"]
           return true
         end
       end
