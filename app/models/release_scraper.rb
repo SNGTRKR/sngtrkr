@@ -54,9 +54,11 @@ class ReleaseScraper
     # Gets rid of (Featuring X) / (Feat X.) / (feat x) / [feat x]
     feat = / (\(|\[)(f|F)eat[^\)]*(\)|\])/
     ep = /( - |- )(EP|(S|s)ingle|(A|a)lbum)/
+    itunes_remix = /\(Remixes\)/
     ret = name.gsub( name.match(feat).to_s, "")
+    ret = ret.gsub( ret.match(itunes_remix).to_s, "")
     ret = ret.gsub( ret.match(ep).to_s, "")
-    return ret
+    return ret.strip # Remove whitespace at either end
   end
 
   def sdigital_import opts={}
@@ -91,8 +93,9 @@ class ReleaseScraper
         next
       end
       
+      title = ReleaseScraper.improved_name release["title"]
       # Only skip if we AREN'T improving an existing release
-      if r.nil? and duplicates? release["title"], release["releaseDate"]
+      if r.nil? and duplicates? title, release["releaseDate"]
         next
       end
 
@@ -101,7 +104,7 @@ class ReleaseScraper
 
       # Seven Digital
       r.sd_id = release["id"]
-      r.name = ReleaseScraper.improved_name release["title"]
+      r.name = title
       r.label_name = release["label"]["name"]
       r.date = release["releaseDate"]
       r.cat_no = release["isrc"]
@@ -228,7 +231,8 @@ class ReleaseScraper
         r = nil
       end 
       
-      next if duplicates? itunes_release['collectionName'], itunes_release['releaseDate']
+      title = ReleaseScraper.improved_name itunes_release["collectionName"]
+      next if duplicates? title, itunes_release['releaseDate']
         
       r ||= @artist.releases.build
       puts("RELEASE ITUNES: #{@artist.name} and #{itunes_release['collectionName']}")
