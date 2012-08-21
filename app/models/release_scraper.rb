@@ -265,7 +265,7 @@ class ReleaseScraper
           puts "IMAGE ITUNES: Failed from all sources."
           @new_releases_images << "nope.jpg"
         end
-      else
+      elsif best_artwork
         if @preview_mode
           puts "IMAGE ITUNES: Last.fm #{best_artwork}"
           @new_releases_images << best_artwork
