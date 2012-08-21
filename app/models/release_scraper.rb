@@ -25,7 +25,7 @@ class ReleaseScraper
 
   def duplicates? title, date = false
 
-      all_releases = releases.collect { |r| {:name => r.name, :date => r.date, :id => r.id} }
+      all_releases = @releases.collect { |r| {:name => r.name, :date => r.date, :id => r.id} }
 
       # Check for duplicate and skip if present
       existing_duplicate = all_releases.detect do |f| 
@@ -54,7 +54,7 @@ class ReleaseScraper
     # Gets rid of (Featuring X) / (Feat X.) / (feat x) / [feat x]
     feat = / (\(|\[)(f|F)eat[^\)]*(\)|\])/
     ep = /( - |- )(EP|(S|s)ingle|(A|a)lbum)/
-    itunes_remix = /\(Remixes\)/
+    itunes_remix = /(\(|\[)[\w\s]+(R|r)emixes(\)|\])/
     ret = name.gsub( name.match(feat).to_s, "")
     ret = ret.gsub( ret.match(itunes_remix).to_s, "")
     ret = ret.gsub( ret.match(ep).to_s, "")
