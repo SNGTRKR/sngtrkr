@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_filter :self_only, :except => [:show, :timeline, :self, :local_new, :create]
   before_filter :authenticate_user!, :except => [:local_new]
   
-  load_and_authorize_resource :except => [:local_new]
+  #load_and_authorize_resource :except => [:local_new]
 
   def index
     @users = User.limit(50).all

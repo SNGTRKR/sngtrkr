@@ -242,9 +242,9 @@
 	<br>
 	<span style="font-size: 22px; line-height: 100%; ">Hello <%= @user.first_name %>,</span></h1>
 	
-<b>You recently changed the email address associated with your SNGTRKR account.</b><br/><br/>
+<b>Please confirm your SNGTRKR email address.</b><br/><br/>
 
-To confirm <%= email %> as your new contact email, click this link:<br/><br/>
+To confirm <%= email %>, click this link:<br/><br/>
 
 <%= link_to 'Confirm email address', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %><br/><br/>
 

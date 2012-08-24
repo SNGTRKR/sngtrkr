@@ -19,6 +19,7 @@ class Ability
   
   def guest_permissions(user)
       can :read, [Artist, Release] 
+      can :manage, User
   end
   
   def user_permissions(user)

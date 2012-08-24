@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   #  rescue_from ActiveRecord::RecordNotFound, with: :render_404
   #end
   before_filter :authenticate_user!, :except => [:splash,:home,:sitemap]
-  before_filter :featured_artists, :only => [:home]
+  before_filter :featured_artists, :only => [:home,:new]
   before_filter :timer_start
   before_filter :define_user
   
@@ -71,21 +71,16 @@ class ApplicationController < ActionController::Base
   def home
     flash.keep
     if user_signed_in?
-      if !current_user.roles.empty? # No roles would mean they are not a beta user
-        if current_user.sign_in_count == 1 # First time user
-          u = current_user
-          u.sign_in_count += 1
-          u.save
-          return redirect_to '/intro'
-        else
-          return redirect_to '/tl'
-        end
+      if current_user.sign_in_count == 1 # First time user
+        u = current_user
+        u.sign_in_count += 1
+        u.save
+        return redirect_to '/intro'
+      else
+        return redirect_to '/tl'
       end
-      return redirect_to '/limbo'
-    else
-      render 'pages/home', :layout => 'no_sidebar'
     end
-  
+    render 'pages/home', :layout => 'no_sidebar'
   end
 
   def default_url_options
