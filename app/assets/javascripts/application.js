@@ -7,6 +7,7 @@
 //= require rotate/jQueryRotate.2.2
 // BOOTSTRAP REQUIRES
 //= require bootstrap-tooltip
+//= require bootstrap-modal
 //= require bootstrap-popover
 //= require bootstrap-tab
 //= require bootstrap-transition
