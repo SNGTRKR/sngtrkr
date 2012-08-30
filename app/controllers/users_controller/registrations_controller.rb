@@ -7,10 +7,6 @@ class UsersController::RegistrationsController < Devise::RegistrationsController
     authorize! :create, resource
   end
 
-  def new
-    super
-  end
-
   def destroy
     resource.soft_delete
     set_flash_message :notice, :destroyed

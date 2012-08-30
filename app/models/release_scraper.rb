@@ -23,6 +23,15 @@ class ReleaseScraper
     save_all
   end
 
+  def improve_all
+    Release.find_each do |r|
+      # Find duplicate releases with similar names
+      new_name = ReleaseScraper.improved_name r.name
+      existing = Release.where('artist_id = ? AND date > ? AND date < id != ?',r.artist_id,r.date - 2.days, r.date + 2.days, r.id).first
+      existing.destroy if existing
+    end
+  end
+
   def duplicates? title, date = false
 
       title_processed = title.downcase
@@ -54,7 +63,7 @@ class ReleaseScraper
   def self.improved_name name
     # Gets rid of (Featuring X) / (Feat X.) / (feat x) / [feat x]
     feat = / (\(|\[)(f|F)eat[^\)]*(\)|\])/
-    ep = /( - |- )(EP|(S|s)ingle|(A|a)lbum)/
+    ep = /( - |- | )(EP|(S|s)ingle|(A|a)lbum)/
     itunes_remix = /(\(|\[)[\w\s]+(R|r)emixes(\)|\])/
     ret = name.gsub( name.match(feat).to_s, "")
     ret = ret.gsub( ret.match(itunes_remix).to_s, "")
@@ -248,37 +257,21 @@ class ReleaseScraper
       album_info = Scraper.lastfm_album_info(@artist.name, r.name)
       if album_info and album_info['image'].is_a? Array
         best_artwork = album_info['image'].last
-        puts "Artwork Error: Release: '#{r.name}'. Expected String, actually got: '#{best_artwork.inspect}'"
         # Itunes artwork is really shit quality so only use it if we must...
-        if itunes_release["artworkUrl100"]
-          if @preview_mode
-          puts "IMAGE ITUNES: #{itunes_release["artworkUrl100"]}"
-            @new_releases_images << itunes_release["artworkUrl100"]
-          else
-            io = open(itunes_release["artworkUrl100"], :proxy => @proxy)
-            if io
-              def io.original_filename; base_uri.path.split('/').last; end
-              io.original_filename.blank? ? nil : io      
-              r.image = io
-            end
-          end
-        elsif @preview_mode
-          puts "IMAGE ITUNES: Failed from all sources."
-          @new_releases_images << "nope.jpg"
-        end
-      elsif best_artwork
-        if @preview_mode
-          puts "IMAGE ITUNES: Last.fm #{best_artwork}"
-          @new_releases_images << best_artwork
-        else
-          io = open(best_artwork, :proxy => @proxy)
-          if io
-            def io.original_filename; base_uri.path.split('/').last; end
-            io.original_filename.blank? ? nil : io      
-            r.image = io
-          end
-        end
       end
+      
+      if !best_artwork and itunes_release["artworkUrl100"]
+        if @preview_mode
+        puts "IMAGE ITUNES: #{itunes_release["artworkUrl100"]}"
+          @new_releases_images << itunes_release["artworkUrl100"]
+        else
+          next # SKIP IF LAST.FM DOESN"T HAVE ARTWORK
+        end
+      elsif @preview_mode
+        puts "IMAGE ITUNES: Failed from all sources."
+        @new_releases_images << "nope.jpg"
+      end
+
       @new_releases << r
       import_count += 1
 
