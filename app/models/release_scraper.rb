@@ -15,35 +15,52 @@ class ReleaseScraper
   end
 
   def import opts={}
-    sd_count = sdigital_import(opts) || 0
-    it_count = itunes_import(opts) || 0
+    sdigital_releases = Hash.from_xml( 
+        open("http://api.7digital.com/1.2/artist/releases?artistId=#{@artist.sdid}&oauth_consumer_key=#{@sevendigital_apikey}&country=GB&imageSize=350", :proxy => @proxy)
+      )["response"]["releases"]["release"]
+    sd_count = sdigital_import(sdigital_releases,opts) || 0
+    itunes_releases = ActiveSupport::JSON.decode( open("http://itunes.apple.com/lookup?id=#{@artist.itunes_id}&entity=album&country=GB", :proxy => @proxy))['results']
+    it_count = itunes_import(itunes_releases,opts) || 0
     
     puts "Imported #{sd_count} 7digital releases and #{it_count} iTunes releases for #{@artist.name}"
     
     save_all
   end
 
+  def remove_duplicates r
+      window = 2.days
+      existing = Release.where('artist_id = ? AND date > ? AND date < ? AND id != ?',
+        r.artist_id,r.date - window, r.date + window, r.id)
+      existing.destroy_all unless existing.empty?
+  end
+
   def improve_all
-    Release.find_each do |r|
+    Release.where(:scraped => true).find_each do |r|
       # Find duplicate releases with similar names
+      remove_duplicates r
+
+      # Improve name of release
       new_name = ReleaseScraper.improved_name r.name
-      existing = Release.where('artist_id = ? AND date > ? AND date < id != ?',r.artist_id,r.date - 2.days, r.date + 2.days, r.id).first
-      existing.destroy if existing
+      if new_name != r.name
+        r.name = new_name
+        r.save
+      end
     end
   end
 
   def duplicates? title, date = false
-
       title_processed = title.downcase
       all_releases = @releases.collect { |r| {:name => r.name.downcase, :date => r.date, :id => r.id} }
 
       # Check for duplicate and skip if present
       existing_duplicate = all_releases.detect do |f| 
         # Ignore similar titles unless the longer one contains the word remix
-        if f[:name].include? title_processed and !f[:name]["remix"]
-          return true
-        elsif title_processed.include? f[:name] and !title["remix"]
-          return true
+        if !title_processed["remix"] and !f[:name].downcase["remix"] 
+          if f[:name].include? title_processed
+            return true
+          elsif title_processed.include? f[:name]
+            return true
+          end
         end
       end
 
@@ -53,7 +70,7 @@ class ReleaseScraper
           r = Release.find(existing_duplicate[:id])
           r.date = date
           puts "Rewound release date of #{existing_duplicate[:name]} to #{existing_duplicate[:date]}"
-          r.save
+          r.save!
         end
         return true
       end
@@ -64,22 +81,20 @@ class ReleaseScraper
     # Gets rid of (Featuring X) / (Feat X.) / (feat x) / [feat x]
     feat = / (\(|\[)(f|F)eat[^\)]*(\)|\])/
     ep = /( - |- | )(EP|(S|s)ingle|(A|a)lbum)/
-    itunes_remix = /(\(|\[)[\w\s]+(R|r)emixes(\)|\])/
+    itunes_remix = /(\(|\[)(R|r)emixes(\)|\])/
     ret = name.gsub( name.match(feat).to_s, "")
     ret = ret.gsub( ret.match(itunes_remix).to_s, "")
     ret = ret.gsub( ret.match(ep).to_s, "")
     return ret.strip # Remove whitespace at either end
   end
 
-  def sdigital_import opts={}
+  def sdigital_import releases, opts={}
     if !@artist.sdid?
       return false
     end
-    releases = Hash.from_xml( open("http://api.7digital.com/1.2/artist/releases?artistId=#{@artist.sdid}&oauth_consumer_key=#{@sevendigital_apikey}&country=GB&imageSize=350", :proxy => @proxy))["response"]["releases"]["release"]
     if releases.blank?
       return false
     end
-
     import_count = 0
 
     releases.each do |release|
@@ -120,7 +135,7 @@ class ReleaseScraper
       r.cat_no = release["isrc"]
       r.sdigital = release["url"]
       r.upc = release["barcode"]
-      r.scraped = 1
+      r.scraped = true
       
       # iTunes UPC lookup
       itunes_release = ActiveSupport::JSON.decode( open("http://itunes.apple.com/lookup?upc=#{release["barcode"]}&country=GB", :proxy => @proxy))['results'][0]
@@ -206,8 +221,10 @@ class ReleaseScraper
       #  puts "TRACKS: Total tracks count: #{r.tracks.count}"
       #end
 
-      @new_releases << r
-      import_count += 1
+      if r
+        @new_releases << r
+        import_count += 1
+      end
 
       # Limit number of releases imported for testing purposes
       if opts[:limit] and import_count >= opts[:limit]
@@ -220,14 +237,13 @@ class ReleaseScraper
 
   end
     
-  def itunes_import opts={}
+  def itunes_import itunes_releases,opts={}
     import_count = 0
 
     if !@artist.itunes_id?
       return import_count
     end
 
-    itunes_releases = ActiveSupport::JSON.decode( open("http://itunes.apple.com/lookup?id=#{@artist.itunes_id}&entity=album&country=GB", :proxy => @proxy))['results']
     itunes_releases.each do |itunes_release|
       next if !itunes_release['collectionName']
       existing_releases = @artist.releases.where(:itunes_id, itunes_release["collectionId"])
@@ -252,7 +268,7 @@ class ReleaseScraper
       r.itunes = itunes_release['collectionViewUrl']
       r.name = ReleaseScraper.improved_name itunes_release["collectionName"]
       r.date = itunes_release['releaseDate']
-      r.scraped = 1
+      r.scraped = true
       
       album_info = Scraper.lastfm_album_info(@artist.name, r.name)
       if album_info and album_info['image'].is_a? Array
@@ -272,8 +288,10 @@ class ReleaseScraper
         @new_releases_images << "nope.jpg"
       end
 
-      @new_releases << r
-      import_count += 1
+      if r
+        @new_releases << r
+        import_count += 1
+      end
 
       # Limit number of releases imported for testing purposes
       if opts[:limit] and import_count >= opts[:limit]
@@ -287,7 +305,7 @@ class ReleaseScraper
 
   def save_all
     @new_releases.each do |r|
-      r.save
+      r.save!
     end
     @new_releases = []
     @releases = @artist.releases
