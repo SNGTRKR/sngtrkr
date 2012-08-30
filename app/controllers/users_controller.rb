@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
-  before_filter :self_only, :except => [:show, :timeline, :self, :local_new, :create]
-  before_filter :authenticate_user!, :except => [:local_new]
-  
-  #load_and_authorize_resource :except => [:local_new]
+  before_filter :self_only, :except => [:show, :timeline, :self, :new, :create]
+  before_filter :authenticate_user!, :except => [:new]
+  load_and_authorize_resource :except => [:new]
 
   def index
     @users = User.limit(50).all

@@ -19,20 +19,20 @@ content_for :og_type, "website"
 		<%= link_to(user_omniauth_authorize_path(:facebook)) do %>
 		<div class="fb-home-login"><i class="icon-facebook"></i><span>Login with Facebook</span></div>
 		<% end %>
-		<div class="font-14" style="clear:both;">
+		<div class="font-13" style="clear:both;">
 			<p style="padding-bottom:0;">
-				<a href="#login_modal" role="button" data-toggle="modal">Login without Facebook</a><br/>
-			  <%= link_to "Sign Up", new_user_registration_path %>
+				<a href="#login_modal" role="button" data-toggle="modal">Login via email</a><br/>
+			  <%= link_to "Sign up via email", new_user_registration_path %>
 			</p>
 		</div>
 		<div class="modal hide" id="login_modal"  role="dialog" aria-labelledby="login_modal" aria-hidden="true">
 		  <div class="modal-header">
 		    <h3 id="myModalLabel">Login</h3>
 		  </div>
-		  <%= form_for("user", :url => user_session_path) do |f| %> 
+		  <%= form_for(User.new, :url => user_session_path) do |f| %> 
 			<div class="modal-body">
-				    <%= f.label :username %> <br/> 
-				    <%= f.text_field :username , :size=>'15',:maxlength=>'32' %> <br/> 
+				    <%= f.label :email %> <br/> 
+				    <%= f.text_field :email , :size=>'15',:maxlength=>'32' %> <br/> 
 				    <%= f.label :password %> <br/> 
 				    <%= f.password_field :password , :size=>'15', :maxlength=>'32' %> 
 				<br/> 
