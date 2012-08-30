@@ -13,6 +13,7 @@ gem "best_in_place"
 group :production do
   gem 'mysql2'
   gem 'passenger'
+  gem 'therubyracer'
 end
 
 group :development, :test do
@@ -20,7 +21,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec'
+  gem 'rspec-rails'
 end
 
 gem 'capistrano'
