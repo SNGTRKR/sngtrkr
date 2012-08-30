@@ -1,6 +1,7 @@
 class Release < ActiveRecord::Base
   validates :name, :presence => true
   validates :date, :presence => true
+  validates :artist_id, :presence => true
 
   has_attached_file :image, :styles => { 
   :release_i => "310x311#",
