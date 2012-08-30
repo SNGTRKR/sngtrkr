@@ -22,8 +22,8 @@ SNGTRKR::Application.routes.draw do
 
   mount UserMailer::Preview => 'mailer'
 
-  require 'sidekiq/web'
-  mount Sidekiq::Web => '/sidekiq'
+  #require 'sidekiq/web'
+  #mount Sidekiq::Web => '/sidekiq'
 
   devise_for :users, :controllers => { :registrations => "users_controller/registrations",
     :omniauth_callbacks => "users_controller/omniauth_callbacks",
