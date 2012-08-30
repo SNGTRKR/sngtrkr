@@ -35,7 +35,7 @@ class ReleaseScraper
   end
 
   def improve_all
-    Release.where(:scraped => true).find_each do |r|
+    Release.where(:artist_id => @artist.id, :scraped => true).find_each do |r|
       # Find duplicate releases with similar names
       remove_duplicates r
 
