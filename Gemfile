@@ -2,10 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.2'
 
-# JS
-group :production do
-  gem 'therubyracer'
-end
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -24,11 +20,12 @@ group :development, :test do
 end
 
 group :test do
-  gem 'ruby-prof'
+  gem 'rspec'
 end
 
 gem 'capistrano'
 # gem 'rvm-capistrano'  -- THIS MUST BE INSTALLED LOCALLY, IT WILL NOT WORK IN A GEMFILE.
+gem 'dynamic_sitemaps'
 
 # BACKGROUND TASKS
 gem 'sidekiq'
@@ -75,8 +72,6 @@ gem 'cancan'
 gem "omniauth-facebook"
 
 gem 'kaminari'
-
-gem 'dynamic_sitemaps'
 
 
 # To use ActiveModel has_secure_password
