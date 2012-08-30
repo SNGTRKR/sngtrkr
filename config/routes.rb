@@ -11,10 +11,8 @@ SNGTRKR::Application.routes.draw do
   match '/team' => "Pages#team"
   match '/privacy' => "Pages#privacy"
   match '/help' => "Pages#help"
-  match '/limbo' => "Pages#limbo"
   match '/release_magic/:store/:url' => "Releases#magic"
   match '/intro' => "Pages#intro"
-  match '/fixed' => "Pages#fixed"
 
   namespace :admin do
     mount RailsAdmin::Engine => '/rails', :as => 'rails_admin' # Feel free to change '/admin' to any namespace you need.
@@ -47,16 +45,12 @@ SNGTRKR::Application.routes.draw do
       get 'timeline/:page' => 'Timeline#index'
     end
     collection do
-      match 'local_sign_in' => 'Users#local_new'
       match 'me', :action => 'self'
       match 'me/timeline/:page' => 'Timeline#index'
     end
     resources :manages
   end
   
-  resources :beta_users, :except => [:index]
-  match '/beta' => 'beta_users#new'
-
   match '/artists/search' => "Artists#search"
   resources :artists do
     collection do
@@ -97,9 +91,9 @@ SNGTRKR::Application.routes.draw do
   #resources :labels, :only => [:show] # Not implemented in v1 so no access to it
 
   #  Use this line for production
-   unless Rails.application.config.consider_all_requests_local
+  unless Rails.application.config.consider_all_requests_local
      match '*not_found', to: 'errors#error_404'
-    end
+  end
 
   # Use this line to view error in development
   #match '*not_found', to: 'errors#error_404'
