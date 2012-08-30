@@ -39,8 +39,6 @@ class User < ActiveRecord::Base
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
 
-    beta_user = BetaUser.beta_user?(data.email, Date.strptime("{ 8, 8, 2012 }", "{ %d, %m, %Y }"))
-
     if user = self.find_by_fbid(data.id)
       user
     else # Create a user with a stub password.
@@ -49,11 +47,6 @@ class User < ActiveRecord::Base
       user.roles << Role.where(:name => 'User').first
 
       user.save!
-    end
-
-    # Allows beta users that registered before this date to login.
-    if beta_user
-      BetaUser.where(:email => data.email).first.destroy
     end
 
     ArtistJob.perform_async(access_token.credentials.token, user.id)
