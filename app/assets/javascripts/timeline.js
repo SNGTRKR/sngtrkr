@@ -105,7 +105,7 @@ function timeline_setup() {
     each_release.find('.r-grad').fadeOut("normal");
     each_release.find('.opac-50').fadeIn("normal");
     each_release.find('.play-release-list').animate({
-      top: 0
+      left: 0
     }, "slow");
   });
   $(".play-release-list .icon-remove").click(function () {

@@ -7,6 +7,7 @@
 //= require rotate/jQueryRotate.2.2
 // BOOTSTRAP REQUIRES
 //= require bootstrap-tooltip
+//= require bootstrap-modal
 //= require bootstrap-popover
 //= require bootstrap-tab
 //= require bootstrap-transition
@@ -27,7 +28,15 @@ Number.prototype.commafy = function () {
 }
 
 $(document).ready(function () { 
-//Facebook login 
+
+  // Best in place
+  if($('.best_in_place').length > 0){
+    $(".best_in_place").best_in_place();
+    $.datepicker.setDefaults($.datepicker.regional["gb"]);
+  };
+
+
+  //Facebook login 
   $('.facebook-login').click(function(){
     $('.facebook-login > span').html('Logging in...');
     $(this).addClass('fb-disabled');
@@ -47,7 +56,7 @@ $(document).ready(function () {
 
   // Flash Dismissal
   if($('.flash-outer').length > 0){
-    $('.flash-outer').delay(300).slideDown(500, 'easeInQuad');
+    $('.flash-outer').slideDown(500, 'easeInQuad');
     $('.flash-close').click(function () {
       $('.flash-outer').slideUp(500, 'easeInQuad');
     })

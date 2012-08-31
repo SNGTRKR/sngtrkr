@@ -1,16 +1,13 @@
 <div id="fb-root"></div>
 <script>
 	window.fbAsyncInit = function() {
-FB.init({
-appId : <%= '\'' + FB_APP_ID + '\'' %>
-	, // App ID
-	status : true, // check login status
-	cookie : true, // enable cookies to allow the server to access the session
-	xfbml : true  // parse XFBML
-	}
-
-	);
-<%= yield :fb_js %>
+		FB.init({
+			appId : <%= '\'' + FB_APP_ID + '\'' %>, // App ID
+			status : true, // check login status
+			cookie : true, // enable cookies to allow the server to access the session
+			xfbml : true  // parse XFBML
+		});
+		<%= yield :fb_js %>
 	};
 
 	// Load the SDK Asynchronously

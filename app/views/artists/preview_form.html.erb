@@ -1,0 +1,25 @@
+<style type="text/css">
+#wrapper {
+background:url("/images/grid2.png");
+background-repeat:repeat;
+}
+<% if !user_signed_in? %>
+#artist-info {
+margin-left:162px !important;
+}
+
+<% else %><% end %>
+</style>
+<div class="row artist-buffer">
+<div id="artist-info">
+<div class="span9">
+<%= form_tag "", :method => "get" do %>
+  <%= label_tag :search, "Artist facebook ID" %>
+  <%= text_field_tag :search, @search %>
+<% end %>
+<p><%= link_to "Bloc Party", "http://localhost:3000/artists/preview?utf8=%E2%9C%93&search=6623297283&fb_access_token=" %></p>
+<p><%= link_to "Coldplay", "http://localhost:3000/artists/preview?utf8=%E2%9C%93&search=15253175252&fb_access_token=" %></p>
+<p><%= link_to "Redlight", "http://localhost:3000/artists/preview?utf8=%E2%9C%93&search=184789318249336&fb_access_token=" %></p>
+</div>
+</div>
+</div>

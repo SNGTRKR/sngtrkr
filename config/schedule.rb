@@ -18,5 +18,5 @@ every 1.month, :at => '12:00 am' do
 end
 
 every 1.day, :at => '8:00 am' do 
-  runner "Release.daily_release"
+  runner "ReleaseScraper.daily_release"
 end

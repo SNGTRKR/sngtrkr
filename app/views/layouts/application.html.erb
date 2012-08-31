@@ -10,42 +10,9 @@
 		<a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 		
 		<div id="wrapper">
-			<% if !user_signed_in? %><% else %><div id="sidebar"><%= render :partial => 'layouts/sidebar' %></div>
-			<script type="text/javascript">
-			function hideDiv(){
-
-			    if ($(window).width() < 1039) {
-			
-			            $("#sidebar").hide();
-			            $(".info-feed").show();
-			            $(".container").css("width", "700");
-			            $(".search-query").addClass("search-pad");
-			            $(".outer-tools").hide();
-			            $(".inner-tools").show();
-			            
-			    }else{
-			
-			        $("#sidebar").fadeIn("slow");
-			        $(".info-feed").fadeOut("slow");
-			        $(".container").css("width", "980");
-			        $(".search-query").removeClass("search-pad");
-			        $(".inner-tools").hide();
-			        $(".outer-tools").show();
-			    }
-			
-			}
-			$(document).ready(function () {
-					//sidebar
-					  //on load
-					    hideDiv();
-					
-					    //on resize
-					    $(window).resize(function(){
-					        hideDiv();
-					    });
-		    });
-		    </script>
-		    <% end %>
+			<% if user_signed_in? %>
+			<div id="sidebar"><%= render :partial => 'layouts/sidebar' %></div>
+	    <% end %>
 			
 		<!-- <%= image_tag "/images/beta.png", :alt => "BETA", :id => "beta-corner" %> -->
 		<% if flash[:notice] or flash[:error] or flash[:success] %>
@@ -87,5 +54,41 @@
 		</div>
 		</div>
     <%= render 'layouts/footer_js' %>
+    <% if user_signed_in? %>
+			<script type="text/javascript">
+				function hideDiv(){
+
+				    if ($(window).width() < 1039) {
+				
+				            $("#sidebar").hide();
+				            $(".info-feed").show();
+				            $(".container").css("width", "700");
+				            $(".search-query").addClass("search-pad");
+				            $(".outer-tools").hide();
+				            $(".inner-tools").show();
+				            
+				    }else{
+				
+				        $("#sidebar").fadeIn("slow");
+				        $(".info-feed").fadeOut("slow");
+				        $(".container").css("width", "980");
+				        $(".search-query").removeClass("search-pad");
+				        $(".inner-tools").hide();
+				        $(".outer-tools").show();
+				    }
+				
+				}
+				$(document).ready(function () {
+						//sidebar
+						  //on load
+						    hideDiv();
+						
+						    //on resize
+						    $(window).resize(function(){
+						        hideDiv();
+						    });
+			    });
+	    </script>
+    <% end %>
 	</body>
 </html>

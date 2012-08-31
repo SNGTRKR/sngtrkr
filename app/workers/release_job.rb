@@ -1,5 +1,9 @@
 class ReleaseJob
 
+  def test
+    return 4
+  end
+
   include Sidekiq::Worker
   sidekiq_options :queue => :release
 
@@ -10,16 +14,14 @@ class ReleaseJob
     require 'open-uri'
     start_time = Time.now
     artist = Artist.find(artist_id)
+
+    release_scraper = ReleaseScraper.new artist
+    release_scraper.import
     
-    # STAGE 1 - 7DIGITAL IMPORT
-    Release.sdigital_import artist
-
-    # STAGE 2 - ITUNES IMPORT
-    Release.itunes_import artist
-
     end_time = Time.now
     elapsed_time = end_time - start_time
     Rails.logger.info "J003: Release import for #{artist.name} finished after #{elapsed_time}"
   end
-  
+
+
 end

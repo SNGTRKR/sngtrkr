@@ -130,8 +130,9 @@ display:block;
 display:block;
 }
 .fb-login {
-	    margin-top:-2px;
 	    @extend .facebook-button;
+      margin-top:6px !important;
+      padding-top:3px !important;
 }
 .toolbutton {
     padding:0 !important;
@@ -156,22 +157,4 @@ display:block;
 }
 .outer-tools {
 margin:-45px 20px 0 0;
-}
-.facebook-login {
-    padding:0 20px;
-	height:45px;
-	@extend .fb-button;
-	font-size:1.3em;
-	@include border-radius(0px);
-	font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
-	line-height:45px;
-	cursor:pointer;
-	i {
-		font-size:2.3em;
-		margin-right:5px;
-	}
-    span {
-	    position:relative;
-	    bottom:7px;
-    }
 }
