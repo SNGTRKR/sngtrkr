@@ -1,56 +1,35 @@
 class Scraper
-  include MusicBrainz
   
   @sevendigital_apikey = "7dufgm34849u"
+  
   if Rails.env.production?
     @proxy = 'http://localhost:3128'
   else
     @proxy = nil
   end
+
+  def self.proxy
+    return @proxy
+  end
+
   require 'open-uri'
 
   # DOCS FOR ALL THE SCRAPING MODULES
   # Last.fm (Scrobbler) - http://scrobbler.rubyforge.org/docs/
-  # MusicBrainz - http://rbrainz.rubyforge.org/api-0.5.2/
-  # 7digital -
+  # 7digital
+  # iTunes search api
 
   def initialize artist_name
-    @artist_info = Hash.from_xml( open("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=#{CGI.escape(artist_name)}&api_key=6541dc514e866d40539bfe4eddde211c&autocorrect=1", :proxy => @proxy))
+    @proxy = Scraper.proxy
+    safe_name = CGI.escape(artist_name)
+    begin
+      @artist_info = Hash.from_xml( open("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=#{safe_name}&api_key=6541dc514e866d40539bfe4eddde211c&autocorrect=1", :proxy => @proxy))
+    rescue
+      raise "SCRAPER INITIALISE ERROR ON ARTIST: #{artist_name} / CGI: #{safe_name}"
+    end
     @artist_name = artist_name
   end
 
-  def self.improve_artists
-    Artist.all.each do |artist|
-      if artist.image.to_s == "/images/original/missing.png"
-        next
-      end
-      image = 'public'+artist.image.to_s.split('?')[0]
-      begin
-        open(Rails.root.join(image))
-        Rails.logger.info("Artist fine '#{artist.name}'")
-      rescue
-        Rails.logger.warn("No image for artist '#{artist.name}'")
-        s = Scraper.new artist.name
-        lfm_image = s.lastFmArtistImage
-        if lfm_image
-          io = open(URI.escape(lfm_image))
-          if io
-            def io.original_filename; base_uri.path.split('/').last; end
-            io.original_filename.blank? ? nil : io
-            artist.image = io
-          end
-        end
-        artist.save!
-      end
-    end
-  end
-
-  def self.musicBrainzSearch search
-    search = MusicBrainz::Webservice::ArtistFilter.new :name => search
-    # Gets the top musicbrainz result
-    artist = MusicBrainz::Webservice::Query.new.get_artists(search).to_collection[0]
-  end
-  
   def self.lastfm_album_info(artist_name, album_name)
     if artist_name.blank? or album_name.blank?
       raise "You have not specified an artist and album name"
@@ -69,6 +48,14 @@ class Scraper
       return false # If there's an issue here, there were probably no results.
     end
     return album_info
+  end
+
+  def self.lasfm_album_image(artist_name,album_name)
+    info = lastfm_album_info(artist_name,album_name)
+    if info and album_info['image'] and album_info['image'].last.is_a?(String)
+      image = album_info['image'].last
+    end
+    return image
   end
   
   def lastFmArtistImage
@@ -110,10 +97,6 @@ class Scraper
     rescue
     false
     end
-  end
-
-  def self.importFbLikes access_token, user_id
-    ArtistJob.perform_async(access_token,user_id)
   end
 
   def self.artist_sevendigital artist_name

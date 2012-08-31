@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable,  :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :confirmable,  #:registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
@@ -39,8 +39,6 @@ class User < ActiveRecord::Base
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
 
-    beta_user = BetaUser.beta_user?(data.email, Date.strptime("{ 8, 8, 2012 }", "{ %d, %m, %Y }"))
-
     if user = self.find_by_fbid(data.id)
       user
     else # Create a user with a stub password.
@@ -51,12 +49,7 @@ class User < ActiveRecord::Base
       user.save!
     end
 
-    # Allows beta users that registered before this date to login.
-    if beta_user
-      BetaUser.where(:email => data.email).first.destroy
-    end
-
-    Scraper.importFbLikes(access_token.credentials.token, user.id)
+    ArtistJob.perform_async(access_token.credentials.token, user.id)
     user
 
   end

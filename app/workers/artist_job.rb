@@ -24,7 +24,7 @@ class ArtistJob
     end
     artist_end_time = Time.now
     artist_elapsed_time = artist_end_time - start_time
-    Rails.logger.info "J001: Existing artists import finished after #{artist_elapsed_time}, #{old_artists} artists imported"
+    puts "J001: Existing artists import finished after #{artist_elapsed_time}, #{old_artists} artists imported"
 
     new_artists.each do |artist|
       ArtistSubJob.perform_async(access_token, user_id, artist)

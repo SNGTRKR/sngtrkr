@@ -2,10 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.2'
 
-# JS
-group :production do
-  gem 'therubyracer'
-end
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -17,19 +13,20 @@ gem "best_in_place"
 group :production do
   gem 'mysql2'
   gem 'passenger'
+  gem 'therubyracer'
 end
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'seed_dumper'
 end
 
 group :test do
-  gem 'ruby-prof'
+  gem 'rspec-rails'
 end
 
 gem 'capistrano'
 # gem 'rvm-capistrano'  -- THIS MUST BE INSTALLED LOCALLY, IT WILL NOT WORK IN A GEMFILE.
+gem 'dynamic_sitemaps'
 
 # BACKGROUND TASKS
 gem 'sidekiq'
@@ -42,7 +39,7 @@ gem 'sinatra', :require => nil
 gem "paperclip"
 
 # SCRAPING GEMS
-gem 'rbrainz'
+# gem 'rbrainz'
 gem 'scrobbler'
 gem 'itunes-search-api'
 gem 'amazon-ecs'
@@ -76,8 +73,6 @@ gem 'cancan'
 gem "omniauth-facebook"
 
 gem 'kaminari'
-
-gem 'dynamic_sitemaps'
 
 
 # To use ActiveModel has_secure_password

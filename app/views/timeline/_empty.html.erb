@@ -2,11 +2,11 @@
 		<% if @user.suggested.count >= 4 %>
 		<%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 4] %>
 	<% else %>
-		<div class="loading load-timeline">
+		<!--<div class="loading load-timeline">
 		<h3>Please wait...</h3>
 		<%= image_tag "/images/loading.png", :id => "loading-icon" %><br/>
 		<p>...while we work our magic and find which artists you?ve already liked on Facebook.</p>
-		</div>		  
-		<% end %>
+		</div>-->		  
+	<% end %>
 </ul>
 <div class="clear"></div>

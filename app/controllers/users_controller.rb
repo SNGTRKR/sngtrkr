@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
-  before_filter :self_only, :except => [:show, :timeline, :self, :local_new, :create]
-  before_filter :authenticate_user!, :except => [:local_new]
-  
-  load_and_authorize_resource :except => [:local_new]
+  before_filter :self_only, :except => [:show, :timeline, :self, :new, :create]
+  before_filter :authenticate_user!, :except => [:new]
+  load_and_authorize_resource :except => [:new]
 
   def index
     @users = User.limit(50).all
@@ -30,7 +29,6 @@ class UsersController < ApplicationController
   def show  
     # Check if this is your page
     if current_user.id == params[:id].to_i
-      api = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
       @user = current_user
       if @user.managing.count > 0
         @artist = @user.managing.first
