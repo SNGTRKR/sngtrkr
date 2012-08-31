@@ -64,12 +64,18 @@ describe "ReleaseScraper" do
     r = @a.releases.build(:name => "You Should Know",:sd_id => 123, :date => Date.today, :scraped => true, :image => image)
     r.save!
     Release.count.should == @release_count + 1
+
+    # Test for when last.fm return is malformed
+    @rs.class.improve_image(r, :test_image => {:test => "me"}).should == false
+
+    # Test for successfull image replacement
     !!(r.image).should == true
     image_size = File.open(r.image.path).size
-    @rs.improve_image r, :test_image => "http://www.simplyzesty.com/wp-content/uploads/2012/02/Google-logo.jpg"
+    @rs.class.improve_image r, :test_image => "http://www.simplyzesty.com/wp-content/uploads/2012/02/Google-logo.jpg"
     r.save!
     new_image_size = File.open(r.image.path).size
     new_image_size.should > image_size
+
   end
 
   it "falls back to regular edition artwork when deluxe cannot be found" do
