@@ -49,6 +49,14 @@ class Scraper
     end
     return album_info
   end
+
+  def self.lasfm_album_image(artist_name,album_name)
+    info = lastfm_album_info(artist_name,album_name)
+    if info and album_info['image']
+      image = album_info['image'].last
+    end
+    return image
+  end
   
   def lastFmArtistImage
     begin

@@ -6,6 +6,7 @@ describe "ReleaseScraper" do
     Release.destroy_all
     @a = Artist.create!(:name => "Pompoduke", :sdid => 1, :fbid => "123")
     @rs = ReleaseScraper.new @a
+    @release_count = Release.count
   end
 
   def name_tester name, correct, increase = true
@@ -47,16 +48,31 @@ describe "ReleaseScraper" do
   end
 
   it "deletes duplicate releases" do
-    old_release = @a.releases.build(:name => "You Should Know [Remixes]",:sd_id => 123, :date => Date.today, :scraped => true)
-    old_release.save!
-    old_release = @a.releases.build(:name => "You Should Know [Remixes]",:sd_id => 123, :date => Date.today, :scraped => true)
-    old_release.save!
-    Release.count.should == 2
-    @rs.improve_all
+    @a.releases.build(:name => "You Should Not Know [Remixes]",:sd_id => 123, :date => Date.today, :scraped => true).save!
+    @a.releases.build(:name => "You Should Know [Remixes]",:sd_id => 123, :date => Date.today, :scraped => true).save!
+    @a.releases.build(:name => "You Should Know [Remixes]",:sd_id => 123, :date => Date.today, :scraped => true).save!
+    Release.count.should == @release_count + 3
+    Release.find_each do |r|
+      @rs.remove_duplicates r
+    end
+    Release.count.should == @release_count + 2
 
   end
 
   it "gets last.fm artwork" do
+    image = File.open(File.join('spec','sample_data','release_100.jpeg'))
+    r = @a.releases.build(:name => "You Should Know",:sd_id => 123, :date => Date.today, :scraped => true, :image => image)
+    r.save!
+    Release.count.should == @release_count + 1
+    !!(r.image).should == true
+    image_size = File.open(r.image.path).size
+    @rs.improve_image r, :test_image => File.join('spec','sample_data','release_999.png')
+    r.save!
+    new_image_size = File.open(r.image.path).size
+    new_image_size.should > image_size
+  end
+
+  it "falls back to regular edition artwork when deluxe cannot be found" do
 
   end
 
