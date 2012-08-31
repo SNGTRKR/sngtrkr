@@ -52,18 +52,16 @@ class ReleaseScraper
   end
 
   def self.improve_image r, opts={}
+    return false unless r.image.path
     old_image_size = File.open(r.image.path).size
     # Skip large images
     return false unless old_image_size < 15000
-    album_info = Scraper.lastfm_album_info(r.artist.name, r.name)
     image_path =  if opts[:test_image]
                     opts[:test_image]
                   else
-                    album_info['image'].last
+                    Scraper.lastfm_album_image(r.artist.name, r.name)
                   end
-    unless image_path.is_a?(String)
-      return false
-    end
+    return false unless image_path
     new_image = open(image_path)
     
     if new_image.size <= old_image_size
@@ -116,7 +114,7 @@ class ReleaseScraper
   def self.improved_name name
     # Gets rid of (Featuring X) / (Feat X.) / (feat x) / [feat x]
     feat = / (\(|\[)(f|F)eat[^\)]*(\)|\])/
-    ep = /( - |- | )(EP|(S|s)ingle|(A|a)lbum)/
+    ep = /( - |- | )?(\(|\[)?(EP|(S|s)ingle|(A|a)lbum)(\)|\])?/
     itunes_remix = /(\(|\[)(R|r)emixes(\)|\])/
     ret = name.gsub( name.match(feat).to_s, "")
     ret = ret.gsub( ret.match(itunes_remix).to_s, "")
