@@ -40,7 +40,8 @@ class ArtistScraper
   def self.fb_single_import access_token, page_id, user_id
     graph = Koala::Facebook::API.new(access_token)
     artist = graph.api("/#{page_id}?fields=name,general_manager,booking_agent,record_label,genre,hometown,website,bio,picture,likes")
-    db_artist = import_info(access_token, user_id, artist)
+    as = ArtistScraper.new :facebook_info => artist, :access_token => access_token, :user_id => user_id
+    db_artist = as.import_info
     db_artist.save
     User.find(user_id).following << db_artist
     return db_artist
