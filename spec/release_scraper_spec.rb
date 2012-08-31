@@ -43,7 +43,7 @@ describe "ReleaseScraper" do
     old_release = @a.releases.build(:name => "You Should Know [Remixes]",:sd_id => 123, :date => Date.today, :scraped => true)
     old_release.save!
     
-    @rs.improve_all
+    @rs.class.improve_all
     Release.first.name.should == "You Should Know"
   end
 
@@ -53,7 +53,7 @@ describe "ReleaseScraper" do
     @a.releases.build(:name => "You Should Know [Remixes]",:sd_id => 123, :date => Date.today, :scraped => true).save!
     Release.count.should == @release_count + 3
     Release.find_each do |r|
-      @rs.remove_duplicates r
+      @rs.class.remove_duplicates r
     end
     Release.count.should == @release_count + 2
 
@@ -64,9 +64,6 @@ describe "ReleaseScraper" do
     r = @a.releases.build(:name => "You Should Know",:sd_id => 123, :date => Date.today, :scraped => true, :image => image)
     r.save!
     Release.count.should == @release_count + 1
-
-    # Test for when last.fm return is malformed
-    @rs.class.improve_image(r, :test_image => {:test => "me"}).should == false
 
     # Test for successfull image replacement
     !!(r.image).should == true
