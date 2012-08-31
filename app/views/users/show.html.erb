@@ -16,7 +16,9 @@
 			<span><%= @friend.following.count %> TRKINGS</span>
 	</div>
 	<% if @friend.fbid %>
-	<%= link_to "http://facebook.com/#{@friend.fbid}" do %><div id="friend-image" style="background-image:url(<%= "//graph.facebook.com/"+@friend.fbid+"/picture?type=normal" %>);"></div><% end %>
+		<%= link_to "http://facebook.com/#{@friend.fbid}" do %>
+			<div id="friend-image" style="background-image:url(<%= "//graph.facebook.com/#{@friend.fbid}/picture?type=normal" %>);"></div>
+		<% end %>
 	<% end %>
 </div>
 </div></div>
@@ -93,10 +95,10 @@
 			FB.login();
 		}
 	});
-	FB.api(<%= '\''+@friend.fbid+'/picture?type=large\'' %>, function(response) {
+	FB.api('<%= "#{@friend.fbid}/picture?type=large" %>', function(response) {
 		// The response will literally just be the URL to the friend's profile picture
 	});
-	FB.api(<%= '\''+@friend.fbid+'?fields=cover\'' %>, function(response){
+	FB.api('<%= "#{@friend.fbid}?fields=cover" %>', function(response){
 		if(response['cover']){
 		   $('#friend-cover').css("background-image","url("+response['cover']['source']+")")
 		   	.css("background-position-y",-response['cover']['offset_y']);
