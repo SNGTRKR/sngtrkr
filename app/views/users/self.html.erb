@@ -15,7 +15,7 @@
 	</div>
 	<%= link_to @artist do %><div id="user-image" style="background-image:url(<%= "//graph.facebook.com/"+@artist.fbid+"/picture?type=normal" %>);"></div><% end %>
 	<% else %>
-	<h2><%= link_to @user.first_name + " " + @user.last_name, "http://facebook.com/#{@user.fbid}", :target => "_blank" %></h2>
+	<h2><%= link_to "#{@user.first_name} #{@user.last_name}", "http://facebook.com/#{@user.fbid}", :target => "_blank" %></h2>
 			<span></span>
 	</div>
 	<%= link_to "http://facebook.com/#{@user.fbid}" do %><div id="user-image" style="background-image:url(<%= "//graph.facebook.com/"+@user.fbid+"/picture?type=normal" %>);"></div><% end %>
@@ -122,10 +122,10 @@
 			FB.login();
 		}
 	});
-	FB.api(<%= '\''+@user.fbid+'/picture?type=large\'' %>, function(response) {
+	FB.api(<%= "'#{@user.fbid}picture?type=large'" %>, function(response) {
 		// The response will literally just be the URL to the friend's profile picture
 	});
-	FB.api(<%= '\''+@user.fbid+'?fields=cover\'' %>, function(response){
+	FB.api(<%= "'#{@user.fbid}?fields=cover'" %>, function(response){
 		if(response['cover']){
 		   $('#user-cover').css("background-image","url("+response['cover']['source']+")");
 		} else {
