@@ -1,5 +1,6 @@
+require 'open-uri'
+
 class ReleaseScraper
-  require 'open-uri'
   attr_accessor :releases, :new_releases_images
 
   def initialize artist, opts={}
