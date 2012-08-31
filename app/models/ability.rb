@@ -6,14 +6,14 @@ class Ability
       # Guest user permissions
       user ||= User.new
       guest_permissions(user)
-    elsif user.role? :user
+    else
       # Logged in user permissions
       user_permissions(user)
-    elsif user.role? :admin
+    end
+    
+    if user.role? :admin
       # Admin permissions
       admin_permissions(user)
-    else
-      
     end
   end
   
