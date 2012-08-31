@@ -53,7 +53,6 @@ class ReleaseScraper
 
   def self.improve_image r, opts={}
     old_image_size = File.open(r.image.path).size
-    puts old_image_size
     # Skip large images
     return false unless old_image_size < 15000
     album_info = Scraper.lastfm_album_info(r.artist.name, r.name)
@@ -62,6 +61,9 @@ class ReleaseScraper
                   else
                     album_info['image'].last
                   end
+    unless image_path.is_a?(String)
+      return false
+    end
     new_image = open(image_path)
     
     if new_image.size <= old_image_size
@@ -69,7 +71,7 @@ class ReleaseScraper
     end
 
     r.image = new_image
-    return true
+    return r
   end
 
   def self.improve_all
