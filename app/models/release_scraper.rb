@@ -28,23 +28,57 @@ class ReleaseScraper
   end
 
   def remove_duplicates r
-      window = 2.days
-      existing = Release.where('artist_id = ? AND date > ? AND date < ? AND id != ?',
-        r.artist_id,r.date - window, r.date + window, r.id)
+      window = 7.days
+      # Confirm release is in the db
+      # Necessary when looping through all releases
+      begin
+        r = Release.find(r.id) 
+      rescue 
+        return false
+      end
+      existing = Release.where('artist_id = ? AND date > ? AND date < ? AND id != ? AND name = ?',
+        r.artist_id,r.date - window, r.date + window, r.id, r.name)
       existing.destroy_all unless existing.empty?
+  end
+
+  def improve_name r
+      new_name = ReleaseScraper.improved_name r.name
+      if new_name != r.name
+        r.name = new_name
+        return true
+      else
+        return false
+      end
+  end
+
+  def improve_image r, opts={}
+    old_image_size = File.open(r.image.path).size
+    puts old_image_size
+    # Skip already large images
+    return false unless old_image_size < 15000
+    album_info = Scraper.lastfm_album_info(@artist.name, r.name)
+    image_path =  if opts[:test_image]
+                    opts[:test_image]
+                  else
+                    album_info['image'].last
+                  end
+    new_image = File.open(image_path)
+    
+    if new_image.size <= old_image_size
+      return false
+    end
+
+    r.image = new_image
+    return true
   end
 
   def improve_all
     Release.where(:artist_id => @artist.id, :scraped => true).find_each do |r|
-      # Find duplicate releases with similar names
       remove_duplicates r
-
-      # Improve name of release
-      new_name = ReleaseScraper.improved_name r.name
-      if new_name != r.name
-        r.name = new_name
-        r.save
+      if improve_name r
+        improve_image r
       end
+      r.save
     end
   end
 

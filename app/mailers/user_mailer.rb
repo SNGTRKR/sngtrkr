@@ -5,12 +5,8 @@ class UserMailer < ActionMailer::Base
   def welcome_email(user)
     @user = user # For the view
     mail(:to => "#{@user.email}", :subject => "The wait is finally over...").deliver
-    if @user.is_a?(BetaUser)
-      @user.emailed = true
-    end
-    @user.save
   end
-  
+
   def beta_email(user)
     @user = user # For the view
     mail(:to => "#{@user.email}", :subject => "Welcome to the SNGTRKR Beta!")
