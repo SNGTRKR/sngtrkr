@@ -4,9 +4,6 @@ class UserMailer < ActionMailer::Base
   
   def welcome_email(user)
     @user = user # For the view
-    if @user.is_a?(BetaUser) and @user.emailed
-      return false
-    end
     mail(:to => "#{@user.email}", :subject => "The wait is finally over...").deliver
     if @user.is_a?(BetaUser)
       @user.emailed = true
