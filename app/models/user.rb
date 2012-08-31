@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
 
   validates :fbid, :uniqueness => true
   validates :email, :presence => true, :uniqueness => true
+  validates :first_name, :presence => true
+  validates :last_name, :presence => true
 
   ajaxful_rater
 
