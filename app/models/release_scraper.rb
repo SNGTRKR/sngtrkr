@@ -27,7 +27,7 @@ class ReleaseScraper
     save_all
   end
 
-  def remove_duplicates r
+  def self.remove_duplicates r
       window = 7.days
       # Confirm release is in the db
       # Necessary when looping through all releases
@@ -41,7 +41,7 @@ class ReleaseScraper
       existing.destroy_all unless existing.empty?
   end
 
-  def improve_name r
+  def self.improve_name r
       new_name = ReleaseScraper.improved_name r.name
       if new_name != r.name
         r.name = new_name
@@ -51,12 +51,12 @@ class ReleaseScraper
       end
   end
 
-  def improve_image r, opts={}
+  def self.improve_image r, opts={}
     old_image_size = File.open(r.image.path).size
     puts old_image_size
     # Skip large images
     return false unless old_image_size < 15000
-    album_info = Scraper.lastfm_album_info(@artist.name, r.name)
+    album_info = Scraper.lastfm_album_info(r.artist.name, r.name)
     image_path =  if opts[:test_image]
                     opts[:test_image]
                   else
@@ -72,8 +72,8 @@ class ReleaseScraper
     return true
   end
 
-  def improve_all
-    Release.where(:artist_id => @artist.id, :scraped => true).find_each do |r|
+  def self.improve_all
+    Release.where(:scraped => true).find_each do |r|
       remove_duplicates r
       if improve_name r
         improve_image r
