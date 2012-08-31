@@ -129,8 +129,8 @@
 		if(response['cover']){
 		   $('#user-cover').css("background-image","url("+response['cover']['source']+")");
 		} else {
-		   $('#user-cover').fadeOut();
-		   $('#user-information').animate({marginTop : -194}, "slow").css("width",400).css("overflow","hidden");
+		   /*$('#user-cover').fadeOut();
+		   $('#user-information').animate({marginTop : -194}, "slow").css("width",400).css("overflow","hidden");*/
 		}
 	});
 <% end %>
