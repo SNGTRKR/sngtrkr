@@ -10,8 +10,7 @@ class ApplicationController < ActionController::Base
   #end
   before_filter :authenticate_user!, :except => [:splash,:home,:sitemap]
   before_filter :featured_artists, :only => [:home,:new]
-  before_filter :timer_start
-  before_filter :define_user
+  before_filter :define_user, :except => [:search]
   
   #check_authorization  :unless => :devise_controller? # Breaks rails admin
 
@@ -59,10 +58,6 @@ class ApplicationController < ActionController::Base
     @latest_releases = Release.order("date DESC").where(:artist_id => top_artists).limit(4)
   end
   
-  def timer_start
-    @start_time = Time.now
-  end
-
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = exception.message
     redirect_to root_url

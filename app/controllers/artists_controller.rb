@@ -2,9 +2,9 @@ class ArtistsController < ApplicationController
   # GET /artists
   # GET /artists.json
 
-  load_and_authorize_resource
+  load_and_authorize_resource :except => [:search]
 
-  before_filter :authenticate_user!, :except => [:show]
+  before_filter :authenticate_user!, :except => [:show,:search,:index]
   
   before_filter :managed_artists_only, :only => [:edit, :update]
   
@@ -44,12 +44,12 @@ class ArtistsController < ApplicationController
       @artists = [];
     elsif @artists.empty?
       respond_to do |format|
-        format.html { redirect_to no_results_artists_path(:search => params[:search])}# index.html.erb
+        format.html { redirect_to no_results_artists_path(:search => params[:search])}
         format.json { render :json => "" }
       end
     else
       respond_to do |format|
-        format.html # index.html.erb
+        format.html
         format.json
       end
     end
