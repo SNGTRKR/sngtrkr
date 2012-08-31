@@ -1,6 +1,5 @@
-require 'open-uri'
-
 class ReleaseScraper
+  require 'open-uri'
   attr_accessor :releases, :new_releases_images
 
   def initialize artist, opts={}
@@ -55,7 +54,7 @@ class ReleaseScraper
   def improve_image r, opts={}
     old_image_size = File.open(r.image.path).size
     puts old_image_size
-    # Skip already large images
+    # Skip large images
     return false unless old_image_size < 15000
     album_info = Scraper.lastfm_album_info(@artist.name, r.name)
     image_path =  if opts[:test_image]
@@ -63,7 +62,7 @@ class ReleaseScraper
                   else
                     album_info['image'].last
                   end
-    new_image = File.open(image_path)
+    new_image = open(image_path)
     
     if new_image.size <= old_image_size
       return false

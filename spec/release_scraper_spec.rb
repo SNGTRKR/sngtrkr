@@ -66,7 +66,7 @@ describe "ReleaseScraper" do
     Release.count.should == @release_count + 1
     !!(r.image).should == true
     image_size = File.open(r.image.path).size
-    @rs.improve_image r, :test_image => File.join('spec','sample_data','release_999.png')
+    @rs.improve_image r, :test_image => "http://www.simplyzesty.com/wp-content/uploads/2012/02/Google-logo.jpg"
     r.save!
     new_image_size = File.open(r.image.path).size
     new_image_size.should > image_size
