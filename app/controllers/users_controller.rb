@@ -29,7 +29,6 @@ class UsersController < ApplicationController
   def show  
     # Check if this is your page
     if current_user.id == params[:id].to_i
-      api = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
       @user = current_user
       if @user.managing.count > 0
         @artist = @user.managing.first
