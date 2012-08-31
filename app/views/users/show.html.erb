@@ -8,10 +8,16 @@
 			<div class="search right search-button"><%= image_tag "/images/white-search-2.png", :alt => "Search", :id => "search-pad" %></div>
 		</div>
 	<div class="friend-info">
-			<h2><%= link_to @friend.first_name + " " + @friend.last_name, "http://facebook.com/#{@friend.fbid}", :target => "_blank" %></h2>
+		<% if @friend.fbid %>
+			<h2><%= link_to "#{@friend.first_name} #{@friend.last_name}", "http://facebook.com/#{@friend.fbid}", :target => "_blank" %></h2>
+		<% else %>
+			<h2>User <%= @friend.id %></h2>
+		<% end %>	
 			<span><%= @friend.following.count %> TRKINGS</span>
 	</div>
+	<% if @friend.fbid %>
 	<%= link_to "http://facebook.com/#{@friend.fbid}" do %><div id="friend-image" style="background-image:url(<%= "//graph.facebook.com/"+@friend.fbid+"/picture?type=normal" %>);"></div><% end %>
+	<% end %>
 </div>
 </div></div>
 <div class="row friend-trkrs"><div class="span9">
