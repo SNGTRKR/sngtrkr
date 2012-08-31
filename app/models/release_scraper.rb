@@ -89,7 +89,7 @@ class ReleaseScraper
       # Check for duplicate and skip if present
       existing_duplicate = all_releases.detect do |f| 
         # Ignore similar titles unless the longer one contains the word remix
-        if !title_processed["remix"] and !f[:name].downcase["remix"] 
+        if title_processed != f[:name] and !title_processed["remix"] and !f[:name].downcase["remix"] 
           if f[:name].include? title_processed
             return true
           elsif title_processed.include? f[:name]
