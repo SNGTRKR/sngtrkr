@@ -64,8 +64,10 @@ function add_remove_trkr_bind() {
     var artist_id = $(this).data('id');
     $(this).replaceWith('<a href="/artists/'+artist_id+'/unfollow" class="mini-trkr-button  remove-trkr" data-id="'+artist_id+'" data-method="post" data-remote="true" rel="nofollow"><i class="icon-minus"></i></a>');
     add_remove_trkr_bind();
-    FB.api("/me/sngtrkr:track", 'post', {artist: $(this).data("id")});
-    console.log("FB Open Graph Posted");
+    FB.api("/me/sngtrkr:track", 'post', {artist: 'http://sngtrkr.com/artists/'+$(this).data("id")},function(response){
+      console.log("FB Open Graph Posted");
+      console.log(response);    
+    });
   });
 
 }
