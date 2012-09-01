@@ -4,7 +4,7 @@ describe "ReleaseScraper" do
   before :each do
     Artist.destroy_all
     Release.destroy_all
-    @a = Artist.create!(:name => "Pompoduke", :sdid => 1, :fbid => "123")
+    @a = Artist.create!(:name => "Pompoduke", :sdid => 1, :fbid => "123", :itunes_id => 4)
     @rs = ReleaseScraper.new @a
     @release_count = Release.count
   end
@@ -56,6 +56,29 @@ describe "ReleaseScraper" do
       @rs.class.remove_duplicates r
     end
     Release.count.should == @release_count + 2
+
+  end
+
+  it "doesn't import the same release twice" do 
+    releases = [
+      {
+        'collectionName' => "My First Album",
+        'collectionViewUrl' => "test.com",
+        'collectionId' => 5,
+        'releaseDate' => Date.today.to_s
+      }
+    ]
+
+    @rs.itunes_import(releases).should == 1
+    @rs.save_all
+
+    Release.count.should == @release_count + 1
+
+    @rs.itunes_import(releases).should == 0
+    @rs.save_all
+
+    Release.count.should == @release_count + 1
+
 
   end
 
