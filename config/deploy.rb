@@ -4,7 +4,7 @@ set :domain, 'sngtrkr.com'
 set :applicationdir, "/var/www/#{application}"
 
 set :scm, 'git'
-set :repository,  "ssh://deploy@sngtrkr.com/~/sngtrkr.git"
+set :repository, "git@github.com:MattBessey/sngtrkr.git"
 set :branch, 'master'
 set :scm_verbose, true
 
