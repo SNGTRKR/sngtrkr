@@ -17,7 +17,7 @@ class FollowsController < ApplicationController
       suggestions = Scraper.similar_artists_7digital(@tracked_artist.sdid)
       if suggestions
         suggestions.each do |suggestion|
-          if suggestion and suggestion["id"] and Artist.where(:sdid => suggestion["id"]).count > 0
+          if suggestion.is_a?(Hash) and Artist.where(:sdid => suggestion["id"]).count > 0
             current_user.suggest_artist(Artist.where(:sdid => suggestion["id"]).first.id)
           end
         end
