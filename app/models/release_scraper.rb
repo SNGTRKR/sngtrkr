@@ -85,7 +85,6 @@ class ReleaseScraper
   def duplicates? title, date = false
       title_processed = title.downcase
       all_releases = @releases.collect { |r| {:name => r.name.downcase, :date => r.date, :id => r.id} }
-      puts all_releases.inspect
 
       # Check for duplicate and skip if present
       existing_duplicate = all_releases.detect do |f| 
