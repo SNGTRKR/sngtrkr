@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120901085623) do
+ActiveRecord::Schema.define(:version => 20120901090124) do
 
   create_table "artists", :force => true do |t|
     t.string   "name"
@@ -81,6 +81,8 @@ ActiveRecord::Schema.define(:version => 20120901085623) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "follows", ["user_id", "artist_id"], :name => "index_follows_on_user_id_and_artist_id"
+
   create_table "labels", :force => true do |t|
     t.string   "name"
     t.text     "bio"
@@ -98,6 +100,8 @@ ActiveRecord::Schema.define(:version => 20120901085623) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "manages", ["user_id", "artist_id"], :name => "index_manages_on_user_id_and_artist_id"
 
   create_table "notifications", :force => true do |t|
     t.integer  "release_id"
@@ -177,6 +181,8 @@ ActiveRecord::Schema.define(:version => 20120901085623) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "suggests", ["user_id", "artist_id"], :name => "index_suggests_on_user_id_and_artist_id"
+
   create_table "super_manages", :force => true do |t|
     t.integer  "user_id"
     t.integer  "label_id"
@@ -224,6 +230,7 @@ ActiveRecord::Schema.define(:version => 20120901085623) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["fbid"], :name => "index_users_on_fbid"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end
