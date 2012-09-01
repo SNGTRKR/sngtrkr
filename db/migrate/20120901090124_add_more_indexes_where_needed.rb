@@ -3,7 +3,8 @@ class AddMoreIndexesWhereNeeded < ActiveRecord::Migration
     add_index :suggests, [:user_id,:artist_id]
     add_index :follows, [:user_id,:artist_id]
     add_index :manages, [:user_id,:artist_id]
-    add_index :users, [:fbid, :length => 20]
+    add_index :tracks, [:user_id,:artist_id]
+    add_index :users, :fbid, :length => 20
   end
 
   def down
