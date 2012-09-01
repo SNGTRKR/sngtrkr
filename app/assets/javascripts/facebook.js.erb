@@ -1,6 +1,6 @@
 <% 
 
-if Rails.env.development?
+if RAILS_ENV == 'development'
   fb_app_id = '294743537267038'
 else
   fb_app_id = '344989472205984'
