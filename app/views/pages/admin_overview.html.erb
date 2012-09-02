@@ -1,0 +1,68 @@
+<h1>SNGTRKR Administration</h1>
+<div class="row">
+  <div class="span4">
+    <h1>Links</h1>
+    <p class="font-15">
+      <%= link_to "Database Admin", '/admin/rails' %>
+    </p>
+  </div>
+  <div class="span8">
+    <h1>Stats</h1>
+    <table class="table well table-striped">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Users</th>
+          <th>Artists</th>
+          <th>Follows</th>
+          <th>Suggests</th>
+        </tr>
+      </thead>
+      <% @stats_by_day.each do |d| %>
+      <tr>
+        <td><%= d[:date] %></td>
+        <td><%= d[:users] %></td>
+        <td><%= d[:artists] %></td>
+        <td><%= d[:follows] %></td>
+        <td><%= d[:suggests] %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="span6">
+    <h1>Popular Artists</h1>
+    <table class="table well table-striped">
+      <thead>
+        <tr>
+          <th>Artist</th>
+          <th>Follows</th>
+        </tr>
+      </thead>
+      <% @popular_artists.each do |a| %>
+      <tr>
+        <td><%= link_to a.name, a %></td>
+        <td><%= a.follow_count %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class="span6">
+    <h1>Prolific Users</h1>
+    <table class="table well table-striped">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Follows</th>
+        </tr>
+      </thead>
+      <% @prolific_artists.each do |u| %>
+      <tr>
+        <td><%= link_to "#{u.first_name} #{u.last_name}", u %></td>
+        <td><%= u.follow_count %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

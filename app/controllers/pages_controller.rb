@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
 
-  skip_authorization_check
+  skip_authorization_check :except => [:admin_overview]
   skip_before_filter :authenticate_user!, :except => [:intro]
 
   def home
@@ -23,10 +23,6 @@ class PagesController < ApplicationController
   
   end
   
-  def limbo
-    render :layout => 'no_response'
-  end
-  
   def intro 
     render :layout => 'no_sidebar'
   end
@@ -38,7 +34,36 @@ class PagesController < ApplicationController
     end
     render :layout => 'splash'
   end 
-  #def beta
-  #  render :layout => 'beta'
-  #end 
+
+  def admin_overview
+    @users_by_day = User.group('date(created_at)').limit(30).order('created_at DESC').count
+    @follows_by_day = Follow.group('date(created_at)').limit(30).order('created_at DESC').count
+    @suggests_by_day = Suggest.group('date(created_at)').limit(30).order('created_at DESC').count
+    @artists_by_day = Artist.group('date(created_at)').limit(30).order('created_at DESC').count
+    @stats_by_day = @users_by_day.collect {|u,i| 
+      {
+        :date => u, 
+        :users => i, 
+        :follows => @follows_by_day[u],
+        :suggests => @suggests_by_day[u],
+        :artists => @artists_by_day[u],
+      }
+    }
+
+    @popular_artists = Artist.find(:all, :select => 'artists.*, count(follows.id) as follow_count',
+             :joins => 'left outer join follows on follows.artist_id = artists.id',
+             :group => 'artists.id',
+             :order => 'follow_count DESC'
+            )
+
+    @prolific_artists = User.find(:all, :select => 'users.*, count(follows.id) as follow_count',
+             :joins => 'left outer join follows on follows.user_id = users.id',
+             :group => 'users.id',
+             :order => 'follow_count DESC'
+            )
+
+
+    render :layout => 'no_sidebar'
+  end
+
 end
