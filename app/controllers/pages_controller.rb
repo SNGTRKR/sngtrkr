@@ -1,7 +1,6 @@
 class PagesController < ApplicationController
 
-  skip_authorization_check :except => [:admin_overview]
-  skip_before_filter :authenticate_user!, :except => [:intro]
+  skip_before_filter :authenticate_user!, :except => [:intro, :admin_overview]
 
   def home
 
@@ -36,6 +35,10 @@ class PagesController < ApplicationController
   end 
 
   def admin_overview
+    unless current_user.roles[0].name == "Admin"
+      return redirect_to :root
+    end
+
     @users_by_day = User.group('date(created_at)').limit(30).order('created_at DESC').count
     @follows_by_day = Follow.group('date(created_at)').limit(30).order('created_at DESC').count
     @suggests_by_day = Suggest.group('date(created_at)').limit(30).order('created_at DESC').count
@@ -61,7 +64,6 @@ class PagesController < ApplicationController
              :group => 'users.id',
              :order => 'follow_count DESC'
             )
-
 
     render :layout => 'no_sidebar'
   end
