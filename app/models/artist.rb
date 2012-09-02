@@ -10,8 +10,9 @@ class Artist < ActiveRecord::Base
     :profile => "310x369#",
     :recommend => "212x178#",
     :manage => "100x100#",
-    :sidebar_suggest => "50x50#"
-     }
+    :sidebar_suggest => "50x50#",
+    :original => "800x800"
+   }, :convert_options => { :small => '-quality 40' }
 
   has_many :follow, :dependent => :destroy
   has_many :suggest, :dependent => :destroy
