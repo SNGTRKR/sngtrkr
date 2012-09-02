@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120830225546) do
+ActiveRecord::Schema.define(:version => 20120901095307) do
 
   create_table "artists", :force => true do |t|
     t.string   "name"
@@ -40,6 +40,9 @@ ActiveRecord::Schema.define(:version => 20120830225546) do
     t.datetime "image_updated_at"
     t.integer  "itunes_id"
   end
+
+  add_index "artists", ["ignore"], :name => "index_artists_on_ignore"
+  add_index "artists", ["itunes_id", "sdid"], :name => "index_artists_on_itunes_id_and_sdid"
 
   create_table "beta_users", :force => true do |t|
     t.string   "email"
@@ -79,6 +82,8 @@ ActiveRecord::Schema.define(:version => 20120830225546) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "follows", ["user_id", "artist_id"], :name => "index_follows_on_user_id_and_artist_id"
+
   create_table "labels", :force => true do |t|
     t.string   "name"
     t.text     "bio"
@@ -96,6 +101,8 @@ ActiveRecord::Schema.define(:version => 20120830225546) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "manages", ["user_id", "artist_id"], :name => "index_manages_on_user_id_and_artist_id"
 
   create_table "notifications", :force => true do |t|
     t.integer  "release_id"
@@ -144,6 +151,9 @@ ActiveRecord::Schema.define(:version => 20120830225546) do
     t.boolean  "ignore"
   end
 
+  add_index "releases", ["date", "itunes_id", "sd_id", "artist_id"], :name => "index_releases_on_date_and_itunes_id_and_sd_id_and_artist_id"
+  add_index "releases", ["ignore", "upc"], :name => "index_releases_on_ignore_and_upc"
+
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -172,6 +182,8 @@ ActiveRecord::Schema.define(:version => 20120830225546) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "suggests", ["user_id", "artist_id"], :name => "index_suggests_on_user_id_and_artist_id"
 
   create_table "super_manages", :force => true do |t|
     t.integer  "user_id"
@@ -220,6 +232,7 @@ ActiveRecord::Schema.define(:version => 20120830225546) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["fbid"], :name => "index_users_on_fbid"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

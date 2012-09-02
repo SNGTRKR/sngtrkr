@@ -30,6 +30,17 @@
 			<div class="clear"></div>
 			<% end %>
 					</div></div>
+	<div class="row">
+		<div class="span9">
+			<h3>Change Name</h3>
+			<%= form_for current_user do |f| %>
+				<%= f.text_field :first_name %>
+				<%= f.text_field :last_name %>
+				<br>
+				<%= f.submit "Change Name" %>
+			<% end %>
+		</div>
+	</div>
 <div class="row email-notify"><div class="span9">
 			<%= form_for(@user) do |f| %>
 			<h3>Email Notifications</h3>

@@ -50,7 +50,7 @@ class Scraper
     return album_info
   end
 
-  def self.lasfm_album_image(artist_name,album_name)
+  def self.lastfm_album_image(artist_name,album_name)
     info = lastfm_album_info(artist_name,album_name)
     if info and album_info['image'] and album_info['image'].last.is_a?(String)
       image = album_info['image'].last
