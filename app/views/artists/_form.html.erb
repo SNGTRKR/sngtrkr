@@ -104,7 +104,7 @@ image_height = 200
        <br/><br/>
        <div id="itunes-buttons">
         <%= form_for @artist, :remote => true do |f| %>
-          <%= hidden_field_tag "itunes_id_delete" %>
+          <%= f.hidden_field :itunes_id, :value => "" %>
           <%= f.submit "I'm not on iTunes" %>
         <% end %>
         <div class="clear"></div>
@@ -141,7 +141,7 @@ image_height = 200
         <br/>
         <div id="digital7-buttons">
           <%= form_for @artist, :remote => true do |f| %>
-            <%= hidden_field_tag "sdid_delete" %>
+            <%= f.hidden_field :sdid, :value => "" %>
             <%= f.submit "I'm not on 7digital" %>
           <% end %>
           <div class="clear"></div>
