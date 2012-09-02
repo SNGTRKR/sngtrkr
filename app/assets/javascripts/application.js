@@ -8,10 +8,6 @@
 //
 // BOOTSTRAP REQUIRES
 //
-//= require bootstrap-tooltip
-//= require bootstrap-popover
-//= require bootstrap-tab
-//= require bootstrap-transition
 //= require scrollbar/jquery.mousewheel.js
 //
 // MATT'S REQUIRES
