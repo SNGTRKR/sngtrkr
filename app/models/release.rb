@@ -7,7 +7,7 @@ class Release < ActiveRecord::Base
   :release_i => "310x311#",
   :release_carousel => "116x116#",
   :activity_release => "40x40#",
-  :original => "500x500"
+  :original => "500x500>"
    }, :convert_options => {
     :release_i => '-quality 40 -strip',
     :release_carousel => '-quality 40 -strip',
