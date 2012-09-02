@@ -113,7 +113,7 @@ class ArtistScraper
       return true
     end
 
-    if !@scraper.real_artist?
+    unless @scraper.real_artist?
       # Skip artists that last.fm does not believe are real artists.
       puts "ARTIST ERROR: Last.fm did not believe '#{@facebook_info["name"]}' is a real artist"
       return true

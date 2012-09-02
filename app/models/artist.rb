@@ -11,7 +11,7 @@ class Artist < ActiveRecord::Base
     :recommend => "212x178#",
     :manage => "100x100#",
     :sidebar_suggest => "50x50#",
-    :original => "800x800"
+    :original => "800x800>"
    }, :convert_options => {
     :profile => '-quality 40 -strip' ,
     :recommend => '-quality 40 -strip' ,
