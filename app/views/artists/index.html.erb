@@ -36,7 +36,7 @@
       		<% end %>
       	</ul>
       	<div id="paginate-outer">
-      	<%= if @artists then paginate @artists end %>
+      	<%= if @artists then paginate @artists, :window => 2 end %>
       	</div>
       	<div class="clear"></div>
   	  <% end %>

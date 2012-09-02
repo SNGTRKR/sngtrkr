@@ -19,7 +19,7 @@ var artist_ids = <%= raw @ids.to_json %>
 <% content_for :fb_js do %>
 
 
-FB.api("search/?q=<%= CGI::escape(@search) %>&fields=id,picture,description,name,bio,genre,likes,record_label,category&type=page&limit=10&size=large",function(pages){
+FB.api("search/?q=<%= CGI::escape(@search) %>&fields=id,picture,description,name,bio,genre,likes,record_label,category&type=page&limit=10&size=normal",function(pages){
   $('#facebook-search-results').html("");
   console.log(pages['data']);
   $.each(pages['data'],function(){
