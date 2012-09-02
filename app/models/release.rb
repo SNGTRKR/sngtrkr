@@ -7,8 +7,13 @@ class Release < ActiveRecord::Base
   :release_i => "310x311#",
   :release_carousel => "116x116#",
   :activity_release => "40x40#",
-  :original => "600x600"
-   }, :convert_options => { :small => '-quality 40 -strip' }
+  :original => "500x500"
+   }, :convert_options => {
+    :release_i => '-quality 40 -strip',
+    :release_carousel => '-quality 40 -strip',
+    :activity_release => '-quality 40 -strip',
+    :original => '-quality 40 -strip'
+  }
 
 
   has_many :tracks, :dependent => :delete_all
