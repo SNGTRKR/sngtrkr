@@ -13,9 +13,7 @@
 //= require bootstrap-popover
 //= require bootstrap-tab
 //= require bootstrap-transition
-//= require scrollbar/jquery.jscrollpane.min.js
 //= require scrollbar/jquery.mousewheel.js
-//= require scrollbar/scroll-startstop.events.jquery.js
 //
 // MATT'S REQUIRES
 //
