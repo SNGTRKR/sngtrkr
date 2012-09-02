@@ -36,7 +36,7 @@
     <div class="share-release-list">
       <h4>Share this release</h4>
       <ul>
-        <a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com<%= url_for release.artist %>%2F&t=SNGTRKR','ShareSNGTRKRonFacebook','scrollbars=no,width=620,height=340'); return false;">
+        <a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [release.artist, release] %>%2F&t=SNGTRKR','ShareSNGTRKRonFacebook','scrollbars=no,width=620,height=340'); return false;">
         <li class="fb-icon fb-button">
           <i class="icon-facebook"></i>
         </li></a>
@@ -44,7 +44,7 @@
         <li class="twit-icon twitter-button">
           <i class="icon-twitter"></i>
         </li></a>
-        <a href="#" title="Share on Google Plus" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for release.artist %>','ShareSNGTRKRonGooglePlus','scrollbars=no,width=620,height=340'); return false;">
+        <a href="#" title="Share on Google Plus" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [release.artist, release] %>','ShareSNGTRKRonGooglePlus','scrollbars=no,width=620,height=340'); return false;">
         <li class="goo-icon google-button">
           <i class="icon-google-plus"></i>
         </li></a>
