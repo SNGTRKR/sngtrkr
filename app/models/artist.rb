@@ -12,7 +12,13 @@ class Artist < ActiveRecord::Base
     :manage => "100x100#",
     :sidebar_suggest => "50x50#",
     :original => "800x800"
-   }, :convert_options => { :small => '-quality 40 -strip' }
+   }, :convert_options => {
+    :profile => '-quality 40 -strip' ,
+    :recommend => '-quality 40 -strip' ,
+    :manage => '-quality 40 -strip' ,
+    :sidebar_suggest => '-quality 40 -strip' ,
+    :original => '-quality 40 -strip'
+  }
 
   has_many :follow, :dependent => :destroy
   has_many :suggest, :dependent => :destroy
