@@ -356,7 +356,7 @@ class ReleaseScraper
     else
       rand = "RANDOM()"
     end
-    Artist.where(:ignore => false).order(rand).each do |artist|
+    Artist.where(:ignore => false).order(rand).find_each do |artist|
       ReleaseJob.perform_async(artist.id)
     end
 
