@@ -9,7 +9,6 @@
 // BOOTSTRAP REQUIRES
 //
 //= require bootstrap-tooltip
-//= require bootstrap-modal
 //= require bootstrap-popover
 //= require bootstrap-tab
 //= require bootstrap-transition
