@@ -37,7 +37,7 @@
 		ul {
 			margin:2px 0 10px 0;
 			list-style-type:none;
-			max-height:240px;
+			max-height:260px;
 		}
 		@extend .scrollbar
 	}
@@ -58,8 +58,8 @@ li {
     margin-bottom:10px;
 	  img {
 		  float:left;
-		  height:50px;
-		  width:50px;
+		  height:45px;
+		  width:45px;
 		  margin-left:5px;
 	  }
           .info {
@@ -76,9 +76,9 @@ li {
             span {
 	            color:$orange;
 	            @extend .instruct-font;
+	            line-height:1em;
             }
             .a-name {
-	            font-size:1.1em;
             }
             .buttons {
 	            color:$light-gray;
