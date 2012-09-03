@@ -5,7 +5,10 @@
 //= require carousel/jquery.carousel-packed.js
 //= require best_in_place
 //= require rotate/jQueryRotate.2.2
-//= require jquery.mousewheel.js
+//
+// BOOTSTRAP REQUIRES
+//
+//= require scrollbar/jquery.mousewheel.js
 //
 // MATT'S REQUIRES
 //
@@ -77,6 +80,6 @@ $(document).ready(function () {
   // Bootstrap global classes.
   $('.popover-parent').popover();
   $('.tooltip-parent').tooltip();
-  $(".alert").alert();  
+  $(".alert").alert();
+  
 });
-

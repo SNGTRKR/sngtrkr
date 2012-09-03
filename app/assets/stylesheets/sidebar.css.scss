@@ -38,6 +38,7 @@
 	#activity-stream {
 		ul {
 			margin:2px 0 10px 0;
+<<<<<<< HEAD
 			list-style-type:none;
 			max-height:260px;
 		}
@@ -48,6 +49,11 @@
 	}
 	#activity-stream ul:hover {
 		overflow-y:scroll;
+=======
+			overflow-y:scroll;
+			max-height:240px;
+		}
+>>>>>>> parent of df2b0b6... Deleted redundant files and added scrollbar on hover
 	}
 	#recommendations {
   ul {
