@@ -1,6 +1,6 @@
 <div id="activity-stream">
 <div class="header"><%= image_tag "/images/side1.png", :id => "side1" %><h5>Recent Activity</h5></div>
-<ul>
+<ul class="mousescroll">
 <%= render :partial => 'users/group_activity', :collection => @activities %>
 <div class="clear"></div>
 </ul>
