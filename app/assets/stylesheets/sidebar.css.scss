@@ -41,10 +41,10 @@
 		}
 		@extend .scrollbar
 	}
-	.mousescroll {
+	#activity-stream ul {
 		overflow:hidden;
 	}
-	.mousescroll:hover {
+	#activity-stream ul:hover {
 		overflow-y:scroll;
 	}
 	#recommendations {
