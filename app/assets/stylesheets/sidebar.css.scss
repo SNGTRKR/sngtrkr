@@ -12,7 +12,9 @@
 	margin-left:-($sidebar);
 	padding:10px;
 	hr {
-		border: 1px solid $light-gray;
+		border: 1px solid #5E5E5E;
+		opacity:0.4;
+		filter: alpha(opacity=40);
 	}
 	.header {
 	height:32px;
@@ -25,12 +27,12 @@
 		margin-top:2px;
 		}
 			h5 {
-		font-size:1.3em;
+		font-size:1.2em;
 		display:inline;
 		position:relative;
 		bottom:11px;
 		left:10px;
-		
+		@include text-shadow(0 0.1em 1px rgba(255, 255, 255, 0.31));
 	}
 	}
 	#activity-stream {
