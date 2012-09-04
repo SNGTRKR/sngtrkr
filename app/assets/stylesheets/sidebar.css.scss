@@ -36,10 +36,14 @@
 	}
 	}
 	#activity-stream {
+		@extend .scrollbar;
 		ul {
-			margin:2px 0 10px 0;
-			overflow-y:scroll;
+			margin:2px 0 10px 0;	
 			max-height:240px;
+			overflow:hidden;
+		}
+		ul:hover {
+			overflow-y:scroll;
 		}
 	}
 	#recommendations {
