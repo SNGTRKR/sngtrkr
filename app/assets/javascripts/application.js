@@ -5,7 +5,7 @@
 //= require carousel/jquery.carousel-packed.js
 //= require best_in_place
 //= require rotate/jQueryRotate.2.2
-//= require scrollbar/jquery.mousewheel.js
+//= require jquery.mousewheel.js
 //
 // MATT'S REQUIRES
 //
