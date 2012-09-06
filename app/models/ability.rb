@@ -24,8 +24,7 @@ class Ability
   
   def user_permissions(user)
     guest_permissions(user)
-    can :read, [User]
-    can :manage, [User, Rate, Manage]
+    can :manage, [User, Rate, Manage, Timeline]
     can :destroy, [Suggest]
     can [:edit, :scrape_confirm], [Artist]
     can [:edit, :previews, :create], Release
@@ -38,7 +37,7 @@ class Ability
   
   def admin_permissions(user)
     user_permissions(user)
-    can :manage, :all
+    can :manage, [Artist,Release]
     can :access, :rails_admin   # grant access to rails_admin
     can :dashboard              # grant access to the dashboard
   end
