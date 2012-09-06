@@ -17,6 +17,6 @@ every 1.month, :at => '12:00 am' do
   runner "UserMailer.monthly_releases"
 end
 
-every 1.day, :at => '8:00 am' do 
-  runner "ReleaseScraper.daily_release"
+every 1.hour do 
+  runner "ReleaseScraper.hourly_release"
 end

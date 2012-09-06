@@ -2,6 +2,8 @@ class ReleaseScraper
   require 'open-uri'
   attr_accessor :releases, :new_releases_images
 
+  @@offset = 0
+
   def initialize artist, opts={}
     @artist = artist
     @sevendigital_apikey = "7dufgm34849u"
@@ -62,13 +64,19 @@ class ReleaseScraper
                     Scraper.lastfm_album_image(r.artist.name, r.name)
                   end
     return false unless image_path
-    new_image = open(image_path)
-    
-    if new_image.size <= old_image_size
+    io = open(image_path, :proxy => @proxy)
+    if io
+      def io.original_filename; base_uri.path.split('/').last; end
+      io.original_filename.blank? ? nil : io      
+      r.image = io
+    end
+
+
+    if io.size <= old_image_size
       return false
     end
 
-    r.image = new_image
+    r.image = io
     return r
   end
 
@@ -349,25 +357,20 @@ class ReleaseScraper
     @releases = @artist.releases
   end
 
-  def self.daily_release
-    # Randomise order of artists so that if we do run out of API calls some day, artists all still get checked eventually.
-    if Rails.env.production?
-      rand = "RAND()"
-    else
-      rand = "RANDOM()"
-    end
-    Artist.where(:ignore => false).order(rand).find_each do |artist|
+  def self.hourly_release
+    Artist.where(:ignore => false).offset(@@offset).limit(100).each do |artist|
       ReleaseJob.perform_async(artist.id)
     end
+    @@offset += 100
 
     # Notify Matt that the Cron job ran
     m = ActionMailer::Base.mail(:from => "cron@sngtrkr.com", :to => "bessey@gmail.com", 
         :subject => '[SNGTRKR Cron] Successfully ran.') do |format|
-      format.text { render :text => "The daily Release cronjob has run as expected" }
+      format.text { render :text => "The hourly Release cronjob has run as expected" }
     end
-    m.body = "The daily Release cronjob has run as expected"
-    m.deliver
-    puts "SNGTRKR Daily release has been run successfully."
+    m.body = "The hourly Release cronjob has run as expected"
+    m.deliver if Rails.env.production?
+    puts "SNGTRKR Hourly release has been run successfully."
   end
 
 
