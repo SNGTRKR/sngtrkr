@@ -12,7 +12,9 @@
 	margin-left:-($sidebar);
 	padding:10px;
 	hr {
-		border: 1px solid $light-gray;
+		border: 1px solid #5E5E5E;
+		opacity:0.4;
+		filter: alpha(opacity=40);
 	}
 	.header {
 	height:32px;
@@ -25,19 +27,23 @@
 		margin-top:2px;
 		}
 			h5 {
-		font-size:1.3em;
+		font-size:1.2em;
 		display:inline;
 		position:relative;
-		bottom:11px;
+		bottom:12px;
 		left:10px;
-		
+		@include text-shadow(0 0.1em 1px rgba(255, 255, 255, 0.31));
 	}
 	}
 	#activity-stream {
+		@extend .scrollbar;
 		ul {
-			margin:2px 0 10px 0;
-			overflow-y:scroll;
+			margin:2px 0 10px 0;	
 			max-height:240px;
+			overflow:hidden;
+		}
+		ul:hover {
+			overflow-y:scroll;
 		}
 	}
 	#recommendations {
@@ -51,8 +57,8 @@ li {
     margin-bottom:10px;
 	  img {
 		  float:left;
-		  height:50px;
-		  width:50px;
+		  height:45px;
+		  width:45px;
 		  margin-left:5px;
 	  }
           .info {
@@ -69,9 +75,9 @@ li {
             span {
 	            color:$orange;
 	            @extend .instruct-font;
+	            line-height:1em;
             }
             .a-name {
-	            font-size:1.1em;
             }
             .buttons {
 	            color:$light-gray;
