@@ -1,0 +1,17 @@
+<h1>Email Composer</h1>
+
+<%= form_tag '#' do %>
+  <label>Subject</label>
+  <%= text_field_tag :subject, "", :class => "input-xxlarge" %><br/>
+  <label>Body</label>
+  <%= text_area_tag :body, "", :rows => 10, :class => "input-xxlarge" %>
+<% end %>
+
+<h1>Preview</h1>
+<div id="markdown-preview"></div>
+
+<script>
+  var converter = new Showdown.converter();
+
+  $('#markdown-preview').html(converter.makeHtml('#hello markdown!'));
+</script>
