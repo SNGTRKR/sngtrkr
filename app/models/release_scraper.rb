@@ -363,13 +363,15 @@ class ReleaseScraper
     end
     @@offset += 100
 
-    # Notify Matt that the Cron job ran
-    m = ActionMailer::Base.mail(:from => "cron@sngtrkr.com", :to => "bessey@gmail.com", 
-        :subject => '[SNGTRKR Cron] Successfully ran.') do |format|
-      format.text { render :text => "The hourly Release cronjob has run as expected" }
+    if Rails.env.production? and (Time.now).wday == 1 and (Time.now).hour == 9
+      # Notify Matt that the Cron job ran
+      m = ActionMailer::Base.mail(:from => "cron@sngtrkr.com", :to => "bessey@gmail.com", 
+          :subject => '[SNGTRKR Cron] Successfully ran.') do |format|
+        format.text { render :text => "The hourly Release cronjob has run as expected" }
+      end
+      m.body = "The hourly Release cronjob has run as expected"
+      m.deliver
     end
-    m.body = "The hourly Release cronjob has run as expected"
-    m.deliver if Rails.env.production?
     puts "SNGTRKR Hourly release has been run successfully."
   end
 
