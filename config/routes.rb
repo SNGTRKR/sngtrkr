@@ -6,6 +6,8 @@ SNGTRKR::Application.routes.draw do
   
   match 'pages/:action' => 'pages#:action'
   
+  match '/admin' => "Admin#overview"
+  match '/admin/:action' => "Admin#:action"
   match '/about' => "Pages#about"
   match '/terms' => "Pages#terms"
   match '/team' => "Pages#team"
