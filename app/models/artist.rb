@@ -7,17 +7,13 @@ class Artist < ActiveRecord::Base
   belongs_to :label
 
   has_attached_file :image, :styles => {
-    :profile => "310x369#",
-    :recommend => "212x178#",
-    :manage => "100x100#",
-    :sidebar_suggest => "50x50#",
-    :original => "800x800>"
+    :profile => ["310x369#",:jpg],
+    :recommend => ["212x178#",:jpg],
+    :manage => ["100x100#",:jpg],
+    :sidebar_suggest => ["50x50#",:jpg],
+    :original => ["800x800>",:jpg]
    }, :convert_options => {
-    :profile => '-quality 40 -strip' ,
-    :recommend => '-quality 40 -strip' ,
-    :manage => '-quality 40 -strip' ,
-    :sidebar_suggest => '-quality 40 -strip' ,
-    :original => '-quality 40 -strip'
+    :all => '-quality 40 -strip' ,
   }
 
   has_many :follow, :dependent => :destroy
