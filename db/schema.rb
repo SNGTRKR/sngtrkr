@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(:version => 20120901095307) do
     t.string   "soundcloud"
     t.string   "youtube"
     t.string   "itunes"
-    t.text     "sdid"
+    t.integer  "sdid"
     t.text     "sd"
     t.text     "juno"
     t.integer  "label_id"
@@ -140,7 +140,7 @@ ActiveRecord::Schema.define(:version => 20120901095307) do
     t.text     "label_name"
     t.integer  "label_id"
     t.boolean  "scraped"
-    t.text     "sd_id"
+    t.integer  "sd_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -232,7 +232,7 @@ ActiveRecord::Schema.define(:version => 20120901095307) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["fbid"], :name => "index_users_on_fbid"
+  add_index "users", ["fbid"], :length => 20, :name => "index_users_on_fbid"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

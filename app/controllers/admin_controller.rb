@@ -16,13 +16,13 @@ class AdminController < ApplicationController
     end
 
     row_length = 15
-    @users_by_day = User.group('date(created_at)').limit(row_length).order('created_at DESC').count
-    @follows_by_day = Follow.group('date(created_at)').limit(row_length).order('created_at DESC').count
-    @suggests_by_day = Suggest.group('date(created_at)').limit(row_length).order('created_at DESC').count
-    @artists_by_day = Artist.group('date(created_at)').limit(row_length).order('created_at DESC').count
+    @users_by_day = User.group('date_format(created_at,"%d-%m-%y")').limit(row_length).order('created_at DESC').count
+    @follows_by_day = Follow.group('date_format(created_at,"%d-%m-%y")').limit(row_length).order('created_at DESC').count
+    @suggests_by_day = Suggest.group('date_format(created_at,"%d-%m-%y")').limit(row_length).order('created_at DESC').count
+    @artists_by_day = Artist.group('date_format(created_at,"%d-%m-%y")').limit(row_length).order('created_at DESC').count
     @stats_by_day =  []
     for d in 0 .. row_length-1
-      d_s = (Date.today - d).strftime
+      d_s = (Date.today - d).strftime("%d-%m-%y")
       @stats_by_day << {
         :date => Date.today - d, 
         :users => @users_by_day[d_s], 

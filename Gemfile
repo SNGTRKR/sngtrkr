@@ -11,14 +11,11 @@ gem "best_in_place"
 
 # VERSION AND DEPLOYMENT
 group :production do
-  gem 'mysql2'
   gem 'passenger'
   gem 'therubyracer'
 end
 
-group :development, :test do
-  gem 'sqlite3'
-end
+gem 'mysql2'
 
 group :test do
   gem 'rspec-rails'
