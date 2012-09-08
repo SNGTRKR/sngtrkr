@@ -5,6 +5,10 @@ SNGTRKR::Application.routes.draw do
   root :to => "application#home"
   
   match 'pages/:action' => 'pages#:action'
+
+  namespace :admin do
+    mount RailsAdmin::Engine => '/rails', :as => 'rails_admin'
+  end
   
   match '/admin' => "Admin#overview"
   match '/admin/:action' => "Admin#:action"
@@ -16,9 +20,6 @@ SNGTRKR::Application.routes.draw do
   match '/release_magic/:store/:url' => "Releases#magic"
   match '/intro' => "Pages#intro"
 
-  namespace :admin do
-    mount RailsAdmin::Engine => '/rails', :as => 'rails_admin' # Feel free to change '/admin' to any namespace you need.
-  end
 
   mount UserMailer::Preview => 'mailer'
 
