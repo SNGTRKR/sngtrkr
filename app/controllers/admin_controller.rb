@@ -7,7 +7,7 @@ class AdminController < ApplicationController
   end
 
   def email
-    render :layout => 'email'
+    render :layout => 'user_mailer'
   end
 
   def overview
