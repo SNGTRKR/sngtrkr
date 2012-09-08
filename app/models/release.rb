@@ -4,10 +4,10 @@ class Release < ActiveRecord::Base
   validates :artist_id, :presence => true
 
   has_attached_file :image, :styles => { 
-  :release_i => ["310x311#",:jpg],
-  :release_carousel => ["116x116#",:jpg],
-  :activity_release => ["40x40#",:jpg],
-  :original => ["500x500>",:jpg]
+  :release_i => ["310x311#"],
+  :release_carousel => ["116x116#"],
+  :activity_release => ["40x40#"],
+  :original => ["500x500>"]
    }, :convert_options => {
     :all => '-quality 40 -strip',
   }
