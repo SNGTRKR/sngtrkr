@@ -14,6 +14,7 @@ group :production do
   gem 'passenger'
   gem 'therubyracer'
 end
+gem 'sitemap_generator'
 
 gem 'mysql2'
 
@@ -23,16 +24,12 @@ end
 
 gem 'capistrano'
 # gem 'rvm-capistrano'  -- THIS MUST BE INSTALLED LOCALLY, IT WILL NOT WORK IN A GEMFILE.
-gem 'dynamic_sitemaps'
 
 # BACKGROUND TASKS
 gem 'sidekiq'
 gem 'whenever', :require => false
 
-# SIDEKIQ MONITORING
-gem 'slim'
-gem 'sinatra', :require => nil
-
+gem 'fog'
 gem "paperclip"
 
 # SCRAPING GEMS
@@ -49,15 +46,14 @@ gem 'mail_view', :git => 'https://github.com/37signals/mail_view.git'
 
 group :assets do
   # in production environments by default.
-  gem 'compass-rails', '>= 1.0.0.rc.2'
   gem 'sass-rails',   '>= 3.2.3'
+  gem 'compass-rails', '>= 1.0.0.rc.2'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer'
 
   gem 'uglifier', '>= 1.0.3'
   gem 'jquery-rails'
-  gem 'bootstrap-sass', '~> 2.0.4.0'
 end
 
 gem 'jquery_datepicker'
@@ -72,17 +68,3 @@ gem "omniauth-facebook"
 gem 'kaminari'
 
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug'

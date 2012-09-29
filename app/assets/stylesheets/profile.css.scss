@@ -1,145 +1,315 @@
-#user-information {  
-position:relative;
-height:300px;
-margin-bottom:22px;
-.friends {
-	@extend .button;
-	position:absolute;
-	right:0px;
-	bottom:4px;
-	width:126px;
+.fixed {
+  position:fixed !important;
+  top:0;
 }
-.manage {
-	@extend .button;
-	position:absolute;
-	right:171px;
-	bottom:4px;
-	width:126px;
-}
-  #user-cover {
-  position:absolute;
-  height:247px;
-  width:700px;
-  @include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.45));
-  @include border-radius(12px);
-  z-index:2;
+#floating-wrapper {
+/* required to avoid jumping */
+  top:25px;
+  position: absolute;
+#floating-menu {
+    position: absolute;
+    top: 0;
+    margin-top:60px;
+#user-image {
+  width:230px;
+  height:230px;
   background:$gray;
-  background-size: cover;
-}
-    .user-info {
-	   height:42px;
-	   width:215px;
-	   z-index:1;
-	   margin:196px 0 0 25px;
-	   background:rgba(255,255,255,0.75);
-	   @include border-radius(8px);
-	   @include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.25));
-	   padding:58px 0 0 116px;
-	   position:absolute;
-	   a {
-		   color:$gray;
-	   }
-	   a:hover {
-		   color:$orange;
-	   }
-	   h2 {
-		   @extend .font-14;
-		   font-weight:bold;
-		  
-	   }
-	   span {
-		   @extend .instruct-font;
-		   color:$orange;
-	   }
+  @include border-radius(10px);
+  @include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.45));
+ //border-color:$orange;
+ //border-width:2px;
+ //border-style:solid;
+  position:relative;
+  #user-name {
+    @extend .button;
+    height:25px;
+    @include border-bottom-right-radius(10px);
+    @include border-bottom-left-radius(10px);
+    @include border-top-left-radius(0px);
+    @include border-top-right-radius(0px);
+    position:absolute;
+    bottom:0px;
+    left:0px;
+    width:200px;
   }
-        #user-image {
-          position:absolute;
-          margin:192px 0 0 25px;
-		  z-index:3;
-	      width:100px;
-	      height:100px;
-	      @include border-top-left-radius(8px);
-	      @include border-bottom-left-radius(8px);
-	      @include border-top-right-radius(8px);
-	      border-style:solid;
-	      border-color:rgba(255,255,255,0.75);
-	      border-width:2px;
-	      background:$gray;
-	      background-position:center;
-	      background-repeat:no-repeat;
-      }
 }
-.user-trkrs {
-margin-bottom:38px;
-.no-trk {	
-    @extend .font-15;	
-    font-weight:bold;
-    margin:12px 0 0 0;
+#user-menu {
+ list-style-type:none;
+ margin:15px 0;
+ li {
+  @extend .button-light;
+  width:200px;
+  @include border-radius(0px);
+  position:relative;
+  i {
+    margin-right:10px;
+    font-size:1.2em;
+    text-align:center;
+    position:relative;
+    top:1px;
   }
-.artist-trkr-list-search {
+  .icon-link, .icon-screenshot {
+    left:2px;
+  }
+  .icon-tasks {
+    font-size:1em;
+    right:1px;
+    }
+  }
+ li:first-child {
+  @include border-top-right-radius(7px);
+  @include border-top-left-radius(7px);
+ }
+ li:last-child {
+  @include border-bottom-right-radius(7px);
+  @include border-bottom-left-radius(7px);
+ }
+}
+#user-search {
         height:25px;
-        width:155px;
+        width:230px;
         background:rgba(255,255,255,0.75);
         @include border-radius(7px);
         @include box-shadow(inset 0px 1px 6px rgba(0, 0, 0, 0.25));
         border: 1px solid #50A6C2;
         border-bottom: 1px solid #B0E0E6;
-        float:right;
-        margin-right:-1px;
         input[type=text]{
             background:transparent;
             padding:0.3em;
             border:none;
-            width:100px;
+            width:175px;
             outline:none;
         }
         input[type=text]:focus {
             @include box-shadow(inset 0px 1px 1px rgba(0, 0, 0, 0));
         }
         div {
-	        @extend .search;
-	        float: right;
-	        @extend .search-button;
+         @extend .search;
+         float: right;
+         @extend .search-button;
         }
-    }
-  #tracked-artists {
-	list-style-type:none;
-	margin:8px 0 0 -14px;
-    .no-trk-notify {
-      margin:15px 0 0 13px;
-    }
+}
+}
+}
+#user-activity {
+  display:none;
+  ul  {
+    list-style-type:none;
     li {
-      width:163px;
-      height:28px;
-      padding:11px 0 17px 0;
+    height:80px;
+    width:463px;
+    @include border-radius(8px);
+    @include box-shadow(0px 2px 5px rgba(0, 0, 0, 0.45));
+    background-color:rgba(255,255,255,0.75);
+    margin-bottom:15px;
+  }
+  }
+}
+#user-trackers {
+
+  table {
+    width:463px;
+  }
+      .followers {
+       @extend .instruct-font;
+       @extend .orange-txt;
+      }
+  .delete {
+    @extend .button;
+    float:right;
+    margin:-3px -23px 0 0;
+  }
+  .del-all {
+    margin-right:10px;
+  }
+  .one{
+  background-color: #dff0d8;
+  }
+  .all {
+    background-color: #F2DEDE;
+  }
+}
+#user-friends {
+  display:none;
+   width:463px;
+    h1 {
+    margin-bottom:19px;
+  }
+  .friends-list {
+    list-style-type:none;
+    margin-left:-20px;
+    position:relative;
+    li {
+      width:210px;
+      height:38px;
+      padding:26px 10px 26px 0px;
+      margin:0 0 20px 20px;
       background:rgba(255,255,255,0.75);
       @include border-radius(8px);
       @include box-shadow(0px 2px 5px rgba(0, 0, 0, 0.25));
-      margin:7px 0 7px 15px;
       float: left;
-      text-align:center;
       position:relative;
-      div {
-	      @extend .font-13;
-	      font-weight:bold;
+    }
+    .friends-image {
+      position:absolute;
+      @include border-top-left-radius(8px);
+      @include border-bottom-left-radius(8px);
+      top:0px;
+      left:0px;
+      height:90px;
+      width:80px;
+      border-style:solid;
+      border-right-width:3px;
+      border-right-color:$orange;
+      background:$gray;
+      background-position:center;
+      background-repeat:no-repeat;
+    }
+    .friends-info {
+      margin-left:92px;
+      width:105px;
+      h3 {
+        font-weight:bold;
+        @extend .font-13;
       }
-      .followers {
-	      @extend .instruct-font;
-	      @extend .orange-txt;
+      .friend-trkr-no {
+        @extend .orange-txt;
+        @extend .instruct-font;
       }
-        a {
-          color:#000;
-        }
-        a:hover {
-          color:$orange;
-        }
-        .icon-remove {
-	        position:absolute;
-	        top:2px;
-	        right:4px;
-	        color:$orange;
-	        font-size:0.9em;
-        }
+    }
+    a {
+      color:$gray;
+    }
+    a:hover {
+      color:$orange;
     }
   }
+  #share-friends {
+text-align:center;
+margin-bottom:37px;
+  div {
+    font-size:1.2em;
+    font-weight:bold;
+  }
+  span {
+    @extend .font-11;
+  }
+  #share-bank {
+    list-style-type:none;
+    margin:30px auto;
+    width:285px;
+    li {
+        height:65px;
+        width:65px;
+        line-height:65px;
+        @include border-radius(7px);
+        margin:0 15px 0 15px;
+        float: left;
+      }
+      .goo-icon {
+    overflow:hidden;
+    font-size:7.5em; 
+      }
+      .icon-twitter {
+        position:relative;
+        bottom:2px;
+        font-size:4em;
+      }
+      .icon-facebook {
+        position:relative;
+        right:1px;
+        font-size:4em;
+      }
+      .icon-google-plus {
+        position:relative;
+        right:24px;
+        top:6px;
+      }
+  }
+}
+}
+#user-connect {
+  display:none;
+}
+#user-settings {
+  display:none;
+   width:463px;
+        h3 {
+          font-size:1.3em;
+          font-weight:bold;
+          margin-bottom:7px;
+          }
+.change-email {
+    border-bottom-width:1px;
+    border-bottom-color:rgba(51, 51, 51, 0.45);
+    border-bottom-style:solid;
+    margin-bottom:10px;
+      h1 {
+        margin-bottom:16px;
+      }
+            label { 
+                width:110px; 
+                display:block;
+                float:left;
+                margin-top:6px;
+            }
+            li {
+                padding:0 0 18px 0;
+            }
+            input[type=submit] {
+              margin:-13px 4px 0 0;
+            }
+}
+.change-name {
+    border-bottom-width:1px;
+    border-bottom-color:rgba(51, 51, 51, 0.45);
+    border-bottom-style:solid;
+    margin-bottom:10px;
+    input {
+        margin-right:15px;
+    }
+    input[type=text] {
+      width:205px;
+      margin-top:4px;
+    }
+}
+.email-notify {
+    border-bottom-width:1px;
+    border-bottom-color:rgba(51, 51, 51, 0.45);
+    border-bottom-style:solid;
+    margin-bottom:10px;
+            label { 
+                width:110px; 
+                display:block;
+                margin:-18px 0 11px 20px;
+            }
+            li {
+                float:left;
+                display:block;
+                width:67px;
+                padding:0 44px 0 0;
+            }
+            input[type=submit] {
+             margin:2px 4px 0 0;
+            }
+}
+.manage-artist {
+    border-bottom-width:1px;
+    border-bottom-color:rgba(51, 51, 51, 0.45);
+    border-bottom-style:solid;
+    margin-bottom:10px;
+      span {
+        @extend .button;
+        float:left;
+        margin:0 15px 18px 0;
+      }
+}
+.delete-account {
+    margin-bottom:40px;
+    height:95px;
+    span {
+      float:left;
+      @extend .button;
+}
+}
 }

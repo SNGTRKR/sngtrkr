@@ -1,101 +1,19 @@
-#friend-information {  
-position:relative;
-height:300px;
-margin-bottom:22px;
-width:694px;
-  #friend-cover {
-  position:absolute;
-  height:247px;
-  width:700px;
-  @include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.45));
-  @include border-radius(12px);
-  z-index:2;
-  background:$gray;
-  background-repeat:no-repeat;
-  background-position:center;
-}
-  #friend-trkr-search {
-        height:25px;
-        width:202px;
-        background:rgba(255,255,255,0.75);
-        @include border-radius(7px);
-        @include box-shadow(inset 0px 1px 6px rgba(0, 0, 0, 0.25));
-        border: 1px solid #50A6C2;
-        border-bottom: 1px solid #B0E0E6;
-        z-index:1;
-        position:absolute;
-        top:270px;
-        right:-1px;
-                input{
-		            background:transparent;
-		            padding:0.3em;
-		            border:none;
-		            width:153px;
-		            outline:none;
-        }
-        input[type=text]:focus {
-            @include box-shadow(inset 0px 1px 1px rgba(0, 0, 0, 0));
-        }
-  }
-    .friend-info {
-	   height:45px;
-	   width:215px;
-	   z-index:1;
-	   margin:196px 0 0 25px;
-	   background:rgba(255,255,255,0.75);
-	   @include border-radius(8px);
-	   @include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.25));
-	   padding:58px 0 0 116px;
-	   position:absolute;
-	   top:-3px;
-	   a {
-		   color:$gray;
-	   }
-	   a:hover {
-		   color:$orange;
-	   }
-	   h2 {
-		   @extend .font-14;
-		   font-weight:bold;
-		  
-	   }
-	   span {
-		   @extend .instruct-font;
-		   color:$orange;
-	   }
-  }
-        #friend-image {
-          position:absolute;
-          margin:192px 0 0 25px;
-		  z-index:3;
-	      width:100px;
-	      height:100px;
-	      @include border-top-left-radius(8px);
-	      @include border-bottom-left-radius(8px);
-	      @include border-top-right-radius(8px);
-	      border-style:solid;
-	      border-color:rgba(255,255,255,0.75);
-	      border-width:2px;
-	      background:$gray;
-	      background-position:center;
-	      background-repeat:no-repeat;
-      }
-}
-.friend-trkrs {
-margin-bottom:11px;
+#friend-trackers {
+	//display:none;
+   width:463px;
  ul {
     list-style-type:none;
-    width:730px;
+    width:493px;
     margin-left:-28px;
     .each-friend-trkr {
     float: left;
     position:relative;
     height:178px;
-    width:212px;
+    width:214px;
     @include border-radius(8px);
     margin:0 0 42px 30px;
    .new-friend-trkr {
-      width:212px;
+      width:214px;
       height:178px;
       @include border-radius(8px);
       @include box-shadow(0px 2px 8px rgba(0,0,0,0.45));
@@ -104,7 +22,7 @@ margin-bottom:11px;
 	            .black-tint {
             position:absolute; 
             height:178px;
-          width:212px;
+          width:214px;
           @include border-radius(8px);
           $experimental-support-for-svg: true;
           @include background-image(linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 94%, rgba(0,0,0,1) 100%));
@@ -116,7 +34,7 @@ margin-bottom:11px;
             text-align:center;
             line-height:1.4em;
             z-index:0;
-            width:212px;
+            width:214px;
             display:block;
             bottom:20px;
             a {
@@ -130,7 +48,7 @@ margin-bottom:11px;
 	      position:absolute;
 	      z-index:1;
 	      top:0px;
-	      width:212px;
+	      width:214px;
 	      height:178px;
 	      @include border-radius(8px);
 	      background:rgba(0,0,0,0.75);
@@ -139,9 +57,9 @@ margin-bottom:11px;
           .share-artist {
 	      position:absolute;
 	      height:178px;
-	      width:212px;
+	      width:214px;
 	      z-index:2;
-	      right:-212px;
+	      right:-214px;
 	      top:17px;
 	      h3 {
 		      @extend .signika-txt;
@@ -193,7 +111,7 @@ margin-bottom:11px;
 	          height:25px;
 	          width:138px;
 	          top:165px;
-	          left:67px;
+	          left:68px;
 	          z-index:3;
 	          a {
 	            color:#fff;
@@ -204,5 +122,4 @@ margin-bottom:11px;
           }
    }
   }
-
 }

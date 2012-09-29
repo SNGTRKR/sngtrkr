@@ -3,3 +3,13 @@
 one:
   user_id: 2
   artist_id: 1
+
+two:
+  user_id: 3
+  artist_id: 1
+  created_at: <%= 3.days.ago %>
+
+three:
+  user_id: 3
+  artist_id: 2
+  created_at: <%= 1.days.ago %>

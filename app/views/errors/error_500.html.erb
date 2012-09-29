@@ -1,6 +1,6 @@
 <% content_for :title do %>Internal Server Error - ERROR 500<% end %>
-<div class="row error-pages"><div class="span8 offset2">
-	<div class="row"><div class="span4">
+<div class="row error-pages"><div class="span<% if !user_signed_in? %>24<% else %>18<% end %>">
+	<div class="row"><div class="offset<% if !user_signed_in? %>6<% else %>3<% end %> span7">
         <h2>Oops!</h2>
         <h3>Server Error</h3><br/>
         <span>It seems something went wrong somewhere... <br/>our team has been notified.</span>

@@ -7,5 +7,15 @@ one:
 
 two:
   user_id: 1
-  artist_id: 1
+  artist_id: 2
+  ignore: false
+
+three:
+  user_id: 1
+  artist_id: 3
+  ignore: false
+
+four:
+  user_id: 1
+  artist_id: 4
   ignore: false

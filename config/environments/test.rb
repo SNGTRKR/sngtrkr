@@ -38,4 +38,5 @@ SNGTRKR::Application.configure do
   ActionMailer::Base.default :from => "SNGTRKR <noreply@sngtrkr.com>"
 
 
+
 end

@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'open-uri'
 describe "ReleaseScraper" do
 
   before :each do
@@ -90,10 +91,10 @@ describe "ReleaseScraper" do
 
     # Test for successfull image replacement
     !!(r.image).should == true
-    image_size = File.open(r.image.path).size
+    image_size = open(r.image :original).size
     @rs.class.improve_image r, :test_image => "http://www.simplyzesty.com/wp-content/uploads/2012/02/Google-logo.jpg"
     r.save!
-    new_image_size = File.open(r.image.path).size
+    new_image_size = open(r.image :original).size
     new_image_size.should > image_size
 
   end

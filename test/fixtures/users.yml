@@ -6,6 +6,7 @@
 #
 
 one:
+  id: 1
   email: bessey@gmail.com
   first_name: Matt
   last_name: Bessey
@@ -15,6 +16,7 @@ one:
   confirmed_at: <%= Time.now %>
 
 two:
+  id: 2
   email: bessey+test_user@gmail.com
   first_name: Matt
   last_name: Testey
@@ -22,3 +24,12 @@ two:
   fbid: 111111111
   roles: user
   confirmed_at: <%= Time.now %>
+
+three:
+  id: 3
+  email: tom.alan.dallimore@googlemail.com
+  first_name: Billy
+  last_name: Dallimore
+  email_frequency: 1
+  fbid: 660815460
+  confirmed_at: 2012-09-09 12:27:44

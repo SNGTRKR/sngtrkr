@@ -1,36 +1,39 @@
 <% content_for :title do %>Friend: <%= @friend.first_name %> <%= @friend.last_name %><% end %>
 <% content_for :description do %>Public profile page for your friend, <%= @friend.first_name %> <%= @friend.last_name %>. You can see when they last logged in, how many artists they are tracking and who they are tracking.<% end %>
-<div class="row"><div class="span9">
-<div id="friend-information">
-	<div id="friend-cover"></div>
-	<div id="friend-trkr-search">
-			<input type="text" id="filter" placeholder="Search <%= @friend.first_name %>'s TRKRs..."/>
-			<div class="search right search-button"><%= image_tag "/images/white-search-2.png", :alt => "Search", :id => "search-pad" %></div>
-		</div>
-	<div class="friend-info">
-		<% if @friend.fbid %>
-			<h2><%= link_to "#{@friend.first_name} #{@friend.last_name}", "http://facebook.com/#{@friend.fbid}", :target => "_blank" %></h2>
-		<% else %>
-			<h2>User <%= @friend.id %></h2>
-		<% end %>	
-			<span><%= @friend.following.count %> TRKINGS</span>
-	</div>
-	<% if @friend.fbid %>
-		<%= link_to "http://facebook.com/#{@friend.fbid}" do %>
-			<div id="friend-image" style="background-image:url(<%= "//graph.facebook.com/#{@friend.fbid}/picture?type=normal" %>);"></div>
-		<% end %>
-	<% end %>
-</div>
+<div class="row"><div class="span6">
+<div id="floating-wrapper">
+	<div id="floating-menu">
+<div id="user-image" style="background-image:url(<%= "//graph.facebook.com/#{@friend.fbid}/picture?width=230&height=230" %>);"><%= link_to "http://facebook.com/#{@friend.fbid}", :target => "_blank" do %><div id="user-name"><%= @friend.first_name %> <%= @friend.last_name %></div><% end %></div>
+<ul id="user-menu">
+	<!--<li class="m-activity button"><i class="icon-tasks"></i>Activity</li> -->
+	<li class="m-trackers button"><i class="icon-screenshot"></i>Trackers</li>
+	<!-- <li class="m-friends">Friends</li> -->
+</ul>
+<div id="user-search">
+	<input type="text" id="filter" placeholder="Search..."/>
+	<div><%= image_tag "/images/white-search-2.png", :alt => "Search", :id => "search-pad" %></div>
+	<div class="clear"></div>
 </div></div>
-<div class="row friend-trkrs"><div class="span9">
- <% if @friend.following.empty? %>
-   <p><%= @friend.first_name %> hasn't tracked any artists yet.</p>
- <% end %>
-	<ul id="friend-trkr-list">
-	 <%= render :partial => 'shared/friend_artist_suggestion', :collection => @friend.following.ordered %>	
-	 <div class="clear"></div>
-	</ul>	
-</div></div></div>
+</div></div>	
+<div class="span11_m">
+	<!--<div id="friend-activity">
+	 <% if @friend.recent_activity.empty? %>
+		   <p><%= @friend.first_name %> hasn't tracked any artists yet.</p>
+	 <% end %>
+		<ul>
+			<%= render :partial => 'users/activity', :collection => @friend.recent_activity %>
+		</ul>
+	</div> -->
+	<div id="friend-trackers">
+	 <% if @friend.following.empty? %>
+		   <p><%= @friend.first_name %> hasn't done anything recently.</p>
+	 <% end %>
+		<ul>
+			<%= render :partial => 'shared/friend_artist_suggestion', :collection => @following %>	
+		</ul>
+	</div>
+</div>
+</div>
 	<script>
 	$(document).ready(function () {
 		$(".mini-share").click(function() {
@@ -72,8 +75,32 @@
 	    	});
 	    };
 	    add_remove_friend_trkr_bind();
-
-
+	$('.m-activity').click(function(){
+		$('#friend-activity').fadeTo(500,1);
+		$('#friend-trackers').hide();
+		$('#user-menu li').removeClass('button');
+		$(this).addClass('button');
+	});
+	$('.m-trackers').click(function(){
+		$('#friend-activity').hide();
+		$('#friend-trackers').fadeTo(500,1);
+		$('#user-menu li').removeClass('button');
+		$(this).addClass('button');
+	});
+  var top = $('#floating-menu').offset().top - parseFloat($('#floating-menu').css('marginTop').replace(/auto/, 0));
+  $(window).scroll(function (event) {
+    // what the y position of the scroll is
+    var y = $(this).scrollTop();
+  
+    // whether that's below the form
+    if (y >= top) {
+      // if so, ad the fixed class
+      $('#floating-menu').addClass('fixed');
+    } else {
+      // otherwise remove it
+      $('#floating-menu').removeClass('fixed');
+    }
+  });
 	});
 
 <% content_for :fb_js do %>

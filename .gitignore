@@ -1,7 +1,6 @@
 vendor/cache/*
 tmp/cache/*
-log/development.log
-log/test.log
+log/*
 tmp/**/*
 tmp/*
 db/*.sqlite3
@@ -10,12 +9,12 @@ doc/app
 *.swp
 *~
 .DS_Store
+**/.DS_Store
 public/system/*
-log/*
 dump.rdb
 nohup.out
 config/environments/personal/private.rb
 
 db/test.sqlite3
 
-*.log
+.bundle/

@@ -42,7 +42,7 @@
 								<% else %>
 								<div class="nav pull-right inner-tools">
 									<%= link_to(destroy_user_session_path, :method => :delete, :class => "btn btn-navbar toolbutton tooltip-parent", "data-title" => "Logout", "data-placement" => "bottom" ) do %><i class="icon-signout"></i><% end %>
-									<%= link_to edit_user_path(@user), :class => "btn btn-navbar toolbutton tooltip-parent", "data-title" => "Settings", "data-placement" => "bottom" do %><i class="icon-cog"></i><% end %><a href="#feedback" data-toggle="modal" class="btn btn-navbar toolbutton tooltip-parent" data-title="Feedback" data-placement="bottom"><i class="icon-comment"></i></a></div><% end %>
+									<!-- <%= link_to edit_user_path(@user), :class => "btn btn-navbar toolbutton tooltip-parent", "data-title" => "Settings", "data-placement" => "bottom" do %><i class="icon-cog"></i><% end %>--><a href="#feedback" data-toggle="modal" class="btn btn-navbar toolbutton tooltip-parent" data-title="Feedback" data-placement="bottom"><i class="icon-comment"></i></a></div><% end %>
 				      			</div></div></div>
 				      			<%= render :partial => 'shared/nav_tools' %>	
   </div></div>

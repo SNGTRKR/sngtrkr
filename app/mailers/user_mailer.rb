@@ -4,7 +4,7 @@ class UserMailer < ActionMailer::Base
   
   def welcome_email(user)
     @user = user # For the view
-    mail(:to => "#{@user.email}", :subject => "The wait is finally over...").deliver
+    mail(:to => "#{@user.email}", :subject => "Welcome to SNGTRKR!")
   end
 
   def beta_email(user)
@@ -14,11 +14,11 @@ class UserMailer < ActionMailer::Base
   
   def new_releases_deliver(frequency)
     User.where(:email_frequency => frequency).each do |user|
-      new_releases(user,frequency)
+      new_releases(user,frequency,:deliver => true)
     end
   end
 
-  def new_releases(user,frequency)
+  def new_releases(user,frequency,opts={:deliver => false})
     @user = user
 
     @releases = user.release_notifications.order("date DESC").where("date < ?",Date.today+1).limit(20)
@@ -48,9 +48,12 @@ class UserMailer < ActionMailer::Base
       @domain = "http://sngtrkr.com"
     end
 
-    mail(:to => "#{@user.first_name} #{@user.last_name} <#{@user.email}>", 
+    m = mail(:to => "#{@user.first_name} #{@user.last_name} <#{@user.email}>", 
       :subject => "#{@date_adjective} Update | New releases from #{artist_names}",
-      :from => "SNGTRKR Update <noreply@sngtrkr.com>").deliver
+      :from => "SNGTRKR Update <noreply@sngtrkr.com>")
+    if opts[:deliver]
+      m.deliver
+    end
     user.release_notifications.delete(@releases)
 
   end
@@ -74,8 +77,8 @@ class UserMailer < ActionMailer::Base
   def instant_release(release)
     
   end
-
- class Preview < MailView
+  
+  class Preview < MailView
     # Pull data from existing fixtures
     def new_releases
       user = User.where(:fbid => 123456789).first
@@ -88,6 +91,10 @@ class UserMailer < ActionMailer::Base
     end
     def beta_email
       ::UserMailer.beta_email(User.first)
+    end
+
+    def confirmation_email
+      Devise::Mailer.confirmation_instructions(User.first) 
     end
   end
 
