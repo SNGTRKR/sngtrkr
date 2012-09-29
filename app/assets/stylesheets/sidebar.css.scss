@@ -4,18 +4,13 @@
 	top:39px;
 	background-color:rgba(255,255,255,0.75);
 	border-width:1px;
-	border-color:rgba(0, 0, 0, 0.4);
+	border-color:rgba(51, 51, 51, 0.75);
 	border-style:solid;
 	height:100%;
 	z-index:500;
 	position:fixed;
 	margin-left:-($sidebar);
 	padding:10px;
-	hr {
-		border: 1px solid #5E5E5E;
-		opacity:0.4;
-		filter: alpha(opacity=40);
-	}
 	.header {
 	height:32px;
 	width:228px;
@@ -37,6 +32,9 @@
 	}
 	#activity-stream {
 		@extend .scrollbar;
+		border-bottom-color:rgba(51, 51, 51, 0.55);
+		border-bottom-width:1px;
+		border-bottom-style:solid;
 		ul {
 			margin:2px 0 10px 0;	
 			max-height:240px;
@@ -47,6 +45,9 @@
 		}
 	}
 	#recommendations {
+		border-bottom-color:rgba(51, 51, 51, 0.55);
+		border-bottom-width:1px;
+		border-bottom-style:solid;
   ul {
     list-style-type:none;
     margin:12px 0 5px 0;

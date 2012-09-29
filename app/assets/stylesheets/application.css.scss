@@ -49,8 +49,6 @@ $sidebar:228px;
 @import "profile.css.scss";
 /* Recommend CSS*/
 @import "recommend.css.scss";
-/* Profile Settings CSS*/
-@import "profile_settings.css.scss";
 /* Manage form CSS*/
 @import "manage_artist.css.scss";
 /* New release form CSS*/
@@ -63,8 +61,6 @@ $sidebar:228px;
 @import "artist_release.css.scss";
 /* Release Player CSS */
 @import "release_player.css.scss";
-/* Friends List CSS*/
-@import "friends_list.css.scss";
 /* Friend CSS*/
 @import "friend.css.scss";
 /* Feedback CSS */
@@ -73,6 +69,8 @@ $sidebar:228px;
 @import "activity.css.scss";
 /* Slider CSS */
 @import "slider.css.scss";
+/* Pagination CSS */
+@import "pagination.css.scss";
 a:link {text-decoration:none;}
 *{
   margin:0;
@@ -98,8 +96,8 @@ body{
     color:$gray;
 }
 .load-recommend {
-	margin:-3px 0 20px 30px;
-	width:700px;
+	margin:0 0 20px;
+	width:463px;
 }
 .load-timeline {
 	margin:-3px 0 24px 33px;
@@ -110,7 +108,6 @@ body{
 }
 .loading {
 position:relative;
-margin-top:-3px;
 text-align:center;
 	h3 {
 		@extend .signika-txt; 

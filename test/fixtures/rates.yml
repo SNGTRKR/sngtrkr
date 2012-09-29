@@ -1,0 +1,13 @@
+one:
+  rateable_id: 1
+  rater_id: 3
+  rateable_type: Release
+  stars: 4
+  created_at: <%= 3.days.ago %>
+
+two:
+  rateable_id: 2
+  rater_id: 3
+  rateable_type: Release
+  stars: 4
+  created_at: <%= 2.days.ago %>

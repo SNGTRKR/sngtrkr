@@ -3,21 +3,18 @@ text-align:center;
 	h2 {
 		@extend .signika-txt;
 		@extend .font-100;
-		margin-left:46px;
 	}
 	h3 {
 		@extend .font-18;
-		margin-left:52px;
 	}
 	span {
-		margin-left:50px;
 		display:block;
-		width:252px;
+		
 	}
 	#not-found {
-		margin:15px 0 35px 0;
+		margin:34px 0 0 70px;
 	}
 	#gears {
-		margin:17px 0 38px 0;
+		margin:32px 0 0 56px;
 	}
 }

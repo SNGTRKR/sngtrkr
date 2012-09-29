@@ -2,7 +2,7 @@ class ReleaseScraper
   require 'open-uri'
   attr_accessor :releases, :new_releases_images
 
-  @@offset = 0
+  @@offset = Random.rand(Release.count)
 
   def initialize artist, opts={}
     @artist = artist
@@ -55,7 +55,14 @@ class ReleaseScraper
 
   def self.improve_image r, opts={}
     return false unless r.image.path
-    old_image_size = File.open(r.image.path).size
+    begin
+      old_image_size = open(r.image :original).size
+      # Skip large images
+      return false unless old_image_size < 15000
+    rescue
+      # 403 errors
+      old_image_size = 0
+    end
     # Skip large images
     return false unless old_image_size < 15000
     image_path =  if opts[:test_image]
@@ -358,7 +365,7 @@ class ReleaseScraper
   end
 
   def self.hourly_release
-    Artist.where(:ignore => false).offset(@@offset).limit(100).each do |artist|
+    Artist.where(:ignore => false).offset(@@offset % Release.count).limit(100).each do |artist|
       ReleaseJob.perform_async(artist.id)
     end
     @@offset += 100

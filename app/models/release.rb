@@ -4,14 +4,15 @@ class Release < ActiveRecord::Base
   validates :artist_id, :presence => true
 
   has_attached_file :image, :styles => { 
-  :release_i => ["310x311#"],
-  :release_carousel => ["116x116#"],
-  :activity_release => ["40x40#"],
-  :original => ["500x500>"]
-   }, :convert_options => {
-    :all => '-quality 40 -strip',
-  }
-
+      :release_i => ["310x311#"],
+      :release_carousel => ["116x116#"],
+      :activity_release => ["40x40#"],
+      :original => ["500x500>"]
+    }, 
+    :convert_options => {
+      :all => '-quality 40 -strip',
+    },
+    :fog_public => true
 
   has_many :tracks, :dependent => :delete_all
   has_many :notification, :dependent => :delete_all

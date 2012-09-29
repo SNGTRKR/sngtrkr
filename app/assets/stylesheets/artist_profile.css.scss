@@ -1,13 +1,7 @@
-.artist-buffer {
-	margin-bottom:40px;
-}
-#artist-info {
-	margin-left:40px;
 #profile-image {
 	position:relative;
 	height:368px;
 	width:309px;
-	margin-left:7px;
 	@include box-shadow(0px 2px 8px rgba(0,0,0,0.45));
 	@include border-radius(12px);
 	overflow:hidden;
@@ -184,7 +178,7 @@ font-size:4.8em;
 	padding:17px;
 	line-height:1.7em;
 	float: right;
-	margin-right:7px;
+  margin-right:-4px;
 	position: relative;
 	.trkrs {
 		@extend .instruct-font;
@@ -225,9 +219,9 @@ font-size:4.8em;
 		color:$orange;
 	}
 }
-.menu-user {
+.artist-menu-user {
 	list-style-type:none;
-	margin:15px -13px 0 0;
+	margin:15px -23px 40px 0;
 	width:300px;
 	float: right;
 	a {
@@ -247,8 +241,4 @@ font-size:4.8em;
 	li {
 		float: left;
 	}
-}
-}
-#bio-full {
-
 }

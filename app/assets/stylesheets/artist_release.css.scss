@@ -1,10 +1,7 @@
-#artist-release {
-margin-left:40px;
 		#release-image {
 			position:relative;
 			height:310px;
 			width:309px;
-			margin-left:7px;
 			@include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.45));
 			@include border-radius(12px);
 			overflow:hidden;
@@ -34,19 +31,16 @@ margin-left:40px;
 					@extend .button;
 					float: left;
 				}
-				.add {
-					margin:5px 15px 0 0;
-				}
-				.edit {
-					margin:5px 15px 0 0;
+				.add, .edit {
+					margin-right:15px;
 				}
 				.del {
-					margin-top:5px;
+					margin-top:-18px;
 				}
 				.edit_release {
 					position:relative;
 					left:26px;
-					top:10px;
+					top:2px;
 				}
 				.icon-remove {
 					position:absolute;
@@ -192,7 +186,7 @@ margin-left:40px;
 			@include border-radius(12px);
 			padding:17px;
 			line-height:1.7em;
-			margin-right:7px;
+		    margin-right:-4px;
 			#no-preview {
 				position:absolute;
 				bottom:15px;
@@ -223,7 +217,7 @@ margin-left:40px;
 		}
 		.menu-user {
 			list-style-type:none;
-			margin:15px -12px 0 0;
+			margin:15px -23px 0 0;
 			width:300px;
 			float:right;
 			.icon-shopping-cart, .icon-share-alt {
@@ -245,13 +239,11 @@ margin-left:40px;
 				float: left;
 			}
 		}
-		}
-#artist-carousel {
-margin-left:40px;
 .also-by {
-	margin:25px 0 0 6px;
+	margin:25px auto 0;
 	@extend .signika-txt;
 	@extend .font-25;
+	width:604px;
 	a {
 		color:#fff;
 	}
@@ -267,9 +259,7 @@ margin-left:40px;
 	position: relative;
 	width:566px;
 	height:150px;
-	top:12px;
-    margin-bottom:33px;
-    margin-left:7px;
+	margin:12px auto 33px;
 	ul {
 		list-style-type:none;
 		width:550px;
@@ -332,7 +322,6 @@ margin-left:40px;
 .c-next {
 	right:-6px;
 	
-}
 }
 #tracklist {
   height:60px;

@@ -34,7 +34,7 @@ class UsersController < ApplicationController
         @artist = @user.managing.first
         @trackers = @artist.followed_users.count
       end
-      @following = @user.following
+      @following = @user.following.ordered.page(params[:page])
       respond_to do |format|
         format.html { render '/users/self' }
       end
@@ -42,6 +42,7 @@ class UsersController < ApplicationController
     else
     
       @friend = User.find(params[:id])
+      @following = @friend.following.ordered.page(params[:page])
       # Do we want to stop users viewing other users if they aren't facebook friends?
       #      if !current_user.friends_with? @friend, session["friend_ids"]
       #        return redirect_to :root, :error => "You do not have permissions to view this user"
@@ -107,14 +108,14 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update_attributes(params[:user])
         if !params[:user][:email]
-          notice = 'Success! Your changes have been saved.'
+          notice = '<strong>Success!</strong> Your changes have been saved.'
         else
-          notice = 'Success! Your changes have been saved. You must confirm your email address before it will register in the system. Please check your email now for a confirmation link.'
+          notice = '<strong>Success!</strong> Your changes have been saved. You must confirm your email address before it will register in the system. Please check your email now for a confirmation link.'
         end
-        format.html { redirect_to edit_user_path(@user), :flash => { :success => notice } }
+        format.html { redirect_to user_path(@user, :page => 'edit'), :flash => { :success => notice } }
         format.json { head :no_content }
       else
-        format.html { render :action => "edit" }
+      format.html { redirect_to user_path(@user, :page => 'edit'), :flash => { :error => "There was an error with the changes you tried to make. Please try again." } }
         format.json { render :json => @user.errors, :status => :unprocessable_entity }
       end
     end
@@ -192,7 +193,7 @@ class UsersController < ApplicationController
     end
   end
   
-    def unmanage_confirm
+  def unmanage_confirm
     respond_to do |format|
       format.html { render :unmanage_confirm, :layout => false }
       format.json { head :no_content }

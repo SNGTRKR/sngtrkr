@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   validates :email, :presence => true, :uniqueness => true
   validates :first_name, :presence => true
   validates :last_name, :presence => true
+  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
 
   ajaxful_rater
 
@@ -148,24 +149,31 @@ class User < ActiveRecord::Base
     end
   end
   
-  def recent_activity(opts={:specify_id => false})
-    recent_follows = self.follow.order('updated_at DESC').limit(10)
-    if :specify_id
-      recent_follows.map! { |follow| {:action => 'follow', :time => follow.updated_at, :object => 'artist', :id => follow.artist_id,
-        :user_id => self.id, :user_first_name => self.first_name, :user_last_name => self.last_name } }
-    else
-      recent_follows.map! { |follow| {:action => 'follow', :time => follow.updated_at, :object => 'artist', :id => follow.artist_id } }
-    end
+  def recent_activity(opts={:limit => 20})
+    recent_follows = self.follow.includes(:artist,:user).order('updated_at DESC').limit(opts[:limit])
+    recent_follows.collect! { |follow| {
+        :action => 'follow',
+        :follow => follow,
+        :user => follow.user,
+        :artist => follow.artist,
+        :time => follow.created_at
+      } 
+    }
 
-    recent_rates = Rate.where(:rater_id => self.id, :rateable_type => 'Release').order('updated_at DESC').limit(10)
-    if :specify_id
-      recent_rates.map! { |rate| {:action => 'rate', :time => rate.updated_at, :object => 'release', :id => rate.rateable_id, :stars => rate.stars,
-        :user_id => self.id, :user_first_name => self.first_name, :user_last_name => self.last_name }}
-    else
-      recent_rates.map! { |rate| {:action => 'rate', :time => rate.updated_at, :object => 'release', :id => rate.rateable_id, :stars => rate.stars}}
-    end
-
-    recent_actions = (recent_rates + recent_follows).sort_by!{|action| action[:time]}.reverse!
+    recent_rates = Release.joins('JOIN `rates` ON `rateable_id` = `releases`.`id` JOIN `users` ON `rater_id` = `users`.`id`')
+      .select("releases.*, 
+        rates.updated_at AS rate_updated_at, rates.stars AS stars, 
+        users.first_name AS first_name, users.last_name AS last_name, `users`.`id` AS `user_id`")
+      .where('`users`.`id` = ? AND `rates`.`rateable_type` = ?', self.id, 'Release')
+      .order('updated_at DESC').limit(opts[:limit])
+    recent_rates.map! { |rate| {
+        :action => 'rate', 
+        :release => rate,
+        :time => rate.created_at
+      }
+    }
+    combined = (recent_rates + recent_follows).sort_by!{|action| action[:time]}.reverse
+    return combined
   end
 
   # This works but is a very SQL heavy solution
@@ -176,9 +184,10 @@ class User < ActiveRecord::Base
     end
     users.each do |user|
       u = User.find(user)
-      activities = activities | u.recent_activity(:specify_id => true)
+      activities += u.recent_activity
     end
-    activities.sort_by!{|action| action[:time]}.reverse!
+    activities.sort_by!{|action| action[:time] }.reverse!
+    
     return activities[0,10]
   end
 

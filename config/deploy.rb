@@ -1,16 +1,49 @@
 set :application, "sngtrkr"
 set :user, "deploy"
 set :domain, 'sngtrkr.com'
-set :applicationdir, "/var/www/#{application}"
-
+set :staging_domain, 'staging.sngtrkr.com'
 set :scm, 'git'
 set :repository,  "git@github.com:MattBessey/sngtrkr.git"
-set :branch, 'master'
 set :scm_verbose, true
 
-role :web, domain                          # Your HTTP server, Apache/etc
-role :app, domain                          # This may be the same as your `Web` server
-role :db,  domain, :primary => true        # This is where Rails migrations will run
+desc "Run tasks in staging enviroment."
+task :production do
+
+  set :applicationdir, "/var/www/sngtrkr"
+  set :deploy_to, applicationdir
+  set :branch, 'master'
+  role :web, domain                          # Your HTTP server, Apache/etc
+  role :app, domain                          # This may be the same as your `Web` server
+  role :db,  domain, :primary => true        # This is where Rails migrations will run
+
+  # Sidekiq
+  require "sidekiq/capistrano"
+
+  # Whenever for cron jobs
+  set :whenever_command, "bundle exec whenever"
+  require "whenever/capistrano"
+
+end
+
+desc "Run tasks in staging enviroment."
+task :staging do
+  set :applicationdir, "/var/www/sngtrkr_staging"
+  set :deploy_to, applicationdir
+  set :branch, 'staging'
+  role :web, domain
+  role :app, domain
+  role :db, domain, :primary=>true
+
+  namespace :deploy do
+    namespace :assets do
+      task :precompile do 
+        puts "No asset precompilation in staging, baws!"
+      end
+    end
+  end
+end
+
+
 
 # Only keep the latest 3 releases
 set :keep_releases, 3
@@ -18,20 +51,14 @@ after "deploy:restart", "deploy:cleanup"
 
 # Bundler for remote gem installs
 require "bundler/capistrano"
-# Whenever for cron jobs
-set :whenever_command, "bundle exec whenever"
-require "whenever/capistrano"
 # Load RVM's capistrano plugin.   
 #require "rvm/capistrano"
 
-# Sidekiq
-require "sidekiq/capistrano"
 
 #set :rvm_ruby_string, '1.9.3'
 #set :rvm_type, :user  # Copy the exact line. I really mean :system here
 
 # deploy config
-set :deploy_to, applicationdir
 set :deploy_via, :remote_cache
 
 # additional settings

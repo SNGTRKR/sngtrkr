@@ -7,19 +7,8 @@ content_for :og_type, "sngtrkr:release"
 %>
 <% content_for :title do %><%= @release.name %> release information by <%= @artist.name %><% end %>
 <% content_for :description do %><%= @release.name %> release information by <%= @artist.name %>. Released <%= @release.date.strftime("#{@release.date.day.ordinalize} %B %Y ") %> by <%= @release.label_name %> <% end %>
-<% if !user_signed_in? %>
-<style type="text/css">
-#artist-release {
-margin-left:162px !important;
-}
-#artist-carousel {
-margin-left:162px!important;
-}
-</style>
-<% else %><% end %>
-<div class="row"><div id="artist-release"><div class="span9">
 <div class="row">
-<div class="span4">
+<div class="offset<% if !user_signed_in? %>5<% else %>2<% end %> span8">
 <% if can? :manage, :all %>
   <div class="super-admin">
   <%= form_for [@artist,@release] do |f| %>
@@ -91,7 +80,7 @@ margin-left:162px!important;
 <span><% if @release.rates.count > 0 %><%= @release.rates.count %> fan rating<% if @release.rates.count > 1 %>s<% else %><% end %><% else %>No fan ratings. Be the first!<% end %></span>
 </div>
  </div>
-<div class="span4">
+<div class="span7_m">
 <div id="release-info">
 	<h2>
   	<% if @manager %>
@@ -184,26 +173,29 @@ margin-left:162px!important;
   </ul>
 </div><!-- release-info -->
 <div class="clear"></div>
-</div></div></div></div>
-<div class="row">
-<div id="artist-carousel"><div class="span9">
-<h4 class="also-by">Also by <%= link_to @artist.name, @artist %></h4>
-<div class="release-carousel <% if (@releases.count - 1) < 5 %>under-5<% else %><% end %>">
-<ul>
-	<% @releases.each do |release|
-  	 if release == @release 
-    	 next
-  	 end
-	 %>
-		<li><%= link_to [release.artist, release] do %><div style="background-image:url(<%= release.image :release_carousel %>);background-repeat:no-repeat;background-position:center;"></div><span><%= truncate((strip_tags release.name || "" ), :length => 15) %></span><% end %></li>
-		<% end %>
-	</ul>
-	
-	<div class="clearfix"></div>
-	<a class="c-prev" id="rel_prev" href="#"><i class="icon-chevron-left"></i></a>
-	<a class="c-next" id="rel_next" href="#"><i class="icon-chevron-right"></i></a>
 </div>
-</div></div></div>
+<% if @releases.count > 1 %>
+  <div class="row">
+    <div class="span<% if !user_signed_in? %>24<% else %>18<% end %>">
+    <h4 class="also-by">Also by <%= link_to @artist.name, @artist %></h4>
+    <div class="release-carousel <% if (@releases.count - 1) < 5 %>under-5<% else %><% end %>">
+    <ul>
+    	<% @releases.each do |release|
+      	 if release == @release 
+        	 next
+      	 end
+    	 %>
+    		<li><%= link_to [release.artist, release] do %><div style="background-image:url(<%= release.image :release_carousel %>);background-repeat:no-repeat;background-position:center;"></div><span><%= truncate((strip_tags release.name || "" ), :length => 15) %></span><% end %></li>
+    		<% end %>
+    	</ul>
+    	
+    	<div class="clearfix"></div>
+    	<a class="c-prev" id="rel_prev" href="#"><i class="icon-chevron-left"></i></a>
+    	<a class="c-next" id="rel_next" href="#"><i class="icon-chevron-right"></i></a>
+    </div>
+    </div>
+  </div>
+<% end %>
 <script type="text/javascript">
 	$(document).ready(function () {
 		$(".ignore").mouseover(function(){ $('.ignore').stop().animate({left : 60}, "slow");}).mouseout(function(){$('.ignore').stop().animate({left : 0}, "slow");});

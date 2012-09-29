@@ -1,9 +1,9 @@
 #featured{ 
-	width:660px; 
+	width:680px; 
 	padding-right:280px; 
 	position:relative; 
 	height:240px; 
-	margin:27px 0 8px 0;
+	margin:27px 0 8px;
 	@include border-radius(12px);
 	 @include box-shadow(0px 2px 8px rgba(0,0,0,0.45));
 	h3 {
@@ -11,7 +11,7 @@
 	}
 	ul {
 	position:absolute; 
-	top:0; left:660px; 
+	top:0; left:680px; 
 	list-style:none; 
 	padding:0; margin:0; 
 	width:280px; 
@@ -47,7 +47,7 @@
 				}
 				}
 	.ui-tabs-panel {
-		width:660px; height:240px; 
+		width:680px; height:240px; 
 		background:$gray; position:relative;
 		@include border-top-left-radius(10px);
 		@include border-bottom-left-radius(10px);
@@ -63,7 +63,7 @@
 		}
 		.artist {
 		height:240px;
-		width:421px;
+		width:441px;
 		position:absolute;
 		top:0px; right:0px;
 		background-size: cover;
@@ -74,7 +74,7 @@
 			height:50px; 
 			background:rgba(0,0,0,0.65);
 			padding:0 15px 0 0;
-			width:407px;
+			width:426px;
 			h4 {
 				font-size:18px; font-family:Georgia, serif; 
 				color:#fff; padding:5px; margin:0;

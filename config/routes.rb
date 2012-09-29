@@ -20,11 +20,7 @@ SNGTRKR::Application.routes.draw do
   match '/release_magic/:store/:url' => "Releases#magic"
   match '/intro' => "Pages#intro"
 
-
   mount UserMailer::Preview => 'mailer'
-
-  #require 'sidekiq/web'
-  #mount Sidekiq::Web => '/sidekiq'
 
   devise_for :users, :controllers => { :registrations => "users_controller/registrations",
     :omniauth_callbacks => "users_controller/omniauth_callbacks",
@@ -60,6 +56,7 @@ SNGTRKR::Application.routes.draw do
       match 'import/:fb_id', :action => 'import'
       match 'preview'
       get 'first_suggestions'
+      match 'unfollow' => 'Follows#batch_destroy'
     end
     resources :releases do 
       member do 
@@ -94,12 +91,12 @@ SNGTRKR::Application.routes.draw do
   #resources :labels, :only => [:show] # Not implemented in v1 so no access to it
 
   #  Use this line for production
-  unless Rails.application.config.consider_all_requests_local
-     match '*not_found', to: 'errors#error_404'
-  end
+  #unless Rails.application.config.consider_all_requests_local
+  #   match '*not_found', to: 'errors#error_404'
+  #end
 
   # Use this line to view error in development
-  #match '*not_found', to: 'errors#error_404'
+  match '*not_found', to: 'errors#error_404'
 
 # The priority is based upon order of creation:
 # first created -> highest priority.

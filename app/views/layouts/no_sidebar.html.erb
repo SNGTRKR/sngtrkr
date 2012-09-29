@@ -10,23 +10,21 @@
 		<a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 		
 		<div id="wrapper">
-		<% if flash[:notice] or flash[:error] or flash[:success] %>
-  		<div class="flash-outer <% if flash[:success] then %>flash-outer-success<% end %>" <% if flash[:disappear_after] then %>data-disappear-after="<%= flash[:disappear_after] %>"<% end %>>
-    		<div id="flash-inner">
-    		  <p>
-    		  <% if flash[:error] and !flash[:notice] %>
-      		  <%= raw flash[:error] %>
-    		  <% end %>
-    		  <%= raw flash[:notice] %>
-    		  <%= raw flash[:success] %>
-    		  </p>
-    		</div>
-    		<div class="flash-close"><i class="icon-remove"></i></div>
-  		</div>
-		<% end %>
 		<%= render :partial => 'layouts/navbar' %>
 <div class="wrapper2">
 				<div class="container content-padding">
+				<% if flash[:notice] or flash[:error] or flash[:success] %>
+			  		<div class="alert <% if flash[:success] then %>alert-success<% end %><% if flash[:notice] then %>alert-info<% end %><% if flash[:error] then %>alert-error<% end %> <% if user_signed_in? %><% else %>alert-lo<% end %>">
+				  	<button type="button" class="close" data-dismiss="alert">×</button>
+			    		  <p>
+			    		  <% if flash[:error] and !flash[:notice] %>
+			      		  <%= raw flash[:error] %>
+			    		  <% end %>
+			    		  <%= raw flash[:notice] %>
+			    		  <%= raw flash[:success] %>
+			    		  </p>
+			  		</div>
+					<% end %>
 					<%= yield %>
 				</div>
 			</div>
@@ -52,26 +50,22 @@
     		<% if user_signed_in? %>
 			<script type="text/javascript">
 			function hideDiv(){
-
-			    if ($(window).width() < 1039) {
-		            $(".container").css("width", "700");
+			    if ($(window).width() < 990) {
+		            $(".container").css("width", "720");
 		            $(".search-query").addClass("search-pad");
 		            $(".outer-tools").hide();
-		            $(".inner-tools").show();
-			            
+		            $(".inner-tools").show();			            
 			    }else{
-			        $(".container").css("width", "980");
+			        $(".container").css("width", "960");
 			        $(".search-query").removeClass("search-pad");
 			        $(".inner-tools").hide();
 			        $(".outer-tools").show();
 			    }
-			
 			}
 			$(document).ready(function () {
 					//sidebar
 					  //on load
 					    hideDiv();
-					
 					    //on resize
 					    $(window).resize(function(){
 					        hideDiv();

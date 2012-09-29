@@ -13,40 +13,9 @@ content_for :og_type, "sngtrkr:artist"
 background:url("/images/grid2.png");
 background-repeat:repeat;
 }
-<% if !user_signed_in? %>
-#artist-info {
-margin-left:162px !important;
-}
-
-<% else %><% end %>
 </style>
-<div class="row artist-buffer">
-<div id="artist-info">
-<div class="span9">
-<% if can? :manage, :all %>
-  <div class="super-admin">
-  <%= form_for @artist do |f| %>
-  <div class="ignore">
-    <% if !@artist.ignore? %>
-      <%= f.hidden_field :ignore, :value => true %>
-      <%= f.submit "Ignore Arist", :type => :image, :src => "/images/ignore.png", :class => "i-artist" %>
-    <% else %>
-      <%= f.hidden_field :ignore, :value => false %>
-      <%= f.submit "Unignore Arist", :type => :image, :src => "/images/unignore.png", :class => "ui-artist" %>
-  
-    <% end %>
-    </div>
-  <% end %>
-  <div class="edit">
-  <%= link_to edit_artist_path(@artist) do %><i class="icon-edit"></i><% end %>
-  </div>
-  <div class="destroy">
-  <%= link_to artist_path(@artist), :method => :delete do %><i class="icon-trash"></i><% end %>
-  </div>
-  </div>
-<% end %>
 <div class="row">
-<div class="span4">
+<div class="offset<% if !user_signed_in? %>5<% else %>2<% end %> span8">
 <div id="profile-image" style="background-image:url(<%= @artist.image.url :profile %>);background-repeat:no-repeat;background-position:center;">
 <div id="opac-50"></div>
 <div id="share-profile">
@@ -82,9 +51,9 @@ margin-left:162px !important;
 <% if @artist.website? %>
 <li><a href="http://<%= @artist.website %>" target="_blank"><div class="sm-pop web-icon black-button"><i class="icon-globe"></i></div></a></li><% else %><% end %>
 </ul>
-</div></div></div>
-
-<div class="span4">
+</div>
+</div></div>
+<div class="span7_m">
 <div id="profile-info">
 	<% if user_signed_in? and current_user.managing? @artist.id %>
 		<%= link_to edit_artist_path(@artist) do %><i class="icon-edit"></i><% end %>
@@ -106,7 +75,7 @@ margin-left:162px !important;
   <% end %>
 </div>
 </div>
-  <ul class="menu-user">
+  <ul class="artist-menu-user">
   <li class="buy-profile"><i class="icon-shopping-cart"></i>Buy</li>
   <li class="share-profile"><i class="icon-share-alt"></i>Share</li>
   <% if user_signed_in? and current_user.following? @artist.id %><li class="ajax-artist-track"><%= render :partial => 'shared/trk_artist', :object => @artist %><% else %><li class="popover-parent ajax-artist-track" data-title="Add TRKR" 
@@ -116,9 +85,6 @@ margin-left:162px !important;
   </ul>
 </div>
 <div class="clear"></div>
-</div>
-</div>
-</div>
 </div>
 <!-- ARTIST TIMELINE -->
 

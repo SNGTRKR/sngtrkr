@@ -1,6 +1,13 @@
 .button {
-	border: none;
+  border: none;
   @extend .o-button;
+  @extend .norm-o-pad; 
+  @extend .signika-font;
+  @extend .font-13;
+}
+.button-light {
+  border: none;
+  @extend .o-light;
   @extend .norm-o-pad; 
   @extend .signika-font;
   @extend .font-13;
@@ -23,31 +30,78 @@ input[type="button"], input[type="submit"]{
 		cursor: pointer;
 		@include border-radius(7px);
 		text-align:center;
-	    background:$orange; 
-	    $experimental-support-for-svg: true;
-	    @include background-image(linear-gradient(top, #F37244 0%, #F15A24 100%));
+	    background:$orange !important; 
+	    $experimental-support-for-svg: true !important;
+	    @include background-image(linear-gradient(top, #F37244 0%, #F15A24 100%) !important);
 	    text-shadow: #FF6103 0 1px 3px;
 	    -webkit-box-shadow:
 	    inset 0 1px 0  #F15A24,
 	    inset 0 2px 0 #F7931E,
 	    0 1px 3px #777,
-	    0 0px 1px #ccc;
+	    0 0px 1px #ccc !important;
 	    -moz-box-shadow:
 	    inset 0 1px 0  #F15A24,
 	    inset 0 2px 0 #F7931E,
 	    0 1px 3px #777,
-	    0 0px 1px #ccc;
+	    0 0px 1px #ccc !important;
 	    box-shadow:
 	    inset 0 1px 0  #F15A24,
 	    inset 0 2px 0 #F7931E,
 	    0 1px 3px #777,
-	    0 0px 1px #ccc;
+	    0 0px 1px #ccc !important;
 }
 .o-button:hover {
 	$experimental-support-for-svg: true;
   @include background-image(linear-gradient(top, #F15A24 0%, #F37244 100%));
 }
-
+.o-light {
+		color:white;
+		cursor: pointer;
+		@include border-radius(7px);
+		text-align:center;
+	    background:$orange; 
+	    $experimental-support-for-svg: true;
+	    @include background-image(linear-gradient(top, #FA9C7F 0%, #F88C6B 100%));
+	    text-shadow: #FF6103 0 1px 3px;
+	    -webkit-box-shadow:
+	    inset 0 1px 0  #F88C6B,
+	    inset 0 2px 0 #FCB56D,
+	    0 1px 3px #777,
+	    0 0px 1px #ccc;
+	    -moz-box-shadow:
+	    inset 0 1px 0  #F88C6B,
+	    inset 0 2px 0 #FCB56D,
+	    0 1px 3px #777,
+	    0 0px 1px #ccc;
+	    box-shadow:
+	    inset 0 1px 0  #F88C6B,
+	    inset 0 2px 0 #FCB56D,
+	    0 1px 3px #777,
+	    0 0px 1px #ccc;
+}
+.o-light:hover {
+	color:white;
+	cursor: pointer;
+	text-align:center;
+    $experimental-support-for-svg: true;
+    @include background-image(linear-gradient(top, #F88C6B 0%, #FA9C7F 100%));
+    text-shadow: #FF6103 0 1px 3px;
+    -webkit-box-shadow:
+    inset 0 1px 0  #F88C6B,
+    inset 0 2px 0 #FCB56D,
+    0 1px 3px #777,
+    0 0px 1px #ccc;
+    -moz-box-shadow:
+    inset 0 1px 0  #F88C6B,
+    inset 0 2px 0 #FCB56D,
+    0 1px 3px #777,
+    0 0px 1px #ccc;
+    box-shadow:
+    inset 0 1px 0  #F88C6B,
+    inset 0 2px 0 #FCB56D,
+    0 1px 3px #777,
+    0 0px 1px #ccc;
+}
 input.o-button {
   border:none; 
 }
@@ -200,6 +254,27 @@ input.o-button {
 .white-button:hover {
 		$experimental-support-for-svg: true;
         @include background-image(linear-gradient(top, #E6E6E6 0%, #FFFFFF 100%)); 
+}
+.white-background {
+		    background:#FFFFFF;
+		    $experimental-support-for-svg: true;
+            @include background-image(linear-gradient(top, #FFFFFF 0%, #E6E6E6 100%)); 
+		    text-shadow: #B3B3B3 0 1px 3px;
+		    -webkit-box-shadow:
+		    inset 0 1px 0  #E6E6E6,
+		    inset 0 2px 0 #FFFFFF,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+		    -moz-box-shadow:
+		    inset 0 1px 0  #E6E6E6,
+		    inset 0 2px 0 #FFFFFF,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+		    box-shadow:
+		    inset 0 1px 0  #E6E6E6,
+		    inset 0 2px 0 #FFFFFF,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
 }
 .black-button {
 			color:white;

@@ -1,50 +1,8 @@
-.flash-outer {
-  display: none;
-	position:absolute;
-	z-index: 200;
-	left:50%;
-	margin-left:-400px;
-  margin-top:45px;
-	background:rgba(245,230,200,0.9);
-	height:auto;
-	width:800px;
-	@include border-radius(0px 0px 8px 8px);
-  @include box-shadow(0px 3px 8px rgba(0,0,0,0.2));
-	#flash-inner {
-		    position:relative;
-		    width:777px;
-		    margin:0 auto;
-		    padding:10px 0 10px 0;
-		a {
-  		color:$orange;
-  		font-weight: bold;
-		}
-		p {
-  		opacity: 0.7;
-		text-align: center;
-  		width: 95%;
-  		font-weight: bold;
-  		margin-bottom:1px;
-  		padding:0;
-		}
+.alert {
+	p {
+		padding-bottom:0em;
 	}
-			.flash-close {
-		  cursor: pointer;
-		  height:20px;
-		  width:26px;
-		  font-size:1.2em;
-		  line-height:20px;   
-		  position:absolute;
-		  right:5px;
-		  top:5px;
-		  @extend .o-button;
-		}
 }
-
-#flash-outer-closed {
-  height: 0px;
-}
-
-.flash-outer-success {
-	background:rgba(194, 255, 208,0.9);
+.alert-lo {
+	width:909px !important;
 }

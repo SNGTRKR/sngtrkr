@@ -2,7 +2,6 @@ class FollowsController < ApplicationController
 
   load_and_authorize_resource
 
-
   def index
     redirect_to artist_path(:id => params[:artist_id])
   end
@@ -36,6 +35,15 @@ class FollowsController < ApplicationController
       end
     end
 
+  end
+
+  def batch_destroy
+    params[:artist_ids].each do |id|
+      current_user.unfollow_artist id
+    end
+    respond_to do |format|
+      format.html { redirect_to current_user }
+    end
   end
   
   def user_destroy

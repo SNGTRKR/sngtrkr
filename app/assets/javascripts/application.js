@@ -23,6 +23,14 @@ Number.prototype.commafy = function () {
   return String(this).commafy();
 };
 
+// Select all checkboxes
+function toggleChecked(status) {
+  $(":checkbox").each( function() {
+    $(this).attr("checked",status);
+  })
+}
+
+
 $(document).ready(function () { 
 
   // Best in place
@@ -42,6 +50,18 @@ $(document).ready(function () {
       $('.flash-outer').delay($('.flash-outer').data('disappear-after')).slideUp(1000, 'easeInQuad');
     }
   }
+
+  //Error message fade out 
+  window.setTimeout(function() {
+    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove(); 
+    });
+  }, 4000);
+
+  // Bootstrap global classes.
+  $('.popover-parent').popover();
+  $('.tooltip-parent').tooltip();
+
 
   // Release rating.
   $('a').live('ajax:complete', function (xhr, status) {
@@ -72,11 +92,6 @@ $(document).ready(function () {
       onselect: function(obj) {
           window.location = "/artists/"+ obj.id;
       }
-  });
-  
-  // Bootstrap global classes.
-  $('.popover-parent').popover();
-  $('.tooltip-parent').tooltip();
-  $(".alert").alert();
+  });  
   
 });
