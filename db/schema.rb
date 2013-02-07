@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120901095307) do
+ActiveRecord::Schema.define(:version => 20121230235439) do
 
   create_table "artists", :force => true do |t|
     t.string   "name"
@@ -149,6 +149,9 @@ ActiveRecord::Schema.define(:version => 20120901095307) do
     t.integer  "upc"
     t.integer  "itunes_id"
     t.boolean  "ignore"
+    t.text     "image_source"
+    t.datetime "image_last_attempt"
+    t.integer  "image_attempts"
   end
 
   add_index "releases", ["date", "itunes_id", "sd_id", "artist_id"], :name => "index_releases_on_date_and_itunes_id_and_sd_id_and_artist_id"
@@ -232,7 +235,7 @@ ActiveRecord::Schema.define(:version => 20120901095307) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["fbid"], :length => 20, :name => "index_users_on_fbid"
+  add_index "users", ["fbid"], :name => "index_users_on_fbid", :length => {"fbid"=>20}
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

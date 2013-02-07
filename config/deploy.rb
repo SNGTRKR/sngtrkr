@@ -3,7 +3,7 @@ set :user, "deploy"
 set :domain, 'sngtrkr.com'
 set :staging_domain, 'staging.sngtrkr.com'
 set :scm, 'git'
-set :repository,  "git@github.com:MattBessey/sngtrkr.git"
+set :repository,  "https://github.com/MattBessey/sngtrkr.git"
 set :scm_verbose, true
 
 desc "Run tasks in staging enviroment."
@@ -63,10 +63,8 @@ set :deploy_via, :remote_cache
 
 # additional settings
 default_run_options[:pty] = true  # Forgo errors when deploying from windows
-ssh_options[:forward_agent] = true
-ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "id_rsa")]
  
-set :synchronous_connect, true
+# set :synchronous_connect, true
 
 namespace :deploy do
   # Passenger
