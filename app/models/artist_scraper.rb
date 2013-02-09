@@ -198,7 +198,7 @@ class ArtistScraper
       itunes_results = ITunesSearchAPI.search(:term => @artist.name, :country => "GB", :media => "music", :entity => "musicArtist").first
       # Delete existing releases by this artist if their artist_id on itunes has changed
       if opts[:improve_existing] and @artist.itunes_id != itunes_results['artistId']
-        @artist.releases.where("itunes != ?", nil).delete_all
+        @artist.releases.where("itunes != ?", nil).destroy_all
       end
       @artist.itunes = itunes_results['artistLinkUrl']
       @artist.itunes_id = itunes_results['artistId']
@@ -214,7 +214,7 @@ class ArtistScraper
     if sd_info
       # Delete existing releases by this artist if their id on 7digital has changed
       if opts[:improve_existing] and @artist.sdid != sd_info[0]
-        @artist.releases.where("sd_id != ?", nil).delete_all
+        @artist.releases.where("sd_id != ?", nil).destroy_all
       end
 
       @artist.sdid = sd_info[0]
