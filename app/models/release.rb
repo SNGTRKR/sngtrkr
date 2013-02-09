@@ -15,8 +15,8 @@ class Release < ActiveRecord::Base
     },
     :fog_public => true
 
-  has_many :tracks, :dependent => :destroy_all
-  has_many :notification, :dependent => :destroy_all
+  has_many :tracks, :dependent => :destroy
+  has_many :notification, :dependent => :destroy
   has_many :user_notifications, :through => :notification, :source => :user
   belongs_to :artist
   
