@@ -17,18 +17,18 @@ content_for :og_type, "website"
 				</div>
 				<div class="da-slide">
 					<h2>Getting Started</h2>
-					<p>Right from the start SNGTRKR will supply artist suggestions, based on your facebook likes so you can quickly fill your timeline. Tracking a new artist could not be easier; you simply use the <strong>search tools</strong> provided.<br/><br/><strong>Start adding artists now!</strong></p>
+					<p>Right from the start SNGTRKR will supply artist suggestions, based on your facebook likes so you can quickly fill your timeline. Tracking a new artist could not be easier; you simply use the <strong>search tools</strong> provided.<br/><br/><strong>Start adding artists now! We've automatically followed all the artists you like on facebook, so if you don't want to follow any of those artists, nows your chance to unfollow them.</strong></p>
 					<div class="da-img"><div class="recommendations"><ul class="ajax-recommended-artists intro-recommendations">
-		<% if @user.suggested.count >= 4 %>
-		<%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 2] %>
-	<% else %>
-		<div class="loading">
-		<h3>Please wait...</h3>
-		<%= image_tag "/images/loading.png", :id => "loading-icon" %><br/>
-		</div>		  
-		<% end %>
-</ul>
-<div class="clear"></div>
+						<% if @user.suggested.count >= 4 %>
+						<%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 2] %>
+					<% else %>
+						<div class="loading">
+						<h3>Please wait...</h3>
+						<%= image_tag "/images/loading.png", :id => "loading-icon" %><br/>
+						</div>		  
+						<% end %>
+				</ul>
+				<div class="clear"></div>
 					</div></div>
 				</div>
 				<div class="da-slide">

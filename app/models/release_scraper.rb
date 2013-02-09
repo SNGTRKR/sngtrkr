@@ -2,7 +2,7 @@ class ReleaseScraper
   require 'open-uri'
   attr_accessor :releases, :new_releases_images
 
-  @@offset = Random.rand(Release.count)
+  @@offset = 0
 
   def initialize artist, opts={}
     @artist = artist
