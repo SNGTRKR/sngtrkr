@@ -52,7 +52,9 @@ class User < ActiveRecord::Base
       user.save!
     end
 
-    ArtistJob.perform_async(access_token.credentials.token, user.id)
+    if user.sign_in_count < 2
+      ArtistJob.perform_async(access_token.credentials.token, user.id)
+    end
     user
 
   end

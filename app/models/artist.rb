@@ -18,9 +18,9 @@ class Artist < ActiveRecord::Base
     },
     :fog_public => true
 
-  has_many :follow, :dependent => :destroy
-  has_many :suggest, :dependent => :destroy
-  has_many :manage, :dependent => :destroy
+  has_many :follow, :dependent => :delete_all
+  has_many :suggest, :dependent => :delete_all
+  has_many :manage, :dependent => :delete_all
 
   has_many :followed_users, :through => :follow, :source => :user
   has_many :suggested_users, :through => :suggest, :source => :user
