@@ -11,8 +11,8 @@ Paperclip::Attachment.default_options.update({
   :storage => :fog,
   :fog_credentials => {
     :provider => 'AWS',
-    :aws_access_key_id => 'AKIAIEBWHRBGTD5XBYMA',
-    :aws_secret_access_key => '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',
+    :aws_access_key_id => 'AKIAJGWG7DSPFB5UOV2Q',
+    :aws_secret_access_key => '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',
     :region => 'eu-west-1',
   },
   :fog_directory => "sngtrkr-#{BUCKET_ENV}",
