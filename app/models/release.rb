@@ -24,7 +24,7 @@ class Release < ActiveRecord::Base
   
   after_create :notify_followers
 
-  scope :unsaved_images, where('image_file_name is null and image_source is not null')
+  scope :unsaved_images, where('(image_file_name is null or image_file_name = "") and image_source is not null and image_source != ""')
 
   before_save :default_values
   def default_values
@@ -73,6 +73,29 @@ class Release < ActiveRecord::Base
           end
 
           r.save
+        end
+      end
+    end
+  end
+
+  def self.download_missing_images
+    Release.includes(:artist).where('image_file_name is null or image_file_name = ""').each do |r|
+      if r.image_last_attempt and (r.image_last_attempt + (2^r.image_attempts).hour) > Time.now
+        next
+      end
+      r.image_attempts = r.image_attempts ? r.image_attempts += 1 : 0
+      r.image_last_attempt = Time.now
+      album_info = Scraper.lastfm_album_info(r.artist.name, r.name)
+      if album_info and album_info['image'].is_a? Array
+        best_artwork = album_info['image'].last
+        if best_artwork and best_artwork.is_a?(String)
+          io = open(best_artwork)
+          if io
+            def io.original_filename; base_uri.path.split('/').last; end
+            io.original_filename.blank? ? nil : io      
+            r.image = io
+            r.save
+          end 
         end
       end
     end
