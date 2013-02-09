@@ -18,3 +18,7 @@ event it doesn't remember the login details, you will need to SSH into it and ru
 prompts for credentials. This will do:
 
 	git ls-remote https://github.com/MattBessey/sngtrkr.git
+
+## Hosts Configuration
+If you want to do anything significant in dev, involving the FB api, you need to change your `/etc/hosts` file
+to point `dev.sngtrkr.com` at `127.0.0.1`. Now to develop go to `http://dev.sngtrkr.com:3000`.
