@@ -1,4 +1,5 @@
 class Release < ActiveRecord::Base
+  require 'open-uri'
   validates :name, :presence => true
   validates :date, :presence => true
   validates :artist_id, :presence => true
@@ -23,11 +24,14 @@ class Release < ActiveRecord::Base
   
   after_create :notify_followers
 
+  scope :unsaved_images, where('image_file_name is null and image_source is not null')
+
   before_save :default_values
   def default_values
     # Don't ignore new artists!
     self.ignore ||= false
     self.scraped ||= false
+    self.image_attempts ||= 0
     true
   end
 
@@ -49,6 +53,28 @@ class Release < ActiveRecord::Base
       return "http://clk.tradedoubler.com/click?p=23708&a=2098473&url=#{CGI.escape(super)}"
     else
       return nil
+    end
+  end
+
+  def self.save_scraped_images
+    Release.unsaved_images.each do |r|
+      # Attempts to save an image with exponential backoff
+      if !r.image_file_name and r.image_source
+        if !r.image_last_attempt or (r.image_last_attempt + (2^r.image_attempts).hour) > Time.now
+          puts "Would be saving" + r.image_source
+          r.image_attempts = r.image_attempts ? r.image_attempts += 1 : 0
+          r.image_last_attempt = Time.now
+
+          io = open(r.image_source)
+          if io
+            def io.original_filename; base_uri.path.split('/').last; end
+            io.original_filename.blank? ? nil : io      
+            r.image = io
+          end
+
+          r.save
+        end
+      end
     end
   end
 

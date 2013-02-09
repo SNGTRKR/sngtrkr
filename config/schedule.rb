@@ -18,7 +18,7 @@ every 1.month, :at => '12:00 am' do
 end
 
 every 1.hour do 
-  runner "ReleaseScraper.hourly_release"
+  runner "Release.save_scraped_images"
 end
 
 every 1.day, :at => '5:00 am' do
