@@ -67,7 +67,6 @@ class ApplicationController < ActionController::Base
         return redirect_to '/tl'
       end
     end
-    expires_in 1.hour, :public => true
     render 'pages/home', :layout => 'no_sidebar'
   end
 
