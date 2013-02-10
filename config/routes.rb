@@ -1,5 +1,3 @@
-include CanCan::Ability
-include Devise
 SNGTRKR::Application.routes.draw do
 
   match 'sitemap.xml' => 'sitemaps#sitemap'
@@ -8,17 +6,16 @@ SNGTRKR::Application.routes.draw do
   
   match 'pages/:action' => 'pages#:action'
 
-  constraint = lambda { |request| current_user.authenticate? and current_user.role.admin? }
-  constraints constraint do
+  constraints lambda{|request| request.env["warden"].authenticate? and User.find(request.env["warden"].user).roles.first.name == "Admin" } do
+    require 'sidekiq/web'
     namespace :admin do
+      root :to => "admin#overview"
       mount RailsAdmin::Engine => '/rails', :as => 'rails_admin'
-      require 'sidekiq/web'
-      mount Sidekiq::Web => '/sidekiq'
+      mount Sidekiq::Web => '/sidekiq'  
+      match '/:action' => "admin#:action"
     end
   end
   
-  match '/admin' => "Admin#overview"
-  match '/admin/:action' => "Admin#:action"
   match '/about' => "Pages#about"
   match '/terms' => "Pages#terms"
   match '/team' => "Pages#team"
