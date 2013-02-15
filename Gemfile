@@ -15,7 +15,7 @@ group :production do
   gem 'therubyracer'
 end
 gem 'sitemap_generator'
-
+gem 'newrelic_rpm'
 gem 'mysql2'
 
 group :test do
