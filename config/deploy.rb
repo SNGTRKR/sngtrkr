@@ -52,11 +52,7 @@ after "deploy:restart", "deploy:cleanup"
 # Bundler for remote gem installs
 require "bundler/capistrano"
 # Load RVM's capistrano plugin.   
-#require "rvm/capistrano"
-
-
-#set :rvm_ruby_string, '1.9.3'
-#set :rvm_type, :user  # Copy the exact line. I really mean :system here
+require "rvm/capistrano"
 
 # deploy config
 set :deploy_via, :remote_cache
