@@ -16,5 +16,6 @@ Paperclip::Attachment.default_options.update({
     :region => 'eu-west-1',
   },
   :fog_directory => "sngtrkr-#{BUCKET_ENV}",
-  :fog_public =>  true
+  :fog_public =>  true,
+  :fog_host => "http://sngtrkr-#{BUCKET_ENV}.s3.amazonaws.com"
 })
