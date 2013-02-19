@@ -3,7 +3,7 @@ if Rails.env == 'staging' or Rails.env == 'production'
 elsif Rails.env == 'test'
   BUCKET_ENV = 'test'
 elsif Rails.env == 'development'
-  BUCKET_ENV = 'development'
+  BUCKET_ENV = 'production'
 end
 
 Paperclip::Attachment.default_options.update({

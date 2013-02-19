@@ -44,10 +44,12 @@ class Artist < ActiveRecord::Base
     else
       count = 1
     end
-    artists_with_followers = Artist.find(:all, :select => 'artists.*, count(follows.id) as follow_count',
+    # Crap and slow
+    Artist.find(:all, :select => 'artists.*',
              :joins => 'left outer join follows on follows.artist_id = artists.id',
              :group => 'artists.id',
-             :having => "follow_count >= #{count}")
+             :having => "count(follows.id) >= #{count}",
+             :limit => 5)
   end
   
   def self.popularity 

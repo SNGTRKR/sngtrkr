@@ -23,7 +23,7 @@ group :test do
 end
 
 gem 'capistrano'
-# gem 'rvm-capistrano'  -- THIS MUST BE INSTALLED LOCALLY, IT WILL NOT WORK IN A GEMFILE.
+gem 'rvm-capistrano'
 
 # BACKGROUND TASKS
 gem 'sidekiq'
