@@ -58,7 +58,13 @@
 							</tr>
 						</thead>
 						<tbody>
-							<%= render :partial => 'shared/artist_tracked', :collection => @following.ordered %>
+							<% @following.each do |artist_tracked| %>
+							<tr>
+									<td><%= link_to artist_path(artist_tracked) do %><%= truncate(artist_tracked.name, :length => 20) %><% end %></td>
+									<td><%= artist_tracked[:followers] %></td>
+									<td><%= check_box_tag 'artist_ids[]', artist_tracked.id %></td>
+							</tr>
+							<% end %>
 						</tbody>
 					</table>
 					<div class="paginate-outer profile-pag">

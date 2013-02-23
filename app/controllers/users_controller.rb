@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     # Check if this is your page
     if current_user.id == params[:id].to_i
       @user = current_user
-      @following = @user.following.ordered.page(params[:page])
+      @following = @user.following.joins(:follow).select('artists.*, COUNT(follows.artist_id) as followers').group('artists.id').ordered.page(params[:page])
       respond_to do |format|
         format.html { render '/users/self' }
       end

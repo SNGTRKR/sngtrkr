@@ -9,31 +9,31 @@
 						#wrap {display:table;height:100%}
 						</style>
 						<![endif]-->
-		      				<a class="brand" href="/">
-						      <%= image_tag "/images/logo-45.png" %></a>
-						      <% if user_signed_in? %>
-						      <ul class="nav pull-left">
-							      <li class="<% if current_page?(tl_path) %>active<% end %>">
-							      	<%= link_to tl_path do %>
-							      	<i class="icon-sitemap"></i>Timeline
-							      	<% end %>
-							      </li>
-							      <li class="<% if current_page?(user_path(current_user)) %>active<% end %>">
-							      	<%= link_to user_path(current_user) do %>
-								      	<i class="icon-user"></i>You
-							      	<% end %>
-							      </li>
-						      </ul>
-						<% end %>
+	      				<a class="brand" href="/">
+					      <%= image_tag "/images/logo-45.png" %></a>
+					      <% if @user %>
+					      <ul class="nav pull-left">
+						      <li class="<% if current_page?(tl_path) %>active<% end %>">
+						      	<%= link_to tl_path do %>
+						      	<i class="icon-sitemap"></i>Timeline
+						      	<% end %>
+						      </li>
+						      <li class="<% if current_page?(user_path(current_user)) %>active<% end %>">
+						      	<%= link_to user_path(current_user) do %>
+							      	<i class="icon-user"></i>You
+						      	<% end %>
+						      </li>
+					      </ul>
+								<% end %>
 						      
-						      <%= form_tag artists_path , :method => 'get', :class => 'navbar-search pull-left' do %>
-							  <% if !user_signed_in? %>
-							  <%= text_field_tag(:search, params[:search], :autocomplete => 'off', :placeholder => "Search artists...", :id => 'mini_search_field', :class => 'search-query search-pad-2') %>
+					      <%= form_tag artists_path , :method => 'get', :class => 'navbar-search pull-left' do %>
+							  <% if !@user %>
+								  <%= text_field_tag(:search, params[:search], :autocomplete => 'off', :placeholder => "Search artists...", :id => 'mini_search_field', :class => 'search-query search-pad-2') %>
 							  <% else %>	
 							  <%= text_field_tag(:search, params[:search], :autocomplete => 'off', :placeholder => "Search artists...", :id => 'mini_search_field', :class => 'search-query') %>
 							  <% end %>
 						  <% end %>
-								<% if !user_signed_in? %>
+								<% if !@user %>
 									<%= link_to(user_omniauth_authorize_path(:facebook)) do %>
 										<div class="fb-login nav pull-right">
 											<i class="icon-facebook"></i> <span>Login</span>
@@ -42,23 +42,7 @@
 								<% else %>
 								<div class="nav pull-right inner-tools">
 									<%= link_to(destroy_user_session_path, :method => :delete, :class => "btn btn-navbar toolbutton tooltip-parent", "data-title" => "Logout", "data-placement" => "bottom" ) do %><i class="icon-signout"></i><% end %>
-									<!-- <%= link_to edit_user_path(@user), :class => "btn btn-navbar toolbutton tooltip-parent", "data-title" => "Settings", "data-placement" => "bottom" do %><i class="icon-cog"></i><% end %>--><a href="#feedback" data-toggle="modal" class="btn btn-navbar toolbutton tooltip-parent" data-title="Feedback" data-placement="bottom"><i class="icon-comment"></i></a></div><% end %>
+									</div><% end %>
 				      			</div></div></div>
 				      			<%= render :partial => 'shared/nav_tools' %>	
   </div></div>
-  <div class="modal hide fade" id="feedback">
-										  <div class="modal-header">
-										    <h3>Feedback</h3>
-										  </div>
-										  <div class="modal-body">
-										  <p>We love feedback. Feel free to tell us what you think of the site or report a bug!</p>
-										    <%= form_for Feedback.new, :remote => true do |f| %>
-													<%= f.text_area :feedback, :id => "fedbox", :rows => 4, :placeholder => "Tell us what you think..." %>
-										  </div>
-										  <div class="modal-footer">
-										  <%= f.submit "Submit", :id => 'ajax-feedback-submit-button' %>
-										    <div class="cancel" data-dismiss="modal">Cancel</div>
-										    
-										    <% end %>
-										  </div>
-										</div>

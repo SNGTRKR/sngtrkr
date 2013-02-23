@@ -14,7 +14,7 @@
       <h3><%= link_to release.artist.name, release.artist %></h3>
       <% end %>
       <p>
-        <strong><%== release.date.strftime("#{release.date.day.ordinalize} "+date_format)%></strong>
+      <strong><%= release.date.strftime("#{release.date.day.ordinalize} "+date_format)%></strong>
           <% if release.label_name? %>
             on <span class="tooltip-parent" data-title="Label Name" data-placement="right"><%= release.label_name %></span>
           <% end %>
@@ -66,10 +66,6 @@
       </ul>
       <div class="clear"></div>
       <div class="buy-cancel">Cancel</div>
-    </div>
-    <div class="play-release-list">
-    <h4>Play this release</h4>
-    <i class="icon-remove close-player"></i>
     </div>
   </div>
 </li>

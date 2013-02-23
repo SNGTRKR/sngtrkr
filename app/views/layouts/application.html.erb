@@ -1,7 +1,39 @@
 <!DOCTYPE html>
 <html>
 	<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# sngtrkr: http://ogp.me/ns/fb/sngtrkr#">
-		<%= render 'layouts/head' %>
+		<!-- TradeDoubler site verification 2098473 -->
+		<meta property="fb:app_id"        content="344989472205984" />
+		<meta property="og:url"           content="<%= yield :og_url %>" />
+		<meta property="og:title"         content="<%= yield :og_name %>" />
+		<meta property="og:description"   content="<%= yield :og_description %>" />
+		<meta property="og:image"   	  content="<%= yield :og_image %>" />
+		<meta property="og:type"          content="<%= yield :og_type %>" />
+		<% if content_for? :og_id %>
+		<meta property="sngtrkr:id" content="<%= yield :og_id %>" />
+		<% end %>
+		<title><% if content_for?(:title) %><%= yield :title %> - SNGTRKR <% else %>SNGTRKR<% end %></title>
+		<meta name="description" content="<%= yield :description %>">
+		<meta name="google-site-verification" content="ZZsezCrr3vgh_cZwliW6D-0q51Lm_fyvHBm9W2t0gpE" />
+		<link rel="icon" type="image/ico" href="<%= asset_path "/images/icon.png" %>" >
+
+		<%= stylesheet_link_tag "application", :media => "all" %>
+		<%= stylesheet_link_tag "/bootstrap.css", :media => "all" %>
+		<%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Signika+Negative:400,600' %>
+
+		<%= yield :extra_head %>
+
+
+		<%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js' %>
+		<!-- <script>window.jQuery || document.write("<%=j javascript_include_tag "/jquery-1.7.2.min.js" %>")</script> -->
+		<%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js' %>
+		<%= javascript_include_tag "application" %>
+		<%= javascript_include_tag "/bootstrap.min.js" %>
+		<%= javascript_include_tag "/bootstrap-ajax-typeahead.js" %>
+		<!-- Use Html5Shiv in order to allow IE render HTML5 -->
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<%= csrf_meta_tags %>
 	</head>
 	<body>
 		<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
@@ -10,11 +42,63 @@
 		<a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 		
 		<div id="wrapper">
-			<% if user_signed_in? %>
-			<div id="sidebar"><%= render :partial => 'layouts/sidebar' %></div>
+			<% if @user %>
+				<div id="sidebar"><%= render :partial => 'layouts/sidebar' %></div>
 	    <% end %>
-		<%= render :partial => 'layouts/navbar' %>
-<div class="wrapper2">
+
+			<div class="navbar navbar-fixed-top">
+		     <div class="navbar-inner">
+		  			<div class="container">
+								<div class="wrapper2">
+								<div class="header">
+								<!-- IE CSS for sticky footer -->
+								<!--[if !IE 7]>
+								<style type="text/css">
+								#wrap {display:table;height:100%}
+								</style>
+								<![endif]-->
+			      				<a class="brand" href="/">
+							      <%= image_tag "/images/logo-45.png" %></a>
+							      <% if @user %>
+							      <ul class="nav pull-left">
+								      <li class="<% if current_page?(tl_path) %>active<% end %>">
+								      	<%= link_to tl_path do %>
+								      	<i class="icon-sitemap"></i>Timeline
+								      	<% end %>
+								      </li>
+								      <li class="<% if current_page?(user_path(current_user)) %>active<% end %>">
+								      	<%= link_to user_path(current_user) do %>
+									      	<i class="icon-user"></i>You
+								      	<% end %>
+								      </li>
+							      </ul>
+										<% end %>
+								      
+							      <%= form_tag artists_path , :method => 'get', :class => 'navbar-search pull-left' do %>
+									  <% if !@user %>
+										  <%= text_field_tag(:search, params[:search], :autocomplete => 'off', :placeholder => "Search artists...", :id => 'mini_search_field', :class => 'search-query search-pad-2') %>
+									  <% else %>	
+									  <%= text_field_tag(:search, params[:search], :autocomplete => 'off', :placeholder => "Search artists...", :id => 'mini_search_field', :class => 'search-query') %>
+									  <% end %>
+								  <% end %>
+										<% if !@user %>
+											<%= link_to(user_omniauth_authorize_path(:facebook)) do %>
+												<div class="fb-login nav pull-right">
+													<i class="icon-facebook"></i> <span>Login</span>
+												</div>
+											<% end %>
+										<% end %>
+						      	</div>
+						      </div>
+						    </div>
+	      			<% if @user %>
+						<div class="outer-tools">
+						<%= link_to(destroy_user_session_path, :method => :delete, :class => "btn btn-navbar toolbutton tooltip-parent", "data-title" => "Logout", "data-placement" => "bottom" ) do %><i class="icon-signout"></i><% end %>
+						</div>
+						<% end %>
+				  </div>
+				</div>
+		<div class="wrapper2">
 				<div class="container content-padding">
 					<% if flash[:notice] or flash[:error] or flash[:success] %>
 			  		<div class="alert <% if flash[:success] then %>alert-success<% end %><% if flash[:notice] then %>alert-info<% end %><% if flash[:error] then %>alert-error<% end %>">
@@ -40,17 +124,12 @@
 					<li><a href="/help">Help</a></li>
 					<li><a href="/terms">Terms of Use</a></li>
 					<li><a href="/privacy">Privacy Policy</a></li>
-					<% if can? :manage, :all %>
-					<li><a href="/admin/rails" target="_blank">Administration</a></li>
-					<li><a href="/sidekiq" target="_blank">Sidekiq</a></li>
-					<li><a href="/feedbacks" target="_blank">Feedback</a></li>
-					<% end %>
 			   </ul>
 				<p>© Copyright SNGTRKR 2012. All Rights Reserved - Artist and release images are the property Last.fm</p>
 		</div>
 		</div>
     <%= render 'layouts/footer_js' %>
-    <% if user_signed_in? %>
+    <% if @user %>
 			<script type="text/javascript">
 				function hideDiv(){
 				    if ($(window).width() < 990) {
