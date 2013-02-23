@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121230235439) do
+ActiveRecord::Schema.define(:version => 20130223162936) do
 
   create_table "artists", :force => true do |t|
     t.string   "name"
@@ -24,10 +24,9 @@ ActiveRecord::Schema.define(:version => 20121230235439) do
     t.string   "soundcloud"
     t.string   "youtube"
     t.string   "itunes"
-    t.integer  "sdid"
+    t.text     "sdid"
     t.text     "sd"
     t.text     "juno"
-    t.integer  "label_id"
     t.text     "label_name"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
@@ -42,14 +41,6 @@ ActiveRecord::Schema.define(:version => 20121230235439) do
   end
 
   add_index "artists", ["ignore"], :name => "index_artists_on_ignore"
-  add_index "artists", ["itunes_id", "sdid"], :name => "index_artists_on_itunes_id_and_sdid"
-
-  create_table "beta_users", :force => true do |t|
-    t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.boolean  "emailed"
-  end
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -84,45 +75,12 @@ ActiveRecord::Schema.define(:version => 20121230235439) do
 
   add_index "follows", ["user_id", "artist_id"], :name => "index_follows_on_user_id_and_artist_id"
 
-  create_table "labels", :force => true do |t|
-    t.string   "name"
-    t.text     "bio"
-    t.string   "website"
-    t.string   "twitter"
-    t.string   "facebook"
-    t.string   "sdigital"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "manages", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "artist_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "manages", ["user_id", "artist_id"], :name => "index_manages_on_user_id_and_artist_id"
-
   create_table "notifications", :force => true do |t|
     t.integer  "release_id"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  create_table "rates", :force => true do |t|
-    t.integer  "rater_id"
-    t.integer  "rateable_id"
-    t.string   "rateable_type"
-    t.integer  "stars",         :null => false
-    t.string   "dimension"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  add_index "rates", ["rateable_id", "rateable_type"], :name => "index_rates_on_rateable_id_and_rateable_type"
-  add_index "rates", ["rater_id"], :name => "index_rates_on_rater_id"
 
   create_table "releases", :force => true do |t|
     t.string   "name"
@@ -138,9 +96,8 @@ ActiveRecord::Schema.define(:version => 20121230235439) do
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.text     "label_name"
-    t.integer  "label_id"
     t.boolean  "scraped"
-    t.integer  "sd_id"
+    t.text     "sd_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -154,7 +111,7 @@ ActiveRecord::Schema.define(:version => 20121230235439) do
     t.integer  "image_attempts"
   end
 
-  add_index "releases", ["date", "itunes_id", "sd_id", "artist_id"], :name => "index_releases_on_date_and_itunes_id_and_sd_id_and_artist_id"
+  add_index "releases", ["date", "artist_id"], :name => "index_releases_on_date_and_artist_id"
   add_index "releases", ["ignore", "upc"], :name => "index_releases_on_ignore_and_upc"
 
   create_table "roles", :force => true do |t|
@@ -187,23 +144,6 @@ ActiveRecord::Schema.define(:version => 20121230235439) do
   end
 
   add_index "suggests", ["user_id", "artist_id"], :name => "index_suggests_on_user_id_and_artist_id"
-
-  create_table "super_manages", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "label_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "tracks", :force => true do |t|
-    t.string   "name"
-    t.integer  "number"
-    t.integer  "release_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-    t.text     "sd_id"
-    t.text     "itunes_preview"
-  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

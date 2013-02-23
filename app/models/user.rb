@@ -14,8 +14,6 @@ class User < ActiveRecord::Base
   validates :last_name, :presence => true
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
 
-  ajaxful_rater
-
   has_many :follow, :dependent => :destroy
   has_many :suggest, :dependent => :destroy
   has_many :manage, :dependent => :destroy
@@ -162,19 +160,7 @@ class User < ActiveRecord::Base
       } 
     }
 
-    recent_rates = Release.joins('JOIN `rates` ON `rateable_id` = `releases`.`id` JOIN `users` ON `rater_id` = `users`.`id`')
-      .select("releases.*, 
-        rates.updated_at AS rate_updated_at, rates.stars AS stars, 
-        users.first_name AS first_name, users.last_name AS last_name, `users`.`id` AS `user_id`")
-      .where('`users`.`id` = ? AND `rates`.`rateable_type` = ?', self.id, 'Release')
-      .order('updated_at DESC').limit(opts[:limit])
-    recent_rates.map! { |rate| {
-        :action => 'rate', 
-        :release => rate,
-        :time => rate.created_at
-      }
-    }
-    combined = (recent_rates + recent_follows).sort_by!{|action| action[:time]}.reverse
+    combined = recent_follows.sort_by!{|action| action[:time]}.reverse
     return combined
   end
 

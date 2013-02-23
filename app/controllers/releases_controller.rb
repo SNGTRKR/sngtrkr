@@ -24,11 +24,6 @@ class ReleasesController < ApplicationController
     @artist = Artist.find(params[:artist_id])
     @release = @artist.releases.find(params[:id])
     @releases = @artist.real_releases.all
-    if user_signed_in? and current_user.managing.first == @artist or can? :manage, :release
-      @manager = true
-    else
-      @manager = false
-    end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @release }
@@ -119,21 +114,6 @@ class ReleasesController < ApplicationController
   # Assists the user in filling out the form by fetching data for them.
   def help
     
-  end
-  
-  def rate
-    @artist = Artist.find(params[:artist_id])
-    @release = @artist.releases.find(params[:id])
-    @release.rate(params[:stars], current_user, params[:dimension])
-    render :update, :layout => false
-  end
-
-  def previews
-    @artist = Artist.find(params[:artist_id])
-    @release = @artist.releases.find(params[:id])
-    respond_to do |format|
-      format.json 
-    end
   end
   
 end

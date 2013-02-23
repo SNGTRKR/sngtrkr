@@ -30,10 +30,6 @@ class UsersController < ApplicationController
     # Check if this is your page
     if current_user.id == params[:id].to_i
       @user = current_user
-      if @user.managing.count > 0
-        @artist = @user.managing.first
-        @trackers = @artist.followed_users.count
-      end
       @following = @user.following.ordered.page(params[:page])
       respond_to do |format|
         format.html { render '/users/self' }
@@ -61,11 +57,6 @@ class UsersController < ApplicationController
   def public
       @friend = User.find(params[:id])
       render :show
-  end
-
-  def friends
-    @app_friends = []
-    @app_friends = session["friends"]
   end
 
   # GET /users/new
@@ -150,36 +141,6 @@ class UsersController < ApplicationController
     redirect_to :root, :notice => "<p>Your account has been removed from the site. Note that we will retain your data privately, so if you change your mind, you can rejoin anytime. If you wish to have your data completely removed, please email support@sngtrkr.com</p>"
   end
 
-  def manage
-    current_user.manage_artist params[:id]
-    respond_to do |format|
-      format.html { redirect_to artist_path(params[:id])}
-      format.json { render :json => { :response => :success } }
-    end
-  end
-
-  # This page contains a list of all the Artist page's the logged in user controls.
-  def managing
-    # if a user is already managing an artist, redirect to their page
-    if current_user.managing.count > 0
-      @artist = current_user.managing.first
-      return redirect_to edit_artist_path(@artist)
-    end
-    
-    api = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
-    @manageable = []
-    api.get_object("me/accounts").each do |page|
-      if page["category"] == "Musician/band"
-        artist = Artist.where("fbid = ?", page["id"]).first
-        if artist.nil?
-        next
-        else
-        @manageable << artist
-        end
-      end
-    end
-  end
-
   def recommend
     @user = current_user
     if @user.sign_in_count <= 2
@@ -191,18 +152,6 @@ class UsersController < ApplicationController
       format.html
       format.json
     end
-  end
-  
-  def unmanage_confirm
-    respond_to do |format|
-      format.html { render :unmanage_confirm, :layout => false }
-      format.json { head :no_content }
-    end
-  end
-  
-  def unmanage
-    current_user.managing.delete(current_user.managing.first)
-    redirect_to :root
   end
 
   def local_new

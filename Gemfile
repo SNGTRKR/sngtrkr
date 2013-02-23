@@ -6,7 +6,6 @@ gem 'rails', '~> 3.2'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'json'
-gem 'ajaxful_rating', "~> 3.0.0.beta8"
 gem "best_in_place"
 
 # VERSION AND DEPLOYMENT
@@ -14,6 +13,7 @@ group :production do
   gem 'passenger'
   gem 'therubyracer'
 end
+
 gem 'sitemap_generator'
 gem 'newrelic_rpm'
 gem 'mysql2'
@@ -35,7 +35,6 @@ gem 'fog'
 gem "paperclip"
 
 # SCRAPING GEMS
-# gem 'rbrainz'
 gem 'scrobbler'
 gem 'itunes-search-api'
 gem 'amazon-ecs'
@@ -61,11 +60,13 @@ end
 
 gem 'jquery_datepicker'
 
-gem "koala"
 
 # Authentication
 gem 'devise'
 gem 'cancan'
+
+# Facebook
+gem "koala"
 gem "omniauth-facebook"
 
 gem 'kaminari'
