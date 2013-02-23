@@ -1,18 +1,21 @@
 <div id="activity-stream">
 <div class="header"><%= image_tag "/images/side1.png", :id => "side1" %><h5>Recent Activity</h5></div>
 <ul>
-<%= render :partial => 'users/group_activity', :collection => @activities %>
+
+<% @activities.each do |activity| %>
+<li>
+  <div class="each-activity">
+  <%= image_tag activity[:artist].image :sidebar_suggest %>
+    <div>
+      <strong><%= link_to("#{activity[:user].first_name} #{activity[:user].last_name}", 
+        user_path(activity[:user])) %></strong> tracked 
+        <strong><%= link_to truncate((strip_tags activity[:artist].name || "" ), :length => 22), activity[:artist] %></strong><br/>
+        <span><%= time_ago_in_words(activity[:time]) %> ago.</span>
+    </div>
+  </div>
+</li>
+<% end %>
+
 <div class="clear"></div>
 </ul>
 </div>
-<div id="recommendations">
-<div class="header"><%= image_tag "/images/side2.png", :id => "side2" %><h5>Recommendations</h5></div>
-<ul>
-<%= render :partial => 'shared/sidebar_suggestion', :collection => @user.suggested[0, 4] %>
-<div class="clear"></div>
-</ul>
-</div>
-<!--<div id="sngplyr">
-<div class="header"><%= image_tag "/images/side3.png", :id => "side3" %><h5>SNGPLYR</h5></div>
-<hr>
-</div> -->
