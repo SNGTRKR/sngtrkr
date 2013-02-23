@@ -20,11 +20,9 @@ class Artist < ActiveRecord::Base
 
   has_many :follow, :dependent => :delete_all
   has_many :suggest, :dependent => :delete_all
-  has_many :manage, :dependent => :delete_all
 
   has_many :followed_users, :through => :follow, :source => :user
   has_many :suggested_users, :through => :suggest, :source => :user
-  has_many :manager_users, :through => :manage, :source => :user
   
   def self.real_only
     where(:ignore => false)

@@ -8,13 +8,13 @@ class Timeline
     end
   end
 
-  def self.new id
-    @@artists = User.find(id).following.collect(&:id)
-    self
-  end
-
-  def self.user page = 0
-    Release.where(:ignore => false).includes(:artist).order("date DESC").where(" artist_id in (?)",@@artists).page(page).per(20)
+  def self.user id, page = 0
+    offset = page * 20
+    releases = Release.find_by_sql("SELECT releases.* FROM follows JOIN artists ON artists.id = follows.artist_id
+      JOIN releases on artists.id = releases.artist_id WHERE follows.user_id = #{id}
+      ORDER BY releases.date DESC LIMIT #{offset}, 20")
+    ActiveRecord::Associations::Preloader.new(releases, [:artist]).run
+    releases
   end
 
 end
