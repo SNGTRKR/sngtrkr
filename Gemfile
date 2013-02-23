@@ -37,7 +37,6 @@ gem "paperclip"
 # SCRAPING GEMS
 gem 'scrobbler'
 gem 'itunes-search-api'
-gem 'amazon-ecs'
 
 # ADMIN
 gem 'rails_admin'

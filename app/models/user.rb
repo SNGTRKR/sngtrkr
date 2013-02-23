@@ -16,15 +16,11 @@ class User < ActiveRecord::Base
 
   has_many :follow, :dependent => :destroy
   has_many :suggest, :dependent => :destroy
-  has_many :manage, :dependent => :destroy
-  has_many :super_manage
   has_many :feedbacks
   has_and_belongs_to_many :roles
 
   has_many :following, :through => :follow, :source => :artist
-  has_many :managing, :through => :manage, :source => :artist
   has_many :suggested_all, :through => :suggest, :source => :artist
-  has_many :labels, :through => :super_manage
   has_many :notification, :dependent => :delete_all
   has_many :release_notifications, :through => :notification, :source => :release
     

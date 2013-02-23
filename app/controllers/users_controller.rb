@@ -15,10 +15,8 @@ class UsersController < ApplicationController
 
   def timeline
     @user = current_user
-
-    tl = Timeline.new(current_user.id)
-    @timeline = tl.user(params[:page])
-    @timeline = @timeline # Reverse so farthest right release is the newest, but pages index from the newest page.
+    params[:page] ||= 0
+    @timeline = Timeline.user(current_user.id, params[:page])
     respond_to do |format|
       format.html
     end
