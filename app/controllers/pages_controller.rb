@@ -2,6 +2,8 @@ class PagesController < ApplicationController
 
   skip_before_filter :authenticate_user!, :except => [:intro]
 
+  caches_page :except => [:splash]
+
   def home
 
   end
