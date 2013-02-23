@@ -1,7 +1,5 @@
 //= require jquery_ujs
 //= require instant-search/instant-search
-//= require jplayer/jquery.jplayer
-//= require jplayer/jplayer.playlist
 //= require carousel/jquery.carousel-packed.js
 //= require best_in_place
 //= require rotate/jQueryRotate.2.2

@@ -1,9 +1,0 @@
-<%= form_for("user", :url => user_session_path) do |f| %> 
-  <%= f.label :username %> <br/> 
-  <%= f.text_field :username , :size=>'15',:maxlength=>'32' %> <br/> 
-  <%= f.label :password %> <br/> 
-  <%= f.password_field :password , :size=>'15', :maxlength=>'32' %> 
-<br/> 
-  <%= f.submit "Sign in" %> <br /> 
-  <%= link_to "Forgot your password?", new_password_path('user')  %> 
-<% end %> 

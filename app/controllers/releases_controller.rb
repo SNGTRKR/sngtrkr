@@ -7,16 +7,6 @@ class ReleasesController < ApplicationController
   
   before_filter :managed_artists_only, :only => [:edit, :update, :create, :destroy, :new]
   skip_before_filter :authenticate_user!, :only => [:show]
-  
-  def index
-    @artist = Artist.find(params[:artist_id])
-    @releases = @artist.releases.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @releases }
-    end
-  end
 
   # GET /releases/1
   # GET /releases/1.json
@@ -26,18 +16,6 @@ class ReleasesController < ApplicationController
     @releases = @artist.real_releases.all
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render :json => @release }
-    end
-  end
-
-  # GET /releases/new
-  # GET /releases/new.json
-  def new
-    @artist = Artist.find(params[:artist_id])
-    @release = Release.new
-
-    respond_to do |format|
-      format.html # new.html.erb
       format.json { render :json => @release }
     end
   end
@@ -95,25 +73,6 @@ class ReleasesController < ApplicationController
       format.html { redirect_to releases_url }
       format.json { head :no_content }
     end
-  end
-  
-  # Fill in release information based on suggested information
-  def magic
-    @store = params[:store]
-    @url = Base64.decode64(params[:url])
-    if @store == '7digital'
-      
-    elsif @store == 'itunes'
-      @id = Scraper.find_release_info @url, 1
-    end
-    respond_to do |format|
-      format.json
-    end
-  end
-  
-  # Assists the user in filling out the form by fetching data for them.
-  def help
-    
   end
   
 end

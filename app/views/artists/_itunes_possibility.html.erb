@@ -1,8 +1,0 @@
-<li>
-<strong>Artist: </strong><%= link_to itunes_possibility['artistName'],  itunes_possibility['artistLinkUrl'] %><br/>
-<strong>Genre: </strong><%= itunes_possibility['primaryGenreName'] %>
-<%= form_for @artist, :remote => true, :format => :js do |f| %>
-<%= f.hidden_field :itunes_id, :value => itunes_possibility['artistId'] %>
-<%= f.submit "That's me!" %>
-<% end %>
-</li>
