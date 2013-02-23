@@ -55,9 +55,6 @@ background-repeat:repeat;
 </div></div>
 <div class="span7_m">
 <div id="profile-info">
-	<% if user_signed_in? and current_user.managing? @artist.id %>
-		<%= link_to edit_artist_path(@artist) do %><i class="icon-edit"></i><% end %>
-	<% end %>
 	<h2><%= @artist.name %></h2>
 	<span class="trkrs"><%= @artist.followers %> TRKRS</span><br/>
 	<span class="tooltip-parent icon" data-title="Genre" data-placement="left">
