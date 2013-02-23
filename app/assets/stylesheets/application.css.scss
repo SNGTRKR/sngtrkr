@@ -1,6 +1,5 @@
 //= require font-awesome
 //= require jquery-ui-1.8.21.custom
-//= require ajaxful_rating
 // Compass Imports
 @import "compass/reset";
 @import "compass/css3/border-radius";
@@ -33,14 +32,8 @@ $sidebar:228px;
 @import "errors.css.scss";
 /* Timeline CSS*/
 @import "timeline.css.scss";
-/* Manage Choice CSS*/
-@import "manage_choice.css.scss";
-/* Unmanage Confirm CSS*/
-@import "unmanage_confirm.css.scss";
 // Admin CSS
 @import "admin.css.scss";
-/* Beta CSS*/
-//@import "beta.css.scss";
 /* Home CSS*/
 @import "home.css.scss";
 /* Artist Profile CSS*/
@@ -49,18 +42,12 @@ $sidebar:228px;
 @import "profile.css.scss";
 /* Recommend CSS*/
 @import "recommend.css.scss";
-/* Manage form CSS*/
-@import "manage_artist.css.scss";
-/* New release form CSS*/
-@import "new_release.css.scss";
 /* Info Pages CSS*/
 @import "info_pages.css.scss";
 /* Artist Search CSS*/
 @import "artist_search.css.scss";
 /* Artist Release CSS */
 @import "artist_release.css.scss";
-/* Release Player CSS */
-@import "release_player.css.scss";
 /* Friend CSS*/
 @import "friend.css.scss";
 /* Feedback CSS */

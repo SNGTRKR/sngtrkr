@@ -1,9 +1,0 @@
-<li class="clear">
-<div class="image"><%= image_tag sdigital_possibility['artist']['image'], :width => 100 %></div>
-<div class="info"><strong>Artist: </strong><%= link_to sdigital_possibility['artist']['name'], sdigital_possibility['artist']['url'] %><br/><strong>Score: </strong><%= sdigital_possibility['score'] %>
-<%= form_for @artist, :remote => true, :format => :js do |f| %>
-<%= f.hidden_field :sdid, :value => sdigital_possibility['artist']['id'] %>
-<%= f.submit "That's me!" %></div>
-<% end %>
-
-</li>
