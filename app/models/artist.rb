@@ -29,7 +29,7 @@ class Artist < ActiveRecord::Base
   end
 
   def real_releases
-    self.releases.where(:ignore => false)
+    self.releases.includes(:artist).where(:ignore => false)
   end
 
   def self.ordered
