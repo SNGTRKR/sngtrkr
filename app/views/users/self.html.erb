@@ -162,16 +162,6 @@
 			<%= f.submit 'Save Email Changes' %>
 			<% end %>
 		</div>
-		<% if @user.manager? %>
-<div class="manage-artist">
-			<h3>Artist management</h3>
-			<p>You are currently managing the artist known as <strong><%= @user.managing.first.name %></strong>.</p>	
-			<%= link_to edit_artist_path(@user.managing.first) do %><span>
-			Edit</span><% end %>
-			<span><a href="#unmanage-confirmation" data-toggle="modal">Delete</a></span>
-			<div class="clear"></div>
-				</div>
-				<% else %><% end %>
 <div class="delete-account">
 			<h3>Delete Your Account</h3>
 			<p>Your account, tracked artists and all personal details will be permanently removed.</p>
@@ -180,11 +170,6 @@
 	<div class="modal hide fade" id="delete-confirmation">
 		<%= render :partial => 'delete_confirm' %>
 	</div>
-	<% if @user.manager? %>
-	<div class="modal hide fade" id="unmanage-confirmation">
-  	<%= render :partial => 'unmanage_confirm' %>
-	</div>
-	<% end %>
 	</div>
 </div>
 </div>
@@ -258,44 +243,8 @@
     }
   });
   });
-</script>
 
-	<% if @user.manager? %>
-	<script>
-<% content_for :fb_js do %>
-	FB.getLoginStatus(function(response) {
-		if(response.status === 'connected') {
-			// the user is logged in and has authenticated your
-			// app, and response.authResponse supplies
-			// the user's ID, a valid access token, a signed
-			// request, and the time the access token
-			// and signed request each expire
-			var uid = response.authResponse.userID;
-			var accessToken = response.authResponse.accessToken;
-		} else if(response.status === 'not_authorized') {
-			// the user is logged in to Facebook,
-			// but has not authenticated your app
-			FB.login();
-		} else {
-			// the user isn't logged in to Facebook.
-			FB.login();
-		}
-	});
-	FB.api(<%= '\''+@artist.fbid+'/picture?type=large\'' %>, function(response) {
-		// The response will literally just be the URL to the friend's profile picture
-	});
-	FB.api(<%= '\''+@artist.fbid+'?fields=cover\'' %>, function(response){
-		if(response['cover']){
-		   $('#user-cover').css("background-image","url("+response['cover']['source']+")");
-		} else {
-		   $('#user-cover').fadeOut();
-		   $('#user-information').animate({marginTop : -194}, "slow").css("width",400).css("overflow","hidden");
-		}
-	});
-<% end %>
 </script>
-<% else %>
-	<script>
 <% content_for :fb_js do %>
 	FB.getLoginStatus(function(response) {
 		if(response.status === 'connected') {
@@ -326,8 +275,6 @@
 		   $('#user-information').animate({marginTop : -194}, "slow").css("width",400).css("overflow","hidden");*/
 		}
 	});
-<% end %>
-</script>
 <% end %>
 <%= render 'shared/fb_async' %>
 
