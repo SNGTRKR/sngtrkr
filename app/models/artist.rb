@@ -23,6 +23,16 @@ class Artist < ActiveRecord::Base
 
   has_many :followed_users, :through => :follow, :source => :user
   has_many :suggested_users, :through => :suggest, :source => :user
+
+  searchable :auto_index => true, :auto_remove => true do
+    text :name, :boost => 2.0
+    text :label_name
+    boolean :ignore
+  end
+ 
+  def to_s
+    self.name
+  end
   
   def self.real_only
     where(:ignore => false)
@@ -74,14 +84,6 @@ class Artist < ActiveRecord::Base
     if self.ignore
       self.follow.destroy_all
       self.suggest.destroy_all
-    end
-  end
-
-  def self.search(search)
-    if search
-      where("name LIKE ?","%#{search}%").page
-    else
-    self.page.all
     end
   end
 

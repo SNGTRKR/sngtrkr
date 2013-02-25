@@ -25,34 +25,34 @@ Number.prototype.commafy = function () {
 function toggleChecked(status) {
   $(":checkbox").each( function() {
     $(this).attr("checked",status);
-  })
+  });
 }
 
 
-$(document).ready(function () { 
+$(document).ready(function () {
 
   // Best in place
   if($('.best_in_place').length > 0){
     $(".best_in_place").best_in_place();
     $.datepicker.setDefaults($.datepicker.regional["gb"]);
-  };
+  }
 
   // Flash Dismissal
   if($('.flash-outer').length > 0){
     $('.flash-outer').slideDown(500, 'easeInQuad');
     $('.flash-close').click(function () {
       $('.flash-outer').slideUp(500, 'easeInQuad');
-    })
+    });
     if ($('.flash-outer').data('disappear-after')) {
       console.log("delay detected");
       $('.flash-outer').delay($('.flash-outer').data('disappear-after')).slideUp(1000, 'easeInQuad');
     }
   }
 
-  //Error message fade out 
+  //Error message fade out
   window.setTimeout(function() {
     $(".alert").fadeTo(500, 0).slideUp(500, function(){
-        $(this).remove(); 
+        $(this).remove();
     });
   }, 4000);
 
@@ -79,6 +79,9 @@ $(document).ready(function () {
                   query: query
               },
               success: function(data) {
+                  if(data === null){
+                    return;
+                  }
                   var return_list = [], i = data.length;
                   while (i--) {
                       return_list[i] = {id: data[i].id, value: data[i].name};
@@ -90,6 +93,6 @@ $(document).ready(function () {
       onselect: function(obj) {
           window.location = "/artists/"+ obj.id;
       }
-  });  
+  });
   
 });

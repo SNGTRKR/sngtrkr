@@ -18,6 +18,18 @@ class Release < ActiveRecord::Base
   has_many :notification, :dependent => :destroy
   has_many :user_notifications, :through => :notification, :source => :user
   belongs_to :artist
+
+  searchable :auto_index => true, :auto_remove => true do
+    text :name, :boost => 2.0
+    text :artist_name do
+      artist.try(:name)
+    end
+    text :label_name
+  end
+ 
+  def to_s
+    self.name
+  end
   
   after_create :notify_followers
 

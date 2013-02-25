@@ -18,7 +18,13 @@ class ArtistsController < ApplicationController
       @search = params[:search].dup # Don't want the original string
       if @search["and "] then @search["and "] = "" end # remove ands from search
       if @search["& "] then @search["& "] = "" end # remove & from search
-      @artists = Artist.real_only.search(params[:search]).order(:name).page(params[:page]).per(10)
+      @artists = Artist.search do
+        fulltext params[:search] do
+          query_phrase_slop 1
+        end
+        with :ignore, false
+        paginate :page => params[:page], :per_page => 15
+      end.results
       @ids = @artists.map{|a| a.fbid}
     end
     
@@ -38,7 +44,14 @@ class ArtistsController < ApplicationController
   end
   
   def search
-    @artists = Artist.real_only.search(params[:query])
+    @artists = Artist.search do
+      fulltext params[:query]
+      with :ignore, false
+    end
+
+    @artists = @artists.results
+
+    # @artists = Artist.real_only.search(params[:query])
     if(params[:query].length < 2)
       flash.now[:message] = "Please enter at least 2 characters into the search box"
       @artists = [];
