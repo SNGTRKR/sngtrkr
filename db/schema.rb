@@ -11,10 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130223162936) do
+ActiveRecord::Schema.define(:version => 20130301200601) do
 
   create_table "artists", :force => true do |t|
-    t.string   "name"
+    t.string   "name",                                  :null => false
     t.string   "genre"
     t.text     "bio"
     t.string   "hometown"
@@ -28,10 +28,10 @@ ActiveRecord::Schema.define(:version => 20130223162936) do
     t.text     "sd"
     t.text     "juno"
     t.text     "label_name"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
     t.string   "fbid"
-    t.boolean  "ignore"
+    t.boolean  "ignore",             :default => false, :null => false
     t.text     "twitter"
     t.string   "image_file_name"
     t.string   "image_content_type"
@@ -41,22 +41,6 @@ ActiveRecord::Schema.define(:version => 20130223162936) do
   end
 
   add_index "artists", ["ignore"], :name => "index_artists_on_ignore"
-
-  create_table "delayed_jobs", :force => true do |t|
-    t.integer  "priority",   :default => 0
-    t.integer  "attempts",   :default => 0
-    t.text     "handler"
-    t.text     "last_error"
-    t.datetime "run_at"
-    t.datetime "locked_at"
-    t.datetime "failed_at"
-    t.string   "locked_by"
-    t.string   "queue"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
-  end
-
-  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "feedbacks", :force => true do |t|
     t.integer  "user_id"
@@ -83,8 +67,8 @@ ActiveRecord::Schema.define(:version => 20130223162936) do
   end
 
   create_table "releases", :force => true do |t|
-    t.string   "name"
-    t.datetime "date"
+    t.string   "name",                                  :null => false
+    t.datetime "date",                                  :null => false
     t.string   "cat_no"
     t.string   "itunes"
     t.string   "sdigital"
@@ -92,9 +76,9 @@ ActiveRecord::Schema.define(:version => 20130223162936) do
     t.text     "juno"
     t.string   "youtube"
     t.integer  "rls_type"
-    t.integer  "artist_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.integer  "artist_id",                             :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
     t.text     "label_name"
     t.boolean  "scraped"
     t.text     "sd_id"
@@ -105,7 +89,7 @@ ActiveRecord::Schema.define(:version => 20130223162936) do
     t.text     "genre"
     t.integer  "upc"
     t.integer  "itunes_id"
-    t.boolean  "ignore"
+    t.boolean  "ignore",             :default => false, :null => false
     t.text     "image_source"
     t.datetime "image_last_attempt"
     t.integer  "image_attempts"
