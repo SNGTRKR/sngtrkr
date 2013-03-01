@@ -103,10 +103,10 @@ class Release < ActiveRecord::Base
             def io.original_filename; base_uri.path.split('/').last; end
             io.original_filename.blank? ? nil : io      
             r.image = io
-            r.save
           end 
         end
       end
+      r.save      
     end
   end
 

@@ -19,6 +19,7 @@ end
 
 every 1.hour do 
   runner "Release.save_scraped_images"
+  runner "Release.download_missing_images"
 end
 
 every 1.day, :at => '5:00 am' do
