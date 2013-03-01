@@ -88,12 +88,14 @@ class Release < ActiveRecord::Base
   end
 
   def self.download_missing_images
-    Release.includes(:artist).where('image_file_name is null or image_file_name = ""').each do |r|
+    Release.includes(:artist).where('image_file_name is null or image_file_name = ""').order('created_at DESC').limit(500).each do |r|
       if r.image_last_attempt and (r.image_last_attempt + (2^r.image_attempts).hour) > Time.now
         next
       end
       r.image_attempts = r.image_attempts ? r.image_attempts += 1 : 0
       r.image_last_attempt = Time.now
+      artist_name = r.artist.try(:name)
+      if artist_name.nil? then next end
       album_info = Scraper.lastfm_album_info(r.artist.name, r.name)
       if album_info and album_info['image'].is_a? Array
         best_artwork = album_info['image'].last
