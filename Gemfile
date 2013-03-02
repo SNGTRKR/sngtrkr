@@ -10,7 +10,7 @@ gem "best_in_place"
 
 # VERSION AND DEPLOYMENT
 group :production do
-  gem 'passenger'
+  gem 'thin'
   gem 'therubyracer'
 end
 
