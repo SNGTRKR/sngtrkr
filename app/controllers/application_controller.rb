@@ -1,9 +1,8 @@
 class ApplicationController < ActionController::Base
 
-  before_filter :authenticate_user!, :except => [:splash,:home,:sitemap]
+  before_filter :authenticate_user!, :except => [:splash,:sitemap]
   before_filter :featured_artists, :only => [:home,:new]
   before_filter :define_user, :except => [:search]
-  before_filter :cache_it
   
   #check_authorization  :unless => :devise_controller? # Breaks rails admin
 
@@ -46,21 +45,6 @@ class ApplicationController < ActionController::Base
     redirect_to root_url
   end
   
-  def home
-    flash.keep
-    if user_signed_in?
-      if current_user.sign_in_count == 1 # First time user
-        u = current_user
-        u.sign_in_count += 1
-        u.save
-        return redirect_to '/intro'
-      else
-        return redirect_to '/tl'
-      end
-    end
-    render 'pages/home', :layout => 'no_sidebar'
-  end
-
   private
 
   def after_resending_confirmation_instructions_path_for(resource)
@@ -76,6 +60,17 @@ class ApplicationController < ActionController::Base
   # Overwriting the sign_out redirect path method
   def after_sign_out_path_for(resource_or_scope)
     root_path
+  end
+
+  def after_sign_in_path_for(resource_or_scope)
+    if current_user.sign_in_count == 1 # First time user
+      u = current_user
+      u.sign_in_count += 1
+      u.save
+      return '/intro'
+    else
+      return '/tl'
+    end
   end
 
 end

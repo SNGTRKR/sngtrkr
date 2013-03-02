@@ -2,10 +2,11 @@ class PagesController < ApplicationController
 
   skip_before_filter :authenticate_user!, :except => [:intro]
 
-  caches_page :except => [:splash]
+  before_filter :cache_it
+  caches_page :except => [:splash,:home]
 
   def home
-
+    render :layout => 'no_sidebar'
   end
 
   def help 

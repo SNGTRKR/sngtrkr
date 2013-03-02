@@ -2,7 +2,7 @@ SNGTRKR::Application.routes.draw do
 
   match 'sitemap.xml' => 'sitemaps#sitemap'
 
-  root :to => "application#home"
+  root :to => "pages#home"
   
   match 'pages/:action' => 'pages#:action'
 
