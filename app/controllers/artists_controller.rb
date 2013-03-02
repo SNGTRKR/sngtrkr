@@ -5,6 +5,7 @@ class ArtistsController < ApplicationController
   load_and_authorize_resource :except => [:search]
 
   before_filter :authenticate_user!, :except => [:show,:search,:index]
+  before_filter :cache_it, :only => [:show]
   
   before_filter :managed_artists_only, :only => [:edit, :update]
   
