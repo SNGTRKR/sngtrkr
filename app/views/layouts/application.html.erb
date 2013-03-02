@@ -57,8 +57,16 @@
 								#wrap {display:table;height:100%}
 								</style>
 								<![endif]-->
-			      				<a class="brand" href="/">
-							      <%= image_tag "/images/logo-45.png" %></a>
+										<% if @user %>
+			      					<%= link_to tl_path, :class => "brand" do %>
+							      		<%= image_tag "/images/logo-45.png" %>
+							      	<% end %>
+							      <% else %>
+							      	<%= link_to :root, :class => "brand" do %>
+							      		<%= image_tag "/images/logo-45.png" %>
+							      	<% end %>
+							      <% end %>
+							      
 							      <% if @user %>
 							      <ul class="nav pull-left">
 								      <li class="<% if current_page?(tl_path) %>active<% end %>">
