@@ -18,7 +18,7 @@ require "sidekiq/capistrano"
 
 # Whenever for cron jobs
 set :whenever_command, "bundle exec whenever"
-require "whenever/capistrano"
+#require "whenever/capistrano"
 
 # Only keep the latest 3 releases
 set :keep_releases, 3
@@ -39,17 +39,17 @@ default_run_options[:pty] = true  # Forgo errors when deploying from windows
 namespace :deploy do
   desc "Start the Thin processes"
   task :start do
-    sudo "bundle exec thin start -C thin.yml"
+    run "cd #{current_path} && bundle exec thin start -C thin.yml"
   end
 
   desc "Stop the Thin processes"
   task :stop do
-    sudo "bundle exec thin stop -C thin.yml"
+    run "cd #{current_path} && bundle exec thin stop -C thin.yml"
   end
 
   desc "Restart the Thin processes"
   task :restart do
-    sudo "bundle exec thin restart -C thin.yml"
+    run "cd #{current_path} && bundle exec thin restart -C thin.yml"
   end
 
   task :setup_solr_data_dir do
