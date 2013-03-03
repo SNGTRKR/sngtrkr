@@ -9,25 +9,28 @@ set :scm_verbose, true
 set :applicationdir, "/var/www/sngtrkr"
 set :deploy_to, applicationdir
 set :branch, 'master'
+set :rvm_ruby_string, "1.9.3"
+set :rvm_type, :user
+
 role :web, domain                          # Your HTTP server, Apache/etc
 role :app, domain                          # This may be the same as your `Web` server
 role :db,  domain, :primary => true        # This is where Rails migrations will run
+
+# Bundler for remote gem installs
+require "rvm/capistrano"
+require "bundler/capistrano"
 
 # Sidekiq
 require "sidekiq/capistrano"
 
 # Whenever for cron jobs
 set :whenever_command, "bundle exec whenever"
-#require "whenever/capistrano"
+require "whenever/capistrano"
 
 # Only keep the latest 3 releases
 set :keep_releases, 3
 after "deploy:restart", "deploy:cleanup"
 
-# Bundler for remote gem installs
-require "bundler/capistrano"
-# Load RVM's capistrano plugin.   
-require "rvm/capistrano"
 
 # deploy config
 set :deploy_via, :remote_cache
