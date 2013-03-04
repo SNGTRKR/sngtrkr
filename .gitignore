@@ -37,3 +37,5 @@ config/environments/personal/private.rb
 db/test.sqlite3
 
 .bundle/
+/solr/data/*
+/solr/pids/*
