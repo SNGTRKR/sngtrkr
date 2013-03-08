@@ -52,14 +52,10 @@ class ArtistsController < ApplicationController
 
     @artists = @artists.results
 
-    # @artists = Artist.real_only.search(params[:query])
-    if(params[:query].length < 2)
-      flash.now[:message] = "Please enter at least 2 characters into the search box"
-      @artists = [];
-    elsif @artists.empty?
+    if @artists.empty?
       respond_to do |format|
         format.html { redirect_to no_results_artists_path(:search => params[:search])}
-        format.json { render :json => "" }
+        format.json { render :json => [] }
       end
     else
       respond_to do |format|

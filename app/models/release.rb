@@ -20,8 +20,8 @@ class Release < ActiveRecord::Base
   belongs_to :artist
 
   searchable :auto_index => true, :auto_remove => true do
-    text :name, :boost => 2.0
-    text :artist_name do
+    text :name, :boost => 2.0, :as => :code_textp
+    text :artist_name, :as => :code_textp do
       artist.try(:name)
     end
     text :label_name
