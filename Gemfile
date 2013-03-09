@@ -70,6 +70,6 @@ gem "omniauth-facebook"
 
 gem 'kaminari'
 
-gem 'sunspot_rails'
-gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
+gem 'sunspot_rails' #, :git => "git://github.com/mkrisher/sunspot.git", :branch => "task_warning_bypass"
+gem 'sunspot_solr' #, :git => "git://github.com/mkrisher/sunspot.git", :branch => "task_warning_bypass"
 
