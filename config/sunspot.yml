@@ -14,6 +14,6 @@ test:
 production:
   solr:
     hostname: localhost
-    port: 8982
+    port: 8983
     log_level: WARNING
   auto_commit_after_request: true  
