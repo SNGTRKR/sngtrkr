@@ -31,7 +31,6 @@ require "whenever/capistrano"
 set :keep_releases, 3
 after "deploy:restart", "deploy:cleanup"
 
-
 # deploy config
 set :deploy_via, :remote_cache
 
@@ -54,10 +53,6 @@ namespace :deploy do
   task :restart do
     run "cd #{current_path} && bundle exec thin restart -C thin.yml"
   end
-
-  task :setup_solr_dir do
-    run "mkdir -p #{shared_path}/solr"
-  end
 end
  
 namespace :solr do
@@ -65,17 +60,28 @@ namespace :solr do
   task :start, :roles => :app, :except => { :no_release => true } do 
     run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:start"
   end
+
   desc "stop solr"
   task :stop, :roles => :app, :except => { :no_release => true } do 
     run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:stop"
   end
+
   desc "reindex the whole database"
   task :reindex, :roles => :app do
     stop
-    run "rm -rf #{shared_path}/solr/data"
+    run "rm -rf #{shared_path}/solr/data/*"
     start
+    puts "You need to run this yourself now:"
     puts "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:reindex"
+  end
+
+  desc "Symlink in-progress deployment to a shared Solr index"
+  task :symlink, :except => { :no_release => true } do
+    run "ln -nfs #{shared_path}/solr #{current_path}/solr"
+    run "ls -al #{current_path}/solr/pids/"
+    run "cd #{current_path} && bundle exec rake sunspot:solr:start RAILS_ENV=#{rails_env}"
   end
 end
  
-after 'deploy:setup', 'deploy:setup_solr_dir'
+before "deploy:update_code", "solr:stop"
+after "deploy:update_crontab", "deploy:solr:symlink"
