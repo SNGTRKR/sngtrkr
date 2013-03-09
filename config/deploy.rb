@@ -55,27 +55,27 @@ namespace :deploy do
     run "cd #{current_path} && bundle exec thin restart -C thin.yml"
   end
 
-  task :setup_solr_data_dir do
-    run "mkdir -p #{shared_path}/solr/data"
+  task :setup_solr_dir do
+    run "mkdir -p #{shared_path}/solr"
   end
 end
  
 namespace :solr do
   desc "start solr"
   task :start, :roles => :app, :except => { :no_release => true } do 
-    run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec sunspot-solr start --port=8983 --data-directory=#{shared_path}/solr/data --pid-dir=#{shared_path}/pids --solr-home=#{current_path}"
+    run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:start"
   end
   desc "stop solr"
   task :stop, :roles => :app, :except => { :no_release => true } do 
-    run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec sunspot-solr stop --port=8983 --data-directory=#{shared_path}/solr/data --pid-dir=#{shared_path}/pids --solr-home=#{current_path}"
+    run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:stop"
   end
   desc "reindex the whole database"
   task :reindex, :roles => :app do
     stop
     run "rm -rf #{shared_path}/solr/data"
     start
-    run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:reindex"
+    puts "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:reindex"
   end
 end
  
-after 'deploy:setup', 'deploy:setup_solr_data_dir'
+after 'deploy:setup', 'deploy:setup_solr_dir'
