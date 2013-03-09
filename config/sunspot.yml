@@ -16,7 +16,4 @@ production:
     hostname: localhost
     port: 8983
     log_level: WARNING
-    path: /var/www/sngtrkr/shared/solr
-    solr_home: /var/www/sngtrkr/current
-    max_memory: 100MB
   auto_commit_after_request: true  
