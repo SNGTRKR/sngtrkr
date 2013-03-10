@@ -1,3 +1,4 @@
+require 'sidekiq'
 class ReleaseJob
 
   def test

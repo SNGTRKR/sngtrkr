@@ -26,7 +26,7 @@ gem 'capistrano'
 gem 'rvm-capistrano'
 
 # BACKGROUND TASKS
-gem 'sidekiq'
+gem 'sidekiq', :require => false
 gem 'slim'
 gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'whenever', :require => false
@@ -35,8 +35,8 @@ gem 'fog'
 gem "paperclip"
 
 # SCRAPING GEMS
-gem 'scrobbler', :require => false
-gem 'itunes-search-api', :require => false
+gem 'scrobbler'
+gem 'itunes-search-api'
 
 # ADMIN
 gem 'rails_admin'
