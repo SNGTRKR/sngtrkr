@@ -4,14 +4,11 @@
 capybara-*.html
 .rspec
 .rvmrc
-/.bundle
-/vendor/bundle
-/log/*
-/tmp/*
-/db/*.sqlite3
-/public/system/*
-/coverage/
-/spec/tmp/*
+.bundle
+vendor/bundle
+public/system/*
+coverage/
+spec/tmp/*
 **.orig
 rerun.txt
 pickle-email-*.html
@@ -34,8 +31,6 @@ dump.rdb
 nohup.out
 config/environments/personal/private.rb
 
-db/test.sqlite3
-
 .bundle/
-/solr/data/*
-/solr/pids/*
+/solr/data
+/solr/pids

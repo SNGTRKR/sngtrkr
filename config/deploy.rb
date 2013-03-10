@@ -77,11 +77,9 @@ namespace :solr do
 
   desc "Symlink in-progress deployment to a shared Solr index"
   task :symlink, :except => { :no_release => true } do
-    run "ln -nfs #{shared_path}/solr #{current_path}/solr"
-    run "ls -al #{current_path}/solr/pids/"
-    run "cd #{current_path} && bundle exec rake sunspot:solr:start RAILS_ENV=#{rails_env}"
+    run "ln -s #{shared_path}/solr/data/ #{release_path}/solr/data"
+    run "ln -s #{shared_path}/solr/pids/ #{release_path}/solr/pids"
   end
 end
  
-before "deploy:update_code", "solr:stop"
-after "deploy:update_crontab", "deploy:solr:symlink"
+after "deploy:update_code", "solr:symlink"

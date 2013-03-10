@@ -24,8 +24,6 @@ SNGTRKR::Application.routes.draw do
   match '/release_magic/:store/:url' => "Releases#magic"
   match '/intro' => "Pages#intro"
 
-  mount UserMailer::Preview => 'mailer'
-
   devise_for :users, :controllers => { :registrations => "users_controller/registrations",
     :omniauth_callbacks => "users_controller/omniauth_callbacks",
     :sessions => "users_controller/sessions"}
