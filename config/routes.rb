@@ -24,9 +24,11 @@ SNGTRKR::Application.routes.draw do
   match '/release_magic/:store/:url' => "Releases#magic"
   match '/intro' => "Pages#intro"
 
-  devise_for :users, :controllers => { :registrations => "users_controller/registrations",
+  devise_for :users, :controllers => { 
+    :registrations => "users_controller/registrations",
     :omniauth_callbacks => "users_controller/omniauth_callbacks",
-    :sessions => "users_controller/sessions"}
+    :sessions => "users_controller/sessions"
+  }
   devise_scope :user do
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   end

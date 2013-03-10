@@ -11,7 +11,7 @@
 						<![endif]-->
 	      				<a class="brand" href="/">
 					      <%= image_tag "/images/logo-45.png" %></a>
-					      <% if @user %>
+					      <% if @user and @user.id %>
 					      <ul class="nav pull-left">
 						      <li class="<% if current_page?(tl_path) %>active<% end %>">
 						      	<%= link_to tl_path do %>
@@ -43,6 +43,5 @@
 								<div class="nav pull-right inner-tools">
 									<%= link_to(destroy_user_session_path, :method => :delete, :class => "btn btn-navbar toolbutton tooltip-parent", "data-title" => "Logout", "data-placement" => "bottom" ) do %><i class="icon-signout"></i><% end %>
 									</div><% end %>
-				      			</div></div></div>
-				      			<%= render :partial => 'shared/nav_tools' %>	
+		      			</div></div></div>
   </div></div>
