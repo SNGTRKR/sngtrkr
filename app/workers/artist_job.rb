@@ -1,3 +1,4 @@
+require 'sidekiq'
 class ArtistJob
   include Sidekiq::Worker
   sidekiq_options :queue => :artists

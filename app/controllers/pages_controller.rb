@@ -6,6 +6,10 @@ class PagesController < ApplicationController
   caches_page :except => [:splash,:home]
 
   def home
+    if(user_signed_in?)
+      flash.keep
+      return redirect_to '/tl'
+    end
     render :layout => 'no_sidebar'
   end
 
@@ -32,7 +36,7 @@ class PagesController < ApplicationController
   def splash
     if(user_signed_in?)
       flash.keep
-      return redirect_to '/timeline'
+      return redirect_to '/tl'
     end
     render :layout => 'splash'
   end 
