@@ -6,11 +6,6 @@ class UserMailer < ActionMailer::Base
     @user = user # For the view
     mail(:to => "#{@user.email}", :subject => "Welcome to SNGTRKR!")
   end
-
-  def beta_email(user)
-    @user = user # For the view
-    mail(:to => "#{@user.email}", :subject => "Welcome to the SNGTRKR Beta!")
-  end
   
   def new_releases_deliver(frequency)
     User.where(:email_frequency => frequency).each do |user|
@@ -76,26 +71,6 @@ class UserMailer < ActionMailer::Base
   
   def instant_release(release)
     
-  end
-  
-  class Preview < MailView
-    # Pull data from existing fixtures
-    def new_releases
-      user = User.where(:fbid => 123456789).first
-      user.release_notifications = Release.limit(100).order("date DESC")
-      frequency = 1
-      ::UserMailer.new_releases(user,frequency)
-    end
-    def welcome_email
-      ::UserMailer.welcome_email(User.first)
-    end
-    def beta_email
-      ::UserMailer.beta_email(User.first)
-    end
-
-    def confirmation_email
-      Devise::Mailer.confirmation_instructions(User.first) 
-    end
   end
 
 end

@@ -14,7 +14,7 @@ group :production do
   gem 'therubyracer'
 end
 
-gem 'sitemap_generator'
+gem 'sitemap_generator', :require => false
 gem 'newrelic_rpm'
 gem 'mysql2'
 
@@ -35,13 +35,12 @@ gem 'fog'
 gem "paperclip"
 
 # SCRAPING GEMS
-gem 'scrobbler'
-gem 'itunes-search-api'
+gem 'scrobbler', :require => false
+gem 'itunes-search-api', :require => false
 
 # ADMIN
 gem 'rails_admin'
-gem "exception_notification", :git => "http://github.com/rails/exception_notification.git", :branch => "master", :require => 'exception_notifier'
-gem 'mail_view', :git => 'https://github.com/37signals/mail_view.git'
+gem 'exception_notification', :require => 'exception_notifier'
 
 
 group :assets do
