@@ -238,42 +238,6 @@ class ReleaseScraper
         @new_releases_images << "nope.jpg"
       end
 
-      # Now get the track ID's for preview URLS
-      begin
-        tracks = Hash.from_xml(open("http://api.7digital.com/1.2/release/tracks?releaseid=#{r.sd_id}&oauth_consumer_key=#{@sevendigital_apikey}&country=GB", :proxy => @proxy))["response"]["tracks"]["track"]
-      rescue
-        puts("TRACKS: Scrape failed for release #{r.name} by #{@artist.name}")
-      end
-      i = 1
-      if !tracks.is_a? Array
-        puts("TRACKS: Track scrape failed for tracks")
-      else
-        tracks.each do |track|
-          if track["version"].blank?
-            title = track["title"]
-          else
-          # Accounts for things like "Gold Dust (Netsky Remix)"
-            track = "#{track["title"]} (#{track["version"]})"
-          end
-          r.tracks.build(:number => i, :name => title, :sd_id => track["id"])
-          i += 1
-        end
-      end
-      
-      # Get track previews from iTunes if you can't get them from 7digital
-      #if tracks.empty? and itunes_release
-      #  puts("TRACKS: Scraping tracks from iTunes for #{r.name}")
-      #  i = 1
-      #  itunes_release_tracks = ActiveSupport::JSON.decode( open("http://itunes.apple.com/lookup?id=#{itunes_release[0]['collectionId']}&entity=song&country=GB", :proxy => @proxy))['results']
-      #  while !itunes_release_tracks[i].nil?
-      #    r.tracks.build(:number => i, :name => itunes_release_tracks[i], :itunes_preview => itunes_release_tracks[i]['previewUrl'])
-      #    i += 1
-      #  end
-      #end
-      #if r.tracks.count > 0
-      #  puts "TRACKS: Total tracks count: #{r.tracks.count}"
-      #end
-
       if r
         @new_releases << r
         import_count += 1
