@@ -86,11 +86,11 @@ SNGTRKR::Application.configure do
 	}
 
 
-  config.middleware.use ExceptionNotifier,
-      :email_prefix => "[SNGTRKR EXCEPTION] ",
-      :sender_address => %{"notifier" <notifier@sngtrkr.com>},
-      :exception_recipients => %w{bessey@gmail.com},
-      :ignore_if            => lambda { |env, e| e.message =~ /SCRAPER/ }
+  # config.middleware.use ExceptionNotifier,
+  #     :email_prefix => "[SNGTRKR EXCEPTION] ",
+  #     :sender_address => %{"notifier" <notifier@sngtrkr.com>},
+  #     :exception_recipients => %w{bessey@gmail.com},
+  #     :ignore_if            => lambda { |env, e| e.message =~ /SCRAPER/ }
 
 
 end
