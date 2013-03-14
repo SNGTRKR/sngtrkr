@@ -221,9 +221,6 @@ class ArtistsController < ApplicationController
     release_scraper.itunes_import #:limit => 10
     puts "Compiling release results"
     @timeline = release_scraper.releases
-    @timeline.each do |release|
-      @release_tracks << release.tracks
-    end
     @timeline_images = release_scraper.new_releases_images
 
   end
