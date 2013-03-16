@@ -1,70 +1,58 @@
-.home-txt-1 {
-    line-height:1.3em;
-    font-size:1.2em;
-    margin:8px 15px 8px 2px;
-    width:320px;
-    span {
-	    margin:11px 0 5px 0;
-	    display:block;
-    }
-}
-.limbo-txt-1 {
-	line-height:1.3em;
-    @extend .font-14;
-    margin:1px 15px 8px 2px;
-    width:320px;
-    span {
-	    margin:11px 0 5px 0;
-	    display:block;
-    }
-}
-.home-header {
-    width:328px;
-    margin-left:2px;
-}
-#home-macbook {
-   position:absolute;
-   margin:-23px 0 0 -20px;
-}
-#home-points {
-	position:relative;
-	margin:13px 0 40px;
-	p {
-		width:285px;
+	#releases {
+		margin-top:34px;
+		height:294px;
+		width:100%;
+		background-color:$gray;
 	}
-	h2 {
-	  	@extend .signika-txt;
-	  	font-size:2.3em;
-	  	margin:10px 0 10px 0;
-	  }
-	  #home1 {
-	  	position:relative;
-		  top:9px;
-		  left:60px;
-	  }
-	  #home2 {
-	  position:relative;
-		  top:30px;
-		  left:60px;
-	  }
-	  #home3 {
-	  position:relative;
-		  top:6px;
-		  left:66px;
-	  }
-}
-.fb-home-login {
-	margin:-1px 0 25px 0;
-	float: left; 
-	@extend .facebook-button;
-}
-#beta-form {
-	margin-top:1px;
-	input[type=text] {
-		margin-left:2px;
-		margin-bottom:6px !important;
+	.signup-home {
+		margin:40px 0;
+		text-align:center;
+		i{
+			margin-right:20px;
+		}
+		.btn-warning {
+			margin-left:10px;
+		}
 	}
-	input[type=submit] {
-		margin:-7px 0 0 5px;
+	.sectors {
+		p {
+			margin-top:16px;
+		}
+		.span10 {
+			border-top:1px solid #d1d1d1;
+			@extend .center;
+		}
+		.row-fluid:last-child {
+			.span10 {
+				border-bottom:1px solid #d1d1d1;
+			}
+		}
+		.timeline {
+			margin-top:98px;
+		}
+		.computer {
+			margin-top:91px;
+		}
+		.release {
+			margin-top:75px;
+		}
+		.email {
+			margin-top: 137px;
+		}
+		.timeline_img {
+			margin-left:20px;
+		}
 	}
-}
+	.social_share {
+		margin-top:15px;
+		.twitter-share-button {
+			width: 88px !important;
+			margin-right: 5px;
+		}
+		.fb-like {
+			vertical-align: top;
+			margin-right: 10px;
+			margin-left: 28px;
+			width: 81px;
+		}
+	}

@@ -1,2 +1,0 @@
-$('.recommended-artists ul').fadeOut();
-$('.recommended-artists ul').html("<%=j render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 6] %>").fadeIn();
