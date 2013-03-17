@@ -1,3 +1,4 @@
+<% content_for :title do %><%= @user.first_name %>'s profile<% end %>
 <div class="row-fluid">
   <div class="span10">
       <div class="tabbable tabs-left profile-tabs">
@@ -9,24 +10,28 @@
             <a href="#tab1" data-toggle="tab"><i class="icon-screenshot"></i><%= @user.following.count %> trackings</a>
           </li>
           <li>
-            <a href="#tab2" data-toggle="tab"><%= image_tag "/images/ppl_black.png", :class => "blk ppl"%><%= image_tag "/images/ppl_white.png", :class => "wht ppl"%><%= @app_friends.count %> friend<% if @app_friends.count > 1 %>s<% else %><% end %></a>
+            <a href="#tab2" data-toggle="tab"><%= image_tag "/images/ppl_black.png", :class => "blk ppl"%><%= image_tag "/images/ppl_white.png", :class => "wht ppl"%><%= @app_friends.count %> friend<% if @app_friends.count > 1 %>s<% end %></a>
           </li>
         </ul>
         <div class="clearfix"></div>
         <%= link_to edit_user_path(@user) do %><div class="btn"><i class="icon-pencil"></i>Edit</div><% end %>
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane active" id="tab1">
-            <% if @user.following.count.zero? %>
+            <% if !@user.following.count.zero? %>
     	      	<table class="table table-striped">
         			  <tbody>
                   <% @following.each do |artist_tracked| %>
           			    <tr>
-          			      <td><%= image_tag "http://placehold.it/75x75" %><%= link_to artist_path(artist_tracked) do %><%= artist_tracked.name %><% end %></td>
+          			      <td>
+                        <%= image_tag "http://placehold.it/75x75" %>
+                            <%= link_to artist_path(artist_tracked) do %>
+                              <%= artist_tracked.name %>
+                        <% end %>
+                      </td>
           			    </tr>
                   <% end %>
         			  </tbody>
         			</table>
-        			<div class="btn">Delete (4)</div>
             <% else %>
               <p>You are not tracking anyone.</p>
             <% end %>

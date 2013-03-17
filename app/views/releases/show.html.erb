@@ -1,52 +1,71 @@
-<% content_for :og_name, ""	
-content_for :og_url, request.url	
-content_for :og_image, File.join(root_url ,)	
-content_for :og_description, ""
-content_for :og_id, ""	
-content_for :og_type, "sngtrkr:release"	
+<% content_for :og_name, @release.name  
+content_for :og_url, request.url  
+content_for :og_image, File.join(root_url , @release.image.url(:release_i)) 
+content_for :og_description, "#{@release.name} by #{@artist.name}. Released #{@release.date.strftime("#{@release.date.day.ordinalize} %B %Y ")} by #{@release.label_name}"
+content_for :og_id, @release.id.to_s  
+content_for :og_type, "sngtrkr:release" 
 %>
-<% content_for :title do %><% end %>
-<% content_for :description do %><% end %>
+<% content_for :title do %><%= @release.name %> release information by <%= @artist.name %><% end %>
+<% content_for :description do %><%= @release.name %> release information by <%= @artist.name %>. Released <%= @release.date.strftime("#{@release.date.day.ordinalize} %B %Y ") %> by <%= @release.label_name %> <% end %>
 <div class="row-fluid">
   <div class="span2 release_artist">
     <%= image_tag 'http://placehold.it/170x170' %>
-    <h2>B.Traits</h2>
-    <h3>Digital Soundbody</h3>
+    <h2><%= link_to @artist.name, @artist %></h2>
+    <h3><%= @artist.label_name %></h3>
     <div class="trackers">
       <%= image_tag "/images/ppl_black.png" %>
-      1,358 trackers
+      <%= @artist.followers %> tracker<% if @artist.followers > 1 %>s<% end %>
     </div>
     <div class="releases">
       <%= image_tag "/images/release_blk.png" %>
-      38 releases
+      <%= @releases.count %> release<% if @releases.count > 1 %>s<% end %>
     </div>
     <div class="btn track">Track</div>
     <div class="btn share"><i class="icon-share"></i>Share</div>
     <ul>
-      <li><%= image_tag "/images/social/fb.png" %><p>Facebook</p></li>
-      <li><%= image_tag "/images/social/twitter.png" %><p>Twitter</p></li>
-      <li><%= image_tag "/images/social/yt.png" %><p>YouTube</p></li>
-      <li><%= image_tag "/images/social/sc.png" %><p>Soundcloud</p></li>
-      <li><%= image_tag "/images/social/www.png" %><p>Website</p></li>
-      <li><%= image_tag "/images/social/7d.png" %><p>7Digital</p></li>
-      <li><%= image_tag "/images/social/it.png" %><p>iTunes</p></li>
+      <% if @artist.fbid? %>
+      <li><a href="http://www.facebook.com/<%= @artist.fbid %>" target="_blank"><%= image_tag "/images/social/fb.png" %><p>Facebook</p></a></li> 
+      <% end %>
+      <% if @artist.twitter? %>
+      <li><a href="http://www.twitter.com/<%= @artist.twitter %>" target="_blank"><%= image_tag "/images/social/twitter.png" %><p>Twitter</p></a></li>
+      <% end %>
+      <% if @artist.youtube? %>
+      <li><a href="http://www.youtube.com/<%= @artist.youtube %>" target="_blank"><%= image_tag "/images/social/yt.png" %><p>YouTube</p></a></li>
+      <% end %>
+      <% if @artist.soundcloud? %>
+      <li><a href="http://www.soundcloud.com/<%= @artist.soundcloud %>" target="_blank"><%= image_tag "/images/social/sc.png" %><p>Soundcloud</p></a></li>
+      <% end %>
+      <% if @artist.website? %>
+      <li><a href="http://<%= @artist.website %>" target="_blank"><%= image_tag "/images/social/www.png" %><p>Website</p></a></li>
+      <% end %>
+      <% if @artist.sd? %>
+      <li><a href="<%= @artist.sd %>" target="_blank"><%= image_tag "/images/social/7d.png" %><p>7Digital</p></a></li>
+      <% end %>
+      <% if @artist.itunes? %>
+      <li><a href="<%= @artist.itunes %>" target="_blank"><%= image_tag "/images/social/it.png" %><p>iTunes</p></a></li>
+      <% end %>
     </ul>
   </div>
   <div class="span8 release_info">
+    <!-- <%= image_tag @release.image :release %> -->
     <%= image_tag "http://placehold.it/230x230" %>
     <div class="info">
-      <h1>Fever Ft. Elisabeth Troy</h1>
-      <p class="tip" data-title="Label" data-placement="left"><i class="icon-tag"></i>Digital Soundboy</p>
-      <p class="tip" data-title="Release date" data-placement="left"><i class="icon-calendar"></i>24th September 2013</p>
+      <h1><%= @release.name %></h1>
+      <p class="tip" data-title="Label" data-placement="left"><i class="icon-tag"></i><%= @release.label_name %></p>
+      <p class="tip" data-title="Release date" data-placement="left"><i class="icon-calendar"></i><%= @release.date.strftime("#{@release.date.day.ordinalize} %B %Y ") %></p>
       
       <div class="related">
         <p>Related releases:</p>
-        <%= image_tag "http://placehold.it/40x40" %>
-        <%= image_tag "http://placehold.it/40x40" %>
-        <%= image_tag "http://placehold.it/40x40" %>
-        <%= image_tag "http://placehold.it/40x40" %>
-        <%= image_tag "http://placehold.it/40x40" %>
-        <%= image_tag "http://placehold.it/40x40" %>
+        <% @releases.take(6).each do |release|
+         if release == @release 
+           next
+         end
+         %>
+          <%= link_to [release.artist, release] do %>
+            <!-- <%= image_tag release.image :mini_r %> -->
+            <%= image_tag "http://placehold.it/45x45" %>
+          <% end %>  
+        <% end %>
       </div>
       <div class="btn">Buy</div>
       <div class="btn"><i class="icon-share"></i>Share</div>

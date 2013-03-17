@@ -8,122 +8,47 @@ content_for :og_type, "sngtrkr:artist"
 <% content_for :description do %><%= truncate((strip_tags @artist.bio || "" ), :length => 150) %><% end %>
 <% content_for :title do %><%= @artist.name %> information and releases 2012<% end %>
 <% content_for :extra_head do %> <%= javascript_include_tag "timeline" %> <% end %>
-<style type="text/css">
-#wrapper {
-background:url("/images/grid2.png");
-background-repeat:repeat;
-}
-</style>
-<div class="row">
-<div class="offset<% if !user_signed_in? %>5<% else %>2<% end %> span8">
-<div id="profile-image" style="background-image:url(<%= @artist.image.url :profile %>);background-repeat:no-repeat;background-position:center;">
-<div id="opac-50"></div>
-<div id="share-profile">
-<h3>Share this artist</h3>
-<ul>
-<a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com<%= url_for @artist %>%2F&t=SNGTRKR','ShareSNGTRKRonFacebook','scrollbars=no,width=620,height=340'); return false;"><li class="fb-icon fb-button"><i class="icon-facebook"></i></li></a>
-<a href="#" title="Share on Twitter" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.sngtrkr.com&text=<%= @artist.name %>+is+using+SNGTRKR+to+keep+their+fans+up+to+date+with+releases.+Check+them+out+&#45;+www.sngtrkr.com<%= url_for @artist %>&via=SNGTRKR','ShareSNGTRKRonTwitter','scrollbars=no,width=620,height=340'); return false;"><li class="twit-icon twitter-button"><i class="icon-twitter"></i></li></a>
-<a href="#" title="Share on Google Plus" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for @artist %>','ShareSNGTRKRonGooglePlus','scrollbars=no,width=620,height=340'); return false;"><li class="goo-icon google-button"><i class="icon-google-plus"></i></li></a>
-<div class="clear"></div>
-</ul>
-<div class="share-cancel">Cancel</div>
-</div> <!-- share-profile -->
-<div id="buy-profile">
-<h3>Browse this artist</h3>
-<ul>
-  <li><%= link_to image_tag("/images/itunes.png", :alt => "iTunes", :title => "iTunes"), @artist.itunes, :target => "_blank" %></li>
-  <li><%= link_to image_tag("/images/7digital.png", :alt => "7Digital", :title => "7Digital"), @artist.sd, :target => "_blank" %></li>
-  <div class="clear"></div>
-</ul>
-<div class="clear"></div>
-<div class="buy-cancel">Cancel</div>
-</div>
-<div id="social-bar-shadow"></div>
-<div id="social-hidden">
-<ul>
-<li><a href="http://www.facebook.com/<%= @artist.fbid %>" target="_blank"><div class="fb-button fb-icon"><i class="icon-facebook"></i></div></a></li>
-<% if @artist.twitter? %>
-<li><a href="http://www.twitter.com/<%= @artist.twitter %>" target="_blank"><div class="twitter-button twit-icon"><i class="icon-twitter"></i></div></a></li><% else %><% end %>
-<% if @artist.soundcloud? %>
-<li><a href="http://www.soundcloud.com/<%= @artist.soundcloud %>" target="_blank"><div class="sc-icon soundcloud-button"><%= image_tag "/images/soundcloud.png", :alt => "Soundcloud" %></div></a></li><% else %><% end %>
-<% if @artist.youtube? %>
-<li><a href="http://www.youtube.com/<%= @artist.youtube %>" target="_blank"><div class=" yt-icon white-button"><%= image_tag "/images/youtube.png", :alt => "Youtube" %></div></a></li><% else %><% end %>
-<% if @artist.website? %>
-<li><a href="http://<%= @artist.website %>" target="_blank"><div class="sm-pop web-icon black-button"><i class="icon-globe"></i></div></a></li><% else %><% end %>
-</ul>
-</div>
-</div></div>
-<div class="span7_m">
-<div id="profile-info">
-	<h2><%= @artist.name %></h2>
-	<span class="trkrs"><%= @artist.followers %> TRKRS</span><br/>
-	<span class="tooltip-parent icon" data-title="Genre" data-placement="left">
-  	<i class="icon-music"></i>
-	</span><% if @artist.genre? %><%= @artist.genre %><% else %><span class="gray">No genre set</span><% end %><br/>
-	<span class="tooltip-parent icon" data-title="Label" data-placement="left">
-  	<i class="icon-tag"></i>
-	</span>	
-  <% if @artist.label_name? %><%= truncate((strip_tags @artist.label_name || "" ), :length => 50) %><% else %><span class="gray">No label set</span><% end %><br/><br/>
-<div id="artist-bio">
-  <% if @artist.bio? %>
-    <%= raw(truncate((strip_tags @artist.bio || "" ), :length => 415, :omission => "...<a href='#bio-full' data-toggle='modal'>Read more</a>")) %>
-  <% else %>
-    <span class="gray">No biography set</span>
-  <% end %>
-</div>
-</div>
-  <ul class="artist-menu-user">
-  <li class="buy-profile"><i class="icon-shopping-cart"></i>Buy</li>
-  <li class="share-profile"><i class="icon-share-alt"></i>Share</li>
-  <% if user_signed_in? and current_user.following? @artist.id %><li class="ajax-artist-track"><%= render :partial => 'shared/trk_artist', :object => @artist %><% else %><li class="popover-parent ajax-artist-track" data-title="Add TRKR" 
-	<% if !user_signed_in? %><%=raw 'data-content="You must login before you can start tracking artists."' %><% end %>
-    data-content="Keep up to date with <%= @artist.name %> and their releases, by adding them to your tracking timeline." >
-    <%= render :partial => 'shared/trk_artist', :object => @artist %><% end %></li>
-  </ul>
-</div>
-<div class="clear"></div>
-</div>
-<!-- ARTIST TIMELINE -->
+<div class="row-fluid">
+  <div class="span2 release_artist">
+    <%= image_tag 'http://placehold.it/170x170' %>
+    <h2><%= @artist.name %></h2>
+    <h3><%= @artist.label_name %></h3>
+    <div class="trackers">
+      <%= image_tag "/images/ppl_black.png" %>
+      <%= @artist.followers %> tracker<% if @artist.followers > 1 %>s<% end %>
+    </div>
+    <div class="releases">
+      <%= image_tag "/images/release_blk.png" %>
+      0 releases
+    </div>
+    <div class="btn track">Track</div>
+    <div class="btn share"><i class="icon-share"></i>Share</div>
+    <ul>
+      <% if @artist.fbid? %>
+      <li><a href="http://www.facebook.com/<%= @artist.fbid %>" target="_blank"><%= image_tag "/images/social/fb.png" %><p>Facebook</p></a></li> 
+      <% end %>
+      <% if @artist.twitter? %>
+      <li><a href="http://www.twitter.com/<%= @artist.twitter %>" target="_blank"><%= image_tag "/images/social/twitter.png" %><p>Twitter</p></a></li>
+      <% end %>
+      <% if @artist.youtube? %>
+      <li><a href="http://www.youtube.com/<%= @artist.youtube %>" target="_blank"><%= image_tag "/images/social/yt.png" %><p>YouTube</p></a></li>
+      <% end %>
+      <% if @artist.soundcloud? %>
+      <li><a href="http://www.soundcloud.com/<%= @artist.soundcloud %>" target="_blank"><%= image_tag "/images/social/sc.png" %><p>Soundcloud</p></a></li>
+      <% end %>
+      <% if @artist.website? %>
+      <li><a href="http://<%= @artist.website %>" target="_blank"><%= image_tag "/images/social/www.png" %><p>Website</p></a></li>
+      <% end %>
+      <% if @artist.sd? %>
+      <li><a href="<%= @artist.sd %>" target="_blank"><%= image_tag "/images/social/7d.png" %><p>7Digital</p></a></li>
+      <% end %>
+      <% if @artist.itunes? %>
+      <li><a href="<%= @artist.itunes %>" target="_blank"><%= image_tag "/images/social/it.png" %><p>iTunes</p></a></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="span8 artist_timeline">
 
-<% content_for :timeline_header do %>
-	<%= @artist.name %>'s Timeline
-<% end %>
-<% content_for :timeline do %>
-	<% if @timeline.empty? %>
-		<%= render 'timeline/artist_empty' %>
-	<% else %>
-			<ol class="release-list">
-				<%= render :partial => 'timeline/release', :collection => @timeline, :locals => {:date_format => "%B %Y"} %>
-			</ol>
-	<% end %>
-<% end %>
-<%= render 'timeline/timeline' %>
-
-<!-- END OF ARTIST TIMELINE -->
-
-<div id="bio-full" class="modal hide fade">
-<div class="modal-header">
-	<h3>Biography</h3>
-	</div>
-<div class="modal-body">
-	<p><%= sanitize @artist.bio, :tags => %w(a) %></p>
-	<p>Provided by <a href="http://last.fm">Last.fm</a></p>
-	</div>
+  </div>
 </div>
-<script>
-	$(document).ready(function(){
-    timeline_setup();
-
-		$(".share-profile").click(function() { $('#opac-50').fadeIn("normal"); $('#share-profile').animate({right : 0}, "slow"); $('#buy-profile').animate({left : -310}, "slow");});
-		$(".share-cancel").click(function() { $('#opac-50').fadeOut("normal"); $('#share-profile').animate({right : -310}, "slow"); });
-		$("#share-profile ul a li").click(function() { $('#opac-50').fadeOut("normal"); $('#share-profile').animate({right : -310}, "slow"); });
-	    $(".buy-profile").click(function() { $('#opac-50').fadeIn("normal"); $('#buy-profile').animate({left : 0}, "slow"); $('#share-profile').animate({right : -310}, "slow"); });
-		$(".buy-cancel").click(function() { $('#opac-50').fadeOut("normal"); $('#buy-profile').animate({left : -310}, "slow"); });
-		$("#buy-profile ul li").click(function() { $('#opac-50').fadeOut("normal"); $('#buy-profile').animate({left : -310}, "slow"); });
-		$("#profile-image").mouseover(function(){ $('#social-hidden ul li a div').stop().animate({bottom : -47}, "normal"); }).mouseout(function(){$('#social-hidden ul li a 						div').stop().animate({bottom : -78}, "normal");});
-		$(".edit").mouseover(function(){ $('.edit').stop().animate({left : 60}, "slow");}).mouseout(function(){ $('.edit').stop().animate({left : 0}, "slow"); });
-		$(".ignore").mouseover(function(){ $('.ignore').stop().animate({left : 60}, "slow");}).mouseout(function(){$('.ignore').stop().animate({left : 0}, "slow");});
-		$(".destroy").mouseover(function(){ $('.destroy').stop().animate({left : 60}, "slow");}).mouseout(function(){ $('.destroy').stop().animate({left : 0}, "slow"); });
-		});
-</script>
 <%= render 'shared/fb_async' %>

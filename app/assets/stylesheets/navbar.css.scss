@@ -7,6 +7,7 @@
 						.search-query {
 							background-color: #D1D1D1 !important;
 							padding:4px 28px 4px 14px !important;
+							color:$gray;
 							@include border-radius(4px);
 								&::-webkit-input-placeholder { /* WebKit browsers */
 								    color: $gray !important;

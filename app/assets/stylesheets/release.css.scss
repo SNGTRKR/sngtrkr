@@ -5,6 +5,9 @@
 		margin:15px 0 0 !important;
 		font-family: "MuseoSans-500", Helvetica, Arial, sans-serif !important;
 		line-height:20px !important;
+		a {
+			color:$orange;
+		}
 	}
 	h3 {
 		font-size:14px !important;
@@ -42,6 +45,12 @@
 			}
 			p {
 				margin-left:10px;
+			}
+			a {
+				color:$darkgray;
+					&:hover {
+						color:$blue;
+					}
 			}
 		}
 	}

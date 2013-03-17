@@ -18,11 +18,8 @@ SNGTRKR::Application.routes.draw do
   
   match '/about' => "Pages#about"
   match '/terms' => "Pages#terms"
-  match '/team' => "Pages#team"
   match '/privacy' => "Pages#privacy"
-  match '/help' => "Pages#help"
   match '/release_magic/:store/:url' => "Releases#magic"
-  match '/intro' => "Pages#intro"
 
   devise_for :users, :controllers => { 
     :registrations => "users_controller/registrations",

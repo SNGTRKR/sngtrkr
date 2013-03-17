@@ -1,0 +1,14 @@
+<% if user_signed_in?%>
+  <% if current_user.following? trk_artist.id %>
+	<%= link_to artist_unfollow_path(unfollow_artist), :method => :post, :class => "remove-trkr", :remote => true, :'data-id' => unfollow_artist.id do %>
+	  <div class="btn track">Tracked</div>
+	<% end %>
+  <% else %>
+	<%= link_to artist_follows_path(follow_artist), :format => :html, :method => :post,
+:class => "add-trkr", :remote => true, :'data-id' => follow_artist.id do %>
+	  <div class="btn track">Track</div>
+	<% end %>
+  <% end %>
+<% else %>
+<a href="#"><div class="btn track">Track</div></a>
+<% end %>

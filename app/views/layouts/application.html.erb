@@ -17,7 +17,7 @@
 		<% if content_for? :og_id %>
 		<meta property="sngtrkr:id" content="<%= yield :og_id %>" />
 		<% end %>
-		<title><% if content_for?(:title) %><%= yield :title %> - SNGTRKR <% else %>SNGTRKR<% end %></title>
+		<title><% if content_for?(:title) %><%= yield :title %> on SNGTRKR - Track your favourite artists, never miss another release<% else %>SNGTRKR - Track your favourite artists, never miss another release<% end %></title>
 		<meta name="description" content="<%= yield :description %>">
 		<meta name="google-site-verification" content="ZZsezCrr3vgh_cZwliW6D-0q51Lm_fyvHBm9W2t0gpE" />
 		<link rel="icon" type="image/ico" href="<%= asset_path "/images/icon.png" %>" >
@@ -91,19 +91,32 @@
 		                    <span class="icon-bar"></span>
 		                    <span class="icon-bar"></span>
 		                  </a>
-		                  <a class="brand" href="/"><%= image_tag "/images/logo-small.png" %></a>
+	                  	  <% if @user %>
+							<%= link_to tl_path, :class => "brand" do %>
+								<%= image_tag "/images/logo-small.png" %>
+							<% end %>
+						  <% else %>
+							<%= link_to :root, :class => "brand" do %>
+								<%= image_tag "/images/logo-small.png" %>
+							<% end %>
+						  <% end %>
 		                  <div class="nav-collapse collapse navbar-inverse-collapse">
+
+		                  	
 		                    <ul class="nav">
 		                      <li class="divider-vertical"></li>
-		                      <li class="active"><a href="#">Timeline</a></li>
+		                      <% if current_user %>
+		                      <li class="<% if current_page?(tl_path) %>active<% end %>"><a href="/tl">Timeline</a></li>
 		                      <li class="divider-vertical"></li>
-		                      <li>
-		                      	<%= link_to user_path(@user) do %>
+		                      <li class="<% if current_page?(user_path(current_user)) %>active<% end %>">
+		                      	<%= link_to user_path(current_user) do %>
 			                      	Profile
 			                    <% end %>
 			                  </li>
 		                      <li class="divider-vertical"></li>
+		                      <% end %>
 		                    </ul>
+		                    
                     	    <%= form_tag artists_path , :method => 'get', :class => "navbar-search pull-left" do %>
 								<%= text_field_tag(:search, params[:search], :autocomplete => 'off', :placeholder => "Find artists and releases", :class => 'search-query span3') %>
 							    <%= link_to "#submit" do %>
@@ -113,7 +126,7 @@
 		                    <ul class="nav pull-right">
 		                      <li class="divider-vertical"></li>
 		                      <li>
-		                      	<% if !@user %>
+		                      	<% if !current_user %>
 									<%= link_to(user_omniauth_authorize_path(:facebook)) do %>
 										Login
 									<% end %>

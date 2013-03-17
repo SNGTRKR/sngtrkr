@@ -58,6 +58,12 @@
 							img {
 								margin-right:15px;
 							}
+							a {
+								color:$darkgray;
+									&:hover {
+										color:$blue;
+									}
+							}
 					}
 					tr:nth-child(odd) > td {
 						background-color:#F7F7F7;
