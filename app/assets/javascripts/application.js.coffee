@@ -11,6 +11,15 @@ $(document).ready ->
 		  $('.navbar').animate
 		  	top:0,
 		  	"slow"
-		  $("#show_info a").text "Info"
-		  
+		  $("#show_info a").text "Info"	  
 	$('.tip').tooltip()
+	$ ->
+	  $("#slider").slider
+	    min: 0
+	    max: 250
+	    step: 50
+	    #slide: (event, ui) ->
+	    #  $("#amount").val "$" + ui.value
+
+	#  $("#amount").val "$" + $("#slider").slider("value")
+
