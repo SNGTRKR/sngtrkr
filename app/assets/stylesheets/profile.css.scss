@@ -64,6 +64,17 @@
 										color:$blue;
 									}
 							}
+							span {
+								float:right;
+								margin:24px 30px 0;
+								display:none;
+								div {
+									float:left;
+								}
+							}
+						&:hover > span {
+							display:block;
+						}
 					}
 					tr:nth-child(odd) > td {
 						background-color:#F7F7F7;
