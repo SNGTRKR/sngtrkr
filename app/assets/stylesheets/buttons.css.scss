@@ -6,3 +6,31 @@
 		margin-right:5px;
 	}
 }
+.share_popover {
+	display:none;
+}
+.share_content {
+	div {
+		border-bottom:1px solid #ccc;
+		padding-bottom:10px;
+			img {
+				float:none;
+				margin-right:8px;
+				&:last-child {
+					margin-right:0px;
+				}
+			}
+	}
+	span {
+		font-size:13px;
+		display:block;
+		margin:3px 0;
+	}
+	input[type="text"] {
+		color:$lightgray;
+		width:144px;
+			&:focus {
+				color:$gray;
+			}
+	}
+}

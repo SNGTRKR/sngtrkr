@@ -53,7 +53,6 @@ content_for :og_type, "sngtrkr:release"
       <h1><%= @release.name %></h1>
       <p class="tip" data-title="Label" data-placement="left"><i class="icon-tag"></i><%= @release.label_name %></p>
       <p class="tip" data-title="Release date" data-placement="left"><i class="icon-calendar"></i><%= @release.date.strftime("#{@release.date.day.ordinalize} %B %Y ") %></p>
-      
       <div class="related">
         <p>Related releases:</p>
         <% @releases.take(6).each do |release|
@@ -68,7 +67,19 @@ content_for :og_type, "sngtrkr:release"
         <% end %>
       </div>
       <div class="btn">Buy</div>
-      <div class="btn"><i class="icon-share"></i>Share</div>
+      <div class="btn share" data-placement="bottom"><i class="icon-share"></i>Share</div>
+      <div class="share_popover">
+          <div class="share_content">
+            <div>
+              <%= image_tag "/images/social/fb.png", :alt => "Facebook" %>
+              <%= image_tag "/images/social/twitter.png", :alt => "Twitter" %>
+              <%= image_tag "/images/social/tb.png", :alt => "Tumblr" %>
+              <%= image_tag "/images/social/gplus.png", :alt => "Google+" %>
+            </div>
+          <span>Link:</span>
+          <input type="text" value="<%= request.url %>">
+        </div>
+      </div>
       <div class="btn">Report</div>
     </div>
     <div class="clearfix"></div>

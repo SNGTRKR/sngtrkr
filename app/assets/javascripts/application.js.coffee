@@ -22,4 +22,13 @@ $(document).ready ->
 	    #  $("#amount").val "$" + ui.value
 
 	#  $("#amount").val "$" + $("#slider").slider("value")
+	$(".share").popover
+	  html: true
+	  content: ->
+	    $(".share_popover").html()
+	$(".buy").popover
+	  html: true
+	  content: ->
+	    $(".buy_popover").html()
+
 
