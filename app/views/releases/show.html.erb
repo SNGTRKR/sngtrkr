@@ -21,7 +21,7 @@ content_for :og_type, "sngtrkr:release"
       <%= @releases.count %> release<% if @releases.count > 1 %>s<% end %>
     </div>
     <div class="btn track">Track</div>
-    <div class="btn share"><i class="icon-share"></i>Share</div>
+    <div class="btn share_artist" data-placement="bottom"><i class="icon-share"></i>Share</div>
     <ul>
       <% if @artist.fbid? %>
       <li><a href="http://www.facebook.com/<%= @artist.fbid %>" target="_blank"><%= image_tag "/images/social/fb.png" %><p>Facebook</p></a></li> 
@@ -67,19 +67,7 @@ content_for :og_type, "sngtrkr:release"
         <% end %>
       </div>
       <div class="btn">Buy</div>
-      <div class="btn share" data-placement="bottom"><i class="icon-share"></i>Share</div>
-      <div class="share_popover">
-          <div class="share_content">
-            <div>
-              <%= image_tag "/images/social/fb.png", :alt => "Facebook" %>
-              <%= image_tag "/images/social/twitter.png", :alt => "Twitter" %>
-              <%= image_tag "/images/social/tb.png", :alt => "Tumblr" %>
-              <%= image_tag "/images/social/gplus.png", :alt => "Google+" %>
-            </div>
-          <span>Link:</span>
-          <input type="text" value="<%= request.url %>">
-        </div>
-      </div>
+      <div class="btn share_release" data-placement="bottom"><i class="icon-share"></i>Share</div>
       <div class="btn">Report</div>
     </div>
     <div class="clearfix"></div>
@@ -101,5 +89,29 @@ content_for :og_type, "sngtrkr:release"
         <li>13. <p>A Song for Lenny</p><span>3:04</span></li>
         <li>14. <p>The Epic Last Song</p><span>5:00</span></li>
     </div>
+  </div>
+</div>
+<div class="share_popover art_pop">
+  <div class="share_content">
+    <div>
+      <%= image_tag "/images/social/fb.png", :alt => "Facebook" %>
+      <%= image_tag "/images/social/twitter.png", :alt => "Twitter" %>
+      <%= image_tag "/images/social/tb.png", :alt => "Tumblr" %>
+      <%= image_tag "/images/social/gplus.png", :alt => "Google+" %>
+    </div>
+    <span>Link:</span>
+    <input type="text" value="<%= request.url %>">
+  </div>
+</div>
+<div class="share_popover rel_pop">
+  <div class="share_content">
+    <div>
+      <%= image_tag "/images/social/fb.png", :alt => "Facebook" %>
+      <%= image_tag "/images/social/twitter.png", :alt => "Twitter" %>
+      <%= image_tag "/images/social/tb.png", :alt => "Tumblr" %>
+      <%= image_tag "/images/social/gplus.png", :alt => "Google+" %>
+    </div>
+    <span>Link:</span>
+    <input type="text" value="<%= request.url %>">
   </div>
 </div>

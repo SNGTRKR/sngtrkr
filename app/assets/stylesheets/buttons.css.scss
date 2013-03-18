@@ -6,6 +6,15 @@
 		margin-right:5px;
 	}
 }
+.track {
+	width: 51px;
+}
+.share_artist {
+	margin:0 !important;
+}
+.popover.bottom {
+	margin-top:14px !important;
+}
 .share_popover {
 	display:none;
 }
@@ -29,6 +38,7 @@
 	input[type="text"] {
 		color:$lightgray;
 		width:144px;
+		margin-bottom:0px;
 			&:focus {
 				color:$gray;
 			}
