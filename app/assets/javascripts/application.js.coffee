@@ -30,5 +30,16 @@ $(document).ready ->
 	  html: true
 	  content: ->
 	    $(".rel_pop").html()
+	$(".share, .buy").click ->
+      $(this).toggleClass "active"
+    $(".buy").popover
+      html: true
+      content: ->
+      	$(".buy_pop").html()
+
+
+
+
+
 
 

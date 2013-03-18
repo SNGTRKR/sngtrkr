@@ -15,20 +15,23 @@
 .popover.bottom {
 	margin-top:14px !important;
 }
-.share_popover {
+.art_pop, .rel_pop {
 	display:none;
 }
 .share_content {
 	div {
 		border-bottom:1px solid #ccc;
 		padding-bottom:10px;
-			img {
-				float:none;
-				margin-right:8px;
+		a {
+			margin-right:8px;
+			color:transparent;
 				&:last-child {
 					margin-right:0px;
 				}
-			}
+				img {
+					float:none;
+				}
+		}
 	}
 	span {
 		font-size:13px;
@@ -39,8 +42,20 @@
 		color:$lightgray;
 		width:144px;
 		margin-bottom:0px;
+		font-size:11px;
 			&:focus {
 				color:$gray;
+			}
+	}
+}
+.buy_content {
+	a {
+		margin-right:8px;
+			&:last-child {
+				margin:0 !important;
+			}
+			img {
+				float:none !important;
 			}
 	}
 }
