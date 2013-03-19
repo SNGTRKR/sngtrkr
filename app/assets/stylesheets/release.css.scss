@@ -50,6 +50,47 @@
 	}
 }
 .release_info {
+	.image {
+		position: relative;
+	  	@include perspective(1000);
+  		float:left;
+  		width:230px;
+  		height:230px;
+  			.front, .back {
+  				position: absolute;
+			    top: 0;
+			    left: 0;
+			    @include transform-style(preserve-3d);
+			    @include backface-visibility(hidden);
+			    @include transition(0.75s);
+  			}
+			.front {
+			  	z-index: 5;
+			}
+			.back {
+			  	z-index: 0;
+		    	@include rotateY(-180deg);
+		    	background-color:$lightgray;
+		    	height:230px;
+		    	width:230px;
+		    		form {
+		    			width:200px;
+		    			padding:30px 15px;
+		    			text-align:center;
+		    			#upload {
+		    				display:none;
+		    			}
+		    		}
+			}
+		    .front-flip {
+		    	z-index:5;
+		    	@include rotateY(180deg);
+		    }
+		    .back-flip {
+		    	z-index:10;
+		    	@include rotateY(0deg);
+		    }
+	}
 	img {
 		float:left;
 	}
@@ -57,7 +98,7 @@
 		float:left;
 		margin-left:20px;
 		h1 {
-			margin:5px 0 10px !important;
+			margin:0 0 10px !important;
 			line-height:30px !important	;
 			color: $blue !important;
 			font-family: "MuseoSans-100", Helvetica, Arial, sans-serif !important;

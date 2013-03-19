@@ -41,8 +41,10 @@ $(document).ready ->
 	    if not ($(this).is(e.target) or $(this).has(e.target).length > 0) and $(this).siblings(".popover").length isnt 0 and $(this).siblings(".popover").has(e.target).length is 0
 	      $(this).popover "hide"
 	      $(this).removeClass "active"
-
-
+	$('.image').click ->
+		$('.front').toggleClass('front-flip')
+		$('.back').toggleClass('back-flip')
+	
 
 
 
