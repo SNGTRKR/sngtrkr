@@ -36,8 +36,11 @@ $(document).ready ->
       html: true
       content: ->
       	$(".buy_pop").html()
-
-
+	$("body").on "click", (e) ->
+	  $(".share, .buy").each ->
+	    if not ($(this).is(e.target) or $(this).has(e.target).length > 0) and $(this).siblings(".popover").length isnt 0 and $(this).siblings(".popover").has(e.target).length is 0
+	      $(this).popover "hide"
+	      $(this).removeClass "active"
 
 
 
