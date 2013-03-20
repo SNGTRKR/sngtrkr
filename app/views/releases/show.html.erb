@@ -76,20 +76,10 @@ content_for :og_type, "sngtrkr:release"
            next
          end
          %>
+          <%= link_to [release.artist, release] do %>
             <!-- <%= image_tag release.image :mini_r %> -->
-            <%= image_tag "http://placehold.it/45x45", 'data-placement' => 'top', :class => 'mini_release' %>
-          <div class="rel_info_pop">
-            <div class="release_content">
-              <%= link_to [release.artist, release] do %>
-                <%= image_tag "http://placehold.it/90x90" %>
-              <% end %>
-              <div class="mini_info">
-                <%= release.name %>
-                <i class="icon-calendar"></i><%= release.date.strftime("%m/%d/%Y") %>
-                <%= link_to [release.artist, release] do %><div class="btn btn-small">Buy</div><% end %>
-              </div>
-            </div>
-          </div>
+            <%= image_tag "http://placehold.it/45x45" %>
+          <% end %>  
         <% end %>
       </div>
       <div class="btn buy" data-placement="bottom">Buy</div>
