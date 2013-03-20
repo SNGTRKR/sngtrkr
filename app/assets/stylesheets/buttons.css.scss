@@ -15,7 +15,7 @@
 .popover.bottom {
 	margin-top:14px !important;
 }
-.art_pop, .rel_pop {
+.art_pop, .rel_pop, .buy_pop, .rel_info_pop {
 	display:none;
 }
 .share_content {
@@ -58,4 +58,8 @@
 				float:none !important;
 			}
 	}
+}
+.release_content {
+	overflow:hidden;
+	color:$darkgray;
 }

@@ -22,6 +22,11 @@ $(document).ready ->
 	    #  $("#amount").val "$" + ui.value
 
 	#  $("#amount").val "$" + $("#slider").slider("value")
+	$(".related img").popover
+	  html: true
+	  #trigger: 'hover'
+	  content: ->
+	    $(".rel_info_pop").html()
 	$(".share_artist").popover
 	  html: true
 	  content: ->
@@ -37,13 +42,14 @@ $(document).ready ->
       content: ->
       	$(".buy_pop").html()
 	$("body").on "click", (e) ->
-	  $(".share, .buy").each ->
+	  $(".share, .buy, .mini_release").each ->
 	    if not ($(this).is(e.target) or $(this).has(e.target).length > 0) and $(this).siblings(".popover").length isnt 0 and $(this).siblings(".popover").has(e.target).length is 0
 	      $(this).popover "hide"
 	      $(this).removeClass "active"
 	$('.image').click ->
 		$('.front').toggleClass('front-flip')
 		$('.back').toggleClass('back-flip')
+
 	
 
 
