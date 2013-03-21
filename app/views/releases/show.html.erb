@@ -78,7 +78,7 @@ content_for :og_type, "sngtrkr:release"
          %>
           <%= link_to [release.artist, release] do %>
             <!-- <%= image_tag release.image :mini_r %> -->
-            <%= image_tag "http://placehold.it/45x45" %>
+            <%= image_tag "http://placehold.it/45x45", 'data-title' => release.name, 'data-placement' => 'top', :class => 'tip' %>
           <% end %>  
         <% end %>
       </div>
