@@ -22,11 +22,6 @@ $(document).ready ->
 	    #  $("#amount").val "$" + ui.value
 
 	#  $("#amount").val "$" + $("#slider").slider("value")
-	$(".related img").popover
-	  html: true
-	  #trigger: 'hover'
-	  content: ->
-	    $(".rel_info_pop").html()
 	$(".share_artist").popover
 	  html: true
 	  content: ->
@@ -49,7 +44,15 @@ $(document).ready ->
 	$('.image').click ->
 		$('.front').toggleClass('front-flip')
 		$('.back').toggleClass('back-flip')
-	#$('.report').modal()
+	$(".share_tracker").each ->
+	  $pElem = $(this)
+	  share_id = $pElem.attr("id")
+	  $pElem.popover
+	    html: true
+	    content: $(".art_pop_"+ share_id + "").html()
+	$(".share_content").click ->
+		console.log "hai"
+
 
 	
 

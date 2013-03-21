@@ -131,7 +131,9 @@
 										Login
 									<% end %>
 								<% else %>
-									<%= link_to("Logout", destroy_user_session_path, :method => :delete) %>
+									<%= link_to(destroy_user_session_path, :method => :delete) do %>
+										Logout
+									<% end %>
 								<% end %>	
 							  </li>
 		                      <li class="divider-vertical"></li>

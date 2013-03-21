@@ -19,12 +19,14 @@
 	display:none;
 }
 .share_content {
+	line-height:20px !important;
 	div {
 		border-bottom:1px solid #ccc;
 		padding-bottom:10px;
 		a {
 			margin-right:8px;
 			color:transparent;
+			text-decoration:none !important;
 				&:last-child {
 					margin-right:0px;
 				}

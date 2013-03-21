@@ -67,7 +67,7 @@ content_for :og_type, "sngtrkr:release"
     </div>
     <div class="info">
       <h1><%= @release.name %></h1>
-      <p class="tip" data-title="Label" data-placement="left"><i class="icon-tag"></i><%= @release.label_name %></p>
+      <p class="tip" data-title="Label" data-placement="left"><i class="icon-tag"></i><% if @release.label_name? %><%= @release.label_name %><% else %><%= @artist.label_name %><% end %></p>
       <p class="tip" data-title="Release date" data-placement="left"><i class="icon-calendar"></i><%= @release.date.strftime("#{@release.date.day.ordinalize} %B %Y ") %></p>
       <div class="related">
         <p>Related releases:</p>

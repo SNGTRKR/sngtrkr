@@ -55,7 +55,7 @@
 					td {
 						line-height:76px;
 						border:0 !important;
-							img {
+							.image {
 								margin-right:15px;
 							}
 							a {
@@ -63,13 +63,20 @@
 									&:hover {
 										color:$blue;
 									}
+								&:first-child {
+									text-decoration:none;
+								}
 							}
-							span {
+							.actions {
 								float:right;
 								margin:24px 30px 0;
 								display:none;
-								div {
+								.track {
 									float:left;
+								}
+								.share_tracker {
+									float:right;
+									margin:0;
 								}
 							}
 						&:hover > span {
@@ -79,10 +86,6 @@
 					tr:nth-child(odd) > td {
 						background-color:#F7F7F7;
 					}
-				}
-				div:last-child {
-					float:right;
-					margin-right:0px;
 				}
 			}
 	}

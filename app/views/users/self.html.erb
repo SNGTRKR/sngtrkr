@@ -24,14 +24,36 @@
           			    <tr>
           			      <td>
                         <!-- <%= image_tag artist_tracked.image :trackers %> -->
-                        <%= image_tag "http://placehold.it/75x75" %>
+                        <%= link_to artist_path(artist_tracked) do %>
+                          <%= image_tag "http://placehold.it/75x75", :class => "image" %>
+                        <% end %>
                             <%= link_to artist_path(artist_tracked) do %>
                               <%= artist_tracked.name %>
                             <% end %>
-                            <span>
+                            <span class="actions">
                               <div class="btn track">Track</div>
-                              <div class="btn share"><i class="icon-share"></i>Share</div>
+                              <div class="btn share share_tracker" id="<%= artist_tracked.id %>" data-placement="bottom"><i class="icon-share"></i>Share</div>
                             </span>
+                            <div class="art_pop_<%= artist_tracked.id %> art_pop">
+                              <div class="share_content">
+                                <div>
+                                  <a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com<%= url_for artist_tracked %>%2F&t=SNGTRKR','ShareSNGTRKRonFacebook','scrollbars=no,width=620,height=340'); return false;">
+                                    <%= image_tag "/images/social/fb.png", :alt => "Facebook" %>
+                                  </a>
+                                  <a href="#" title="Share on Twitter" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.sngtrkr.com&text=<%= artist_tracked.name %>+is+using+SNGTRKR+to+keep+their+fans+up+to+date+with+releases.+Check+them+out+&#45;+www.sngtrkr.com<%= url_for artist_tracked %>&via=SNGTRKR','ShareSNGTRKRonTwitter','scrollbars=no,width=620,height=340'); return false;">
+                                    <%= image_tag "/images/social/twitter.png", :alt => "Twitter" %>
+                                  </a>
+                                  <a href="#" title="Share on Tumblr" onClick="MyWindow=window.open('http://www.tumblr.com/share/link?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for artist_tracked %>&name=<%= artist_tracked.name %>&description=<%= artist_tracked.name %> online:<br/><% if artist_tracked.fbid? %>http://www.facebook.com/<%= artist_tracked.fbid %><br/><% end %><% if artist_tracked.twitter? %>http://www.twitter.com/<%= artist_tracked.twitter %><br/><% end %><% if artist_tracked.youtube? %>http://www.youtube.com/<%= artist_tracked.youtube %><br/><% end %><% if artist_tracked.soundcloud? %>http://www.soundcloud.com/<%= artist_tracked.soundcloud %><br/><% end %><% if artist_tracked.website? %><%= artist_tracked.website %><% end %>','Share on Tumblr','scrollbars=no,width=620,height=340'); return false;">
+                                    <%= image_tag "/images/social/tb.png", :alt => "Tumblr" %>
+                                  </a>
+                                  <a href="#" title="Share on Google Plus" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for artist_tracked %>','ShareSNGTRKRonGooglePlus','scrollbars=no,width=620,height=340'); return false;">
+                                    <%= image_tag "/images/social/gplus.png", :alt => "Google+" %>
+                                  </a>
+                                </div>
+                                <span>Link:</span>
+                                <input type="text" onClick="this.select();" value="<%= root_url %><%= url_for(artist_tracked) %>">
+                              </div>
+                            </div>
                       </td>
           			    </tr>
                   <% end %>
@@ -58,36 +80,13 @@
       </div> 
   </div>
 </div>
-<% content_for :fb_js do %>
-	FB.getLoginStatus(function(response) {
-		if(response.status === 'connected') {
-			// the user is logged in and has authenticated your
-			// app, and response.authResponse supplies
-			// the user's ID, a valid access token, a signed
-			// request, and the time the access token
-			// and signed request each expire
-			var uid = response.authResponse.userID;
-			var accessToken = response.authResponse.accessToken;
-		} else if(response.status === 'not_authorized') {
-			// the user is logged in to Facebook,
-			// but has not authenticated your app
-			FB.login();
-		} else {
-			// the user isn't logged in to Facebook.
-			FB.login();
-		}
-	});
-	FB.api(<%= "'#{@user.fbid}picture?type=large'" %>, function(response) {
-		// The response will literally just be the URL to the friend's profile picture
-	});
-	FB.api(<%= "'#{@user.fbid}?fields=cover'" %>, function(response){
-		if(response['cover']){
-		   $('#user-cover').css("background-image","url("+response['cover']['source']+")");
-		} else {
-		   /*$('#user-cover').fadeOut();
-		   $('#user-information').animate({marginTop : -194}, "slow").css("width",400).css("overflow","hidden");*/
-		}
-	});
-<% end %>
-<%= render 'shared/fb_async' %>
-
+<!--       <%= form_for(User.new, :url => user_session_path) do |f| %> 
+            <%= f.label :email %> <br/> 
+            <%= f.text_field :email , :size=>'15',:maxlength=>'32' %> <br/> 
+            <%= f.label :password %> <br/> 
+            <%= f.password_field :password , :size=>'15', :maxlength=>'32' %> 
+        <br/> 
+            <%= f.submit "Sign in" %> <br /> 
+            <%= link_to "Forgot your password?", new_password_path('user')  %> 
+      <% end %> 
+<%= render 'shared/fb_async' %> -->
