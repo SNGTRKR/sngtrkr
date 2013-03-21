@@ -8,8 +8,8 @@
 			<input type="text">
 			<h2>Change name</h2>
 			<p>Please note, you can only change your name a few times.</p>
-			<input type="text">
-			<input type="text">
+			<input type="text" value="<%= @user.first_name %>">
+			<input type="text" value="<%= @user.last_name %>">
 			<h2>Email Notifications</h2>
 			<p>You can change how often you receive emails for new releases, from the options provided below. We will only email you if there are new releases.</p>
 			<div id="slider"></div>

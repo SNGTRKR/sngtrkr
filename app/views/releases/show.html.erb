@@ -84,7 +84,7 @@ content_for :og_type, "sngtrkr:release"
       </div>
       <div class="btn buy" data-placement="bottom">Buy</div>
       <div class="btn share_release share" data-placement="bottom"><i class="icon-share"></i>Share</div>
-      <div class="btn">Report</div>
+      <div class="btn report" data-toggle="modal" data-target="#myModal">Report</div>
     </div>
     <div class="clearfix"></div>
     <div class="tracklisting">
@@ -155,5 +155,42 @@ content_for :og_type, "sngtrkr:release"
     <% if @release.sdigital %>
       <%= link_to image_tag("/images/social/7d.png", :alt => "7Digital", :title => "7Digital"), @release.sdigital, :target => "_blank" %>
     <% end %>
+  </div>
+</div>
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-body">
+    <h2>Report a problem</h2>
+    <p>Please select the error(s) you have noticed with <strong><%= @release.name %></strong> by <strong><%= @artist.name %></strong>, including any further comments:</p>
+    <form>
+      <label class="checkbox">
+        <input type="checkbox" value="">
+        Release name
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" value="">
+        Artist
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" value="">
+        Release date
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" value="">
+        Label
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" value="">
+        Purchase links
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" value="">
+        Tracklistings
+      </label>
+      <textarea rows="4"></textarea>
+  </div>
+  <div class="modal-footer">
+    <button data-dimiss="modal">Cancel</button>
+    <button class="btn">Send</button>
+    </form>
   </div>
 </div>

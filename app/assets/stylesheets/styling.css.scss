@@ -8,3 +8,30 @@ p {
 strong {
 	font-family: "MuseoSans-700", Helvetica, Arial, sans-serif !important;
 }
+.modal-body {
+	h2 {
+		border-bottom: 1px #d1d1d1 solid;
+		line-height: 28px !important;
+	}
+	form {
+		margin:0 !important;
+	}
+	textarea {
+		margin-top:14px;
+		width:516px;
+		resize:none;
+	}
+}
+.modal-footer {
+	.btn {
+		margin:0 0 0 8px;
+	}
+	button:first-child {
+		background:none;
+		border:0;
+		color:$darkgray;
+	}
+	button:first-child:hover {
+		text-decoration:underline;
+	}
+}

@@ -49,6 +49,7 @@ $(document).ready ->
 	$('.image').click ->
 		$('.front').toggleClass('front-flip')
 		$('.back').toggleClass('back-flip')
+	#$('.report').modal()
 
 	
 
