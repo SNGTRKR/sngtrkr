@@ -148,13 +148,11 @@
 			<% if flash[:notice] or flash[:error] or flash[:success] %>
 		  		<div class="alert <% if flash[:success] then %>alert-success<% end %><% if flash[:notice] then %>alert-info<% end %><% if flash[:error] then %>alert-error<% end %>">
 				  	<button type="button" class="close" data-dismiss="alert">×</button>
-			    		  <p>
 			    		  <% if flash[:error] and !flash[:notice] %>
 			      		  <%= raw flash[:error] %>
 			    		  <% end %>
 			    		  <%= raw flash[:notice] %>
 			    		  <%= raw flash[:success] %>
-			    		  </p>
 		  		</div>
 			<% end %>
 			<%= yield %>
