@@ -1,3 +1,6 @@
+//= require jquery
+//= require jquery_ujs
+
 $(document).ready ->
 	$('#show_info a').click ->
 		if $("#more_info").is(":hidden")
