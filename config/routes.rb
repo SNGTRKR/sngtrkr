@@ -50,8 +50,9 @@ SNGTRKR::Application.routes.draw do
     end
     resources :manages
   end
+
+  get 'search' => 'search#omni'
   
-  match '/artists/search' => "Artists#search"
   resources :artists do
     collection do
       match 'import/:fb_id', :action => 'import'
