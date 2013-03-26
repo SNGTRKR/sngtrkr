@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   before_filter :self_only, :except => [:show, :timeline, :self, :new, :create]
   before_filter :authenticate_user!, :except => [:new]
   load_and_authorize_resource :except => [:new]
-  before_filter :cache_it, :only => [:timeline,:show,:public]
 
   def timeline
     @user = current_user

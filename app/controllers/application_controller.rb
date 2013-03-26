@@ -35,10 +35,6 @@ class ApplicationController < ActionController::Base
     top_artists = Artist.select('artists.id').joins(:follow).group('artists.id').having("count(follows.id) > #{count}")
     @latest_releases = Release.order("date DESC").where(:artist_id => top_artists).limit(4)
   end
-
-  def cache_it
-    expires_in 3.hour, :public => true
-  end
   
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = exception.message
