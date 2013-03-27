@@ -1,25 +1,43 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<% content_for :title do %>Profile settings<% end %>
+<div class="row-fluid">
+  <div class="span10 edit">
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+    <%= devise_error_messages! %>
+      <h1>Profile settings</h1>
+      <h2>Change Email</h2>
+      <p>Your current email address is <strong><%= @user.email %></strong></p>
+      <%= f.email_field :email %>
+      <h2>Change name</h2>
+      <p>Please note, you can only change your name a few times.</p>
+      <%= f.text_field :first_name %>
+      <%= f.text_field :last_name %>
+      <h2>Change password</h2>
+      <%= f.label :current_password %>
+      <%= f.password_field :current_password %>
+      <div class="clearfix"></div>
+      <div id="new_pass">
+        <%= f.label "New password" %>
+        <%= f.password_field  :password, :autocomplete => "off" %>
+      </div>
+      <div>
+        <%= f.label "Confirm new password" %>
+        <%= f.password_field :password_confirmation %>
+      </div>
+      <h2>Email Notifications</h2>
+      <p>You can change how often you receive emails for new releases, from the options provided below. We will only email you if there are new releases.</p>
+      <%= f.hidden_field(:email_frequency) %>
+      <div id="slider"></div>
+      <ul>
+        <li class="daily">Daily</li>
+        <li class="weekly">Weekly</li>
+        <li class="fortnightly">Fortnightly</li>
+        <li class="monthly">Monthly</li>
+        <li class="never">Never</li>
+      </ul>
+      <input class="btn" type="submit" value="Save">
+    <% end %>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
-
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password, :autocomplete => "off" %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div>
-
-  <div><%= f.submit "Update" %></div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
-
-<%= link_to "Back", :back %>
+    <h3>Cancel my account</h3>
+    <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
+  </div>
+</div>

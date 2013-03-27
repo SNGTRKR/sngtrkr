@@ -8,13 +8,11 @@ class ApplicationController < ActionController::Base
 
   def define_user
       if user_signed_in?
-        @user = current_user
         @app_friends = []
         @app_friends = session["friends"]
         @activities = User.recent_activities session["friends"]
       else
         @activities = []
-        @user = nil
       end
   end  
 
@@ -34,10 +32,6 @@ class ApplicationController < ActionController::Base
     count = 5
     top_artists = Artist.select('artists.id').joins(:follow).group('artists.id').having("count(follows.id) > #{count}")
     @latest_releases = Release.order("date DESC").where(:artist_id => top_artists).limit(4)
-  end
-
-  def cache_it
-    expires_in 3.hour, :public => true
   end
   
   rescue_from CanCan::AccessDenied do |exception|

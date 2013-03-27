@@ -175,4 +175,14 @@ class User < ActiveRecord::Base
     return activities[0,10]
   end
 
+  def self.email_frequencies
+    [
+      ['Daily',1],
+      ['Weekly',2],
+      ['Fortnightly',3],
+      ['Monthly',4],
+      ['Never',5],
+    ]
+  end
+
 end

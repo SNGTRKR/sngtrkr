@@ -6,7 +6,6 @@ class ReleasesController < ApplicationController
   load_and_authorize_resource
   
   before_filter :managed_artists_only, :only => [:edit, :update, :create, :destroy, :new]
-  before_filter :cache_it, :only => [:show]
   skip_before_filter :authenticate_user!, :only => [:show]
 
   # GET /releases/1

@@ -5,7 +5,6 @@ class ArtistsController < ApplicationController
   load_and_authorize_resource :except => [:search]
 
   before_filter :authenticate_user!, :except => [:show,:search,:index]
-  before_filter :cache_it, :only => [:show]
   
   before_filter :managed_artists_only, :only => [:edit, :update]
   
@@ -68,7 +67,7 @@ class ArtistsController < ApplicationController
   # GET /artists/1
   # GET /artists/1.json
   def show
-    @artist = Artist.find(params[:id])
+    @artist = Artist.includes(:releases).find(params[:id])
     @user = current_user
     @timeline = Timeline.artist(params[:id])
     respond_to do |format|
