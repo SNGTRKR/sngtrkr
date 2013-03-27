@@ -21,7 +21,7 @@ content_for :og_type, "sngtrkr:artist"
       <%= image_tag "/images/release_blk.png" %>
       <%= @artist.releases.count %> releases
     </div>
-    <div class="btn track">Track</div>
+    <%= follow_button @artist %>
     <div class="btn share share_artist" data-placement="bottom"><i class="icon-share"></i>Share</div>
     <ul>
       <% if @artist.fbid? %>
