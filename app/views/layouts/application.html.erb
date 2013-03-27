@@ -86,7 +86,7 @@
 		</div>
 		<div class="navbar navbar-inverse navbar-fixed-top">
 		              <div class="navbar-inner">
-	                  	  <% if @user %>
+	                  	  <% if current_user %>
 							<%= link_to tl_path, :class => "brand" do %>
 								<%= image_tag "/images/logo-small.png" %>
 							<% end %>

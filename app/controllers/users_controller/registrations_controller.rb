@@ -13,4 +13,32 @@ class UsersController::RegistrationsController < Devise::RegistrationsController
     sign_out_and_redirect(resource)
   end
 
+  def update
+    @user = User.find(current_user.id)
+
+    if params[:user][:password].blank?
+      params[:user].delete("password")
+      params[:user].delete("password_confirmation")
+      params[:user].delete("current_password")
+    end
+
+    if params[:user][:password]
+      if @user.update_with_password(params[:user])
+        # Sign in the user by passing validation in case his password changed
+        sign_in @user, :bypass => true
+        redirect_to user_path(current_user)
+      else
+        render "edit"
+      end
+    else
+      if @user.update_attributes(params[:user])
+        # Sign in the user by passing validation in case his password changed
+        sign_in @user, :bypass => true
+        redirect_to user_path(current_user)
+      else
+        render "edit"
+      end
+    end
+  end
+
 end

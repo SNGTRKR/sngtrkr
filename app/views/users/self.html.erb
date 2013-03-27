@@ -14,7 +14,7 @@
           </li>
         </ul>
         <div class="clearfix"></div>
-        <%= link_to edit_user_path(@user) do %><div class="btn"><i class="icon-pencil"></i>Edit</div><% end %>
+        <%= link_to edit_user_registration_path(@user) do %><div class="btn"><i class="icon-pencil"></i>Edit</div><% end %>
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane active" id="tab1">
             <% if !@user.following.count.zero? %>
