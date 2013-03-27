@@ -120,7 +120,7 @@
 		                      <li>
 		                      	<% if !current_user %>
 									<%= link_to(user_omniauth_authorize_path(:facebook)) do %>
-										Login
+										<span class="logging_in">Login</span>
 									<% end %>
 								<% else %>
 									<%= link_to(destroy_user_session_path, :method => :delete) do %>
