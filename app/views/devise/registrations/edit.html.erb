@@ -11,18 +11,24 @@
       <p>Please note, you can only change your name a few times.</p>
       <%= f.text_field :first_name %>
       <%= f.text_field :last_name %>
-      <h2>Change password</h2>
-      <%= f.label :current_password %>
-      <%= f.password_field :current_password %>
-      <div class="clearfix"></div>
-      <div id="new_pass">
-        <%= f.label "New password" %>
-        <%= f.password_field  :password, :autocomplete => "off" %>
-      </div>
-      <div>
-        <%= f.label "Confirm new password" %>
-        <%= f.password_field :password_confirmation %>
-      </div>
+
+      <% 
+      # Only show password option if they do NOT use FB login
+      # FB login generates random obscure password that user wont ever know
+      if @user.fbid.blank? %>
+        <h2>Change password</h2>
+        <%= f.label :current_password %>
+        <%= f.password_field :current_password %>
+        <div class="clearfix"></div>
+        <div id="new_pass">
+          <%= f.label "New password" %>
+          <%= f.password_field  :password, :autocomplete => "off" %>
+        </div>
+        <div>
+          <%= f.label "Confirm new password" %>
+          <%= f.password_field :password_confirmation %>
+        </div>
+      <% end %>
       <h2>Email Notifications</h2>
       <p>You can change how often you receive emails for new releases, from the options provided below. We will only email you if there are new releases.</p>
       <%= f.hidden_field(:email_frequency) %>
