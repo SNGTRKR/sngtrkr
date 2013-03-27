@@ -86,11 +86,6 @@
 		</div>
 		<div class="navbar navbar-inverse navbar-fixed-top">
 		              <div class="navbar-inner">
-		                  <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
-		                    <span class="icon-bar"></span>
-		                    <span class="icon-bar"></span>
-		                    <span class="icon-bar"></span>
-		                  </a>
 	                  	  <% if @user %>
 							<%= link_to tl_path, :class => "brand" do %>
 								<%= image_tag "/images/logo-small.png" %>
@@ -100,9 +95,6 @@
 								<%= image_tag "/images/logo-small.png" %>
 							<% end %>
 						  <% end %>
-		                  <div class="nav-collapse collapse navbar-inverse-collapse">
-
-		                  	
 		                    <ul class="nav">
 		                      <li class="divider-vertical"></li>
 		                      <% if current_user %>
@@ -140,8 +132,6 @@
 		                      <li id="show_info"><a>Info</a></li>
 		                      <li class="divider-vertical buffer"></li>
 		                    </ul>
-		                  </div><!-- /.nav-collapse -->
-		            
 		              </div><!-- /navbar-inner -->
 		            </div>
 		<div class="container container-top">
