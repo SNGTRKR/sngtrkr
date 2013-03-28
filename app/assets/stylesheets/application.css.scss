@@ -29,6 +29,7 @@ $lightgray: #DDDDDD;
   src: local("?"),
     url("/font/MuseoSans_700.otf") format("opentype");
 }
+@import "grid.scss";
 @import "font-awesome";
 @import "navbar.css.scss";
 @import "headers.css.scss";
@@ -49,4 +50,10 @@ body {
 }
 .container-top {
   margin-top:90px;
+}
+.container-fluid {
+  min-width:850px;
+}
+.navbar-inner {
+  
 }

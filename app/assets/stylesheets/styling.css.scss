@@ -1,7 +1,11 @@
 * {
 -webkit-font-smoothing: antialiased;
 }
-
+::selection {
+	background: $orange;
+	color: #fff;
+	text-shadow: none;
+}
 .center {
 	margin:0 auto !important;
 	float:none !important;
@@ -38,4 +42,12 @@ strong {
 	button:first-child:hover {
 		text-decoration:underline;
 	}
+}
+header {
+	width:100%;
+	min-width:890px;
+	height:51px;
+}
+.navbar-inner {
+	min-width:890px;
 }

@@ -5,7 +5,7 @@
 	.nav-tabs {
 		margin-bottom:10px !important;
 			li {
-				width:218px !important;
+				width:217px !important;
 			}
 	}
 	h1 {
@@ -22,8 +22,9 @@
 	p {
 		color:$gray !important;
 	}
-	.tab-content {
-		margin:-390px 0 0 256px;
+}
+	.profile-tab-content {
+		// margin:-390px 0 0 256px;
 			#tab2 {
 				overflow:hidden;
 				div {
@@ -89,7 +90,6 @@
 				}
 			}
 	}
-}
 .edit {
 	h2 {
 		border-bottom:1px #d1d1d1 solid;

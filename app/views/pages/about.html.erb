@@ -6,9 +6,10 @@ content_for :og_type, "website"
 %>
 <% content_for :title do %>About<% end %>
 <% content_for :description do %>Inspired by the passion and appreciation that we have for music and artists alike, we built SNGTRKR - a webapp to enable other music lovers to easily track artists.<% end %>
-<div class="row-fluid">
-	<div class="span10">
-		<h1>About</h1>
+<div class="g_two_col">
+	<div class="g_sidebar">
+		<div class="g_fixed">
+			<h1>About</h1>
 			<div class="tabbable tabs-left">
 				<ul id="myTab" class="nav nav-tabs nav-stacked each-tab">
 					<li class="active">
@@ -21,7 +22,11 @@ content_for :og_type, "website"
 						<a href="#tab3" data-toggle="tab"><i class="icon-file-alt"></i>Our Story</a>
 					</li>
 				</ul>
-				<div class="tab-content" id="myTabContent">
+			</div>
+		</div>
+	</div>
+	<div class="g_main g_tabs_large">
+		<div class="tab-content about-tab-content" id="myTabContent">
 					<div class="tab-pane active" id="tab1">
 					<p>SNGTRKR simplifies beyond belief the process of keeping up with new music, by putting all the information on the artists you love 
 						in one place, and emailing you when (and <strong>only when</strong>) they release new material. Just tell us who you like listening to, and we'll notify you by email when they have a new release, as well as suggest other similar 
@@ -30,7 +35,6 @@ content_for :og_type, "website"
 						first album they ever published. It's a great way to get nostalgic! You can track absolutely any artist with a Facebook page. They don't have to be using SNGTRKR, simply search for them on our site, if
 						they aren't already in our catalogue we'll add them immediately.</p>
 					<p>We offer links to buy most music through both 7digital and iTunes, so whatever your preference, you're covered.</p>
-					<p>
 			      	</div>
 					<div class="tab-pane" id="tab2">
 							<div class="team_member">
@@ -88,7 +92,7 @@ content_for :og_type, "website"
 					
 					<p>SNGTRKR is built to be completely automated by syncing to Facebook. It works by indexing many different artists, while collating data from several other online platforms, to create a rich source of artist information within a comprehensive database of music releases, both old and new.</p>
 					<p>All of this information is then delivered instantly to you. You choose which artists that you wish to track, either for their upcoming dancefloor fillers, or their archived classics. We then supply you with a timeline of the artist's tracks, alongside email alerts on the day that their new releases are announced. Additionally, upon registration SNGTRKR automatically recognises the artists that you've already liked on Facebook, and supplies you with relevant recommendations to build up your TRK'd artists.</p>
-					But it doesn't stop there. We've taken it one step further and integrated the ability to listen to and purchase tracks from several online music outlets, so that discovering new music can be a fast and enjoyable experience. Furthermore, we have retained the sense of community that Facebook offers, by allowing you to browse and listen to music that your Facebook friends are TRKing on the SNGTRKR platform.</p>
+					<p>But it doesn't stop there. We've taken it one step further and integrated the ability to listen to and purchase tracks from several online music outlets, so that discovering new music can be a fast and enjoyable experience. Furthermore, we have retained the sense of community that Facebook offers, by allowing you to browse and listen to music that your Facebook friends are TRKing on the SNGTRKR platform.</p>
 					<p>
 					Our dream is to make every track that is released available on the SNGTRKR application. We want to become the definitive online catalogue for every artist's music releases.</p>
 					<p>SNGTRKR was founded in 2012 by Matt Bessey and Billy Dallimore,<br>
@@ -97,5 +101,4 @@ content_for :og_type, "website"
 					</div>
 			</div>
 		</div>
-	</div>
 </div>

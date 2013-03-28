@@ -2,15 +2,13 @@
 	h1 {
 		float:left;
 	}
-	.search_input {
-		float:left;
-		margin:23px 0 0 193px;
-		width:63%;
-	}
 }
-.search-tabs {
-	ul {
-		margin-top:-36px;
+.search-tab-content {
+	.search_input {
+		margin-top:23px;
+		input {
+			width:90%;
+		}
 	}
 	.result {
 		padding:15px 0;

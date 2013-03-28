@@ -84,66 +84,68 @@
 				</div>
 			</div>
 		</div>
-		<div class="navbar navbar-inverse navbar-fixed-top">
-		              <div class="navbar-inner">
-	                  	  <% if current_user %>
-							<%= link_to tl_path, :class => "brand" do %>
-								<%= image_tag "/images/logo-small.png" %>
-							<% end %>
-						  <% else %>
-							<%= link_to :root, :class => "brand" do %>
-								<%= image_tag "/images/logo-small.png" %>
-							<% end %>
-						  <% end %>
-		                    <ul class="nav">
-		                      <li class="divider-vertical"></li>
-		                      <% if current_user %>
-		                      <li class="<% if current_page?(tl_path) %>active<% end %>"><a href="/tl">Timeline</a></li>
-		                      <li class="divider-vertical"></li>
-		                      <li class="<% if current_page?(user_path(current_user)) %>active<% end %>">
-		                      	<%= link_to user_path(current_user) do %>
-			                      	Profile
-			                    <% end %>
-			                  </li>
-		                      <li class="divider-vertical"></li>
-		                      <% end %>
-		                    </ul>
-		                    
-                    	    <%= form_tag artists_path , :method => 'get', :class => "navbar-search pull-left" do %>
-								<%= text_field_tag(:search, params[:search], :autocomplete => 'off', :placeholder => "Find artists and releases", :class => 'search-query span3') %>
-							    <%= link_to "#submit" do %>
-									<i class="icon-search"></i>
-							    <% end %>
-							<% end %>
-		                    <ul class="nav pull-right">
-		                      <li class="divider-vertical"></li>
-		                      <li>
-		                      	<% if !current_user %>
-									<%= link_to(user_omniauth_authorize_path(:facebook)) do %>
-										<span class="logging_in">Login</span>
-									<% end %>
-								<% else %>
-									<%= link_to(destroy_user_session_path, :method => :delete) do %>
-										Logout
-									<% end %>
-								<% end %>	
-							  </li>
-		                      <li class="divider-vertical"></li>
-		                      <li id="show_info"><a>Info</a></li>
-		                      <li class="divider-vertical buffer"></li>
-		                    </ul>
-		              </div><!-- /navbar-inner -->
-		            </div>
-		<div class="container container-top">
+		<header role="banner">
+			<div class="navbar navbar-inverse navbar-fixed-top">
+			              <div class="navbar-inner">
+		                  	  <% if current_user %>
+								<%= link_to tl_path, :class => "brand" do %>
+									<%= image_tag "/images/logo-small.png" %>
+								<% end %>
+							  <% else %>
+								<%= link_to :root, :class => "brand" do %>
+									<%= image_tag "/images/logo-small.png" %>
+								<% end %>
+							  <% end %>
+			                    <ul class="nav">
+			                      <li class="divider-vertical"></li>
+			                      <% if current_user %>
+			                      <li class="<% if current_page?(tl_path) %>active<% end %>"><a href="/tl">Timeline</a></li>
+			                      <li class="divider-vertical"></li>
+			                      <li class="<% if current_page?(user_path(current_user)) %>active<% end %>">
+			                      	<%= link_to user_path(current_user) do %>
+				                      	Profile
+				                    <% end %>
+				                  </li>
+			                      <li class="divider-vertical"></li>
+			                      <% end %>
+			                    </ul>
+			                    
+	                    	    <%= form_tag artists_path , :method => 'get', :class => "navbar-search pull-left" do %>
+									<%= text_field_tag(:search, params[:search], :autocomplete => 'off', :placeholder => "Find artists and releases", :class => 'search-query span3') %>
+								    <%= link_to "#submit" do %>
+										<i class="icon-search"></i>
+								    <% end %>
+								<% end %>
+			                    <ul class="nav pull-right">
+			                      <li class="divider-vertical"></li>
+			                      <li>
+			                      	<% if !current_user %>
+										<%= link_to(user_omniauth_authorize_path(:facebook)) do %>
+											<span class="logging_in">Login</span>
+										<% end %>
+									<% else %>
+										<%= link_to(destroy_user_session_path, :method => :delete) do %>
+											Logout
+										<% end %>
+									<% end %>	
+								  </li>
+			                      <li class="divider-vertical"></li>
+			                      <li id="show_info"><a>Info</a></li>
+			                      <li class="divider-vertical buffer"></li>
+			                    </ul>
+			              </div><!-- /navbar-inner -->
+			            </div>
+			        </header>
+		<div class="g_content" role="main">
 			<% if flash[:notice] or flash[:error] or flash[:success] %>
-		  		<div class="alert <% if flash[:success] then %>alert-success<% end %><% if flash[:notice] then %>alert-info<% end %><% if flash[:error] then %>alert-error<% end %>">
+		  	<!-- 	<div class="alert <% if flash[:success] then %>alert-success<% end %><% if flash[:notice] then %>alert-info<% end %><% if flash[:error] then %>alert-error<% end %>">
 				  	<button type="button" class="close" data-dismiss="alert">×</button>
 			    		  <% if flash[:error] and !flash[:notice] %>
 			      		  <%= raw flash[:error] %>
 			    		  <% end %>
 			    		  <%= raw flash[:notice] %>
 			    		  <%= raw flash[:success] %>
-		  		</div>
+		  		</div> -->
 			<% end %>
 			<%= yield %>
 		</div>

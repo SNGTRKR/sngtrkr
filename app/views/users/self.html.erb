@@ -1,7 +1,7 @@
 <% content_for :title do %><%= @user.first_name %>'s profile<% end %>
-<div class="row-fluid">
-  <div class="span10">
-      <div class="tabbable tabs-left profile-tabs">
+<div class="g_two_col">
+  <div class="g_sidebar">
+      <div class="tabbable tabs-left profile-tabs g_fixed">
       	<%= image_tag '//graph.facebook.com/'+@user.fbid+'/picture?width=200&height=200' %>
       	<h1><%= @user.first_name + " " + @user.last_name %></h1>
       	<p>Bristol, United Kingdom</p>
@@ -15,14 +15,17 @@
         </ul>
         <div class="clearfix"></div>
         <%= link_to edit_user_registration_path(@user) do %><div class="btn"><i class="icon-pencil"></i>Edit</div><% end %>
-        <div class="tab-content" id="myTabContent">
+      </div> 
+  </div>
+  <div class="g_main g_tabs">
+            <div class="tab-content profile-tab-content" id="myTabContent">
           <div class="tab-pane active" id="tab1">
             <% if !@user.following.count.zero? %>
-    	      	<table class="table table-striped">
-        			  <tbody>
+              <table class="table table-striped">
+                <tbody>
                   <% @following.each do |artist_tracked| %>
-          			    <tr>
-          			      <td>
+                    <tr>
+                      <td>
                         <!-- <%= image_tag artist_tracked.image :trackers %> -->
                         <%= link_to artist_path(artist_tracked) do %>
                           <%= image_tag "http://placehold.it/75x75", :class => "image" %>
@@ -55,10 +58,10 @@
                               </div>
                             </div>
                       </td>
-          			    </tr>
+                    </tr>
                   <% end %>
-        			  </tbody>
-        			</table>
+                </tbody>
+              </table>
             <% else %>
               <p>You are not tracking anyone.</p>
             <% end %>
@@ -66,18 +69,17 @@
           <div class="tab-pane" id="tab2">
               <% if !@app_friends.empty? %>
                 <% @app_friends.each do |friend| %>
-            			<div>
-            				<%= image_tag "//graph.facebook.com/"+friend.fbid+"/picture?width=75&height=75" %>
-            				<span><%= friend.first_name + " " + friend.last_name %></span>
-            				<%= Follow.where('user_id = ?',friend.id).count %> trackers
-            			</div>
+                  <div>
+                    <%= image_tag "//graph.facebook.com/"+friend.fbid+"/picture?width=75&height=75" %>
+                    <span><%= friend.first_name + " " + friend.last_name %></span>
+                    <%= Follow.where('user_id = ?',friend.id).count %> trackers
+                  </div>
                 <% end %>
               <% else %>
                 <p>You have no friends</p>
               <% end %>
           </div>
         </div>
-      </div> 
   </div>
 </div>
 <!--       <%= form_for(User.new, :url => user_session_path) do |f| %> 

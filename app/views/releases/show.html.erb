@@ -7,46 +7,48 @@ content_for :og_type, "sngtrkr:release"
 %>
 <% content_for :title do %><%= @release.name %> release information by <%= @artist.name %><% end %>
 <% content_for :description do %><%= @release.name %> release information by <%= @artist.name %>. Released <%= @release.date.strftime("#{@release.date.day.ordinalize} %B %Y ") %> by <%= @release.label_name %> <% end %>
-<div class="row-fluid">
-  <div class="span2 release_artist">
-    <%= image_tag 'http://placehold.it/170x170' %>
-    <h2><%= link_to @artist.name, @artist %></h2>
-    <h3><%= @artist.label_name %></h3>
-    <div class="trackers">
-      <%= image_tag "/images/ppl_black.png" %>
-      <%= @artist.followers %> tracker<% if @artist.followers > 1 %>s<% end %>
+<div class="g_two_col">
+  <div class="g_sidebar">
+    <div class="release_artist g_fixed">
+      <%= image_tag 'http://placehold.it/200x200' %>
+      <h2><%= link_to @artist.name, @artist %></h2>
+      <h3><%= @artist.label_name %></h3>
+      <div class="trackers">
+        <%= image_tag "/images/ppl_black.png" %>
+        <%= @artist.followers %> tracker<% if @artist.followers > 1 %>s<% end %>
+      </div>
+      <div class="releases">
+        <%= image_tag "/images/release_blk.png" %>
+        <%= @releases.count %> release<% if @releases.count > 1 %>s<% end %>
+      </div>
+      <div class="btn track">Track</div>
+      <div class="btn share_artist share" data-placement="bottom"><i class="icon-share"></i>Share</div>
+      <ul>
+        <% if @artist.fbid? %>
+        <li><a href="http://www.facebook.com/<%= @artist.fbid %>" target="_blank"><%= image_tag "/images/social/fb.png" %><p>Facebook</p></a></li> 
+        <% end %>
+        <% if @artist.twitter? %>
+        <li><a href="http://www.twitter.com/<%= @artist.twitter %>" target="_blank"><%= image_tag "/images/social/twitter.png" %><p>Twitter</p></a></li>
+        <% end %>
+        <% if @artist.youtube? %>
+        <li><a href="http://www.youtube.com/<%= @artist.youtube %>" target="_blank"><%= image_tag "/images/social/yt.png" %><p>YouTube</p></a></li>
+        <% end %>
+        <% if @artist.soundcloud? %>
+        <li><a href="http://www.soundcloud.com/<%= @artist.soundcloud %>" target="_blank"><%= image_tag "/images/social/sc.png" %><p>Soundcloud</p></a></li>
+        <% end %>
+        <% if @artist.website? %>
+        <li><a href="http://<%= @artist.website %>" target="_blank"><%= image_tag "/images/social/www.png" %><p>Website</p></a></li>
+        <% end %>
+        <% if @artist.sd? %>
+        <li><a href="<%= @artist.sd %>" target="_blank"><%= image_tag "/images/social/7d.png" %><p>7Digital</p></a></li>
+        <% end %>
+        <% if @artist.itunes? %>
+        <li><a href="<%= @artist.itunes %>" target="_blank"><%= image_tag "/images/social/it.png" %><p>iTunes</p></a></li>
+        <% end %>
+      </ul>
     </div>
-    <div class="releases">
-      <%= image_tag "/images/release_blk.png" %>
-      <%= @releases.count %> release<% if @releases.count > 1 %>s<% end %>
-    </div>
-    <div class="btn track">Track</div>
-    <div class="btn share_artist share" data-placement="bottom"><i class="icon-share"></i>Share</div>
-    <ul>
-      <% if @artist.fbid? %>
-      <li><a href="http://www.facebook.com/<%= @artist.fbid %>" target="_blank"><%= image_tag "/images/social/fb.png" %><p>Facebook</p></a></li> 
-      <% end %>
-      <% if @artist.twitter? %>
-      <li><a href="http://www.twitter.com/<%= @artist.twitter %>" target="_blank"><%= image_tag "/images/social/twitter.png" %><p>Twitter</p></a></li>
-      <% end %>
-      <% if @artist.youtube? %>
-      <li><a href="http://www.youtube.com/<%= @artist.youtube %>" target="_blank"><%= image_tag "/images/social/yt.png" %><p>YouTube</p></a></li>
-      <% end %>
-      <% if @artist.soundcloud? %>
-      <li><a href="http://www.soundcloud.com/<%= @artist.soundcloud %>" target="_blank"><%= image_tag "/images/social/sc.png" %><p>Soundcloud</p></a></li>
-      <% end %>
-      <% if @artist.website? %>
-      <li><a href="http://<%= @artist.website %>" target="_blank"><%= image_tag "/images/social/www.png" %><p>Website</p></a></li>
-      <% end %>
-      <% if @artist.sd? %>
-      <li><a href="<%= @artist.sd %>" target="_blank"><%= image_tag "/images/social/7d.png" %><p>7Digital</p></a></li>
-      <% end %>
-      <% if @artist.itunes? %>
-      <li><a href="<%= @artist.itunes %>" target="_blank"><%= image_tag "/images/social/it.png" %><p>iTunes</p></a></li>
-      <% end %>
-    </ul>
   </div>
-  <div class="span8 release_info">
+  <div class="g_main release_info">
     <!-- <%= image_tag @release.image :release %> -->
     <div class="image">
       <div class="front">

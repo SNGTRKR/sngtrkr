@@ -4,16 +4,10 @@
 <% else %>
   <% content_for :description do %>Search results empty<% end %>
 <% end %>
-<div class="row-fluid">
-  <div class="span10">
-    <div class="result_search">
+<div class="g_two_col">
+  <div class="g_sidebar_large">
+    <div class="result_search g_fixed">
       <h1>Search</h1>
-      <div class="search_input">
-        <p><strong>1 release and 1 artist found</strong></p>
-        <input type="text" placeholder="Search" class="span12" value="<%= @search %>">
-      </div>
-      <div class="clearfix"></div>
-    </div>
       <div class="tabbable tabs-left search-tabs">
         <ul id="myTab" class="nav nav-tabs nav-stacked each-tab">
           <li class="active">
@@ -26,67 +20,74 @@
             <a href="#tab3" data-toggle="tab"><%= image_tag "/images/release_blk.png", :class => "blk rel"%><%= image_tag "/images/release_wht.png", :class => "wht rel"%>Releases</a>
           </li>
         </ul>
-        <div class="tab-content" id="myTabContent">
-          <div class="tab-pane active" id="tab1">
-            <% if @empty_search or @short_search or @artists.empty? %>
-              <% if @empty_search %>
-                <p> Your search was empty, you have to type <strong>something</strong>! </p>
-              <% elsif @short_search %>
-                <p> Your search word wasn't long enough, you must type at least <strong>two characters</strong>.</p>
-              <% elsif @artists.empty? %>
-                <p>We didn't find any results for '<strong><%= @search %></strong>'. Check your spelling, or try a different search.</p>
-              <% end %>
-            <% else %>
-
-            <% end %>
-          </div>
-          <div class="tab-pane" id="tab2">
-            <% if @empty_search or @short_search or @artists.empty? %>
-              <% if @empty_search %>
-                <p> Your search was empty, you have to type <strong>something</strong>! </p>
-              <% elsif @short_search %>
-                <p> Your search word wasn't long enough, you must type at least <strong>two characters</strong>.</p>
-              <% elsif @artists.empty? %>
-                <p>We didn't find any results for '<strong><%= @search %></strong>'. Check your spelling, or try a different search.</p>
-              <% end %>
-            <% else %>
-                <div class="result">
-                  <%= image_tag "http://placehold.it/110x110" %>
-                  <span>
-                    <div>Out The Blue</div>
-                    Sub Focus<br/>
-                    29th April 2012
-                  </span>
-                  <div class="btn btn-small">Buy</div>
-                  <div class="btn btn-small">Share</div>
-                </div>
-            <% end %>
-          </div>
-          <div class="tab-pane" id="tab3">
-            <% if @empty_search or @short_search or @artists.empty? %>
-              <% if @empty_search %>
-                <p> Your search was empty, you have to type <strong>something</strong>! </p>
-              <% elsif @short_search %>
-                <p> Your search word wasn't long enough, you must type at least <strong>two characters</strong>.</p>
-              <% elsif @artists.empty? %>
-                <p>We didn't find any results for '<strong><%= @search %></strong>'. Check your spelling, or try a different search.</p>
-              <% end %>
-            <% else %>
-              <% @artists.each do |artist| %>
-                <div class="result">
-                  <%= image_tag "http://placehold.it/110x110" %>
-                  <!-- <%= image_tag artist.image.url :search_a %> -->
-                  <span>
-                    <div><%= link_to artist.name, artist %></div>
-                    <%= artist.label_name %><br/>
-                    <%= artist.followers %> trackers
-                  </span>
-                  <div class="btn btn-small">Track</div>
-                </div>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
       </div> 
+    </div>
+  </div>
+  <div class="g_main g_tabs_large">
+      <div class="tab-content search-tab-content" id="myTabContent">
+        <div class="search_input">
+          <p><strong>1 release and 1 artist found</strong></p>
+          <input type="text" placeholder="Search" value="<%= @search %>">
+        </div>
+        <div class="tab-pane active" id="tab1">
+          <% if @empty_search or @short_search or @artists.empty? %>
+            <% if @empty_search %>
+              <p> Your search was empty, you have to type <strong>something</strong>! </p>
+            <% elsif @short_search %>
+              <p> Your search word wasn't long enough, you must type at least <strong>two characters</strong>.</p>
+            <% elsif @artists.empty? %>
+              <p>We didn't find any results for '<strong><%= @search %></strong>'. Check your spelling, or try a different search.</p>
+            <% end %>
+          <% else %>
+
+          <% end %>
+        </div>
+        <div class="tab-pane" id="tab2">
+          <% if @empty_search or @short_search or @artists.empty? %>
+            <% if @empty_search %>
+              <p> Your search was empty, you have to type <strong>something</strong>! </p>
+            <% elsif @short_search %>
+              <p> Your search word wasn't long enough, you must type at least <strong>two characters</strong>.</p>
+            <% elsif @artists.empty? %>
+              <p>We didn't find any results for '<strong><%= @search %></strong>'. Check your spelling, or try a different search.</p>
+            <% end %>
+          <% else %>
+              <div class="result">
+                <%= image_tag "http://placehold.it/110x110" %>
+                <span>
+                  <div>Out The Blue</div>
+                  Sub Focus<br/>
+                  29th April 2012
+                </span>
+                <div class="btn btn-small">Buy</div>
+                <div class="btn btn-small">Share</div>
+              </div>
+          <% end %>
+        </div>
+        <div class="tab-pane" id="tab3">
+          <% if @empty_search or @short_search or @artists.empty? %>
+            <% if @empty_search %>
+              <p> Your search was empty, you have to type <strong>something</strong>! </p>
+            <% elsif @short_search %>
+              <p> Your search word wasn't long enough, you must type at least <strong>two characters</strong>.</p>
+            <% elsif @artists.empty? %>
+              <p>We didn't find any results for '<strong><%= @search %></strong>'. Check your spelling, or try a different search.</p>
+            <% end %>
+          <% else %>
+            <% @artists.each do |artist| %>
+              <div class="result">
+                <%= image_tag "http://placehold.it/110x110" %>
+                <!-- <%= image_tag artist.image.url :search_a %> -->
+                <span>
+                  <div><%= link_to artist.name, artist %></div>
+                  <%= artist.label_name %><br/>
+                  <%= artist.followers %> trackers
+                </span>
+                <div class="btn btn-small">Track</div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
   </div>
 </div>
