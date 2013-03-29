@@ -24,10 +24,12 @@ class Artist < ActiveRecord::Base
   has_many :followed_users, :through => :follow, :source => :user
   has_many :suggested_users, :through => :suggest, :source => :user
 
-  searchable :auto_index => true, :auto_remove => true do
-    text :name, :boost => 2.0, :as => :code_textp
-    text :label_name
-    boolean :ignore
+  if !Rails.env.test?
+    searchable :auto_index => true, :auto_remove => true do
+      text :name, :boost => 2.0, :as => :code_textp
+      text :label_name
+      boolean :ignore
+    end
   end
  
   def to_s
