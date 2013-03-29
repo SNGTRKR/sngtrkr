@@ -9,16 +9,17 @@ class UserMailer < ActionMailer::Base
   
   def new_releases_deliver(frequency)
     User.where(:email_frequency => frequency).each do |user|
-      new_releases(user,frequency,:deliver => true)
+      new_releases(user,:deliver => true)
     end
   end
 
-  def new_releases(user,frequency,opts={:deliver => false})
+  def new_releases(user,opts={:deliver => false})
     @user = user
+    frequency = @user.email_frequency
 
     @releases = user.release_notifications.order("date DESC").where("date < ?",Date.today+1).limit(20)
     if @releases.empty?
-      return true
+      return false
     end
 
     # Building list of artist names for the email subject
@@ -50,6 +51,8 @@ class UserMailer < ActionMailer::Base
       m.deliver
     end
     user.release_notifications.delete(@releases)
+
+    return m
 
   end
   
