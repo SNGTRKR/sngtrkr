@@ -73,4 +73,18 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  around_filter :disable_gc
+
+  private
+
+   def disable_gc
+      GC.disable
+      begin
+        yield
+      ensure
+        GC.enable
+        GC.start
+      end
+   end
+
 end
