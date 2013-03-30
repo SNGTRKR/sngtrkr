@@ -7,10 +7,9 @@ class Artist < ActiveRecord::Base
   belongs_to :label
 
   has_attached_file :image, :styles => {
-      :search_a => ["110x110#"],
-      :mini_a => ["40x40#"],
-      :profile => ["170x170#"],
-      :trackers => ["75x75#"]
+      :small => ["50x50#"],
+      :medium => ["100x100#"],
+      :large => ["200x200#"]
     }, 
     :convert_options => {
       :all => '-quality 40 -strip' ,

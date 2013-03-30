@@ -10,7 +10,7 @@ content_for :og_type, "sngtrkr:artist"
 <% content_for :extra_head do %> <%= javascript_include_tag "timeline" %> <% end %>
 <div class="g_two_col">
   <div class="g_sidebar release_artist">
-    <%= image_tag 'http://placehold.it/170x170' %>
+    <%= image_tag 'http://placehold.it/200x200' %>
     <h2><%= @artist.name %></h2>
     <h3><%= @artist.label_name %></h3>
     <div class="trackers">
@@ -48,7 +48,16 @@ content_for :og_type, "sngtrkr:artist"
     </ul>
   </div>
   <div class="g_main artist_timeline">
-
+    <% if !user_signed_in? %>
+      <div id="artist_signup">
+        <img src="http://placehold.it/75x75"/>
+        <p>Track <%= link_to @artist.name, @artist %> and others to keep up to date with new releases.</p>
+        <a href="#" class="btn btn-primary">
+        <i class="icon-facebook"></i>Sign in with Facebook
+      </a>
+      <%= link_to "Sign up", new_user_registration_path, :class => "btn btn-warning" %>
+      </div>
+    <% end %>
   </div>
 </div>
 <div class="art_pop">

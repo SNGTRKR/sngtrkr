@@ -111,7 +111,7 @@
 			                    </ul>
 			                    
 	                    	    <%= form_tag artists_path , :method => 'get', :class => "navbar-search pull-left" do %>
-									<%= text_field_tag(:search, params[:search], :autocomplete => 'off', :placeholder => "Find artists and releases", :class => 'search-query span3') %>
+									<%= text_field_tag(:search, params[:search], :autocomplete => 'off', :placeholder => "Find artists and releases", :class => 'search-query') %>
 								    <%= link_to "#submit" do %>
 										<i class="icon-search"></i>
 								    <% end %>

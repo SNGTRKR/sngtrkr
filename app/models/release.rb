@@ -5,10 +5,9 @@ class Release < ActiveRecord::Base
   validates :artist_id, :presence => true
 
   has_attached_file :image, :styles => { 
-      :release => ["230x230#"],
-      :mini_r => ["45x45#"],
-      :timeline => ["150x150#"],
-      :search_r => ["110x110#"]
+      :small => ["50x50#"],
+      :medium => ["150x150#"],
+      :large => ["230x230#"]
     }, 
     :convert_options => {
       :all => '-quality 40 -strip',

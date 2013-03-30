@@ -18,7 +18,7 @@ $(document).ready ->
 	$ ->
 	  $("#slider").slider
 	    min: 0
-	    max: 250
+	    max: 200
 	    step: 50
 	    #slide: (event, ui) ->
 	    #  $("#amount").val "$" + ui.value
@@ -57,12 +57,26 @@ $(document).ready ->
 		$('.front').toggleClass('front-flip')
 		$('.back').toggleClass('back-flip')
 
-	$(".share_tracker").each ->
+	$(".share_artist").each ->
 	  $elem = $(this)
 	  share_id = $elem.attr("id")
 	  $elem.popover
 	    html: true
 	    content: $(".art_pop_"+ share_id + "").html()
+
+	$(".share_release").each ->
+	  $elem = $(this)
+	  share_id = $elem.attr("id")
+	  $elem.popover
+	    html: true
+	    content: $(".rel_pop_"+ share_id + "").html()
+
+	$(".buy").each ->
+	  $elem = $(this)
+	  share_id = $elem.attr("id")
+	  $elem.popover
+	    html: true
+	    content: $(".buy_pop_"+ share_id + "").html()
 
 
 

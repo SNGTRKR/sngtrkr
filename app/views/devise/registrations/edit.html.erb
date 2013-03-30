@@ -33,7 +33,7 @@
       <%= f.hidden_field(:email_frequency) %>
       <div id="slider"></div>
       <ul>
-        <li class="daily">Daily</li>
+        <li>Daily</li>
         <li class="weekly">Weekly</li>
         <li class="fortnightly">Fortnightly</li>
         <li class="monthly">Monthly</li>
@@ -42,6 +42,7 @@
       <input class="btn" type="submit" value="Save">
     <% end %>
 
-    <h3>Cancel my account</h3>
-    <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
+    <h2>Delete my account</h2>
+    <p>Your account, tracked artists and all personal details will be permanently removed.</p>
+    <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete, :class => 'btn' %>
   </div>

@@ -109,36 +109,52 @@
 		.icon-tag, .icon-calendar {
 			margin-right:15px;
 		}
-		.related {
-			overflow:hidden;
-			margin-bottom:14px;
+	}
+	#release_signup {
+		background-color:#F7F7F7;
+		padding:8px;
+		margin-top:20px;
+		overflow:hidden;
+			a:first-child {
+					color:$orange;
+			}
 			img {
 				margin-right:10px;
 			}
-			p:first-child {
-			 	margin:0 0 5px !important;
-			}
-		}
 	}
-	.tracklisting {
+	#related_releases {
 		h2 {
 			border-bottom:1px #d1d1d1 solid;
-			line-height:28px !important
+			line-height:28px !important;
 		}
-		ul {
-			list-style-type:none;
-			margin:20px 0 0 5px !important;
-			li {
-				margin-bottom:5px;
-				overflow:hidden;
-					p {
-						display:inline-block;
-						margin-left:15px;
+		.related {
+			padding:10px 0;
+			border-bottom:1px solid #d1d1d1; 
+			overflow:hidden;
+				a {
+					color:$orange;
+				}
+				img {
+					margin-right:15px;
+					float:left;
+				}
+				span {
+					display:block;
+					float:left;
+					div {
+						color:$orange;
+						font-family: "MuseoSans-500", Helvetica, Arial, sans-serif !important;
 					}
-					span {
-						float:right;
+					i {
+						position:relative;
+						top:-1px;
+						margin-right:10px;
 					}
-			}
+				}
+				.actions {
+					float:right;
+					margin:22px 30px 0;
+				}
 		}
 	}
 }
