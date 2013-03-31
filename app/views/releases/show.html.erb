@@ -87,8 +87,8 @@ content_for :og_type, "sngtrkr:release"
     <% if !user_signed_in? %>
       <div id="release_signup">
         <p>Track <%= link_to @artist.name, @artist %> and others to keep up to date with new releases.</p>
-        <%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary") do %>
-          <i class="icon-facebook"></i>Sign in with Facebook
+        <%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-small") do %>
+          <div class="icon"><span></span><i class="icon-facebook"></i></div><div class="divider"></div>Sign in with Facebook
         <% end %>
         <a data-toggle="modal" data-target="#user_signup" class="signup">
           <div class="btn btn-warning">Sign up</div>

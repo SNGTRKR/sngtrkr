@@ -168,9 +168,9 @@
 		</div>
 		<div class="modal hide fade" id="user_signup">
 		  <div class="modal-body">
-		  	<div>
-				<%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-large") do %>
-					<i class="icon-facebook"></i>Sign in with Facebook
+		  	<div class="top">
+				<%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-large btn-large") do %>
+					<div class="icon"><span></span><i class="icon-facebook"></i></div><div class="divider"></div>Sign in with Facebook
 				<% end %>
 			</div>
 			<form>
@@ -198,9 +198,9 @@
 		</div>	
 		<div class="modal hide fade" id="user_login">
 		  <div class="modal-body">
-		  	<div>
-				<%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-large") do %>
-					<i class="icon-facebook"></i>Sign in with Facebook
+		  	<div class="top">
+				<%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-large btn-large") do %>
+					<div class="icon"><span></span><i class="icon-facebook"></i></div><div class="divider"></div>Sign in with Facebook
 				<% end %>
 			</div>
 			<form>
@@ -221,7 +221,7 @@
 		</div>	
 		<div class="modal hide fade" id="forgot_password">
 		  <div class="modal-body">
-		  	<div>
+		  	<div class="top">
 			  	<p>Forgot your password? No problem. Just enter your email address below and we'll send you a link that will allow you to change your password.</p>
 			  	<p><a data-target="#user_login" data-toggle="modal">Nevermind, I remember it!</a></p>
 			</div>

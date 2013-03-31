@@ -80,6 +80,7 @@ $(document).ready ->
 
 	$('.signup').click ->
 		$('#user_login').modal "hide"
+		$('#forgot_password').modal "hide"
 		$('.signup').children().addClass "active"
 
 	$('.login').click ->

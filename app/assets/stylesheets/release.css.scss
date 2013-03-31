@@ -112,11 +112,14 @@
 	}
 	#release_signup {
 		background-color:#F7F7F7;
-		padding:8px;
+		padding:10px;
 		margin-top:20px;
 		overflow:hidden;
 			a:first-child {
 					color:$orange;
+			}
+			p {
+				margin:0 0 5px;
 			}
 	}
 	#related_releases {

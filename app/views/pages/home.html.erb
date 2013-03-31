@@ -15,8 +15,8 @@ content_for :og_type, "website"
 <div class="container">
 	<div class="homepage">
 		<div class="signup-home">
-			<%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-large") do %>
-				<i class="icon-facebook"></i>Sign in with Facebook
+			<%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-large btn-large") do %>
+				<div class="icon"><span></span><i class="icon-facebook"></i></div><div class="divider"></div>Sign in with Facebook
 			<% end %>
 			<a data-toggle="modal" data-target="#user_signup" class="signup">
           		<div class="btn btn-warning btn-large">Sign up</div>
@@ -97,8 +97,8 @@ content_for :og_type, "website"
 			</div>
 		</div>
 		<div class="signup-home">
-			<%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-large") do %>
-				<i class="icon-facebook"></i>Sign in with Facebook
+			<%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-large btn-large") do %>
+				<div class="icon"><span></span><i class="icon-facebook"></i></div><div class="divider"></div>Sign in with Facebook
 			<% end %>
 			<a data-toggle="modal" data-target="#user_signup" class="signup">
           		<div class="btn btn-warning btn-large">Sign up</div>
