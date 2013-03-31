@@ -117,21 +117,32 @@
 								    <% end %>
 								<% end %>
 			                    <ul class="nav pull-right">
-			                      <li class="divider-vertical"></li>
-			                      <li>
-			                      	<% if !current_user %>
-										<%= link_to(user_omniauth_authorize_path(:facebook)) do %>
-											<span class="logging_in">Login</span>
-										<% end %>
-									<% else %>
-										<%= link_to(destroy_user_session_path, :method => :delete) do %>
-											Logout
-										<% end %>
-									<% end %>	
-								  </li>
-			                      <li class="divider-vertical"></li>
-			                      <li id="show_info"><a>Info</a></li>
-			                      <li class="divider-vertical buffer"></li>
+				                    <li class="divider-vertical"></li>
+				                    <li>
+				                      	<% if !current_user %>
+											<a data-toggle="modal" data-target="#user_login" class="login">
+												<span class="logging_in">Login</span>
+											</a>
+										<% else %>
+											<%= link_to(destroy_user_session_path, :method => :delete) do %>
+												Logout
+											<% end %>
+										<% end %>	
+									</li>
+				                    <li class="divider-vertical"></li>
+				                    <% if !current_user %>
+				                    <li>
+				                      	<a data-toggle="modal" data-target="#user_signup" class="signup">
+				                      		<div class="btn btn-warning">Sign up</div>
+				                      	</a>
+											<!-- <%= link_to(new_user_registration_path, :class => "signup") do %>
+												<div class="btn btn-warning">Sign up</div>
+											<% end %> -->
+									</li>
+									<li class="divider-vertical"></li>
+									<% end %>
+			                        <li id="show_info"><a>Info</a></li>
+			                        <li class="divider-vertical buffer"></li>
 			                    </ul>
 			              </div><!-- /navbar-inner -->
 			            </div>
@@ -150,6 +161,58 @@
 			<%= yield %>
 		</div>
 		<div id="footer">
+		</div>
+		<div class="modal hide fade" id="user_signup">
+		  <div class="modal-body">
+		  	<div>
+				<%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-large") do %>
+					<i class="icon-facebook"></i>Sign in with Facebook
+				<% end %>
+			</div>
+			<form>
+				<label>Name</label>
+				<input type="text">
+
+				<label>Email</label>
+				<input type="text">
+
+				<label>Password</label>
+				<input type="text">
+
+				<label class="checkbox">
+				  <input type="checkbox" value="">
+				  I agree to the Privacy policy
+				</label>
+		</div>
+		<div class="modal-footer">
+				<button data-dismiss="modal" class="cancel">Cancel</button>
+				<button class="btn">Sign up</button>
+			
+		</div>
+			</form>
+		  </div>
+		</div>	
+		<div class="modal hide fade" id="user_login">
+		  <div class="modal-body">
+		  	<div>
+				<%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-large") do %>
+					<i class="icon-facebook"></i>Sign in with Facebook
+				<% end %>
+			</div>
+			<form>
+				<label>Email</label>
+				<input type="text">
+
+				<label>Password</label>
+				<input type="text">
+		</div>
+		<div class="modal-footer">
+				<button data-dismiss="modal" class="cancel">Cancel</button>
+				<button class="btn">Login</button>
+			
+		</div>
+			</form>
+		  </div>
 		</div>	
 		<%= javascript_include_tag "/javascript/jquery-1.9.1.min.js" %>
 		<%= javascript_include_tag "/javascript/bootstrap.min.js" %>

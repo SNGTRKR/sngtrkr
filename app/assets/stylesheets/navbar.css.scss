@@ -1,5 +1,6 @@
 .navbar {
 	@include box-shadow(1.5px 1.5px 8px rgba(0, 0, 0, 0.65));
+	z-index:2001 !important;
 		.navbar-inner {
 			@include background-image(linear-gradient(top, $darkgray 0%, #1A1A1A 100%) !important);
 				.navbar-search {
@@ -52,7 +53,7 @@
 			margin:0px !important;
 		}
 		.nav > li > a {
-			padding:15px 27px !important;
+			padding:15px 27px;
 			font-size:15px;
 			font-family: "MuseoSans-500", Helvetica, Arial, sans-serif !important;
 			color: #ccc !important;
@@ -73,6 +74,12 @@
 				margin:3px 20px 3px 20px !important;
 			}
 		}
+		.signup {
+			padding:0 12px 0 20px !important;
+		}
+		.login {
+			cursor:pointer;
+		}
 		#show_info {
 			cursor:pointer;
 		}
@@ -86,7 +93,7 @@
   position:fixed;
   text-align:center;
   text-shadow: 0px 1px 0 rgba(0, 0, 0, 1) !important; 
-  z-index: 1029;
+  z-index: 2001;
 	.span2 {
 		margin-top:15px;
 		a {
@@ -118,4 +125,26 @@
 		  	}
 		}
 	}
+}
+#user_signup, #user_login {
+	width:450px;
+	background: url('/images/bg_body-noise.png') repeat;
+	.modal-body {
+		form {
+			padding:30px 100px 0;
+			border-top: 1px solid #d1d1d1;
+	}
+	.modal-footer {
+		button, .cancel {
+				float:right;
+		}
+	}
+		div:first-child {
+			margin:35px 0 30px;
+			text-align:center;
+		}
+	}
+}
+#user_signup.fade.in, #user_login.fade.in {
+	top:3%;
 }

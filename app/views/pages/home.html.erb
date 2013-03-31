@@ -7,7 +7,7 @@ content_for :og_type, "website"
 <% content_for :description do %>Login with Facebook to find artists you like. Listen to & buy tracks, with an easy to use timeline. Free notifications when artists release new tracks.<% end %>	
 <div class="homepage">
 	<h1>Track your favourite artists<br/><span>Never miss another release</span></h1>
-	<h3 class="span5">Our simple web tool makes it easy to keep up to date with your favourite artists. Discovering and sharing music with your friends, has never been so simple. </h3>
+	<h3 class="span6">Our simple web tool makes it easy to keep up to date with your favourite artists. Discovering and sharing music with your friends, has never been so simple. </h3>
 </div>
 </div>
 	<div id="releases">
@@ -15,11 +15,13 @@ content_for :og_type, "website"
 <div class="container">
 	<div class="homepage">
 		<div class="signup-home">
-			<a href="#" class="btn btn-primary btn-large">
+			<%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-large") do %>
 				<i class="icon-facebook"></i>Sign in with Facebook
-			</a>
-			<%= link_to "Sign up", new_user_registration_path, :class => "btn btn-warning btn-large" %>
-			<%= link_to "Login without FB", new_user_session_path %>
+			<% end %>
+			<a data-toggle="modal" data-target="#user_signup" class="signup">
+          		<div class="btn btn-warning btn-large">Sign up</div>
+          	</a>
+			<!-- <%= link_to "Login without FB", new_user_session_path %> -->
 			<div class="social_share">
 				<div class="fb-like" data-href="http://www.facebook.com/sngtrkr" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
 				<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.sngtrkr.com" data-text="Track your favourite artists, never miss another release" data-via="sngtrkr">Tweet</a>
@@ -39,7 +41,7 @@ content_for :og_type, "website"
 		<div class="sectors">
 			<!-- section1 -->
 			<div class="row-fluid">
-				<div class="span10">
+				<div class="span12">
 					<div class="row-fluid">
 						<div class="span5 timeline">
 							<h2>Follow artists you love<span>With your personalised timeline</span></h2>
@@ -53,7 +55,7 @@ content_for :og_type, "website"
 			</div>
 			<!-- section2 -->
 			<div class="row-fluid">
-				<div class="span10">
+				<div class="span12">
 					<div class="row-fluid">
 						<div class="span6">
 							<%= image_tag "/images/computer.png", :alt => "Keeping connected" %>
@@ -67,7 +69,7 @@ content_for :og_type, "website"
 			</div>
 			<!-- section3 -->
 			<div class="row-fluid">
-				<div class="span10">
+				<div class="span12">
 					<div class="row-fluid">
 						<div class="span5 release">
 							<h2>Discover new music<span>With some help from your friends</span></h2>
@@ -81,7 +83,7 @@ content_for :og_type, "website"
 			</div>
 			<!-- section4 -->
 			<div class="row-fluid">
-				<div class="span10 bottom">
+				<div class="span12 bottom">
 					<div class="row-fluid">
 						<div class="span6">
 							<%= image_tag "/images/email.png", :alt => "Email" %>
@@ -95,7 +97,12 @@ content_for :og_type, "website"
 			</div>
 		</div>
 		<div class="signup-home">
-			<a href="#" class="btn btn-primary btn-large"><i class="icon-facebook"></i>Sign in with Facebook</a>
+			<%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-large") do %>
+				<i class="icon-facebook"></i>Sign in with Facebook
+			<% end %>
+			<a data-toggle="modal" data-target="#user_signup" class="signup">
+          		<div class="btn btn-warning btn-large">Sign up</div>
+          	</a>
 			<div class="social_share">
 				<div class="fb-like" data-href="http://www.facebook.com/sngtrkr" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
 				<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.sngtrkr.com" data-text="Track your favourite artists, never miss another release" data-via="sngtrkr">Tweet</a>

@@ -78,6 +78,12 @@ $(document).ready ->
 	    html: true
 	    content: $(".buy_pop_"+ share_id + "").html()
 
+	$('.signup').click ->
+		$('#user_login').modal "hide"
+
+	$('.login').click ->
+		$('#user_signup').modal "hide"
+
 
 
 	

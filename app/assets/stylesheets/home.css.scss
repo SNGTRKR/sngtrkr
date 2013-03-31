@@ -1,58 +1,63 @@
-	#releases {
-		margin-top:34px;
-		height:294px;
-		width:100%;
-		background-color:$gray;
+.homepage {
+	h1 {
+		margin-top:26px;
 	}
-	.signup-home {
-		margin:40px 0;
-		text-align:center;
-		i{
-			margin-right:20px;
-		}
-		.btn-warning {
-			margin-left:10px;
-		}
+}
+#releases {
+	margin-top:34px;
+	height:294px;
+	width:100%;
+	background-color:$gray;
+}
+.signup-home {
+	margin:40px 0;
+	text-align:center;
+	i{
+		margin-right:20px;
 	}
-	.sectors {
-		p {
-			margin-top:16px;
-		}
-		.span10 {
-			border-top:1px solid #d1d1d1;
-			@extend .center;
-		}
-		.row-fluid:last-child {
-			.span10 {
-				border-bottom:1px solid #d1d1d1;
-			}
-		}
-		.timeline {
-			margin-top:98px;
-		}
-		.computer {
-			margin-top:91px;
-		}
-		.release {
-			margin-top:75px;
-		}
-		.email {
-			margin-top: 137px;
-		}
-		.timeline_img {
-			margin-left:20px;
+	.btn-warning {
+		margin-left:10px;
+	}
+}
+.sectors {
+	p {
+		margin-top:16px;
+	}
+	.span12 {
+		border-top:1px solid #d1d1d1;
+		@extend .center;
+	}
+	.row-fluid:last-child {
+		.span12 {
+			border-bottom:1px solid #d1d1d1;
 		}
 	}
-	.social_share {
-		margin-top:15px;
-		.twitter-share-button {
-			width: 88px !important;
-			margin-right: 5px;
-		}
-		.fb-like {
-			vertical-align: top;
-			margin-right: 10px;
-			margin-left: 28px;
-			width: 81px;
-		}
+	.timeline {
+		margin-top:98px;
 	}
+	.computer {
+		margin-top:91px;
+	}
+	.release {
+		margin-top:75px;
+	}
+	.email {
+		margin-top: 137px;
+	}
+	.timeline_img {
+		margin-left:20px;
+	}
+}
+.social_share {
+	margin-top:15px;
+	.twitter-share-button {
+		width: 88px !important;
+		margin-right: 5px;
+	}
+	.fb-like {
+		vertical-align: top;
+		margin-right: 10px;
+		margin-left: 28px;
+		width: 81px;
+	}
+}

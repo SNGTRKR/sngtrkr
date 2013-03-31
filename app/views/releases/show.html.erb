@@ -80,10 +80,12 @@ content_for :og_type, "sngtrkr:release"
       <div id="release_signup">
         <img src="http://placehold.it/75x75"/>
         <p>Track <%= link_to @artist.name, @artist %> and others to keep up to date with new releases.</p>
-        <a href="#" class="btn btn-primary">
-        <i class="icon-facebook"></i>Sign in with Facebook
-      </a>
-      <%= link_to "Sign up", new_user_registration_path, :class => "btn btn-warning" %>
+        <%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary") do %>
+          <i class="icon-facebook"></i>Sign in with Facebook
+        <% end %>
+        <a data-toggle="modal" data-target="#user_signup" class="signup">
+          <div class="btn btn-warning">Sign up</div>
+        </a>
       </div>
     <% end %>
      <div class="clearfix"></div>
@@ -96,40 +98,40 @@ content_for :og_type, "sngtrkr:release"
          %>
         <div class="related">
           <%= link_to [release.artist, release] do %>
-              <%= image_tag "http://placehold.it/75x75" %>
+              <%= image_tag "http://placehold.it/75x75", :class => "related_img" %>
           <% end %>
           <span>
-            <div><%= link_to release.name, release %></div>
+            <div><%= link_to release.name, [release.artist, release] %></div>
             <%= release.label_name %><br/>
-            <%= release.date.strftime("#{@release.date.day.ordinalize} %B %Y ") %>
+            <%= release.date.strftime("#{release.date.day.ordinalize} %B %Y ") %>
           </span>
           <div class="actions">
             <div class="btn buy" data-placement="bottom" id="<%= release.id %>">Buy</div>
-            <div class="btn share_release share" data-placement="share" id="<%= release.id %>"><i class="icon-share"></i>Share</div>
+            <div class="btn share_release share" data-placement="bottom" id="<%= release.id %>"><i class="icon-share"></i>Share</div>
           </div>
           <div class="buy_pop buy_pop_<%= release.id %>">
             <div class="buy_content">
-              <% if @release.itunes? %>
-                <%= link_to image_tag("/images/social/it.png", :alt => "iTunes", :title => "iTunes"), @release.itunes, :target => "_blank" %>
+              <% if release.itunes? %>
+                <%= link_to image_tag("/images/social/it.png", :alt => "iTunes", :title => "iTunes"), release.itunes, :target => "_blank" %>
               <% end %>
-              <% if @release.sdigital %>
-                <%= link_to image_tag("/images/social/7d.png", :alt => "7Digital", :title => "7Digital"), @release.sdigital, :target => "_blank" %>
+              <% if release.sdigital %>
+                <%= link_to image_tag("/images/social/7d.png", :alt => "7Digital", :title => "7Digital"), release.sdigital, :target => "_blank" %>
               <% end %>
             </div>
           </div>
           <div class="rel_pop rel_pop_<%= release.id %>">
             <div class="share_content">
               <div>
-                <a href="#" alt="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [@artist, @release] %>%2F&t=SNGTRKR','Share on Facebook','scrollbars=no,width=620,height=340'); return false;">
+                <a href="#" alt="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [release.artist, release] %>%2F&t=SNGTRKR','Share on Facebook','scrollbars=no,width=620,height=340'); return false;">
                   <%= image_tag "/images/social/fb.png", :alt => "Facebook" %>
                 </a>
-                <a href="#" title="Share on Twitter" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [@artist, @release] %>&text=<%= @artist.name %>+&#45;+<%= @release.name %><% if @release.label_name %>+released+on+<%= @release.label_name %><% end %>+&#45;+www.sngtrkr.com<%= url_for [@artist, @release] %>&via=SNGTRKR','Share on Twitter','scrollbars=no,width=620,height=340'); return false;">
+                <a href="#" title="Share on Twitter" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [@artist, release] %>&text=<%= @artist.name %>+&#45;+<%= release.name %><% if release.label_name %>+released+on+<%= release.label_name %><% end %>+&#45;+www.sngtrkr.com<%= url_for [@artist, release] %>&via=SNGTRKR','Share on Twitter','scrollbars=no,width=620,height=340'); return false;">
                   <%= image_tag "/images/social/twitter.png", :alt => "Twitter" %>
                 </a>
-                <a href="#" title="Share on Tumblr" onClick="MyWindow=window.open('http://www.tumblr.com/share/link?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [@artist, @release] %>&name=<%= @artist.name %>+&#45;+<%= @release.name %>&description=Release Date: <%= @release.date.strftime("#{@release.date.day.ordinalize} %B %Y ") %><% if @release.label_name %><br/>Label:<%= @release.label_name %><% else %><br/><br/><% end %><%= @artist.name %> online:<br/><% if @artist.fbid? %>http://www.facebook.com/<%= @artist.fbid %><br/><% end %><% if @artist.twitter? %>http://www.twitter.com/<%= @artist.twitter %><br/><% end %><% if @artist.youtube? %>http://www.youtube.com/<%= @artist.youtube %><br/><% end %><% if @artist.soundcloud? %>http://www.soundcloud.com/<%= @artist.soundcloud %><br/><% end %><% if @artist.website? %><%= @artist.website %><% end %>','Share on Tumblr','scrollbars=no,width=620,height=340'); return false;">
+                <a href="#" title="Share on Tumblr" onClick="MyWindow=window.open('http://www.tumblr.com/share/link?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [@artist, release] %>&name=<%= @artist.name %>+&#45;+<%= release.name %>&description=Release Date: <%= release.date.strftime("#{release.date.day.ordinalize} %B %Y ") %><% if release.label_name %><br/>Label:<%= release.label_name %><% else %><br/><br/><% end %><%= @artist.name %> online:<br/><% if @artist.fbid? %>http://www.facebook.com/<%= @artist.fbid %><br/><% end %><% if @artist.twitter? %>http://www.twitter.com/<%= @artist.twitter %><br/><% end %><% if @artist.youtube? %>http://www.youtube.com/<%= @artist.youtube %><br/><% end %><% if @artist.soundcloud? %>http://www.soundcloud.com/<%= @artist.soundcloud %><br/><% end %><% if @artist.website? %><%= @artist.website %><% end %>','Share on Tumblr','scrollbars=no,width=620,height=340'); return false;">
                   <%= image_tag "/images/social/tb.png", :alt => "Tumblr" %>
                 </a>
-                <a href="#" title="Share on Google Plus" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [@artist, @release] %>','Share on Google+','scrollbars=no,width=620,height=340'); return false;">
+                <a href="#" title="Share on Google Plus" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [@artist, release] %>','Share on Google+','scrollbars=no,width=620,height=340'); return false;">
                   <%= image_tag "/images/social/gplus.png", :alt => "Google+" %>
                 </a>
               </div>
