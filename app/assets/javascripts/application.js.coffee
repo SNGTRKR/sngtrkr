@@ -80,10 +80,17 @@ $(document).ready ->
 
 	$('.signup').click ->
 		$('#user_login').modal "hide"
+		$(this).children().addClass "active"
 
 	$('.login').click ->
 		$('#user_signup').modal "hide"
+		$(this).parent().addClass "active"
 
+	$('#user_login').on "hidden", ->
+		$('.login').parent().removeClass "active"
+
+	$('#user_signup').on "hidden", ->
+		$('.signup').children().removeClass "active"
 
 
 	
