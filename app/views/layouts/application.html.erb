@@ -45,7 +45,7 @@
 		<div id="more_info">
 			<div class="container">
 				<div class="row-fluid">
-					<div class="span2">
+					<div class="<% if current_user %><% if !current_user.role? :admin %>offset1<% end %><% end %> span2">
 						<a href="/about">
 							<%= image_tag "/images/people.png" %>
 							<h4>About</h4>
@@ -75,12 +75,16 @@
 							<h4>Privacy</h4>
 						</a>
 					</div>
-					<div class="span2">
-						<a href="/admin">
-							<i class="icon-wrench"></i>
-							<h4>Adminstration</h4>
-						</a>
-					</div>
+					<% if current_user %>
+						<% if current_user.role? :admin %>
+							<div class="span2">
+								<a href="/admin">
+									<i class="icon-wrench"></i>
+									<h4>Adminstration</h4>
+								</a>
+							</div>
+						<% end %>
+					<% end %>
 				</div>
 			</div>
 		</div>
@@ -121,7 +125,7 @@
 				                    <li>
 				                      	<% if !current_user %>
 											<a data-toggle="modal" data-target="#user_login" class="login">
-												<span class="logging_in">Login</span>
+												Login
 											</a>
 										<% else %>
 											<%= link_to(destroy_user_session_path, :method => :delete) do %>
