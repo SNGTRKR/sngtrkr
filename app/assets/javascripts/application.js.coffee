@@ -92,6 +92,13 @@ $(document).ready ->
 	$('#user_signup').on "hidden", ->
 		$('.signup').children().removeClass "active"
 
+	$('#user_login a').click ->
+		$('#user_login').modal "hide"
+
+	$('#forgot_password a').click ->
+		$('#forgot_password').modal "hide"
+		$('.login').parent().addClass "active"
+
 
 
 

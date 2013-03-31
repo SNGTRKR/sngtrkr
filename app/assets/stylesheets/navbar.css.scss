@@ -75,7 +75,7 @@
 			}
 		}
 		.signup {
-			padding:0 12px 0 20px !important;
+			padding:0 12px 10px 20px !important;
 		}
 		.login {
 			cursor:pointer;
@@ -144,7 +144,28 @@
 			text-align:center;
 		}
 	}
+	a {
+		cursor:pointer;
+	}
 }
-#user_signup.fade.in, #user_login.fade.in {
-	top:3%;
+#forgot_password {
+	width:450px;
+	background: url('/images/bg_body-noise.png') repeat;
+	.modal-body {
+
+	.modal-footer {
+		button, .cancel {
+				float:right;
+		}
+	}
+		div:first-child {
+			margin:35px 0 0;
+		}
+	}
+	a {
+		cursor:pointer;
+	}
+}
+#user_signup.fade.in, #user_login.fade.in, #forgot_password.fade.in {
+	top:30px;
 }

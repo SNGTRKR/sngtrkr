@@ -185,7 +185,7 @@
 
 				<label class="checkbox">
 				  <input type="checkbox" value="">
-				  I agree to the Privacy policy
+				  I agree to the <a href="/privacy">Privacy policy</a>
 				</label>
 		</div>
 		<div class="modal-footer">
@@ -209,11 +209,30 @@
 
 				<label>Password</label>
 				<input type="text">
+				<a data-target="#forgot_password" data-toggle="modal">Forgot password?</a>
 		</div>
 		<div class="modal-footer">
 				<button data-dismiss="modal" class="cancel">Cancel</button>
 				<button class="btn">Login</button>
-			
+				
+		</div>
+			</form>
+		  </div>
+		</div>	
+		<div class="modal hide fade" id="forgot_password">
+		  <div class="modal-body">
+		  	<div>
+			  	<p>Forgot your password? No problem. Just enter your email address below and we'll send you a link that will allow you to change your password.</p>
+			  	<p><a data-target="#user_login" data-toggle="modal">Nevermind, I remember it!</a></p>
+			</div>
+			<form>
+				<label>Email</label>
+				<input type="text">
+		</div>
+		<div class="modal-footer">
+				<button data-dismiss="modal" class="cancel">Cancel</button>
+				<button class="btn">Send</button>
+				
 		</div>
 			</form>
 		  </div>
