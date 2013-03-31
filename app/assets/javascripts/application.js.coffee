@@ -80,7 +80,7 @@ $(document).ready ->
 
 	$('.signup').click ->
 		$('#user_login').modal "hide"
-		$(this).children().addClass "active"
+		$('.signup').children().addClass "active"
 
 	$('.login').click ->
 		$('#user_signup').modal "hide"
@@ -93,7 +93,6 @@ $(document).ready ->
 		$('.signup').children().removeClass "active"
 
 
-	
 
 
 

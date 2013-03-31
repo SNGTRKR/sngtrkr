@@ -86,7 +86,6 @@ content_for :og_type, "sngtrkr:release"
     <div class="clearfix"></div>
     <% if !user_signed_in? %>
       <div id="release_signup">
-        <img src="http://placehold.it/75x75"/>
         <p>Track <%= link_to @artist.name, @artist %> and others to keep up to date with new releases.</p>
         <%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary") do %>
           <i class="icon-facebook"></i>Sign in with Facebook
