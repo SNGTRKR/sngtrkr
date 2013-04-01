@@ -1,0 +1,49 @@
+<div id="facebook-search-results">
+<div class="loading load-facebook">
+<h3>Loading...</h3>
+	<%= image_tag "/images/loading.png", :class => "loading-icon" %><br/>
+	<p>...please wait while we search Facebook for "<%= @search %>".</p>
+</div>
+<div class="clear"></div>
+</div>
+<script type="text/javascript">
+var angle = 0;
+setInterval(function(){
+      angle+=3;
+     $(".loading-icon").rotate(angle);
+},25);
+</script>
+<script>
+var artist_ids = <%= raw @ids.to_json %>
+
+<% content_for :fb_js do %>
+
+
+FB.api("search/?q=<%= CGI::escape(@search) %>&fields=id,picture,description,name,bio,genre,likes,record_label,category&type=page&limit=10&type=normal",function(pages){
+  $('#facebook-search-results').html("");
+  console.log(pages['data']);
+  $.each(pages['data'],function(){
+    // Skip non music pages
+    if(this['category'] != "Musician/band") return true;
+    // Skip artists already in db
+    if($.inArray(this['id'], artist_ids) == 0) return true;
+    // Ignore artists with < 100 likes
+    if(!this['likes'] || this['likes'] < 100) return true;
+    if(this['bio'] == null) var bio = this['description'];
+    else var bio = this['bio'];
+    $('#facebook-search-results').append("<%=j render 'artists/fb_search_js' %>");
+    $('.facebook-result-single:last .fb-row')
+      .find('.fb-artist-image').css('background-image','url('+this['picture']+')')
+      .parent().find('.fb-artist-info .likes').html(this['likes'].commafy()+' likes')
+      .parent().find('.name').html("<a href=\"http://facebook.com/"+this['id']+"\" target=\"_blank\">"+this['name']+'</a>')
+      .parent().find('.genre').html(this['genre'])
+      .parent().find('.record_label').html(this['record_label']);
+    $('.facebook-result-single:last .fb-add').data('fb-id',this['id']);
+    });
+  $('.facebook-result-single .fb-add').click(function(){
+    $('#facebook-search-results').fadeOut(300,function(){$('#facebook-search-results').html("<div class=\"loading\"><h4 class=\"signika-txt font-25\">Importing...</h4> <%=j image_tag("/images/loading.png", :class => "loading-icon") %> <br/>...please wait while we import the artist into the SNGTRKR database.</div>")}).fadeIn();
+    $.ajax({ url: '/artists/import/'+$(this).data('fb-id')+'?token='+FB.getAuthResponse()['accessToken']});
+  });
+});
+<% end %>
+</script>

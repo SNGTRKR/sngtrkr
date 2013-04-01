@@ -1,0 +1,337 @@
+		#release-image {
+			position:relative;
+			height:310px;
+			width:309px;
+			@include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.45));
+			@include border-radius(12px);
+			overflow:hidden;
+			color:white;
+			.icon-edit {
+				color:#fff;
+				font-size:2em;
+				position:absolute;
+				right:9px;
+				top:10px;
+				cursor:pointer;
+			}
+			.icon-edit:hover {
+				color:$orange;
+			}
+			#release-image-options {
+				position:absolute;
+				bottom:-84px;
+				background-color:rgba(0,0,0,0.75);
+				height:84px;
+				width:309px;
+				@include border-bottom-left-radius(12px);
+				@include border-bottom-right-radius(12px);
+				color:#fff;
+				z-index:1;
+				.add, .del, .edit {
+					@extend .button;
+					float: left;
+				}
+				.add, .edit {
+					margin-right:15px;
+				}
+				.del {
+					margin-top:-18px;
+				}
+				.edit_release {
+					position:relative;
+					left:26px;
+					top:2px;
+				}
+				.icon-remove {
+					position:absolute;
+					top:2px;
+					right:4px;
+					z-index:2;
+					cursor:pointer;
+				}
+				.icon-remove:hover {
+					color:$orange;
+				}
+			}
+      #opac-50 {
+	      position:absolute;
+	      z-index:1;
+	      height:310px;
+  			width:310px;
+	      @include border-radius(12px);
+	      background:rgba(0,0,0,0.75);
+	      display:none;
+      }
+      #share-release {
+	      position:absolute;
+	      height:310px;
+	      width:310px;
+	      z-index:2;
+	      right:-310px;
+	      top:58px;
+	      h3 {
+		      margin-top:28px;
+		      text-align:center;
+		      @extend .signika-txt; 
+		      @extend .font-22;
+      	      }
+	      ul {
+		    margin:auto;
+  	        width: 52px * 3;
+  	        padding:15px;
+    		 li {
+    	      height:38px;
+    	      width:38px;
+    	      line-height:38px;
+    	      @include border-radius(4px);
+    	      margin:0 7px 0 7px;
+    	      float: left;
+          }
+          .goo-icon {
+        		overflow:hidden;
+        		font-size:4.8em;	
+          }
+          .icon-twitter {
+    	      position:relative;
+    	      bottom:2px;
+    	      font-size:2.5em;
+          }
+          .icon-facebook {
+    	      position:relative;
+    	      right:1px;
+    	      font-size:2.5em;
+          }
+          .icon-google-plus {
+    	      position:relative;
+    	      right:20px;
+    	      top:6px;
+          }
+	      }
+	      .share-cancel {
+		       margin:10px auto;
+		       width:40px;
+		       @extend .button;
+	      }
+      }
+      #buy-release {
+	      position:absolute;
+	      height:310px;
+	      width:310px;
+	      z-index:2;
+	      left:-310px;
+	      top:49px;
+	      h3 {
+		      margin-top:28px;
+		      text-align:center;
+		      @extend .signika-txt; 
+		      @extend .font-22;
+      	      }
+	      .buy-count-1 {
+		      left:136px;
+	      }
+	      .buy-count-2 {
+		      left:109px;
+	      }
+	      .buy-count-3 {
+		      left:83px;
+	      }
+	      ul {
+		      position:relative;
+		      top:11px;
+		      margin-bottom:33px;
+		      li {
+			      height:38px;
+			      width:38px;
+			      @include border-radius(4px);
+			      margin-right:15px;
+			      float: left;
+			      @extend .white-button;
+			      img {
+				      position:relative;
+				      top:1px;
+				      right:1px;
+			      }
+		      }
+	      }
+	      .buy-cancel {
+		       margin:11px auto;
+		       width:40px;
+		       @extend .button;
+	      }
+      }
+		}
+		.release-rating {
+		text-align:center;
+		@extend .font-13;
+			ul {
+			position:relative;
+			left:69px;
+			top:10px;
+			}
+			span {
+				position:relative;
+				top:15px;
+				width:309px;
+				display:block;
+				margin-left:7px;
+			}
+		}
+		#release-info {
+			float: right;
+			position:relative;
+			width:246px;
+			background:rgba(255,255,255,0.75);
+			height:294px;
+			@include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.25));
+			@include border-radius(12px);
+			padding:17px;
+			line-height:1.7em;
+		    margin-right:-4px;
+			#no-preview {
+				position:absolute;
+				bottom:15px;
+				font-weight:bold;
+			}
+			.icon-music, .icon-tag, .icon-calendar, .icon-list-ul {
+				margin-right:10px;
+			}
+			.gray {
+				@extend .light-gray;
+			}
+			h2 {
+				margin-bottom:3px;
+				line-height:1em;
+				font-weight:bold;
+				@extend .font-22;
+			}
+			h3 {
+			@extend .font-15;
+			@extend .orange-txt;
+  			a {
+  				color:$orange;
+  			}
+  			a:hover {
+  				color:#000;
+  			}
+			}
+		}
+		.menu-user {
+			list-style-type:none;
+			margin:15px -23px 0 0;
+			width:300px;
+			float:right;
+			.icon-shopping-cart, .icon-share-alt {
+				margin-right:5px;
+			}
+			.buy-release, .share-release {
+				width:80px;
+				margin-right:15px;
+				@extend .button;
+			}
+			.report-release {
+				width:31px;
+				height:25px;
+				font-size:1.5em;
+				line-height:25px;
+				@extend .o-button;
+			}
+			li {
+				float: left;
+			}
+		}
+.also-by {
+	margin:25px auto 0;
+	@extend .signika-txt;
+	@extend .font-25;
+	width:604px;
+	a {
+		color:#fff;
+	}
+	a:hover {
+		color:#fff;
+	}
+}
+.under-5 {
+	left:-43px;
+}
+.release-carousel {
+	padding: 5px 0 27px 33px; 
+	position: relative;
+	width:566px;
+	height:150px;
+	margin:12px auto 33px;
+	ul {
+		list-style-type:none;
+		width:550px;
+ li {
+	height:145px;
+	width:115px;
+	float: left;
+	position:relative;
+    margin:3px 10px 3px 10px;
+    background:rgba(255,255,255,0.75);
+    @include box-shadow(0px 2px 5px rgba(0, 0, 0, 0.25));
+    @include border-radius(8px);
+    a {
+	    color:$gray;
+    }
+    a:hover {
+	    color:$orange;
+    }
+    div {
+	    height:115px;
+	    width:115px;
+	    position:absolute;
+	    @include border-top-right-radius(8px);
+	    @include border-top-left-radius(8px);
+	    top:0px;
+	    left:0px;
+	    border-style:solid;
+	    border-bottom-width:3px;
+	    border-bottom-color:$orange;
+    }
+    span {
+    	position:absolute;
+    	top:123px;
+	    text-align:center;
+	    width:115px;
+	    font-weight: bold;
+	    color:$gray;
+    }
+  }
+}
+}
+.c-prev, .c-next {
+	position:absolute;
+	width: 33px;
+	height: 161px;
+	top:0px;
+	font-size:2em;
+	@extend .o-button;
+	line-height:161px;
+	a {
+		color:#fff;
+	}
+	a:hover {
+		color:#fff;
+	}
+}
+.c-prev {
+	left:0px;
+}
+.c-next {
+	right:-6px;
+	
+}
+#tracklist {
+  height:60px;
+  width:248px;
+  overflow-y: scroll;
+  @extend .scrollbar;
+  ul {
+	  margin-left:21px;
+  }
+}
+.ajaxful-rating {
+	width:185px;
+}

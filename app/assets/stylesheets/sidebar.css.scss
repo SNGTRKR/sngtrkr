@@ -1,0 +1,91 @@
+#sidebar {
+	width:$sidebar;
+	right:-1px;
+	top:39px;
+	background-color:rgba(255,255,255,0.75);
+	border-width:1px;
+	border-color:rgba(51, 51, 51, 0.75);
+	border-style:solid;
+	height:100%;
+	z-index:500;
+	position:fixed;
+	margin-left:-($sidebar);
+	padding:10px;
+	.header {
+	height:32px;
+	width:228px;
+	margin:10px 0 0 3px;
+		#side1 {
+			margin-top:-2px;
+		}
+		#side2 {
+		margin-top:2px;
+		}
+			h5 {
+		font-size:1.2em;
+		display:inline;
+		position:relative;
+		bottom:12px;
+		left:10px;
+		@include text-shadow(0 0.1em 1px rgba(255, 255, 255, 0.31));
+	}
+	}
+	#activity-stream {
+		@extend .scrollbar;
+		border-bottom-color:rgba(51, 51, 51, 0.55);
+		border-bottom-width:1px;
+		border-bottom-style:solid;
+		ul {
+			margin:2px 0 10px 0;	
+			overflow:hidden;
+		}
+		ul:hover {
+			overflow-y:scroll;
+		}
+	}
+	#recommendations {
+		border-bottom-color:rgba(51, 51, 51, 0.55);
+		border-bottom-width:1px;
+		border-bottom-style:solid;
+  ul {
+    list-style-type:none;
+    margin:12px 0 5px 0;
+li {
+    float: left;
+    height:50px;
+    width:238px;
+    margin-bottom:10px;
+	  img {
+		  float:left;
+		  height:45px;
+		  width:45px;
+		  margin-left:5px;
+	  }
+          .info {
+            float:left;
+			line-height:1.35em;
+            width:168px;
+            margin-left:5px;
+            a {
+              color:$gray;
+            }
+            a:hover {
+              color:$orange;
+            }
+            span {
+	            color:$orange;
+	            @extend .instruct-font;
+	            line-height:1em;
+            }
+            .a-name {
+            }
+            .buttons {
+	            color:$light-gray;
+	            font-size:0.9em;
+            }
+          }
+
+    }
+   }
+  }
+  }

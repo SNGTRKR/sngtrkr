@@ -1,53 +1,256 @@
-<div class="row-fluid">
-  <div class="span10">
-      <div class="tabbable tabs-left profile-tabs">
-      	<%= image_tag '//graph.facebook.com/'+@user.fbid+'/picture?width=200&height=200' %>
-      	<h1><%= @user.first_name + " " + @user.last_name %></h1>
-      	<p>Bristol, United Kingdom</p>
-        <ul id="myTab" class="nav nav-tabs nav-stacked each-tab">
-          <li class="active">
-            <a href="#tab1" data-toggle="tab"><i class="icon-screenshot"></i><%= @user.following.count %> trackings</a>
-          </li>
-          <li>
-            <a href="#tab2" data-toggle="tab"><%= image_tag "/images/ppl_black.png", :class => "blk ppl"%><%= image_tag "/images/ppl_white.png", :class => "wht ppl"%><%= @app_friends.count %> friend<% if @app_friends.count > 1 %>s<% else %><% end %></a>
-          </li>
-        </ul>
-        <div class="clearfix"></div>
-        <%= link_to edit_user_path(@user) do %><div class="btn"><i class="icon-pencil"></i>Edit</div><% end %>
-        <div class="tab-content" id="myTabContent">
-          <div class="tab-pane active" id="tab1">
-            <% if @user.following.count.zero? %>
-    	      	<table class="table table-striped">
-        			  <tbody>
-                  <% @following.each do |artist_tracked| %>
-          			    <tr>
-          			      <td><%= image_tag "http://placehold.it/75x75" %><%= link_to artist_path(artist_tracked) do %><%= artist_tracked.name %><% end %></td>
-          			    </tr>
-                  <% end %>
-        			  </tbody>
-        			</table>
-        			<div class="btn">Delete (4)</div>
-            <% else %>
-              <p>You are not tracking anyone.</p>
-            <% end %>
-          </div>
-          <div class="tab-pane" id="tab2">
-              <% if !@app_friends.empty? %>
-                <% @app_friends.each do |friend| %>
-            			<div>
-            				<%= image_tag "//graph.facebook.com/"+friend.fbid+"/picture?width=75&height=75" %>
-            				<span><%= friend.first_name + " " + friend.last_name %></span>
-            				<%= Follow.where('user_id = ?',friend.id).count %> trackers
-            			</div>
-                <% end %>
-              <% else %>
-                <p>You have no friends</p>
-              <% end %>
-          </div>
-        </div>
-      </div> 
-  </div>
+<% content_for :title do %><%= @user.first_name %> on SNGTRKR<% end %>
+<% content_for :description do %>Profile page for <%= @user.first_name %>. You will be able to change the settings of your profile, manage any Facebook artists you control and view the list of artists you are currently tracking. <% end %>
+<style type="text/css">
+.alert {
+	width:414px !important;
+	margin:0 0 18px 260px;
+}
+</style>
+<div class="row"><div class="span6">
+<div id="floating-wrapper">
+	<div id="floating-menu">
+<div id="user-image" style="background-image:url(<%= "//graph.facebook.com/"+@user.fbid+"/picture?width=230&height=230" %>);"><%= link_to "http://facebook.com/#{@user.fbid}", :target => "_blank" do %><div id="user-name"><%= @user.first_name %> <%= @user.last_name %></div><% end %></div>
+<ul id="user-menu">
+<!-- 	<li class="m-activity selected"><i class="icon-tasks"></i>Activity</li> -->
+	<li class="m-trackers button"><i class="icon-screenshot"></i>Trackers</li>
+	<li class="m-friends"><i class="icon-group"></i>Friends</li>
+	<!-- <li class="m-connect"><i class="icon-link"></i>Connect</li> -->
+	<li class="m-settings"><i class="icon-cog"></i>Settings</li>
+</ul>
+<div id="user-search">
+	<input type="text" id="filter" placeholder="Search..."/>
+	<div><%= image_tag "/images/white-search-2.png", :alt => "Search", :id => "search-pad" %></div>
+	<div class="clear"></div>
+</div></div>
+</div></div>
+<div class="span11_m">
+	<div id="user-activity">
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<div id="user-trackers">
+		<% if @user.following.count.zero? %>
+			<ul class="ajax-recommended-artists profile-recommendations">
+  		<% if @user.suggested.count >= 6 %>
+				<%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 6] %>
+    		<% else %>
+      		<div class="loading load-recommend">
+      		<h3>Please wait...</h3>
+      		<%= image_tag "/images/loading.png", :id => "loading-icon" %><br/>
+      		<p>...while we work our magic and find which artists you’ve already liked on Facebook.</p>
+      		</div>		  
+  		<% end %>
+			</ul>
+      <div class="clear"></div>
+      <% else %>
+			  <%= form_tag unfollow_artists_path do %>
+					<table class="table well">
+						<thead>
+							<tr>
+								<th>Artist</th>
+								<th><span class="followers">TRKRs</span></th>
+								<th><%= check_box 'all_artist_ids', false, :class => 'del-all select-all', 
+									:onclick => "toggleChecked(this.checked)" %> Select all</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% @following.each do |artist_tracked| %>
+							<tr>
+									<td><%= link_to artist_path(artist_tracked) do %><%= truncate(artist_tracked.name, :length => 20) %><% end %></td>
+									<td><%= artist_tracked[:followers] %></td>
+									<td><%= check_box_tag 'artist_ids[]', artist_tracked.id %></td>
+							</tr>
+							<% end %>
+						</tbody>
+					</table>
+					<div class="paginate-outer profile-pag">
+					<%= paginate @following, :window => 1 %>
+					</div>
+					<%= submit_tag "Delete Selected", :class => 'delete' %>
+				<% end %>
+			<% end %>
+	</div>
+	<div id="user-friends">
+				<% if !@app_friends.empty? %>
+		<ul class="friends-list">
+			<% @app_friends.each do |friend| %>
+			<li>
+				<div class="friends-image" style="background-image:url(<%= "//graph.facebook.com/"+friend.fbid+"/picture?width=80&height=90" %>);background-repeat:no-repeat;background-position:center;"></div>
+				<div class="friends-info">
+					<%= link_to(friend) do %><h3 class="name"><%= friend.first_name + " " + friend.last_name %></h3><% end %>
+					<span class="friend-trkr-no"><%= Follow.where('user_id = ?',friend.id).count %> TRKINGS</span>
+				</div>
+			</li>
+			<% end %>
+			<div class="clear"></div>
+		</ul>
+		<% else %>
+		<div id="share-friends">
+			<h1>Sharing is caring</h1><br/>
+			<div>None of your friends are using SNGTRKR.<br/>Get them involved now by sharing:</div>
+				<ul id="share-bank">
+					<a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com%2F&t=SNGTRKR','Share SNGTRKR on Facebook','scrollbars=no,width=620,height=340'); return false;"><li class="fb-icon fb-button"><i class="icon-facebook"></i></li></a>
+					<a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.sngtrkr.com&text=I%27m+currently+using+SNGTRKR+to+track+artist+releases+and+discover+new+music.+Come+get+involved+at+&url=http%3A%2F%2Fwww.sngtrkr.com&via=SNGTRKR','Share SNGTRKR on Facebook','scrollbars=no,width=620,height=340'); return false;"><li class="twit-icon twitter-button"><i class="icon-twitter"></i></li></a>
+					<a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com','Share SNGTRKR on Facebook','scrollbars=no,width=620,height=340'); return false;"><li class="goo-icon google-button"><i class="icon-google-plus"></i></li></a>
+					<div class="clear"></div>
+				</ul>
+				<span>Please note, SNGTRKR is not held responsible for anything posted on third party sites. See our <a href="/terms">Terms of Use</a> for more information.</span>
+		</div>
+		<% end %>
+	</div>
+<!-- 	<div id="user-connect">
+		<ul>
+			<li></li>
+		</ul>
+	</div>	 -->
+	<div id="user-settings">
+<div class="change-email">
+			<h3>Change Email</h3>
+			<p>Your current email address is <strong><%= @user.email %></strong>.</p>
+			<%= form_for(@user) do |f| %>
+			<ul>
+				<li>
+					<%= f.label :email %>
+					<%= f.text_field :email, :value => '' %>
+				</li>
+				<div class="clear"></div>
+			</ul>
+			<%= f.submit "Change Email" %>
+			<div class="clear"></div>
+			<% end %>
+					</div>
+	<div class="change-name">
+			<h3>Change Name</h3>
+			<%= form_for current_user do |f| %>
+				<%= f.text_field :first_name %>
+				<%= f.text_field :last_name %>
+				<br>
+				<%= f.submit "Change Name" %>
+			<% end %>
+		</div>
+<div class="email-notify">
+			<%= form_for(@user) do |f| %>
+			<h3>Email Notifications</h3>
+			<p>
+				You can change how often you receive emails for new releases, from the options provided below. The recommended setting is <strong>Daily</strong>. Please note, <strong>we will only email you if there are new releases.</strong> 
+			</p>
+			<ul>
+				<li>
+					<%= f.radio_button :email_frequency, 0 %>
+					<%= f.label :instant %>
+				</li>
+				<li>
+					<%= f.radio_button :email_frequency, 1 %>
+					<%= f.label :daily %>
+				</li>
+				<li>
+					<%= f.radio_button :email_frequency, 2 %>
+					<%= f.label :weekly %>
+				</li>
+				<li>
+					<%= f.radio_button :email_frequency, 3 %>
+					<%= f.label :fortnightly %>
+				</li>
+				<li>
+					<%= f.radio_button :email_frequency, 4 %>
+					<%= f.label :monthly %>
+				</li>
+				<li>
+					<%= f.radio_button :email_frequency, 5 %>
+					<%= f.label :never %>
+				</li>
+				<div class="clear"></div>
+			</ul>
+			<%= f.submit 'Save Email Changes' %>
+			<% end %>
+		</div>
+<div class="delete-account">
+			<h3>Delete Your Account</h3>
+			<p>Your account, tracked artists and all personal details will be permanently removed.</p>
+				<span><a href="#delete-confirmation" data-toggle="modal">Delete Account</a></span>
+		</div>
+	<div class="modal hide fade" id="delete-confirmation">
+		<%= render :partial => 'delete_confirm' %>
+	</div>
+	</div>
 </div>
+</div>
+<script>
+  $(document).ready(function(){
+    artist_suggestion_replace();
+/*    	$('.m-activity').click(function(){
+		$('#user-activity').fadeTo(500,1);
+		$('#user-trackers').hide();
+		$('#user-connect').hide();
+		$('#user-friends').hide();
+		$('#user-settings').hide();
+		$('#user-menu li').removeClass('selected');
+		$(this).addClass('selected');
+	});*/
+	$('.m-trackers').click(function(){
+		$('#user-activity').hide();
+		$('#user-trackers').fadeTo(500,1);
+		$('#user-connect').hide();
+		$('#user-friends').hide();
+		$('#user-settings').hide();
+		$('#user-menu li').removeClass('button');
+		$(this).addClass('button');
+	});
+/*	$('.m-connect').click(function(){
+		$('#user-activity').hide();
+		$('#user-trackers').hide();
+		$('#user-connect').fadeTo(500,1);
+		$('#user-friends').hide();
+		$('#user-settings').hide();
+		$('#user-menu li').removeClass('selected');
+		$(this).addClass('selected');
+	});*/
+	$('.m-friends').click(function(){
+		$('#user-activity').hide();
+		$('#user-trackers').hide();
+		$('#user-connect').hide();
+		$('#user-friends').fadeTo(500,1);
+		$('#user-settings').hide();
+		$('#user-menu li').removeClass('button');
+		$(this).addClass('button');
+	});
+	$('.m-settings').click(function(){
+		$('#user-activity').hide();
+		$('#user-trackers').hide();
+		$('#user-connect').hide();
+		$('#user-settings').fadeTo(500,1);
+		$('#user-friends').hide();
+		$('#user-menu li').removeClass('button');
+		$(this).addClass('button');
+	});
+    $('tbody td:last-child input').change(function() {
+        $(this).closest('tr').toggleClass("one", this.checked);
+    });
+    $('thead th:last-child input').change(function() {
+        //$(this).closest('tr').toggleClass("all", this.checked);
+        $('tbody tr').toggleClass("all", this.checked);
+    });		
+  var top = $('#floating-menu').offset().top - parseFloat($('#floating-menu').css('marginTop').replace(/auto/, 0));
+  $(window).scroll(function (event) {
+    // what the y position of the scroll is
+    var y = $(this).scrollTop();
+  
+    // whether that's below the form
+    if (y >= top) {
+      // if so, ad the fixed class
+      $('#floating-menu').addClass('fixed');
+    } else {
+      // otherwise remove it
+      $('#floating-menu').removeClass('fixed');
+    }
+  });
+  });
+
+</script>
 <% content_for :fb_js do %>
 	FB.getLoginStatus(function(response) {
 		if(response.status === 'connected') {

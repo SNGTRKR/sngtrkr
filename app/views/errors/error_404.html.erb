@@ -1,5 +1,11 @@
-<% content_for :title do %>Page not found error 404<% end %>
-<div class="errorpage">
-	<h1>Ah bummer, 404!</h1>
-	<h2>Looks like what you’re trying to find isn’t here.<br/>It was probably moved or sucked into a black hole.</h2>
-</div>
+<% content_for :title do %>Page not found - ERROR 404<% end %>
+<div class="row error-pages"><div class="span<% if !user_signed_in? %>24<% else %>18<% end %>">
+	<div class="row"><div class="offset<% if !user_signed_in? %>6<% else %>3<% end %> span7">
+        <h2>Oops!</h2>
+        <h3>Page not found</h3><br/>
+        <span>You seem to have got yourself a little lost... <br/>why not check out your profile or timeline?</span>
+	</div>
+	<div class="span4_m">
+        <%= image_tag "/images/notfound.png", :alt => "Page not found", :id => "not-found" %>
+	</div></div>
+</div></div>

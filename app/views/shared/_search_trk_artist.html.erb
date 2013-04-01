@@ -1,0 +1,9 @@
+<% if user_signed_in?%>
+<% if current_user.following? search_trk_artist.id %>
+<%= link_to artist_unfollow_path(search_trk_artist, :format => :js), :remote => true do %><div class="artist-trkr-search"><i class="icon-minus untrk-artist"></i></div><% end %>
+<% else %>
+<%= link_to artist_follows_path(search_trk_artist, :format => :js), :remote => true, :method => :post do %><div class="artist-trkr-search"><i class="icon-plus trk-artist"></i></div><% end %>
+<% end %>
+<% elsif %>
+<a href="<%= user_omniauth_authorize_path(:facebook) %>"><div class="artist-trkr-search"><i class="icon-signin"></i></div></a>
+<% end %>

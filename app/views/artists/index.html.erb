@@ -4,74 +4,51 @@
 <% else %>
   <% content_for :description do %>Search results empty<% end %>
 <% end %>
-<div class="row-fluid">
-  <div class="span10">
-    <div class="result_search">
-      <h1>Search</h1>
-      <div class="search_input">
-        <p><strong>1 release and 1 artist found</strong></p>
-        <input type="text" placeholder="Search" class="span12">
-      </div>
-      <div class="clearfix"></div>
-    </div>
-      <div class="tabbable tabs-left search-tabs">
-        <ul id="myTab" class="nav nav-tabs nav-stacked each-tab">
-          <li class="active">
-            <a href="#tab1" data-toggle="tab"><i class="icon-search"></i>Everything</a>
-          </li>
-          <li>
-            <a href="#tab2" data-toggle="tab"><%= image_tag "/images/ppl_black.png", :class => "blk ppl"%><%= image_tag "/images/ppl_white.png", :class => "wht ppl"%>Artists</a>
-          </li>
-          <li>
-            <a href="#tab3" data-toggle="tab"><%= image_tag "/images/release_blk.png", :class => "blk rel"%><%= image_tag "/images/release_wht.png", :class => "wht rel"%>Releases</a>
-          </li>
-        </ul>
-        <div class="tab-content" id="myTabContent">
-          <div class="tab-pane active" id="tab1">
-            <div class="result">
-              <%= image_tag "http://placehold.it/110x110" %>
-              <span>
-                <div>Out The Blue</div>
-                Sub Focus<br/>
-                <i class="icon-calendar"></i>29th April 2012
-              </span>
-              <div class="btn btn-small">Buy</div>
-              <div class="btn btn-small" data-toggle="popover" data-content="hello"><i class="icon-share"></i>Share</div>
-            </div>
-            <div class="result">
-              <%= image_tag "http://placehold.it/110x110" %>
-              <span>
-                <div>Sub Focus</div>
-                Ram Records<br/>
-                <i class="icon-screenshot"></i>11 Trackers
-              </span>
-              <div class="btn btn-small">Track</div>
-            </div>
-          </div>
-          <div class="tab-pane" id="tab2">
-            <div class="result">
-              <%= image_tag "http://placehold.it/110x110" %>
-              <span>
-                <div>Out The Blue</div>
-                Sub Focus<br/>
-                29th April 2012
-              </span>
-              <div class="btn btn-small">Buy</div>
-              <div class="btn btn-small">Share</div>
-            </div>
-          </div>
-          <div class="tab-pane" id="tab3">
-            <div class="result">
-              <%= image_tag "http://placehold.it/110x110" %>
-              <span>
-                <div>Sub Focus</div>
-                Ram Records<br/>
-                11 Trackers
-              </span>
-              <div class="btn btn-small">Track</div>
-            </div>
-          </div>
+<div class="row">
+  <div class="span<% if user_signed_in?%>18<% else %>24<% end %>">
+    <div id="artist-search">
+    	<h1>Search Results</h1>
+    	<!-- JSON URL: <%= url_for artists_url(:search => @search, :format => :json)  %> -->
+      <% if @empty_search or @short_search or @artists.empty? %>
+	<div class="result-warning">
+      	<% if @empty_search %>
+        	<p> Your search was empty, you have to type <strong>something</strong>! </p>
+        <% elsif @short_search %>
+          <p> Your search word wasn't long enough, you must type at least <strong>two characters</strong>.</p>
+      	<% elsif @artists.empty? %>
+          <p> Sorry, your search returned no results, but see below for Facebook artists with that name.</p>
+        <% end %>
         </div>
-      </div> 
+      <% else %>
+      	<ul>
+      		<% @artists.each do |artist| %>
+      		<li>
+      		<div class="artist-search-row">
+      			<div class="artist-search-image" style="background-image:url(<%= artist.image.url :activity %>);background-repeat:no-repeat;background-position:center;"></div>
+      			<div class="artist-search-info">
+      				<h2><%= link_to artist.name, artist %></h2>
+      				<div><%= artist.followers %> TRKRS</div>
+      				<%= artist.genre %>
+      			</div>
+      		</div>
+      		<%= render :partial => 'shared/search_trk_artist', :object => artist %>
+      		</li>
+      		<% end %>
+      	</ul>
+      	<div class="paginate-outer">
+      	<%= if @artists then paginate @artists, :window => 1 end %>
+      	</div>
+      	<div class="clear"></div>
+  	  <% end %>
+      <% if user_signed_in? and !@empty_search and !@short_search  %>
+      	<h1 class="fb-result-header">Facebook Results</h1>
+      	<p>If you don't see the artist you were looking for above, you can add their facebook page to SNGTRKR here. Make sure to choose the artist's offical page, and not a fan page.</p>
+        <%= render 'artists/fb_search' %>
+        <%= render 'shared/fb_async' %>
+      <% else %>
+        <!-- content to show in replacement of facebook search results, if not logged in -->
+      <% end %>
+
+    </div>
   </div>
 </div>

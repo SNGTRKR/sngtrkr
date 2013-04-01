@@ -1,0 +1,13 @@
+#delete-confirmation {
+	.cancel {
+		@extend .button;
+		float:right;
+	}
+	input[type=submit] {
+		float:right;
+		margin-left:15px;
+	}
+	form {
+		margin:0px;
+	}
+  }

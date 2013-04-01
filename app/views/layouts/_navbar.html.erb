@@ -1,0 +1,47 @@
+	<div class="navbar navbar-fixed-top">
+     <div class="navbar-inner">
+  			<div class="container">
+						<div class="wrapper2">
+						<div class="header">
+						<!-- IE CSS for sticky footer -->
+						<!--[if !IE 7]>
+						<style type="text/css">
+						#wrap {display:table;height:100%}
+						</style>
+						<![endif]-->
+	      				<a class="brand" href="/">
+					      <%= image_tag "/images/logo-45.png" %></a>
+					      <% if @user and @user.id %>
+					      <ul class="nav pull-left">
+						      <li class="<% if current_page?(tl_path) %>active<% end %>">
+						      	<%= link_to tl_path do %>
+						      	<i class="icon-sitemap"></i>Timeline
+						      	<% end %>
+						      </li>
+						      <li class="<% if current_page?(user_path(current_user)) %>active<% end %>">
+						      	<%= link_to user_path(current_user) do %>
+							      	<i class="icon-user"></i>You
+						      	<% end %>
+						      </li>
+					      </ul>
+								<% end %>
+						      
+					      <%= form_tag artists_path , :method => 'get', :class => 'navbar-search pull-left' do %>
+							  <% if !@user %>
+								  <%= text_field_tag(:search, params[:search], :autocomplete => 'off', :placeholder => "Search artists...", :id => 'mini_search_field', :class => 'search-query search-pad-2') %>
+							  <% else %>	
+							  <%= text_field_tag(:search, params[:search], :autocomplete => 'off', :placeholder => "Search artists...", :id => 'mini_search_field', :class => 'search-query') %>
+							  <% end %>
+						  <% end %>
+								<% if !@user %>
+									<%= link_to(user_omniauth_authorize_path(:facebook)) do %>
+										<div class="fb-login nav pull-right">
+											<i class="icon-facebook"></i> <span>Login</span>
+										</div>
+									<% end %>
+								<% else %>
+								<div class="nav pull-right inner-tools">
+									<%= link_to(destroy_user_session_path, :method => :delete, :class => "btn btn-navbar toolbutton tooltip-parent", "data-title" => "Logout", "data-placement" => "bottom" ) do %><i class="icon-signout"></i><% end %>
+									</div><% end %>
+		      			</div></div></div>
+  </div></div>

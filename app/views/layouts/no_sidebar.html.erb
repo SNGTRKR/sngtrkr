@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# sngtrkr: http://ogp.me/ns/fb/sngtrkr#">
+		<%= render 'layouts/head' %>
+	</head>
+	<body>
+		<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
+		chromium.org/developers/how-tos/chrome-frame-getting-started -->
+		<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or
+		<a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+		
+		<div id="wrapper">
+		<%= render :partial => 'layouts/navbar' %>
+<div class="wrapper2">
+				<div class="container content-padding">
+				<% if flash[:notice] or flash[:error] or flash[:success] %>
+			  		<div class="alert <% if flash[:success] then %>alert-success<% end %><% if flash[:notice] then %>alert-info<% end %><% if flash[:error] then %>alert-error<% end %> <% if user_signed_in? %><% else %>alert-lo<% end %>">
+				  	<button type="button" class="close" data-dismiss="alert">×</button>
+			    		  <p>
+			    		  <% if flash[:error] and !flash[:notice] %>
+			      		  <%= raw flash[:error] %>
+			    		  <% end %>
+			    		  <%= raw flash[:notice] %>
+			    		  <%= raw flash[:success] %>
+			    		  </p>
+			  		</div>
+					<% end %>
+					<%= yield %>
+				</div>
+			</div>
+		</div>
+		<div id="footer"> <!-- class="container" -->
+		<div id="fcontainer">
+						<ul class="footer-menu">
+					<li><a href="/about">About</a></li>
+					<li><a href="http://blog.sngtrkr.com">Blog</a></li>
+					<li><a href="/help">Help</a></li>
+					<li><a href="/terms">Terms of Use</a></li>
+					<li><a href="/privacy">Privacy Policy</a></li>
+					<% if can? :manage, :all %>
+					<li><a href="/admin/rails" target="_blank">Administration</a></li>
+					<li><a href="/sidekiq" target="_blank">Sidekiq</a></li>
+					<li><a href="/feedbacks" target="_blank">Feedback</a></li>
+					<% end %>
+			   </ul>
+				<p>© Copyright SNGTRKR 2012. All Rights Reserved - Artist and release images are the property Last.fm</p>
+		</div>
+		</div>
+    <%= render 'layouts/footer_js' %>
+    		<% if user_signed_in? %>
+			<script type="text/javascript">
+			function hideDiv(){
+			    if ($(window).width() < 990) {
+		            $(".container").css("width", "720");
+		            $(".search-query").addClass("search-pad");
+		            $(".outer-tools").hide();
+		            $(".inner-tools").show();			            
+			    }else{
+			        $(".container").css("width", "960");
+			        $(".search-query").removeClass("search-pad");
+			        $(".inner-tools").hide();
+			        $(".outer-tools").show();
+			    }
+			}
+			$(document).ready(function () {
+					//sidebar
+					  //on load
+					    hideDiv();
+					    //on resize
+					    $(window).resize(function(){
+					        hideDiv();
+					    });
+		    });
+		    </script>
+		    <% end %>
+
+	</body>
+</html>

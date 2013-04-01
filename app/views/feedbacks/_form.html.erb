@@ -1,0 +1,20 @@
+<%= form_for(@feedback) do |f| %>
+  <% if @feedback.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@feedback.errors.count, "error") %> prohibited this feedback from being saved:</h2>
+      <ul>
+      <% @feedback.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <h3>Flag Release</h3>
+    <%= f.text_area :feedback, :rows => 5, :placeholder => "Please report any errors you have spotted..." %>
+    <%= f.hidden_field :url, :value => "http://#{request.host}:#{request.port}#{request.fullpath}" %>
+  <div class="actions">
+    <%= f.submit "Submit" %> 
+    <span>Cancel</span>
+    <div class="clear"></div>
+  </div>
+<% end %>

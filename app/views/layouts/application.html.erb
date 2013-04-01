@@ -1,13 +1,7 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html>
 	<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# sngtrkr: http://ogp.me/ns/fb/sngtrkr#">
 		<!-- TradeDoubler site verification 2098473 -->
-		<meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="viewport" content="width=device-width">
 		<meta property="fb:app_id"        content="344989472205984" />
 		<meta property="og:url"           content="<%= yield :og_url %>" />
 		<meta property="og:title"         content="<%= yield :og_name %>" />
@@ -21,8 +15,20 @@
 		<meta name="description" content="<%= yield :description %>">
 		<meta name="google-site-verification" content="ZZsezCrr3vgh_cZwliW6D-0q51Lm_fyvHBm9W2t0gpE" />
 		<link rel="icon" type="image/ico" href="<%= asset_path "/images/icon.png" %>" >
+
 		<%= stylesheet_link_tag "application", :media => "all" %>
-		<%= stylesheet_link_tag "/css/bootstrap.css", :media => "all" %>
+		<%= stylesheet_link_tag "/bootstrap.css", :media => "all" %>
+		<%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Signika+Negative:400,600' %>
+
+		<%= yield :extra_head %>
+
+
+		<%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js' %>
+		<!-- <script>window.jQuery || document.write("<%=j javascript_include_tag "/jquery-1.7.2.min.js" %>")</script> -->
+		<%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js' %>
+		<%= javascript_include_tag "application" %>
+		<%= javascript_include_tag "/bootstrap.min.js" %>
+		<%= javascript_include_tag "/bootstrap-ajax-typeahead.js" %>
 		<!-- Use Html5Shiv in order to allow IE render HTML5 -->
 		<!--[if lt IE 9]>
 		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -30,108 +36,80 @@
 		<%= csrf_meta_tags %>
 	</head>
 	<body>
-		<div id="fb-root"></div>
-		<script>(function(d, s, id) {
-		  var js, fjs = d.getElementsByTagName(s)[0];
-		  if (d.getElementById(id)) return;
-		  js = d.createElement(s); js.id = id;
-		  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=344989472205984";
-		  fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));</script>
 		<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
 		chromium.org/developers/how-tos/chrome-frame-getting-started -->
 		<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or
 		<a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-		<div id="more_info">
-			<div class="container">
-				<div class="row-fluid">
-					<div class="span2">
-						<a href="/about">
-							<%= image_tag "/images/people.png" %>
-							<h4>About</h4>
-						</a>
-					</div>
-					<div class="span2">
-						<a href="http://blog.sngtrkr.com">
-							<i class="icon-rss"></i>
-							<h4>Blog</h4>
-						</a>
-					</div>
-					<div class="span2">
-						<a href="http://support.sngtrkr.com">
-							<%= image_tag "/images/message.png" %>
-							<h4>Support</h4>
-						</a>
-					</div>
-					<div class="span2">
-						<a href="/terms">
-							<i class="icon-file-alt"></i>
-							<h4>Terms</h4>
-						</a>
-					</div>
-					<div class="span2">
-						<a href="/privacy">
-							<i class="icon-lock"></i>
-							<h4>Privacy</h4>
-						</a>
-					</div>
-					<div class="span2">
-						<a href="/admin">
-							<i class="icon-wrench"></i>
-							<h4>Adminstration</h4>
-						</a>
-					</div>
+		
+		<div id="wrapper">
+			<% if @user %>
+				<div id="sidebar"><%= render :partial => 'layouts/sidebar' %></div>
+	    <% end %>
+
+			<div class="navbar navbar-fixed-top">
+		     <div class="navbar-inner">
+		  			<div class="container">
+								<div class="wrapper2">
+								<div class="header">
+								<!-- IE CSS for sticky footer -->
+								<!--[if !IE 7]>
+								<style type="text/css">
+								#wrap {display:table;height:100%}
+								</style>
+								<![endif]-->
+										<% if @user %>
+			      					<%= link_to tl_path, :class => "brand" do %>
+							      		<%= image_tag "/images/logo-45.png" %>
+							      	<% end %>
+							      <% else %>
+							      	<%= link_to :root, :class => "brand" do %>
+							      		<%= image_tag "/images/logo-45.png" %>
+							      	<% end %>
+							      <% end %>
+							      
+							      <% if @user and @user.id %>
+							      <ul class="nav pull-left">
+								      <li class="<% if current_page?(tl_path) %>active<% end %>">
+								      	<%= link_to tl_path do %>
+								      	<i class="icon-sitemap"></i>Timeline
+								      	<% end %>
+								      </li>
+								      <li class="<% if current_page?(user_path(@user)) %>active<% end %>">
+								      	<%= link_to user_path(@user) do %>
+									      	<i class="icon-user"></i>You
+								      	<% end %>
+								      </li>
+							      </ul>
+										<% end %>
+								      
+							      <%= form_tag artists_path , :method => 'get', :class => 'navbar-search pull-left' do %>
+									  <% if !@user %>
+										  <%= text_field_tag(:search, params[:search], :autocomplete => 'off', :placeholder => "Search artists...", :id => 'mini_search_field', :class => 'search-query search-pad-2') %>
+									  <% else %>	
+									  <%= text_field_tag(:search, params[:search], :autocomplete => 'off', :placeholder => "Search artists...", :id => 'mini_search_field', :class => 'search-query') %>
+									  <% end %>
+								  <% end %>
+										<% if !@user %>
+											<%= link_to(user_omniauth_authorize_path(:facebook)) do %>
+												<div class="fb-login nav pull-right">
+													<i class="icon-facebook"></i> <span>Login</span>
+												</div>
+											<% end %>
+										<% end %>
+						      	</div>
+						      </div>
+						    </div>
+	      			<% if @user %>
+						<div class="outer-tools">
+						<%= link_to(destroy_user_session_path, :method => :delete, :class => "btn btn-navbar toolbutton tooltip-parent", "data-title" => "Logout", "data-placement" => "bottom" ) do %><i class="icon-signout"></i><% end %>
+						</div>
+						<% end %>
+				  </div>
 				</div>
-			</div>
-		</div>
-		<div class="navbar navbar-inverse navbar-fixed-top">
-		              <div class="navbar-inner">
-		                  <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
-		                    <span class="icon-bar"></span>
-		                    <span class="icon-bar"></span>
-		                    <span class="icon-bar"></span>
-		                  </a>
-		                  <a class="brand" href="/"><%= image_tag "/images/logo-small.png" %></a>
-		                  <div class="nav-collapse collapse navbar-inverse-collapse">
-		                    <ul class="nav">
-		                      <li class="divider-vertical"></li>
-		                      <li class="active"><a href="#">Timeline</a></li>
-		                      <li class="divider-vertical"></li>
-		                      <li>
-		                      	<%= link_to user_path(@user) do %>
-			                      	Profile
-			                    <% end %>
-			                  </li>
-		                      <li class="divider-vertical"></li>
-		                    </ul>
-                    	    <%= form_tag artists_path , :method => 'get', :class => "navbar-search pull-left" do %>
-								<%= text_field_tag(:search, params[:search], :autocomplete => 'off', :placeholder => "Find artists and releases", :class => 'search-query span3') %>
-							    <%= link_to "#submit" do %>
-									<i class="icon-search"></i>
-							    <% end %>
-							<% end %>
-		                    <ul class="nav pull-right">
-		                      <li class="divider-vertical"></li>
-		                      <li>
-		                      	<% if !@user %>
-									<%= link_to(user_omniauth_authorize_path(:facebook)) do %>
-										Login
-									<% end %>
-								<% else %>
-									<%= link_to("Logout", destroy_user_session_path, :method => :delete) %>
-								<% end %>	
-							  </li>
-		                      <li class="divider-vertical"></li>
-		                      <li id="show_info"><a>Info</a></li>
-		                      <li class="divider-vertical buffer"></li>
-		                    </ul>
-		                  </div><!-- /.nav-collapse -->
-		            
-		              </div><!-- /navbar-inner -->
-		            </div>
-		<div class="container container-top">
-			<% if flash[:notice] or flash[:error] or flash[:success] %>
-		  		<div class="alert <% if flash[:success] then %>alert-success<% end %><% if flash[:notice] then %>alert-info<% end %><% if flash[:error] then %>alert-error<% end %>">
+		<div class="wrapper2">
+				<div class="container content-padding">
+					<% if flash[:notice] or flash[:error] or flash[:success] %>
+			  		<div class="alert <% if flash[:success] then %>alert-success<% end %><% if flash[:notice] then %>alert-info<% end %><% if flash[:error] then %>alert-error<% end %>">
 				  	<button type="button" class="close" data-dismiss="alert">×</button>
 			    		  <p>
 			    		  <% if flash[:error] and !flash[:notice] %>
@@ -140,30 +118,55 @@
 			    		  <%= raw flash[:notice] %>
 			    		  <%= raw flash[:success] %>
 			    		  </p>
-		  		</div>
-			<% end %>
-			<%= yield %>
+			  		</div>
+					<% end %>
+					<%= yield %>
+				</div>
+			</div>
 		</div>
-		<div id="footer">
+		<div id="footer"> <!-- class="container" -->
+		<div id="fcontainer">
+						<ul class="footer-menu">
+					<li><a href="/about">About</a></li>
+					<li><a href="http://blog.sngtrkr.com">Blog</a></li>
+					<li><a href="/help">Help</a></li>
+					<li><a href="/terms">Terms of Use</a></li>
+					<li><a href="/privacy">Privacy Policy</a></li>
+			   </ul>
+				<p>© Copyright SNGTRKR 2012. All Rights Reserved - Artist and release images are the property Last.fm</p>
 		</div>
-		<%= javascript_include_tag "/javascript/jquery-1.9.1.min.js" %>
-		<%= javascript_include_tag "/javascript/bootstrap.min.js" %>
-		<%= javascript_include_tag "/javascript/modernizr-2.6.2-respond-1.1.0.min.js" %>
-		<%= javascript_include_tag "/javascript/jquery.hoverIntent.minified.js" %>
-		<%= javascript_include_tag "application" %>
-		<script>
-			Modernizr.load([
-			  {
-			    test : Modernizr.csstransitions,
-			    nope : ['css3-fallback']
-			  }
-			]);
-		</script>
-        <script>
-            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-            s.parentNode.insertBefore(g,s)}(document,'script'));
-        </script>
+		</div>
+    <%= render 'layouts/footer_js' %>
+    <% if @user %>
+			<script type="text/javascript">
+				function hideDiv(){
+				    if ($(window).width() < 990) {
+				            $("#sidebar").hide();
+				            $(".info-feed").show();
+				            $(".container").css("width", "720");
+				            $(".search-query").addClass("search-pad");
+				            $(".outer-tools").hide();
+				            $(".inner-tools").show();		            
+				    }else{
+				
+				        $("#sidebar").fadeIn("slow");
+				        $(".info-feed").fadeOut("slow");
+				        $(".container").css("width", "960");
+				        $(".search-query").removeClass("search-pad");
+				        $(".inner-tools").hide();
+				        $(".outer-tools").show();
+				    }			
+				}
+				$(document).ready(function () {
+						//sidebar
+						  //on load
+						    hideDiv();						
+						    //on resize
+						    $(window).resize(function(){
+						        hideDiv();
+						    });
+			    });
+	    </script>
+    <% end %>
 	</body>
 </html>

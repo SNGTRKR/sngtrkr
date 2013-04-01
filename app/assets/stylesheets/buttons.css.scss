@@ -1,8 +1,430 @@
-.btn {
-	margin-right:8px;
-	i {
-		position:relative;
-		top:1px;
-		margin-right:5px;
-	}
+.button {
+  border: none;
+  @extend .o-button;
+  @extend .norm-o-pad; 
+  @extend .signika-font;
+  @extend .font-13;
 }
+.button-light {
+  border: none;
+  @extend .o-light;
+  @extend .norm-o-pad; 
+  @extend .signika-font;
+  @extend .font-13;
+}
+.facebook-button {
+	@extend .fb-button;
+	@extend .fb-o-pad;
+	@extend .lucida-font;
+	@extend .font-14;
+	span {
+	    position:relative;
+	    bottom:5px;
+    }
+}
+input[type="button"], input[type="submit"]{
+  @extend .button;
+}
+.o-button {
+		color:white;
+		cursor: pointer;
+		@include border-radius(7px);
+		text-align:center;
+	    background:$orange !important; 
+	    $experimental-support-for-svg: true !important;
+	    @include background-image(linear-gradient(top, #F37244 0%, #F15A24 100%) !important);
+	    text-shadow: #FF6103 0 1px 3px;
+	    -webkit-box-shadow:
+	    inset 0 1px 0  #F15A24,
+	    inset 0 2px 0 #F7931E,
+	    0 1px 3px #777,
+	    0 0px 1px #ccc !important;
+	    -moz-box-shadow:
+	    inset 0 1px 0  #F15A24,
+	    inset 0 2px 0 #F7931E,
+	    0 1px 3px #777,
+	    0 0px 1px #ccc !important;
+	    box-shadow:
+	    inset 0 1px 0  #F15A24,
+	    inset 0 2px 0 #F7931E,
+	    0 1px 3px #777,
+	    0 0px 1px #ccc !important;
+}
+.o-button:hover {
+	$experimental-support-for-svg: true;
+  @include background-image(linear-gradient(top, #F15A24 0%, #F37244 100%));
+}
+.o-light {
+		color:white;
+		cursor: pointer;
+		@include border-radius(7px);
+		text-align:center;
+	    background:$orange; 
+	    $experimental-support-for-svg: true;
+	    @include background-image(linear-gradient(top, #FA9C7F 0%, #F88C6B 100%));
+	    text-shadow: #FF6103 0 1px 3px;
+	    -webkit-box-shadow:
+	    inset 0 1px 0  #F88C6B,
+	    inset 0 2px 0 #FCB56D,
+	    0 1px 3px #777,
+	    0 0px 1px #ccc;
+	    -moz-box-shadow:
+	    inset 0 1px 0  #F88C6B,
+	    inset 0 2px 0 #FCB56D,
+	    0 1px 3px #777,
+	    0 0px 1px #ccc;
+	    box-shadow:
+	    inset 0 1px 0  #F88C6B,
+	    inset 0 2px 0 #FCB56D,
+	    0 1px 3px #777,
+	    0 0px 1px #ccc;
+}
+.o-light:hover {
+	color:white;
+	cursor: pointer;
+	text-align:center;
+    $experimental-support-for-svg: true;
+    @include background-image(linear-gradient(top, #F88C6B 0%, #FA9C7F 100%));
+    text-shadow: #FF6103 0 1px 3px;
+    -webkit-box-shadow:
+    inset 0 1px 0  #F88C6B,
+    inset 0 2px 0 #FCB56D,
+    0 1px 3px #777,
+    0 0px 1px #ccc;
+    -moz-box-shadow:
+    inset 0 1px 0  #F88C6B,
+    inset 0 2px 0 #FCB56D,
+    0 1px 3px #777,
+    0 0px 1px #ccc;
+    box-shadow:
+    inset 0 1px 0  #F88C6B,
+    inset 0 2px 0 #FCB56D,
+    0 1px 3px #777,
+    0 0px 1px #ccc;
+}
+input.o-button {
+  border:none; 
+}
+
+.ignore-cross-absolute{
+  position: absolute;
+  bottom: -11px;
+  right: 38px;
+  color: white;
+  font-size: 1.2em;
+  pointer-events:none;
+}
+.elec-button {
+		    color:white;
+			cursor: pointer;
+			text-align:center;
+		    background:#3A85A3;
+		    $experimental-support-for-svg: true;
+            @include background-image(linear-gradient(top, #60C5E6 0%, #3A85A3 100%)); 
+		    text-shadow: #22428A 0 1px 3px;
+		    -webkit-box-shadow:
+		    inset 0 1px 0  #3A85A3,
+		    inset 0 2px 0 #8EE5EE,
+		    0 1px 5px rgba(39, 39, 39, 0.6),
+		    0 0px 1px #ccc;
+		    -moz-box-shadow:
+		    inset 0 1px 0  #3A85A3,
+		    inset 0 2px 0 #8EE5EE,
+		    0 1px 5px rgba(39, 39, 39, 0.6),
+		    0 0px 1px #ccc;
+		    box-shadow:
+		    inset 0 1px 0  #3A85A3,
+		    inset 0 2px 0 #8EE5EE,
+		    0 1px 5px rgba(39, 39, 39, 0.6),
+		    0 0px 1px #ccc;
+}
+
+.fb-button {
+			color:white;
+			cursor: pointer;
+			@include border-radius(7px);
+			text-align:center;
+		    background:#375A98;
+		    $experimental-support-for-svg: true;
+            @include background-image(linear-gradient(top, #4D77B8 0%, #375A98 100%)); 
+		    text-shadow: #22428A 0 1px 3px;
+		    -webkit-box-shadow:
+		    inset 0 1px 0  #375A98,
+		    inset 0 2px 0 #6F90C4,
+		    0 1px 5px rgba(39, 39, 39, 0.6),
+		    0 0px 1px #ccc;
+		    -moz-box-shadow:
+		    inset 0 1px 0  #375A98,
+		    inset 0 2px 0 #6F90C4,
+		    0 1px 5px rgba(39, 39, 39, 0.6),
+		    0 0px 1px #ccc;
+		    box-shadow:
+		    inset 0 1px 0  #375A98,
+		    inset 0 2px 0 #6F90C4,
+		    0 1px 5px rgba(39, 39, 39, 0.6),
+		    0 0px 1px #ccc;
+}
+.fb-button:hover {
+			$experimental-support-for-svg: true;
+            @include background-image(linear-gradient(top, #375A98 0%, #4D77B8 100%)); 
+}
+.google-button {
+			color:white;
+			cursor: pointer;
+			@include border-radius(7px);
+			text-align:center;
+		    background:#a5281a;
+		    $experimental-support-for-svg: true;
+            @include background-image(linear-gradient(top, #da4a38 0%, #a5281a 100%)); 
+		    text-shadow: #8C1717 0 1px 3px;
+		    -webkit-box-shadow:
+		    inset 0 1px 0  #a5281a,
+		    inset 0 2px 0 #FA8072,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+		    -moz-box-shadow:
+		    inset 0 1px 0  #a5281a,
+		    inset 0 2px 0 #FA8072,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+		    box-shadow:
+		    inset 0 1px 0  #a5281a,
+		    inset 0 2px 0 #FA8072,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+}
+.google-button:hover {
+		$experimental-support-for-svg: true;
+        @include background-image(linear-gradient(top, #a5281a 0%, #da4a38 100%)); 
+}
+.twitter-button {
+			color:white;
+			cursor: pointer;
+			@include border-radius(7px);
+			text-align:center;
+		    background:#33CCFF;
+		    $experimental-support-for-svg: true;
+            @include background-image(linear-gradient(top, #9AE4E8 0%, #33CCFF 100%)); 
+		    text-shadow: #0099CC 0 1px 3px;
+		    -webkit-box-shadow:
+		    inset 0 1px 0  #33CCFF,
+		    inset 0 2px 0 #B0E0E6,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+		    -moz-box-shadow:
+		    inset 0 1px 0  #33CCFF,
+		    inset 0 2px 0 #B0E0E6,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+		    box-shadow:
+		    inset 0 1px 0  #33CCFF,
+		    inset 0 2px 0 #B0E0E6,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+}
+.twitter-button:hover {
+		$experimental-support-for-svg: true;
+        @include background-image(linear-gradient(top, #33CCFF 0%, #9AE4E8 100%)); 
+}
+.white-button {
+			color:white;
+			cursor: pointer;
+			@include border-radius(7px);
+			text-align:center;
+		    background:#FFFFFF;
+		    $experimental-support-for-svg: true;
+            @include background-image(linear-gradient(top, #FFFFFF 0%, #E6E6E6 100%)); 
+		    text-shadow: #B3B3B3 0 1px 3px;
+		    -webkit-box-shadow:
+		    inset 0 1px 0  #E6E6E6,
+		    inset 0 2px 0 #FFFFFF,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+		    -moz-box-shadow:
+		    inset 0 1px 0  #E6E6E6,
+		    inset 0 2px 0 #FFFFFF,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+		    box-shadow:
+		    inset 0 1px 0  #E6E6E6,
+		    inset 0 2px 0 #FFFFFF,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+}
+.white-button:hover {
+		$experimental-support-for-svg: true;
+        @include background-image(linear-gradient(top, #E6E6E6 0%, #FFFFFF 100%)); 
+}
+.white-background {
+		    background:#FFFFFF;
+		    $experimental-support-for-svg: true;
+            @include background-image(linear-gradient(top, #FFFFFF 0%, #E6E6E6 100%)); 
+		    text-shadow: #B3B3B3 0 1px 3px;
+		    -webkit-box-shadow:
+		    inset 0 1px 0  #E6E6E6,
+		    inset 0 2px 0 #FFFFFF,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+		    -moz-box-shadow:
+		    inset 0 1px 0  #E6E6E6,
+		    inset 0 2px 0 #FFFFFF,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+		    box-shadow:
+		    inset 0 1px 0  #E6E6E6,
+		    inset 0 2px 0 #FFFFFF,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+}
+.black-button {
+			color:white;
+			cursor: pointer;
+			@include border-radius(7px);
+			text-align:center;
+		    background:#000000;
+		    $experimental-support-for-svg: true;
+            @include background-image(linear-gradient(top, #333333 0%, #232323 100%)); 
+		    text-shadow: #000000 0 1px 3px;
+		    -webkit-box-shadow:
+		    inset 0 1px 0  #232323,
+		    inset 0 2px 0 #666666,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+		    -moz-box-shadow:
+		    inset 0 1px 0  #232323,
+		    inset 0 2px 0 #666666,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+		    box-shadow:
+		    inset 0 1px 0  #232323,
+		    inset 0 2px 0 #666666,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+}
+.black-button:hover {
+		$experimental-support-for-svg: true;
+        @include background-image(linear-gradient(top, #232323 0%, #333333 100%)); 
+}
+.soundcloud-button {
+			color:white;
+			cursor: pointer;
+			@include border-radius(7px);
+			text-align:center;
+		    background: #f8991d;
+		    $experimental-support-for-svg: true;
+            @include background-image(linear-gradient(top, #f8991d 0%, #f8310e 100%)); 
+		    text-shadow: #CD2626 0 1px 3px;
+		    -webkit-box-shadow:
+		    inset 0 1px 0  #FF6103,
+		    inset 0 2px 0 #FF8C00,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+		    -moz-box-shadow:
+		    inset 0 1px 0  #FF6103,
+		    inset 0 2px 0 #FF8C00,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+		    box-shadow:
+		    inset 0 1px 0  #FF6103,
+		    inset 0 2px 0 #FF8C00,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+}
+.soundcloud-button:hover {
+		$experimental-support-for-svg: true;
+        @include background-image(linear-gradient(top, #f8310e 0%, #f8991d 100%)); 
+}
+.search-button {
+			color:white;
+			cursor: pointer;
+			@include border-top-right-radius(7px);
+			@include border-bottom-right-radius(7px);
+			text-align:center;
+		    $experimental-support-for-svg: true;
+            @include background-image(linear-gradient(top, #F37244 0%, #F15A24 100%));
+		    text-shadow: #FF6103 0 1px 3px;
+		    -webkit-box-shadow:
+		    inset 0 1px 0  #F15A24,
+		    inset 0 2px 0 #F7931E,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+		    -moz-box-shadow:
+		    inset 0 1px 0  #F15A24,
+		    inset 0 2px 0 #F7931E,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+		    box-shadow:
+		    inset 0 1px 0  #F15A24,
+		    inset 0 2px 0 #F7931E,
+		    0 1px 3px #777,
+		    0 0px 1px #ccc;
+}
+.search-button:hover {
+			$experimental-support-for-svg: true;
+            @include background-image(linear-gradient(top, #F15A24 0%, #F37244 100%));
+}
+.norm-o-pad {
+    line-height: 28px;
+    height:25px;
+    padding:0 15px 0 15px;
+     a { 
+	    color:#fff;
+    }
+    a:hover {
+	    color:#fff;
+    }
+}
+.fb-o-pad {
+    height:30px;
+    padding:0 15px 0 15px;
+    i {
+	    font-size:1.8em;
+	    margin:6px 12px 0 -2px;
+    }
+}
+.trkr-o-pad {
+    line-height:25px;
+    height:25px;
+    padding:0 15px 0 15px;
+    a { 
+	    color:#fff;
+    }
+    a:hover {
+	    color:#fff;
+    }
+}
+.fb-disabled {
+  opacity: 0.75;
+  filter: alpha(opacity=75);
+}
+.mini-trkr-button, .mini-share, .mini-ignore-trk-artist {
+            border:none;
+            line-height:25px;
+            height:25px;
+            width:31px;
+            font-size:1.5em;
+            @extend .o-button; 
+            position:relative;
+            display:block;
+            float:left;
+            margin-right:15px;
+            a {
+	            color:#fff;
+            }
+            a:hover {
+	            color:#fff;
+            }
+          }
+.popover {
+arrow {
+	background-color:$gray !important;
+}
+.popover-inner {
+	background-color:$gray !important;
+	h3 {
+		color:#fff;
+		font-weight:bold;
+		@include background-image(linear-gradient(top, #F37244 0%, #F15A24 100%));
+		text-shadow: #FF6103 0 1px 3px; 
+	}
+} }

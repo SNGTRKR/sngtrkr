@@ -1,0 +1,20 @@
+.error-pages {
+text-align:center;
+	h2 {
+		@extend .signika-txt;
+		@extend .font-100;
+	}
+	h3 {
+		@extend .font-18;
+	}
+	span {
+		display:block;
+		
+	}
+	#not-found {
+		margin:34px 0 0 70px;
+	}
+	#gears {
+		margin:32px 0 0 56px;
+	}
+}

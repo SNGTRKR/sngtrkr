@@ -1,0 +1,34 @@
+.paginate-outer {
+position:relative;
+left:50%;
+float:left;
+clear:both;
+}
+.pagination {
+padding:0 10px 0 10px;
+position:relative;
+left:-50%;
+  .current {
+    @extend .o-button;
+    @include border-radius(0px);
+  }
+  span {
+    @extend .o-light;
+    @include border-radius(0px);
+    a {
+      color:#fff;
+    }
+  }
+  span:first-child {
+    @include border-top-left-radius(7px);
+    @include border-bottom-left-radius(7px);
+  }
+  span:last-child {
+    @include border-top-right-radius(7px);
+    @include border-bottom-right-radius(7px);
+  }
+  }
+  .profile-pag {
+    margin-top:40px;
+    padding-bottom:20px;
+  }

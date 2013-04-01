@@ -1,0 +1,64 @@
+ <% content_for :og_name, "Getting Started"
+content_for :og_url, request.url
+content_for :og_image, File.join(root_url , "/images/icon.png")
+content_for :og_description, "Quick getting started guide to help you understand how to use the SNGTRKR platform and help you with any potential issues you may encounter. In a few moments you'll be discovering, listening to and embracing new music!"
+content_for :og_type, "website"
+%>
+<% content_for :title do %>Getting Started<% end %>
+<% content_for :description do %>Quick getting started guide to help you understand how to use the SNGTRKR platform and help you with any potential issues you may encounter. In a few moments you'll be discovering, listening to and embracing new music!<% end %>
+<%= javascript_include_tag "/slider/modernizr.custom.28468.js" %>
+<%= javascript_include_tag "/slider/jquery.cslider.js" %>
+</div></div>
+			<div id="da-slider" class="da-slider">
+				<div class="da-slide">
+					<h2>Welcome</h2>
+					<p>Thank your for signing up to SNGTRKR! We would like to take a moment to help you understand <strong>how to use our site</strong> and help you with any potential issues you may encounter. In a few moments you'll be discovering, listening to and embracing new music!</p>
+					<div class="da-img"><img src="/images/slider/1.png" alt="Welcome"/></div>
+				</div>
+				<div class="da-slide">
+					<h2>Getting Started</h2>
+					<p>Right from the start SNGTRKR will supply artist suggestions, based on your facebook likes so you can quickly fill your timeline. Tracking a new artist could not be easier; you simply use the <strong>search tools</strong> provided.<br/><br/><strong>Start adding artists now! We've automatically followed all the artists you like on facebook, so if you don't want to follow any of those artists, nows your chance to unfollow them.</strong></p>
+					<div class="da-img"><div class="recommendations"><ul class="ajax-recommended-artists intro-recommendations">
+						<% if @user.suggested.count >= 4 %>
+						<%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 2] %>
+					<% else %>
+						<div class="loading">
+						<h3>Please wait...</h3>
+						<%= image_tag "/images/loading.png", :id => "loading-icon" %><br/>
+						</div>		  
+						<% end %>
+				</ul>
+				<div class="clear"></div>
+					</div></div>
+				</div>
+				<div class="da-slide">
+					<h2>Timeline</h2>
+					<p>Your timeline will be the central hub of your SNGTRKR experience. Once you've started tracking artists, your timeline will display <strong>artist releases from past to present to future</strong>, with the ability to rate, buy, share and listen to tracks of your choice. Control your timeline with your trackpad or scroll wheel.</p>
+					<div class="da-img"><img src="/images/slider/2.png" alt="Timeline" /></div>
+				</div>
+				<div class="da-slide">
+					<h2>Your Profile</h2>
+					<p>Tailoring your profile to suit <strong>your</strong> needs could not be any easier. Your profile will allow you to view artists you are currently tracking, change your email settings, keep up with your friends and even manage your own artist. </p>
+					<div class="da-img"><img src="/images/slider/3.png" alt="Profile" /></div>
+				</div>
+				<div class="da-slide">
+					<h2>Friends</h2>
+					<p>We like to preserve the fun and friendly community Facebook has to offer. Keeping up to date with what your friends like, or sharing an <strong>amazing new artist</strong> is easy with our intuitive friend interface.<br/> If you're ready to get started, click the continue button below! </p>
+					<a href="/tl" class="da-link">Let's go!</a>
+					<div class="da-img"><img src="/images/slider/4.png" alt="Friends" /></div>
+				</div>
+				<nav class="da-arrows">
+					<span class="da-arrows-prev"></span>
+					<span class="da-arrows-next"></span>
+				</nav>
+			</div>
+		<script type="text/javascript">
+			$(function() {
+				$('#da-slider').cslider();
+			});
+			  $(document).ready(function(){
+			    artist_suggestion_replace();
+			  });
+		</script>	
+<div class="wrapper2">
+<div class="container">

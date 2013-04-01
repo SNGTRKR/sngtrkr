@@ -1,0 +1,101 @@
+#featured{ 
+	width:680px; 
+	padding-right:280px; 
+	position:relative; 
+	height:240px; 
+	margin:27px 0 8px;
+	@include border-radius(12px);
+	 @include box-shadow(0px 2px 8px rgba(0,0,0,0.45));
+	h3 {
+		font-weight:bold;
+	}
+	ul {
+	position:absolute; 
+	top:0; left:680px; 
+	list-style:none; 
+	padding:0; margin:0; 
+	width:280px; 
+	background:rgba(255,255,255,0.75);
+	@include border-top-right-radius(10px);
+	@include border-bottom-right-radius(10px);
+		li {
+		position:relative;
+			a {
+				display:block; 
+				height:47px; 
+				padding:13px 0 0 10px;
+			}
+		}
+					.ui-tabs-selected {
+						position:relative;
+				a {
+					background:url('/images/arrow.png');
+					background-repeat:no-repeat;
+					color:#fff;
+					width:280px;
+					position:relative;
+					z-index:100;
+					right:23px;
+					padding-left:23px;
+				}
+					#arrow-first {
+						@include border-top-right-radius(10px);
+					}
+					#arrow-last {
+						@include border-bottom-right-radius(10px);
+					}
+				}
+				}
+	.ui-tabs-panel {
+		width:680px; height:240px; 
+		background:$gray; position:relative;
+		@include border-top-left-radius(10px);
+		@include border-bottom-left-radius(10px);
+		.release {
+			height:240px;
+			width:240px;
+			position:absolute;
+			left:0px; top:0px;
+			background-size: cover;
+			background-repeat:no-repeat;
+			@include border-top-left-radius(10px);
+			@include border-bottom-left-radius(10px);
+		}
+		.artist {
+		height:240px;
+		width:441px;
+		position:absolute;
+		top:0px; right:0px;
+		background-size: cover;
+		background-repeat:no-repeat;
+		.info {
+			position:absolute; 
+			bottom:0px; left:0; 
+			height:50px; 
+			background:rgba(0,0,0,0.65);
+			padding:0 15px 0 0;
+			width:426px;
+			h4 {
+				font-size:18px; font-family:Georgia, serif; 
+				color:#fff; padding:5px; margin:0;
+				overflow:hidden; 
+			}
+			p {
+				margin:0 5px; 
+				font-family:Verdana; font-size:11px; 
+				line-height:15px; color:#f0f0f0;
+			}
+			a {
+				text-decoration:none; 
+				color:#fff;
+			}
+			a:hover {
+				text-decoration:underline; 
+			}
+		}
+		}
+	}
+	.ui-tabs-hide{ 
+	display:none; 
+	}
+}

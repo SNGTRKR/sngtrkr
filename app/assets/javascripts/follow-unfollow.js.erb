@@ -1,0 +1,80 @@
+function artist_suggestion_replace() {
+
+  // Sharing options
+  $(".mini-share").click(function() {
+    var parent = $(this).parent().parent()
+    parent.find('.opac-50').fadeIn("normal");
+    parent.find('.share-artist').animate({right : 0}, "slow");
+    parent.find('.recommend-info').fadeOut("normal");
+  });
+  $(".share-cancel").click(function() {
+    var parent = $(this).parent().parent();
+    parent.find('.opac-50').fadeOut("normal");
+    parent.find('.share-artist').animate({right : -202}, "slow");
+    parent.find('.recommend-info').fadeIn("normal");
+  });
+  $(".share-artist ul a li").click(function() {
+    var parent = $(this).parent().parent().parent().parent();
+    parent.find('.opac-50').fadeOut("normal");
+    parent.find('.share-artist').animate({right : -202}, "slow");
+    parent.find('.recommend-info').fadeIn("normal");
+  });
+
+  $('.recommend-buttons a.add-trkr').bind('ajax:success', function(xhr, data, status){
+    $('#user-following-count').html(parseInt($('#user-following-count').html(), 10) + 1);
+    $('.tracked-artists').append("");
+  });
+
+  $('.recommend-buttons a.add-trkr, .recommend-buttons a.ajax-ignore-artist').bind('ajax:beforeSend', function () {
+    // Hide the suggestion itself
+    $(this).closest('li').css("opacity",0.3);
+  }).bind('ajax:success', function(xhr, data, status){
+    $(this).closest('li').replaceWith(data); 
+    // Reactivate click functionality for new suggestion
+    artist_suggestion_replace();
+  });
+
+  $('a.sidebar-add-trkr, a.sidebar-ignore-trkr').bind('ajax:beforeSend', function () {
+    // Hide the suggestion itself
+    $(this).closest('li').css("opacity",0.3);
+  }).bind('ajax:success', function(xhr, data, status){
+    $(this).closest('li').replaceWith(sidebar_new_suggestion(data)); 
+    // Reactivate click functionality for new suggestion
+    artist_suggestion_replace();
+  });
+
+  $('a.untrk-artist').bind('ajax:beforeSend', function () {
+    $(this).closest('li').fadeOut(300);
+    $('#user-following-count').html(parseInt($('#user-following-count').html(), 10) - 1);
+  });
+  // Disables buttons after they are clicked.
+  $('a').bind('ajax:beforeSend', function(){$(this).removeAttr('href');});
+  
+}
+
+// Set up add / remove buttons to replace with remove / add buttons on click
+function add_remove_trkr_bind() {
+
+  $('a.remove-trkr').bind('ajax:complete', function () {
+    var artist_id = $(this).data('id');
+    $(this).replaceWith('<a href="/artists/'+artist_id+'/follows" class="mini-trkr-button add-trkr" data-id="'+artist_id+'" data-method="post" data-remote="true" rel="nofollow"><i class="icon-plus"></i></a>');
+    add_remove_trkr_bind();
+  });
+  $('a.add-trkr').bind('ajax:complete', function () {
+    var artist_id = $(this).data('id');
+    $(this).replaceWith('<a href="/artists/'+artist_id+'/unfollow" class="mini-trkr-button  remove-trkr" data-id="'+artist_id+'" data-method="post" data-remote="true" rel="nofollow"><i class="icon-minus"></i></a>');
+    add_remove_trkr_bind();
+    FB.api("/me/sngtrkr:track", 'post', {artist: 'http://sngtrkr.com/artists/'+$(this).data("id")},function(response){
+      console.log("FB Open Graph Posted");
+      console.log(response);    
+    });
+  });
+
+}
+
+$(document).ready(function () { 
+
+  artist_suggestion_replace();
+  add_remove_trkr_bind();
+
+});

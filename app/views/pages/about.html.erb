@@ -6,96 +6,91 @@ content_for :og_type, "website"
 %>
 <% content_for :title do %>About<% end %>
 <% content_for :description do %>Inspired by the passion and appreciation that we have for music and artists alike, we built SNGTRKR - a webapp to enable other music lovers to easily track artists.<% end %>
-<div class="row-fluid">
-	<div class="span10">
-		<h1>About</h1>
-			<div class="tabbable tabs-left">
-				<ul id="myTab" class="nav nav-tabs nav-stacked each-tab">
-					<li class="active">
-						<a href="#tab1" data-toggle="tab"><i class="icon-question-sign"></i>What is SNGTRKR?</a>
-					</li>
-					<li>
-						<a href="#tab2" data-toggle="tab"><%= image_tag "/images/ppl_black.png", :class => "blk ppl"%><%= image_tag "/images/ppl_white.png", :class => "wht ppl"%>Meet the Team</a>
-					</li>
-					<li>
-						<a href="#tab3" data-toggle="tab"><i class="icon-file-alt"></i>Our Story</a>
-					</li>
-				</ul>
-				<div class="tab-content" id="myTabContent">
-					<div class="tab-pane active" id="tab1">
-					<p>SNGTRKR simplifies beyond belief the process of keeping up with new music, by putting all the information on the artists you love 
-						in one place, and emailing you when (and <strong>only when</strong>) they release new material. Just tell us who you like listening to, and we'll notify you by email when they have a new release, as well as suggest other similar 
-						artists you might also want to listen to.</p>
-					<p>As well as email, we'll present you with a timeline of new releases from artists you track, from present day all the way back to the
-						first album they ever published. It's a great way to get nostalgic! You can track absolutely any artist with a Facebook page. They don't have to be using SNGTRKR, simply search for them on our site, if
-						they aren't already in our catalogue we'll add them immediately.</p>
-					<p>We offer links to buy most music through both 7digital and iTunes, so whatever your preference, you're covered.</p>
-					<p>
-			      	</div>
-					<div class="tab-pane" id="tab2">
-							<div class="team_member">
-								<div class="image"></div>
-								<span>
-									<div class="title">
-										<h3>Tom Dallimore</h3>
-										Chief Designer
-									</div>
-									<div class="social">
-											<a href="mailto:tom@sngtrkr.com">
-												<i class="icon-envelope"></i>
-												<p>Email</p>
-											</a>
-											<a href="https://twitter.com/billy_dallimore" target="_blank">
-												<%= image_tag "/images/twitter_circle_wht.png", :class => "wht" %>
-												<%= image_tag "/images/twitter_circle_blu.png", :class => "blu" %>
-												<p>Twitter</p>
-											</a>
-											<a href="http://uk.linkedin.com/in/ruckusmedia" target="_blank">
-												<i class="icon-linkedin-sign"></i>
-												<p>LinkedIn</p>
-											</a>
-									</div>
-								</span>
-							</div>
-							<div class="team_member">
-								<div class="image"></div>
-								<span>
-									<div class="title">
-										<h3>Matt Bessey</h3>
-										Chief Developer
-									</div>
-									<div class="social">
-										<a href="mailto:matt@sngtrkr.com">
-											<i class="icon-envelope"></i>
-											<p>Email</p>
-										</a>
-										<a href="https://twitter.com/mjhbessey" target="_blank">
-											<%= image_tag "/images/twitter_circle_wht.png", :class => "wht" %>
-											<%= image_tag "/images/twitter_circle_blu.png", :class => "blu" %>
-											<p>Twitter</p>
-										</a>
-										<a href="http://uk.linkedin.com/in/mattbessey" target="_blank">
-											<i class="icon-linkedin-sign"></i>
-											<p>LinkedIn</p>
-										</a>
-									</div>
-								</span> 
-							</div>
-							<div class="clearfix"></div>
-					</div>
-					<div class="tab-pane" id="tab3">
-							<p>Inspired by the passion and appreciation that we have for music and artists alike, we built SNGTRKR - a webapp to enable other music lovers to easily track artists, so that they never miss another music release. We wanted to make it simple for you to find out when your favourite artists are releasing new content, by removing the hassle of looking through social media sites, subscribing to mailing lists, or repeatedly checking artists' websites.</p>
-					
-					<p>SNGTRKR is built to be completely automated by syncing to Facebook. It works by indexing many different artists, while collating data from several other online platforms, to create a rich source of artist information within a comprehensive database of music releases, both old and new.</p>
-					<p>All of this information is then delivered instantly to you. You choose which artists that you wish to track, either for their upcoming dancefloor fillers, or their archived classics. We then supply you with a timeline of the artist's tracks, alongside email alerts on the day that their new releases are announced. Additionally, upon registration SNGTRKR automatically recognises the artists that you've already liked on Facebook, and supplies you with relevant recommendations to build up your TRK'd artists.</p>
-					But it doesn't stop there. We've taken it one step further and integrated the ability to listen to and purchase tracks from several online music outlets, so that discovering new music can be a fast and enjoyable experience. Furthermore, we have retained the sense of community that Facebook offers, by allowing you to browse and listen to music that your Facebook friends are TRKing on the SNGTRKR platform.</p>
-					<p>
-					Our dream is to make every track that is released available on the SNGTRKR application. We want to become the definitive online catalogue for every artist's music releases.</p>
-					<p>SNGTRKR was founded in 2012 by Matt Bessey and Billy Dallimore,<br>
-					<strong>'Two people who wanted to track music releases straight to their inbox'.</strong>
-					</p>
-					</div>
-			</div>
+<div class="row">
+<div class="span<% if !user_signed_in? %>24<% else %>18<% end %>">
+<div class="tabbable tabs-left about-tabs">
+	<ul id="myTab" class="nav nav-tabs nav-stacked each-tab">
+		<li class="active"><a href="#tab1" data-toggle="tab">What is SNGTRKR?</a></li>
+		<li><a href="#tab2" data-toggle="tab">Meet the Team</a></li>
+		<li><a href="#tab3" data-toggle="tab">Our Story</a></li>
+		<li><a href="#tab4" data-toggle="tab">Contact Us</a></li>
+	</ul>
+	<div class="tab-content" id="myTabContent">
+		<div class="tab-pane active" id="tab1">
+		<h2>
+			Who is it for?
+		</h2>
+		<p>
+			Anyone with an interest in keeping up with new music! We think DJs will find the site particularly useful though. It's also a great
+			way to see the entire discography of an artist in a very presentable way.
+		</p>
+		<p>
+		<h2>
+			What does it do?
+		</h2>
+		<p>SNGTRKR simplifies beyond belief the process of keeping up with new music, by putting all the information on the artists you love 
+			in one place, and emailing you when (and <strong>only when</strong>) they release new material. Just tell us who you like listening to, and we'll notify you by email when they have a new release, as well as suggest other similar 
+			artists you might also want to listen to.</p>
+		<p>As well as email, we'll present you with a timeline of new releases from artists you track, from present day all the way back to the
+			first album they ever published. It's a great way to get nostalgic! You can track absolutely any artist with a Facebook page. They don't have to be using SNGTRKR, simply search for them on our site, if
+			they aren't already in our catalogue we'll add them immediately.</p>
+		<p>We offer links to buy most music through both 7digital and iTunes, so whatever your preference, you're covered.</p>
+		<p>
+		<h2>
+			How do you say it?
+		</h2>
+		<p><strong>Song-tracker</strong>. Not, as we hear it can be read, snog-tracker. Sorry ladies.</p>
+		<p>
+		<h2>I'm an artist, how do I manage myself on SNGTRKR?</h2>
+		<p>
+		It's simple! Just log in with a Facebook account that has permission to manage your Facebook artist page, go to your profile and choose <strong>manage artist</strong>.</p>
+		<p>You may not even need to manage yourself, we're generally very good at scraping your releases from our partner stores, so unless you have a very ambiguous name, we should find you.</p>
+      	</div>
+		<div class="tab-pane" id="tab2">
+		<h2>Billy Dallimore</h2> 
+		<h3>Co-Founder, Chief Designer</h3>
+		<p>Billy was brought up within a family run Graphic Design business from an early age, which in turn inspired him to turn to web design &amp; development. 
+		Being self taught amongst several web languages from the early age of 16, Billy has reaffirmed, improved and certified his skills within the web development 
+		&amp; design business over the course of 6 years. Billy also shares a passion for the EDM music scene, and has been actively DJing anything with a bassline for the past couple of years.</p>
+		<h2>Matt Bessey</h2> <h3>Co-Founder, Chief Developer</h3>
+		<p>Matt has been using a keyboard and mouse since he was 4, or so his university application says anyway. Like Billy he taught himself web development from an early age, and
+		went on to study Computer Science at Bristol University. He's in his 2nd year right now. When not busy with deadlines and general hackery, he enjoys DJing a
+		variety of music.</p>
+		<div id="team-pic" style="background-image:url(/images/team.jpg);"></div>
+		</div>
+		<div class="tab-pane" id="tab3">
+				<p>Inspired by the passion and appreciation that we have for music and artists alike, we built SNGTRKR - a webapp to enable other music lovers to easily track artists, so that they never miss another music release. We wanted to make it simple for you to find out when your favourite artists are releasing new content, by removing the hassle of looking through social media sites, subscribing to mailing lists, or repeatedly checking artists' websites.</p>
+		
+		<p>SNGTRKR is built to be completely automated by syncing to Facebook. It works by indexing many different artists, while collating data from several other online platforms, to create a rich source of artist information within a comprehensive database of music releases, both old and new.</p>
+		<p>All of this information is then delivered instantly to you. You choose which artists that you wish to track, either for their upcoming dancefloor fillers, or their archived classics. We then supply you with a timeline of the artist's tracks, alongside email alerts on the day that their new releases are announced. Additionally, upon registration SNGTRKR automatically recognises the artists that you've already liked on Facebook, and supplies you with relevant recommendations to build up your TRK'd artists.</p>
+		But it doesn't stop there. We've taken it one step further and integrated the ability to listen to and purchase tracks from several online music outlets, so that discovering new music can be a fast and enjoyable experience. Furthermore, we have retained the sense of community that Facebook offers, by allowing you to browse and listen to music that your Facebook friends are TRKing on the SNGTRKR platform.</p>
+		<p>
+		Our dream is to make every track that is released available on the SNGTRKR application. We want to become the definitive online catalogue for every artist's music releases.</p>
+		<p>SNGTRKR was founded in 2012 by Matt Bessey and Billy Dallimore,<br>
+		<strong>'Two people who wanted to track music releases straight to their inbox'.</strong>
+		</p>
+		</div>
+		<div class="tab-pane" id="tab4">
+		<h2>General Enquiries</h2>
+		<p>For general information, queries and support please contact <a href="mailto:info@sngtrkr.com">info@sngtrkr.com</a>.</p>
+		<p>However, if you are experiencing technical difficulties with your account please contact <a href="mailto:support@sngtrkr.com">support@sngtrkr.com</a>. We will get back to you within 48 hours.</p>
+		<h2>Press</h2>
+		<p>If you are an artist and/or record label and wish to get involved, or you wish to receive a press pack, please contact <a href="mailto:press@sngtrkr.com">press@sngtrkr.com</a> for an information and/or press pack.</p>
+		<h2>Social Media</h2>
+		<p>We love being social. We want to create an informative and friendly community of music enthuasists, so we can share our likes, dislikes and discoveries.</p> 
+		<p>For more news and updates on SNGTRKR, check out our social media sites below:</p>
+		<ul>
+		<a href="https://www.facebook.com/pages/Sngtrkr/358652204169145" target="_blank"><li class="fb-icon fb-button"><i class="icon-facebook"></i></li></a>
+		<a href="https://twitter.com/#!/SNGTRKR" target="_blank"><li class="twit-icon twitter-button"><i class="icon-twitter"></i></li></a>
+		<a href="https://plus.google.com/111951759053908858363/posts" target="_blank"><li class="goo-icon google-button"><i class="icon-google-plus"></i></li></a>
+		</ul>
 		</div>
 	</div>
 </div>
+</div></div>
+<script type="text/javascript">
+$('#myTab a').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show');
+})
+</script>

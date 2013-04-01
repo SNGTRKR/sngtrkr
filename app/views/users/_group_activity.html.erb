@@ -1,0 +1,27 @@
+<% activity = group_activity %>
+<li>
+  <div class="each-activity">
+  <% if activity[:action] == 'follow' %>
+    <%= image_tag activity[:artist].image :sidebar_suggest %>
+      <div>
+        <strong><%= link_to("#{activity[:user].first_name} #{activity[:user].last_name}", 
+          user_path(activity[:user])) %></strong> tracked 
+          <strong><%= link_to truncate((strip_tags activity[:artist].name || "" ), :length => 22), activity[:artist] %></strong><br/>
+          <span><%= time_ago_in_words(activity[:time]) %> ago.</span>
+      </div>
+  <% elsif activity[:action] == 'rate' %>
+    <%= image_tag activity[:release].image :activity_release %>
+      <div>
+        <strong>
+          <%= link_to("#{activity[:release].first_name} #{activity[:release].last_name}", user_path(activity[:release].user_id)) %>
+        </strong>
+         rated 
+        <strong>
+         <%= link_to truncate((strip_tags activity[:release].name || "" ), :length => 22), 
+           artist_release_path(activity[:release].artist_id, activity[:release].id) %>
+        </strong>
+           with <strong><%= activity[:release].stars %> stars</strong><br/>
+           <span><%= time_ago_in_words(activity[:time]) %> ago.</span></div> 
+  <% end %>
+  </div>
+</li>
