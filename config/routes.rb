@@ -50,7 +50,7 @@ SNGTRKR::Application.routes.draw do
 
   get 'search' => 'search#omni'
   
-  resources :artists do
+  resources :artists, :except => [:index] do
     collection do
       match 'import/:fb_id', :action => 'import'
       match 'preview'
@@ -63,11 +63,6 @@ SNGTRKR::Application.routes.draw do
     match 'unfollow' => 'Follows#user_destroy'
     #resources :suggests, :except => [:destroy,:edit]
     match 'unsuggest' => 'Suggests#destroy'
-  end
-  resources :releases do 
-    member do 
-      post 'rate'
-    end
   end
 
   # Allows us to have intuitive /artist/1/follow URLs that actually deal with the

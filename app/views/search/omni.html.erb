@@ -1,0 +1,100 @@
+<% content_for :title do %>Search results for "<%= @search %>"<% end %>
+<% if @artists %>
+  <% content_for :description do %>Search results: <% @artists.each do |artist| %><%= artist.name %>, <% end %><% end %>
+<% else %>
+  <% content_for :description do %>Search results empty<% end %>
+<% end %>
+<div class="g_two_col">
+  <div class="g_sidebar_large">
+    <div class="result_search g_fixed">
+      <h1>Search</h1>
+      <div class="tabbable tabs-left search-tabs">
+        <ul id="myTab" class="nav nav-tabs nav-stacked each-tab">
+          <li class="active">
+            <a href="#tab1" data-toggle="tab"><i class="icon-search"></i>Everything</a>
+          </li>
+          <li>
+            <a href="#tab2" data-toggle="tab"><%= image_tag "/images/ppl_black.png", :class => "blk ppl"%><%= image_tag "/images/ppl_white.png", :class => "wht ppl"%>Artists</a>
+          </li>
+          <li>
+            <a href="#tab3" data-toggle="tab"><%= image_tag "/images/release_blk.png", :class => "blk rel"%><%= image_tag "/images/release_wht.png", :class => "wht rel"%>Releases</a>
+          </li>
+        </ul>
+      </div> 
+    </div>
+  </div>
+  <div class="g_main g_tabs_large">
+      <div class="tab-content search-tab-content" id="myTabContent">
+        <div class="search_input">
+          <p><strong><%= pluralize @releases_count, "release" %> and <%= pluralize @artists_count, "artist" %> found</strong></p>
+          <%= form_tag search_path , :method => 'get' do %>
+            <%= text_field_tag(:query, params[:query], :autocomplete => 'off', 
+              :placeholder => "Search") %>
+          <% end %>
+        </div>
+        <div class="tab-pane active" id="tab1">
+          <% if @empty_search or @short_search or @artists.empty? %>
+            <% if @empty_search %>
+              <p> Your search was empty, you have to type <strong>something</strong>! </p>
+            <% elsif @short_search %>
+              <p> Your search word wasn't long enough, you must type at least <strong>two characters</strong>.</p>
+            <% elsif @artists.empty? %>
+              <p>We didn't find any results for '<strong><%= @search %></strong>'. Check your spelling, or try a different search.</p>
+            <% end %>
+          <% else %>
+
+          <% end %>
+        </div>
+        <div class="tab-pane" id="tab2">
+          <% if @empty_search or @short_search or @artists.empty? %>
+            <% if @empty_search %>
+              <p> Your search was empty, you have to type <strong>something</strong>! </p>
+            <% elsif @short_search %>
+              <p> Your search word wasn't long enough, you must type at least <strong>two characters</strong>.</p>
+            <% elsif @artists.empty? %>
+              <p>We didn't find any results for '<strong><%= @search %></strong>'. Check your spelling, or try a different search.</p>
+            <% end %>
+          <% else %>
+            <% @artists.each do |artist| %>
+              <div class="result">
+                <%= image_tag "http://placehold.it/110x110" %>
+                <!-- <%= image_tag artist.image.url :search_a %> -->
+                <span>
+                  <div><%= link_to artist.name, artist %></div>
+                  <%= artist.label_name %><br/>
+                  <%= artist.followers %> trackers
+                </span>
+                <div class="btn btn-small">Track</div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="tab-pane" id="tab3">
+          <% if @empty_search or @short_search or @artists.empty? %>
+            <% if @empty_search %>
+              <p> Your search was empty, you have to type <strong>something</strong>! </p>
+            <% elsif @short_search %>
+              <p> Your search word wasn't long enough, you must type at least <strong>two characters</strong>.</p>
+            <% elsif @artists.empty? %>
+              <p>We didn't find any results for '<strong><%= @search %></strong>'. Check your spelling, or try a different search.</p>
+            <% end %>
+          <% else %>
+            
+            <% @releases.each do |release| %>
+              <div class="result">
+                <%= image_tag "http://placehold.it/110x110" %>
+                <span>
+                  <div><%= release.name %></div>
+                  <%= release.artist.name %><br/>
+                  <%= release.date %>
+                </span>
+                <div class="btn btn-small">Buy</div>
+                <div class="btn btn-small">Share</div>
+              </div>
+            <% end %>
+            
+          <% end %>
+        </div>
+      </div>
+  </div>
+</div>
