@@ -76,18 +76,6 @@ body {
 /* ============================= */
 @media (min-width: 1200px) {
   body {
-    .sections {
-      .section {
-        &:nth-child(even) > .col:last-child {
-          float:left;
-          width:400px;
-          margin-left:30px;
-        }
-        .discover {
-          width:379px !important;
-        }
-      }
-    }
     .g_main {
       padding: 30px 30px 0 0;
       margin:0 325px 0 225px;
