@@ -68,25 +68,28 @@
 			}
 		}
 	}
-}
-.team_member:hover > span {
-	background-color:rgba(0,0,0,0.62);
-	color:#fff;
-	height:238px;
-}
-.team_member:hover > .image {
-	filter: blur(3px);
-	-webkit-filter: blur(3px);
-	-moz-filter: blur(3px);
-	-o-filter: blur(3px);
-	-ms-filter: blur(3px);
-}
-.team_member:hover > span > .social {
-	opacity:1;
-	filter: alpha(opacity=100);
-}
-.team_member:hover > span > .title {
-	top:19px;
+	&:hover > span {
+		background-color:rgba(0,0,0,0.62);
+		color:#fff;
+		height:238px;
+	}
+	&:hover > .image {
+		filter: blur(3px);
+		-webkit-filter: blur(3px);
+		-moz-filter: blur(3px);
+		-o-filter: blur(3px);
+		-ms-filter: blur(3px);
+	}
+	&:hover > span > .social {
+		opacity:1;
+		filter: alpha(opacity=100);
+	}
+	&:hover > span > .title {
+		top:19px;
+	}
+	&:nth-child(2) {
+		margin-right:0px;
+	}
 }
 .about-tab-content {
 	margin-top:22px;
