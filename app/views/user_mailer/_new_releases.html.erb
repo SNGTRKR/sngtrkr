@@ -3,7 +3,7 @@
 <table style="margin-left:-10px;" border="0" cellpadding="10" cellspacing="0" width="100%">
 		<% @releases.each do |release| %>
 		<tr>
-		<td style="height:83px;width:83px;"><img src="<%= @domain + release.image.url(:release_carousel) %>"/></td>
+		<td style="height:83px;width:83px;"><img src="<%= release.image.url(:release_carousel) %>"/></td>
 		<td style="line-height:1.4em;"><%= link_to release.name, artist_release_url(release.artist, release), :target => "_blank", :style => "color: #F15A24;text-decoration:none;font-weight:bold;font-size:22px;" %><br/>
 		<b>Artist</b>: <%= link_to release.artist.name, artist_url(release.artist), :target => "_blank", :style => "color: #F15A24;text-decoration:none;" %><br/>
 		<b>Label</b>: <%= release.label_name %><br/>
