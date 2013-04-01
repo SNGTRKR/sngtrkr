@@ -11,7 +11,7 @@
       <div class="tabbable tabs-left search-tabs">
         <ul id="myTab" class="nav nav-tabs nav-stacked each-tab">
           <li class="active">
-            <a href="#tab1" data-toggle="tab"><i class="icon-search"></i>Everything</a>
+            <a href="#tab1" data-toggle="tab"><i class="icon-search"></i>Top results</a>
           </li>
           <li>
             <a href="#tab2" data-toggle="tab"><%= image_tag "/images/ppl_black.png", :class => "blk ppl"%><%= image_tag "/images/ppl_white.png", :class => "wht ppl"%>Artists</a>
@@ -42,6 +42,31 @@
               <p>We didn't find any results for '<strong><%= @search %></strong>'. Check your spelling, or try a different search.</p>
             <% end %>
           <% else %>
+            <% @artists.take(5).each do |artist| %>
+              <div class="result">
+                <%= image_tag "http://placehold.it/110x110", :class => "image" %>
+                <!-- <%= image_tag artist.image.url :search_a %> -->
+                <span>
+                  <div><%= link_to artist.name, artist %></div>
+                  <%= artist.label_name %><br/>
+                  <%= artist.followers %> trackers
+                </span>
+                <div class="btn btn-small">Track</div>
+                <div class="btn btn-small"><i class="icon-share"></i>Share</div>
+              </div>
+            <% end %>
+            <% @releases.take(5).each do |release| %>
+              <div class="result">
+                <%= image_tag "http://placehold.it/110x110", :class => "image" %>
+                <span>
+                  <div><%= link_to release.name, [release.artist, release] %></div>
+                  <%= release.artist.name %><br/>
+                  <%= release.date.strftime("#{release.date.day.ordinalize} %B %Y ") %>
+                </span>
+                <div class="btn btn-small">Buy</div>
+                <div class="btn btn-small"><i class="icon-share"></i>Share</div>
+              </div>
+            <% end %>
 
           <% end %>
         </div>
@@ -57,7 +82,7 @@
           <% else %>
             <% @artists.each do |artist| %>
               <div class="result">
-                <%= image_tag "http://placehold.it/110x110" %>
+                <%= image_tag "http://placehold.it/110x110", :class => "image" %>
                 <!-- <%= image_tag artist.image.url :search_a %> -->
                 <span>
                   <div><%= link_to artist.name, artist %></div>
@@ -65,6 +90,7 @@
                   <%= artist.followers %> trackers
                 </span>
                 <div class="btn btn-small">Track</div>
+                <div class="btn btn-small"><i class="icon-share"></i>Share</div>
               </div>
             <% end %>
           <% end %>
@@ -82,14 +108,44 @@
             
             <% @releases.each do |release| %>
               <div class="result">
-                <%= image_tag "http://placehold.it/110x110" %>
+                <%= image_tag "http://placehold.it/110x110", :class => "image" %>
                 <span>
-                  <div><%= release.name %></div>
+                  <div><%= link_to release.name, [release.artist, release] %></div>
                   <%= release.artist.name %><br/>
-                  <%= release.date %>
+                  <%= release.date.strftime("#{release.date.day.ordinalize} %B %Y ") %>
                 </span>
-                <div class="btn btn-small">Buy</div>
-                <div class="btn btn-small">Share</div>
+                <div class="btn btn-small buy" data-placement="bottom" id="<%= release.id %>">Buy</div>
+                <div class="btn btn-small share_release share" data-placement="bottom" id="<%= release.id %>"><i class="icon-share"></i>Share</div>
+                <div class="buy_pop buy_pop_<%= release.id %>">
+                  <div class="buy_content">
+                    <% if release.itunes? %>
+                      <%= link_to image_tag("/images/social/it.png", :alt => "iTunes", :title => "iTunes"), release.itunes, :target => "_blank" %>
+                    <% end %>
+                    <% if release.sdigital %>
+                      <%= link_to image_tag("/images/social/7d.png", :alt => "7Digital", :title => "7Digital"), release.sdigital, :target => "_blank" %>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="rel_pop rel_pop_<%= release.id %>">
+                  <div class="share_content">
+                    <div>
+                      <a href="#" alt="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [release.artist, release] %>%2F&t=SNGTRKR','Share on Facebook','scrollbars=no,width=620,height=340'); return false;">
+                        <%= image_tag "/images/social/fb.png", :alt => "Facebook" %>
+                      </a>
+                      <a href="#" title="Share on Twitter" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [@artist, release] %>&text=<%= release.artist.name %>+&#45;+<%= release.name %><% if release.label_name %>+released+on+<%= release.label_name %><% end %>+&#45;+www.sngtrkr.com<%= url_for [release.artist, release] %>&via=SNGTRKR','Share on Twitter','scrollbars=no,width=620,height=340'); return false;">
+                        <%= image_tag "/images/social/twitter.png", :alt => "Twitter" %>
+                      </a>
+                      <a href="#" title="Share on Tumblr" onClick="MyWindow=window.open('http://www.tumblr.com/share/link?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [release.artist, release] %>&name=<%= release.artist.name %>+&#45;+<%= release.name %>&description=Release Date: <%= release.date.strftime("#{release.date.day.ordinalize} %B %Y ") %><% if release.label_name %><br/>Label:<%= release.label_name %><% else %><br/><br/><% end %>','Share on Tumblr','scrollbars=no,width=620,height=340'); return false;">
+                        <%= image_tag "/images/social/tb.png", :alt => "Tumblr" %>
+                      </a>
+                      <a href="#" title="Share on Google Plus" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [release.artist, release] %>','Share on Google+','scrollbars=no,width=620,height=340'); return false;">
+                        <%= image_tag "/images/social/gplus.png", :alt => "Google+" %>
+                      </a>
+                    </div>
+                    <span>Link:</span>
+                    <input type="text" onClick="this.select();" value="<%= request.url %>">
+                  </div>
+                </div>
               </div>
             <% end %>
             

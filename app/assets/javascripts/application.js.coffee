@@ -24,15 +24,6 @@ $(document).ready ->
 	    #  $("#amount").val "$" + ui.value
 
 	#  $("#amount").val "$" + $("#slider").slider("value")
-	$(".share_artist").popover
-	  html: true
-	  content: ->
-	    $(".art_pop").html()
-
-	$(".share_release").popover
-	  html: true
-	  content: ->
-	    $(".rel_pop").html()
 
 	$(".share, .buy").click ->
       $(this).toggleClass "active"
@@ -42,10 +33,6 @@ $(document).ready ->
 	    	$(this).popover "hide"
 		    $(this).removeClass "active"
 
-    $(".buy").popover
-      html: true
-      content: ->
-      	$(".buy_pop").html()
 
 	$("body").on "click", (e) ->
 	  $(".share, .buy").each ->
@@ -59,24 +46,24 @@ $(document).ready ->
 
 	$(".share_artist").each ->
 	  $elem = $(this)
-	  share_id = $elem.attr("id")
+	  art_id = $elem.attr("id")
 	  $elem.popover
 	    html: true
-	    content: $(".art_pop_"+ share_id + "").html()
+	    content: $(".art_pop_"+ art_id + "").html()
 
 	$(".share_release").each ->
 	  $elem = $(this)
-	  share_id = $elem.attr("id")
+	  rel_id = $elem.attr("id")
 	  $elem.popover
 	    html: true
-	    content: $(".rel_pop_"+ share_id + "").html()
+	    content: $(".rel_pop_"+ rel_id + "").html()
 
 	$(".buy").each ->
 	  $elem = $(this)
-	  share_id = $elem.attr("id")
+	  buy_id = $elem.attr("id")
 	  $elem.popover
 	    html: true
-	    content: $(".buy_pop_"+ share_id + "").html()
+	    content: $(".buy_pop_"+ buy_id + "").html()
 
 	$('.signup').click ->
 		$('#user_login').modal "hide"
