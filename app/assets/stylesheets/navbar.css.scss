@@ -129,11 +129,13 @@
 #user_signup, #user_login {
 	width:450px;
 	background: url('/images/bg_body-noise.png') repeat;
+	margin-left:-225px;
 	.modal-body {
-		form {
-			padding:30px 100px 0;
-			border-top: 1px solid #d1d1d1;
-	}
+		max-height:500px;
+			form {
+				padding:30px 100px 0;
+				border-top: 1px solid #d1d1d1;
+			}
 	.modal-footer {
 		button, .cancel {
 				float:right;
@@ -150,6 +152,7 @@
 }
 #forgot_password {
 	width:450px;
+	margin-left:-225px;
 	background: url('/images/bg_body-noise.png') repeat;
 	.modal-body {
 
