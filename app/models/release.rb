@@ -18,12 +18,14 @@ class Release < ActiveRecord::Base
   has_many :user_notifications, :through => :notification, :source => :user
   belongs_to :artist
 
-  searchable :auto_index => true, :auto_remove => true do
-    text :name, :boost => 2.0, :as => :code_textp
-    text :artist_name, :as => :code_textp do
-      artist.try(:name)
+  if !Rails.env.test?
+    searchable :auto_index => true, :auto_remove => true do
+      text :name, :boost => 2.0, :as => :code_textp
+      text :artist_name, :as => :code_textp do
+        artist.try(:name)
+      end
+      text :label_name
     end
-    text :label_name
   end
  
   def to_s

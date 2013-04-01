@@ -3,9 +3,7 @@ require 'open-uri'
 describe "ReleaseScraper" do
 
   before :each do
-    Artist.destroy_all
-    Release.destroy_all
-    @a = Artist.create!(:name => "Pompoduke", :sdid => 1, :fbid => "123", :itunes_id => 4)
+    @a = create(:artist)
     @rs = ReleaseScraper.new @a
     @release_count = Release.count
   end
@@ -20,14 +18,14 @@ describe "ReleaseScraper" do
       "label" => {
         "name" => "Plums"
       }
-
     }
+
     @rs.sdigital_import [release], :test_mode => true
     @rs.save_all
     if increase
-      Release.count.should == count+1
+      Release.count.should eq count+1
     else
-      Release.count.should == count
+      Release.count.should eq count
     end
     r = Release.where(:sd_id => rand).first
     r.name.should == correct
@@ -52,11 +50,11 @@ describe "ReleaseScraper" do
     @a.releases.build(:name => "You Should Not Know [Remixes]",:sd_id => 123, :date => Date.today, :scraped => true).save!
     @a.releases.build(:name => "You Should Know [Remixes]",:sd_id => 123, :date => Date.today, :scraped => true).save!
     @a.releases.build(:name => "You Should Know [Remixes]",:sd_id => 123, :date => Date.today, :scraped => true).save!
-    Release.count.should == @release_count + 3
+    Release.count.should eq @release_count + 3
     Release.find_each do |r|
       @rs.class.remove_duplicates r
     end
-    Release.count.should == @release_count + 2
+    Release.count.should eq @release_count + 2
 
   end
 
@@ -70,15 +68,15 @@ describe "ReleaseScraper" do
       }
     ]
 
-    @rs.itunes_import(releases).should == 1
+    @rs.itunes_import(releases).should eq 1
     @rs.save_all
 
-    Release.count.should == @release_count + 1
+    Release.count.should eq @release_count + 1
 
-    @rs.itunes_import(releases).should == 0
+    @rs.itunes_import(releases).should eq 0
     @rs.save_all
 
-    Release.count.should == @release_count + 1
+    Release.count.should eq @release_count + 1
 
 
   end
@@ -87,10 +85,10 @@ describe "ReleaseScraper" do
     image = File.open(File.join('spec','sample_data','release_100.jpeg'))
     r = @a.releases.build(:name => "You Should Know",:sd_id => 123, :date => Date.today, :scraped => true, :image => image)
     r.save!
-    Release.count.should == @release_count + 1
+    Release.count.should eq @release_count + 1
 
     # Test for successfull image replacement
-    !!(r.image).should == true
+    (!!r.image).should eq true
     image_size = open(r.image :original).size
     @rs.class.improve_image r, :test_image => "http://www.simplyzesty.com/wp-content/uploads/2012/02/Google-logo.jpg"
     r.save!

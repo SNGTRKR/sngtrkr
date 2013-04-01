@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :fbid, :first_name, :last_name, 
     :last_sign_in_at, :email_frequency, :deleted_at, :leave_reason, :confirmed_at
 
-  validates :fbid, :uniqueness => true, :allow_blank => true
+  validates :fbid, :uniqueness => true, :allow_blank => true, :allow_nil => true
   validates :email, :presence => true, :uniqueness => true
   validates :first_name, :presence => true
   validates :last_name, :presence => true
