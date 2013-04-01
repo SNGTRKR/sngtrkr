@@ -10,39 +10,52 @@
 	background-color:$gray;
 }
 .signup-home {
-	margin:40px 0;
+	margin:40px 0 34px;
 	text-align:center;
 	.btn-warning {
 		margin-left:10px;
 	}
 }
-.sectors {
+.sections {
 	p {
 		margin-top:16px;
 	}
-	.span12 {
+	.section {
 		border-top:1px solid #d1d1d1;
 		@extend .center;
-	}
-	.row:last-child {
-		.span12 {
-			border-bottom:1px solid #d1d1d1;
-		}
-	}
-	.timeline {
-		margin-top:98px;
-	}
-	.computer {
-		margin-top:91px;
-	}
-	.release {
-		margin-top:75px;
-	}
-	.email {
-		margin-top: 137px;
-	}
-	.timeline_img {
-		margin-left:20px;
+		margin:0 auto;
+		max-width:980px;
+		overflow:hidden;
+			&:last-child {
+				border-bottom:1px solid #d1d1d1;
+			}
+			&:nth-child(odd) > .col:first-child {
+				float:left;
+				width:400px;
+			}
+			&:nth-child(odd) > .col:last-child {
+				float:right;
+			}
+			&:nth-child(even) > .col:first-child {
+				float:left;
+			}
+			&:nth-child(even) > .col:last-child {
+				float:left;
+				width:400px;
+				margin-left:80px;
+			}
+			.follow {
+				margin-top:96px;
+			}
+			.connect {
+				margin-top:91px;
+			}
+			.discover {
+				margin-top:74px;
+			}
+			.date {
+				margin-top: 127px;
+			}
 	}
 }
 .social_share {

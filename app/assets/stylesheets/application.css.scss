@@ -49,12 +49,25 @@ body {
   	background: url('/images/bg_body-noise.png') repeat;
     text-shadow: 0.5px 0.5px 0 rgba(240, 240, 240, 1); 
 }
-.container-top {
-  margin-top:90px;
-}
 .container-fluid {
   min-width:850px;
 }
-.navbar-inner {
-  
+/* ============================= */
+/* ! Layout for tablet  */
+/* ============================= */
+@media only screen and (max-width: 1023px) {
+  body {
+    .sections {
+      .section {
+        &:nth-child(even) > .col:last-child {
+          float:left;
+          width:400px;
+          margin-left:30px;
+        }
+        .discover {
+          width:379px !important;
+        }
+      }
+    }
+  }
 }
