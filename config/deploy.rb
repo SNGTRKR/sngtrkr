@@ -3,7 +3,7 @@ set :user, "deploy"
 set :domain, 'sngtrkr.com'
 set :staging_domain, 'staging.sngtrkr.com'
 set :scm, 'git'
-set :repository,  "https://github.com/MattBessey/sngtrkr.git"
+set :repository,  "https://github.com/bessey/sngtrkr.git"
 set :scm_verbose, true
 
 set :applicationdir, "/var/www/sngtrkr"
