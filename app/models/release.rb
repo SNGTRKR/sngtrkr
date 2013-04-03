@@ -8,7 +8,11 @@ class Release < ActiveRecord::Base
       :release_i => ["310x311#"],
       :release_carousel => ["116x116#"],
       :activity_release => ["40x40#"],
-      :original => ["500x500>"]
+      :original => ["500x500>"],
+      # NEW SIZES
+      :small => ["50x50#"],
+      :medium => ["150x150#"],
+      :large => ["230x230#"]
     }, 
     :convert_options => {
       :all => '-quality 40 -strip',

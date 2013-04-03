@@ -11,7 +11,11 @@ class Artist < ActiveRecord::Base
       :recommend => ["212x178#"],
       :manage => ["100x100#"],
       :sidebar_suggest => ["50x50#"],
-      :original => ["800x800>"]
+      :original => ["800x800>"],
+      # NEW SIZES
+      :small => ["50x50#"],
+      :medium => ["100x100#"],
+      :large => ["200x200#"]
     }, 
     :convert_options => {
       :all => '-quality 40 -strip' ,
