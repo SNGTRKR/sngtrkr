@@ -31,7 +31,7 @@
       <h2>Email Notifications</h2>
       <p>You can change how often you receive emails for new releases, from the options provided below. We will only email you if there are new releases.</p>
       <%= f.hidden_field(:email_frequency) %>
-      <div id="slider"></div>
+      <div id="slider" data-current="<%= @user.email_frequency %>"></div>
       <ul>
         <li>Daily</li>
         <li class="weekly">Weekly</li>
