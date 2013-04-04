@@ -13,7 +13,7 @@ module ApplicationHelper
 				end.html_safe 
 			end 
 		else
-			return '<a href="#"> <div class="btn track">Track</div> </a>'.html_safe
+			return '<a data-target="#user_signup" data-toggle="modal"> <div class="btn track">Track</div> </a>'.html_safe
 		end 
 	end
    # allows devise forms to be displayed outside the devise controller
