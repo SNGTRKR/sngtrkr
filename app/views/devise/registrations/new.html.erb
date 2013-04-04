@@ -18,6 +18,9 @@
   <div><p><%= f.label :password_confirmation %></p>
   <%= f.password_field :password_confirmation %></div>
 
+  <div><%= f.label :privacy_policy, :class => 'checkbox' do %>
+  <%= f.check_box :privacy_policy %>I agree to the <%= link_to "Privacy policy", privacy_path %><% end %></div>
+
   <div><p><%= f.submit "Sign up" %></div>
 <% end %>
 

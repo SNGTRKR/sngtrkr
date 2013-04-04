@@ -16,5 +16,17 @@ module ApplicationHelper
 			return '<a href="#"> <div class="btn track">Track</div> </a>'.html_safe
 		end 
 	end
+   # allows devise forms to be displayed outside the devise controller
+   def resource_name
+      :user
+   end
+
+   def resource 
+      @resource ||= User.new
+   end
+
+   def devise_mapping
+      @devise_mapping ||= Devise.mappings[:user]
+   end
 
 end

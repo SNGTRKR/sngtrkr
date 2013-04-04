@@ -173,30 +173,33 @@
 					<div class="icon"><span></span><i class="icon-facebook"></i></div><div class="divider"></div>Sign in with Facebook
 				<% end %>
 			</div>
-			<form>
-				<label>First name</label>
-				<input type="text">
+		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+		  <%= devise_error_messages! %>
 
-				<label>Last name</label>
-				<input type="text">
+		  <%= f.label "First name" %>
+		  <%= f.text_field :first_name %>
 
-				<label>Email</label>
-				<input type="text">
+		  <%= f.label "Last name" %>
+		  <%= f.text_field :last_name %>
 
-				<label>Password</label>
-				<input type="text">
+		  <%= f.label :email %>
+		  <%= f.email_field :email %>
 
-				<label class="checkbox">
-				  <input type="checkbox" value="">
-				  I agree to the <a href="/privacy">Privacy policy</a>
-				</label>
+		  <%= f.label :password %>
+		  <%= f.password_field :password %>
+
+		  <%= f.label :password_confirmation %>
+		  <%= f.password_field :password_confirmation %>
+
+		  <%= f.label :privacy_policy, :class => 'checkbox' do %>
+		  	<%= f.check_box :privacy_policy %>I agree to the <%= link_to "Privacy policy", privacy_path %>
+		  <% end %>
 		</div>
 		<div class="modal-footer">
 				<button data-dismiss="modal" class="cancel">Cancel</button>
-				<button class="btn">Sign up</button>
-			
+				<%= f.submit "Sign up", :class => 'btn' %>
 		</div>
-			</form>
+			<% end %>
 		  </div>
 		</div>	
 		<div class="modal hide fade" id="user_login">
@@ -206,20 +209,24 @@
 					<div class="icon"><span></span><i class="icon-facebook"></i></div><div class="divider"></div>Sign in with Facebook
 				<% end %>
 			</div>
-			<form>
-				<label>Email</label>
-				<input type="text">
+		<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+		  <%= f.label :email %>
+		  <%= f.email_field :email, :autofocus => true %>
 
-				<label>Password</label>
-				<input type="text">
+		  <%= f.label :password %>
+		  <%= f.password_field :password %>
+
+		  <% if devise_mapping.rememberable? -%>
+
+		  	 <%= f.label :remember_me, :class => "checkbox" do %><%= f.check_box :remember_me %>Remember me<% end %>
+		  <% end -%>
 				<a data-target="#forgot_password" data-toggle="modal">Forgot password?</a>
 		</div>
 		<div class="modal-footer">
 				<button data-dismiss="modal" class="cancel">Cancel</button>
-				<button class="btn">Login</button>
-				
+				<%= f.submit "Login", :class => "btn" %>	
 		</div>
-			</form>
+			<% end %>
 		  </div>
 		</div>	
 		<div class="modal hide fade" id="forgot_password">

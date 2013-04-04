@@ -112,21 +112,21 @@
 		position: relative;
 		text-align: left;
 		height: .5em;
-	}
-	.ui-slider-handle {
-		top: -.4em;
-		margin-left: -.6em;
-		position: absolute;
-		z-index: 2;
-		width: 1.2em;
-		height: 1.2em;
-		cursor: pointer;
-		@include border-radius(4px);
-		background-color: #e2784c;
-		$experimental-support-for-svg: true;
-		@include background-image(linear-gradient(top, #e78c66, #dc5a24));
-		font-weight: bold;
-		border: 1px solid #cccccc;
+			.ui-slider-handle {
+				top: -.4em;
+				margin-left: -.6em;
+				position: absolute;
+				z-index: 2;
+				width: 1.2em;
+				height: 1.2em;
+				cursor: pointer;
+				@include border-radius(4px);
+				background-color: #e2784c;
+				$experimental-support-for-svg: true;
+				@include background-image(linear-gradient(top, #e78c66, #dc5a24));
+				font-weight: bold;
+				border: 1px solid #cccccc;
+			}
 	}
 	ul {
 		list-style-type:none;

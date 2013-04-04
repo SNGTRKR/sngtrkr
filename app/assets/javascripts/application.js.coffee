@@ -15,15 +15,18 @@ $(document).ready ->
 		  	"slow"
 		  $("#show_info a").text "Info"	  
 	$('.tip').tooltip()
+	current_frequency = $('#slider').data "current"
 	$ ->
 	  $("#slider").slider
-	    min: 0
-	    max: 200
-	    step: 50
-	    #slide: (event, ui) ->
-	    #  $("#amount").val "$" + ui.value
+	    min: 1
+	    max: 5
+	    step: 1
+	    value: current_frequency
+	    animate: 'true'	
+	    slide: (event, ui) ->
+	     $("#user_email_frequency").val ui.value
 
-	#  $("#amount").val "$" + $("#slider").slider("value")
+	  $("#user_email_frequency").val $("#slider").slider("value")
 
 	$(".share, .buy").click ->
       $(this).toggleClass "active"

@@ -6,12 +6,13 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :fbid, :first_name, :last_name, 
-    :last_sign_in_at, :email_frequency, :deleted_at, :leave_reason, :confirmed_at
+    :last_sign_in_at, :email_frequency, :deleted_at, :leave_reason, :confirmed_at, :privacy_policy
 
   validates :fbid, :uniqueness => true, :allow_blank => true, :allow_nil => true
   validates :email, :presence => true, :uniqueness => true
   validates :first_name, :presence => true
   validates :last_name, :presence => true
+  validates :privacy_policy, :acceptance => true
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
 
   has_many :follow, :dependent => :destroy
@@ -25,6 +26,7 @@ class User < ActiveRecord::Base
   has_many :release_notifications, :through => :notification, :source => :release
     
   before_save :default_values
+
   def default_values
     self.email_frequency ||= 1
   end

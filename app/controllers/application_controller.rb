@@ -80,5 +80,4 @@ class ApplicationController < ActionController::Base
         GC.start
       end
    end
-
 end
