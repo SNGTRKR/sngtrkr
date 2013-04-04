@@ -87,6 +87,8 @@ $(document).ready ->
 		$('#forgot_password').modal "hide"
 		$('.login').parent().addClass "active"
 
+	$('.result:last-child > .btn').attr 'data-placement', 'top'
+
 
 
 

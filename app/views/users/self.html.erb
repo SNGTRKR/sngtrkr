@@ -26,9 +26,8 @@
                   <% @following.each do |artist_tracked| %>
                     <tr>
                       <td>
-                        <!-- <%= image_tag artist_tracked.image :trackers %> -->
                         <%= link_to artist_path(artist_tracked) do %>
-                          <%= image_tag "http://placehold.it/75x75", :class => "image" %>
+                          <img src="<%= artist_tracked.image :medium %>" class="image" height="75" width="75"/>
                         <% end %>
                             <%= link_to artist_path(artist_tracked) do %>
                               <%= artist_tracked.name %>

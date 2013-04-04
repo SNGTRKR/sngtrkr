@@ -13,7 +13,7 @@ class ReleasesController < ApplicationController
   def show
     @artist = Artist.find(params[:artist_id])
     @release = @artist.releases.find(params[:id])
-    @releases = @artist.real_releases.all
+    @releases = @artist.real_releases.all(:order => 'date DESC', :limit => 15)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @release }

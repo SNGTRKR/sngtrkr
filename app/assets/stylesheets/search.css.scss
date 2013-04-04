@@ -33,9 +33,15 @@
 			a {
 				color:$orange;
 			}
+			.artist_l {
+				color:$darkgray;
+					&:hover {
+						color:$blue;
+					}
+			}
 			.btn {
 				float:left;
-				margin:9px 10px 0 0;
+				margin:9px 10px 0 0 !important;
 				i {
 					position:relative;
 					top:1px;

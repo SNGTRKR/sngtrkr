@@ -1,6 +1,6 @@
 <% content_for :og_name, @release.name  
 content_for :og_url, request.url  
-content_for :og_image, File.join(@release.image.url(:release_i)) 
+content_for :og_image, File.join(@release.image.url(:medium)) 
 content_for :og_description, "#{@release.name} by #{@artist.name}. Released #{@release.date.strftime("#{@release.date.day.ordinalize} %B %Y ")}"
 content_for :og_id, @release.id.to_s  
 content_for :og_type, "sngtrkr:release" 
@@ -10,7 +10,7 @@ content_for :og_type, "sngtrkr:release"
 <div class="g_two_col">
   <div class="g_sidebar">
     <div class="release_artist g_fixed">
-      <%= image_tag 'http://placehold.it/200x200' %>
+      <%= image_tag @artist.image :large %>
       <h2><%= link_to @artist.name, @artist %></h2>
       <h3><%= @artist.label_name %></h3>
       <div class="trackers">
@@ -48,13 +48,12 @@ content_for :og_type, "sngtrkr:release"
       </ul>
     </div>
   </div>
-  <div class="g_main release_info">
-    <!-- <%= image_tag @release.image :release %> -->
+  <div class="g_main release_info"> 
     <% if current_user %>
       <% if current_user.role? :admin %>
         <div class="image">
           <div class="front">
-          <%= image_tag "http://placehold.it/230x230" %>
+          <%= image_tag @release.image :large %>
           </div>
           <div class="back">
             <form>
@@ -70,10 +69,10 @@ content_for :og_type, "sngtrkr:release"
           </div>
         </div>
       <% else %>
-        <%= image_tag "http://placehold.it/230x230" %>
+        <%= image_tag @release.image :large %>
       <% end %>
     <% else %>
-      <%= image_tag "http://placehold.it/230x230" %>
+      <%= image_tag @release.image :large %>
     <% end %>
     <div class="info">
       <h1><%= @release.name %></h1>
@@ -98,14 +97,14 @@ content_for :og_type, "sngtrkr:release"
      <div class="clearfix"></div>
     <div id="related_releases">
       <h2>Related releases</h2>
-      <% @releases.take(10).each do |release|
+      <% @releases.each do |release|
          if release == @release 
            next
          end
          %>
         <div class="related">
           <%= link_to [release.artist, release] do %>
-              <%= image_tag "http://placehold.it/75x75", :class => "related_img" %>
+              <img src="<%= release.image :medium %>" class="related_img" height="75" width="75"/>
           <% end %>
           <span>
             <div><%= link_to release.name, [release.artist, release] %></div>
@@ -143,7 +142,7 @@ content_for :og_type, "sngtrkr:release"
                 </a>
               </div>
               <span>Link:</span>
-              <input type="text" onClick="this.select();" value="<%= request.url %>">
+              <input type="text" onClick="this.select();" value="<%= root_url %><%= url_for([release.artist, release]) %>">
             </div>
           </div>
         </div>
