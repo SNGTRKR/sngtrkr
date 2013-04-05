@@ -30,7 +30,7 @@ class Ability
     can [:edit, :previews, :create], Release
 
     can [:create, :destroy], [Follow]
-    can :create, [Feedback]
+    can :create, [Report]
 
     can :search, [Artist]
   end
