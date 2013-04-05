@@ -12,6 +12,8 @@ FactoryGirl.define do
   factory :artist do
     name "RadioTest"
     sequence(:fbid){|n| n}
+    sequence(:itunes_id){|n| n}
+    sequence(:sdid){|n| n}
 
     factory :artist_with_follower do
       after(:create) do |artist|
