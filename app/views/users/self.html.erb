@@ -33,7 +33,7 @@
                               <%= artist_tracked.name %>
                             <% end %>
                             <span class="actions">
-                              <div class="btn track">Track</div>
+                              <%= follow_button artist_tracked %>
                               <div class="btn share share_artist" id="<%= artist_tracked.id %>" data-placement="bottom"><i class="icon-share"></i>Share</div>
                             </span>
                             <div class="art_pop_<%= artist_tracked.id %> art_pop">

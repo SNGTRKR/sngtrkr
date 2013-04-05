@@ -1,4 +1,6 @@
 class ReleasesController < ApplicationController
+
+  load_and_authorize_resource
   # GET /releases
   # GET /releases.json
 

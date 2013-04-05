@@ -74,6 +74,9 @@
 								display:none;
 								.track {
 									float:left;
+										&:hover {
+											color:$darkgray;
+										}
 								}
 								.share_artist {
 									float:right;

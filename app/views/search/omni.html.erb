@@ -52,7 +52,7 @@
                   <%= artist.label_name %><br/>
                   <%= artist.followers %> trackers
                 </span>
-                <div class="btn btn-small">Track</div>
+                <%= follow_button_small artist %>
                 <div class="btn btn-small share_artist share" data-placement="bottom" id="<%= artist.id %>"><i class="icon-share"></i>Share</div>
                 <div class="art_pop art_pop_<%= artist.id %>">
                   <div class="share_content">
@@ -144,7 +144,7 @@
                   <%= artist.label_name %><br/>
                   <%= artist.followers %> trackers
                 </span>
-                <div class="btn btn-small">Track</div>
+                <%= follow_button_small artist %>
                 <div class="btn btn-small share_artist share" data-placement="bottom" id="<%= artist.id %>"><i class="icon-share"></i>Share</div>
                 <div class="art_pop art_pop_<%= artist.id %>">
                   <div class="share_content">

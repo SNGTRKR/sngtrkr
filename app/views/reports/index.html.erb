@@ -1,0 +1,33 @@
+<h1>Release error reports</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>User</th>
+    <th>Release</th>
+    <th>Name</th>
+    <th>Artist</th>
+    <th>Date</th>
+    <th>Label</th>
+    <th>Purchase Links</th>
+    <th>Comments</th>
+    <th></th>
+  </tr>
+
+<% @reports.each do |report| %>
+  <tr>
+    <td><%= report.user.first_name %></td>
+    <td><%= link_to report.release , report.url %></td>
+    <% report.elements.each do |element,value| %>
+    <td>
+        <% if value.to_i == 1 %>
+            <i class="icon-remove"></i>
+        <% else %>
+            <i class="icon-ok"></i>
+        <% end %>
+    </td>
+    <% end %>
+    <td><%= report.comments %></td>
+    <td><%= link_to 'Destroy', report, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %></td>
+  </tr>
+<% end %>
+</table>

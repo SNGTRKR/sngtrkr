@@ -200,7 +200,7 @@ content_for :og_type, "sngtrkr:release"
     <% end %>
   </div>
 </div>
-<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!-- <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-body">
     <h2>Report a problem</h2>
     <p>Please select the error(s) you have noticed within <strong><%= @release.name %></strong> by <strong><%= @artist.name %></strong>, including any additional comments:</p>
@@ -232,8 +232,53 @@ content_for :og_type, "sngtrkr:release"
       <textarea rows="4"></textarea>
   </div>
   <div class="modal-footer">
+    <input class="btn" type="submit" value="Send">
     <button data-dimiss="modal">Cancel</button>
-    <button class="btn">Send</button>
     </form>
+  </div>
+</div> -->
+<% @report = Report.new %>
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-body">
+    <h2>Report a problem</h2>
+    <p>Please select the error(s) you have noticed within <strong><%= @release.name %></strong> by <strong><%= @artist.name %></strong>, including any additional comments:</p>
+    <%= form_for(@report) do |f| %>
+  <% if @report.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@report.errors.count, "error") %> prohibited this report from being saved:</h2>
+
+      <ul>
+      <% @report.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <%= f.hidden_field :release, :value => @release.name %>
+    <%= f.hidden_field :url, :value => "http://#{request.host}:#{request.port}#{request.fullpath}" %>
+     <%= f.fields_for :elements do |element_fields| %>
+       <label class="checkbox">
+         <%= element_fields.check_box 'Release Name' %>Release name
+       </label>
+       <label class="checkbox">
+         <%= element_fields.check_box 'Artist' %>Artist
+       </label>
+       <label class="checkbox">
+         <%= element_fields.check_box 'Release date' %>Release name
+       </label>
+       <label class="checkbox">
+         <%= element_fields.check_box 'Label' %>Label
+       </label>
+       <label class="checkbox">
+         <%= element_fields.check_box 'Purchase links' %>Purchase links
+       </label>
+     <% end %>
+    <%= f.text_area :comments, :rows => 4 %>
+
+  </div>
+  <div class="modal-footer">
+    <%= f.submit "Send", :class => 'btn' %>
+    <button data-dimiss="modal">Cancel</button>
+    <% end %>
   </div>
 </div>

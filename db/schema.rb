@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130301200601) do
+ActiveRecord::Schema.define(:version => 20130404224002) do
 
   create_table "artists", :force => true do |t|
     t.string   "name",                                  :null => false
@@ -97,6 +97,16 @@ ActiveRecord::Schema.define(:version => 20130301200601) do
 
   add_index "releases", ["date", "artist_id"], :name => "index_releases_on_date_and_artist_id"
   add_index "releases", ["ignore", "upc"], :name => "index_releases_on_ignore_and_upc"
+
+  create_table "reports", :force => true do |t|
+    t.integer  "user_id"
+    t.text     "comments"
+    t.string   "url"
+    t.string   "elements"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "release"
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"

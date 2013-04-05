@@ -75,6 +75,7 @@ $(document).ready ->
 
 	$('.login').click ->
 		$('#user_signup').modal "hide"
+		$('#forgot_password').modal "hide"
 		$(this).parent().addClass "active"
 
 	$('#user_login').on "hidden", ->

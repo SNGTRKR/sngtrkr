@@ -34,12 +34,15 @@ strong {
 	.btn {
 		margin:0 0 0 8px;
 	}
-	button:first-child {
+	input:first-child {
+		float:right;
+	}
+	button:last-child {
 		background:none;
 		border:0;
 		color:$darkgray;
 	}
-	button:first-child:hover {
+	button:last-child:hover {
 		text-decoration:underline;
 	}
 }
