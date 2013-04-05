@@ -6,11 +6,18 @@ FactoryGirl.define do
     sequence(:email){|n| "user#{n}@factory.com" }
     password "1234554321"
     email_frequency 1
+    sequence(:fbid){|n| n}
   end
 
   factory :artist do
     name "RadioTest"
     sequence(:fbid){|n| n}
+
+    factory :artist_with_follower do
+      after(:create) do |artist|
+        artist.followed_users = [FactoryGirl.create(:user)]
+      end
+    end
   end
 
   factory :release do

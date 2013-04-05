@@ -43,16 +43,6 @@ class ReleaseScraper
       existing.destroy_all unless existing.empty?
   end
 
-  def self.improve_name r
-      new_name = ReleaseScraper.improved_name r.name
-      if new_name != r.name
-        r.name = new_name
-        return true
-      else
-        return false
-      end
-  end
-
   def self.improve_image r, opts={}
     return false unless r.image.path
     begin
@@ -90,9 +80,7 @@ class ReleaseScraper
   def self.improve_all
     Release.where(:scraped => true).find_each do |r|
       remove_duplicates r
-      if improve_name r
-        improve_image r
-      end
+      improve_image r
       r.save
     end
   end
@@ -130,17 +118,6 @@ class ReleaseScraper
       return false
   end
 
-  def self.improved_name name
-    # Gets rid of (Featuring X) / (Feat X.) / (feat x) / [feat x]
-    feat = / (\(|\[)(f|F)eat[^\)]*(\)|\])/
-    ep = /( - |- | )?(\(|\[)?(EP|(S|s)ingle|(A|a)lbum)(\)|\])?/
-    itunes_remix = /(\(|\[)(R|r)emixes(\)|\])/
-    ret = name.gsub( name.match(feat).to_s, "")
-    ret = ret.gsub( ret.match(itunes_remix).to_s, "")
-    ret = ret.gsub( ret.match(ep).to_s, "")
-    return ret.strip # Remove whitespace at either end
-  end
-
   def sdigital_import releases, opts={}
     if !@artist.sdid?
       return false
@@ -171,7 +148,7 @@ class ReleaseScraper
         next
       end
       
-      title = ReleaseScraper.improved_name release["title"]
+      title = release["title"]
       # Only skip if we AREN'T improving an existing release
       if r.nil? and duplicates? title, release["releaseDate"]
         next
@@ -274,7 +251,7 @@ class ReleaseScraper
         r = nil
       end 
       
-      title = ReleaseScraper.improved_name itunes_release["collectionName"]
+      title = itunes_release["collectionName"]
       next if duplicates? title, itunes_release['releaseDate']
         
       r ||= @artist.releases.build
@@ -283,7 +260,7 @@ class ReleaseScraper
       r.artist_id = @artist.id
       r.itunes_id = itunes_release["collectionId"]
       r.itunes = itunes_release['collectionViewUrl']
-      r.name = ReleaseScraper.improved_name itunes_release["collectionName"]
+      r.name = itunes_release["collectionName"]
       r.date = itunes_release['releaseDate']
       r.scraped = true
       

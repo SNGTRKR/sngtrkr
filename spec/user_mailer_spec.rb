@@ -3,7 +3,7 @@ describe "UserMailer" do
 
 	before :each do
 		@user = create(:user)
-		@artist = create(:artist)
+		@artist = create(:artist_with_follower)
 	end
 
 	context "when a release is added" do
