@@ -45,7 +45,7 @@ class ReportsController < ApplicationController
 
     respond_to do |format|
       if @report.save
-        format.html { redirect_to @report.url, notice: 'Report was successfully created.' }
+        format.html { redirect_to @report.url, notice: 'We have recieved your release error report. Thank you for contributing.' }
         format.json { render json: @report, status: :created, location: @report }
       else
         format.html { render action: "new" }

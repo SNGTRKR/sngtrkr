@@ -6,6 +6,11 @@ content_for :og_type, "website"
 <% content_for :title do %>Please login to gain access to more exciting features...<% end %>
 
 <h1>Login</h1>
+
+<%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-large btn-large") do %>
+    <div class="icon"><span></span><i class="icon-facebook"></i></div><div class="divider"></div>Sign in with Facebook
+<% end %>
+
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 	  <%= f.label :email %>

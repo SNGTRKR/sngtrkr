@@ -23,6 +23,7 @@
 		<link rel="icon" type="image/ico" href="<%= asset_path "/images/icon.png" %>" >
 		<%= stylesheet_link_tag "application", :media => "all" %>
 		<%= stylesheet_link_tag "/css/bootstrap.css", :media => "all" %>
+		<%= stylesheet_link_tag "/css/animations.css", :media => "all" %>
 		<!-- Use Html5Shiv in order to allow IE render HTML5 -->
 		<!--[if lt IE 9]>
 		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -150,7 +151,7 @@
 			        </header>
 		<div class="g_content" role="main">
 			<% if flash[:notice] or flash[:error] or flash[:success] %>
-		  	<!-- 	<div class="alert <% if flash[:success] then %>alert-success<% end %><% if flash[:notice] then %>alert-info<% end %><% if flash[:error] then %>alert-error<% end %>">
+		  	<!-- <div class="alert <% if flash[:success] then %>alert-success<% end %><% if flash[:notice] then %>alert-info<% end %><% if flash[:error] then %>alert-error<% end %>">
 				  	<button type="button" class="close" data-dismiss="alert">×</button>
 			    		  <% if flash[:error] and !flash[:notice] %>
 			      		  <%= raw flash[:error] %>
@@ -159,6 +160,11 @@
 			    		  <%= raw flash[:success] %>
 		  		</div> -->
 			<% end %>
+			<div class="alert alert-info animated fadeInUp">
+				  	<button type="button" class="close" data-dismiss="alert">×</button>
+			    		  We have recieved your release error report. Thank you for contributing.
+			    		  
+		  		</div>
 			<%= yield %>
 		</div>
 		<div id="footer">
