@@ -91,7 +91,14 @@ $(document).ready ->
 		$('#forgot_password').modal "hide"
 		$('.login').parent().addClass "active"
 
-	$('.result:last-child > .btn').attr 'data-placement', 'top'
+	$(".alert").removeClass("fadeOutUp").show().addClass "fadeInDown"
+
+	window.setTimeout (->
+	  $(".alert").removeClass("fadeInDown").addClass("fadeOutUp").one "webkitAnimationEnd animationend", ->
+	  	$(this).remove();
+	), 4000
+
+
 
 
 
