@@ -7,6 +7,7 @@ FactoryGirl.define do
     password "1234554321"
     email_frequency 1
     sequence(:fbid){|n| n}
+    confirmed_at Time.now
   end
 
   factory :artist do

@@ -34,3 +34,4 @@ config/environments/personal/private.rb
 .bundle/
 /solr/data
 /solr/pids
+public/uploads/*

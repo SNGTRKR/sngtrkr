@@ -9,20 +9,18 @@ describe "ImageUploaders" do
   it "uploads an artist image to S3" do
     image = File.open(File.join('spec','sample_data','release_100.jpeg'))
     @a.image = image
-    @a.save
-    image = @a.image :original
-    (open(image).is_a? StringIO).should == true
+    @a.save!
+    @a.image.identifier.should_not == nil
   end
 
   it "uploads a release image to S3" do
     image = File.open(File.join('spec','sample_data','release_100.jpeg'))
     release = create(:release)
     release.image = image
-    release.save
+    release.save!
 
     Release.count.should eq 1
-    image = release.image :original
-    (open(image).is_a? StringIO).should eq true
+    release.image.identifier.should_not == nil
   end
 
 
