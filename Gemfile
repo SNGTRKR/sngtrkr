@@ -34,7 +34,8 @@ gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'whenever', :require => false
 
 gem 'fog'
-gem "paperclip"
+gem 'mini_magick'
+gem "carrierwave"
 
 # SCRAPING GEMS
 gem 'scrobbler'

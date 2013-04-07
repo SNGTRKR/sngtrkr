@@ -4,15 +4,7 @@ class Release < ActiveRecord::Base
   validates :date, :presence => true
   validates :artist_id, :presence => true
 
-  has_attached_file :image, :styles => { 
-      :small => ["50x50#"],
-      :medium => ["150x150#"],
-      :large => ["230x230#"]
-    }, 
-    :convert_options => {
-      :all => '-quality 40 -strip',
-    },
-    :fog_public => true
+  mount_uploader :image, ReleaseUploader
 
   has_many :notification, :dependent => :destroy
   has_many :user_notifications, :through => :notification, :source => :user
@@ -37,11 +29,27 @@ class Release < ActiveRecord::Base
   scope :unsaved_images, where('(image_file_name is null or image_file_name = "") and image_source is not null and image_source != ""')
 
   before_save :default_values
+  before_save :metadata_cleanup
+
+
   def default_values
     # Don't ignore new artists!
     self.ignore ||= false
     self.scraped ||= false
     self.image_attempts ||= 0
+    true
+  end
+
+  def metadata_cleanup
+    # Gets rid of (Featuring X) / (Feat X.) / (feat x) / [feat x]
+    feat = / (\(|\[)(f|F)eat[^\)]*(\)|\])/
+    ep = /( - |- | )?(\(|\[)?(EP|(S|s)ingle|(A|a)lbum)(\)|\])?/
+    itunes_remix = /(\(|\[)(R|r)emixes(\)|\])/
+    ret = name.gsub( name.match(feat).to_s, "")
+    ret = ret.gsub( ret.match(itunes_remix).to_s, "")
+    ret = ret.gsub( ret.match(ep).to_s, "")
+    self.name = ret.strip # Remove whitespace at either end
+
     true
   end
 

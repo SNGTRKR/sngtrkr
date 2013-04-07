@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130405010959) do
+ActiveRecord::Schema.define(:version => 20130407192930) do
 
   create_table "artists", :force => true do |t|
     t.string   "name",                                  :null => false
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(:version => 20130405010959) do
     t.string   "fbid"
     t.boolean  "ignore",             :default => false, :null => false
     t.text     "twitter"
-    t.string   "image_file_name"
+    t.string   "image"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(:version => 20130405010959) do
     t.text     "label_name"
     t.boolean  "scraped"
     t.text     "sd_id"
-    t.string   "image_file_name"
+    t.string   "image"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
