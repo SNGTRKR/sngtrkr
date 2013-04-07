@@ -1,6 +1,6 @@
 require 'spec_helper'
 require 'open-uri'
-describe "Paperclip" do
+describe "ImageUploaders" do
 
   before :each do 
     @a = create(:artist_with_follower)

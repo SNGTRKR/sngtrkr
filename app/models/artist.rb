@@ -6,21 +6,7 @@ class Artist < ActiveRecord::Base
 
   belongs_to :label
 
-  has_attached_file :image, :styles => {
-      :profile => ["310x369#"],
-      :recommend => ["212x178#"],
-      :manage => ["100x100#"],
-      :sidebar_suggest => ["50x50#"],
-      :original => ["800x800>"],
-      # NEW SIZES
-      :small => ["50x50#"],
-      :medium => ["100x100#"],
-      :large => ["200x200#"]
-    }, 
-    :convert_options => {
-      :all => '-quality 40 -strip' ,
-    },
-    :fog_public => true
+  mount_uploader :image, ArtistUploader
 
   has_many :follow, :dependent => :delete_all
   has_many :suggest, :dependent => :delete_all
