@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
   end
 
   def cache_it
-    expires_in 3.hour, :public => true
+    unless Rails.env.development? then expires_in 3.hour, :public => true end
   end
   
   rescue_from CanCan::AccessDenied do |exception|
