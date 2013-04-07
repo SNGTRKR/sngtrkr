@@ -1,6 +1,6 @@
 class Scraper
-
-  @sevendigital_apikey = ENV['SNGTRKR_7DIGITAL']  
+  
+  @sevendigital_apikey = "7dufgm34849u"
   
   if Rails.env.production?
     @proxy = 'http://localhost:3128'

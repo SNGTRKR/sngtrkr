@@ -1,54 +1,8 @@
-@import "compass/css3/";
-
-.super-admin {
-  width:100px;
-  color:#fff;
-  position: absolute;
-  left: -70px;
-  top: 114px;
-  form{
-    margin:0;
-  }
-  div {
-    background-color: #434343;
-    height:60px;
-    width:80px;
-    margin-bottom:10px;
-    cursor:pointer;
-    font-size:3.5em;
-    line-height:60px;
-    color:#fff;
-    left:0px;
-    position:relative;
-    a {
-      color:#fff;
-      margin-left: 6px;
-    }
-  }
-  div:hover {
-    color: #fff;
-    text-decoration: none;
-    left: 0px;
-  }
-  .ignore {
-    .i-artist {
-  	  position:absolute;
-      width: 33px;
-      right:15px;
-      top:13px;
-    }
-    .ui-artist {
-  	  position:absolute;
-      width: 33px;
-      right:15px;
-      top:10px;
-  	  height:39px;
-    }
-  }
-  .icon-edit {
-	  margin-left:25px;
-  }
-  .icon-trash {
-	  margin-left:29px;
-  }
+.reports {
+	.icon-remove {
+		color:red;
+	}
+	.icon-ok {
+		color:green;
+	}
 }

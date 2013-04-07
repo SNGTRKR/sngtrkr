@@ -1,75 +1,107 @@
 <% content_for :og_name, "Track your favourite artists and never miss another release..."
 content_for :og_url, request.url
 content_for :og_image, File.join(root_url , "/images/icon.png")
-content_for :og_description, "Login with Facebook to find artists you like. Listen to & buy tracks, with an easy to use timeline. Free notifications when artists release new tracks."
+content_for :og_description, "Our simple web tool makes it easy to keep up to date with your favourite artists. Discovering and sharing music with your friends, has never been so simple."
 content_for :og_type, "website"
 %>
-<% content_for :title do %>Track your favourite artists and never miss another release...<% end %>
-<% content_for :description do %>Login with Facebook to find artists you like. Listen to & buy tracks, with an easy to use timeline. Free notifications when artists release new tracks.<% end %>
-
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" ></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.5.3/jquery-ui.min.js" ></script>
-<div class="row">
-	<div class="span8">
-		<h1 class="home-header">Track your favourite artists and never miss another release...</h1>
-		<p class="home-txt-1">Get notified whenever the artists you love release new music, and see it all in your own personalised timeline.</p>
-		<%= link_to(user_omniauth_authorize_path(:facebook)) do %>
-		<div class="fb-home-login"><i class="icon-facebook"></i><span>Login with Facebook</span></div>
-		<% end %>
-<!--
-		<div class="font-13" style="clear:both;">
-			<p style="padding-bottom:0;">
-				<a href="#login_modal" role="button" data-toggle="modal">Login via email</a><br/>
-			  <%= link_to "Sign up via email", new_user_registration_path %>
-			</p>
-		</div>
-		<div class="modal hide" id="login_modal"  role="dialog" aria-labelledby="login_modal" aria-hidden="true">
-		  <div class="modal-header">
-		    <h3 id="myModalLabel">Login</h3>
-		  </div>
-		  <%= form_for(User.new, :url => user_session_path) do |f| %> 
-			<div class="modal-body">
-				    <%= f.label :email %> <br/> 
-				    <%= f.text_field :email , :size=>'15',:maxlength=>'32' %> <br/> 
-				    <%= f.label :password %> <br/> 
-				    <%= f.password_field :password , :size=>'15', :maxlength=>'32' %> 
-				<br/> 
-				    <%= f.submit "Sign in" %> <br /> 
-				    <%= link_to "Forgot your password?", new_password_path('user')  %> 
-			</div>
-		  <div class="modal-footer">
-		    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-		  </div> 
-		  <% end %> 
-		</div>
--->
+<% content_for :description do %>Login with Facebook to find artists you like. Listen to & buy tracks, with an easy to use timeline. Free notifications when artists release new tracks.<% end %>	
+<div class="homepage">
+	<h1>Track your favourite artists<br/><span>Never miss another release</span></h1>
+	<h3 class="span6">Our simple web tool makes it easy to keep up to date with your favourite artists. Discovering and sharing music with your friends, has never been so simple. </h3>
+</div>
+</div>
+	<div id="releases">
 	</div>
-	<div class="span15">
-		<%= image_tag "/images/home.png", :alt => "Macbook", :id => "home-macbook" %>
+<div class="g_content">
+	<div class="homepage">
+		<div class="signup-home">
+			<%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-large btn-large") do %>
+				<div class="icon"><span></span><i class="icon-facebook"></i></div><div class="divider"></div>Sign in with Facebook
+			<% end %>
+			<a data-toggle="modal" data-target="#user_signup" class="signup">
+          		<div class="btn btn-warning btn-large">Sign up</div>
+          	</a>
+			<!-- <%= link_to "Login without FB", new_user_session_path %> -->
+			<div class="social_share">
+				<div class="fb-like" data-href="http://www.facebook.com/sngtrkr" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+				<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.sngtrkr.com" data-text="Track your favourite artists, never miss another release" data-via="sngtrkr">Tweet</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+				<div class="g-plusone" data-size="medium" data-href="http://www.sngtrkr.com"></div>
+				<script type="text/javascript">
+				  window.___gcfg = {lang: 'en-GB'};
+
+				  (function() {
+				    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+				    po.src = 'https://apis.google.com/js/plusone.js';
+				    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+				  })();
+				</script>
+			</div>
+		</div>
+		<div class="sections">
+			<!-- section1 -->
+			<div class="section">
+				<div class="col follow">
+					<h2>Follow artists you love<span>With your personalised timeline</span></h2>
+					<p>SNGTRKR intuitively recognises which artists you’ve liked on Facebook, and supplies you with <strong>recommendations</strong> to build up your tracked artists. You can stay in the loop with your personalised <strong>timeline</strong> of artist releases, old and new, and experience new music.</p>
+				</div>
+				<div class="col">
+					<%= image_tag "/images/timeline.png", :alt => "Timeline", :class => "timeline_img" %>
+				</div>
+			</div>
+			<!-- section2 -->
+			<div class="section">
+				<div class="col">
+					<%= image_tag "/images/computer.png", :alt => "Keeping connected" %>
+				</div>
+				<div class="col connect">
+					<h2>Stay connected<span>Sharing all your favourite artists</span></h2>
+					<p>Want to get your friend’s opinion on a fresh release from your favourite record label? SNGTRKR makes it simple to <strong>share new content</strong> with your friends, and collate the latest and greatest in musical talent with its intuitive timeline.</p>
+				</div>
+			</div>
+			<!-- section3 -->
+			<div class="section">
+				<div class="col discover">
+					<h2>Discover new music<span>With some help from your friends</span></h2>
+					<p>Looking to expand your library? SNGTRKR makes it easy to <strong>discover</strong> new music with tracklistings, similar artists and purchase links. All of this and more you can share and play with your friends, using the integrated social media tools, to create the complete <strong>social music experience</strong>.</p>
+				</div>
+				<div class="col">
+					<%= image_tag "/images/releases.png", :alt => "Releases" %>
+				</div>
+			</div>
+			<!-- section4 -->
+			<div class="section">
+				<div class="col">
+					<%= image_tag "/images/email.png", :alt => "Email" %>
+				</div>
+				<div class="col date">
+					<h2>Keep up to date<span>Always be the first to know</span></h2>
+					<p>Looking to boost your <strong>music library</strong>? Let SNGTRKR do all the hard work, by sending you tailored emails with all the latest releases from the artists you love. Always <strong>stay in the loop</strong> with our expansive database of artist information, and never miss another release!</p>
+				</div>
+			</div>
+		</div>
+		<div class="signup-home">
+			<%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-large btn-large") do %>
+				<div class="icon"><span></span><i class="icon-facebook"></i></div><div class="divider"></div>Sign in with Facebook
+			<% end %>
+			<a data-toggle="modal" data-target="#user_signup" class="signup">
+          		<div class="btn btn-warning btn-large">Sign up</div>
+          	</a>
+			<div class="social_share">
+				<div class="fb-like" data-href="http://www.facebook.com/sngtrkr" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+				<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.sngtrkr.com" data-text="Track your favourite artists, never miss another release" data-via="sngtrkr">Tweet</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+				<div class="g-plusone" data-size="medium" data-href="http://www.sngtrkr.com"></div>
+				<script type="text/javascript">
+				  window.___gcfg = {lang: 'en-GB'};
+
+				  (function() {
+				    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+				    po.src = 'https://apis.google.com/js/plusone.js';
+				    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+				  })();
+				</script>
+			</div>
+		</div>
 	</div>
 </div>
-
-<script type="text/javascript">
-	$(document).ready(function(){
-		$("#featured > ul").tabs({fx:{opacity: "toggle"}}).tabs("rotate", 5000, true);
-	});
-</script>
-<%= render "releases/featured" %>
-<div id="home-points">
-	<div class="row">
-	<div class="span8">
-	<h2>Find artists you like</h2>
-	<p>SNGTRKR intuitively recognises which artists you've liked on Facebook, and supplies you with recommendations to build up your tracked artists.</p>
-	<%= image_tag "/images/home1.png", :alt => 'Recommendations', :id => 'home1' %></div>
-	<div class="span8"><h2>Keep up to date</h2>
-	<p>Stay in the loop with <strong>your personalised timeline</strong> of artist releases, old and new. We'll email you whenever an artist you follow releases a new album or single.</p>
-	<%= image_tag "/images/home3.png", :alt => 'Timeline', :id => 'home3' %></div>
-	<div class="span7"><h2>Discover new music</h2>
-	<p>Looking to expand your music library? SNGTRKR makes it easy to discover new music with user ratings, track previews, similar artists and purchase links.</p>
-	<%= image_tag "/images/home2.png", :alt => 'Music', :id => 'home2' %></div>
-	</div></div>
-<script type="text/javascript">
-$(document).ready(function() {
-  $('.fb-home-login').click(function(){ $('.fb-home-login > span').html('Logging in...'); $(this).addClass('fb-disabled'); }); 
-  });
-</script>

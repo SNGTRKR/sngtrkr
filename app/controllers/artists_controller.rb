@@ -5,70 +5,13 @@ class ArtistsController < ApplicationController
   load_and_authorize_resource :except => [:search]
 
   before_filter :authenticate_user!, :except => [:show,:search,:index]
-  before_filter :cache_it, :only => [:show]
   
   before_filter :managed_artists_only, :only => [:edit, :update]
-  
-  
-  def index
-    if params[:search].blank?
-      @empty_search = true
-    elsif(params[:search].length < 2)
-      @short_search = true
-    else
-      @search = params[:search].dup # Don't want the original string
-      if @search["and "] then @search["and "] = "" end # remove ands from search
-      if @search["& "] then @search["& "] = "" end # remove & from search
-      @artists = Artist.search do
-        fulltext params[:search] do
-          query_phrase_slop 1
-        end
-        with :ignore, false
-        paginate :page => params[:page], :per_page => 15
-      end.results
-      @ids = @artists.map{|a| a.fbid}
-    end
-    
-    if !@artists or @artists.empty?
-      respond_to do |format|
-        format.html { render 'artists/no_results' }# index.html.erb
-        #format.html { redirect_to no_results_artists_path(:search => params[:search])}# index.html.erb
-        format.json { render :json => ActiveSupport::JSON.encode(["failure"]) }
-        return
-      end
-    else
-      respond_to do |format|
-        format.html # index.html.erb
-        format.json
-      end
-    end
-  end
-  
-  def search
-    @artists = Artist.search do
-      fulltext params[:query]
-      with :ignore, false
-    end
-
-    @artists = @artists.results
-
-    if @artists.empty?
-      respond_to do |format|
-        format.html { redirect_to no_results_artists_path(:search => params[:search])}
-        format.json { render :json => [] }
-      end
-    else
-      respond_to do |format|
-        format.html
-        format.json
-      end
-    end
-  end
 
   # GET /artists/1
   # GET /artists/1.json
   def show
-    @artist = Artist.find(params[:id])
+    @artist = Artist.includes(:releases).find(params[:id])
     @user = current_user
     @timeline = Timeline.artist(params[:id])
     respond_to do |format|

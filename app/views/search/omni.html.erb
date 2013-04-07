@@ -1,0 +1,233 @@
+<% content_for :title do %>Search results for "<%= @search %>"<% end %>
+<% if @artists %>
+  <% content_for :description do %>Search results: <% @artists.each do |artist| %><%= artist.name %>, <% end %><% end %>
+<% else %>
+  <% content_for :description do %>Search results empty<% end %>
+<% end %>
+<div class="g_two_col">
+  <div class="g_sidebar_large">
+    <div class="result_search g_fixed">
+      <h1>Search</h1>
+      <div class="tabbable tabs-left search-tabs">
+        <ul id="myTab" class="nav nav-tabs nav-stacked each-tab">
+          <li class="active">
+            <a href="#tab1" data-toggle="tab"><i class="icon-search"></i>Top results</a>
+          </li>
+          <li>
+            <a href="#tab2" data-toggle="tab"><%= image_tag "/images/ppl_black.png", :class => "blk ppl"%><%= image_tag "/images/ppl_white.png", :class => "wht ppl"%>Artists</a>
+          </li>
+          <li>
+            <a href="#tab3" data-toggle="tab"><%= image_tag "/images/release_blk.png", :class => "blk rel"%><%= image_tag "/images/release_wht.png", :class => "wht rel"%>Releases</a>
+          </li>
+        </ul>
+      </div> 
+    </div>
+  </div>
+  <div class="g_main g_tabs_large">
+      <div class="tab-content search-tab-content" id="myTabContent">
+        <div class="search_input">
+          <p><strong><%= pluralize @releases_count, "release" %> and <%= pluralize @artists_count, "artist" %> found</strong></p>
+          <%= form_tag search_path , :method => 'get' do %>
+            <%= text_field_tag(:query, params[:query], :autocomplete => 'off', 
+              :placeholder => "Search") %>
+          <% end %>
+        </div>
+        <div class="tab-pane active" id="tab1">
+          <% if @empty_search or @short_search or @artists.empty? %>
+            <% if @empty_search %>
+              <p> Your search was empty, you have to type <strong>something</strong>! </p>
+            <% elsif @short_search %>
+              <p> Your search word wasn't long enough, you must type at least <strong>two characters</strong>.</p>
+            <% elsif @artists.empty? %>
+              <p>We didn't find any results for '<strong><%= @search %></strong>'. Check your spelling, or try a different search.</p>
+            <% end %>
+          <% else %>
+            <% @artists.take(5).each do |artist| %>
+              <div class="result">
+                <%= link_to artist do %>
+                  <img src="<%= artist.image :medium %>" class="image" height="110" width="110"/>
+                <% end %>
+                <span>
+                  <div><%= link_to artist.name, artist %></div>
+                  <%= artist.label_name %><br/>
+                  <%= artist.followers %> trackers
+                </span>
+                <%= follow_button_small artist %>
+                <div class="btn btn-small share_artist share" data-placement="bottom" id="<%= artist.id %>"><i class="icon-share"></i>Share</div>
+                <div class="art_pop art_pop_<%= artist.id %>">
+                  <div class="share_content">
+                    <div>
+                      <a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com<%= url_for artist %>%2F&t=SNGTRKR','ShareSNGTRKRonFacebook','scrollbars=no,width=620,height=340'); return false;">
+                        <%= image_tag "/images/social/fb.png", :alt => "Facebook" %>
+                      </a>
+                      <a href="#" title="Share on Twitter" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.sngtrkr.com&text=<%= artist.name %>+is+using+SNGTRKR+to+keep+their+fans+up+to+date+with+releases.+Check+them+out+&#45;+www.sngtrkr.com<%= url_for artist %>&via=SNGTRKR','ShareSNGTRKRonTwitter','scrollbars=no,width=620,height=340'); return false;">
+                        <%= image_tag "/images/social/twitter.png", :alt => "Twitter" %>
+                      </a>
+                      <a href="#" title="Share on Tumblr" onClick="MyWindow=window.open('http://www.tumblr.com/share/link?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for artist %>&name=<%= artist.name %>&description=<%= artist.name %> online:<br/><% if artist.fbid? %>http://www.facebook.com/<%= artist.fbid %><br/><% end %><% if artist.twitter? %>http://www.twitter.com/<%= artist.twitter %><br/><% end %><% if artist.youtube? %>http://www.youtube.com/<%= artist.youtube %><br/><% end %><% if artist.soundcloud? %>http://www.soundcloud.com/<%= artist.soundcloud %><br/><% end %><% if artist.website? %><%= artist.website %><% end %>','Share on Tumblr','scrollbars=no,width=620,height=340'); return false;">
+                        <%= image_tag "/images/social/tb.png", :alt => "Tumblr" %>
+                      </a>
+                      <a href="#" title="Share on Google Plus" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for artist %>','ShareSNGTRKRonGooglePlus','scrollbars=no,width=620,height=340'); return false;">
+                        <%= image_tag "/images/social/gplus.png", :alt => "Google+" %>
+                      </a>
+                    </div>
+                    <span>Link:</span>
+                    <input type="text" onClick="this.select();" value="<%= root_url %><%= url_for(artist) %>">
+                  </div>
+                </div>
+              </div>
+            <% end %>
+            <% @releases.take(5).each do |release| %>
+              <div class="result">
+                <%= link_to [release.artist, release] do %>
+                  <img src="<%= release.image :medium %>" class="image" height="110" width="110"/>
+                <% end %>
+                <span>
+                  <div><%= link_to release.name, [release.artist, release] %></div>
+                  <%= link_to release.artist.name, release.artist, :class => 'artist_l' %><br/>
+                  <%= release.date.strftime("#{release.date.day.ordinalize} %B %Y ") %>
+                </span>
+                <div class="btn btn-small buy" data-placement="bottom" id="<%= release.id %>">Buy</div>
+                <div class="btn btn-small share_release share" data-placement="bottom" id="<%= release.id %>"><i class="icon-share"></i>Share</div>
+                <div class="buy_pop buy_pop_<%= release.id %>">
+                  <div class="buy_content">
+                    <% if release.itunes? %>
+                      <%= link_to image_tag("/images/social/it.png", :alt => "iTunes", :title => "iTunes"), release.itunes, :target => "_blank" %>
+                    <% end %>
+                    <% if release.sdigital %>
+                      <%= link_to image_tag("/images/social/7d.png", :alt => "7Digital", :title => "7Digital"), release.sdigital, :target => "_blank" %>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="rel_pop rel_pop_<%= release.id %>">
+                  <div class="share_content">
+                    <div>
+                      <a href="#" alt="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [release.artist, release] %>%2F&t=SNGTRKR','Share on Facebook','scrollbars=no,width=620,height=340'); return false;">
+                        <%= image_tag "/images/social/fb.png", :alt => "Facebook" %>
+                      </a>
+                      <a href="#" title="Share on Twitter" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [release.artist, release] %>&text=<%= release.artist.name %>+&#45;+<%= release.name %><% if release.label_name %>+released+on+<%= release.label_name %><% end %>+&#45;+www.sngtrkr.com<%= url_for [release.artist, release] %>&via=SNGTRKR','Share on Twitter','scrollbars=no,width=620,height=340'); return false;">
+                        <%= image_tag "/images/social/twitter.png", :alt => "Twitter" %>
+                      </a>
+                      <a href="#" title="Share on Tumblr" onClick="MyWindow=window.open('http://www.tumblr.com/share/link?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [release.artist, release] %>&name=<%= release.artist.name %>+&#45;+<%= release.name %>&description=Release Date: <%= release.date.strftime("#{release.date.day.ordinalize} %B %Y ") %><% if release.label_name %><br/>Label:<%= release.label_name %><br/><% else %><br/><br/><% end %><%= release.artist.name %> online:<br/><% if release.artist.fbid? %>http://www.facebook.com/<%= release.artist.fbid %><br/><% end %><% if release.artist.twitter? %>http://www.twitter.com/<%= release.artist.twitter %><br/><% end %><% if release.artist.youtube? %>http://www.youtube.com/<%= release.artist.youtube %><br/><% end %><% if release.artist.soundcloud? %>http://www.soundcloud.com/<%= release.artist.soundcloud %><br/><% end %><% if release.artist.website? %><%= release.artist.website %><% end %>','Share on Tumblr','scrollbars=no,width=620,height=340'); return false;">
+                        <%= image_tag "/images/social/tb.png", :alt => "Tumblr" %>
+                      </a>
+                      <a href="#" title="Share on Google Plus" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [release.artist, release] %>','Share on Google+','scrollbars=no,width=620,height=340'); return false;">
+                        <%= image_tag "/images/social/gplus.png", :alt => "Google+" %>
+                      </a>
+                    </div>
+                    <span>Link:</span>
+                    <input type="text" onClick="this.select();" value="<%= root_url %><%= url_for([release.artist, release]) %>">
+                  </div>
+                </div>
+              </div>
+            <% end %>
+
+          <% end %>
+        </div>
+        <div class="tab-pane" id="tab2">
+          <% if @empty_search or @short_search or @artists.empty? %>
+            <% if @empty_search %>
+              <p> Your search was empty, you have to type <strong>something</strong>! </p>
+            <% elsif @short_search %>
+              <p> Your search word wasn't long enough, you must type at least <strong>two characters</strong>.</p>
+            <% elsif @artists.empty? %>
+              <p>We didn't find any results for '<strong><%= @search %></strong>'. Check your spelling, or try a different search.</p>
+            <% end %>
+          <% else %>
+            <% @artists.each do |artist| %>
+              <div class="result">
+                <%= link_to artist do %>
+                  <img src="<%= artist.image :medium %>" class="image" height="110" width="110"/>
+                <% end %>
+                <!-- <%= image_tag artist.image.url :search_a %> -->
+                <span>
+                  <div><%= link_to artist.name, artist %></div>
+                  <%= artist.label_name %><br/>
+                  <%= artist.followers %> trackers
+                </span>
+                <%= follow_button_small artist %>
+                <div class="btn btn-small share_artist share" data-placement="bottom" id="<%= artist.id %>"><i class="icon-share"></i>Share</div>
+                <div class="art_pop art_pop_<%= artist.id %>">
+                  <div class="share_content">
+                    <div>
+                      <a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com<%= url_for artist %>%2F&t=SNGTRKR','ShareSNGTRKRonFacebook','scrollbars=no,width=620,height=340'); return false;">
+                        <%= image_tag "/images/social/fb.png", :alt => "Facebook" %>
+                      </a>
+                      <a href="#" title="Share on Twitter" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.sngtrkr.com&text=<%= artist.name %>+is+using+SNGTRKR+to+keep+their+fans+up+to+date+with+releases.+Check+them+out+&#45;+www.sngtrkr.com<%= url_for artist %>&via=SNGTRKR','ShareSNGTRKRonTwitter','scrollbars=no,width=620,height=340'); return false;">
+                        <%= image_tag "/images/social/twitter.png", :alt => "Twitter" %>
+                      </a>
+                      <a href="#" title="Share on Tumblr" onClick="MyWindow=window.open('http://www.tumblr.com/share/link?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for artist %>&name=<%= artist.name %>&description=<%= artist.name %> online:<br/><% if artist.fbid? %>http://www.facebook.com/<%= artist.fbid %><br/><% end %><% if artist.twitter? %>http://www.twitter.com/<%= artist.twitter %><br/><% end %><% if artist.youtube? %>http://www.youtube.com/<%= artist.youtube %><br/><% end %><% if artist.soundcloud? %>http://www.soundcloud.com/<%= artist.soundcloud %><br/><% end %><% if artist.website? %><%= artist.website %><% end %>','Share on Tumblr','scrollbars=no,width=620,height=340'); return false;">
+                        <%= image_tag "/images/social/tb.png", :alt => "Tumblr" %>
+                      </a>
+                      <a href="#" title="Share on Google Plus" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for artist %>','ShareSNGTRKRonGooglePlus','scrollbars=no,width=620,height=340'); return false;">
+                        <%= image_tag "/images/social/gplus.png", :alt => "Google+" %>
+                      </a>
+                    </div>
+                    <span>Link:</span>
+                    <input type="text" onClick="this.select();" value="<%= root_url %><%= url_for(artist) %>">
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="tab-pane" id="tab3">
+          <% if @empty_search or @short_search or @artists.empty? %>
+            <% if @empty_search %>
+              <p> Your search was empty, you have to type <strong>something</strong>! </p>
+            <% elsif @short_search %>
+              <p> Your search word wasn't long enough, you must type at least <strong>two characters</strong>.</p>
+            <% elsif @artists.empty? %>
+              <p>We didn't find any results for '<strong><%= @search %></strong>'. Check your spelling, or try a different search.</p>
+            <% end %>
+          <% else %>
+            
+            <% @releases.each do |release| %>
+              <div class="result">
+                <%= link_to [release.artist, release] do %>
+                  <img src="<%= release.image :medium %>" class="image" height="110" width="110"/>
+                <% end %>
+                <span>
+                  <div><%= link_to release.name, [release.artist, release] %></div>
+                  <%= link_to release.artist.name, release.artist, :class => 'artist_l' %><br/>
+                  <%= release.date.strftime("#{release.date.day.ordinalize} %B %Y ") %>
+                </span>
+                <div class="btn btn-small buy" data-placement="bottom" id="<%= release.id %>">Buy</div>
+                <div class="btn btn-small share_release share" data-placement="bottom" id="<%= release.id %>"><i class="icon-share"></i>Share</div>
+                <div class="buy_pop buy_pop_<%= release.id %>">
+                  <div class="buy_content">
+                    <% if release.itunes? %>
+                      <%= link_to image_tag("/images/social/it.png", :alt => "iTunes", :title => "iTunes"), release.itunes, :target => "_blank" %>
+                    <% end %>
+                    <% if release.sdigital %>
+                      <%= link_to image_tag("/images/social/7d.png", :alt => "7Digital", :title => "7Digital"), release.sdigital, :target => "_blank" %>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="rel_pop rel_pop_<%= release.id %>">
+                  <div class="share_content">
+                    <div>
+                      <a href="#" alt="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [release.artist, release] %>%2F&t=SNGTRKR','Share on Facebook','scrollbars=no,width=620,height=340'); return false;">
+                        <%= image_tag "/images/social/fb.png", :alt => "Facebook" %>
+                      </a>
+                      <a href="#" title="Share on Twitter" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [release.artist, release] %>&text=<%= release.artist.name %>+&#45;+<%= release.name %><% if release.label_name %>+released+on+<%= release.label_name %><% end %>+&#45;+www.sngtrkr.com<%= url_for [release.artist, release] %>&via=SNGTRKR','Share on Twitter','scrollbars=no,width=620,height=340'); return false;">
+                        <%= image_tag "/images/social/twitter.png", :alt => "Twitter" %>
+                      </a>
+                      <a href="#" title="Share on Tumblr" onClick="MyWindow=window.open('http://www.tumblr.com/share/link?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [release.artist, release] %>&name=<%= release.artist.name %>+&#45;+<%= release.name %>&description=Release Date: <%= release.date.strftime("#{release.date.day.ordinalize} %B %Y ") %><% if release.label_name %><br/>Label:<%= release.label_name %><br/><% else %><br/><br/><% end %><%= release.artist.name %> online:<br/><% if release.artist.fbid? %>http://www.facebook.com/<%= release.artist.fbid %><br/><% end %><% if release.artist.twitter? %>http://www.twitter.com/<%= release.artist.twitter %><br/><% end %><% if release.artist.youtube? %>http://www.youtube.com/<%= release.artist.youtube %><br/><% end %><% if release.artist.soundcloud? %>http://www.soundcloud.com/<%= release.artist.soundcloud %><br/><% end %><% if release.artist.website? %><%= release.artist.website %><% end %>','Share on Tumblr','scrollbars=no,width=620,height=340'); return false;">
+                        <%= image_tag "/images/social/tb.png", :alt => "Tumblr" %>
+                      </a>
+                      <a href="#" title="Share on Google Plus" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [release.artist, release] %>','Share on Google+','scrollbars=no,width=620,height=340'); return false;">
+                        <%= image_tag "/images/social/gplus.png", :alt => "Google+" %>
+                      </a>
+                    </div>
+                    <span>Link:</span>
+                    <input type="text" onClick="this.select();" value="<%= root_url %><%= url_for([release.artist, release]) %>">
+                  </div>
+                </div>
+              </div>
+            <% end %>
+            
+          <% end %>
+        </div>
+      </div>
+  </div>
+</div>

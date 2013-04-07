@@ -1,4 +1,6 @@
 class ReleasesController < ApplicationController
+
+  load_and_authorize_resource
   # GET /releases
   # GET /releases.json
 
@@ -6,7 +8,6 @@ class ReleasesController < ApplicationController
   load_and_authorize_resource
   
   before_filter :managed_artists_only, :only => [:edit, :update, :create, :destroy, :new]
-  before_filter :cache_it, :only => [:show]
   skip_before_filter :authenticate_user!, :only => [:show]
 
   # GET /releases/1
@@ -14,7 +15,7 @@ class ReleasesController < ApplicationController
   def show
     @artist = Artist.find(params[:artist_id])
     @release = @artist.releases.find(params[:id])
-    @releases = @artist.real_releases.all
+    @releases = @artist.real_releases.all(:order => 'date DESC', :limit => 15)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @release }

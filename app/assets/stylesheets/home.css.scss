@@ -1,70 +1,73 @@
-.home-txt-1 {
-    line-height:1.3em;
-    font-size:1.2em;
-    margin:8px 15px 8px 2px;
-    width:320px;
-    span {
-	    margin:11px 0 5px 0;
-	    display:block;
-    }
+.homepage {
+	h1 {
+		margin-top:26px;
+	}
 }
-.limbo-txt-1 {
-	line-height:1.3em;
-    @extend .font-14;
-    margin:1px 15px 8px 2px;
-    width:320px;
-    span {
-	    margin:11px 0 5px 0;
-	    display:block;
-    }
+#releases {
+	margin-top:34px;
+	height:294px;
+	width:100%;
+	background-color:$gray;
 }
-.home-header {
-    width:328px;
-    margin-left:2px;
+.signup-home {
+	margin:40px 0 34px;
+	text-align:center;
+	.btn-warning {
+		margin-left:10px;
+	}
 }
-#home-macbook {
-   position:absolute;
-   margin:-23px 0 0 -20px;
-}
-#home-points {
-	position:relative;
-	margin:13px 0 40px;
+.sections {
 	p {
-		width:285px;
+		margin-top:16px;
 	}
-	h2 {
-	  	@extend .signika-txt;
-	  	font-size:2.3em;
-	  	margin:10px 0 10px 0;
-	  }
-	  #home1 {
-	  	position:relative;
-		  top:9px;
-		  left:60px;
-	  }
-	  #home2 {
-	  position:relative;
-		  top:30px;
-		  left:60px;
-	  }
-	  #home3 {
-	  position:relative;
-		  top:6px;
-		  left:66px;
-	  }
-}
-.fb-home-login {
-	margin:-1px 0 25px 0;
-	float: left; 
-	@extend .facebook-button;
-}
-#beta-form {
-	margin-top:1px;
-	input[type=text] {
-		margin-left:2px;
-		margin-bottom:6px !important;
+	.section {
+		border-top:1px solid #d1d1d1;
+		@extend .center;
+		margin:0 auto;
+		max-width:980px;
+		overflow:hidden;
+			&:last-child {
+				border-bottom:1px solid #d1d1d1;
+			}
+			&:nth-child(odd) > .col:first-child {
+				float:left;
+				width:400px;
+			}
+			&:nth-child(odd) > .col:last-child {
+				float:right;
+			}
+			&:nth-child(even) > .col:first-child {
+				float:left;
+			}
+			&:nth-child(even) > .col:last-child {
+				float:left;
+				width:400px;
+				margin-left:80px;
+			}
+			.follow {
+				margin-top:96px;
+			}
+			.connect {
+				margin-top:91px;
+			}
+			.discover {
+				margin-top:74px;
+			}
+			.date {
+				margin-top: 127px;
+			}
 	}
-	input[type=submit] {
-		margin:-7px 0 0 5px;
+}
+.social_share {
+	margin-top:15px;
+	.twitter-share-button {
+		width: 88px !important;
+		margin-right: 5px;
+	}
+	.fb-like {
+		vertical-align: top;
+		margin-right: 10px;
+		margin-left: 28px;
+		width: 81px;
 	}
 }

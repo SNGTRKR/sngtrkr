@@ -1,9 +1,4 @@
-# Running it
-Once you've got config (see below) done, start all the necessary services, that's Solr, Redis, MySQL, and lastly Rails.
-
-Most of this is made easier by `start_server.sh`.
-
-# Config
+# SNGTRKR
 
 ## SSH Configuration
 Add this to your `~/.ssh/config` file (change `IdentityFile` as needed)
@@ -27,14 +22,3 @@ prompts for credentials. This will do:
 ## Hosts Configuration
 If you want to do anything significant in dev, involving the FB api, you need to change your `/etc/hosts` file
 to point `dev.sngtrkr.com` at `127.0.0.1`. Now to develop go to `http://dev.sngtrkr.com:3000`.
-
-## Environment Variables
-The following environmental variables will need to be added to your `.bashrc` file for SNGTRKR to work correctly:
-
-		export SNGTRKR_7DIGITAL="replaceme"
-		export SNGTRKR_7DIGITAL_SECRET="replaceme"
-		export SNGTRKR_AWS_ID="replaceme"
-		export SNGTRKR_AWS_KEY="replaceme"
-		export SNGTRKR_DB_PW="replaceme"
-		export SNGTRKR_DB_USER="replaceme"
-

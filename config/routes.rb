@@ -1,5 +1,8 @@
 SNGTRKR::Application.routes.draw do
 
+  resources :reports
+
+
   match 'sitemap.xml' => 'sitemaps#sitemap'
 
   root :to => "pages#home"
@@ -18,11 +21,8 @@ SNGTRKR::Application.routes.draw do
   
   match '/about' => "Pages#about"
   match '/terms' => "Pages#terms"
-  match '/team' => "Pages#team"
   match '/privacy' => "Pages#privacy"
-  match '/help' => "Pages#help"
   match '/release_magic/:store/:url' => "Releases#magic"
-  match '/intro' => "Pages#intro"
 
   devise_for :users, :controllers => { 
     :registrations => "users_controller/registrations",
@@ -35,14 +35,11 @@ SNGTRKR::Application.routes.draw do
   
   match '/tl' => "Users#timeline"
   
-  resources :users, :except =>[:index] do
+  resources :users, :except =>[:index, :edit, :update] do
     member do
       match 'public'
-      get 'unmanage'
       get 'destroy_confirm'
       post 'destroy_with_reason'
-      get 'manage_confirm'
-      get 'managing'
       get 'friends'
       get 'recommend'
       get 'timeline/:page' => 'Timeline#index'
@@ -53,43 +50,26 @@ SNGTRKR::Application.routes.draw do
     end
     resources :manages
   end
+
+  get 'search' => 'search#omni'
   
-  match '/artists/search' => "Artists#search"
-  resources :artists do
+  resources :artists, :except => [:index] do
     collection do
       match 'import/:fb_id', :action => 'import'
       match 'preview'
       get 'first_suggestions'
       match 'unfollow' => 'Follows#batch_destroy'
     end
-    resources :releases do 
-      member do 
-        post 'rate'
-        get 'previews'
-      end
-    end
-    resources :manages
+    resources :releases
     match 'scrape_confirm' => 'Artists#scrape_confirm'
     resources :follows, :except => [:destroy,:edit]
     match 'unfollow' => 'Follows#user_destroy'
     #resources :suggests, :except => [:destroy,:edit]
     match 'unsuggest' => 'Suggests#destroy'
   end
-  resources :releases do 
-    member do 
-      post 'rate'
-    end
-  end
 
   # Allows us to have intuitive /artist/1/follow URLs that actually deal with the
   # user controller
-  resources :artists, :controller => 'users' do
-    member do
-      get 'manage'
-      get 'unmanage'
-    end
-  end
-
-  resources :feedbacks
+  # resources :artists, :controller => 'users'
 
 end

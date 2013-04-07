@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   before_filter :self_only, :except => [:show, :timeline, :self, :new, :create]
   before_filter :authenticate_user!, :except => [:new]
   load_and_authorize_resource :except => [:new]
-  before_filter :cache_it, :only => [:timeline,:show,:public]
 
   def timeline
     @user = current_user
@@ -58,32 +57,6 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.json { render :json => @user }
-    end
-  end
-
-  # GET /users/1/edit
-  def edit
-    @user = User.find(params[:id])
-  end
-
-  # PUT /users/1
-  # PUT /users/1.json
-  def update
-    @user = User.find(params[:id])
-
-    respond_to do |format|
-      if @user.update_attributes(params[:user])
-        if !params[:user][:email]
-          notice = '<strong>Success!</strong> Your changes have been saved.'
-        else
-          notice = '<strong>Success!</strong> Your changes have been saved. You must confirm your email address before it will register in the system. Please check your email now for a confirmation link.'
-        end
-        format.html { redirect_to user_path(@user, :page => 'edit'), :flash => { :success => notice } }
-        format.json { head :no_content }
-      else
-      format.html { redirect_to user_path(@user, :page => 'edit'), :flash => { :error => "There was an error with the changes you tried to make. Please try again." } }
-        format.json { render :json => @user.errors, :status => :unprocessable_entity }
-      end
     end
   end
 

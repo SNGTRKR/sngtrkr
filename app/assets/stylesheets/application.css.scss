@@ -1,131 +1,85 @@
-//= require font-awesome
-//= require jquery-ui-1.8.21.custom
-// Compass Imports
-@import "compass/reset";
-@import "compass/css3/border-radius";
-@import "compass/css3/opacity";
-@import "compass/css3/box-shadow";
-@import "compass/css3/text-shadow";
-@import "compass/utilities/links/link-colors";
 @import "compass/css3/";
 
-$blue:#45ADD2;
-$orange:#F15A24;
-$gray:#333333;
-$light-gray:#666666;
-$footer:60px;
-$sidebar:228px;
-// SNGTRKR Imports
-/* Flash (System Notification)  CSS */
-@import "flash.css.scss";
-/* Buttons CSS*/
+$orange: #DC5A24;
+$blue: #45A1C6;
+$darkgray: #333333;
+$gray: #666666;
+$lightgray: #DDDDDD;
+@font-face {
+  font-family: "MuseoSans-100";
+  src: url("/font/MuseoSans-100.otf");
+  src: local("?"),
+    url("/font/MuseoSans-100.otf") format("opentype");
+}
+@font-face {
+  font-family: "MuseoSans-300";
+  src: url("/font/MuseoSans-300.otf");
+  src: local("?"),
+    url("/font/MuseoSans-300.otf") format("opentype");
+}
+@font-face {
+  font-family: "MuseoSans-500";
+  src: url("/font/MuseoSans_500.otf");
+  src: local("?"),
+    url("/font/MuseoSans_500.otf") format("opentype");
+}
+@font-face {
+  font-family: "MuseoSans-700";
+  src: url("/font/MuseoSans_700.otf");
+  src: local("?"),
+    url("/font/MuseoSans_700.otf") format("opentype");
+}
+@import "grid.scss";
+@import "font-awesome";
+@import "navbar.css.scss";
+@import "headers.css.scss";
+@import "styling.css.scss";
+@import "tabs.css.scss";
 @import "buttons.css.scss";
-/* Header CSS*/
-@import "header.css.scss";
-/* Footer CSS*/
-@import "footer.css.scss";
-/* Font Styling CSS*/
-@import "font_styling.css.scss";
-/* Delete Confirm CSS*/
-@import "delete_confirm.css.scss";
-/* Errors CSS*/
-@import "errors.css.scss";
-/* Timeline CSS*/
-@import "timeline.css.scss";
-// Admin CSS
 @import "admin.css.scss";
-/* Home CSS*/
+//Pages
 @import "home.css.scss";
-/* Artist Profile CSS*/
-@import "artist_profile.css.scss";
-/* Profile CSS*/
+@import "about.css.scss";
+@import "search.css.scss";
+@import "release.css.scss";
 @import "profile.css.scss";
-/* Recommend CSS*/
-@import "recommend.css.scss";
-/* Info Pages CSS*/
-@import "info_pages.css.scss";
-/* Artist Search CSS*/
-@import "artist_search.css.scss";
-/* Artist Release CSS */
-@import "artist_release.css.scss";
-/* Friend CSS*/
-@import "friend.css.scss";
-/* Feedback CSS */
-@import "feedback.css.scss";
-/* Activity CSS */
-@import "activity.css.scss";
-/* Slider CSS */
-@import "slider.css.scss";
-/* Pagination CSS */
-@import "pagination.css.scss";
-a:link {text-decoration:none;}
-*{
-  margin:0;
-  padding:0;
+@import "artist.css.scss";
+
+body {
+    line-height:1.8em !important;
+  	background: url('/images/bg_body-noise.png') repeat;
+    text-shadow: 0.5px 0.5px 0 rgba(240, 240, 240, 1); 
 }
-html, body{
-  width:100%;
-  height:100%;
+.container-fluid {
+  min-width:850px;
 }
-body{
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size:75%;
-    font-weight:400;
-    line-height:1.45em;
-    background-color:#7DCAE6;
-    /* 7DCAE68ABED1 */
-    background: url("/images/b-bk.png") no-repeat center center fixed; 
-    background-color:$blue;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;    
-    color:$gray;
+/* ============================= */
+/* ! Layout for tablet  */
+/* ============================= */
+@media only screen and (max-width: 1023px) {
+  body {
+    .sections {
+      .section {
+        &:nth-child(even) > .col:last-child {
+          float:left;
+          width:400px;
+          margin-left:30px;
+        }
+        .discover {
+          width:379px !important;
+        }
+      }
+    }
+  }
 }
-.load-recommend {
-	margin:0 0 20px;
-	width:463px;
+/* ============================= */
+/* ! Large desktop  */
+/* ============================= */
+@media (min-width: 1200px) {
+  body {
+    .g_main {
+      padding: 30px 30px 0 0;
+      margin:0 325px 0 225px;
+    }
+  }
 }
-.load-timeline {
-	margin:-3px 0 24px 33px;
-	width:453px;
-}
-.load-facebook {
-	width:602px;
-}
-.loading {
-position:relative;
-text-align:center;
-	h3 {
-		@extend .signika-txt; 
-		font-size:2.3em;
-		margin-bottom:20px;
-	}
-	p {
-		margin-top:20px;
-	}
-}
-#beta-corner {
-	position:absolute;
-	top:0px;
-	left:0px;
-}
-#wrapper{
-  min-height:100%;
-  
-}
-.wrapper2 {
-  min-height:100%;
-}
-.wrapper, .wrapper2 {
-	.content-padding {
-		padding:85px 0 60px;
-	}
-}
-.container {
-	padding:0px 40px;
-}
-//Slider
-@import "intro.css.scss";
-//Sidebar 
-@import "sidebar.css.scss";

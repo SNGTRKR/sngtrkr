@@ -1,0 +1,60 @@
+* {
+-webkit-font-smoothing: antialiased;
+}
+::selection {
+	background: $orange;
+	color: #fff;
+	text-shadow: none;
+}
+.center {
+	margin:0 auto !important;
+	float:none !important;
+}
+p {
+
+}
+strong {
+	font-family: "MuseoSans-700", Helvetica, Arial, sans-serif !important;
+}
+.modal-body {
+	h2 {
+		border-bottom: 1px #d1d1d1 solid;
+		line-height: 28px !important;
+	}
+	form {
+		margin:0 !important;
+	}
+	textarea {
+		margin-top:14px;
+		width:516px;
+		resize:none;
+	}
+}
+.modal-footer {
+	.btn {
+		margin:0 0 0 8px;
+	}
+	input:first-child {
+		float:right;
+	}
+	button:last-child {
+		background:none;
+		border:0;
+		color:$darkgray;
+	}
+	button:last-child:hover {
+		text-decoration:underline;
+	}
+}
+header {
+	width:100%;
+	min-width:890px;
+	height:51px;
+}
+.navbar-inner {
+	min-width:890px;
+}
+.alert {
+	margin:30px 0 0;
+	display:none;
+}

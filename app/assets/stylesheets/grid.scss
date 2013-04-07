@@ -1,0 +1,45 @@
+.g_content {
+	padding:0 30px;
+	clear:both;
+	min-width:850px;
+		&:before, &:after {
+			content:"";
+			display:table;
+		}
+}
+.g_two_col {
+	position:relative;
+}
+.g_sidebar {
+	position:absolute;
+	top:30px;
+	bottom:0px;
+	width:200px;
+	left:0px;
+}
+.g_sidebar_large {
+	position:absolute;
+	top:30px;
+	bottom:0px;
+	width:232px;
+	left:0px;
+}
+.g_main {
+	padding: 30px 30px 0 0;
+	margin:0 0 0 225px;
+}
+.g_full {
+	padding:30px 30px 0 0;
+}
+.g_tabs {
+	margin-left:253px !important;
+}
+.g_tabs_large {
+	margin-left:285px !important;
+}
+.g_right_sidebar {
+
+}
+.g_fixed {
+	position:fixed;
+}

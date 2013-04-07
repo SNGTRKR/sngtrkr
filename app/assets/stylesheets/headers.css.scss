@@ -1,0 +1,59 @@
+h1 {
+	color: $orange !important;
+	text-shadow: 1px 1px 0 rgba(240, 240, 240, 1) !important;
+	font-size:30px !important;
+		span {
+			color:$blue !important;
+			font-family: "MuseoSans-100", Helvetica, Arial, sans-serif !important;
+			margin-top:10px;
+			display:block;
+		}
+}
+h2 {
+	text-shadow: 0.5px 0.5px 0 rgba(240, 240, 240, 1) !important;
+	color:$blue !important;
+	font-family: "MuseoSans-300", Helvetica, Arial, sans-serif !important;
+	font-size:16px !important;
+}
+
+.homepage{
+	h1 {
+		font-size:40px !important;
+		text-align:center;
+	}
+	h2 {
+		font-family: "MuseoSans-500", Helvetica, Arial, sans-serif !important;
+		color: $orange !important;
+		font-size:30px !important;
+		text-shadow: 1px 1px 0 rgba(240, 240, 240, 1) !important;
+			span {
+				color:$blue !important;
+				font-family: "MuseoSans-100", Helvetica, Arial, sans-serif !important;
+				margin-top:-5px;
+				display:block;
+				font-size:25px !important;
+			}
+	}
+	h3 {
+		@extend .center;
+		padding-top:20px;
+		font-size:15px;
+		text-shadow: 0.5px 0.5px 0 rgba(240, 240, 240, 1) !important;
+		color:$darkgray !important;
+		line-height:24px !important; 
+		text-align:center;
+		font-family: "MuseoSans-300", Helvetica, Arial, sans-serif !important;
+	}
+}
+.errorpage {
+	text-align:center;
+	h1 {
+		font-size:30px !important;
+	}
+	h2 {
+		font-size:25px !important;
+		line-height:30px !important;
+		margin-top:25px;
+	}
+}
+

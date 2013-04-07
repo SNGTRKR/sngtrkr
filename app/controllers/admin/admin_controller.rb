@@ -7,7 +7,6 @@ class Admin::AdminController < ApplicationController
   end
 
   def email
-    render :layout => 'new_user_mailer'
   end
 
   def overview
@@ -47,7 +46,6 @@ class Admin::AdminController < ApplicationController
              :limit => row_length
             )
 
-    render :layout => 'no_sidebar'
   end
 
 end
