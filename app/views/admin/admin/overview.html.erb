@@ -1,70 +1,100 @@
-<h1>SNGTRKR Administration</h1>
-<div class="row">
-  <div class="span8">
-    <h1>Links</h1>
-    <p class="font-15">
-      <%= link_to "Database Admin", '/admin/rails' %><br/>
-      <%= link_to "Email Composer", '/admin/email' %><br/>
-      <%= link_to "Sidekiq", '/admin/sidekiq' %><br/>
-    </p>
+<div class="g_two_col">
+  <div class="g_sidebar">
+    <div class="g_fixed">
+      <h1>Administration</h1>
+      <div class="tabbable tabs-left">
+        <ul id="myTab" class="nav nav-tabs nav-stacked each-tab">
+          <li class="active">
+            <a href="#tab1" data-toggle="tab"><i class="icon-bar-chart"></i>Site activity</a>
+          </li>
+          <li>
+            <a href="#tab2" data-toggle="tab"><%= image_tag "/images/ppl_black.png", :class => "blk ppl"%><%= image_tag "/images/ppl_white.png", :class => "wht ppl"%>Popular artists</a>
+          </li>
+          <li>
+            <a href="#tab3" data-toggle="tab"><i class="icon-check"></i>Release reports</a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
+  <div class="g_main g_tabs_large">
+    <div class="tab-content admin-tab-content" id="myTabContent">
+          <div class="tab-pane active" id="tab1">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Users</th>
+                    <th>Artists</th>
+                    <th>Follows</th>
+                    <th>Suggests</th>
+                  </tr>
+                </thead>
+                <% @stats_by_day.each do |d| %>
+                <tr>
+                  <td><%= d[:date] %></td>
+                  <td><%= d[:users] %></td>
+                  <td><%= d[:artists] %></td>
+                  <td><%= d[:follows] %></td>
+                  <td><%= d[:suggests] %></td>
+                </tr>
+                <% end %>
+              </table>
+          </div>
+          <div class="tab-pane" id="tab2">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Artist</th>
+                  <th>Follows</th>
+                </tr>
+              </thead>
+              <% @popular_artists.each do |a| %>
+              <tr>
+                <td><%= link_to a.name, a %></td>
+                <td><%= a.follow_count %></td>
+              </tr>
+              <% end %>
+            </table>
+          </div>
+          <div class="tab-pane" id="tab3">
+            <table class="table table-striped reports">
+              <tr>
+                <th>User</th>
+                <th>Release</th>
+                <th>Name</th>
+                <th>Artist</th>
+                <th>Date</th>
+                <th>Label</th>
+                <th>Purchase Links</th>
+                <th>Comments</th>
+                <th></th>
+              </tr>
+
+            <% @reports.each do |report| %>
+              <tr>
+                <td><%= report.user.first_name %></td>
+                <td><%= link_to report.release , report.url %></td>
+                <% report.elements.each do |element,value| %>
+                <td>
+                    <% if value.to_i == 1 %>
+                        <i class="icon-remove"></i>
+                    <% else %>
+                        <i class="icon-ok"></i>
+                    <% end %>
+                </td>
+                <% end %>
+                <td><%= report.comments %></td>
+                <td><%= link_to 'Destroy', report, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %></td>
+              </tr>
+            <% end %>
+            </table>
+          </div>
+      </div>
+    </div>
 </div>
-<div class="row">
-  <div class="span12">
-    <h1>Site Activity</h1>
-    <table class="table well table-striped">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Users</th>
-          <th>Artists</th>
-          <th>Follows</th>
-          <th>Suggests</th>
-        </tr>
-      </thead>
-      <% @stats_by_day.each do |d| %>
-      <tr>
-        <td><%= d[:date] %></td>
-        <td><%= d[:users] %></td>
-        <td><%= d[:artists] %></td>
-        <td><%= d[:follows] %></td>
-        <td><%= d[:suggests] %></td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
-  <div class="span6">
-    <h1>Pop. Artists</h1>
-    <table class="table well table-striped">
-      <thead>
-        <tr>
-          <th>Artist</th>
-          <th>Follows</th>
-        </tr>
-      </thead>
-      <% @popular_artists.each do |a| %>
-      <tr>
-        <td><%= link_to a.name, a %></td>
-        <td><%= a.follow_count %></td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
-  <div class="span6">
-    <h1>Active Users</h1>
-    <table class="table well table-striped">
-      <thead>
-        <tr>
-          <th>User</th>
-          <th>Follows</th>
-        </tr>
-      </thead>
-      <% @prolific_artists.each do |u| %>
-      <tr>
-        <td><%= link_to "#{u.first_name} #{u.last_name}", u %></td>
-        <td><%= u.follow_count %></td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
-</div>
+
+    <!--   <%= link_to "Database Admin", '/admin/rails' %>
+      <%= link_to "Email Composer", '/admin/email' %>
+      <%= link_to "Sidekiq", '/admin/sidekiq' %> -->
+

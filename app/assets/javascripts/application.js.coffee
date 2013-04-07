@@ -98,7 +98,9 @@ $(document).ready ->
 	  	$(this).remove();
 	), 4000
 
-
+	url = document.location.toString()
+	$(".nav-tabs a[href=#" + url.split("#")[1] + "]").tab "show"  if url.match("#")
+	
 
 
 

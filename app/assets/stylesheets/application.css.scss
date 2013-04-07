@@ -73,13 +73,15 @@ body {
   }
 }
 /* ============================= */
-/* ! Large desktop  */
+/* ! Small desktop  */
 /* ============================= */
-@media (min-width: 1200px) {
+@media (max-width: 1200px) {
   body {
-    .g_main {
-      padding: 30px 30px 0 0;
-      margin:0 325px 0 225px;
+    .g_three_col {
+      .g_main {
+        padding: 30px 30px 0 0;
+        margin:0 0 0 225px;
+      }
     }
   }
 }
