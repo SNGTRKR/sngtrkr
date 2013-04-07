@@ -3,7 +3,7 @@
 
 <li class="release-outer release-outer-<%= cycle('odd','even') %>" data-release-id="<%= release.id %>" data-release-date="<%= release.date %>">
   <div class="joining-line"></div>
-  <div class="each-release" style="background-image:url(<%= release.image :release_i %>)">
+  <div class="each-release" style="background-image:url(<%= release.image.release_i.url %>)">
     <div class="r-grad"></div>
     <div class="release-date">
       

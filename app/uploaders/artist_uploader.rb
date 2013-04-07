@@ -3,6 +3,8 @@
 class ArtistUploader < CarrierWave::Uploader::Base
   include CarrierWave::Compatibility::Paperclip
   include CarrierWave::MiniMagick
+  include Sprockets::Helpers::RailsHelper
+  include Sprockets::Helpers::IsolatedHelper
 
   storage :fog
 
