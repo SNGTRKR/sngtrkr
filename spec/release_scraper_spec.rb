@@ -60,12 +60,12 @@ describe "ReleaseScraper" do
     Release.count.should eq @release_count + 1
 
     # Test for successfull image replacement
-    (!!r.image).should eq true
-    image_size = open(r.image :original).size
+    r.image.identifier.should eq "release_100.jpeg"
+    image_size = open(r.image.url).size
     @rs.class.improve_image r, :test_image => "http://www.simplyzesty.com/wp-content/uploads/2012/02/Google-logo.jpg"
     r.save
-    new_image_size = open(r.image :original).size
-    new_image_size.should > image_size
+    new_image_size = open(r.image.url).size
+    new_image_size.should_not == image_size
 
   end
 
