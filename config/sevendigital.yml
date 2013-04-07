@@ -1,6 +1,6 @@
 #Your API access key and secret
-oauth_consumer_key: "7dufgm34849u"
-oauth_consumer_secret: "kh5v6ybctkbh3cq5"
+oauth_consumer_key: <%= ENV['SNGTRKR_7DIGITAL'] %>
+oauth_consumer_secret: <%= ENV['SNGTRKR_7DIGITAL_SECRET'] %>
 
 #Your website/application name & version
 #this information will be appended to user-agent HTTP headers for all API requests
