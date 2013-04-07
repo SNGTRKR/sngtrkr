@@ -45,6 +45,7 @@ class Admin::AdminController < ApplicationController
              :order => 'follow_count DESC',
              :limit => row_length
             )
+    @reports = Report.all
 
   end
 

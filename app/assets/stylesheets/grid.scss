@@ -9,6 +9,15 @@
 }
 .g_two_col {
 	position:relative;
+		.g_main {
+			margin:0 0 0 225px;
+		}
+}
+.g_three_col {
+	position:relative;
+		.g_main {
+			margin:0 325px 0 225px;
+		}
 }
 .g_sidebar {
 	position:absolute;
@@ -26,7 +35,7 @@
 }
 .g_main {
 	padding: 30px 30px 0 0;
-	margin:0 0 0 225px;
+	
 }
 .g_full {
 	padding:30px 30px 0 0;

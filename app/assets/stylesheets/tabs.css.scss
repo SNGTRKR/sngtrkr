@@ -19,13 +19,21 @@ background-image:url('/images/tab.png') !important;
 			font-size:21px;
 			position:relative;
 		}
-		.icon-question-sign, .icon-file-alt {
+		.icon-question-sign, .icon-file-alt{
 			margin: 0px 13px 0 5px;
 			top:2px;
 		}
 		.icon-search {
 			top:1px;
 			margin: 0px 10px 0 3px;
+		}
+		.icon-bar-chart {
+			margin:0 13px 0 3px;
+			top:3px;
+		}
+		.icon-check {
+			margin:0 13px 0 5px;
+			top:3px;
 		}
 		a {
 			@include border-radius(0px !important);

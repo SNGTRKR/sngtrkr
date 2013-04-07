@@ -7,7 +7,7 @@ content_for :og_type, "sngtrkr:release"
 %>
 <% content_for :title do %><%= @release.name %> release information by <%= @artist.name %><% end %>
 <% content_for :description do %><%= @release.name %> release information by <%= @artist.name %>. Released <%= @release.date.strftime("#{@release.date.day.ordinalize} %B %Y ") %> by <%= @release.label_name %> <% end %>
-<div class="g_two_col">
+<div class="g_three_col">
   <div class="g_sidebar">
     <div class="release_artist g_fixed">
       <%= image_tag @artist.image :large %>
