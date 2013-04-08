@@ -1,4 +1,0 @@
-<% fade_time = 300 %>
-<% if !@artist.blank? %>
-$('#ajax-recommended-artists').append($("<%=j render :partial => 'shared/artist_suggestion', :object => @artist %>").hide().delay(<%= fade_time %>).fadeIn(<%= fade_time %>));
-<% end %>
