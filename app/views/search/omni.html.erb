@@ -45,7 +45,7 @@
             <% @artists.take(5).each do |artist| %>
               <div class="result">
                 <%= link_to artist do %>
-                  <img src="<%= artist.image :medium %>" class="image" height="110" width="110"/>
+                  <img src="<%= artist.image.medium %>" class="image" height="110" width="110"/>
                 <% end %>
                 <span>
                   <div><%= link_to artist.name, artist %></div>
@@ -79,7 +79,7 @@
             <% @releases.take(5).each do |release| %>
               <div class="result">
                 <%= link_to [release.artist, release] do %>
-                  <img src="<%= release.image :medium %>" class="image" height="110" width="110"/>
+                  <img src="<%= release.image.medium %>" class="image" height="110" width="110"/>
                 <% end %>
                 <span>
                   <div><%= link_to release.name, [release.artist, release] %></div>
@@ -136,9 +136,8 @@
             <% @artists.each do |artist| %>
               <div class="result">
                 <%= link_to artist do %>
-                  <img src="<%= artist.image :medium %>" class="image" height="110" width="110"/>
+                  <img src="<%= artist.image.medium %>" class="image" height="110" width="110"/>
                 <% end %>
-                <!-- <%= image_tag artist.image.url :search_a %> -->
                 <span>
                   <div><%= link_to artist.name, artist %></div>
                   <%= artist.label_name %><br/>
@@ -184,7 +183,7 @@
             <% @releases.each do |release| %>
               <div class="result">
                 <%= link_to [release.artist, release] do %>
-                  <img src="<%= release.image :medium %>" class="image" height="110" width="110"/>
+                  <img src="<%= release.image.medium %>" class="image" height="110" width="110"/>
                 <% end %>
                 <span>
                   <div><%= link_to release.name, [release.artist, release] %></div>

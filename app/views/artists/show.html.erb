@@ -1,6 +1,6 @@
 <% content_for :og_name, @artist.name
 content_for :og_url, request.url
-content_for :og_image, File.join(root_url , @artist.image.url(:medium))
+content_for :og_image, File.join(root_url , @artist.image.medium.url)
 content_for :og_description, "#{@artist.name} is telling fans about their new releases on SNGTRKR. Why don't you follow them too?"
 content_for :og_id, @artist.id.to_s
 content_for :og_type, "sngtrkr:artist"
@@ -22,7 +22,7 @@ content_for :og_type, "sngtrkr:artist"
       <%= @artist.releases.count %> releases
     </div>
     <%= follow_button @artist %>
-    <div class="btn share share_artist" data-placement="bottom"><i class="icon-share"></i>Share</div>
+    <div class="btn share share_artist" data-placement="bottom" id="<%= @artist.id %>"><i class="icon-share"></i>Share</div>
     <ul>
       <% if @artist.fbid? %>
       <li><a href="http://www.facebook.com/<%= @artist.fbid %>" target="_blank"><%= image_tag "/images/social/fb.png" %><p>Facebook</p></a></li> 
@@ -61,7 +61,7 @@ content_for :og_type, "sngtrkr:artist"
     <% end %>
   </div>
 </div>
-<div class="art_pop">
+<div class="art_pop art_pop_<%= @artist.id %>">
   <div class="share_content">
     <div>
       <a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com<%= url_for @artist %>%2F&t=SNGTRKR','ShareSNGTRKRonFacebook','scrollbars=no,width=620,height=340'); return false;">

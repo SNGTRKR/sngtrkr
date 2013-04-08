@@ -4054,7 +4054,7 @@ a.thumbnail:focus {
   display: block;
   visibility: visible;
   font-size: 11px;
-  line-height: 1.4;
+  line-height: 1;
   opacity: 0;
   filter: alpha(opacity=0);
 }
@@ -4075,7 +4075,7 @@ a.thumbnail:focus {
   padding: 5px 0;
 }
 .tooltip.left {
-  margin-left: -3px;
+  margin-left: -15px;
   padding: 0 5px;
 }
 .tooltip-inner {
