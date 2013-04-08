@@ -9,7 +9,7 @@ set :scm_verbose, true
 set :applicationdir, "/var/www/sngtrkr"
 set :deploy_to, applicationdir
 set :branch, 'master'
-set :rvm_ruby_string, "1.9.3"
+set :rvm_ruby_string, "2.0"
 set :rvm_type, :user
 
 role :web, domain                          # Your HTTP server, Apache/etc
