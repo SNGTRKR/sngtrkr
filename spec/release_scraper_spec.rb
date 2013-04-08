@@ -8,36 +8,12 @@ describe "ReleaseScraper" do
     @release_count = Release.count
   end
 
-
   it "improves the name of an existing release" do
     old_release = @a.releases.build(:name => "You Should Know [Remixes]",:sd_id => 123, :date => Date.today, :scraped => true)
     old_release.save!
     
     @rs.class.improve_all
     Release.first.name.should == "You Should Know"
-  end
-
-  it "doesn't import the same release twice" do 
-    releases = [
-      {
-        'collectionName' => "My First Album",
-        'collectionViewUrl' => "test.com",
-        'collectionId' => 5,
-        'releaseDate' => Date.today.to_s
-      }
-    ]
-
-    @rs.itunes_import(releases).should eq 1
-    @rs.save_all
-
-    Release.count.should eq @release_count + 1
-
-    @rs.itunes_import(releases).should eq 0
-    @rs.save_all
-
-    Release.count.should eq @release_count + 1
-
-
   end
 
   it "gets last.fm artwork" do
