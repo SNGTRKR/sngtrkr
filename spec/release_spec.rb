@@ -7,19 +7,15 @@ describe "Release" do
 
 		it "removes unnecessary metadata from title" do
 			release = create(:release, :name => "Izzy Pop (Remixes)")
-			release.save
 			release.name.should eq "Izzy Pop"
 
 			release = create(:release, :name => "Dizzy Trap (Radical Remixes)")
-			release.save
 			release.name.should eq "Dizzy Trap (Radical Remixes)"
 
 			release = create(:release, :name => "Izzy Pop (Radical Remixes) EP")
-			release.save
 			release.name.should eq "Izzy Pop (Radical Remixes)"
 
 			release = create(:release, :name => "Riggy Pop - EP")
-			release.save
 			release.name.should eq "Riggy Pop"
 		end
 
