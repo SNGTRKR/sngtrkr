@@ -1,6 +1,6 @@
 <% content_for :og_name, @release.name  
 content_for :og_url, request.url  
-content_for :og_image, File.join(@release.image.url(:medium)) 
+content_for :og_image, File.join(@release.image.medium.url) 
 content_for :og_description, "#{@release.name} by #{@artist.name}. Released #{@release.date.strftime("#{@release.date.day.ordinalize} %B %Y ")}"
 content_for :og_id, @release.id.to_s  
 content_for :og_type, "sngtrkr:release" 
@@ -69,10 +69,10 @@ content_for :og_type, "sngtrkr:release"
           </div>
         </div>
       <% else %>
-        <%= image_tag @release.image :large %>
+        <%= image_tag @release.image.large %>
       <% end %>
     <% else %>
-      <%= image_tag @release.image :large %>
+      <%= image_tag @release.image.large %>
     <% end %>
     <div class="info">
       <h1><%= @release.name %></h1>
