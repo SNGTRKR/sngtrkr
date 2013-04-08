@@ -27,9 +27,11 @@ describe "Release" do
 			# Factory generates two releases one day after another
 			rc = Release.count
 			a = create(:artist)
-			create(:release, :artist => a, :name => "SameName")
-			create(:release, :artist => a, :name => "SameName")
+			create(:release, :artist => a, :name => "SameName", :itunes_id => 456)
+			r = create(:release, :artist => a, :name => "SameName", :sd_id => 123)
 			Release.count.should eq (rc+1)
+			r.sd_id.should eq 123
+			r.itunes_id.should eq 456
 		end
 
 		it "does not merge nearby non-duplicates" do
