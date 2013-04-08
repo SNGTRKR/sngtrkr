@@ -27,7 +27,7 @@
                     <tr>
                       <td>
                         <%= link_to artist_path(artist_tracked) do %>
-                          <img src="<%= artist_tracked.image.medium.url %>" class="image" height="75" width="75"/>
+                          <%= image_tag artist_tracked.image.medium.url, :class => "image", :height => "75", :width => "75" %>
                         <% end %>
                             <%= link_to artist_path(artist_tracked) do %>
                               <%= artist_tracked.name %>

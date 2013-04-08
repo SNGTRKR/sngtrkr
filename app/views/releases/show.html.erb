@@ -10,7 +10,7 @@ content_for :og_type, "sngtrkr:release"
 <div class="g_three_col">
   <div class="g_sidebar">
     <div class="release_artist g_fixed">
-      <%= image_tag @artist.image :large %>
+      <%= image_tag @artist.image.large %>
       <h2><%= link_to @artist.name, @artist %></h2>
       <h3><%= @artist.label_name %></h3>
       <div class="trackers">
@@ -53,7 +53,7 @@ content_for :og_type, "sngtrkr:release"
       <% if current_user.role? :admin %>
         <div class="image">
           <div class="front">
-          <%= image_tag @release.image :large %>
+          <%= image_tag @release.image.large %>
           </div>
           <div class="back">
             <form>
@@ -104,7 +104,7 @@ content_for :og_type, "sngtrkr:release"
          %>
         <div class="related">
           <%= link_to [release.artist, release] do %>
-              <img src="<%= release.image :medium %>" class="related_img" height="75" width="75"/>
+              <img src="<%= release.image.medium %>" class="related_img" height="75" width="75"/>
           <% end %>
           <span>
             <div><%= link_to release.name, [release.artist, release] %></div>

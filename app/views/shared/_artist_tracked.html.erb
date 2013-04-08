@@ -1,5 +1,0 @@
-<tr>
-		<td><%= link_to artist_path(artist_tracked) do %><%= truncate(artist_tracked.name, :length => 20) %><% end %></td>
-		<td><%= artist_tracked[:followers] %></td>
-		<td><%= check_box_tag 'artist_ids[]', artist_tracked.id %></td>
-</tr>
