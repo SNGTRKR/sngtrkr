@@ -30,6 +30,7 @@ class Release < ActiveRecord::Base
 
   before_save :default_values
   before_save :metadata_cleanup
+  after_save :combine_duplicates
 
 
   def default_values
@@ -50,6 +51,24 @@ class Release < ActiveRecord::Base
     ret = ret.gsub( ret.match(ep).to_s, "")
     self.name = ret.strip # Remove whitespace at either end
 
+    true
+  end
+
+  def combine_duplicates
+    window = 7.days
+    existing = self.artist.releases.where('date between ? AND ? AND id != ? AND name = ?',
+      self.date - window, self.date + window, self.id, self.name)
+
+    unless existing.empty?
+      existing.each do |r|
+        self.itunes ||= r.itunes
+        self.sdigital ||= r.sdigital
+        self.amazon ||= r.amazon
+        self.itunes_id ||= r.itunes_id
+        self.sd_id ||= r.sd_id
+      end
+      existing.destroy_all
+    end
     true
   end
 

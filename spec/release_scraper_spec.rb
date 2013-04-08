@@ -17,18 +17,6 @@ describe "ReleaseScraper" do
     Release.first.name.should == "You Should Know"
   end
 
-  it "deletes duplicate releases" do
-    @a.releases.build(:name => "You Should Not Know [Remixes]",:sd_id => 123, :date => Date.today, :scraped => true).save!
-    @a.releases.build(:name => "You Should Know [Remixes]",:sd_id => 123, :date => Date.today, :scraped => true).save!
-    @a.releases.build(:name => "You Should Know [Remixes]",:sd_id => 123, :date => Date.today, :scraped => true).save!
-    Release.count.should eq @release_count + 3
-    Release.find_each do |r|
-      @rs.class.remove_duplicates r
-    end
-    Release.count.should eq @release_count + 2
-
-  end
-
   it "doesn't import the same release twice" do 
     releases = [
       {

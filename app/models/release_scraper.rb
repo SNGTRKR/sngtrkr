@@ -29,20 +29,6 @@ class ReleaseScraper
     save_all
   end
 
-  def self.remove_duplicates r
-      window = 7.days
-      # Confirm release is in the db
-      # Necessary when looping through all releases
-      begin
-        r = Release.find(r.id) 
-      rescue 
-        return false
-      end
-      existing = Release.where('artist_id = ? AND date > ? AND date < ? AND id != ? AND name = ?',
-        r.artist_id,r.date - window, r.date + window, r.id, r.name)
-      existing.destroy_all unless existing.empty?
-  end
-
   def self.improve_image r, opts={}
     return false unless r.image.path
     begin
@@ -79,7 +65,6 @@ class ReleaseScraper
 
   def self.improve_all
     Release.where(:scraped => true).find_each do |r|
-      remove_duplicates r
       improve_image r
       r.save
     end

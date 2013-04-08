@@ -25,7 +25,7 @@ FactoryGirl.define do
 
   factory :release do
     association :artist, factory: :artist
-    name "ReleaseTest"
+    sequence(:name){|n| "ReleaseTest#{n}"} 
     sequence(:date){|d| Date.today - d.days}
   end
 
