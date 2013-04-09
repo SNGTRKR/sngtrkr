@@ -3,36 +3,39 @@
 		margin-top:26px;
 	}
 }
-#releases {
-	margin-top:34px;
-	max-height:330px;
-	background-color:$gray;
-	width:2500px;
-		a {
-			float:left;
-			@include transition-property(transform, opacity);
-			@include transition-duration(0.4s, 0.4s);
-			@include transition-timing-function(ease-in-out, linear);
-			height:110px;
-			width:110px;
-			z-index:0;
-			position:relative;
-			-webkit-backface-visibility: hidden;
-				&.blur {
-					opacity:0.75;
-					filter: alpha(opacity=75);
+#overflow {
+	overflow:hidden;
+		#releases {
+			margin-top:34px;
+			max-height:330px;
+			background-color:$gray;
+			width:2500px;
+				a {
+					float:left;
+					@include transition-property(transform, opacity);
+					@include transition-duration(0.4s, 0.4s);
+					@include transition-timing-function(ease-in-out, linear);
+					height:110px;
+					width:110px;
+					z-index:0;
+					position:relative;
+					-webkit-backface-visibility: hidden;
+						&.blur {
+							opacity:0.75;
+							filter: alpha(opacity=75);
+						}
+						&.active {
+							transform: scale(1.1);
+							-webkit-transform: scale(1.1);
+							-moz-transform: scale(1.1);
+							-o-transform: scale(1.1);
+							-ms-transform: scale(1.1);
+							z-index:1000;
+							@include box-shadow(0px 0px 0px 3px rgba(220,90,36,1),5px 6px 15px rgba(0,0,0,0.5));
+						}
 				}
-				&.active {
-					transform: scale(1.1);
-					-webkit-transform: scale(1.1);
-					-moz-transform: scale(1.1);
-					-o-transform: scale(1.1);
-					-ms-transform: scale(1.1);
-					z-index:2000;
-					@include box-shadow(0px 0px 0px 3px rgba(220,90,36,1),5px 6px 15px rgba(0,0,0,0.5));
-				}
+				
 		}
-		
 }
 .signup-home {
 	margin:40px 0 34px;
