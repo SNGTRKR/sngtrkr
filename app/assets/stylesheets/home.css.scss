@@ -5,9 +5,14 @@
 }
 #releases {
 	margin-top:34px;
-	height:294px;
-	width:100%;
+	height:330px;
 	background-color:$gray;
+	overflow:hidden;
+	width:2500px;
+		a {
+			float:left;
+		}
+		
 }
 .signup-home {
 	margin:40px 0 34px;

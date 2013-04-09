@@ -11,6 +11,9 @@ content_for :og_type, "website"
 </div>
 </div>
 	<div id="releases">
+			<% @releases.each do |release| %>
+			<%= link_to image_tag(release.image.medium, :height => "110", :width => "110"), [release.artist, release] %>
+			<% end %>
 	</div>
 <div class="g_content">
 	<div class="homepage">
@@ -21,7 +24,6 @@ content_for :og_type, "website"
 			<a data-toggle="modal" data-target="#user_signup" class="signup">
           		<div class="btn btn-warning btn-large">Sign up</div>
           	</a>
-			<!-- <%= link_to "Login without FB", new_user_session_path %> -->
 			<div class="social_share">
 				<div class="fb-like" data-href="http://www.facebook.com/sngtrkr" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
 				<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.sngtrkr.com" data-text="Track your favourite artists, never miss another release" data-via="sngtrkr">Tweet</a>
