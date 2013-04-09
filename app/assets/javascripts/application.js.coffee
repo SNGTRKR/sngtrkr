@@ -100,6 +100,22 @@ $(document).ready ->
 	url = document.location.toString()
 	$(".nav-tabs a[href=#" + url.split("#")[1] + "]").tab "show"  if url.match("#")
 	
+	$container = $("#releases")
+	$releases = $container.children("a")
+	timeout = undefined
+	$releases.on "mouseenter", (event) ->
+	  $article = $(this)
+	  clearTimeout timeout
+	  timeout = setTimeout(->
+	    return false  if $article.hasClass("active")
+	    $releases.not($article).removeClass("active").addClass "blur"
+	    $article.removeClass("blur").addClass "active"
+	  , 75)
+
+	$container.on "mouseleave", (event) ->
+	  clearTimeout timeout
+	  $releases.removeClass "active blur"
+
 
 
 

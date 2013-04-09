@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
   skip_before_filter :authenticate_user!
-  caches_action :home, :layout => false
+  #caches_action :home, :layout => false
   caches_action :about, :layout => false
   caches_action :privacy, :layout => false
   caches_action :terms, :layout => false
@@ -11,11 +11,9 @@ class PagesController < ApplicationController
       flash.keep
       return redirect_to '/tl'
     end
-    @releases = Release.all(:limit => 70)
-
+    @releases = Release.all(:limit => 66)
   end
 
-  
   def about
   
   end
