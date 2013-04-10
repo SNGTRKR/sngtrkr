@@ -169,6 +169,6 @@
 		cursor:pointer;
 	}
 }
-#user_signup.fade.in, #user_login.fade.in, #forgot_password.fade.in {
-	top:30px;
+.modal.fade.in {
+	top:30px !important;
 }

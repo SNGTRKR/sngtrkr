@@ -11,7 +11,7 @@ content_for :og_type, "website"
     <div class="icon"><span></span><i class="icon-facebook"></i></div><div class="divider"></div>Sign in with Facebook
 <% end %>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+<%= form_for(resource, :validate => true, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 	  <%= f.label :email %>
 	  <%= f.email_field :email, :autofocus => true %>

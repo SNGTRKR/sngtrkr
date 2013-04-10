@@ -149,6 +149,7 @@ content_for :og_type, "sngtrkr:release"
       <% end %>
     </div>
   </div>
+  <%= yield(:report_validators) %>
 </div>
 <div class="art_pop art_pop_<%= @artist.id %>">
   <div class="share_content">
@@ -205,18 +206,7 @@ content_for :og_type, "sngtrkr:release"
   <div class="modal-body">
     <h2>Report a problem</h2>
     <p>Please select the error(s) you have noticed within <strong><%= @release.name %></strong> by <strong><%= @artist.name %></strong>, including any additional comments:</p>
-    <%= form_for(@report) do |f| %>
-  <% if @report.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@report.errors.count, "error") %> prohibited this report from being saved:</h2>
-
-      <ul>
-      <% @report.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <%= form_for @report, :validate => :report_validators do |f| %>
     <%= f.hidden_field :release, :value => @release.name %>
     <%= f.hidden_field :url, :value => "http://#{request.host}:#{request.port}#{request.fullpath}" %>
      <%= f.fields_for :elements do |element_fields| %>
@@ -237,11 +227,10 @@ content_for :og_type, "sngtrkr:release"
        </label>
      <% end %>
     <%= f.text_area :comments, :rows => 4 %>
-
   </div>
   <div class="modal-footer">
     <%= f.submit "Send", :class => 'btn' %>
-    <button data-dimiss="modal">Cancel</button>
+    <button type="button" data-dismiss="modal" class="cancel">Cancel</button>
     <% end %>
   </div>
 </div>

@@ -1,16 +1,4 @@
-<%= form_for(@report) do |f| %>
-  <% if @report.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@report.errors.count, "error") %> prohibited this report from being saved:</h2>
-
-      <ul>
-      <% @report.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-    <%= f.hidden_field :artist, :value => @artist.name %>
+<%= form_for(@report, :validate => true) do |f| %>
     <%= f.hidden_field :url, :value => "http://#{request.host}:#{request.port}#{request.fullpath}" %>
 
     <%= f.label :elements %>
@@ -20,5 +8,4 @@
     <%= f.text_area :comments %>
 
     <%= f.submit "Send", :class => 'btn' %>
-  </div>
 <% end %>

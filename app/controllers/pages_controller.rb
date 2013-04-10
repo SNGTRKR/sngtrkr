@@ -1,13 +1,12 @@
 class PagesController < ApplicationController
 
   skip_before_filter :authenticate_user!
-  caches_action :home
+  caches_action :home, :layout => false
   caches_action :about, :layout => false
   caches_action :privacy, :layout => false
   caches_action :terms, :layout => false
 
   def home    
-    Rails.cache.clear
     if(user_signed_in?)
       flash.keep
       return redirect_to '/tl'
@@ -17,9 +16,8 @@ class PagesController < ApplicationController
     end
   end
 
-  def about
-    expire_action :action => :home
-  
+  def about  
+    
   end
   
   def privacy

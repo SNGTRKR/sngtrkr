@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  before_filter :authenticate_user!, :except => [:splash,:sitemap]
+  before_filter :authenticate_user!, :except => [:sitemap]
   before_filter :featured_artists, :only => [:home,:new]
   before_filter :define_user, :except => [:search]
   

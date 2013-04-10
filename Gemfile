@@ -60,9 +60,7 @@ group :assets do
   gem 'turbo-sprockets-rails3'
 end
 
-gem 'jquery_datepicker'
-
-
+gem 'client_side_validations', :github => 'bcardarella/client_side_validations', :branch => '3-2-stable'
 # Authentication
 gem 'devise'
 gem 'cancan'

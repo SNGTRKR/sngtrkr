@@ -3,7 +3,8 @@ class Report < ActiveRecord::Base
   belongs_to :user
   default_scope :order => :created_at
   serialize :elements
-  validate :one_checkbox_selected
+  
+  validates :comments, :presence => true
 
 
   def one_checkbox_selected

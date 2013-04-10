@@ -1,5 +1,6 @@
 <% content_for :title do %><%= @user.first_name %>'s profile<% end %>
 <div class="g_three_col">
+
   <div class="g_sidebar">
       <div class="tabbable tabs-left profile-tabs g_fixed">
       	<%= image_tag '//graph.facebook.com/'+@user.fbid+'/picture?width=200&height=200' %>
@@ -81,13 +82,3 @@
         </div>
   </div>
 </div>
-<!--       <%= form_for(User.new, :url => user_session_path) do |f| %> 
-            <%= f.label :email %> <br/> 
-            <%= f.text_field :email , :size=>'15',:maxlength=>'32' %> <br/> 
-            <%= f.label :password %> <br/> 
-            <%= f.password_field :password , :size=>'15', :maxlength=>'32' %> 
-        <br/> 
-            <%= f.submit "Sign in" %> <br /> 
-            <%= link_to "Forgot your password?", new_password_path('user')  %> 
-      <% end %> 
-<%= render 'shared/fb_async' %> -->
