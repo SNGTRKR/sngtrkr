@@ -9,11 +9,12 @@ class User < ActiveRecord::Base
     :last_sign_in_at, :email_frequency, :deleted_at, :leave_reason, :confirmed_at, :privacy_policy
 
   validates :fbid, :uniqueness => true, :allow_blank => true, :allow_nil => true
-  validates :email, :presence => true, :uniqueness => true
-  validates :first_name, :presence => true
-  validates :last_name, :presence => true
-  validates :privacy_policy, :acceptance => true
+  validates :email, :presence => { :message =>  "An email address is required."}, :uniqueness => { :message => "Email address has already been taken."}
+  validates :first_name, :presence => { :message => "A first name is required."}
+  validates :last_name, :presence => { :message => "A last name is required."}
+  validates :privacy_policy, :acceptance => { :message => "Please accept the Privacy policy."}
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+  validates :password, :presence => { :message => "A password is required."}
 
   has_many :follow, :dependent => :destroy
   has_many :suggest, :dependent => :destroy

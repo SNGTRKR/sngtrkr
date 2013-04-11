@@ -173,7 +173,7 @@
 					<% end %>
 				</div>
 			<%= form_for(resource, :validate => true, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-			<%= devise_error_messages! %>
+
 			  <%= f.label "First name" %>
 			  <%= f.text_field :first_name %>
 
@@ -190,8 +190,7 @@
 			  <%= f.password_field :password_confirmation %>
 
 			  <%= f.label :privacy_policy, :class => 'checkbox' do %>
-			  	<%= f.check_box :privacy_policy %>I agree to the <%= link_to "Privacy policy", privacy_path %>
-			  <% end %>
+			  <%= f.check_box :privacy_policy %>I agree to the <%= link_to "Privacy policy", privacy_path %><% end %>
 			</div>
 			<div class="modal-footer">
 					<%= f.submit "Sign up", :class => 'btn' %>

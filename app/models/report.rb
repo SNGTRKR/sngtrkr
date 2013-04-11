@@ -3,7 +3,6 @@ class Report < ActiveRecord::Base
   belongs_to :user
   default_scope :order => :created_at
   serialize :elements
-  
   validates :comments, :presence => true
 
 

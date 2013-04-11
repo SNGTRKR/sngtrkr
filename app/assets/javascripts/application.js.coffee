@@ -118,6 +118,31 @@ $(document).ready ->
 
 	$('.modal').on 'shown', ->
 	  $(this).find('input:visible:first').focus().end().find('form').enableClientSideValidations()
+	#scrollable left sidebar
+	$(window).load ->
+	  scroll_height = $('.scrollable_inner').outerHeight()
+	  $('.scrollable_inner').css 'height', scroll_height
+	  window_height = $(window).height()
+	  $('.scrollable').css 'height', window_height
+
+	  add_scrollbar = undefined
+	  doneResizing = ->
+	    $('.scrollable_inner').after '<div class="scrollbar"></div>'
+	  $(window).resize ->
+	   window_height = $(window).height()
+	   $('.scrollable').css 'height', window_height
+	   if window_height <= scroll_height
+	  	 $('.scrollable_inner').css 'height', window_height
+	  	 unless $('.scrollbar').length
+	  	  clearTimeout(add_scrollbar)
+	  	  add_scrollbar = setTimeout(doneResizing, 500)
+	   else 
+	  	 $('.scrollable_inner').css 'height', scroll_height
+	  	 $('.scrollbar').remove
+
+	
+
+	
 
 
 

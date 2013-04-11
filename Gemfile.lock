@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/bcardarella/client_side_validations.git
-  revision: 5f4552e5c925bc315395c2f3abdfa0c6c43b5c0a
+  revision: 0bd84511fb6dec4a5eb10fbef121d274f067d66b
   branch: 3-2-stable
   specs:
     client_side_validations (3.2.5)
