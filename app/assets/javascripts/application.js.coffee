@@ -118,39 +118,34 @@ $(document).ready ->
 
 	$('.modal').on 'shown', ->
 	  $(this).find('input:visible:first').focus().end().find('form').enableClientSideValidations()
+
 	#scrollable left sidebar
 	$(window).load ->
-	  scroll_height = $('.scrollable_inner').outerHeight()
-	  $('.scrollable_inner').css 'height', scroll_height
-	  window_height = $(window).height()
-	  $('.scrollable').css 'height', window_height
+	  scroll_height = $('.scrollable_inner').outerHeight() #grab height of inner scrollbar div
+	  $('.scrollable_inner').css 'height', scroll_height #assign height to inner scrollbar div
+	  window_height = $(window).height() #grab current window height
+	  $('.scrollable').css 'height', window_height #set parent scrollbar div as window height
 	  full_scroll_height = scroll_height + 81 #add page navbar and padding when calculating scroll start point in comparison to window height
-	  add_scrollbar = undefined
-	  doneResizing = ->
-	    $('.scrollable_inner').after '<div class="scrollbar"></div>'
 	  #check and add scrollbar if required on page load
 	  if window_height < full_scroll_height
 	  	 $('.scrollable_inner').css 'height', window_height - 81 #then calculating the height of the scrollable content, subtract the page navbar and padding
-	  	 unless $('.scrollbar').length
-	  	  clearTimeout(add_scrollbar)
-	  	  add_scrollbar = setTimeout(doneResizing, 500)
 	  else 
-	  	 $('.scrollable_inner').css 'height', scroll_height
-	  	 $('.scrollbar').remove
+	  	 $('.scrollable_inner').css 'height', scroll_height #if window height is not less than scrollbar inner div height, assign its original height
+
 	  #check and add scrollbar if required on window resizing in real time
-	  $(window).resize ->
+	  $(window).resize -> 
 	   window_height = $(window).height()
 	   $('.scrollable').css 'height', window_height
 	   if window_height < full_scroll_height
 	  	 $('.scrollable_inner').css 'height', window_height - 81 #then calculating the height of the scrollable content, subtract the page navbar and padding
-	  	 unless $('.scrollbar').length
-	  	  clearTimeout(add_scrollbar)
-	  	  add_scrollbar = setTimeout(doneResizing, 500)
 	   else 
 	  	 $('.scrollable_inner').css 'height', scroll_height
-	  	 $('.scrollbar').remove
+
+  	  
+
 
 	
+
 
 	
 
