@@ -1,5 +1,7 @@
 #= require jquery_ujs
 $(document).ready ->
+
+	#secondary nav drop down animation
 	$('#show_info a').click ->
 		if $("#more_info").is(":hidden")
 		  $("#more_info").slideDown "slow"
@@ -13,7 +15,11 @@ $(document).ready ->
 		  	top:0,
 		  	"slow"
 		  $("#show_info a").text "Info"	  
+
+	#tooltip initiation	  
 	$('.tip').tooltip()
+
+	#profile settings slider
 	current_frequency = $('#slider').data "current"
 	$ ->
 	  $("#slider").slider
@@ -27,6 +33,7 @@ $(document).ready ->
 
 	  $("#user_email_frequency").val $("#slider").slider("value")
 
+	#popovers for buy and share
 	$(".share, .buy").click ->
       $(this).toggleClass "active"
 
@@ -67,6 +74,7 @@ $(document).ready ->
 	    html: true
 	    content: $(".buy_pop_"+ buy_id + "").html()
 
+	#handling multiple modals, closing others when a modal is triggered
 	$('.signup').click ->
 		$('#user_login').modal "hide"
 		$('#forgot_password').modal "hide"
@@ -90,16 +98,18 @@ $(document).ready ->
 		$('#forgot_password').modal "hide"
 		$('.login').parent().addClass "active"
 
+	#alert animation
 	$(".alert").removeClass("fadeOutUp").show().addClass "fadeInDown"
-
 	window.setTimeout (->
 	  $(".alert").removeClass("fadeInDown").addClass("fadeOutUp").one "webkitAnimationEnd animationend", ->
 	  	$(this).remove();
 	), 4000
 
+	#allow anchor links for nav tabs
 	url = document.location.toString()
 	$(".nav-tabs a[href=#" + url.split("#")[1] + "]").tab "show"  if url.match("#")
-	
+
+	#homepage release animation
 	$container = $("#releases")
 	$releases = $container.children("a")
 	timeout = undefined
@@ -116,6 +126,8 @@ $(document).ready ->
 	  clearTimeout timeout
 	  $releases.removeClass "active blur"
 
+
+	#enable client side validation within modals  
 	$('.modal').on 'shown', ->
 	  $(this).find('input:visible:first').focus().end().find('form').enableClientSideValidations()
 
@@ -141,7 +153,36 @@ $(document).ready ->
 	   else 
 	  	 $('.scrollable_inner').css 'height', scroll_height
 
-  	  
+	#remove trkr ajax normal
+	$("a.remove-trkr").bind "ajax:complete", ->
+	  artist_id = $(this).data("id")
+	  $(this).replaceWith "<a href=\"/artists/" + artist_id + "/follows\" class=\"add-trkr btn track\" data-id=\"" + artist_id + "\" data-method=\"post\" data-remote=\"true\" format=\"html\" rel=\"nofollow\">Track</a>"
+	#add trkr ajax normal
+	$("a.add-trkr").bind "ajax:complete", ->
+	  artist_id = $(this).data("id")
+	  $(this).replaceWith "<a href=\"/artists/" + artist_id + "/unfollow\" class=\"remove-trkr btn track active\" data-id=\"" + artist_id + "\" data-method=\"post\" data-remote=\"true\" rel=\"nofollow\">Tracked</a>"
+	  add_remove_trkr_bind()
+	  FB.api "/me/sngtrkr:track", "post",
+	    artist: "http://sngtrkr.com/artists/" + $(this).data("id")
+	  , (response) ->
+	    console.log "FB Open Graph Posted"
+	    console.log response
+
+	#remove trkr ajax small
+	$("a.remove-trkr-small").bind "ajax:complete", ->
+	  artist_id = $(this).data("id")
+	  $(this).replaceWith "<a href=\"/artists/" + artist_id + "/follows\" class=\"add-trkr-small btn btn-small\" data-id=\"" + artist_id + "\" data-method=\"post\" data-remote=\"true\" format=\"html\" rel=\"nofollow\">Track</a>"
+	#add trkr ajax small
+	$("a.add-trkr-small").bind "ajax:complete", ->
+	  artist_id = $(this).data("id")
+	  $(this).replaceWith "<a href=\"/artists/" + artist_id + "/unfollow\" class=\"remove-trkr-small btn btn-small active\" data-id=\"" + artist_id + "\" data-method=\"post\" data-remote=\"true\" rel=\"nofollow\">Tracked</a>"
+	  add_remove_trkr_bind()
+	  FB.api "/me/sngtrkr:track", "post",
+	    artist: "http://sngtrkr.com/artists/" + $(this).data("id")
+	  , (response) ->
+	    console.log "FB Open Graph Posted"
+	    console.log response
+
 
 
 	
