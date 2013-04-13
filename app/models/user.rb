@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   validates :last_name, :presence => { :message => "A last name is required."}
   validates :privacy_policy, :acceptance => { :message => "Please accept the Privacy policy."}
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
-  validates :password, :presence => { :message => "A password is required."}
+  # validates :password, :presence => { :message => "A password is required."}
 
   has_many :follow, :dependent => :destroy
   has_many :suggest, :dependent => :destroy
