@@ -4,7 +4,7 @@ class SearchController < ApplicationController
   
   def omni
 
-    if request.format == :html
+    if request.format == :js
       a_page = params[:a_page]
       r_page = params[:r_page]
       per_page = 20
@@ -23,12 +23,13 @@ class SearchController < ApplicationController
 
     @artists = @artists_solr.results
     @artists_count = @artists_solr.total
-
+    # calculate number of pages for results
+    @artists_pages = (@artists_count/20.to_f).ceil
     @artists_json = @artists.map do|a| 
       {
         :name => a.name,
         :id => a.id,
-        :image => a.image, # replace with sized image
+        :image => a.image.medium, # replace with sized image
       }
     end
 
@@ -43,6 +44,8 @@ class SearchController < ApplicationController
     if @releases_count > 0 
       @releases = Release.includes(:artist).find(release_ids)
     end
+    # calculate number of pages for results
+    @releases_pages = (@releases_count/20.to_f).ceil
 
     @releases_json = @releases.map do |r|
       {
@@ -50,11 +53,12 @@ class SearchController < ApplicationController
         :artist_name => r.artist.name,
         :id => r.id,
         :artist_id => r.artist_id,
-        :image => r.image, # replace with sized image
+        :image => r.image.medium, # replace with sized image
       }      
     end
 
     respond_to do |format|
+      format.js { render :partial => "search/omni", :formats => [:js] }
       format.json { render :json => {:artists => @artists_json, :releases => @releases_json} }
       format.html
     end

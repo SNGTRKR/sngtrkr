@@ -182,10 +182,34 @@ $(document).ready ->
 	  , (response) ->
 	    console.log "FB Open Graph Posted"
 	    console.log response
-
-
-
-	
+	#search query
+	query = $('#tab3').data 'query'
+	#load new release results in search
+	rel_last_load = new Date().getTime()
+	rel_page = 2
+	#release infinite scrolling
+	$("#tab3").bind "mousewheel", (event, delta) ->
+      if delta < 0
+	      if $(document).scrollTop() > ($(document).height() - 1500) and (new Date().getTime() - rel_last_load) > 1000
+		      rel_last_load = new Date().getTime()
+		      console.log "AJAX release page load: " + rel_page
+		      url = "/search?utf8=✓&query=" + query + "&r_page=" + rel_page
+		      console.log url
+		      $.get url
+		      rel_page++
+	#load new artist results in search
+	art_last_load = new Date().getTime()
+	art_page = 2
+	#artist infinite scrolling   
+	$("#tab2").bind "mousewheel", (event, delta) ->
+      if delta < 0
+	      if $(document).scrollTop() > ($(document).height() - 1500) and (new Date().getTime() - art_last_load) > 1000
+		      art_last_load = new Date().getTime()
+		      console.log "AJAX artist page load: " + art_page
+		      url = "/search?utf8=✓&query=" + query + "&a_page=" + art_page
+		      console.log url
+		      $.get url
+		      art_page++
 
 
 	

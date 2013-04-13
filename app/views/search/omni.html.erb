@@ -169,7 +169,7 @@
             <% end %>
           <% end %>
         </div>
-        <div class="tab-pane" id="tab3">
+        <div class="tab-pane" id="tab3" data-query="<%= @search %>" data-page-count="<%= @releases_pages %>">
           <% if @empty_search or @short_search or @artists.empty? %>
             <% if @empty_search %>
               <p> Your search was empty, you have to type <strong>something</strong>! </p>
@@ -230,3 +230,4 @@
       </div>
   </div>
 </div>
+<%= javascript_include_tag "search" %>

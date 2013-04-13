@@ -1,0 +1,42 @@
+             <div class="result">
+                <%= link_to [release.artist, release] do %>
+                  <img src="<%= release.image.medium %>" class="image" height="110" width="110"/>
+                <% end %>
+                <span>
+                  <div><%= link_to release.name, [release.artist, release] %></div>
+                  <%= link_to release.artist.name, release.artist, :class => 'artist_l' %><br/>
+                  <%= release.date.strftime("#{release.date.day.ordinalize} %B %Y ") %>
+                </span>
+                <div class="btn btn-small buy" data-placement="bottom" id="<%= release.id %>">Buy</div>
+                <div class="btn btn-small share_release share" data-placement="bottom" id="<%= release.id %>"><i class="icon-share"></i>Share</div>
+                <div class="buy_pop buy_pop_<%= release.id %>">
+                  <div class="buy_content">
+                    <% if release.itunes? %>
+                      <%= link_to image_tag("/images/social/it.png", :alt => "iTunes", :title => "iTunes"), release.itunes, :target => "_blank" %>
+                    <% end %>
+                    <% if release.sdigital %>
+                      <%= link_to image_tag("/images/social/7d.png", :alt => "7Digital", :title => "7Digital"), release.sdigital, :target => "_blank" %>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="rel_pop rel_pop_<%= release.id %>">
+                  <div class="share_content">
+                    <div>
+                      <a href="#" alt="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [release.artist, release] %>%2F&t=SNGTRKR','Share on Facebook','scrollbars=no,width=620,height=340'); return false;">
+                        <%= image_tag "/images/social/fb.png", :alt => "Facebook" %>
+                      </a>
+                      <a href="#" title="Share on Twitter" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [release.artist, release] %>&text=<%= release.artist.name %>+&#45;+<%= release.name %><% if release.label_name %>+released+on+<%= release.label_name %><% end %>+&#45;+www.sngtrkr.com<%= url_for [release.artist, release] %>&via=SNGTRKR','Share on Twitter','scrollbars=no,width=620,height=340'); return false;">
+                        <%= image_tag "/images/social/twitter.png", :alt => "Twitter" %>
+                      </a>
+                      <a href="#" title="Share on Tumblr" onClick="MyWindow=window.open('http://www.tumblr.com/share/link?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [release.artist, release] %>&name=<%= release.artist.name %>+&#45;+<%= release.name %>&description=Release Date: <%= release.date.strftime("#{release.date.day.ordinalize} %B %Y ") %><% if release.label_name %><br/>Label:<%= release.label_name %><br/><% else %><br/><br/><% end %><%= release.artist.name %> online:<br/><% if release.artist.fbid? %>http://www.facebook.com/<%= release.artist.fbid %><br/><% end %><% if release.artist.twitter? %>http://www.twitter.com/<%= release.artist.twitter %><br/><% end %><% if release.artist.youtube? %>http://www.youtube.com/<%= release.artist.youtube %><br/><% end %><% if release.artist.soundcloud? %>http://www.soundcloud.com/<%= release.artist.soundcloud %><br/><% end %><% if release.artist.website? %><%= release.artist.website %><% end %>','Share on Tumblr','scrollbars=no,width=620,height=340'); return false;">
+                        <%= image_tag "/images/social/tb.png", :alt => "Tumblr" %>
+                      </a>
+                      <a href="#" title="Share on Google Plus" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [release.artist, release] %>','Share on Google+','scrollbars=no,width=620,height=340'); return false;">
+                        <%= image_tag "/images/social/gplus.png", :alt => "Google+" %>
+                      </a>
+                    </div>
+                    <span>Link:</span>
+                    <input type="text" onClick="this.select();" value="<%= root_url %><%= url_for([release.artist, release]) %>">
+                  </div>
+                </div>
+              </div>
