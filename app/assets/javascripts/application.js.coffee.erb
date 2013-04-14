@@ -177,7 +177,6 @@ $(document).ready ->
 		$("a.remove-trkr-small").bind "ajax:complete", ->
 		  artist_id = $(this).data("id")
 		  $(this).replaceWith "<a href=\"/artists/" + artist_id + "/follows\" class=\"add-trkr-small btn btn-small\" data-id=\"" + artist_id + "\" data-method=\"post\" data-remote=\"true\" format=\"html\" rel=\"nofollow\">Track</a>"
-		  $('.trackers')
 		  follow_buttons_small()
 		#add trkr ajax small
 		$("a.add-trkr-small").bind "ajax:complete", ->
@@ -196,7 +195,7 @@ $(document).ready ->
 	rel_last_load = new Date().getTime()
 	rel_page = 2
 	#release infinite scrolling
-	$("#tab3").bind "mousewheel", (event, delta) ->
+	$(".search-tab-content #tab3").bind "mousewheel", (event, delta) ->
       if delta < 0
 	      if $(document).scrollTop() > ($(document).height() - 1500) and (new Date().getTime() - rel_last_load) > 1000
 		      rel_last_load = new Date().getTime()
@@ -209,7 +208,7 @@ $(document).ready ->
 	art_last_load = new Date().getTime()
 	art_page = 2
 #artist infinite scrolling   
-	$("#tab2").bind "mousewheel", (event, delta) ->
+	$(".search-tab-content #tab2").bind "mousewheel", (event, delta) ->
       if delta < 0
 	      if $(document).scrollTop() > ($(document).height() - 1500) and (new Date().getTime() - art_last_load) > 1000
 		      art_last_load = new Date().getTime()
@@ -223,7 +222,7 @@ $(document).ready ->
 	trk_last_load = new Date().getTime()
 	trk_page = 2
 #artist_tracked list infinite scrolling   
-	$("#tab1").bind "mousewheel", (event, delta) ->
+	$(".profile-tab-content #tab1").bind "mousewheel", (event, delta) ->
       if delta < 0
 	      if $(document).scrollTop() > ($(document).height() - 1500) and (new Date().getTime() - trk_last_load) > 1000
 		      trk_last_load = new Date().getTime()

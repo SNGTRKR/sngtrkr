@@ -15,7 +15,7 @@ content_for :og_type, "sngtrkr:artist"
           <%= image_tag @artist.image.large %>
           <h2><%= @artist.name %></h2>
           <h3><%= @artist.label_name %></h3>
-          <div class="trackers" id="tracker-<%= @artist.id %>">
+          <div class="trackers">
             <%= image_tag "/images/ppl_black.png" %>
             <%= @artist.followers %> tracker<% if @artist.followers > 1 %>s<% end %>
           </div>
