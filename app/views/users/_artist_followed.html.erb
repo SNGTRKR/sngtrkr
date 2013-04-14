@@ -1,33 +1,4 @@
-<% content_for :title do %><%= @user.first_name %>'s profile<% end %>
-<div class="g_three_col">
-  <div class="g_sidebar">
-      <div class="tabbable tabs-left profile-tabs g_fixed">
-        <div class="scrollable">
-          <div class="scrollable_inner">
-          	<%= image_tag '//graph.facebook.com/'+@user.fbid+'/picture?width=200&height=200' %>
-          	<h1><%= @user.first_name + " " + @user.last_name %></h1>
-          	<p>Bristol, United Kingdom</p>
-            <ul id="myTab" class="nav nav-tabs nav-stacked each-tab">
-              <li class="active">
-                <a href="#tab1" data-toggle="tab"><i class="icon-screenshot"></i><%= @user.following.count %> trackings</a>
-              </li>
-              <li>
-                <a href="#tab2" data-toggle="tab"><%= image_tag "/images/ppl_black.png", :class => "blk ppl"%><%= image_tag "/images/ppl_white.png", :class => "wht ppl"%><%= @app_friends.count %> friend<% if @app_friends.count > 1 %>s<% end %></a>
-              </li>
-            </ul>
-            <div class="clearfix"></div>
-            <%= link_to edit_user_registration_path(@user) do %><div class="btn"><i class="icon-pencil"></i>Edit</div><% end %>
-          </div>
-        </div>
-      </div> 
-  </div>
-  <div class="g_main g_tabs">
-            <div class="tab-content profile-tab-content" id="myTabContent">
-          <div class="tab-pane active" id="tab1" data-user="<%= current_user.id %>">
-            <% if !@user.following.count.zero? %>
-              <table class="table table-striped">
-                <tbody>
-                  <% @following.each do |artist_tracked| %>
+<% @following.each do |artist_tracked| %>
                     <tr id="row-<%= artist_tracked.id %>" class="animated">
                       <td>
                         <%= link_to artist_path(artist_tracked) do %>
@@ -62,26 +33,4 @@
                             </div>
                       </td>
                     </tr>
-                  <% end %>
-                </tbody>
-              </table>
-            <% else %>
-              <p>You are not tracking anyone.</p>
-            <% end %>
-          </div>
-          <div class="tab-pane" id="tab2">
-              <% if !@app_friends.empty? %>
-                <% @app_friends.each do |friend| %>
-                  <div>
-                    <%= image_tag "//graph.facebook.com/"+friend.fbid+"/picture?width=75&height=75" %>
-                    <span><%= friend.first_name + " " + friend.last_name %></span>
-                    <%= Follow.where('user_id = ?',friend.id).count %> trackers
-                  </div>
-                <% end %>
-              <% else %>
-                <p>You have no friends</p>
-              <% end %>
-          </div>
-        </div>
-  </div>
-</div>
+<% end %>

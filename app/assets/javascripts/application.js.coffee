@@ -154,37 +154,45 @@ $(document).ready ->
 	  	 $('.scrollable_inner').css 'height', scroll_height
 
 	#remove trkr ajax normal
-	$("a.remove-trkr").bind "ajax:complete", ->
-	  artist_id = $(this).data("id")
-	  $(this).replaceWith "<a href=\"/artists/" + artist_id + "/follows\" class=\"add-trkr btn track\" data-id=\"" + artist_id + "\" data-method=\"post\" data-remote=\"true\" format=\"html\" rel=\"nofollow\">Track</a>"
-	#add trkr ajax normal
-	$("a.add-trkr").bind "ajax:complete", ->
-	  artist_id = $(this).data("id")
-	  $(this).replaceWith "<a href=\"/artists/" + artist_id + "/unfollow\" class=\"remove-trkr btn track active\" data-id=\"" + artist_id + "\" data-method=\"post\" data-remote=\"true\" rel=\"nofollow\">Tracked</a>"
-	  add_remove_trkr_bind()
-	  FB.api "/me/sngtrkr:track", "post",
-	    artist: "http://sngtrkr.com/artists/" + $(this).data("id")
-	  , (response) ->
-	    console.log "FB Open Graph Posted"
-	    console.log response
+	follow_buttons = ->
+		$("a.remove-trkr").bind "ajax:complete", ->
+		  artist_id = $(this).data("id")
+		  $(this).replaceWith "<a href=\"/artists/" + artist_id + "/follows\" class=\"add-trkr btn track\" data-id=\"" + artist_id + "\" data-method=\"post\" data-remote=\"true\" format=\"html\" rel=\"nofollow\">Track</a>"
+		  follow_buttons()
+		  $('#row-'+ artist_id).addClass("fadeOutUp").slideUp()
+		#add trkr ajax normal
+		$("a.add-trkr").bind "ajax:complete", ->
+		  artist_id = $(this).data("id")
+		  $(this).replaceWith "<a href=\"/artists/" + artist_id + "/unfollow\" class=\"remove-trkr btn track active\" data-id=\"" + artist_id + "\" data-method=\"post\" data-remote=\"true\" rel=\"nofollow\">Tracked</a>"
+		  follow_buttons()
+		  FB.api "/me/sngtrkr:track", "post",
+		    artist: "http://sngtrkr.com/artists/" + $(this).data("id")
+		  , (response) ->
+		    console.log "FB Open Graph Posted"
+		    console.log response
 
+	follow_buttons()
 	#remove trkr ajax small
-	$("a.remove-trkr-small").bind "ajax:complete", ->
-	  artist_id = $(this).data("id")
-	  $(this).replaceWith "<a href=\"/artists/" + artist_id + "/follows\" class=\"add-trkr-small btn btn-small\" data-id=\"" + artist_id + "\" data-method=\"post\" data-remote=\"true\" format=\"html\" rel=\"nofollow\">Track</a>"
-	#add trkr ajax small
-	$("a.add-trkr-small").bind "ajax:complete", ->
-	  artist_id = $(this).data("id")
-	  $(this).replaceWith "<a href=\"/artists/" + artist_id + "/unfollow\" class=\"remove-trkr-small btn btn-small active\" data-id=\"" + artist_id + "\" data-method=\"post\" data-remote=\"true\" rel=\"nofollow\">Tracked</a>"
-	  add_remove_trkr_bind()
-	  FB.api "/me/sngtrkr:track", "post",
-	    artist: "http://sngtrkr.com/artists/" + $(this).data("id")
-	  , (response) ->
-	    console.log "FB Open Graph Posted"
-	    console.log response
+	follow_buttons_small = ->
+		$("a.remove-trkr-small").bind "ajax:complete", ->
+		  artist_id = $(this).data("id")
+		  $(this).replaceWith "<a href=\"/artists/" + artist_id + "/follows\" class=\"add-trkr-small btn btn-small\" data-id=\"" + artist_id + "\" data-method=\"post\" data-remote=\"true\" format=\"html\" rel=\"nofollow\">Track</a>"
+		  $('.trackers')
+		  follow_buttons_small()
+		#add trkr ajax small
+		$("a.add-trkr-small").bind "ajax:complete", ->
+		  artist_id = $(this).data("id")
+		  $(this).replaceWith "<a href=\"/artists/" + artist_id + "/unfollow\" class=\"remove-trkr-small btn btn-small active\" data-id=\"" + artist_id + "\" data-method=\"post\" data-remote=\"true\" rel=\"nofollow\">Tracked</a>"
+		  follow_buttons_small()
+		  FB.api "/me/sngtrkr:track", "post",
+		    artist: "http://sngtrkr.com/artists/" + $(this).data("id")
+		  , (response) ->
+		    console.log "FB Open Graph Posted"
+		    console.log response
+
+	follow_buttons_small()
 	#search query
 	query = $('#tab3').data 'query'
-	#load new release results in search
 	rel_last_load = new Date().getTime()
 	rel_page = 2
 	#release infinite scrolling
@@ -197,10 +205,10 @@ $(document).ready ->
 		      console.log url
 		      $.get url
 		      rel_page++
-	#load new artist results in search
+
 	art_last_load = new Date().getTime()
 	art_page = 2
-	#artist infinite scrolling   
+#artist infinite scrolling   
 	$("#tab2").bind "mousewheel", (event, delta) ->
       if delta < 0
 	      if $(document).scrollTop() > ($(document).height() - 1500) and (new Date().getTime() - art_last_load) > 1000
@@ -210,6 +218,20 @@ $(document).ready ->
 		      console.log url
 		      $.get url
 		      art_page++
+
+    user_id = $('#tab1').data 'user'
+	trk_last_load = new Date().getTime()
+	trk_page = 2
+#artist_tracked list infinite scrolling   
+	$("#tab1").bind "mousewheel", (event, delta) ->
+      if delta < 0
+	      if $(document).scrollTop() > ($(document).height() - 1500) and (new Date().getTime() - trk_last_load) > 1000
+		      trk_last_load = new Date().getTime()
+		      console.log "AJAX artist_tracked page load: " + trk_page
+		      url = "/users/" + user_id + "?page=" + trk_page
+		      console.log url
+		      $.get url
+		      trk_page++
 
 
 	

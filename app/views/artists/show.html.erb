@@ -15,7 +15,7 @@ content_for :og_type, "sngtrkr:artist"
           <%= image_tag @artist.image.large %>
           <h2><%= @artist.name %></h2>
           <h3><%= @artist.label_name %></h3>
-          <div class="trackers">
+          <div class="trackers" id="tracker-<%= @artist.id %>">
             <%= image_tag "/images/ppl_black.png" %>
             <%= @artist.followers %> tracker<% if @artist.followers > 1 %>s<% end %>
           </div>
@@ -55,8 +55,8 @@ content_for :og_type, "sngtrkr:artist"
     <% if !user_signed_in? %>
       <div id="artist_signup">
         <p>Track <%= link_to @artist.name, @artist %> and others to keep up to date with new releases.</p>
-        <%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary") do %>
-          <i class="icon-facebook"></i>Sign in with Facebook
+        <%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-small") do %>
+          <div class="icon"><span></span><i class="icon-facebook"></i></div><div class="divider"></div>Sign in with Facebook
         <% end %>
         <a data-toggle="modal" data-target="#user_signup" class="signup">
           <div class="btn btn-warning">Sign up</div>
@@ -85,4 +85,3 @@ content_for :og_type, "sngtrkr:artist"
     <input type="text" onClick="this.select();" value="<%= root_url %><%= url_for(@artist) %>">
   </div>
 </div>
-<%= render 'shared/fb_async' %>

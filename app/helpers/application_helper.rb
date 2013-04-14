@@ -19,12 +19,12 @@ module ApplicationHelper
 	def follow_button_small artist
 		if user_signed_in? 
 			if current_user.following? artist.id 
-				return link_to(artist_unfollow_path(artist), :method => :post, :class => "remove-trkr-small btn btn-small active", :remote => true, :'data-id' => artist.id) do 
+				return link_to(artist_unfollow_path(artist), :method => :post, :class => "remove-trkr-small btn btn-small active follow-#{artist.id}", :remote => true, :'data-id' => artist.id) do 
 					'Tracked'
 				end.html_safe
 			else 
 				return link_to(artist_follows_path(artist), :format => :html, :method => :post,
-				:class => "add-trkr-small btn btn-small", :remote => true, :'data-id' => artist.id) do 
+				:class => "add-trkr-small btn btn-small follow-#{artist.id}", :remote => true, :'data-id' => artist.id) do 
 					'Track'
 				end.html_safe 
 			end 
