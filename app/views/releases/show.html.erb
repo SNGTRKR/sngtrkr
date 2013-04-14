@@ -84,7 +84,7 @@ content_for :og_type, "sngtrkr:release"
       <p class="tip" data-title="Release date" data-placement="left"><i class="icon-calendar"></i><%= @release.date.strftime("#{@release.date.day.ordinalize} %B %Y ") %></p>
       <div class="btn buy" data-placement="bottom" id="<%= @release.id %>">Buy</div>
       <div class="btn share_release share" data-placement="bottom" id="<%= @release.id %>"><i class="icon-share"></i>Share</div>
-      <div class="btn report" data-toggle="modal" data-target="#myModal">Report</div>
+      <div class="btn report" data-toggle="modal" data-target="#reportModal">Report</div>
     </div>
     <div class="clearfix"></div>
     <% if !user_signed_in? %>
@@ -205,7 +205,7 @@ content_for :og_type, "sngtrkr:release"
   </div>
 </div>
 <% @report = Report.new %>
-<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="reportModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-body">
     <h2>Report a problem</h2>
     <p>Please select the error(s) you have noticed within <strong><%= @release.name %></strong> by <strong><%= @artist.name %></strong>, including any additional comments:</p>

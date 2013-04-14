@@ -126,29 +126,54 @@
 		}
 	}
 }
-#user_signup, #user_login {
-	width:450px;
+.modal {
 	background: url('/images/bg_body-noise.png') repeat;
 	margin-left:-225px;
 	.modal-body {
 		max-height:500px;
 			form {
-				padding:30px 100px 0;
-				border-top: 1px solid #d1d1d1;
+				margin:0 !important;
 			}
-	.modal-footer {
-		button, .cancel {
-				float:right;
-		}
+			h2 {
+				border-bottom: 1px #d1d1d1 solid;
+				line-height: 28px !important;
+			}
+			textarea {
+				margin-top:14px;
+				width:516px;
+				resize:none;
+			}
 	}
-		.top {
-			margin:35px 0 30px;
-			text-align:center;
+	.modal-footer {
+		input:first-child {
+			float:right;
+		}
+		.cancel {
+			background:none;
+			border:0;
+			color:$darkgray;
+				&:hover {
+					text-decoration:underline;
+				}
+		}
+		.btn {
+			margin:0 0 0 8px;
 		}
 	}
 	a {
 		cursor:pointer;
 	}
+}
+#user_login, #user_signup {
+	width:450px;
+		form {
+			padding:30px 100px 0;
+			border-top: 1px solid #d1d1d1;
+		}
+		.top {
+			margin:35px 0 30px;
+			text-align:center;
+		}
 }
 #forgot_password {
 	width:450px;
