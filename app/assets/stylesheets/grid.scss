@@ -47,7 +47,11 @@
 	margin-left:285px !important;
 }
 .g_right_sidebar {
-
+	position: absolute;
+	top: 30px;
+	bottom: 0;
+	right: 0;
+	width: 300px;
 }
 .g_fixed {
 	position:fixed;
