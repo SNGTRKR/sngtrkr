@@ -16,7 +16,7 @@
 .g_three_col {
 	position:relative;
 		.g_main {
-			margin:0 325px 0 225px;
+			margin:0 320px 0 225px;
 		}
 }
 .g_sidebar {
@@ -52,6 +52,12 @@
 	bottom: 0;
 	right: 0;
 	width: 300px;
+}
+.g_right_border {
+	width:300px;
+	right: 30px;
+	padding-left: 20px;
+	border-left: 1px solid #d1d1d1;
 }
 .g_fixed {
 	position:fixed;

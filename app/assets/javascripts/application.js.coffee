@@ -114,17 +114,24 @@ $(document).ready ->
 	$releases = $container.children("a")
 	timeout = undefined
 	$releases.on "mouseenter", (event) ->
-	  $article = $(this)
+	  $single_release = $(this)
 	  clearTimeout timeout
 	  timeout = setTimeout(->
-	    return false  if $article.hasClass("active")
-	    $releases.not($article).removeClass("active").addClass "blur"
-	    $article.removeClass("blur").addClass "active"
+	    return false  if $single_release.hasClass("active")
+	    $releases.not($single_release).removeClass("active").addClass "blur"
+	    $single_release.removeClass("blur").addClass "active"
 	  , 75)
 
 	$container.on "mouseleave", (event) ->
 	  clearTimeout timeout
 	  $releases.removeClass "active blur"
+
+	hide_sidebar = ->
+	  if $(window).width() < 1200
+	    $(".g_right_sidebar").hide()
+	  else
+	    $(".g_right_sidebar").show()
+	hide_sidebar()
 
 
 	#enable client side validation within modals  
@@ -146,6 +153,7 @@ $(document).ready ->
 
 	  #check and add scrollbar if required on window resizing in real time
 	  $(window).resize -> 
+	   hide_sidebar()
 	   window_height = $(window).height()
 	   $('.scrollable').css 'height', window_height
 	   if window_height < full_scroll_height

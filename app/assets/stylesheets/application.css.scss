@@ -29,7 +29,7 @@ $lightgray: #DDDDDD;
   src: local("?"),
     url("/font/MuseoSans_700.otf") format("opentype");
 }
-@import "grid.scss";
+@import "grid.css.scss";
 @import "font-awesome";
 @import "navbar.css.scss";
 @import "headers.css.scss";
