@@ -89,8 +89,8 @@
       <div class="scrollable">
         <div class="scrollable_inner">
           <div class="share_sidebar">
-            <%= image_tag "/images/computer_small.png" %>
-            <div>
+            <%= image_tag "/images/computer_small.png", :id => "computer_small" %>
+            <div class="actions">
               <h3>Stay connected</h3>
               <p>Share and discover new artists and releases with your friends</p>
               <button class="btn btn-small share_sngtrkr share" data-placement="bottom"><i class="icon-share"></i>Share</button>
@@ -122,6 +122,6 @@
       </a>
     </div>
     <span>Link:</span>
-    <input type="text" onClick="this.select();" value="<%= request.url %>">
+    <input type="text" onClick="this.select();" value="<%= root_url %>">
   </div>
 </div>
