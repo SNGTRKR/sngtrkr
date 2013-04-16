@@ -88,12 +88,12 @@
     <div class="profile_left_sidebar g_fixed g_right_border">
       <div class="scrollable">
         <div class="scrollable_inner">
-          <div class="share">
+          <div class="share_sidebar">
             <%= image_tag "/images/computer_small.png" %>
             <div>
               <h3>Stay connected</h3>
               <p>Share and discover new artists and releases with your friends</p>
-              <button class="btn btn-small">Share</button>
+              <button class="btn btn-small share_sngtrkr share" data-placement="bottom"><i class="icon-share"></i>Share</button>
             </div>
           </div>
           <!-- <h2>Track artists from Facebook</h2>
@@ -103,5 +103,25 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+<div class="sngtrkr_pop">
+  <div class="share_content">
+    <div>
+      <a href="#" alt="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com&t=SNGTRKR','Share on Facebook','scrollbars=no,width=620,height=340'); return false;">
+        <%= image_tag "/images/social/fb.png", :alt => "Facebook" %>
+      </a>
+      <a href="#" title="Share on Twitter" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.sngtrkr.com&text=&via=SNGTRKR','Share on Twitter','scrollbars=no,width=620,height=340'); return false;">
+        <%= image_tag "/images/social/twitter.png", :alt => "Twitter" %>
+      </a>
+      <a href="#" title="Share on Tumblr" onClick="MyWindow=window.open('http://www.tumblr.com/share/link?url=http%3A%2F%2Fwww.sngtrkr.com&name=&description=','Share on Tumblr','scrollbars=no,width=620,height=340'); return false;">
+        <%= image_tag "/images/social/tb.png", :alt => "Tumblr" %>
+      </a>
+      <a href="#" title="Share on Google Plus" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com','Share on Google+','scrollbars=no,width=620,height=340'); return false;">
+        <%= image_tag "/images/social/gplus.png", :alt => "Google+" %>
+      </a>
+    </div>
+    <span>Link:</span>
+    <input type="text" onClick="this.select();" value="<%= request.url %>">
   </div>
 </div>

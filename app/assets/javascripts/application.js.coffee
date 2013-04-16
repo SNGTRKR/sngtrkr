@@ -53,6 +53,10 @@ $(document).ready ->
 		$('.front').toggleClass('front-flip')
 		$('.back').toggleClass('back-flip')
 
+	$(".share_sngtrkr").popover
+		html: true
+		content: $(".sngtrkr_pop").html();
+
 	$(".share_artist").each ->
 	  $elem = $(this)
 	  art_id = $elem.attr("id")
