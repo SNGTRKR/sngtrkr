@@ -2,9 +2,6 @@ SNGTRKR::Application.routes.draw do
 
   resources :reports
 
-
-  match 'sitemap.xml' => 'sitemaps#sitemap'
-
   root :to => "pages#home"
   
   match 'pages/:action' => 'pages#:action'

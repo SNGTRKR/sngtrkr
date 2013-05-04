@@ -9,6 +9,7 @@
 							background-color: #D1D1D1 !important;
 							padding:4px 28px 4px 14px !important;
 							color:$gray;
+							font-family: "MuseoSans-300", Helvetica, Arial, sans-serif;
 							@include border-radius(4px);
 								&::-webkit-input-placeholder { /* WebKit browsers */
 								    color: $gray !important;

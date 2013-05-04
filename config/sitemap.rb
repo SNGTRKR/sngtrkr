@@ -1,3 +1,6 @@
+require 'rubygems'
+require 'sitemap_generator'
+
 # Set the host name for URL creation
 SitemapGenerator::Sitemap.default_host = "http://www.sngtrkr.com"
 SitemapGenerator::Sitemap.sitemaps_path = 'shared/'
@@ -25,9 +28,7 @@ SitemapGenerator::Sitemap.create do
   #   Article.find_each do |article|
   #     add article_path(article), :lastmod => article.updated_at
   #   end
-
   add about_path, :lastmod => Time.now, :changefreq => 'monthly', :priority => 1
-  add help_path, :lastmod => Time.now, :changefreq => 'monthly', :priority => 1
   add privacy_path, :lastmod => Time.now, :changefreq => 'monthly', :priority => 1
   add terms_path, :lastmod => Time.now, :changefreq => 'monthly', :priority => 1
 
@@ -35,13 +36,14 @@ SitemapGenerator::Sitemap.create do
     add artist_path(artist), :lastmod => artist.updated_at
   end
 
-  Release.find_each do |release|
-    add release_path(release), :lastmod => release.updated_at
-  end
+  # Release.find_each do |release|
+  #   add releases_path(release), :lastmod => release.updated_at
+  # end
 
-  User.find_each do |user|
-    add user_path(user), :lastmod => user.updated_at
-  end
+  # User.find_each do |user|
+  #   add user_path(user), :lastmod => user.updated_at
+  # end
 
 
 end
+SitemapGenerator::Sitemap.ping_search_engines
