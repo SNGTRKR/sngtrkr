@@ -1,1 +1,14 @@
 console.log("unfollow");
+$("a.remove-trkr").bind("ajax:complete", function() {
+    var artist_id;
+    artist_id = $(this).data("id");
+    $(this).replaceWith("<a href=\"/artists/" + artist_id + "/follows\" class=\"add-trkr btn track\" data-id=\"" + artist_id + "\" data-method=\"post\" data-remote=\"true\" format=\"html\" rel=\"nofollow\">Track</a>");
+    <% @artist = Artist.find(params[:artist_id]) %>
+    $('#tracker-' + artist_id).text(<%= @artist.followers %>);
+    $('#row-' + artist_id).addClass("fadeOutUp").slideUp();
+});
+$("a.remove-trkr-small").bind("ajax:complete", function() {
+  var artist_id;
+  artist_id = $(this).data("id");
+  $(this).replaceWith("<a href=\"/artists/" + artist_id + "/follows\" class=\"add-trkr-small btn btn-small\" data-id=\"" + artist_id + "\" data-method=\"post\" data-remote=\"true\" format=\"html\" rel=\"nofollow\">Track</a>");
+});

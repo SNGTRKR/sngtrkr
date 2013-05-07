@@ -166,42 +166,42 @@ $(document).ready ->
 	  	 $('.scrollable_inner').css 'height', scroll_height
 
 	#remove trkr ajax normal
-	follow_buttons = ->
-		$("a.remove-trkr").bind "ajax:complete", ->
-		  artist_id = $(this).data("id")
-		  $(this).replaceWith "<a href=\"/artists/" + artist_id + "/follows\" class=\"add-trkr btn track\" data-id=\"" + artist_id + "\" data-method=\"post\" data-remote=\"true\" format=\"html\" rel=\"nofollow\">Track</a>"
-		  follow_buttons()
-		  $('#row-'+ artist_id).addClass("fadeOutUp").slideUp()
-		#add trkr ajax normal
-		$("a.add-trkr").bind "ajax:complete", ->
-		  artist_id = $(this).data("id")
-		  $(this).replaceWith "<a href=\"/artists/" + artist_id + "/unfollow\" class=\"remove-trkr btn track active\" data-id=\"" + artist_id + "\" data-method=\"post\" data-remote=\"true\" rel=\"nofollow\">Tracked</a>"
-		  follow_buttons()
-		  FB.api "/me/sngtrkr:track", "post",
-		    artist: "http://sngtrkr.com/artists/" + $(this).data("id")
-		  , (response) ->
-		    console.log "FB Open Graph Posted"
-		    console.log response
+	# follow_buttons = ->
+	# 	$("a.remove-trkr").bind "ajax:complete", ->
+	# 	  artist_id = $(this).data("id")
+	# 	  $(this).replaceWith "<a href=\"/artists/" + artist_id + "/follows\" class=\"add-trkr btn track\" data-id=\"" + artist_id + "\" data-method=\"post\" data-remote=\"true\" format=\"html\" rel=\"nofollow\">Track</a>"
+	# 	  follow_buttons()
+	# 	  $('#row-'+ artist_id).addClass("fadeOutUp").slideUp()
+	# 	#add trkr ajax normal
+	# 	$("a.add-trkr").bind "ajax:complete", ->
+	# 	  artist_id = $(this).data("id")
+	# 	  $(this).replaceWith "<a href=\"/artists/" + artist_id + "/unfollow\" class=\"remove-trkr btn track active\" data-id=\"" + artist_id + "\" data-method=\"post\" data-remote=\"true\" rel=\"nofollow\">Tracked</a>"
+	# 	  follow_buttons()
+	# 	  FB.api "/me/sngtrkr:track", "post",
+	# 	    artist: "http://sngtrkr.com/artists/" + $(this).data("id")
+	# 	  , (response) ->
+	# 	    console.log "FB Open Graph Posted"
+	# 	    console.log response
 
-	follow_buttons()
+	# follow_buttons()
 	#remove trkr ajax small
-	follow_buttons_small = ->
-		$("a.remove-trkr-small").bind "ajax:complete", ->
-		  artist_id = $(this).data("id")
-		  $(this).replaceWith "<a href=\"/artists/" + artist_id + "/follows\" class=\"add-trkr-small btn btn-small\" data-id=\"" + artist_id + "\" data-method=\"post\" data-remote=\"true\" format=\"html\" rel=\"nofollow\">Track</a>"
-		  follow_buttons_small()
-		#add trkr ajax small
-		$("a.add-trkr-small").bind "ajax:complete", ->
-		  artist_id = $(this).data("id")
-		  $(this).replaceWith "<a href=\"/artists/" + artist_id + "/unfollow\" class=\"remove-trkr-small btn btn-small active\" data-id=\"" + artist_id + "\" data-method=\"post\" data-remote=\"true\" rel=\"nofollow\">Tracked</a>"
-		  follow_buttons_small()
-		  FB.api "/me/sngtrkr:track", "post",
-		    artist: "http://sngtrkr.com/artists/" + $(this).data("id")
-		  , (response) ->
-		    console.log "FB Open Graph Posted"
-		    console.log response
+	# follow_buttons_small = ->
+	# 	$("a.remove-trkr-small").bind "ajax:complete", ->
+	# 	  artist_id = $(this).data("id")
+	# 	  $(this).replaceWith "<a href=\"/artists/" + artist_id + "/follows\" class=\"add-trkr-small btn btn-small\" data-id=\"" + artist_id + "\" data-method=\"post\" data-remote=\"true\" format=\"html\" rel=\"nofollow\">Track</a>"
+	# 	  follow_buttons_small()
+	# 	#add trkr ajax small
+	# 	$("a.add-trkr-small").bind "ajax:complete", ->
+	# 	  artist_id = $(this).data("id")
+	# 	  $(this).replaceWith "<a href=\"/artists/" + artist_id + "/unfollow\" class=\"remove-trkr-small btn btn-small active\" data-id=\"" + artist_id + "\" data-method=\"post\" data-remote=\"true\" rel=\"nofollow\">Tracked</a>"
+	# 	  follow_buttons_small()
+	# 	  FB.api "/me/sngtrkr:track", "post",
+	# 	    artist: "http://sngtrkr.com/artists/" + $(this).data("id")
+	# 	  , (response) ->
+	# 	    console.log "FB Open Graph Posted"
+	# 	    console.log response
 
-	follow_buttons_small()
+	# follow_buttons_small()
 	#search query
 	query = $('#tab3').data 'query'
 	rel_last_load = new Date().getTime()

@@ -9,7 +9,7 @@
           	<p>Bristol, United Kingdom</p>
             <ul id="myTab" class="nav nav-tabs nav-stacked each-tab">
               <li class="active">
-                <a href="#tab1" data-toggle="tab"><i class="icon-screenshot"></i><%= @user.following.count %> trackings</a>
+                <a href="#tab1" data-toggle="tab"><i class="icon-screenshot"></i><span id="tracking-<%= current_user.id %>"><%= @user.following.count %></span> trackings</a>
               </li>
               <li>
                 <a href="#tab2" data-toggle="tab"><%= image_tag "/images/ppl_black.png", :class => "blk ppl"%><%= image_tag "/images/ppl_white.png", :class => "wht ppl"%><%= @app_friends.count %> friend<% if @app_friends.count > 1 %>s<% end %></a>
