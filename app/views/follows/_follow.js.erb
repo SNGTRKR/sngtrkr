@@ -1,4 +1,3 @@
-console.log("follow");
 $("a.add-trkr").bind("ajax:complete", function() {
     var artist_id = $(this).data("id");
     $(this).replaceWith("<a href=\"/artists/" + artist_id + "/unfollow\" class=\"remove-trkr btn track active\" data-id=\"" + artist_id + "\" data-method=\"post\" data-remote=\"true\" rel=\"nofollow\">Tracked</a>");

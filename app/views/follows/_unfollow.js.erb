@@ -1,4 +1,3 @@
-console.log("unfollow");
 $("a.remove-trkr").bind("ajax:complete", function() {
     var artist_id = $(this).data("id");
     var user_id = <%= current_user.id %>;
