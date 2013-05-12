@@ -11,14 +11,21 @@ class ArtistsController < ApplicationController
   # GET /artists/1
   # GET /artists/1.json
   def show
-    @artist = Artist.includes(:releases).find(params[:id])
+    @a_param = params[:id]
+    @current_artist = Artist.find(@a_param)
+    @artist = Rails.cache.fetch "artist_releases/#{@current_artist.id}-#{@current_artist.updated_at}", expires_in: 2.hours do
+      Artist.includes(:releases).find(@a_param)
+    end
     @user = current_user
-    @timeline = Timeline.artist(params[:id])
+    @timeline = Rails.cache.fetch "artist_timeline/#{@current_artist.id}-#{@current_artist.updated_at}", expires_in: 2.hours do
+      Timeline.artist(@a_param)
+    end
+    @release_count = @artist.count_release
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @artist }
       format.js do 
-        @follow = current_user.follow .where(:artist_id => params[:id]).first
+        @follow = current_user.follow.where(:artist_id => params[:id]).first
       end
     end
   end

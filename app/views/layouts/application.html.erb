@@ -52,30 +52,32 @@
 							<h4>About</h4>
 						</a>
 					</div>
-					<div class="span2">
-						<a href="http://blog.sngtrkr.com">
-							<i class="icon-rss"></i>
-							<h4>Blog</h4>
-						</a>
-					</div>
-					<div class="span2">
-						<a href="http://support.sngtrkr.com">
-							<%= image_tag "/images/message.png" %>
-							<h4>Support</h4>
-						</a>
-					</div>
-					<div class="span2">
-						<a href="/terms">
-							<i class="icon-file-alt"></i>
-							<h4>Terms</h4>
-						</a>
-					</div>
-					<div class="span2">
-						<a href="/privacy">
-							<i class="icon-lock"></i>
-							<h4>Privacy</h4>
-						</a>
-					</div>
+					<% cache "second_menu", expires_in: 2.weeks do %>
+						<div class="span2">
+							<a href="http://blog.sngtrkr.com">
+								<i class="icon-rss"></i>
+								<h4>Blog</h4>
+							</a>
+						</div>
+						<div class="span2">
+							<a href="http://support.sngtrkr.com">
+								<%= image_tag "/images/message.png" %>
+								<h4>Support</h4>
+							</a>
+						</div>
+						<div class="span2">
+							<a href="/terms">
+								<i class="icon-file-alt"></i>
+								<h4>Terms</h4>
+							</a>
+						</div>
+						<div class="span2">
+							<a href="/privacy">
+								<i class="icon-lock"></i>
+								<h4>Privacy</h4>
+							</a>
+						</div>
+					<% end %>
 					<% if current_user %>
 						<% if current_user.role? :admin %>
 							<div class="span2">

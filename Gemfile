@@ -28,6 +28,9 @@ end
 gem 'capistrano'
 gem 'rvm-capistrano'
 
+# CACHING
+gem 'dalli'
+
 # BACKGROUND TASKS
 gem 'sidekiq', :require => false
 gem 'slim'

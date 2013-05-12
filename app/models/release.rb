@@ -18,8 +18,8 @@ class Release < ActiveRecord::Base
       end
       text :label_name
     end
-  end
- 
+  end 
+
   def to_s
     self.name
   end

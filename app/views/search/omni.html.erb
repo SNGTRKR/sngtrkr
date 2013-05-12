@@ -4,6 +4,7 @@
 <% else %>
   <% content_for :description do %>Search results empty<% end %>
 <% end %>
+<% cache "search_results_tab", expires_in: 1.month do %>
 <div class="g_three_col">
   <div class="g_sidebar_large">
     <div class="result_search g_fixed">
@@ -23,6 +24,7 @@
       </div> 
     </div>
   </div>
+<% end %>
   <div class="g_main g_tabs_large">
       <div class="tab-content search-tab-content" id="myTabContent">
         <div class="search_input">

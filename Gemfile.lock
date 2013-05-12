@@ -74,6 +74,7 @@ GEM
       compass (>= 0.12.2, < 0.14)
     connection_pool (1.0.0)
     daemons (1.1.9)
+    dalli (2.6.3)
     database_cleaner (0.9.1)
     devise (2.2.3)
       bcrypt-ruby (~> 3.0)
@@ -323,6 +324,7 @@ DEPENDENCIES
   carrierwave
   client_side_validations!
   compass-rails (>= 1.0.0.rc.2)
+  dalli
   database_cleaner
   devise
   exception_notification

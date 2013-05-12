@@ -1,4 +1,5 @@
 <% content_for :title do %><%= @user.first_name %>'s profile<% end %>
+<% cache "user_info_1/#{@user.id}-#{@user.updated_at}", expires_in: 24.hours do %>
 <div class="g_three_col">
   <div class="g_sidebar">
       <div class="tabbable tabs-left profile-tabs g_fixed">
@@ -9,7 +10,9 @@
           	<p>Bristol, United Kingdom</p>
             <ul id="myTab" class="nav nav-tabs nav-stacked each-tab">
               <li class="active">
+            <% end %>
                 <a href="#tab1" data-toggle="tab"><i class="icon-screenshot"></i><span id="tracking-<%= current_user.id %>"><%= @user.following.count %></span> trackings</a>
+            <% cache "user_info_2/#{@user.id}-#{@user.updated_at}", expires_in: 24.hours do %>
               </li>
               <li>
                 <a href="#tab2" data-toggle="tab"><%= image_tag "/images/ppl_black.png", :class => "blk ppl"%><%= image_tag "/images/ppl_white.png", :class => "wht ppl"%><%= @app_friends.count %> friend<% if @app_friends.count > 1 %>s<% end %></a>
@@ -21,6 +24,7 @@
         </div>
       </div> 
   </div>
+  <% end %>
   <div class="g_main g_tabs">
             <div class="tab-content profile-tab-content" id="myTabContent">
           <div class="tab-pane active" id="tab1" data-user="<%= current_user.id %>">
@@ -84,6 +88,7 @@
           </div>
         </div>
   </div>
+<% cache "user_sidebar", expires_in: 1.week do %>
   <div class="g_right_sidebar">
     <div class="profile_left_sidebar g_fixed g_right_border">
       <div class="scrollable">
@@ -125,3 +130,4 @@
     <input type="text" onClick="this.select();" value="<%= root_url %>">
   </div>
 </div>
+<% end %>
