@@ -34,16 +34,11 @@ SitemapGenerator::Sitemap.create do
 
   Artist.find_each do |artist|
     add artist_path(artist), :lastmod => artist.updated_at
+      @all_releases = artist.real_releases
+      @all_releases.find_each do |release|
+        add artist_release_path(artist, release), :lastmod => release.updated_at
+      end
   end
-
-  # Release.find_each do |release|
-  #   add releases_path(release), :lastmod => release.updated_at
-  # end
-
-  # User.find_each do |user|
-  #   add user_path(user), :lastmod => user.updated_at
-  # end
-
 
 end
 SitemapGenerator::Sitemap.ping_search_engines
