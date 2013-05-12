@@ -57,32 +57,32 @@ content_for :og_type, "sngtrkr:release"
     </div>
   </div>
   <div class="g_main release_info"> 
-    <% cache "release_info/#{@release.id}-#{@release.updated_at}", expires_in: 2.hours do %>
-      <% if current_user %>
-        <% if current_user.role? :admin %>
-          <div class="image">
-            <div class="front">
-            <%= image_tag @release.image.large %>
-            </div>
-            <div class="back">
-              <form>
-                <p>Please only upload PNG and JPEG files, which do not exceed 1mb in size.</p>
-                <% if @release.image? %>
-                  <input type="file" id="upload">
-                  <input type="button" class="btn-info btn" value="Replace" >
-                <% else %>
-                  <input type="file" id="upload">
-                  <input type="button" class="btn-success btn" value="Upload">
-                <% end %>
-              </form>
-            </div>
-          </div>
-        <% else %>
+    <% if current_user %>
+      <% if current_user.role? :admin %>
+        <div class="image">
+          <div class="front">
           <%= image_tag @release.image.large %>
-        <% end %>
+          </div>
+          <div class="back">
+            <form>
+              <p>Please only upload PNG and JPEG files, which do not exceed 1mb in size.</p>
+              <% if @release.image? %>
+                <input type="file" id="upload">
+                <input type="button" class="btn-info btn" value="Replace" >
+              <% else %>
+                <input type="file" id="upload">
+                <input type="button" class="btn-success btn" value="Upload">
+              <% end %>
+            </form>
+          </div>
+        </div>
       <% else %>
         <%= image_tag @release.image.large %>
       <% end %>
+    <% else %>
+      <%= image_tag @release.image.large %>
+    <% end %>
+    <% cache "release_info/#{@release.id}-#{@release.updated_at}", expires_in: 2.hours do %>  
       <div class="info">
         <h1><%= @release.name %></h1>
         <p class="tip" data-title="Label" data-placement="left"><i class="icon-tag"></i><% if @release.label_name? %><%= @release.label_name %><% else %><%= @artist.label_name %><% end %></p>
@@ -92,6 +92,7 @@ content_for :og_type, "sngtrkr:release"
         <div class="btn report" data-toggle="modal" data-target="#reportModal">Report</div>
       </div>
       <div class="clearfix"></div>
+    <% end %>
       <% if !user_signed_in? %>
         <div id="release_signup">
           <p>Track <%= link_to @artist.name, @artist %> and others to keep up to date with new releases.</p>
@@ -103,6 +104,7 @@ content_for :og_type, "sngtrkr:release"
           </a>
         </div>
       <% end %>
+    <% cache "related_releases/#{@release.id}-#{@release.updated_at}", expires_in: 1.hour do %> 
        <div class="clearfix"></div>
       <div id="related_releases">
         <h2>Related releases</h2>

@@ -57,7 +57,6 @@ content_for :og_type, "sngtrkr:artist"
     </div>
   </div>
   <div class="g_main artist_timeline">
-    <% cache "artist_signup/#{@artist.id}-#{@artist.updated_at}", expires_in: 1.week do %>
       <% if !user_signed_in? %>
         <div id="artist_signup">
           <p>Track <%= link_to @artist.name, @artist %> and others to keep up to date with new releases.</p>
@@ -69,7 +68,6 @@ content_for :og_type, "sngtrkr:artist"
           </a>
         </div>
       <% end %>
-    <% end %>
   </div>
 </div>
 <% cache "artist_popup/#{@artist.id}-#{@artist.updated_at}", expires_in: 1.week do %>
