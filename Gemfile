@@ -31,6 +31,9 @@ gem 'rvm-capistrano'
 # CACHING
 gem 'dalli'
 
+# MAILER
+gem 'rails_email_preview'
+
 # BACKGROUND TASKS
 gem 'sidekiq', :require => false
 gem 'slim'

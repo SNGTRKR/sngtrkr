@@ -4,7 +4,8 @@ class UserMailer < ActionMailer::Base
   
   def welcome_email(user)
     @user = user # For the view
-    mail(:to => "#{@user.email}", :subject => "Welcome to SNGTRKR!")
+    @domain = :root
+    mail(:to => "#{@user.email}", :subject => "Welcome to SNGTRKR")
   end
   
   def new_releases_deliver(frequency)
@@ -74,6 +75,28 @@ class UserMailer < ActionMailer::Base
   
   def instant_release(release)
     
+  end
+
+  class Preview
+    # Pull data from existing fixtures
+    # def invitation
+    #   account = Account.first
+    #   inviter, invitee = account.users[0, 2]
+    #   Notifier.invitation(inviter, invitee)
+    # end
+
+    # Factory-like pattern
+    def welcome_email
+      r = Role.create(:name => 'Admin')
+      user = User.new(:first_name => 'Billy', :last_name => 'Dallimore', :fbid => "660815460", :email => "tom.alan.dallimore@googlemail.com",:password => 'test42343egysfdf', :last_sign_in_at => Time.now, 
+  :email_frequency => 1)
+      user.roles = [r]
+      user.skip_confirmation!
+      user.save
+      mail = UserMailer.welcome_email(user)
+      user.destroy
+      mail
+    end
   end
 
 end

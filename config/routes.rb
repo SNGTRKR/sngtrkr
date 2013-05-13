@@ -6,6 +6,10 @@ SNGTRKR::Application.routes.draw do
   
   match 'pages/:action' => 'pages#:action'
 
+  if Rails.env.development?
+    mount RailsEmailPreview::Engine, :at => 'mail_preview' # You can choose any URL here
+  end
+
   constraints lambda{|request| request.env["warden"].authenticate? and User.find(request.env["warden"].user).roles.first.name == "Admin" } do
     require 'sidekiq/web'
     namespace :admin do

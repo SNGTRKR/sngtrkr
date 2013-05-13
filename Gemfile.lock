@@ -216,6 +216,11 @@ GEM
       remotipart (~> 1.0)
       safe_yaml (~> 0.6)
       sass-rails (~> 3.1)
+    rails_email_preview (0.0.4)
+      activesupport (~> 3.2)
+      haml
+      rails (~> 3.2)
+      sass
     railties (3.2.13)
       actionpack (= 3.2.13)
       activesupport (= 3.2.13)
@@ -341,6 +346,7 @@ DEPENDENCIES
   omniauth-facebook
   rails (~> 3)
   rails_admin
+  rails_email_preview
   rake
   rspec-rails
   rvm-capistrano
