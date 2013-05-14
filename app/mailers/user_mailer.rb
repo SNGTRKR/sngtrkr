@@ -88,7 +88,7 @@ class UserMailer < ActionMailer::Base
     # Factory-like pattern
     def welcome_email
       r = Role.create(:name => 'Admin')
-      user = User.new(:first_name => 'Billy', :last_name => 'Dallimore', :fbid => "660815460", :email => "tom.alan.dallimore@googlemail.com",:password => 'test42343egysfdf', :last_sign_in_at => Time.now, 
+      user = User.new(:id => '29', :first_name => 'Billy', :last_name => 'Dallimore', :fbid => "660815460", :email => "tom.alan.dallimore@googlemail.com",:password => 'test42343egysfdf', :last_sign_in_at => Time.now, 
   :email_frequency => 1)
       user.roles = [r]
       user.skip_confirmation!

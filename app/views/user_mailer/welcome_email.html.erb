@@ -26,7 +26,7 @@ strong { font-weight:bold;}
                         <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "20", :height => "50" %></td>
                         <td><%= link_to(image_tag("/images/email/image-314077-623952.jpg", :alt => "SNGTRKR", :style => "display:block;border:none;", :width => "63", :height => "50"), @domain, :target => "blank") %></td>
                         <td align="left" width="447" height="50" ><p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #333333 !important; font-size: 13px; line-height: 17px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;"><strong><%= @user.first_name %> <%= @user.last_name %></strong><br/>Welcome to SNGTRKR</p></td>
-                        <td><img src="http://placehold.it/50x50" alt="" style="display: block;border:none;" width="50" height="50" /></td>
+                        <td><%= link_to(image_tag('//graph.facebook.com/'+@user.fbid+'/picture?width=50&height=50', :style => 'display:block;border:none;'), @user, :target => '_blank') %></td>
                         <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "20", :height => "50" %></td>
                     </tr>
                 	<tr>
@@ -51,7 +51,7 @@ strong { font-weight:bold;}
 
             <table bgcolor="#ffffff" border="0" width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
                 <tr>
-                    <td><img src="clear.gif" alt="" style="display: block" width="50" height="30" /></td>
+                    <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "50", :height => "30" %></td>
                     <td align="left" width="500">
                         <p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #333333 !important; font-size: 13px; line-height: 17px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;">Hi <%= @user.first_name %>,</p>
                         <br/>
@@ -59,22 +59,22 @@ strong { font-weight:bold;}
                         <br/>
                         <p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #333333 !important; font-size: 13px; line-height: 17px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;">Here’s how you can get started:</p>
                     </td>
-                    <td><img src="clear.gif" alt="" style="display: block" width="50" height="30" /></td>
+                    <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "50", :height => "30" %></td>
                 </tr>
             </table> 
             <table bgcolor="#ffffff" border="0" width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
                 <tr>
-                    <td><img src="clear.gif" alt="" style="display: block" width="600" height="45" /></td>
+                    <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "600", :height => "45" %></td>
                 </tr>
             </table>
             <table bgcolor="#ffffff" border="0" width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
                 <tr>
-                    <td><img src="clear.gif" alt="" style="display: block" width="50" height="30" /></td>
+                    <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "50", :height => "30" %></td>
                     <td>
                         <table bgcolor="#ffffff" border="0" width="500" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
                             <tr>
-                                <td><img src="clear.gif" alt ="Find artists" style="display:block;" width="130" height="115" /></td>
-                                <td><img src="clear.gif" alt="" style="display: block" width="45" height="30" /></td>
+                                <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "130", :height => "115", :alt => "Find artists" %></td>
+                                <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "45", :height => "30" %></td>
                                 <td>
                                     <h1 style="font-weight: normal; letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #45a1c6 !important; font-size: 20px; line-height: 22px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0; "><a href="http://www.sngtrkr.com" target="_blank" style="color:#45A1C6;text-decoration:none;">Find artists</a></h1>
                                     <p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #333333 !important; font-size: 13px; line-height: 17px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:5px; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;">Looking for your favourite artists? Always stay in the loop with our expansive database of artist information and release catalogue.</p>
@@ -83,11 +83,11 @@ strong { font-weight:bold;}
                         </table>
                         <table bgcolor="#ffffff" border="0" width="500" cellpadding="0" cellspacing="0" style="background-color:#ffffff;border-bottom:1px #cccccc solid;">
                             <tr>
-                                <td><img src="clear.gif" alt="" style="display: block" width="500" height="20" /></td>
+                                <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "500", :height => "20" %></td>
                             </tr>
                         </table>
                     </td>
-                    <td><img src="clear.gif" alt="" style="display: block" width="50" height="30" /></td>
+                    <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "50", :height => "30" %></td>
                 </tr>
             </table>
             <table bgcolor="#ffffff" border="0" width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
