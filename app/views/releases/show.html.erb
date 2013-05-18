@@ -66,12 +66,16 @@ content_for :og_type, "sngtrkr:release"
           <div class="back">
             <form>
               <p>Please only upload PNG and JPEG files, which do not exceed 1mb in size.</p>
-              <% if @release.image? %>
-                <input type="file" id="upload">
-                <input type="button" class="btn-info btn" value="Replace" >
+              <% if !@release.image? %>
+                  <%= form_for [@artist,@release] do |f| %> 
+                    <%= f.file_field :image %> 
+                    <%= f.submit "Upload", :class => "btn-success btn" %> 
+                  <% end %>
               <% else %>
-                <input type="file" id="upload">
-                <input type="button" class="btn-success btn" value="Upload">
+                  <%= form_for [@artist,@release] do |f| %> 
+                    <%= f.file_field :image %> 
+                    <%= f.submit "Replace", :class => "btn-info btn" %> 
+                  <% end %>
               <% end %>
             </form>
           </div>

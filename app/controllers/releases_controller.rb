@@ -49,10 +49,6 @@ class ReleasesController < ApplicationController
   def update
     @artist = Artist.find(params[:artist_id])
     @release = Release.find(params[:id])
-    if params[:release][:delete_image] == "true"
-      @release.image.clear
-      params[:release].delete(:delete_image)
-    end
 
     respond_to do |format|
       if @release.update_attributes(params[:release])

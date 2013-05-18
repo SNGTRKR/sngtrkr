@@ -165,43 +165,6 @@ $(document).ready ->
 	   else 
 	  	 $('.scrollable_inner').css 'height', scroll_height
 
-	#remove trkr ajax normal
-	# follow_buttons = ->
-	# 	$("a.remove-trkr").bind "ajax:complete", ->
-	# 	  artist_id = $(this).data("id")
-	# 	  $(this).replaceWith "<a href=\"/artists/" + artist_id + "/follows\" class=\"add-trkr btn track\" data-id=\"" + artist_id + "\" data-method=\"post\" data-remote=\"true\" format=\"html\" rel=\"nofollow\">Track</a>"
-	# 	  follow_buttons()
-	# 	  $('#row-'+ artist_id).addClass("fadeOutUp").slideUp()
-	# 	#add trkr ajax normal
-	# 	$("a.add-trkr").bind "ajax:complete", ->
-	# 	  artist_id = $(this).data("id")
-	# 	  $(this).replaceWith "<a href=\"/artists/" + artist_id + "/unfollow\" class=\"remove-trkr btn track active\" data-id=\"" + artist_id + "\" data-method=\"post\" data-remote=\"true\" rel=\"nofollow\">Tracked</a>"
-	# 	  follow_buttons()
-	# 	  FB.api "/me/sngtrkr:track", "post",
-	# 	    artist: "http://sngtrkr.com/artists/" + $(this).data("id")
-	# 	  , (response) ->
-	# 	    console.log "FB Open Graph Posted"
-	# 	    console.log response
-
-	# follow_buttons()
-	#remove trkr ajax small
-	# follow_buttons_small = ->
-	# 	$("a.remove-trkr-small").bind "ajax:complete", ->
-	# 	  artist_id = $(this).data("id")
-	# 	  $(this).replaceWith "<a href=\"/artists/" + artist_id + "/follows\" class=\"add-trkr-small btn btn-small\" data-id=\"" + artist_id + "\" data-method=\"post\" data-remote=\"true\" format=\"html\" rel=\"nofollow\">Track</a>"
-	# 	  follow_buttons_small()
-	# 	#add trkr ajax small
-	# 	$("a.add-trkr-small").bind "ajax:complete", ->
-	# 	  artist_id = $(this).data("id")
-	# 	  $(this).replaceWith "<a href=\"/artists/" + artist_id + "/unfollow\" class=\"remove-trkr-small btn btn-small active\" data-id=\"" + artist_id + "\" data-method=\"post\" data-remote=\"true\" rel=\"nofollow\">Tracked</a>"
-	# 	  follow_buttons_small()
-	# 	  FB.api "/me/sngtrkr:track", "post",
-	# 	    artist: "http://sngtrkr.com/artists/" + $(this).data("id")
-	# 	  , (response) ->
-	# 	    console.log "FB Open Graph Posted"
-	# 	    console.log response
-
-	# follow_buttons_small()
 	#search query
 	query = $('#tab3').data 'query'
 	rel_last_load = new Date().getTime()
@@ -243,6 +206,52 @@ $(document).ready ->
 		      console.log url
 		      $.get url
 		      trk_page++
+
+    search_query = "sa"
+				# This example does an AJAX lookup and is in CoffeeScript
+	$('.search-query').typeahead(
+	    # source can be a function
+	  source: (typeahead, query) ->
+	      # this function receives the typeahead object and the query string
+	    $.ajax(
+	      url: "/search.json?utf8=✓&query=" + search_query
+	        # i'm binding the function here using CoffeeScript syntactic sugar,
+	        # you can use for example Underscore's bind function instead.
+	      data: 
+	      	query: search_query
+	      success: (data) =>
+	          # data must be a list of either strings or objects
+	        console.log data
+	        typeahead.process(data)
+	    )
+	    # if we return objects to typeahead.process we must specify the property
+	    # that typeahead uses to look up the display value
+	  property: "name"
+	)
+  	# $(".search-query").typeahead
+		 #  source: (typeahead, query) ->
+		 #    $.ajax
+		 #      url: "/search.json"
+		 #      dataType: "json"
+		 #      type: "POST"
+		 #      data:
+		 #        query: "sa"
+		 #      console.log data
+		 #      success: (data) ->
+		 #        return if data is null
+		 #        console.log data
+		 #        return_list = []
+		 #        i = data.length
+		 #        while i--
+		 #          return_list[i] =
+		 #            id: data[i].id
+		 #            value: data[i].name
+		 #        typeahead.process return_list
+
+
+		 #  onselect: (obj) ->
+		 #    window.location = "/artists/" + obj.id
+
 
 
 	
