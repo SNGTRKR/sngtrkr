@@ -207,50 +207,107 @@ $(document).ready ->
 		      $.get url
 		      trk_page++
 
-    search_query = "sa"
-				# This example does an AJAX lookup and is in CoffeeScript
-	$('.search-query').typeahead(
-	    # source can be a function
-	  source: (typeahead, query) ->
-	      # this function receives the typeahead object and the query string
-	    $.ajax(
-	      url: "/search.json?utf8=✓&query=" + search_query
-	        # i'm binding the function here using CoffeeScript syntactic sugar,
-	        # you can use for example Underscore's bind function instead.
-	      data: 
-	      	query: search_query
-	      success: (data) =>
-	          # data must be a list of either strings or objects
-	        console.log data
-	        typeahead.process(data)
-	    )
-	    # if we return objects to typeahead.process we must specify the property
-	    # that typeahead uses to look up the display value
-	  property: "name"
-	)
-  	# $(".search-query").typeahead
-		 #  source: (typeahead, query) ->
-		 #    $.ajax
-		 #      url: "/search.json"
-		 #      dataType: "json"
-		 #      type: "POST"
-		 #      data:
-		 #        query: "sa"
-		 #      console.log data
-		 #      success: (data) ->
-		 #        return if data is null
-		 #        console.log data
-		 #        return_list = []
-		 #        i = data.length
-		 #        while i--
-		 #          return_list[i] =
-		 #            id: data[i].id
-		 #            value: data[i].name
-		 #        typeahead.process return_list
+ #    search_query = "sa"
+	# 			# This example does an AJAX lookup and is in CoffeeScript
+	# $('.search-query').typeahead(
+	#     # source can be a function
+	#   source: (typeahead, query) ->
+	#       # this function receives the typeahead object and the query string
+	#     $.ajax(
+	#       url: "/search.json?utf8=✓&query=" + search_query
+	#         # i'm binding the function here using CoffeeScript syntactic sugar,
+	#         # you can use for example Underscore's bind function instead.
+	#       data: 
+	#       	query: search_query
+	#       success: (data) =>
+	#           # data must be a list of either strings or objects
+	#         console.log data
+	#         typeahead.process(data)
+	#     )
+	#     # if we return objects to typeahead.process we must specify the property
+	#     # that typeahead uses to look up the display value
+	#   property: "name"
+	# )
+	# $(".search-query").typeahead
+	#   source: (typeahead, query) ->
+	#     return_list = []
+	#     $("li").each (i, v) ->
+	#       return_list.push $(v).html()
+
+	    
+	#     # here I'm just returning a list of strings
+	#     return_list
+
+	  
+	#   # typeahead calls this function when a object is selected, and
+	#   # passes an object or string depending on what you processed, in this case a string
+	#   onselect: (obj) ->
+	#     alert "Selected " + obj
+
+	# $(".search-query").typeahead
+	#   source: (typeahead, query) ->
+	    # $.ajax
+	    #   url: "/search.json"
+	    #   dataType: "json"
+	    #   type: "POST"
+	    #   data:
+	    #     query: query
+
+	#       success: (data) ->
+	#         return  if data is null
+	#         console.log data
+	#         return_list = []
+	#         # i = data.length
+
+	#         while i--
+	#           return_list[i] =
+	#             id: data[i].id
+	#             value: data[i].name
+	#         typeahead.process return_list
 
 
-		 #  onselect: (obj) ->
-		 #    window.location = "/artists/" + obj.id
+	#   onselect: (obj) ->
+	#     window.location = "/artists/" + obj.id
+	$('.search-query').typeahead
+		source: (query, process) ->
+
+			$.ajax 
+				url: "/search.json?utf8=✓&query=" + query
+				dataType: "json"
+				data:
+					query: query
+
+				success: (data) ->
+					#generates empty array
+					results = []
+					#generates empty object
+					map = {}
+					#loops through json object called data
+					$.each data, (i, result) ->
+					#generates json syntax (with empty array and object) to assign the json property 'name' from each array row, to the results object
+					  map[result.name] = result
+					  results.push result.name
+
+					#the typeahead process engine displays the results object
+					process(results)
+
+		updater: (item) ->
+			selectedArtist = map[item].name
+			return item
+
+		matcher: (item) ->
+			true  unless item.toLowerCase().indexOf(@query.trim().toLowerCase()) is -1
+
+		sorter: (items) ->
+			return items.sort()
+
+		highlighter: (item) ->
+			regex = new RegExp '(' + this.query + ')', 'gi'
+			return item.replace regex, "<strong>$1</strong>"
+
+
+
+
 
 
 
