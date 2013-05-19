@@ -207,60 +207,17 @@ $(document).ready ->
 		      $.get url
 		      trk_page++
 
-	# $(".search-query").typeahead
-	# 	source: (query, process) ->
-	# 		#generates empty array
-	# 		results = []
-	# 		#generates empty object
-	# 		map = {}
-	# 		$.ajax 
-	# 			url: "/search.json?utf8=✓&query=" + query
-	# 			dataType: "json"
-	# 			data:
-	# 				query: query
-
-	# 			success: (data) ->
-	# 				#loops through json object called data
-	# 				$.each data, (i, result) ->
-	# 				#generates new object (with empty array and object) to assign the json property 'name' from each array row, to the results object
-	# 				  map[result.name] = result
-	# 				  results.push result.name
-
-	# 				#the typeahead process engine displays the results object
-	# 				process results
-
-
-	# 	updater: (item) ->
-	# 		# map = {}
-	# 		# selectedArtist = map[item].id
-	# 		return item
-
-	# 	# matcher: (item) ->
-	# 	# 	true  unless item.toLowerCase().indexOf(@query.trim().toLowerCase()) is -1
-
-	# 	# sorter: (items) ->
-	# 	# 	return items.sort()
-
-	# 	highlighter: (item) ->
-	# 		regex = new RegExp '(' + this.query + ')', 'gi'
-	# 		return item.replace regex, "<strong>$1</strong>"
-
-	# 	onselect: (item) ->
-	# 		# window.location = "/artists/" + obj.id
-	# 		console.log "hello"
-
-	# $(".search-query").typeahead
-	#   name: "results"
-	#   prefetch: "/search.json?utf8=✓&query=sa"
-	#   template: ["<p class=\"repo-language\">{{name}}</p>", "<p class=\"repo-name\">{{id}}</p>", "<p class=\"repo-description\">{{image.url}}</p>"].join("")
-	#   engine: Hogan
-	$(".search-query").typeahead 
+	$(".search-query").typeahead(
 	  remote: "/search.json?utf8=✓&query=%QUERY"
 	  prefetch: "/search.json"
-	  template: "<div><img src='{{image.image.url}}'/><span><div>{{value}}</div>{{label}}{{artist_name}}</span><div class='{{identifier}}'></div></div>"
+	  template: "<div class='inner-suggest'><img src='{{image.image.url}}'/><span><div>{{value}}</div>{{label}}{{artist_name}}</span><div class='{{identifier}}'></div></div>"
 	  engine: Hogan
 	  limit: 6
-
+	).on "typeahead:selected", ($e, data) ->
+	  if data.identifier is "release"
+	  	window.location = "/artists/" + data.artist_id + "/releases/" + data.id
+	  else
+	  	window.location = "/artists/" + data.id
 
 
 

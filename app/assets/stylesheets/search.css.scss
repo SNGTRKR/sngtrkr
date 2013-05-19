@@ -60,7 +60,33 @@
 		.tt-suggestion {
 			background-color:#2A2A2A;
 			color:#848484;
+			overflow:hidden;
+				.inner-suggest {
+					padding:5px 5px 7px;
+					font-size:13px;
+					line-height:1.5em;
+					border-bottom:1px solid #1A1A1A;
+					border-top:1px solid #333333;
+						img {
+							height:40px;
+							width:40px;
+							float:left;
+							margin-right:10px;
+						}
+						span {
+							display:block;
+						}
+				}
+				&:first-child {
+					.inner-suggest {
+						border-top:none;
+					}
+				}
 
+		}
+		.tt-is-under-cursor {
+			background-color:$blue;
+			color:#fff;
 		}
 	}
 }

@@ -10,7 +10,7 @@ class SearchController < ApplicationController
       per_page = 20
     elsif request.format == :json
       page = 1
-      per_page = 5
+      per_page = 100
     end
 
     @search = params[:query]
@@ -28,11 +28,11 @@ class SearchController < ApplicationController
     @artists_json = @artists.map do|a| 
       {
         :value => a.name,
-        :tokens => a.name + " - " + a.label_name,
+        :tokens => a.name,
         :id => a.id,
         :label => a.label_name,
         :image => a.image.small,
-        :identifier => "releases",
+        :identifier => "artist",
       }
     end
 
@@ -58,7 +58,7 @@ class SearchController < ApplicationController
         :id => r.id,
         :artist_id => r.artist_id,
         :image => r.image.small,
-        :identifier => "artists",
+        :identifier => "release",
       }      
     end
 
