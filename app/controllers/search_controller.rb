@@ -27,9 +27,12 @@ class SearchController < ApplicationController
     @artists_pages = (@artists_count/20.to_f).ceil
     @artists_json = @artists.map do|a| 
       {
-        :name => a.name,
+        :value => a.name,
+        :tokens => a.name + " - " + a.label_name,
         :id => a.id,
-        :image => a.image.medium, # replace with sized image
+        :label => a.label_name,
+        :image => a.image.small,
+        :identifier => "releases",
       }
     end
 
@@ -49,11 +52,13 @@ class SearchController < ApplicationController
 
     @releases_json = @releases.map do |r|
       {
-        :name => r.name,
+        :value => r.name,
+        :tokens => r.artist.name + " - " + r.name,
         :artist_name => r.artist.name,
         :id => r.id,
         :artist_id => r.artist_id,
-        :image => r.image.medium, # replace with sized image
+        :image => r.image.small,
+        :identifier => "artists",
       }      
     end
 
