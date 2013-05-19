@@ -56,11 +56,19 @@
 }
 .tt-dropdown-menu {
 	width:248px;
+	position:fixed !important;
+	top:45px !important;
+	left:400px !important;
+	z-index:0 !important;
+	@include transition-property(display);
+	@include transition-duration(0.4s);
+	@include transition-timing-function(ease-in);
 	.tt-suggestions {
 		.tt-suggestion {
 			background-color:#2A2A2A;
 			color:#848484;
 			overflow:hidden;
+			font-family: "MuseoSans-500", Helvetica, Arial, sans-serif !important;
 				.inner-suggest {
 					padding:5px 5px 7px;
 					font-size:13px;
@@ -80,6 +88,7 @@
 				&:first-child {
 					.inner-suggest {
 						border-top:none;
+						padding:10px 5px 7px;
 					}
 				}
 
