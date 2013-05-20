@@ -10,6 +10,9 @@
 							padding:4px 28px 4px 14px !important;
 							color:$gray;
 							font-family: "MuseoSans-300", Helvetica, Arial, sans-serif;
+							@include transition-property(width);
+							@include transition-duration(0.4s);
+							@include transition-timing-function(ease-in-out);
 							@include border-radius(4px);
 								&::-webkit-input-placeholder { /* WebKit browsers */
 								    color: $gray !important;
@@ -37,6 +40,7 @@
 									&:-ms-input-placeholder { /* Internet Explorer 10+ */
 									    color: $darkgray !important;
 									}
+									width:280px;
 								}
 						}
 						.search-query:focus + .icon-search {
@@ -46,6 +50,8 @@
 							position:relative;
 							right:26px;
 							color: $gray;
+							top:2px;
+
 						}
 				}
 		}
@@ -167,6 +173,8 @@
 }
 #user_login, #user_signup {
 	width:450px;
+	margin-left:-225px;
+	background: url('/images/bg_body-noise.png') repeat;
 		form {
 			padding:30px 100px 0;
 			border-top: 1px solid #d1d1d1;
