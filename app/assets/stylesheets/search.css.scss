@@ -59,13 +59,7 @@
 }
 .tt-dropdown-menu {
 	width:323px;
-	position:fixed !important;
-	top:45px !important;
 	left:400px !important;
-	z-index:0 !important;
-	@include transition-property(display);
-	@include transition-duration(0.4s);
-	@include transition-timing-function(ease-in);
 	.tt-suggestions {
 		.tt-suggestion {
 			background-color:#2A2A2A;

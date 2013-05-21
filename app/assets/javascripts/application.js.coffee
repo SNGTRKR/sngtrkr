@@ -219,7 +219,23 @@ $(document).ready ->
 	  else
 	  	window.location = "/artists/" + data.id
 
+	$(".search-query").data("ttView").dropdownView.on "suggestionsRendered", ->
+	  @$menu.find(".tt-dataset-query").remove()
+	  searchTerm = $(".search-query").val()
+	  $newTermSuggestion = $("<div class='tt-suggestion'><p>Search for '" + searchTerm + "'</p></div>")
+	  
+	  # Todo: searchterm should be url encoded
+	  $newTermSuggestion.data "suggestion",
+	    value: searchTerm
+	    datum:
+	      url: "/search/?q=" + searchTerm
+	      value: "this is the value"
 
+
+	  $newTerm = $("<div class='tt-dataset-query' style='display:block'><span class='tt-suggestions' style='display:block'></span></div>")
+	  $newTerm.find(".tt-suggestions").append $newTermSuggestion
+	  @$menu.prepend $newTerm
+	  console.log "suggestions rendered"
 
 	
 
