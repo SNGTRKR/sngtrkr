@@ -82,17 +82,21 @@
 							display:block;
 						}
 				}
-				&:first-child {
-					.inner-suggest {
-						border-top:none;
-						padding:10px 5px 7px;
-					}
-				}
 
 		}
 		.tt-is-under-cursor {
 			background-color:$blue;
 			color:#fff;
+		}
+	}
+	.tt-dataset-query {
+		.tt-suggestion {
+			padding:10px 5px 5px 5px;
+			border-bottom:1px solid #1A1A1A;
+			cursor:pointer;
+				span {
+					color:#fff;
+				}
 		}
 	}
 }
