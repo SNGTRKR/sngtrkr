@@ -213,13 +213,46 @@ $(document).ready ->
 	  template: "<div class='inner-suggest'><img src='{{image.image.url}}'/><span><div>{{value}}</div>{{label}}{{artist_name}}</span><div class='{{identifier}}'></div></div>"
 	  engine: Hogan
 	  limit: 6
-	).on "typeahead:selected", ($e, data) ->
+	).on("typeahead:selected", ($e, data) ->
+	  $typeahead = $(@)
+	  $form = $typeahead.parents('form').first()
+	  $form.submit()
 	  if data.identifier is "release"
 	  	window.location = "/artists/" + data.artist_id + "/releases/" + data.id
-	  else
+	  else if data.itentifier is "artist"
 	  	window.location = "/artists/" + data.id
+	  else
+	  	searchQuery = $(".search-query").val()
+	  	window.location = "/search?utf8=✓&query=" + searchQuery
+	#Temporary fix for moving down to first result on upon typing
+	).on "typeahead:opened", (a,b,c,d) ->
+        $('.tt-dataset-query .tt-suggestion').addClass "tt-is-under-cursor"
 
+    $('.search-query').bind "input", ->
+    	unless $('.search-query').val is ""
+    		$('.tt-dropdown-menu').css "display", "block"
+    		$('.tt-dataset-query .tt-suggestion').addClass "tt-is-under-cursor"
 
+    # For older browsers
+    $(".search-query").keyup ->
+    	$('.tt-dataset-query .tt-suggestion').addClass "tt-is-under-cursor"
+
+	# Temporary fix for showing 'Search for..' result in typeahead
+	$(".search-query").data("ttView").dropdownView.on "suggestionsRendered", ->
+	  @$menu.find(".tt-dataset-query").remove()
+	  searchTerm = $(".search-query").val()
+	  $newTermSuggestion = $("<div class='tt-suggestion'>Search for '<span>" + searchTerm + "</span>'</div>")
+	  
+	  # Todo: searchterm should be url encoded
+	  $newTermSuggestion.data "suggestion",
+	    value: searchTerm
+	    datum:
+	      url: "/search?utf8=✓&query=" + searchTerm
+	      value: searchTerm
+
+	  $newTerm = $("<div class='tt-dataset-query' style='display:block'><span class='tt-suggestions' style='display:block'></span></div>")
+	  $newTerm.find(".tt-suggestions").append $newTermSuggestion
+	  @$menu.prepend $newTerm
 
 	
 

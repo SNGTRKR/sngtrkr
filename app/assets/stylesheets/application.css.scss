@@ -70,6 +70,12 @@ body {
         }
       }
     }
+    .tt-dropdown-menu {
+        width:248px;
+    }
+    .search-query:focus {
+      width:206px !important;
+    }
   }
 }
 /* ============================= */

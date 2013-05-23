@@ -54,15 +54,12 @@
 		padding:11px 0 15px !important;
 	}
 }
+.tt-hint {
+	height:18px !important;
+}
 .tt-dropdown-menu {
-	width:248px;
-	position:fixed !important;
-	top:45px !important;
+	width:323px;
 	left:400px !important;
-	z-index:0 !important;
-	@include transition-property(display);
-	@include transition-duration(0.4s);
-	@include transition-timing-function(ease-in);
 	.tt-suggestions {
 		.tt-suggestion {
 			background-color:#2A2A2A;
@@ -85,17 +82,21 @@
 							display:block;
 						}
 				}
-				&:first-child {
-					.inner-suggest {
-						border-top:none;
-						padding:10px 5px 7px;
-					}
-				}
 
 		}
 		.tt-is-under-cursor {
 			background-color:$blue;
 			color:#fff;
+		}
+	}
+	.tt-dataset-query {
+		.tt-suggestion {
+			padding:10px 5px 5px 5px;
+			border-bottom:1px solid #1A1A1A;
+			cursor:pointer;
+				span {
+					color:#fff;
+				}
 		}
 	}
 }

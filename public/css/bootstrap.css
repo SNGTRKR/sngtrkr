@@ -3447,7 +3447,7 @@ input[type="submit"].btn.btn-mini {
 }
 .navbar-inverse .navbar-search .search-query:focus,
 .navbar-inverse .navbar-search .search-query.focused {
-  padding: 5px 15px;
+/*  padding: 5px 15px;
   color: #333333;
   text-shadow: 0 1px 0 #ffffff;
   background-color: #ffffff;
@@ -3455,7 +3455,7 @@ input[type="submit"].btn.btn-mini {
   -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
-  outline: 0;
+  outline: 0;*/
 }
 .navbar-inverse .btn-navbar {
   color: #ffffff;
