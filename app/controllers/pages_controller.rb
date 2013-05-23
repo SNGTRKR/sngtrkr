@@ -12,7 +12,7 @@ class PagesController < ApplicationController
       return redirect_to '/tl'
     end
     @releases = Rails.cache.fetch("homepage_releases", :expires_in => 24.hours) do
-      Release.all(:limit => 66)
+      Release.includes(:artist).all(:limit => 66)
     end
   end
 
