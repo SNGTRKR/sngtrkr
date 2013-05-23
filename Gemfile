@@ -52,6 +52,14 @@ gem 'itunes-search-api'
 gem 'rails_admin'
 gem 'exception_notification', :require => 'exception_notifier'
 
+# DEBUGGING
+
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
+  gem 'meta_request' #, '0.2.1'
+end
+
 
 group :assets do
   # in production environments by default.
