@@ -100,3 +100,29 @@
 		}
 	}
 }
+.search-data-query {
+	width:323px;
+	display:none;
+	left:400px;
+	position:fixed;
+	top:46px;
+	z-index:5;
+	background-color:#2A2A2A;
+	font-family: "MuseoSans-500", Helvetica, Arial, sans-serif !important;
+	border-bottom:1px solid #1A1A1A;
+		div {
+			padding:12px 5px 7px;
+				span {
+					color:#fff;
+				}
+		}
+		a {
+			color:#848484;
+		}
+		&:hover {
+			background-color:$blue;
+				div {
+					color:#fff;
+				}
+		}
+}
