@@ -119,7 +119,6 @@
 			                    
 	                    	    <%= form_tag search_path , :method => 'get', :class => "navbar-search pull-left" do %>
 									<%= text_field_tag(:query, params[:query], :autocomplete => 'off', :placeholder => "Find artists and releases", :class => 'search-query') %>
-									<div class="search-data-query"></div>
 								    <%= link_to "#submit" do %>
 										<i class="icon-search"></i>
 								    <% end %>
@@ -261,5 +260,6 @@
             g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
             s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
+        <div class="search-data-query"></div>
 	</body>
 </html>

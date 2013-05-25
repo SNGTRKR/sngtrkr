@@ -866,7 +866,6 @@
             dropdown: {
                 position: "fixed",
                 top: "91px",
-                left: "400px",
                 zIndex: "0",
                 display: "none"
             }
