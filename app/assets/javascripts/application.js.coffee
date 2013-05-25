@@ -241,7 +241,7 @@ $(document).ready ->
     $('.search-query').blur ->
     	setTimeout (->
     		dataquery.hide()
-    	), 100
+    	), 150
 
     $('.search-query').focus ->
     	unless $('.search-query').val() is ""
