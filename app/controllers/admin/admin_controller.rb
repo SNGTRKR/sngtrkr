@@ -19,6 +19,8 @@ class Admin::AdminController < ApplicationController
     @follows_by_day = Follow.group('date_format(created_at,"%d-%m-%y")').limit(row_length).order('created_at DESC').count
     @suggests_by_day = Suggest.group('date_format(created_at,"%d-%m-%y")').limit(row_length).order('created_at DESC').count
     @artists_by_day = Artist.group('date_format(created_at,"%d-%m-%y")').limit(row_length).order('created_at DESC').count
+    @emails_by_day = Notification.group('date_format(sent_at,"%d-%m-%y")').limit(row_length).order('sent_at DESC').count
+
     @stats_by_day =  []
     for d in 0 .. row_length-1
       d_s = (Date.today - d).strftime("%d-%m-%y")
@@ -28,6 +30,7 @@ class Admin::AdminController < ApplicationController
         :follows => @follows_by_day[d_s],
         :suggests => @suggests_by_day[d_s],
         :artists => @artists_by_day[d_s],
+        :emails => @emails_by_day[d_s],
       }
     @stats_by_day.reverse
     end

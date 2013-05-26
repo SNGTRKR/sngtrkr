@@ -10,7 +10,7 @@ gem "best_in_place"
 
 # VERSION AND DEPLOYMENT
 group :production do
-  gem 'thin'
+  gem 'unicorn'
   gem 'therubyracer'
 end
 
@@ -58,8 +58,9 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem 'meta_request' #, '0.2.1'
+  gem 'pry'
+  gem 'capistrano-unicorn', :require => false
 end
-
 
 group :assets do
   # in production environments by default.

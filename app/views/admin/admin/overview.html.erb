@@ -29,6 +29,7 @@
                     <th>Artists</th>
                     <th>Follows</th>
                     <th>Suggests</th>
+                    <th>Emails</th>
                   </tr>
                 </thead>
                 <% @stats_by_day.each do |d| %>
@@ -38,6 +39,7 @@
                   <td><%= d[:artists] %></td>
                   <td><%= d[:follows] %></td>
                   <td><%= d[:suggests] %></td>
+                  <td><%= d[:emails] %></td>
                 </tr>
                 <% end %>
               </table>
