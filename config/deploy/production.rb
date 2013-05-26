@@ -1,4 +1,3 @@
-set :domain, 'sngtrkr.com'
 set :branch, 'master'
 set :applicationdir, "/var/www/sngtrkr"
 set :deploy_to, "/var/www/sngtrkr"

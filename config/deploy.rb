@@ -3,7 +3,7 @@ set :user, "deploy"
 set :scm, 'git'
 set :repository,  "https://github.com/SNGTRKR/sngtrkr.git"
 set :scm_verbose, true
-
+set :domain, 'sngtrkr.com'
 set :applicationdir, "/var/www/sngtrkr"
 set(:deploy_to) { applicationdir }
 set :rvm_ruby_string, "2.0"

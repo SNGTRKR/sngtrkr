@@ -59,6 +59,7 @@ group :development do
   gem "binding_of_caller"
   gem 'meta_request' #, '0.2.1'
   gem 'pry'
+  gem 'capistrano-unicorn', :require => false
 end
 
 group :assets do
