@@ -4,15 +4,10 @@ class SearchController < ApplicationController
   
   def omni
 
-    if request.format == :js
-      a_page = params[:a_page]
-      r_page = params[:r_page]
-      per_page = 20
-    elsif request.format == :json
-      page = 1
-      per_page = 100
-    end
-
+    a_page = params[:a_page]
+    r_page = params[:r_page]
+    per_page = 20
+    
     @search = params[:query]
 
     @artists_solr = Artist.search do

@@ -154,6 +154,13 @@ $(document).ready ->
 	  	 $('.scrollable_inner').css 'height', window_height - 81 #then calculating the height of the scrollable content, subtract the page navbar and padding
 	  else 
 	  	 $('.scrollable_inner').css 'height', scroll_height #if window height is not less than scrollbar inner div height, assign its original height
+	  # Positioning the typeahead results
+	  spos = $('.search-query').offset()
+	  $('.search-data-query').css "left", spos["left"]
+	  # Add the new attribute to the style tag, while retaining the current style attributes. Used to ensure !important rule is activated
+	  $(".tt-dropdown-menu").attr "style", (i, s) ->
+		  s + "left: " + spos['left'] + "px !important;"
+
 
 	  #check and add scrollbar if required on window resizing in real time
 	  $(window).resize -> 
@@ -164,6 +171,7 @@ $(document).ready ->
 	  	 $('.scrollable_inner').css 'height', window_height - 81 #then calculating the height of the scrollable content, subtract the page navbar and padding
 	   else 
 	  	 $('.scrollable_inner').css 'height', scroll_height
+
 
 	#search query
 	query = $('#tab3').data 'query'
@@ -213,7 +221,7 @@ $(document).ready ->
 	  template: "<div class='inner-suggest'><img src='{{image.image.url}}'/><span><div>{{value}}</div>{{label}}{{artist_name}}</span><div class='{{identifier}}'></div></div>"
 	  engine: Hogan
 	  limit: 6
-	).on("typeahead:selected", ($e, data) ->
+	).on "typeahead:selected", ($e, data) ->
 	  $typeahead = $(@)
 	  $form = $typeahead.parents('form').first()
 	  $form.submit()
@@ -221,38 +229,28 @@ $(document).ready ->
 	  	window.location = "/artists/" + data.artist_id + "/releases/" + data.id
 	  else if data.itentifier is "artist"
 	  	window.location = "/artists/" + data.id
-	  else
-	  	searchQuery = $(".search-query").val()
-	  	window.location = "/search?utf8=✓&query=" + searchQuery
-	#Temporary fix for moving down to first result on upon typing
-	).on "typeahead:opened", (a,b,c,d) ->
-        $('.tt-dataset-query .tt-suggestion').addClass "tt-is-under-cursor"
 
-    $('.search-query').bind "input", ->
-    	unless $('.search-query').val is ""
-    		$('.tt-dropdown-menu').css "display", "block"
-    		$('.tt-dataset-query .tt-suggestion').addClass "tt-is-under-cursor"
+ 	dataquery = $('.search-data-query')
 
-    # For older browsers
-    $(".search-query").keyup ->
-    	$('.tt-dataset-query .tt-suggestion').addClass "tt-is-under-cursor"
+	$('.search-query').bind "input", ->
+		if $('.search-query').val() is ""
+			dataquery.hide()
+		else
+	    	s_query = $('.search-query').val()
+	    	dataquery.show().html "<a href ='/search?utf8=✓&query=" + s_query + "'><div>Search for '<span>" + s_query + "</span>'</div></a>"
 
-	# Temporary fix for showing 'Search for..' result in typeahead
-	$(".search-query").data("ttView").dropdownView.on "suggestionsRendered", ->
-	  @$menu.find(".tt-dataset-query").remove()
-	  searchTerm = $(".search-query").val()
-	  $newTermSuggestion = $("<div class='tt-suggestion'>Search for '<span>" + searchTerm + "</span>'</div>")
-	  
-	  # Todo: searchterm should be url encoded
-	  $newTermSuggestion.data "suggestion",
-	    value: searchTerm
-	    datum:
-	      url: "/search?utf8=✓&query=" + searchTerm
-	      value: searchTerm
+    $('.search-query').blur ->
+    	setTimeout (->
+    		dataquery.hide()
+    	), 150
 
-	  $newTerm = $("<div class='tt-dataset-query' style='display:block'><span class='tt-suggestions' style='display:block'></span></div>")
-	  $newTerm.find(".tt-suggestions").append $newTermSuggestion
-	  @$menu.prepend $newTerm
+    $('.search-query').focus ->
+    	unless $('.search-query').val() is ""
+    		dataquery.show()
+
+    dataquery.hover ->
+    	$('.tt-suggestion').removeClass 'tt-is-under-cursor'
+
 
 	
 

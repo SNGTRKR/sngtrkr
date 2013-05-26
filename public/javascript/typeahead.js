@@ -865,8 +865,7 @@
             },
             dropdown: {
                 position: "fixed",
-                top: "45px",
-                left: "400px",
+                top: "91px",
                 zIndex: "0",
                 display: "none"
             }
