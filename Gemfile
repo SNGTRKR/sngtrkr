@@ -82,6 +82,12 @@ gem 'cancan'
 gem "koala"
 gem "omniauth-facebook"
 
+# Twitter
+gem 'twitter'
+
+# URL Shortener
+gem 'shortener'
+
 gem 'kaminari'
 
 gem 'sunspot_rails' #, :git => "git://github.com/mkrisher/sunspot.git", :branch => "task_warning_bypass"

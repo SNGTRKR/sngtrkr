@@ -140,4 +140,19 @@ class Release < ActiveRecord::Base
     end
   end
 
+  def self.twitter_update
+    @trel = Release.order("date").last
+    @tart = Artist.find(@trel.artist_id)
+    if Rails.env.development?
+      @tdomain = "http://dev.sngtrkr.com:3000"
+    else
+      @tdomain = "http://sngtrkr.com"
+    end
+    if @tart.genre?
+      @tgenre = "##{@tart.genre}"
+    end
+    @turl = Shortener::ShortenedUrl.generate("#{@tdomain}/artists/#{@tart.id}/releases/#{@trel.id}")
+    Twitter.update("#{@tart.name} - #{@trel.name}, released #{@trel.date.strftime("#{@trel.date.day.ordinalize} %B %Y ")} #{@tdomain}/#{@turl.unique_key}")
+  end
+
 end

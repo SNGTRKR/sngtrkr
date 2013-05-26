@@ -4,7 +4,11 @@ class UserMailer < ActionMailer::Base
   
   def welcome_email(user)
     @user = user # For the view
-    @domain = :root
+    if Rails.env.development?
+      @domain = "http://dev.sngtrkr.com:3000"
+    else
+      @domain = "http://sngtrkr.com"
+    end
     mail(:to => "#{@user.email}", :subject => "Welcome to SNGTRKR")
   end
   
@@ -40,7 +44,7 @@ class UserMailer < ActionMailer::Base
     end
 
     if Rails.env.development?
-      @domain = "http://localhost:3000"
+      @domain = "http://dev.sngtrkr.com:3000"
     else
       @domain = "http://sngtrkr.com"
     end
@@ -78,14 +82,6 @@ class UserMailer < ActionMailer::Base
   end
 
   class Preview
-    # Pull data from existing fixtures
-    # def invitation
-    #   account = Account.first
-    #   inviter, invitee = account.users[0, 2]
-    #   Notifier.invitation(inviter, invitee)
-    # end
-
-    # Factory-like pattern
     def welcome_email
       r = Role.create(:name => 'Admin')
       user = User.new(:id => '29', :first_name => 'Billy', :last_name => 'Dallimore', :fbid => "660815460", :email => "tom.alan.dallimore@googlemail.com",:password => 'test42343egysfdf', :last_sign_in_at => Time.now, 

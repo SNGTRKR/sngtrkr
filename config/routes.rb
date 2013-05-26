@@ -6,6 +6,8 @@ SNGTRKR::Application.routes.draw do
   
   match 'pages/:action' => 'pages#:action'
 
+  # match '/:id' => "shortener/shortened_urls#show"
+
   if Rails.env.development?
     mount RailsEmailPreview::Engine, :at => 'mail_preview' # You can choose any URL here
   end

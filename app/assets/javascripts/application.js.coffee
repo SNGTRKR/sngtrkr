@@ -155,11 +155,11 @@ $(document).ready ->
 	  else 
 	  	 $('.scrollable_inner').css 'height', scroll_height #if window height is not less than scrollbar inner div height, assign its original height
 	  # Positioning the typeahead results
-	  spos = $('.search-query').offset()
-	  $('.search-data-query').css "left", spos["left"]
+	  typepos = $('.search-query').offset()
+	  $('.search-data-query').css "left", typepos["left"]
 	  # Add the new attribute to the style tag, while retaining the current style attributes. Used to ensure !important rule is activated
 	  $(".tt-dropdown-menu").attr "style", (i, s) ->
-		  s + "left: " + spos['left'] + "px !important;"
+		  s + "left: " + typepos['left'] + "px !important;"
 
 
 	  #check and add scrollbar if required on window resizing in real time

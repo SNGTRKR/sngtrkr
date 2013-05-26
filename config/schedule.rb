@@ -25,3 +25,7 @@ end
 every 1.day, :at => '5:00 am' do
   rake "-s sitemap:refresh"
 end
+
+every 1.day, :at => '11:30am' do
+  runner "Release.twitter_update"
+end
