@@ -5,7 +5,7 @@ app_path = "/var/www/sngtrkr_staging"
 worker_processes 1
 preload_app true
 timeout 180
-listen "#{app_path}/shared/tmp/sockets/unicorn.sock", :backlog => 64
+listen "#{app_path}/shared/sockets/unicorn.sock", :backlog => 64
 listen "127.0.0.1:9000"
 
 user 'deploy', 'deploy' 
@@ -21,7 +21,7 @@ stderr_path "log/unicorn.log"
 stdout_path "log/unicorn.log"
 
 # Set master PID location
-pid "#{app_path}/shared/tmp/pids/unicorn.pid"
+pid "#{app_path}/shared/pids/unicorn.pid"
 
 before_fork do |server, worker|
   ActiveRecord::Base.connection.disconnect!
