@@ -1,16 +1,17 @@
 # Set your full path to application.
-app_path = "/var/www/sngtrkr_staging/current"
+app_path = "/var/www/sngtrkr_staging"
 
 # Set unicorn options
 worker_processes 1
 preload_app true
 timeout 180
+listen "#{app_path}/shared/tmp/sockets/unicorn.sock", :backlog => 64
 listen "127.0.0.1:9000"
 
 user 'deploy', 'deploy' 
 
 # Fill path to your app
-working_directory app_path
+working_directory "#{app_path}/current"
 
 # Should be 'production' by default, otherwise use other env 
 rails_env = ENV['RAILS_ENV'] || 'production'
@@ -20,7 +21,7 @@ stderr_path "log/unicorn.log"
 stdout_path "log/unicorn.log"
 
 # Set master PID location
-pid "#{app_path}/tmp/pids/unicorn.pid"
+pid "#{app_path}/shared/tmp/pids/unicorn.pid"
 
 before_fork do |server, worker|
   ActiveRecord::Base.connection.disconnect!
@@ -36,5 +37,6 @@ before_fork do |server, worker|
 end
 
 after_fork do |server, worker|
+  NewRelic::Agent.shutdown
   ActiveRecord::Base.establish_connection
 end
