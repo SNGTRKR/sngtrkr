@@ -6,7 +6,7 @@ worker_processes 1
 preload_app true
 timeout 180
 listen "#{app_path}/shared/sockets/unicorn.sock", :backlog => 64
-listen "127.0.0.1:9000"
+#listen "127.0.0.1:9000"
 
 user 'deploy', 'deploy' 
 
