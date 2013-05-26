@@ -6,8 +6,8 @@ class Release < ActiveRecord::Base
 
   mount_uploader :image, ReleaseUploader
 
-  has_many :notification, :dependent => :destroy
-  has_many :user_notifications, :through => :notification, :source => :user
+  has_many :notifications, :dependent => :destroy
+  has_many :user_notifications, :through => :notifications, :source => :user
   belongs_to :artist
 
   if !Rails.env.test?

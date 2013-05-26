@@ -58,8 +58,8 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem 'meta_request' #, '0.2.1'
+  gem 'pry'
 end
-
 
 group :assets do
   # in production environments by default.
