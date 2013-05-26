@@ -44,6 +44,9 @@ gem 'itunes-search-api'
 gem 'rails_admin'
 gem 'exception_notification', :require => 'exception_notifier'
 
+group :development, :test do
+  gem 'pry'
+end
 
 group :assets do
   # in production environments by default.

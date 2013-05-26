@@ -17,7 +17,11 @@ class UserMailer < ActionMailer::Base
     @user = user
     frequency = @user.email_frequency
 
-    @releases = user.release_notifications.order("date DESC").where("date < ?",Date.today+1).limit(20)
+    conditions = ["releases.date < ? and notifications.sent = ?",Date.today+1, false]
+
+    @releases = user.release_notifications.order("date DESC").where(conditions).limit(20)
+    
+    notifications = user.notifications.all(:include => [:release], :conditions => conditions, :limit => 20, :order => "date DESC")
     if @releases.empty?
       return false
     end
@@ -50,7 +54,9 @@ class UserMailer < ActionMailer::Base
     if opts[:deliver]
       m.deliver
     end
-    user.release_notifications.delete(@releases)
+    notifications.each do |n|
+      n.mark_as_sent!
+    end
 
     return m
 

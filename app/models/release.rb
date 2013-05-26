@@ -19,8 +19,8 @@ class Release < ActiveRecord::Base
     },
     :fog_public => true
 
-  has_many :notification, :dependent => :destroy
-  has_many :user_notifications, :through => :notification, :source => :user
+  has_many :notifications, :dependent => :destroy
+  has_many :user_notifications, :through => :notifications, :source => :user
   belongs_to :artist
 
   if !Rails.env.test?

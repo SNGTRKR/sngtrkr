@@ -21,8 +21,8 @@ class User < ActiveRecord::Base
 
   has_many :following, :through => :follow, :source => :artist
   has_many :suggested_all, :through => :suggest, :source => :artist
-  has_many :notification, :dependent => :delete_all
-  has_many :release_notifications, :through => :notification, :source => :release
+  has_many :notifications, :dependent => :delete_all
+  has_many :release_notifications, :through => :notifications, :source => :release
     
   before_save :default_values
   def default_values
