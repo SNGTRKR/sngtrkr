@@ -4,7 +4,7 @@ class Release < ActiveRecord::Base
   validates :date, :presence => true
   validates :artist_id, :presence => true
 
-  mount_uploader :image, ReleaseUploader
+  mount_uploader :image, ReleaseUploader, mount_on: :image_file_name
 
   has_many :notifications, :dependent => :destroy
   has_many :user_notifications, :through => :notifications, :source => :user

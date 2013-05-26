@@ -6,7 +6,7 @@ class Artist < ActiveRecord::Base
 
   belongs_to :label
 
-  mount_uploader :image, ArtistUploader
+  mount_uploader :image, ArtistUploader, mount_on: :image_file_name
 
   has_many :follow, :dependent => :delete_all
   has_many :suggest, :dependent => :delete_all
