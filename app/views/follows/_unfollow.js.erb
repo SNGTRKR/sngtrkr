@@ -1,9 +1,9 @@
 $("a.remove-trkr").bind("ajax:complete", function() {
     var artist_id = $(this).data("id");
-    var user_id = <%= current_user.id %>;
+    var user_id = <%= cached_current_user.id %>;
     $(this).replaceWith("<a href=\"/artists/" + artist_id + "/follows\" class=\"add-trkr btn track\" data-id=\"" + artist_id + "\" data-method=\"post\" data-remote=\"true\" format=\"html\" rel=\"nofollow\">Track</a>");
     <% @artist = Artist.find(params[:artist_id]) %>
-    $('#tracking-' + user_id).text(<%= current_user.following.count %>);
+    $('#tracking-' + user_id).text(<%= cached_current_user.following.count %>);
     $('#tracker-' + artist_id).text(<%= @artist.followers %>);
     $('#row-' + artist_id).addClass("fadeOutUp").slideUp();
 });

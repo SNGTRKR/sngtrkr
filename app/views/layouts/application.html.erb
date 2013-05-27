@@ -46,7 +46,7 @@
 		<div id="more_info">
 			<div class="container">
 				<div class="row-fluid">
-					<div class="<% if current_user %><% if !current_user.role? :admin %>offset1<% end %><% else %>offset1<% end %> span2">
+					<div class="<% if cached_current_user %><% if !cached_current_user.role? :admin %>offset1<% end %><% else %>offset1<% end %> span2">
 						<a href="/about">
 							<%= image_tag "/images/people.png" %>
 							<h4>About</h4>
@@ -78,8 +78,8 @@
 							</a>
 						</div>
 					<% end %>
-					<% if current_user %>
-						<% if current_user.role? :admin %>
+					<% if cached_current_user %>
+						<% if cached_current_user.role? :admin %>
 							<div class="span2">
 								<a href="/admin">
 									<i class="icon-wrench"></i>
@@ -94,7 +94,7 @@
 		<header role="banner">
 			<div class="navbar navbar-inverse navbar-fixed-top">
 			              <div class="navbar-inner">
-		                  	  <% if current_user %>
+		                  	  <% if cached_current_user %>
 								<%= link_to tl_path, :class => "brand" do %>
 									<%= image_tag "/images/logo-small.png" %>
 								<% end %>
@@ -105,11 +105,11 @@
 							  <% end %>
 			                    <ul class="nav">
 			                      <li class="divider-vertical"></li>
-			                      <% if current_user %>
+			                      <% if cached_current_user %>
 			                      <li class="<% if current_page?(tl_path) %>active<% end %>"><a href="/tl">Timeline</a></li>
 			                      <li class="divider-vertical"></li>
-			                      <li class="<% if current_page?(user_path(current_user)) %>active<% end %>">
-			                      	<%= link_to user_path(current_user) do %>
+			                      <li class="<% if current_page?(user_path(cached_current_user)) %>active<% end %>">
+			                      	<%= link_to user_path(cached_current_user) do %>
 				                      	Profile
 				                    <% end %>
 				                  </li>
@@ -126,7 +126,7 @@
 			                    <ul class="nav pull-right">
 				                    <li class="divider-vertical"></li>
 				                    <li>
-				                      	<% if !current_user %>
+				                      	<% if !cached_current_user %>
 											<a data-toggle="modal" data-target="#user_login" class="login">
 												Login
 											</a>
@@ -137,7 +137,7 @@
 										<% end %>	
 									</li>
 				                    <li class="divider-vertical"></li>
-				                    <% if !current_user %>
+				                    <% if !cached_current_user %>
 				                    <li>
 				                      	<a data-toggle="modal" data-target="#user_signup" class="signup">
 				                      		<div class="btn btn-warning">Sign up</div>
@@ -166,7 +166,7 @@
 		</div>
 		<div id="footer">
 		</div>
-		<% if !current_user %>
+		<% if !cached_current_user %>
 			<div class="modal hide fade" id="user_signup">
 			  <div class="modal-body">
 			  	<div class="top">
