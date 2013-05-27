@@ -3,8 +3,14 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!, :except => [:sitemap]
   before_filter :featured_artists, :only => [:home,:new]
   before_filter :define_user, :except => [:search]
+
+  cache_sweeper :user_sweeper  
   
   #check_authorization  :unless => :devise_controller? # Breaks rails admin
+  def cached_current_user
+    Rails.cache.fetch("users/user-#{current_user.id}", :expires_in => 1.day) { current_user }
+  end
+  helper_method :cached_current_user
 
   def define_user
       if user_signed_in?
@@ -20,8 +26,8 @@ class ApplicationController < ActionController::Base
   def self_only
     # But users can only edit themselves
     if(params[:user_id]) then id = params[:user_id] else id = params[:id] end
-    if(id == "me") then id = current_user.id else id = id.to_i end
-    if(id != current_user.id && !current_user.role?(:admin))
+    if(id == "me") then id = cached_current_user.id else id = id.to_i end
+    if(id != cached_current_user.id && !cached_current_user.role?(:admin))
       redirect_to :root, :flash => { :error => "You cannot change the settings of another user. If you are seeing
         this message when you are this user, contact us at support@sngtrkr.com" }
     end
@@ -57,8 +63,8 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource_or_scope)
-    if current_user.sign_in_count == 1 # First time user
-      u = current_user
+    if cached_current_user.sign_in_count == 1 # First time user
+      u = cached_current_user
       u.sign_in_count += 1
       u.save
       return '/intro'

@@ -3,7 +3,7 @@ class SuggestsController < ApplicationController
   load_and_authorize_resource
 
   def create
-    @suggest = current_user.suggest_artist params[:artist_id]
+    @suggest = cached_current_user.suggest_artist params[:artist_id]
     respond_to do |format|
       format.html { redirect_to artist_path(params[:artist_id])}
       format.json { render :json =>{ :response => :success } }
@@ -12,8 +12,8 @@ class SuggestsController < ApplicationController
   end
   
   def destroy
-    current_user.unsuggest_artist params[:artist_id]
-    @artist = current_user.suggested[5] rescue nil
+    cached_current_user.unsuggest_artist params[:artist_id]
+    @artist = cached_current_user.suggested[5] rescue nil
     respond_to do |format|
       format.html { render "artists/ajax_suggestion", :layout => false }
       if @artist

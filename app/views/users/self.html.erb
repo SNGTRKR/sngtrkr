@@ -11,7 +11,7 @@
             <ul id="myTab" class="nav nav-tabs nav-stacked each-tab">
               <li class="active">
             <% end %>
-                <a href="#tab1" data-toggle="tab"><i class="icon-screenshot"></i><span id="tracking-<%= current_user.id %>"><%= @user.following.count %></span> trackings</a>
+                <a href="#tab1" data-toggle="tab"><i class="icon-screenshot"></i><span id="tracking-<%= cached_current_user.id %>"><%= @user.following.count %></span> trackings</a>
             <% cache "user_info_2/#{@user.id}-#{@user.updated_at}", expires_in: 24.hours do %>
               </li>
               <li>
@@ -27,7 +27,7 @@
   <% end %>
   <div class="g_main g_tabs">
             <div class="tab-content profile-tab-content" id="myTabContent">
-          <div class="tab-pane active" id="tab1" data-user="<%= current_user.id %>">
+          <div class="tab-pane active" id="tab1" data-user="<%= cached_current_user.id %>">
             <% if !@user.following.count.zero? %>
               <table class="table table-striped">
                 <tbody>

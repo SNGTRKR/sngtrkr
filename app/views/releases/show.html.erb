@@ -57,8 +57,8 @@ content_for :og_type, "sngtrkr:release"
     </div>
   </div>
   <div class="g_main release_info"> 
-    <% if current_user %>
-      <% if current_user.role? :admin %>
+    <% if cached_current_user %>
+      <% if cached_current_user.role? :admin %>
         <div class="image">
           <div class="front">
           <%= image_tag @release.image.large %>
