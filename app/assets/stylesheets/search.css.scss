@@ -72,6 +72,7 @@
 					line-height:1.5em;
 					border-bottom:1px solid #1A1A1A;
 					border-top:1px solid #333333;
+					overflow:hidden;
 						img {
 							height:40px;
 							width:40px;
@@ -80,6 +81,23 @@
 						}
 						span {
 							display:block;
+							float:left;
+						}
+						.artist {
+							background-image:url(/images/ppl_white.png);
+							background-repeat:no-repeat;
+							width:30px;
+							height:20px;
+							float:right;
+							margin:10px 5px 0 0;
+						}
+						.release {
+							background-image:url(/images/release_wht.png);
+							background-repeat:no-repeat;
+							height:20px;
+							width:20px;
+							float:right;
+							margin:11px 10px 0 0;
 						}
 				}
 
@@ -123,5 +141,11 @@
 				div {
 					color:#fff;
 				}
+		}
+}
+.data-query-highlight {
+	background-color:$blue;
+		div {
+			color:#fff;
 		}
 }

@@ -13,6 +13,7 @@ spec/tmp/*
 rerun.txt
 pickle-email-*.html
 .project
+.idea
 
 vendor/cache/*
 tmp/cache/*

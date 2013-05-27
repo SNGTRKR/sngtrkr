@@ -41,8 +41,7 @@ $(document).ready ->
     	$(".share, .buy").each ->
 	    	$(this).popover "hide"
 		    $(this).removeClass "active"
-
-
+		    
 	$("body").on "click", (e) ->
 	  $(".share, .buy").each ->
 	    if not ($(this).is(e.target) or $(this).has(e.target).length > 0) and $(this).siblings(".popover").length isnt 0 and $(this).siblings(".popover").has(e.target).length is 0
@@ -53,30 +52,7 @@ $(document).ready ->
 		$('.front').toggleClass('front-flip')
 		$('.back').toggleClass('back-flip')
 
-	$(".share_sngtrkr").popover
-		html: true
-		content: $(".sngtrkr_pop").html();
-
-	$(".share_artist").each ->
-	  $elem = $(this)
-	  art_id = $elem.attr("id")
-	  $elem.popover
-	    html: true
-	    content: $(".art_pop_"+ art_id + "").html()
-
-	$(".share_release").each ->
-	  $elem = $(this)
-	  rel_id = $elem.attr("id")
-	  $elem.popover
-	    html: true
-	    content: $(".rel_pop_"+ rel_id + "").html()
-
-	$(".buy").each ->
-	  $elem = $(this)
-	  buy_id = $elem.attr("id")
-	  $elem.popover
-	    html: true
-	    content: $(".buy_pop_"+ buy_id + "").html()
+	popover_triggers()
 
 	#handling multiple modals, closing others when a modal is triggered
 	$('.signup').click ->
@@ -222,12 +198,9 @@ $(document).ready ->
 	  engine: Hogan
 	  limit: 6
 	).on "typeahead:selected", ($e, data) ->
-	  $typeahead = $(@)
-	  $form = $typeahead.parents('form').first()
-	  $form.submit()
 	  if data.identifier is "release"
 	  	window.location = "/artists/" + data.artist_id + "/releases/" + data.id
-	  else if data.itentifier is "artist"
+	  else
 	  	window.location = "/artists/" + data.id
 
  	dataquery = $('.search-data-query')
@@ -237,7 +210,7 @@ $(document).ready ->
 			dataquery.hide()
 		else
 	    	s_query = $('.search-query').val()
-	    	dataquery.show().html "<a href ='/search?utf8=✓&query=" + s_query + "'><div>Search for '<span>" + s_query + "</span>'</div></a>"
+	    	dataquery.show().html("<a href ='/search?utf8=✓&query=" + s_query + "'><div>Search for '<span>" + s_query + "</span>'</div></a>").addClass "data-query-highlight"
 
     $('.search-query').blur ->
     	setTimeout (->
@@ -246,10 +219,54 @@ $(document).ready ->
 
     $('.search-query').focus ->
     	unless $('.search-query').val() is ""
-    		dataquery.show()
+    		dataquery.show().addClass "data-query-highlight"
 
     dataquery.hover ->
     	$('.tt-suggestion').removeClass 'tt-is-under-cursor'
+
+    $('.tt-dropdown-menu').hover ->
+    	dataquery.removeClass "data-query-highlight"
+
+    $(".search-query").keydown (event) ->
+    	dataquery.removeClass "data-query-highlight"  if event.keyCode is 40
+    	dataquery.removeClass "data-query-highlight"  if event.keyCode is 38
+
+    	unless $('.tt-suggestion').hasClass "tt-is-under-cursor"
+    		dataquery.addClass "data-query-highlight"  if event.keyCode is 38
+    		dataquery.addClass "data-query-highlight"  if event.keyCode is 40
+
+    	if dataquery.hasClass "data-query-highlight"
+	    	$('.navbar-search').submit()  if event.keyCode is 13
+
+
+$(document).ajaxComplete ->
+	popover_triggers()
+
+popover_triggers = ->
+	$(".share_sngtrkr").popover
+		html: true
+		content: $(".sngtrkr_pop").html();
+
+	$(".share_artist").each ->
+	  $elem = $(this)
+	  art_id = $elem.attr("id")
+	  $elem.popover
+	    html: true
+	    content: $(".art_pop_"+ art_id).html()
+
+	$(".share_release").each ->
+	  $elem = $(this)
+	  rel_id = $elem.attr("id")
+	  $elem.popover
+	    html: true
+	    content: $(".rel_pop_"+ rel_id).html()
+
+	$(".buy").each ->
+	  $elem = $(this)
+	  buy_id = $elem.attr("id")
+	  $elem.popover
+	    html: true
+	    content: $(".buy_pop_"+ buy_id).html()
 
 
 	
