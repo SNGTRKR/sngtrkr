@@ -14,6 +14,6 @@ class UserSweeper < ActionController::Caching::Sweeper
   private
   def expire_cache_for(user)
     # Expire a fragment
-    expire_fragment("users/user-#{user.id}")
+    Rails.cache.delete("users/user-#{user.id}")
   end	
 end
