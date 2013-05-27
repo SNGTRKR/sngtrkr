@@ -15,7 +15,7 @@
 	<meta property="og:image"   	  content="<%= yield :og_image %>" />
 	<meta property="og:type"          content="<%= yield :og_type %>" />
 	<% if content_for? :og_id %>
-	<meta property="sngtrkr:id" content="<%= yield :og_id %>" />
+		<meta property="sngtrkr:id" content="<%= yield :og_id %>" />
 	<% end %>
 	<title><% if content_for?(:title) %><%= yield :title %> on SNGTRKR - Track your favourite artists, never miss another release<% else %>SNGTRKR - Track your favourite artists, never miss another release<% end %></title>
 	<meta name="description" content="<%= yield :description %>">
@@ -118,7 +118,7 @@
 					</ul>
 					
 					<%= form_tag search_path , :method => 'get', :class => "navbar-search pull-left" do %>
-					<%= text_field_tag(:query, params[:query], :autocomplete => 'off', :placeholder => "Find artists and releases", :class => 'search-query') %>
+					<%= text_field_tag(:query, params[:query], :autocomplete => 'off', :tabindex => "1", :placeholder => "Find artists and releases", :class => 'search-query') %>
 					<%= link_to "#submit" do %>
 					<i class="icon-search"></i>
 					<% end %>
