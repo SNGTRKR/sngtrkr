@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!, :except => [:sitemap]
   before_filter :featured_artists, :only => [:home,:new]
   before_filter :define_user, :except => [:search]
+
+  cache_sweeper :user_sweeper  
   
   #check_authorization  :unless => :devise_controller? # Breaks rails admin
   def cached_current_user
