@@ -1,0 +1,10 @@
+<div class="buy_pop buy_pop_<%= bpop.id %>">
+  <div class="buy_content">
+    <% if bpop.itunes? %>
+        <%= link_to image_tag("/images/social/it.png", :alt => "iTunes", :title => "iTunes"), bpop.itunes, :target => "_blank" %>
+    <% end %>
+    <% if bpop.sdigital %>
+        <%= link_to image_tag("/images/social/7d.png", :alt => "7Digital", :title => "7Digital"), bpop.sdigital, :target => "_blank" %>
+    <% end %>
+  </div>
+</div>

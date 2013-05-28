@@ -1,0 +1,20 @@
+<div class="rel_pop rel_pop_<%= rpop.id %>">
+  <div class="share_content">
+    <div>
+      <a href="#" alt="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [apop, rpop] %>%2F&t=SNGTRKR','Share on Facebook','scrollbars=no,width=620,height=340'); return false;">
+        <%= image_tag "/images/social/fb.png", :alt => "Facebook" %>
+      </a>
+      <a href="#" title="Share on Twitter" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [apop, rpop] %>&text=<%= apop.name %>+&#45;+<%= rpop.name %>+released+<%= rpop.date.strftime("#{rpop.date.day.ordinalize} %B %Y ") %>+&#45;+www.sngtrkr.com<%= url_for [apop, rpop] %>&via=SNGTRKR','Share on Twitter','scrollbars=no,width=620,height=340'); return false;">
+        <%= image_tag "/images/social/twitter.png", :alt => "Twitter" %>
+      </a>
+      <a href="#" title="Share on Tumblr" onClick="MyWindow=window.open('http://www.tumblr.com/share/link?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [apop, rpop] %>&name=<%= apop.name %>+&#45;+<%= rpop.name %>&description=Release Date: <%= rpop.date.strftime("#{rpop.date.day.ordinalize} %B %Y ") %><% if rpop.label_name %><br/>Label:<%= rpop.label_name %><br/><% else %><br/><br/><% end %><%= apop.name %> online:<br/><% if apop.fbid? %>http://www.facebook.com/<%= apop.fbid %><br/><% end %><% if apop.twitter? %>http://www.twitter.com/<%= apop.twitter %><br/><% end %><% if apop.youtube? %>http://www.youtube.com/<%= apop.youtube %><br/><% end %><% if apop.soundcloud? %>http://www.soundcloud.com/<%= apop.soundcloud %><br/><% end %><% if apop.website? %><%= apop.website %><% end %>','Share on Tumblr','scrollbars=no,width=620,height=340'); return false;">
+        <%= image_tag "/images/social/tb.png", :alt => "Tumblr" %>
+      </a>
+      <a href="#" title="Share on Google Plus" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [apop, rpop] %>','Share on Google+','scrollbars=no,width=620,height=340'); return false;">
+        <%= image_tag "/images/social/gplus.png", :alt => "Google+" %>
+      </a>
+    </div>
+    <span>Link:</span>
+    <input type="text" onClick="this.select();" value="<%= request.url %>">
+  </div>
+</div>
