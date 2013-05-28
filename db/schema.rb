@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130526161803) do
+ActiveRecord::Schema.define(:version => 20130528174957) do
 
   create_table "artists", :force => true do |t|
     t.string   "name",                                  :null => false
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(:version => 20130526161803) do
     t.text     "image_source"
     t.datetime "image_last_attempt"
     t.integer  "image_attempts"
+    t.boolean  "tweet"
   end
 
   add_index "releases", ["date", "artist_id"], :name => "index_releases_on_date_and_artist_id"

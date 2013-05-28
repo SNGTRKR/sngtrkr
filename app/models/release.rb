@@ -141,7 +141,7 @@ class Release < ActiveRecord::Base
   end
 
   def self.twitter_update
-    @trel = Release.order("date").last
+    @trel = Release.where(:tweet => nil).order("date DESC").first
     @tart = Artist.find(@trel.artist_id)
     if Rails.env.development?
       @tdomain = "http://dev.sngtrkr.com:3000"
@@ -153,6 +153,7 @@ class Release < ActiveRecord::Base
     end
     @turl = Shortener::ShortenedUrl.generate("#{@tdomain}/artists/#{@tart.id}/releases/#{@trel.id}")
     Twitter.update("#{@tart.name} - #{@trel.name}, released #{@trel.date.strftime("#{@trel.date.day.ordinalize} %B %Y ")} #{@tdomain}/#{@turl.unique_key}")
+    @trel.update_attribute('tweet', true)
   end
 
 end
