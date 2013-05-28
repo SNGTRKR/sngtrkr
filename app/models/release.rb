@@ -153,7 +153,7 @@ class Release < ActiveRecord::Base
     end
     @turl = Shortener::ShortenedUrl.generate("#{@tdomain}/artists/#{@tart.id}/releases/#{@trel.id}")
     Twitter.update("#{@tart.name} - #{@trel.name}, released #{@trel.date.strftime("#{@trel.date.day.ordinalize} %B %Y ")} #{@tdomain}/#{@turl.unique_key}")
-    @trel.update_attribute('tweet', true)
+    @trel.update_attribute(:tweet, true)
   end
 
 end
