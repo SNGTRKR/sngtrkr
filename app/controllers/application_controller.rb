@@ -1,35 +1,44 @@
 class ApplicationController < ActionController::Base
 
   before_filter :authenticate_user!, :except => [:sitemap]
-  before_filter :featured_artists, :only => [:home,:new]
+  before_filter :featured_artists, :only => [:home, :new]
   before_filter :define_user, :except => [:search]
 
-  cache_sweeper :user_sweeper  
-  
+  cache_sweeper :user_sweeper
+
   #check_authorization  :unless => :devise_controller? # Breaks rails admin
   def cached_current_user
     Rails.cache.fetch("users/user-#{current_user.id}", :expires_in => 1.day) { current_user }
   end
+
   helper_method :cached_current_user
 
   def define_user
-      if user_signed_in?
-        @app_friends = []
-        @app_friends = session["friends"]
-        @activities = User.recent_activities session["friends"]
-      else
-        @activities = []
-      end
-  end  
+    if user_signed_in?
+      @app_friends = []
+      @app_friends = session["friends"]
+      @activities = User.recent_activities session["friends"]
+    else
+      @activities = []
+    end
+  end
 
   # This action is to ensure a user cannot simply hack a URL to view another user's area
   def self_only
     # But users can only edit themselves
-    if(params[:user_id]) then id = params[:user_id] else id = params[:id] end
-    if(id == "me") then id = cached_current_user.id else id = id.to_i end
-    if(id != cached_current_user.id && !cached_current_user.role?(:admin))
-      redirect_to :root, :flash => { :error => "You cannot change the settings of another user. If you are seeing
-        this message when you are this user, contact us at support@sngtrkr.com" }
+    if (params[:user_id]) then
+      id = params[:user_id]
+    else
+      id = params[:id]
+    end
+    if (id == "me") then
+      id = cached_current_user.id
+    else
+      id = id.to_i
+    end
+    if (id != cached_current_user.id && !cached_current_user.role?(:admin))
+      redirect_to :root, :flash => {:error => "You cannot change the settings of another user. If you are seeing
+        this message when you are this user, contact us at support@sngtrkr.com"}
     end
   end
 
@@ -44,17 +53,17 @@ class ApplicationController < ActionController::Base
     flash[:error] = exception.message
     redirect_to root_url
   end
-  
+
   private
 
   def after_resending_confirmation_instructions_path_for(resource)
-            flash[:notice] = 'You still need to confirm your email change. A confirmation email was sent to <strong>tom.alan.dallimore@googlemail.com</strong>. Your email will not be changed until you complete 	this step!
+    flash[:notice] = 'You still need to confirm your email change. A confirmation email was sent to <strong>tom.alan.dallimore@googlemail.com</strong>. Your email will not be changed until you complete 	this step!
     		<div id="confirm-buttons">
       		<div class="o-button font-13 signika-font norm-o-pad left">Resend confirmation</div>
       	
       		<div class="clear"></div>
     		</div>'
-    		redirect_to :root
+    redirect_to :root
   end
 
   # Overwriting the sign_out redirect path method
@@ -77,13 +86,13 @@ class ApplicationController < ActionController::Base
 
   private
 
-   def disable_gc
-      GC.disable
-      begin
-        yield
-      ensure
-        GC.enable
-        GC.start
-      end
-   end
+  def disable_gc
+    GC.disable
+    begin
+      yield
+    ensure
+      GC.enable
+      GC.start
+    end
+  end
 end

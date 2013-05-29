@@ -4,8 +4,8 @@ class ArtistsController < ApplicationController
 
   load_and_authorize_resource :except => [:search]
 
-  before_filter :authenticate_user!, :except => [:show,:search,:index]
-  
+  before_filter :authenticate_user!, :except => [:show, :search, :index]
+
   before_filter :managed_artists_only, :only => [:edit, :update]
 
   # GET /artists/1
@@ -25,7 +25,7 @@ class ArtistsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @artist }
-      format.js do 
+      format.js do
         @follow = cached_current_user.follow.where(:artist_id => params[:id]).first
       end
     end
@@ -51,8 +51,8 @@ class ArtistsController < ApplicationController
       @sd_info = Hash.from_xml open("http://api.7digital.com/1.2/artist/details?artistid=#{CGI.escape(@artist.sdid)}&oauth_consumer_key=#{@@sevendigital_apikey}&country=GB&imageSize=350")
     end
     if @artist.itunes_id?
-      @itunes_info = ActiveSupport::JSON.decode( open("http://itunes.apple.com/lookup?id=#{@artist.itunes_id}&country=GB"))
-    end    
+      @itunes_info = ActiveSupport::JSON.decode(open("http://itunes.apple.com/lookup?id=#{@artist.itunes_id}&country=GB"))
+    end
     respond_to do |format|
       format.html
     end
@@ -102,7 +102,7 @@ class ArtistsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   # Used to import a single artist at a time
   def import
     @artist = ArtistScraper.fb_single_import(params[:token], params[:fb_id], cached_current_user.id)
@@ -111,7 +111,7 @@ class ArtistsController < ApplicationController
       format.js
     end
   end
-  
+
   # For first time users waiting for some initial artists to follow.
   def first_suggestions
     @user = cached_current_user
@@ -130,11 +130,11 @@ class ArtistsController < ApplicationController
     if params[:store] == '7digital'
       @sd_info = Scraper.artist_7digital_search params[:search]
     elsif params[:store] == 'itunes'
-      @itunes_info = ActiveSupport::JSON.decode( open("http://itunes.apple.com/search?term=#{ CGI.escape(params[:search])}&country=GB&limit=10&entity=musicArtist"))['results']
+      @itunes_info = ActiveSupport::JSON.decode(open("http://itunes.apple.com/search?term=#{ CGI.escape(params[:search])}&country=GB&limit=10&entity=musicArtist"))['results']
     else
       return render :nothing => true
     end
-    respond_to do |format| 
+    respond_to do |format|
       format.js
     end
   end
@@ -150,7 +150,7 @@ class ArtistsController < ApplicationController
 
     graph = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
     fb_data = graph.api("/#{params[:search]}?fields=name,general_manager,booking_agent,record_label,genre,hometown,website,bio,picture,likes")
-    
+
     puts "Creating new artist scraper object"
     artist_scraper = ArtistScraper.new :facebook_info => fb_data
 
@@ -175,5 +175,5 @@ class ArtistsController < ApplicationController
     @timeline_images = release_scraper.new_releases_images
 
   end
-  
+
 end

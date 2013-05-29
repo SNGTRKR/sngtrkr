@@ -1,151 +1,156 @@
 .result_search {
-	h1 {
-		float:left;
-	}
+  h1 {
+    float: left;
+  }
 }
-.search-tab-content {
-	.search_input {
-		margin-top:23px;
-		input {
-			width:90%;
-		}
-	}
-	.result {
-		padding:15px 0;
-		border-bottom:1px solid #d1d1d1; 
-		overflow:hidden;
-			.image {
-				margin-right:15px;
-				float:left;
-			}
-			span {
-				display:block;
-				div {
-					color:$orange;
-					font-family: "MuseoSans-500", Helvetica, Arial, sans-serif !important;
-				}
-				i {
-					position:relative;
-					top:-1px;
-					margin-right:10px;
-				}
-			}
-			a {
-				color:$orange;
-			}
-			.artist_l {
-				color:$darkgray;
-					&:hover {
-						color:$blue;
-					}
-			}
-			.btn {
-				float:left;
-				margin:9px 10px 0 0 !important;
-				color:$darkgray;
-				i {
-					position:relative;
-					top:1px;
-					margin-right:5px;
-				}
-			}
-	}
-	.tab-pane .result:first-child {
-		padding:11px 0 15px !important;
-	}
-}
-.tt-hint {
-	height:18px !important;
-}
-.tt-dropdown-menu {
-	width:323px;
-	left:400px !important;
-	.tt-suggestions {
-		.tt-suggestion {
-			background-color:#2A2A2A;
-			color:#848484;
-			overflow:hidden;
-			font-family: "MuseoSans-500", Helvetica, Arial, sans-serif !important;
-				.inner-suggest {
-					padding:5px 5px 5px;
-					font-size:13px;
-					line-height:1.5em;
-					border-bottom:1px solid #1A1A1A;
-					border-top:1px solid #333333;
-					overflow:hidden;
-						img {
-							height:40px;
-							width:40px;
-							float:left;
-							margin-right:10px;
-						}
-						span {
-							display:block;
-							float:left;
-						}
-						.artist {
-							background-image:url(/images/ppl_white.png);
-							background-repeat:no-repeat;
-							width:30px;
-							height:20px;
-							float:right;
-							margin:10px 5px 0 0;
-						}
-						.release {
-							background-image:url(/images/release_wht.png);
-							background-repeat:no-repeat;
-							height:20px;
-							width:20px;
-							float:right;
-							margin:11px 10px 0 0;
-						}
-				}
 
-		}
-		.tt-is-under-cursor {
-			background-color:$blue;
-			color:#fff;
-		}
-	}
-	.tt-dataset-query {
-		.tt-suggestion {
-			padding:10px 5px 5px 5px;
-			border-bottom:1px solid #1A1A1A;
-			cursor:pointer;
-				span {
-					color:#fff;
-				}
-		}
-	}
+.search-tab-content {
+  .search_input {
+    margin-top: 23px;
+    input {
+      width: 90%;
+    }
+  }
+  .result {
+    padding: 15px 0;
+    border-bottom: 1px solid #d1d1d1;
+    overflow: hidden;
+    .image {
+      margin-right: 15px;
+      float: left;
+    }
+    span {
+      display: block;
+      div {
+        color: $orange;
+        font-family: "MuseoSans-500", Helvetica, Arial, sans-serif !important;
+      }
+      i {
+        position: relative;
+        top: -1px;
+        margin-right: 10px;
+      }
+    }
+    a {
+      color: $orange;
+    }
+    .artist_l {
+      color: $darkgray;
+      &:hover {
+        color: $blue;
+      }
+    }
+    .btn {
+      float: left;
+      margin: 9px 10px 0 0 !important;
+      color: $darkgray;
+      i {
+        position: relative;
+        top: 1px;
+        margin-right: 5px;
+      }
+    }
+  }
+  .tab-pane .result:first-child {
+    padding: 11px 0 15px !important;
+  }
 }
+
+.tt-hint {
+  height: 18px !important;
+}
+
+.tt-dropdown-menu {
+  width: 323px;
+  left: 400px !important;
+  .tt-suggestions {
+    .tt-suggestion {
+      background-color: #2A2A2A;
+      color: #848484;
+      overflow: hidden;
+      font-family: "MuseoSans-500", Helvetica, Arial, sans-serif !important;
+      .inner-suggest {
+        padding: 5px 5px 5px;
+        font-size: 13px;
+        line-height: 1.5em;
+        border-bottom: 1px solid #1A1A1A;
+        border-top: 1px solid #333333;
+        overflow: hidden;
+        img {
+          height: 40px;
+          width: 40px;
+          float: left;
+          margin-right: 10px;
+        }
+        span {
+          display: block;
+          float: left;
+        }
+        .artist {
+          background-image: url(/images/ppl_white.png);
+          background-repeat: no-repeat;
+          width: 30px;
+          height: 20px;
+          float: right;
+          margin: 10px 5px 0 0;
+        }
+        .release {
+          background-image: url(/images/release_wht.png);
+          background-repeat: no-repeat;
+          height: 20px;
+          width: 20px;
+          float: right;
+          margin: 11px 10px 0 0;
+        }
+      }
+
+    }
+    .tt-is-under-cursor {
+      background-color: $blue;
+      color: #fff;
+    }
+  }
+  .tt-dataset-query {
+    .tt-suggestion {
+      padding: 10px 5px 5px 5px;
+      border-bottom: 1px solid #1A1A1A;
+      cursor: pointer;
+      span {
+        color: #fff;
+      }
+    }
+  }
+}
+
 .search-data-query {
-	width:323px;
-	display:none;
-	position:fixed;
-	top:46px;
-	z-index:5;
-	background-color:#2A2A2A;
-	font-family: "MuseoSans-500", Helvetica, Arial, sans-serif !important;
-	border-bottom:1px solid #1A1A1A;
-		div {
-			padding:12px 5px 7px;
-				span {
-					color:#fff;
-				}
-		}
-		a {
-			color:#848484;
-		}
-		&:hover {
-			background-color:$blue;
-				div {
-					color:#fff;
-				}
-		}
+  width: 323px;
+  display: none;
+  position: fixed;
+  top: 46px;
+  z-index: 5;
+  background-color: #2A2A2A;
+  font-family: "MuseoSans-500", Helvetica, Arial, sans-serif !important;
+  border-bottom: 1px solid #1A1A1A;
+  div {
+    padding: 12px 5px 7px;
+    span {
+      color: #fff;
+    }
+  }
+  a {
+    color: #848484;
+  }
+  &:hover {
+    background-color: $blue;
+    div {
+      color: #fff;
+    }
+  }
 }
+
 .data-query-highlight {
-	background-color:$blue;
-		div {
-			color:#fff;
-		}
+  background-color: $blue;
+  div {
+    color: #fff;
+  }
 }

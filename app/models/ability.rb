@@ -1,6 +1,7 @@
 class Ability
   include CanCan::Ability
   include Devise
+
   def initialize(user)
     if user.blank? or user.roles.empty?
       # Guest user permissions
@@ -10,18 +11,18 @@ class Ability
       # Logged in user permissions
       user_permissions(user)
     end
-    
+
     if user.role? :admin
       # Admin permissions
       admin_permissions(user)
     end
   end
-  
+
   def guest_permissions(user)
-      can :read, [Artist, Release] 
-      can :manage, User
+    can :read, [Artist, Release]
+    can :manage, User
   end
-  
+
   def user_permissions(user)
     guest_permissions(user)
     can :manage, [User, Timeline]
@@ -34,10 +35,10 @@ class Ability
 
     can :search, [Artist]
   end
-  
+
   def admin_permissions(user)
     user_permissions(user)
     can :manage, :all
   end
-  
+
 end

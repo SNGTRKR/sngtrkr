@@ -1,7 +1,7 @@
 set :application, "sngtrkr"
 set :user, "deploy"
 set :scm, 'git'
-set :repository,  "https://github.com/SNGTRKR/sngtrkr.git"
+set :repository, "https://github.com/SNGTRKR/sngtrkr.git"
 set :scm_verbose, true
 set :domain, 'sngtrkr.com'
 set :applicationdir, "/var/www/sngtrkr"
@@ -9,9 +9,9 @@ set(:deploy_to) { applicationdir }
 set :rvm_ruby_string, "2.0"
 set :rvm_type, :user
 
-role(:web) { domain }                          # Your HTTP server, Apache/etc
-role(:app) { domain }                          # This may be the same as your `Web` server
-role(:db, :primary => true) { domain }        # This is where Rails migrations will run
+role(:web) { domain } # Your HTTP server, Apache/etc
+role(:app) { domain } # This may be the same as your `Web` server
+role(:db, :primary => true) { domain } # This is where Rails migrations will run
 
 set :stages, %w(production staging)
 set :default_stage, "staging"
@@ -29,16 +29,16 @@ after "deploy:restart", "deploy:cleanup"
 set :deploy_via, :remote_cache
 
 # additional settings
-default_run_options[:pty] = true  # Forgo errors when deploying from windows
- 
+default_run_options[:pty] = true # Forgo errors when deploying from windows
+
 namespace :solr do
   desc "start solr"
-  task :start, :roles => :app, :except => { :no_release => true } do 
+  task :start, :roles => :app, :except => {:no_release => true} do
     run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:start"
   end
 
   desc "stop solr"
-  task :stop, :roles => :app, :except => { :no_release => true } do 
+  task :stop, :roles => :app, :except => {:no_release => true} do
     run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:stop"
   end
 
@@ -52,7 +52,7 @@ namespace :solr do
   end
 
   desc "Symlink in-progress deployment to a shared Solr index"
-  task :symlink, :except => { :no_release => true } do
+  task :symlink, :except => {:no_release => true} do
     run "ln -s #{shared_path}/solr/data/ #{release_path}/solr/data"
     run "ln -s #{shared_path}/solr/pids/ #{release_path}/solr/pids"
   end

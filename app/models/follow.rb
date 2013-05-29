@@ -22,7 +22,7 @@ class Follow < ActiveRecord::Base
   end
 
   def destroy_unfollowed_artist
-    if Follow.where("artist_id = ?",self.artist_id).count == 1
+    if Follow.where("artist_id = ?", self.artist_id).count == 1
       artist.destroy
     end
   end

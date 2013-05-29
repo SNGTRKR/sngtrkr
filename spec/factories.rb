@@ -2,19 +2,19 @@ FactoryGirl.define do
 
   factory :user do
     first_name "John"
-    last_name  "Doe"
-    sequence(:email){|n| "user#{n}@factory.com" }
+    last_name "Doe"
+    sequence(:email) { |n| "user#{n}@factory.com" }
     password "1234554321"
     email_frequency 1
-    sequence(:fbid){|n| n}
+    sequence(:fbid) { |n| n }
     confirmed_at Time.now
   end
 
   factory :artist do
     name "RadioTest"
-    sequence(:fbid){|n| n}
-    sequence(:itunes_id){|n| n}
-    sequence(:sdid){|n| n}
+    sequence(:fbid) { |n| n }
+    sequence(:itunes_id) { |n| n }
+    sequence(:sdid) { |n| n }
 
     factory :artist_with_follower do
       after(:create) do |artist|
@@ -25,8 +25,8 @@ FactoryGirl.define do
 
   factory :release do
     association :artist, factory: :artist
-    sequence(:name){|n| "ReleaseTest#{n}"} 
-    sequence(:date){|d| Date.today - d.days}
+    sequence(:name) { |n| "ReleaseTest#{n}" }
+    sequence(:date) { |d| Date.today - d.days }
   end
 
 end

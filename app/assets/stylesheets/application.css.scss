@@ -8,27 +8,27 @@ $lightgray: #DDDDDD;
 @font-face {
   font-family: "MuseoSans-100";
   src: url("/font/MuseoSans-100.otf");
-  src: local("?"),
-    url("/font/MuseoSans-100.otf") format("opentype");
+  src: local("?"), url("/font/MuseoSans-100.otf") format("opentype");
 }
+
 @font-face {
   font-family: "MuseoSans-300";
   src: url("/font/MuseoSans-300.otf");
-  src: local("?"),
-    url("/font/MuseoSans-300.otf") format("opentype");
+  src: local("?"), url("/font/MuseoSans-300.otf") format("opentype");
 }
+
 @font-face {
   font-family: "MuseoSans-500";
   src: url("/font/MuseoSans_500.otf");
-  src: local("?"),
-    url("/font/MuseoSans_500.otf") format("opentype");
+  src: local("?"), url("/font/MuseoSans_500.otf") format("opentype");
 }
+
 @font-face {
   font-family: "MuseoSans-700";
   src: url("/font/MuseoSans_700.otf");
-  src: local("?"),
-    url("/font/MuseoSans_700.otf") format("opentype");
+  src: local("?"), url("/font/MuseoSans_700.otf") format("opentype");
 }
+
 @import "grid.css.scss";
 @import "font-awesome";
 @import "navbar.css.scss";
@@ -46,13 +46,15 @@ $lightgray: #DDDDDD;
 @import "artist.css.scss";
 
 body {
-    line-height:1.8em !important;
-  	background: url('/images/bg_body-noise.png') repeat;
-    text-shadow: 0.5px 0.5px 0 rgba(240, 240, 240, 1); 
+  line-height: 1.8em !important;
+  background: url('/images/bg_body-noise.png') repeat;
+  text-shadow: 0.5px 0.5px 0 rgba(240, 240, 240, 1);
 }
+
 .container-fluid {
-  min-width:850px;
+  min-width: 850px;
 }
+
 /* ============================= */
 /* ! Layout for tablet  */
 /* ============================= */
@@ -61,23 +63,24 @@ body {
     .sections {
       .section {
         &:nth-child(even) > .col:last-child {
-          float:left;
-          width:400px;
-          margin-left:30px;
+          float: left;
+          width: 400px;
+          margin-left: 30px;
         }
         .discover {
-          width:379px !important;
+          width: 379px !important;
         }
       }
     }
     .tt-dropdown-menu {
-        width:248px;
+      width: 248px;
     }
     .search-query:focus {
-      width:206px !important;
+      width: 206px !important;
     }
   }
 }
+
 /* ============================= */
 /* ! Small desktop  */
 /* ============================= */
@@ -86,7 +89,7 @@ body {
     .g_three_col {
       .g_main {
         padding: 30px 30px 0 0;
-        margin:0 0 0 225px;
+        margin: 0 0 0 225px;
       }
     }
   }

@@ -6,8 +6,8 @@ class PagesController < ApplicationController
   caches_action :privacy, :layout => false
   caches_action :terms, :layout => false
 
-  def home    
-    if(user_signed_in?)
+  def home
+    if (user_signed_in?)
       flash.keep
       return redirect_to '/tl'
     end
@@ -16,15 +16,15 @@ class PagesController < ApplicationController
     end
   end
 
-  def about  
-    
+  def about
+
   end
-  
+
   def privacy
-  
+
   end
-  
+
   def terms
-  
+
   end
 end

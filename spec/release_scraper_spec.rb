@@ -9,15 +9,15 @@ describe "ReleaseScraper" do
   end
 
   it "improves the name of an existing release" do
-    old_release = @a.releases.build(:name => "You Should Know [Remixes]",:sd_id => 123, :date => Date.today, :scraped => true)
+    old_release = @a.releases.build(:name => "You Should Know [Remixes]", :sd_id => 123, :date => Date.today, :scraped => true)
     old_release.save!
-    
+
     @rs.class.improve_all
     Release.first.name.should == "You Should Know"
   end
 
   it "gets last.fm artwork" do
-    image = File.open(File.join('spec','sample_data','release_100.jpeg'))
+    image = File.open(File.join('spec', 'sample_data', 'release_100.jpeg'))
     r = create(:release)
     r.image = image
     r.save

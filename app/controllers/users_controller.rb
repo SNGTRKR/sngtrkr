@@ -16,20 +16,20 @@ class UsersController < ApplicationController
 
   # GET /users/1
   # GET /users/1.json
-  def show  
+  def show
     # Check if this is your page
     if cached_current_user.id == params[:id].to_i
       @user = cached_current_user
-      
+
       @following = @user.following.joins(:follow).select('artists.*, COUNT(follows.artist_id) as followers').group('artists.id').ordered.page(params[:page])
       @following_pages = @following.num_pages
       respond_to do |format|
         format.js { render :partial => 'users/new_following', :formats => [:js] }
         format.html { render '/users/self' }
       end
-      
+
     else
-    
+
       @friend = User.find(params[:id])
       @following = @friend.following.ordered.page(params[:page])
       # Do we want to stop users viewing other users if they aren't facebook friends?
@@ -48,8 +48,8 @@ class UsersController < ApplicationController
 
   # Allows a user to see their profile from an oustide perspective
   def public
-      @friend = User.find(params[:id])
-      render :show
+    @friend = User.find(params[:id])
+    render :show
   end
 
   # GET /users/new
@@ -72,8 +72,8 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
-  def destroy      
+
+  def destroy
     @user = User.find(params[:id])
     @user.destroy
 

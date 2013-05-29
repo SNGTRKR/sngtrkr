@@ -10,22 +10,22 @@ class ReleaseScraper
     @proxy = Scraper.proxy
     @releases = @artist.releases
     @new_releases = []
-    if(opts[:preview_mode])
+    if (opts[:preview_mode])
       @preview_mode = true
       @new_releases_images = []
     end
   end
 
   def import opts={}
-    sdigital_releases = Hash.from_xml( 
+    sdigital_releases = Hash.from_xml(
         open("http://api.7digital.com/1.2/artist/releases?artistId=#{@artist.sdid}&oauth_consumer_key=#{@sevendigital_apikey}&country=GB&imageSize=350", :proxy => @proxy)
-      )["response"]["releases"]["release"]
-    sd_count = sdigital_import(sdigital_releases,opts) || 0
-    itunes_releases = ActiveSupport::JSON.decode( open("http://itunes.apple.com/lookup?id=#{@artist.itunes_id}&entity=album&country=GB", :proxy => @proxy))['results']
-    it_count = itunes_import(itunes_releases,opts) || 0
-    
+    )["response"]["releases"]["release"]
+    sd_count = sdigital_import(sdigital_releases, opts) || 0
+    itunes_releases = ActiveSupport::JSON.decode(open("http://itunes.apple.com/lookup?id=#{@artist.itunes_id}&entity=album&country=GB", :proxy => @proxy))['results']
+    it_count = itunes_import(itunes_releases, opts) || 0
+
     puts "Imported #{sd_count} 7digital releases and #{it_count} iTunes releases for #{@artist.name}"
-    
+
     save_all
   end
 
@@ -41,16 +41,19 @@ class ReleaseScraper
     end
     # Skip large images
     return false unless old_image_size < 15000
-    image_path =  if opts[:test_image]
-                    opts[:test_image]
-                  else
-                    Scraper.lastfm_album_image(r.artist.name, r.name)
-                  end
+    image_path = if opts[:test_image]
+                   opts[:test_image]
+                 else
+                   Scraper.lastfm_album_image(r.artist.name, r.name)
+                 end
     return false unless image_path
     io = open(image_path, :proxy => @proxy)
     if io
-      def io.original_filename; base_uri.path.split('/').last; end
-      io.original_filename.blank? ? nil : io      
+      def io.original_filename;
+        base_uri.path.split('/').last;
+      end
+
+      io.original_filename.blank? ? nil : io
       r.image = io
     end
 
@@ -71,36 +74,36 @@ class ReleaseScraper
   end
 
   def duplicates? title, date = false
-      title_processed = title.downcase
-      all_releases = @releases.collect { |r| {:name => r.name.downcase, :date => r.date, :id => r.id} }
+    title_processed = title.downcase
+    all_releases = @releases.collect { |r| {:name => r.name.downcase, :date => r.date, :id => r.id} }
 
-      # Check for duplicate and skip if present
-      existing_duplicate = all_releases.detect do |f| 
-        # Identical check
-        if title_processed == f[:name].downcase
-          return true
-        end
-        # Ignore similar titles unless the longer one contains the word remix
-        if !title_processed["remix"] and !f[:name].downcase["remix"] 
-          if f[:name].include? title_processed
-            return true
-          elsif title_processed.include? f[:name]
-            return true
-          end
-        end
-      end
-
-      if date and existing_duplicate
-        # If the new release came out earlier, change the release date of the existing release in the DB.
-        if existing_duplicate[:date] > date
-          r = Release.find(existing_duplicate[:id])
-          r.date = date
-          puts "Rewound release date of #{existing_duplicate[:name]} to #{existing_duplicate[:date]}"
-          r.save!
-        end
+    # Check for duplicate and skip if present
+    existing_duplicate = all_releases.detect do |f|
+      # Identical check
+      if title_processed == f[:name].downcase
         return true
       end
-      return false
+      # Ignore similar titles unless the longer one contains the word remix
+      if !title_processed["remix"] and !f[:name].downcase["remix"]
+        if f[:name].include? title_processed
+          return true
+        elsif title_processed.include? f[:name]
+          return true
+        end
+      end
+    end
+
+    if date and existing_duplicate
+      # If the new release came out earlier, change the release date of the existing release in the DB.
+      if existing_duplicate[:date] > date
+        r = Release.find(existing_duplicate[:id])
+        r.date = date
+        puts "Rewound release date of #{existing_duplicate[:name]} to #{existing_duplicate[:date]}"
+        r.save!
+      end
+      return true
+    end
+    return false
   end
 
   def sdigital_import releases, opts={}
@@ -117,7 +120,7 @@ class ReleaseScraper
         if release["id"].blank?
           next
         end
-        existing_releases = @artist.releases.where("sd_id = ?",release["id"])
+        existing_releases = @artist.releases.where("sd_id = ?", release["id"])
         if !existing_releases.empty?
           if opts[:improve_existing]
             r = existing_releases.first
@@ -132,7 +135,7 @@ class ReleaseScraper
         puts "RELEASE 7DIGITAL: A release for #{@artist.name} FAILED"
         next
       end
-      
+
       title = release["title"]
       # Only skip if we AREN'T improving an existing release
       if r.nil? and duplicates? title, release["releaseDate"]
@@ -151,9 +154,9 @@ class ReleaseScraper
       r.sdigital = release["url"]
       r.upc = release["barcode"]
       r.scraped = true
-      
+
       # iTunes UPC lookup
-      itunes_release = ActiveSupport::JSON.decode( open("http://itunes.apple.com/lookup?upc=#{release["barcode"]}&country=GB", :proxy => @proxy))['results'][0]
+      itunes_release = ActiveSupport::JSON.decode(open("http://itunes.apple.com/lookup?upc=#{release["barcode"]}&country=GB", :proxy => @proxy))['results'][0]
       if !itunes_release.nil?
         r.itunes = itunes_release['collectionViewUrl']
         itunes_date = Time.zone.parse itunes_release['releaseDate']
@@ -162,10 +165,10 @@ class ReleaseScraper
           r.date = itunes_date
         end
       end
-      
+
       # Source the artwork from last.fm
       begin
-        album_info = Scraper.lastfm_album_info(@artist.name, r.name) 
+        album_info = Scraper.lastfm_album_info(@artist.name, r.name)
         best_artwork = album_info['image'].last
       rescue
         best_artwork = nil
@@ -177,8 +180,11 @@ class ReleaseScraper
         else
           io = open(best_artwork, :proxy => @proxy)
           if io
-            def io.original_filename; base_uri.path.split('/').last; end
-            io.original_filename.blank? ? nil : io      
+            def io.original_filename;
+              base_uri.path.split('/').last;
+            end
+
+            io.original_filename.blank? ? nil : io
             r.image = io
           end
         end
@@ -190,8 +196,11 @@ class ReleaseScraper
           # Source the artwork from 7digital if last.fm don't have it.
           io = open(release["image"], :proxy => @proxy)
           if io
-            def io.original_filename; base_uri.path.split('/').last; end
-            io.original_filename.blank? ? nil : io      
+            def io.original_filename;
+              base_uri.path.split('/').last;
+            end
+
+            io.original_filename.blank? ? nil : io
             r.image = io
           end
         end
@@ -215,8 +224,8 @@ class ReleaseScraper
     return import_count
 
   end
-    
-  def itunes_import itunes_releases,opts={}
+
+  def itunes_import itunes_releases, opts={}
     import_count = 0
 
     if !@artist.itunes_id?
@@ -234,11 +243,11 @@ class ReleaseScraper
         end
       else
         r = nil
-      end 
-      
+      end
+
       title = itunes_release["collectionName"]
       next if duplicates? title, itunes_release['releaseDate']
-        
+
       r ||= @artist.releases.build
       puts("RELEASE ITUNES: #{@artist.name} and #{itunes_release['collectionName']}")
       r.itunes = itunes_release['collectionViewUrl']
@@ -248,16 +257,16 @@ class ReleaseScraper
       r.name = itunes_release["collectionName"]
       r.date = itunes_release['releaseDate']
       r.scraped = true
-      
+
       album_info = Scraper.lastfm_album_info(@artist.name, r.name)
       if album_info and album_info['image'].is_a? Array
         best_artwork = album_info['image'].last
         # Itunes artwork is really shit quality so only use it if we must...
       end
-      
+
       if !best_artwork and itunes_release["artworkUrl100"]
         if @preview_mode
-        puts "IMAGE ITUNES: #{itunes_release["artworkUrl100"]}"
+          puts "IMAGE ITUNES: #{itunes_release["artworkUrl100"]}"
           @new_releases_images << itunes_release["artworkUrl100"]
         else
           next # SKIP IF LAST.FM DOESN"T HAVE ARTWORK
@@ -298,8 +307,8 @@ class ReleaseScraper
 
     if Rails.env.production? and (Time.now).wday == 1 and (Time.now).hour == 9
       # Notify Matt that the Cron job ran
-      m = ActionMailer::Base.mail(:from => "cron@sngtrkr.com", :to => "bessey@gmail.com", 
-          :subject => '[SNGTRKR Cron] Successfully ran.') do |format|
+      m = ActionMailer::Base.mail(:from => "cron@sngtrkr.com", :to => "bessey@gmail.com",
+                                  :subject => '[SNGTRKR Cron] Successfully ran.') do |format|
         format.text { render :text => "The hourly Release cronjob has run as expected" }
       end
       m.body = "The hourly Release cronjob has run as expected"
@@ -309,4 +318,4 @@ class ReleaseScraper
   end
 
 
-  end
+end

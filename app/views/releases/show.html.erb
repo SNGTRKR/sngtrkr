@@ -1,178 +1,210 @@
-<% content_for :og_name, @release.name  
-content_for :og_url, request.url  
-content_for :og_image, File.join(@release.image.medium.url) 
-content_for :og_description, "#{@release.name} by #{@artist.name}. Released #{@release.date.strftime("#{@release.date.day.ordinalize} %B %Y ")}"
-content_for :og_id, @release.id.to_s  
-content_for :og_type, "sngtrkr:release" 
+<% content_for :og_name, @release.name
+   content_for :og_url, request.url
+   content_for :og_image, File.join(@release.image.medium.url)
+   content_for :og_description, "#{@release.name} by #{@artist.name}. Released #{@release.date.strftime("#{@release.date.day.ordinalize} %B %Y ")}"
+   content_for :og_id, @release.id.to_s
+   content_for :og_type, "sngtrkr:release"
 %>
-<% content_for :title do %><%= @release.name %> release information by <%= @artist.name %><% end %>
-<% content_for :description do %><%= @release.name %> release information by <%= @artist.name %>. Released <%= @release.date.strftime("#{@release.date.day.ordinalize} %B %Y ") %> by <%= @release.label_name %> <% end %>
+<% content_for :title do %><%= @release.name %> release information by <%= @artist.name %>
+<% end %>
+<% content_for :description do %><%= @release.name %> release information by <%= @artist.name %>. Released <%= @release.date.strftime("#{@release.date.day.ordinalize} %B %Y ") %> by <%= @release.label_name %>
+<% end %>
 <% cache "artist_info/#{@artist.id}-#{@artist.updated_at}", expires_in: 12.hours do %>
-<div class="g_three_col">
-  <div class="g_sidebar">
-    <div class="release_artist g_fixed">
-      <div class="scrollable">
-        <div class="scrollable_inner"><%= render :partial => '/shared/artist_popover', :locals => { :apop => @artist } %>
-            <%= image_tag @artist.image.large %>
-            <h2><%= link_to @artist.name, @artist %></h2>
-            <h3><%= @artist.label_name %></h3>
-          <% end %>
-          <div class="trackers">
-            <%= image_tag "/images/ppl_black.png" %>
-            <span id="tracker-<%= @artist.id %>"><%= @artist.followers %></span> tracker<% if @artist.followers > 1 %>s<% end %>
-          </div>
-          <div class="releases">
-            <%= image_tag "/images/release_blk.png" %>  
-            <%= pluralize @release_count, "release" %>
-          </div>
-          <%= follow_button @artist %>
-          <% cache "social_links/#{@artist.id}-#{@artist.updated_at}", expires_in: 1.week do %>
-            <div class="btn share_artist share" data-placement="bottom" id="<%= @artist.id %>"><i class="icon-share"></i>Share</div>
-              <ul>
-                <% if @artist.fbid? %>
-                <li><a href="http://www.facebook.com/<%= @artist.fbid %>" target="_blank"><%= image_tag "/images/social/fb.png" %><p>Facebook</p></a></li> 
-                <% end %>
-                <% if @artist.twitter? %>
-                <li><a href="http://www.twitter.com/<%= @artist.twitter %>" target="_blank"><%= image_tag "/images/social/twitter.png" %><p>Twitter</p></a></li>
-                <% end %>
-                <% if @artist.youtube? %>
-                <li><a href="http://www.youtube.com/<%= @artist.youtube %>" target="_blank"><%= image_tag "/images/social/yt.png" %><p>YouTube</p></a></li>
-                <% end %>
-                <% if @artist.soundcloud? %>
-                <li><a href="http://www.soundcloud.com/<%= @artist.soundcloud %>" target="_blank"><%= image_tag "/images/social/sc.png" %><p>Soundcloud</p></a></li>
-                <% end %>
-                <% if @artist.website? %>
-                <li><a href="http://<%= @artist.website %>" target="_blank"><%= image_tag "/images/social/www.png" %><p>Website</p></a></li>
-                <% end %>
-                <% if @artist.sd? %>
-                <li><a href="<%= @artist.sd %>" target="_blank"><%= image_tag "/images/social/7d.png" %><p>7Digital</p></a></li>
-                <% end %>
-                <% if @artist.itunes? %>
-                <li><a href="<%= @artist.itunes %>" target="_blank"><%= image_tag "/images/social/it.png" %><p>iTunes</p></a></li>
-                <% end %>
-              </ul>
-          <% end %>
-        </div>
-      </div>
+    <div class="g_three_col">
+      <div class="g_sidebar">
+        <div class="release_artist g_fixed">
+          <div class="scrollable">
+            <div class="scrollable_inner"><%= render :partial => '/shared/artist_popover', :locals => {:apop => @artist} %>
+              <%= image_tag @artist.image.large %>
+              <h2><%= link_to @artist.name, @artist %></h2>
+
+              <h3><%= @artist.label_name %></h3>
+<% end %>
+<div class="trackers">
+  <%= image_tag "/images/ppl_black.png" %>
+  <span id="tracker-<%= @artist.id %>"><%= @artist.followers %></span> tracker
+  <% if @artist.followers > 1 %>s
+  <% end %>
+</div>
+<div class="releases">
+  <%= image_tag "/images/release_blk.png" %>
+  <%= pluralize @release_count, "release" %>
+</div>
+<%= follow_button @artist %>
+<% cache "social_links/#{@artist.id}-#{@artist.updated_at}", expires_in: 1.week do %>
+    <div class="btn share_artist share" data-placement="bottom" id="<%= @artist.id %>"><i class="icon-share"></i>Share
     </div>
-  </div>
-  <div class="g_main release_info"> 
-    <% if cached_current_user %>
-      <% if cached_current_user.role? :admin %>
-        <div class="image">
-          <div class="front">
-          <%= image_tag @release.image.large %>
-          </div>
-          <div class="back">
-            <form>
-              <p>Please only upload PNG and JPEG files, which do not exceed 1mb in size.</p>
-              <% if !@release.image? %>
-                  <%= form_for [@artist,@release] do |f| %> 
-                    <%= f.file_field :image %> 
-                    <%= f.submit "Upload", :class => "btn-success btn" %> 
-                  <% end %>
-              <% else %>
-                  <%= form_for [@artist,@release] do |f| %> 
-                    <%= f.file_field :image %> 
-                    <%= f.submit "Replace", :class => "btn-info btn" %> 
-                  <% end %>
-              <% end %>
-            </form>
-          </div>
-        </div>
-      <% else %>
-        <%= image_tag @release.image.large %>
+    <ul>
+      <% if @artist.fbid? %>
+          <li>
+            <a href="http://www.facebook.com/<%= @artist.fbid %>" target="_blank"><%= image_tag "/images/social/fb.png" %>
+              <p>Facebook</p></a></li>
       <% end %>
-    <% else %>
+      <% if @artist.twitter? %>
+          <li>
+            <a href="http://www.twitter.com/<%= @artist.twitter %>" target="_blank"><%= image_tag "/images/social/twitter.png" %>
+              <p>Twitter</p></a></li>
+      <% end %>
+      <% if @artist.youtube? %>
+          <li>
+            <a href="http://www.youtube.com/<%= @artist.youtube %>" target="_blank"><%= image_tag "/images/social/yt.png" %>
+              <p>YouTube</p></a></li>
+      <% end %>
+      <% if @artist.soundcloud? %>
+          <li>
+            <a href="http://www.soundcloud.com/<%= @artist.soundcloud %>" target="_blank"><%= image_tag "/images/social/sc.png" %>
+              <p>Soundcloud</p></a></li>
+      <% end %>
+      <% if @artist.website? %>
+          <li><a href="http://<%= @artist.website %>" target="_blank"><%= image_tag "/images/social/www.png" %>
+            <p>Website</p></a></li>
+      <% end %>
+      <% if @artist.sd? %>
+          <li><a href="<%= @artist.sd %>" target="_blank"><%= image_tag "/images/social/7d.png" %><p>7Digital</p></a>
+          </li>
+      <% end %>
+      <% if @artist.itunes? %>
+          <li><a href="<%= @artist.itunes %>" target="_blank"><%= image_tag "/images/social/it.png" %><p>iTunes</p></a>
+          </li>
+      <% end %>
+    </ul>
+<% end %>
+</div>
+</div>
+</div>
+</div>
+<div class="g_main release_info">
+  <% if cached_current_user %>
+      <% if cached_current_user.role? :admin %>
+          <div class="image">
+            <div class="front">
+              <%= image_tag @release.image.large %>
+            </div>
+            <div class="back">
+              <form>
+                <p>Please only upload PNG and JPEG files, which do not exceed 1mb in size.</p>
+                <% if !@release.image? %>
+                    <%= form_for [@artist, @release] do |f| %>
+                        <%= f.file_field :image %>
+                        <%= f.submit "Upload", :class => "btn-success btn" %>
+                    <% end %>
+                <% else %>
+                    <%= form_for [@artist, @release] do |f| %>
+                        <%= f.file_field :image %>
+                        <%= f.submit "Replace", :class => "btn-info btn" %>
+                    <% end %>
+                <% end %>
+              </form>
+            </div>
+          </div>
+      <% else %>
+          <%= image_tag @release.image.large %>
+      <% end %>
+  <% else %>
       <%= image_tag @release.image.large %>
-    <% end %>
-    <% cache "release_info/#{@release.id}-#{@release.updated_at}", expires_in: 2.hours do %>  
+  <% end %>
+  <% cache "release_info/#{@release.id}-#{@release.updated_at}", expires_in: 2.hours do %>
       <div class="info">
         <h1><%= @release.name %></h1>
-        <p class="tip" data-title="Label" data-placement="left"><i class="icon-tag"></i><% if @release.label_name? %><%= @release.label_name %><% else %><%= @artist.label_name %><% end %></p>
-        <p class="tip" data-title="Release date" data-placement="left"><i class="icon-calendar"></i><%= @release.date.strftime("#{@release.date.day.ordinalize} %B %Y ") %></p>
+
+        <p class="tip" data-title="Label" data-placement="left"><i class="icon-tag"></i>
+          <% if @release.label_name? %><%= @release.label_name %>
+          <% else %><%= @artist.label_name %>
+          <% end %></p>
+
+        <p class="tip" data-title="Release date" data-placement="left">
+          <i class="icon-calendar"></i><%= @release.date.strftime("#{@release.date.day.ordinalize} %B %Y ") %></p>
+
         <div class="btn buy" data-placement="bottom" id="<%= @release.id %>">Buy</div>
-        <div class="btn share_release share" data-placement="bottom" id="<%= @release.id %>"><i class="icon-share"></i>Share</div>
+        <div class="btn share_release share" data-placement="bottom" id="<%= @release.id %>"><i class="icon-share"></i>Share
+        </div>
         <div class="btn report" data-toggle="modal" data-target="#reportModal">Report</div>
       </div>
       <div class="clearfix"></div>
-    <% end %>
-      <% if !user_signed_in? %>
-        <div id="release_signup">
-          <p>Track <%= link_to @artist.name, @artist %> and others to keep up to date with new releases.</p>
-          <%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-small") do %>
-            <div class="icon"><span></span><i class="icon-facebook"></i></div><div class="divider"></div>Sign in with Facebook
-          <% end %>
-          <a data-toggle="modal" data-target="#user_signup" class="signup">
-            <div class="btn btn-warning">Sign up</div>
-          </a>
-        </div>
-      <% end %>
-    <% cache "related_releases/#{@release.id}-#{@release.updated_at}", expires_in: 1.hour do %> 
-       <div class="clearfix"></div>
+  <% end %>
+  <% if !user_signed_in? %>
+      <div id="release_signup">
+        <p>Track <%= link_to @artist.name, @artist %> and others to keep up to date with new releases.</p>
+        <%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-small") do %>
+            <div class="icon"><span></span><i class="icon-facebook"></i></div>
+            <div class="divider"></div>
+            Sign in with Facebook
+        <% end %>
+        <a data-toggle="modal" data-target="#user_signup" class="signup">
+          <div class="btn btn-warning">Sign up</div>
+        </a>
+      </div>
+  <% end %>
+  <% cache "related_releases/#{@release.id}-#{@release.updated_at}", expires_in: 1.hour do %>
+      <div class="clearfix"></div>
       <div id="related_releases">
         <h2>Related releases</h2>
         <% @releases.each do |release|
-           if release == @release 
-             next
-           end
-           %>
-          <div class="related">
-            <%= link_to [release.artist, release] do %>
-                <img src="<%= release.image.medium %>" class="related_img" height="75" width="75"/>
-            <% end %>
-            <span>
+          if release == @release
+            next
+          end
+        %>
+            <div class="related">
+              <%= link_to [release.artist, release] do %>
+                  <img src="<%= release.image.medium %>" class="related_img" height="75" width="75"/>
+              <% end %>
+              <span>
               <div><%= link_to release.name, [release.artist, release] %></div>
-              <%= release.label_name %><br/>
-              <%= release.date.strftime("#{release.date.day.ordinalize} %B %Y ") %>
+                <%= release.label_name %><br/>
+                <%= release.date.strftime("#{release.date.day.ordinalize} %B %Y ") %>
             </span>
-            <div class="actions">
-              <div class="btn buy" data-placement="bottom" id="<%= release.id %>">Buy</div>
-              <div class="btn share_release share" data-placement="bottom" id="<%= release.id %>"><i class="icon-share"></i>Share</div>
+
+              <div class="actions">
+                <div class="btn buy" data-placement="bottom" id="<%= release.id %>">Buy</div>
+                <div class="btn share_release share" data-placement="bottom" id="<%= release.id %>">
+                  <i class="icon-share"></i>Share
+                </div>
+              </div>
+              <%= render :partial => '/shared/buy_popover', :locals => {:bpop => release} %>
+              <%= render :partial => '/shared/release_popover', :locals => {:apop => @artist, :rpop => release} %>
             </div>
-            <%= render :partial => '/shared/buy_popover', :locals => { :bpop => release } %>
-            <%= render :partial => '/shared/release_popover', :locals => { :apop => @artist, :rpop => release } %>
-          </div>
         <% end %>
       </div>
-    <% end %>
-  </div>
+  <% end %>
+</div>
 </div>
 <% cache "release_popups/#{@release.id}-#{@release.updated_at}", expires_in: 2.hours do %>
-  <%= render :partial => '/shared/artist_popover', :locals => { :apop => @artist } %>
-  <%= render :partial => '/shared/release_popover', :locals => { :apop => @artist, :rpop => @release } %>
-  <%= render :partial => '/shared/buy_popover', :locals => { :bpop => @release } %>
-  <% @report = Report.new %>
-  <div id="reportModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-body">
-      <h2>Report a problem</h2>
-      <p>Please select the error(s) you have noticed within <strong><%= @release.name %></strong> by <strong><%= @artist.name %></strong>, including any additional comments:</p>
-      <%= form_for(@report, :validate => true) do |f| %>
-      <%= f.hidden_field :release, :value => @release.name %>
-      <%= f.hidden_field :url, :value => "http://#{request.host}:#{request.port}#{request.fullpath}" %>
-       <%= f.fields_for :elements do |element_fields| %>
-         <label class="checkbox">
-           <%= element_fields.check_box 'Release Name' %>Release name
-         </label>
-         <label class="checkbox">
-           <%= element_fields.check_box 'Artist' %>Artist
-         </label>
-         <label class="checkbox">
-           <%= element_fields.check_box 'Release date' %>Release name
-         </label>
-         <label class="checkbox">
-           <%= element_fields.check_box 'Label' %>Label
-         </label>
-         <label class="checkbox">
-           <%= element_fields.check_box 'Purchase links' %>Purchase links
-         </label>
-       <% end %>
-      <%= f.text_area :comments, :rows => 4 %>
-    </div>
-    <div class="modal-footer">
-      <%= f.submit "Send", :class => 'btn' %>
-      <button type="button" data-dismiss="modal" class="cancel">Cancel</button>
-      <% end %>
-    </div>
-  </div>
+    <%= render :partial => '/shared/artist_popover', :locals => {:apop => @artist} %>
+    <%= render :partial => '/shared/release_popover', :locals => {:apop => @artist, :rpop => @release} %>
+    <%= render :partial => '/shared/buy_popover', :locals => {:bpop => @release} %>
+    <% @report = Report.new %>
+    <div id="reportModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-body">
+        <h2>Report a problem</h2>
+
+        <p>Please select the error(s) you have noticed within <strong><%= @release.name %></strong> by
+          <strong><%= @artist.name %></strong>, including any additional comments:</p>
+        <%= form_for(@report, :validate => true) do |f| %>
+            <%= f.hidden_field :release, :value => @release.name %>
+            <%= f.hidden_field :url, :value => "http://#{request.host}:#{request.port}#{request.fullpath}" %>
+            <%= f.fields_for :elements do |element_fields| %>
+                <label class="checkbox">
+                  <%= element_fields.check_box 'Release Name' %>Release name
+                </label>
+                <label class="checkbox">
+                  <%= element_fields.check_box 'Artist' %>Artist
+                </label>
+                <label class="checkbox">
+                  <%= element_fields.check_box 'Release date' %>Release name
+                </label>
+                <label class="checkbox">
+                  <%= element_fields.check_box 'Label' %>Label
+                </label>
+                <label class="checkbox">
+                  <%= element_fields.check_box 'Purchase links' %>Purchase links
+                </label>
+            <% end %>
+            <%= f.text_area :comments, :rows => 4 %>
+            </div>
+            <div class="modal-footer">
+              <%= f.submit "Send", :class => 'btn' %>
+              <button type="button" data-dismiss="modal" class="cancel">Cancel</button>
+        <% end %>
+        </div>
+        </div>
 <% end %>

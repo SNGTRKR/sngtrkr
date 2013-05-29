@@ -21,11 +21,11 @@ class Artist < ActiveRecord::Base
       boolean :ignore
     end
   end
- 
+
   def to_s
     self.name
   end
-  
+
   def self.real_only
     where(:ignore => false)
   end
@@ -59,13 +59,13 @@ class Artist < ActiveRecord::Base
     end
     # Crap and slow
     Artist.find(:all, :select => 'artists.*',
-             :joins => 'left outer join follows on follows.artist_id = artists.id',
-             :group => 'artists.id',
-             :having => "count(follows.id) >= #{count}",
-             :limit => 5)
+                :joins => 'left outer join follows on follows.artist_id = artists.id',
+                :group => 'artists.id',
+                :having => "count(follows.id) >= #{count}",
+                :limit => 5)
   end
-  
-  def self.popularity 
+
+  def self.popularity
     order('updated_at DESC')
   end
 
@@ -79,6 +79,7 @@ class Artist < ActiveRecord::Base
 
   before_save :default_values
   before_save :delete_children_for_ignored
+
   def default_values
     # Don't ignore new artists!
     self.ignore ||= false
@@ -93,10 +94,10 @@ class Artist < ActiveRecord::Base
   end
 
   def managed?
-    if(Manage.where("artist_id = ?",self.id).empty?)
-    return false
+    if (Manage.where("artist_id = ?", self.id).empty?)
+      return false
     else
-    return true
+      return true
     end
   end
 
@@ -105,15 +106,15 @@ class Artist < ActiveRecord::Base
   end
 
   def followers
-    Follow.where("artist_id = ?",self.id).count
+    Follow.where("artist_id = ?", self.id).count
   end
 
   def label?
-    if(label_name? or label_id?)
-    true
+    if (label_name? or label_id?)
+      true
     else
-    false
+      false
     end
   end
-  
+
 end

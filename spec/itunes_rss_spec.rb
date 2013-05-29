@@ -16,7 +16,7 @@ describe "ItunesRss" do
 
   it "drops artists not in the db" do
     # This ID is in the XML file
-    create(:artist,:itunes_id => 1234)
+    create(:artist, :itunes_id => 1234)
     remaining = ItunesRss.remove_where_no_artist(@rss_items)
     remaining.length.should eq 1
     remaining[0]["artistItunesId"].should eq 1234

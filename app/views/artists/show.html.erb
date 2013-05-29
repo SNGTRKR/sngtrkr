@@ -1,74 +1,93 @@
 <% content_for :og_name, @artist.name
-content_for :og_url, request.url
-content_for :og_image, File.join(root_url , @artist.image.medium.url)
-content_for :og_description, "#{@artist.name} is telling fans about their new releases on SNGTRKR. Why don't you follow them too?"
-content_for :og_id, @artist.id.to_s
-content_for :og_type, "sngtrkr:artist"
+   content_for :og_url, request.url
+   content_for :og_image, File.join(root_url, @artist.image.medium.url)
+   content_for :og_description, "#{@artist.name} is telling fans about their new releases on SNGTRKR. Why don't you follow them too?"
+   content_for :og_id, @artist.id.to_s
+   content_for :og_type, "sngtrkr:artist"
 %>
-<% content_for :description do %><%= truncate((strip_tags @artist.bio || "" ), :length => 150) %><% end %>
-<% content_for :title do %><%= @artist.name %> information and releases 2012<% end %>
+<% content_for :description do %><%= truncate((strip_tags @artist.bio || ""), :length => 150) %>
+<% end %>
+<% content_for :title do %><%= @artist.name %> information and releases 2012
+<% end %>
 <% cache "artist_info/#{@artist.id}-#{@artist.updated_at}", expires_in: 12.hours do %>
-<div class="g_three_col">
-  <div class="g_sidebar release_artist">
-    <div class="scrollable">
-        <div class="scrollable_inner">
+    <div class="g_three_col">
+      <div class="g_sidebar release_artist">
+        <div class="scrollable">
+          <div class="scrollable_inner">
             <%= image_tag @artist.image.large %>
             <h2><%= @artist.name %></h2>
-            <h3><%= @artist.label_name %></h3>
-          <% end %>
-          <div class="trackers">
-            <%= image_tag "/images/ppl_black.png" %>
-            <span id="tracker-<%= @artist.id %>"><%= @artist.followers %></span> tracker<% if @artist.followers > 1 %>s<% end %>
-          </div>
-          <div class="releases">
-            <%= image_tag "/images/release_blk.png" %>
-            <%= pluralize @release_count, "release" %>
-          </div>
-          <%= follow_button @artist %>
 
-          <% cache "social_links/#{@artist.id}-#{@artist.updated_at}", expires_in: 1.week do %>
-            <div class="btn share share_artist" data-placement="bottom" id="<%= @artist.id %>"><i class="icon-share"></i>Share</div>
-            <ul>
-              <% if @artist.fbid? %>
-              <li><a href="http://www.facebook.com/<%= @artist.fbid %>" target="_blank"><%= image_tag "/images/social/fb.png" %><p>Facebook</p></a></li> 
-              <% end %>
-              <% if @artist.twitter? %>
-              <li><a href="http://www.twitter.com/<%= @artist.twitter %>" target="_blank"><%= image_tag "/images/social/twitter.png" %><p>Twitter</p></a></li>
-              <% end %>
-              <% if @artist.youtube? %>
-              <li><a href="http://www.youtube.com/<%= @artist.youtube %>" target="_blank"><%= image_tag "/images/social/yt.png" %><p>YouTube</p></a></li>
-              <% end %>
-              <% if @artist.soundcloud? %>
-              <li><a href="http://www.soundcloud.com/<%= @artist.soundcloud %>" target="_blank"><%= image_tag "/images/social/sc.png" %><p>Soundcloud</p></a></li>
-              <% end %>
-              <% if @artist.website? %>
-              <li><a href="http://<%= @artist.website %>" target="_blank"><%= image_tag "/images/social/www.png" %><p>Website</p></a></li>
-              <% end %>
-              <% if @artist.sd? %>
-              <li><a href="<%= @artist.sd %>" target="_blank"><%= image_tag "/images/social/7d.png" %><p>7Digital</p></a></li>
-              <% end %>
-              <% if @artist.itunes? %>
-              <li><a href="<%= @artist.itunes %>" target="_blank"><%= image_tag "/images/social/it.png" %><p>iTunes</p></a></li>
-              <% end %>
-            </ul>
-          <% end %>
-      </div>
+            <h3><%= @artist.label_name %></h3>
+<% end %>
+<div class="trackers">
+  <%= image_tag "/images/ppl_black.png" %>
+  <span id="tracker-<%= @artist.id %>"><%= @artist.followers %></span> tracker
+  <% if @artist.followers > 1 %>s
+  <% end %>
+</div>
+<div class="releases">
+  <%= image_tag "/images/release_blk.png" %>
+  <%= pluralize @release_count, "release" %>
+</div>
+<%= follow_button @artist %>
+
+<% cache "social_links/#{@artist.id}-#{@artist.updated_at}", expires_in: 1.week do %>
+    <div class="btn share share_artist" data-placement="bottom" id="<%= @artist.id %>"><i class="icon-share"></i>Share
     </div>
-  </div>
-  <div class="g_main artist_timeline">
-      <% if !user_signed_in? %>
-        <div id="artist_signup">
-          <p>Track <%= link_to @artist.name, @artist %> and others to keep up to date with new releases.</p>
-          <%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-small") do %>
-            <div class="icon"><span></span><i class="icon-facebook"></i></div><div class="divider"></div>Sign in with Facebook
-          <% end %>
-          <a data-toggle="modal" data-target="#user_signup" class="signup">
-            <div class="btn btn-warning">Sign up</div>
-          </a>
-        </div>
+    <ul>
+      <% if @artist.fbid? %>
+          <li>
+            <a href="http://www.facebook.com/<%= @artist.fbid %>" target="_blank"><%= image_tag "/images/social/fb.png" %>
+              <p>Facebook</p></a></li>
       <% end %>
-  </div>
+      <% if @artist.twitter? %>
+          <li>
+            <a href="http://www.twitter.com/<%= @artist.twitter %>" target="_blank"><%= image_tag "/images/social/twitter.png" %>
+              <p>Twitter</p></a></li>
+      <% end %>
+      <% if @artist.youtube? %>
+          <li>
+            <a href="http://www.youtube.com/<%= @artist.youtube %>" target="_blank"><%= image_tag "/images/social/yt.png" %>
+              <p>YouTube</p></a></li>
+      <% end %>
+      <% if @artist.soundcloud? %>
+          <li>
+            <a href="http://www.soundcloud.com/<%= @artist.soundcloud %>" target="_blank"><%= image_tag "/images/social/sc.png" %>
+              <p>Soundcloud</p></a></li>
+      <% end %>
+      <% if @artist.website? %>
+          <li><a href="http://<%= @artist.website %>" target="_blank"><%= image_tag "/images/social/www.png" %>
+            <p>Website</p></a></li>
+      <% end %>
+      <% if @artist.sd? %>
+          <li><a href="<%= @artist.sd %>" target="_blank"><%= image_tag "/images/social/7d.png" %><p>7Digital</p></a>
+          </li>
+      <% end %>
+      <% if @artist.itunes? %>
+          <li><a href="<%= @artist.itunes %>" target="_blank"><%= image_tag "/images/social/it.png" %><p>iTunes</p></a>
+          </li>
+      <% end %>
+    </ul>
+<% end %>
+</div>
+</div>
+</div>
+<div class="g_main artist_timeline">
+  <% if !user_signed_in? %>
+      <div id="artist_signup">
+        <p>Track <%= link_to @artist.name, @artist %> and others to keep up to date with new releases.</p>
+        <%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-small") do %>
+            <div class="icon"><span></span><i class="icon-facebook"></i></div>
+            <div class="divider"></div>
+            Sign in with Facebook
+        <% end %>
+        <a data-toggle="modal" data-target="#user_signup" class="signup">
+          <div class="btn btn-warning">Sign up</div>
+        </a>
+      </div>
+  <% end %>
+</div>
 </div>
 <% cache "artist_popup/#{@artist.id}-#{@artist.updated_at}", expires_in: 1.week do %>
-<%= render :partial => '/shared/artist_popover', :locals => { :apop => @artist } %>
+    <%= render :partial => '/shared/artist_popover', :locals => {:apop => @artist} %>
 <% end %>

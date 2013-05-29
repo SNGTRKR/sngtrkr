@@ -14,13 +14,13 @@ class ArtistJob
       music = music[0..20]
     end
     music.each do |artist|
-      a = Artist.where("fbid = ?",artist["id"]).first
+      a = Artist.where("fbid = ?", artist["id"]).first
       if a.nil?
-      new_artists << artist
+        new_artists << artist
       else
-      # Suggest artists already in the database and skip over them
-      user.suggest_artist(a.id)
-      old_artists += 1
+        # Suggest artists already in the database and skip over them
+        user.suggest_artist(a.id)
+        old_artists += 1
       end
     end
     artist_end_time = Time.now

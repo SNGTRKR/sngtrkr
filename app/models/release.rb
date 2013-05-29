@@ -18,12 +18,12 @@ class Release < ActiveRecord::Base
       end
       text :label_name
     end
-  end 
+  end
 
   def to_s
     self.name
   end
-  
+
   after_create :notify_followers
 
   scope :unsaved_images, where('(image_file_name is null or image_file_name = "") and image_source is not null and image_source != ""')
@@ -46,9 +46,9 @@ class Release < ActiveRecord::Base
     feat = / (\(|\[)(f|F)eat[^\)]*(\)|\])/
     ep = /( - |- | )?(\(|\[)?(EP|(S|s)ingle|(A|a)lbum)(\)|\])?/
     itunes_remix = /(\(|\[)(R|r)emixes(\)|\])/
-    ret = name.gsub( name.match(feat).to_s, "")
-    ret = ret.gsub( ret.match(itunes_remix).to_s, "")
-    ret = ret.gsub( ret.match(ep).to_s, "")
+    ret = name.gsub(name.match(feat).to_s, "")
+    ret = ret.gsub(ret.match(itunes_remix).to_s, "")
+    ret = ret.gsub(ret.match(ep).to_s, "")
     self.name = ret.strip # Remove whitespace at either end
 
     true
@@ -57,7 +57,7 @@ class Release < ActiveRecord::Base
   def combine_duplicates
     window = 7.days
     existing = self.artist.releases.where('date between ? AND ? AND id != ? AND name = ?',
-      self.date - window, self.date + window, self.id, self.name)
+                                          self.date - window, self.date + window, self.id, self.name)
 
     unless existing.empty?
       existing.each do |r|
@@ -77,10 +77,10 @@ class Release < ActiveRecord::Base
     if self.date > (Date.today - 14)
       self.artist.followed_users.each do |user|
         user.release_notifications << self
-      end  
+      end
     end
   end
-  
+
   def pretty_date
     date.strftime('%d/%m/%Y')
   end
@@ -104,8 +104,11 @@ class Release < ActiveRecord::Base
 
           io = open(r.image_source)
           if io
-            def io.original_filename; base_uri.path.split('/').last; end
-            io.original_filename.blank? ? nil : io      
+            def io.original_filename;
+              base_uri.path.split('/').last;
+            end
+
+            io.original_filename.blank? ? nil : io
             r.image = io
           end
 
@@ -123,20 +126,25 @@ class Release < ActiveRecord::Base
       r.image_attempts = r.image_attempts ? r.image_attempts += 1 : 0
       r.image_last_attempt = Time.now
       artist_name = r.artist.try(:name)
-      if artist_name.nil? then next end
+      if artist_name.nil? then
+        next
+      end
       album_info = Scraper.lastfm_album_info(r.artist.name, r.name)
       if album_info and album_info['image'].is_a? Array
         best_artwork = album_info['image'].last
         if best_artwork and best_artwork.is_a?(String)
           io = open(best_artwork)
           if io
-            def io.original_filename; base_uri.path.split('/').last; end
-            io.original_filename.blank? ? nil : io      
+            def io.original_filename;
+              base_uri.path.split('/').last;
+            end
+
+            io.original_filename.blank? ? nil : io
             r.image = io
-          end 
+          end
         end
       end
-      r.save      
+      r.save
     end
   end
 

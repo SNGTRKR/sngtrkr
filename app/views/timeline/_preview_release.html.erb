@@ -3,31 +3,34 @@
 <% release = preview_release[0] %>
 <% release_image = preview_release[1] %>
 <% release_tracks = preview_release[2] %>
-<li class="release-outer release-outer-<%= cycle('odd','even') %>" data-release-id="<%= release.id %>" data-release-date="<%= release.date %>">
+<li class="release-outer release-outer-<%= cycle('odd', 'even') %>" data-release-id="<%= release.id %>" data-release-date="<%= release.date %>">
   <div class="joining-line"></div>
-  <div class="each-release" <% if release_image %> style="background-image:url(<%= release_image %>)" <% end %>>
+  <div class="each-release"
+       <% if release_image %> style="background-image:url(<%= release_image %>)"
+       <% end %>>
     <div class="r-grad"></div>
     <div class="release-date">
-      
+
     </div>
     <div class="release-info">
       <h2><%= release.name %></h2>
       <% if artist_page == 'false' %>
-      <h3><%= @artist.name %></h3>
+          <h3><%= @artist.name %></h3>
       <% end %>
       <p>
-        <strong><%= release.date.strftime("#{release.date.day.ordinalize} "+date_format)%></strong>
-          <% if release.label_name? %>
-            on <span class="tooltip-parent" data-title="Label Name" data-placement="right"><%= release.label_name %></span>
-          <% end %>
+        <strong><%= release.date.strftime("#{release.date.day.ordinalize} "+date_format) %></strong>
+        <% if release.label_name? %>
+            on
+            <span class="tooltip-parent" data-title="Label Name" data-placement="right"><%= release.label_name %></span>
+        <% end %>
       </p>
       <ul class="release-menu">
         <div>
           <li class="buy-release">Buy</li>
           <% if release_tracks.length > 0 %>
-            <li class="play-release">Listen</li>
+              <li class="play-release">Listen</li>
           <% else %>
-            <li>&nbsp;</li>
+              <li>&nbsp;</li>
           <% end %>
           <li class="share-release">Share</li>
         </div>
@@ -38,18 +41,22 @@
       <h4>Share this release</h4>
       <ul>
         <a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com<%= url_for @artist %>%2F&t=SNGTRKR','ShareSNGTRKRonFacebook','scrollbars=no,width=620,height=340'); return false;">
-        <li class="fb-icon fb-button">
-          <i class="icon-facebook"></i>
-        </li></a>
+          <li class="fb-icon fb-button">
+            <i class="icon-facebook"></i>
+          </li>
+        </a>
         <a href="#" title="Share on Twitter" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.sngtrkr.com&text=<%= @artist.name%>+&#45;+<%= release.name %>+released+on+<%= release.label_name %>.+Check+out+<%= @artist.name %>+on+SNGTRKR+&#45;+www.sngtrkr.com<%= "nope" %>&via=SNGTRKR','ShareSNGTRKRonTwitter','scrollbars=no,width=620,height=340'); return false;">
-        <li class="twit-icon twitter-button">
-          <i class="icon-twitter"></i>
-        </li></a>
+          <li class="twit-icon twitter-button">
+            <i class="icon-twitter"></i>
+          </li>
+        </a>
         <a href="#" title="Share on Google Plus" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for @artist %>','ShareSNGTRKRonGooglePlus','scrollbars=no,width=620,height=340'); return false;">
-        <li class="goo-icon google-button">
-          <i class="icon-google-plus"></i>
-        </li></a>
-         <div class="clear"></div>
+          <li class="goo-icon google-button">
+            <i class="icon-google-plus"></i>
+          </li>
+        </a>
+
+        <div class="clear"></div>
       </ul>
       <div class="share-cancel">
         Cancel
@@ -62,80 +69,82 @@
       <div class="buy-cancel">Cancel</div>
     </div>
     <div class="play-release-list">
-    <h4>Play this release</h4>
-    <i class="icon-remove close-player"></i>
- <% if release_tracks.length > 0 %>
-  <div id="release_jplayer_<%= release.id %>" class="jp-jplayer"></div>
-  <div class="timeline-i-player">
-  <div id="jp_container_<%= release.id %>" class="jp-audio">
-  <div class="tracklister"><i class="icon-list-ul"></i>Tracklisting:</div>
-      	<div class="scrollbar">
-	<div id="timeline-tracklist">
-      <div class="jp-playlist">
-					<ul>
-						<li></li>
-					</ul>
-				</div>
-	</div>
-      	</div>
-      	 
-    <div class="jp-type-single">
-      <div class="jp-gui jp-interface">
-        <ul class="jp-controls">
-          <li><a href="javascript:;" class="jp-pause icon-remove close-player-playing" tabindex="1"></a></li>
-          <li><a href="javascript:;" class="jp-play icon-play" tabindex="1"></a></li>
-          <li><a href="javascript:;" class="jp-pause icon-pause" tabindex="1"></a></li>
-          <li><a href="javascript:;" class="jp-mute icon-volume-off" tabindex="1" title="mute"></a></li>
-          <li><a href="javascript:;" class="jp-unmute icon-volume-down" tabindex="1" title="unmute"></a></li>
-          <li><a href="javascript:;" class="jp-volume-max icon-volume-up" tabindex="1" title="max volume"></a></li>
-        </ul>
-        <div class="jp-progress">
-          <div class="jp-seek-bar">
-            <div class="jp-play-bar"></div>
-          </div>
-        </div>
-        <div class="jp-volume-bar">
-          <div class="jp-volume-bar-value"></div>
-        </div>
-        <div class="jp-time-holder">
-          <div class="jp-current-time"></div>
-          <div class="jp-duration"></div>
-        </div>
-      </div>
+      <h4>Play this release</h4>
+      <i class="icon-remove close-player"></i>
+      <% if release_tracks.length > 0 %>
+          <div id="release_jplayer_<%= release.id %>" class="jp-jplayer"></div>
+          <div class="timeline-i-player">
+            <div id="jp_container_<%= release.id %>" class="jp-audio">
+              <div class="tracklister"><i class="icon-list-ul"></i>Tracklisting:</div>
+              <div class="scrollbar">
+                <div id="timeline-tracklist">
+                  <div class="jp-playlist">
+                    <ul>
+                      <li></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
 
-      <div class="jp-no-solution">
-        <span>Update Required</span>
-        To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
-      </div> 
-    </div> 
-  </div>
-	  </div> 
-		<script type="text/javascript">
-    $(document).ready(function(){
-        new jPlayerPlaylist({
-		jPlayer: "#release_jplayer_<%= release.id %>",
-		cssSelectorAncestor: "#jp_container_<%= release.id %>"
-	}, [
-	<% 
-  	i = 1
-  	release_tracks.each do |track| %>
-		{
-			title:"<%= i %> - <%= track.name %>",
-			m4a:"<%= track.preview %>"
-		},
-		<% 
-		i += 1
-		end %>
-		
-	], {
-        swfPath: "/js",
-        supplied: "m4a, oga",
-        wmode: "window",
-        preload: "none"
-      });
-    });
-  </script> 
-<% end %>
+              <div class="jp-type-single">
+                <div class="jp-gui jp-interface">
+                  <ul class="jp-controls">
+                    <li><a href="javascript:;" class="jp-pause icon-remove close-player-playing" tabindex="1"></a></li>
+                    <li><a href="javascript:;" class="jp-play icon-play" tabindex="1"></a></li>
+                    <li><a href="javascript:;" class="jp-pause icon-pause" tabindex="1"></a></li>
+                    <li><a href="javascript:;" class="jp-mute icon-volume-off" tabindex="1" title="mute"></a></li>
+                    <li><a href="javascript:;" class="jp-unmute icon-volume-down" tabindex="1" title="unmute"></a></li>
+                    <li><a href="javascript:;" class="jp-volume-max icon-volume-up" tabindex="1" title="max volume"></a>
+                    </li>
+                  </ul>
+                  <div class="jp-progress">
+                    <div class="jp-seek-bar">
+                      <div class="jp-play-bar"></div>
+                    </div>
+                  </div>
+                  <div class="jp-volume-bar">
+                    <div class="jp-volume-bar-value"></div>
+                  </div>
+                  <div class="jp-time-holder">
+                    <div class="jp-current-time"></div>
+                    <div class="jp-duration"></div>
+                  </div>
+                </div>
+
+                <div class="jp-no-solution">
+                  <span>Update Required</span>
+                  To play the media you will need to either update your browser to a recent version or update your
+                  <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+                </div>
+              </div>
+            </div>
+          </div>
+          <script type="text/javascript">
+              $(document).ready(function () {
+                  new jPlayerPlaylist({
+                      jPlayer: "#release_jplayer_<%= release.id %>",
+                      cssSelectorAncestor: "#jp_container_<%= release.id %>"
+                  }, [
+                      <%
+                        i = 1
+                        release_tracks.each do |track| %>
+                      {
+                          title: "<%= i %> - <%= track.name %>",
+                          m4a: "<%= track.preview %>"
+                      },
+                      <%
+                      i += 1
+                      end %>
+
+                  ], {
+                      swfPath: "/js",
+                      supplied: "m4a, oga",
+                      wmode: "window",
+                      preload: "none"
+                  });
+              });
+          </script>
+      <% end %>
     </div>
   </div>
 </li>

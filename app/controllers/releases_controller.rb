@@ -6,7 +6,7 @@ class ReleasesController < ApplicationController
 
   skip_authorization_check
   load_and_authorize_resource
-  
+
   before_filter :managed_artists_only, :only => [:edit, :update, :create, :destroy, :new]
   skip_before_filter :authenticate_user!, :only => [:show]
 
@@ -73,5 +73,5 @@ class ReleasesController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
 end

@@ -1,5 +1,5 @@
 <% if @following_pages < params[:page].to_i %>
-	console.log('No tracked artists left.');
+console.log('No tracked artists left.');
 <% else %>
-	$('#tab1 table tbody').append("<%=j render :partial => 'users/artist_followed' %>");
+$('#tab1 table tbody').append("<%=j render :partial => 'users/artist_followed' %>");
 <% end %>

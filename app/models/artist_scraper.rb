@@ -21,7 +21,7 @@ class ArtistScraper
 
   def import
     scraper_initialise
-    
+
     if errors?
       return false
     end
@@ -72,7 +72,10 @@ class ArtistScraper
         if lfm_image
           io = open(URI.escape(lfm_image))
           if io
-            def io.original_filename; base_uri.path.split('/').last; end
+            def io.original_filename;
+              base_uri.path.split('/').last;
+            end
+
             io.original_filename.blank? ? nil : io
             artist.image = io
           end
@@ -81,7 +84,7 @@ class ArtistScraper
       end
     end
   end
-  
+
 
   def errors? opts={}
     # Check artist isn't already in database
@@ -108,7 +111,7 @@ class ArtistScraper
     begin
       @scraper = Scraper.new @facebook_info["name"]
     rescue
-    # Basically checks that we actually have a name for this artist.
+      # Basically checks that we actually have a name for this artist.
       puts "ARTIST ERROR: Artist name could not be read."
       return true
     end
@@ -141,36 +144,36 @@ class ArtistScraper
     scraper_initialise
     # Once we've covered the basic failing criteria, initialize variables (as late as possible)
     require 'open-uri'
-    
+
     puts "Importing facebook and last.fm data"
     split_regexp = /[,\/|+\.]/
     @artist = Artist.new
     @artist.name = @scraper.real_name
     @artist.fbid = @facebook_info["id"]
     @artist.bio = @scraper.bio
-    
+
     if @scraper.bio.nil?
       @artist.bio = @facebook_info["bio"]
     end
-    
+
     @artist.genre = @facebook_info["genre"].split(split_regexp).first rescue nil
     @artist.booking_email = @facebook_info["booking_agent"]
     @artist.manager_email = @facebook_info["general_manager"]
     @artist.hometown = @facebook_info["hometown"]
-    @artist.label_name = @facebook_info["record_label"].split(split_regexp).first  rescue nil
-    
-    if(@facebook_info["website"])
+    @artist.label_name = @facebook_info["record_label"].split(split_regexp).first rescue nil
+
+    if (@facebook_info["website"])
       websites = @facebook_info["website"].split(' ')
 
       websites.each do |website|
-        if(website.length < 5)
+        if (website.length < 5)
           next
         end
-        if(website =~ /(?<=twitter\.com\/)(#!\/)?(.*)/)
+        if (website =~ /(?<=twitter\.com\/)(#!\/)?(.*)/)
           @artist.twitter = $&
-        elsif(website =~ /(?<=youtube\.com\/)(#!\/)?(.*)/)
+        elsif (website =~ /(?<=youtube\.com\/)(#!\/)?(.*)/)
           @artist.youtube = $&
-        elsif(website =~ /(?<=soundcloud\.com\/)(#!\/)?(.*)/)
+        elsif (website =~ /(?<=soundcloud\.com\/)(#!\/)?(.*)/)
           @artist.soundcloud = $&
         else
           @artist.website = website
@@ -178,7 +181,7 @@ class ArtistScraper
       end
 
     else
-    websites = []
+      websites = []
     end
 
     puts "Importing Last.fm image"
@@ -204,13 +207,13 @@ class ArtistScraper
       @artist.itunes_id = itunes_results['artistId']
       puts "Found artist with ID #{@artist.itunes_id}"
     rescue
-     puts "Couldn't find artist on iTunes"
-     @artist.itunes = nil
+      puts "Couldn't find artist on iTunes"
+      @artist.itunes = nil
     end
 
     puts "Importing 7digital data"
     sd_info = Scraper.artist_sevendigital @artist.name
-    
+
     if sd_info
       # Delete existing releases by this artist if their id on 7digital has changed
       if opts[:improve_existing] and @artist.sdid != sd_info[0]
@@ -228,10 +231,13 @@ class ArtistScraper
       puts "Valid image: #{@image_url.inspect}"
       io = open(URI.escape(@image_url))
       if io
-        def io.original_filename; base_uri.path.split('/').last; end
+        def io.original_filename;
+          base_uri.path.split('/').last;
+        end
+
         io.original_filename.blank? ? nil : io
-      @artist.image = io
-      @artist.save!
+        @artist.image = io
+        @artist.save!
       end
     else
       puts "Invalid image: #{@image_url.inspect}"

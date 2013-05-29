@@ -1,14 +1,15 @@
 <h1>Forgot your password?</h1>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
+<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {:method => :post}) do |f| %>
+    <%= devise_error_messages! %>
 
-  <p>Forgot your password? No problem. Just enter your email address below and we'll send you a link that will allow you to change your password.</p>
+    <p>Forgot your password? No problem. Just enter your email address below and we'll send you a link that will allow
+      you to change your password.</p>
 
-  <%= f.label :email %>
-  <%= f.email_field :email %>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
 
-  <%= f.submit "Send", :class => 'btn' %>
+    <%= f.submit "Send", :class => 'btn' %>
 <% end %>
 
 <a data-target="#user_login" data-toggle="modal" class="forgot_pass">Nevermind, I remember it!</a>

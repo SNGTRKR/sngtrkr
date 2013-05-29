@@ -8,7 +8,7 @@ timeout 180
 listen "#{app_path}/shared/sockets/unicorn.sock", :backlog => 64
 #listen "127.0.0.1:9000"
 
-user 'deploy', 'deploy' 
+user 'deploy', 'deploy'
 
 # Fill path to your app
 working_directory "#{app_path}/current"

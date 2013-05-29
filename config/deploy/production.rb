@@ -8,10 +8,10 @@ require "sidekiq/capistrano"
 # Whenever for cron jobs
 set :whenever_command, "bundle exec whenever"
 require "whenever/capistrano"
- 
+
 after "deploy:update_code", "solr:symlink"
 
- 
+
 # Generate an additional task to fire up the thin clusters
 namespace :deploy do
   desc "Start the Thin processes"

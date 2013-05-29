@@ -4,8 +4,8 @@ require 'rails/all'
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
   Bundler.require(*Rails.groups(:assets => %w(development test staging)))
-# If you want your assets lazily compiled in production, use this line
-# Bundler.require(:default, :assets, Rails.env)
+  # If you want your assets lazily compiled in production, use this line
+  # Bundler.require(:default, :assets, Rails.env)
 end
 
 if ENV['SNGTRKR_AWS_ID'].blank?
@@ -15,9 +15,9 @@ end
 module SNGTRKR
   class Application < Rails::Application
     config.assets.initialize_on_precompile = false
-    
-    config.assets.precompile += ['rails_admin/rails_admin.css', 'rails_admin/rails_admin.js', 
-        'sidekiq/application.js', 'sidekiq/*.css']
+
+    config.assets.precompile += ['rails_admin/rails_admin.css', 'rails_admin/rails_admin.js',
+                                 'sidekiq/application.js', 'sidekiq/*.css']
 
     config.assets.expire_after 2.weeks
 
@@ -34,15 +34,15 @@ module SNGTRKR
     config.assets.version = '1.0'
 
     # Default URL base for emails
-    config.action_mailer.default_url_options = { :host => "sngtrkr.com" }
-    
+    config.action_mailer.default_url_options = {:host => "sngtrkr.com"}
+
     config.time_zone = 'London'
 
     config.generators do |g|
       g.test_framework :rspec, fixture: true
       g.fixture_replacement :factory_girl, dir: 'spec/factories'
     end
-    
+
   end
 end
 

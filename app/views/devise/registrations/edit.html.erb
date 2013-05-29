@@ -1,35 +1,41 @@
-<% content_for :title do %>Profile settings<% end %>
+<% content_for :title do %>Profile settings
+<% end %>
 <div class="g_full edit">
-  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-    <%= devise_error_messages! %>
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:method => :put}) do |f| %>
+      <%= devise_error_messages! %>
       <h1>Profile settings</h1>
+
       <h2>Change Email</h2>
+
       <p>Your current email address is <strong><%= @user.email %></strong></p>
       <%= f.email_field :email %>
       <h2>Change name</h2>
+
       <p>Please note, you can only change your name a few times.</p>
       <%= f.text_field :first_name %>
       <%= f.text_field :last_name %>
 
-      <% 
-      # Only show password option if they do NOT use FB login
-      # FB login generates random obscure password that user wont ever know
-      if @user.fbid.blank? %>
-        <h2>Change password</h2>
-        <%= f.label :current_password %>
-        <%= f.password_field :current_password %>
-        <div class="clearfix"></div>
-        <div id="new_pass">
-          <%= f.label "New password" %>
-          <%= f.password_field  :password, :autocomplete => "off" %>
-        </div>
-        <div>
-          <%= f.label "Confirm new password" %>
-          <%= f.password_field :password_confirmation %>
-        </div>
+      <%
+         # Only show password option if they do NOT use FB login
+         # FB login generates random obscure password that user wont ever know
+         if @user.fbid.blank? %>
+          <h2>Change password</h2>
+          <%= f.label :current_password %>
+          <%= f.password_field :current_password %>
+          <div class="clearfix"></div>
+          <div id="new_pass">
+            <%= f.label "New password" %>
+            <%= f.password_field :password, :autocomplete => "off" %>
+          </div>
+          <div>
+            <%= f.label "Confirm new password" %>
+            <%= f.password_field :password_confirmation %>
+          </div>
       <% end %>
       <h2>Email Notifications</h2>
-      <p>You can change how often you receive emails for new releases, from the options provided below. We will only email you if there are new releases.</p>
+
+      <p>You can change how often you receive emails for new releases, from the options provided below. We will only
+        email you if there are new releases.</p>
       <%= f.hidden_field(:email_frequency) %>
       <div id="slider" data-current="<%= @user.email_frequency %>"></div>
       <ul>
@@ -40,9 +46,10 @@
         <li class="never">Never</li>
       </ul>
       <input class="btn" type="submit" value="Save">
-    <% end %>
+  <% end %>
 
-    <h2>Delete my account</h2>
-    <p>Your account, tracked artists and all personal details will be permanently removed.</p>
-    <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete, :class => 'btn' %>
-  </div>
+  <h2>Delete my account</h2>
+
+  <p>Your account, tracked artists and all personal details will be permanently removed.</p>
+  <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete, :class => 'btn' %>
+</div>

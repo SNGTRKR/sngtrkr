@@ -1,112 +1,156 @@
 <% content_for :og_name, "Track your favourite artists and never miss another release..."
-content_for :og_url, request.url
-content_for :og_image, File.join(root_url , "/images/icon.png")
-content_for :og_description, "Our simple web tool makes it easy to keep up to date with your favourite artists. Discovering and sharing music with your friends, has never been so simple."
-content_for :og_type, "website"
+   content_for :og_url, request.url
+   content_for :og_image, File.join(root_url, "/images/icon.png")
+   content_for :og_description, "Our simple web tool makes it easy to keep up to date with your favourite artists. Discovering and sharing music with your friends, has never been so simple."
+   content_for :og_type, "website"
 %>
-<% content_for :description do %>Login with Facebook to find artists you like. Listen to & buy tracks, with an easy to use timeline. Free notifications when artists release new tracks.<% end %>	
+<% content_for :description do %>Login with Facebook to find artists you like. Listen to & buy tracks, with an easy to use timeline. Free notifications when artists release new tracks.
+<% end %>
 <div class="homepage">
-	<h1>Track your favourite artists<br/><span>Never miss another release</span></h1>
-	<h3 class="span6">Our simple web tool makes it easy to keep up to date with your favourite artists. Discovering and sharing music with your friends, has never been so simple. </h3>
+  <h1>Track your favourite artists<br/><span>Never miss another release</span></h1>
+
+  <h3 class="span6">Our simple web tool makes it easy to keep up to date with your favourite artists. Discovering and
+    sharing music with your friends, has never been so simple. </h3>
 </div>
 </div>
 <div id="overflow">
-	<div id="releases">
-			<% @releases.each do |release| %>
-			<%= link_to image_tag(release.image.medium), [release.artist, release] %>
-			<% end %>
-			<div class="cleafix"></div>
-	</div>
+  <div id="releases">
+    <% @releases.each do |release| %>
+        <%= link_to image_tag(release.image.medium), [release.artist, release] %>
+    <% end %>
+    <div class="cleafix"></div>
+  </div>
 </div>
 <div class="g_content">
-	<div class="homepage">
-		<div class="signup-home">
-			<%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-large btn-large") do %>
-				<div class="icon"><span></span><i class="icon-facebook"></i></div><div class="divider"></div>Sign in with Facebook
-			<% end %>
-			<a data-toggle="modal" data-target="#user_signup" class="signup">
-          		<div class="btn btn-warning btn-large">Sign up</div>
-          	</a>
-			<div class="social_share">
-				<div class="fb-like" data-href="http://www.facebook.com/sngtrkr" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
-				<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.sngtrkr.com" data-text="Track your favourite artists, never miss another release" data-via="sngtrkr">Tweet</a>
-				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-				<div class="g-plusone" data-size="medium" data-href="http://www.sngtrkr.com"></div>
-				<script type="text/javascript">
-				  window.___gcfg = {lang: 'en-GB'};
+  <div class="homepage">
+    <div class="signup-home">
+      <%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-large btn-large") do %>
+          <div class="icon"><span></span><i class="icon-facebook"></i></div>
+          <div class="divider"></div>
+          Sign in with Facebook
+      <% end %>
+      <a data-toggle="modal" data-target="#user_signup" class="signup">
+        <div class="btn btn-warning btn-large">Sign up</div>
+      </a>
 
-				  (function() {
-				    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-				    po.src = 'https://apis.google.com/js/plusone.js';
-				    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-				  })();
-				</script>
-			</div>
-		</div>
-		<div class="sections">
-			<!-- section1 -->
-			<div class="section">
-				<div class="col follow">
-					<h2>Follow artists you love<span>With your personalised timeline</span></h2>
-					<p>SNGTRKR is a music discovery and tracking service, all rolled into one <strong>convenient</strong> application. We do all the hard work, so you don’t have to. From <strong>tracking</strong> the latest and greatest albums, to discovering those hidden lyrical gems which were once lost to the world.</p>
-				</div>
-				<div class="col">
-					<%= image_tag "/images/timeline.png", :alt => "Timeline", :class => "timeline_img" %>
-				</div>
-			</div>
-			<!-- section2 -->
-			<div class="section">
-				<div class="col">
-					<%= image_tag "/images/computer.png", :alt => "Keeping connected" %>
-				</div>
-				<div class="col connect">
-					<h2>Stay connected<span>Sharing all your favourite artists</span></h2>
-					<p>It’s always more fun to <strong>share music with friends</strong>. That’s why SNGTRKR makes it simple for you to share your favourite artists, and in turn find something <strong>fresh and exciting</strong> along the way, with our integrated social tools.</p>
-				</div>
-			</div>
-			<!-- section3 -->
-			<div class="section">
-				<div class="col discover">
-					<h2>Discover new music<span>With some help from your friends</span></h2>
-					<p>One of the advantages of music being everywhere, is that we are always <strong>making new discoveries</strong>. With SNGTRKR you can quickly dive in and experience new artists and releases from an array of genres. It has never been so simple.</p>
-				</div>
-				<div class="col">
-					<%= image_tag "/images/releases.png", :alt => "Releases" %>
-				</div>
-			</div>
-			<!-- section4 -->
-			<div class="section">
-				<div class="col">
-					<%= image_tag "/images/email.png", :alt => "Email" %>
-				</div>
-				<div class="col date">
-					<h2>Keep up to date<span>Always be the first to know</span></h2>
-					<p>Looking to expand your <strong>music library</strong>? Let SNGTRKR do all the hard work, by sending you tailored emails with all the latest releases from the artists you love. Always <strong>stay in the loop</strong> with our expansive database of artist information, and never miss another release!</p>
-				</div>
-			</div>
-		</div>
-		<div class="signup-home">
-			<%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-large btn-large") do %>
-				<div class="icon"><span></span><i class="icon-facebook"></i></div><div class="divider"></div>Sign in with Facebook
-			<% end %>
-			<a data-toggle="modal" data-target="#user_signup" class="signup">
-          		<div class="btn btn-warning btn-large">Sign up</div>
-          	</a>
-			<div class="social_share">
-				<div class="fb-like" data-href="http://www.facebook.com/sngtrkr" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
-				<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.sngtrkr.com" data-text="Track your favourite artists, never miss another release" data-via="sngtrkr">Tweet</a>
-				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-				<div class="g-plusone" data-size="medium" data-href="http://www.sngtrkr.com"></div>
-				<script type="text/javascript">
-				  window.___gcfg = {lang: 'en-GB'};
+      <div class="social_share">
+        <div class="fb-like" data-href="http://www.facebook.com/sngtrkr" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.sngtrkr.com" data-text="Track your favourite artists, never miss another release" data-via="sngtrkr">Tweet</a>
+        <script>!function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (!d.getElementById(id)) {
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//platform.twitter.com/widgets.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }
+        }(document, "script", "twitter-wjs");</script>
+        <div class="g-plusone" data-size="medium" data-href="http://www.sngtrkr.com"></div>
+        <script type="text/javascript">
+            window.___gcfg = {lang: 'en-GB'};
 
-				  (function() {
-				    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-				    po.src = 'https://apis.google.com/js/plusone.js';
-				    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-				  })();
-				</script>
-			</div>
-		</div>
-	</div>
+            (function () {
+                var po = document.createElement('script');
+                po.type = 'text/javascript';
+                po.async = true;
+                po.src = 'https://apis.google.com/js/plusone.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(po, s);
+            })();
+        </script>
+      </div>
+    </div>
+    <div class="sections">
+      <!-- section1 -->
+      <div class="section">
+        <div class="col follow">
+          <h2>Follow artists you love<span>With your personalised timeline</span></h2>
+
+          <p>SNGTRKR is a music discovery and tracking service, all rolled into one <strong>convenient</strong>
+            application. We do all the hard work, so you don’t have to. From <strong>tracking</strong> the latest and
+            greatest albums, to discovering those hidden lyrical gems which were once lost to the world.</p>
+        </div>
+        <div class="col">
+          <%= image_tag "/images/timeline.png", :alt => "Timeline", :class => "timeline_img" %>
+        </div>
+      </div>
+      <!-- section2 -->
+      <div class="section">
+        <div class="col">
+          <%= image_tag "/images/computer.png", :alt => "Keeping connected" %>
+        </div>
+        <div class="col connect">
+          <h2>Stay connected<span>Sharing all your favourite artists</span></h2>
+
+          <p>It’s always more fun to <strong>share music with friends</strong>. That’s why SNGTRKR makes it simple for
+            you to share your favourite artists, and in turn find something <strong>fresh and exciting</strong> along
+            the way, with our integrated social tools.</p>
+        </div>
+      </div>
+      <!-- section3 -->
+      <div class="section">
+        <div class="col discover">
+          <h2>Discover new music<span>With some help from your friends</span></h2>
+
+          <p>One of the advantages of music being everywhere, is that we are always
+            <strong>making new discoveries</strong>. With SNGTRKR you can quickly dive in and experience new artists and
+            releases from an array of genres. It has never been so simple.</p>
+        </div>
+        <div class="col">
+          <%= image_tag "/images/releases.png", :alt => "Releases" %>
+        </div>
+      </div>
+      <!-- section4 -->
+      <div class="section">
+        <div class="col">
+          <%= image_tag "/images/email.png", :alt => "Email" %>
+        </div>
+        <div class="col date">
+          <h2>Keep up to date<span>Always be the first to know</span></h2>
+
+          <p>Looking to expand your <strong>music library</strong>? Let SNGTRKR do all the hard work, by sending you
+            tailored emails with all the latest releases from the artists you love. Always
+            <strong>stay in the loop</strong> with our expansive database of artist information, and never miss another
+            release!</p>
+        </div>
+      </div>
+    </div>
+    <div class="signup-home">
+      <%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-large btn-large") do %>
+          <div class="icon"><span></span><i class="icon-facebook"></i></div>
+          <div class="divider"></div>
+          Sign in with Facebook
+      <% end %>
+      <a data-toggle="modal" data-target="#user_signup" class="signup">
+        <div class="btn btn-warning btn-large">Sign up</div>
+      </a>
+
+      <div class="social_share">
+        <div class="fb-like" data-href="http://www.facebook.com/sngtrkr" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.sngtrkr.com" data-text="Track your favourite artists, never miss another release" data-via="sngtrkr">Tweet</a>
+        <script>!function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (!d.getElementById(id)) {
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//platform.twitter.com/widgets.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }
+        }(document, "script", "twitter-wjs");</script>
+        <div class="g-plusone" data-size="medium" data-href="http://www.sngtrkr.com"></div>
+        <script type="text/javascript">
+            window.___gcfg = {lang: 'en-GB'};
+
+            (function () {
+                var po = document.createElement('script');
+                po.type = 'text/javascript';
+                po.async = true;
+                po.src = 'https://apis.google.com/js/plusone.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(po, s);
+            })();
+        </script>
+      </div>
+    </div>
+  </div>
 </div>

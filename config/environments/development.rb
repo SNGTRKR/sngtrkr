@@ -1,9 +1,9 @@
 SNGTRKR::Application.configure do
 # Settings specified here will take precedence over those in config/application.rb
 
-  # In the development environment your application's code is reloaded on
-  # every request. This slows down response time but is perfect for development
-  # since you don't have to restart the web server when you make code changes.
+# In the development environment your application's code is reloaded on
+# every request. This slows down response time but is perfect for development
+# since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
   config.action_view.cache_template_loading = false
 
@@ -13,10 +13,10 @@ SNGTRKR::Application.configure do
 
   # Show full error reports and disable caching
   config.consider_all_requests_local = true
-  
+
   # Necessary for live updating mailer
   config.action_controller.perform_caching = false
-  config.cache_store = :dalli_store, { :namespace => "sngtrkr", :compress => true }
+  config.cache_store = :dalli_store, {:namespace => "sngtrkr", :compress => true}
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
@@ -45,7 +45,7 @@ SNGTRKR::Application.configure do
 
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = {:host => 'localhost:3000'}
 
 end
 

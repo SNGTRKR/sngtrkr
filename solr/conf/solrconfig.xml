@@ -471,19 +471,19 @@
       <float name="tie">0.01</float>
       <str name="qf">
         text^0.5 features^1.0 name^1.2 sku^1.5 id^10.0 manu^1.1 cat^1.4
-     </str>
+      </str>
       <str name="pf">
         text^0.2 features^1.1 name^1.5 manu^1.4 manu_exact^1.9
-     </str>
+      </str>
       <str name="bf">
         popularity^0.5 recip(price,1,1000,1000)^0.3
-     </str>
+      </str>
       <str name="fl">
         id,name,price,score
-     </str>
+      </str>
       <str name="mm">
         2&lt;-1 5&lt;-2 6&lt;90%
-     </str>
+      </str>
       <int name="ps">100</int>
       <str name="q.alt">*:*</str>
       <!-- example highlighter config, enable per-query with hl=true -->
@@ -653,7 +653,8 @@
        solr.cluster.enabled system property when running solr...
           java -Dsolr.clustering.enabled=true -jar start.jar
     -->
-  <searchComponent name="clusteringComponent" enable="${solr.clustering.enabled:false}" class="org.apache.solr.handler.clustering.ClusteringComponent">
+  <searchComponent name="clusteringComponent" enable="${solr.clustering.enabled:false}"
+                   class="org.apache.solr.handler.clustering.ClusteringComponent">
     <!-- Declare an engine -->
     <lst name="engine">
       <!-- The name, only one can be named "default" -->
@@ -703,7 +704,8 @@
     </arr>
   </requestHandler>
   <!-- Solr Cell: http://wiki.apache.org/solr/ExtractingRequestHandler -->
-  <requestHandler name="/update/extract" class="org.apache.solr.handler.extraction.ExtractingRequestHandler" startup="lazy">
+  <requestHandler name="/update/extract" class="org.apache.solr.handler.extraction.ExtractingRequestHandler"
+                  startup="lazy">
     <lst name="defaults">
       <!-- All the main content goes into "text"... if you need to return
            the extracted text or do highlighting, use a stored field. -->

@@ -5,15 +5,15 @@ class UsersController::OmniauthCallbacksController < Devise::OmniauthCallbacksCo
     @user = User.find_for_facebook_oauth(access_token, current_user)
     session["facebook_access_token"] = access_token
     api = Koala::Facebook::API.new(session["facebook_access_token"]["credentials"]["token"])
-    friends = api.get_connections("me","friends/?fields=installed")
+    friends = api.get_connections("me", "friends/?fields=installed")
     app_friends = []
     app_friend_ids = []
     friends.each do |friend|
       if friend["installed"]
-        u = User.where("fbid = ? ","#{friend["id"]}").first
+        u = User.where("fbid = ? ", "#{friend["id"]}").first
         if !u.nil?
-        app_friends << u
-        app_friend_ids << u.fbid
+          app_friends << u
+          app_friend_ids << u.fbid
         end
       end
     end
@@ -31,7 +31,7 @@ class UsersController::OmniauthCallbacksController < Devise::OmniauthCallbacksCo
 
   def passthru
     render :file => "#{Rails.root}/public/404.html", :status => 404, :layout => false
-  # Or alternatively,
-  # raise ActionController::RoutingError.new('Not Found')
+    # Or alternatively,
+    # raise ActionController::RoutingError.new('Not Found')
   end
 end

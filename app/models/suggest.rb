@@ -21,11 +21,11 @@ class Suggest < ActiveRecord::Base
   end
 
   def self.search(user_id, artist_id)
-    self.find(:all, :conditions => ["user_id = '#{user_id}' AND artist_id = '#{artist_id}' AND suggests.ignore = ?",false])
+    self.find(:all, :conditions => ["user_id = '#{user_id}' AND artist_id = '#{artist_id}' AND suggests.ignore = ?", false])
   end
 
   def self.user_suggested(user_id)
-    self.find(:all, :conditions => ["user_id = '#{user_id}' AND suggests.ignore = ?",false])
+    self.find(:all, :conditions => ["user_id = '#{user_id}' AND suggests.ignore = ?", false])
   end
 
 end

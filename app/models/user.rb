@@ -5,14 +5,14 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :fbid, :first_name, :last_name, 
-    :last_sign_in_at, :email_frequency, :deleted_at, :leave_reason, :confirmed_at, :privacy_policy
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :fbid, :first_name, :last_name,
+                  :last_sign_in_at, :email_frequency, :deleted_at, :leave_reason, :confirmed_at, :privacy_policy
 
   validates :fbid, :uniqueness => true, :allow_blank => true, :allow_nil => true
-  validates :email, :presence => { :message =>  "An email address is required."}, :uniqueness => { :message => "Email address has already been taken."}
-  validates :first_name, :presence => { :message => "A first name is required."}
-  validates :last_name, :presence => { :message => "A last name is required."}
-  validates :privacy_policy, :acceptance => { :message => "Please accept the Privacy policy."}
+  validates :email, :presence => {:message => "An email address is required."}, :uniqueness => {:message => "Email address has already been taken."}
+  validates :first_name, :presence => {:message => "A first name is required."}
+  validates :last_name, :presence => {:message => "A last name is required."}
+  validates :privacy_policy, :acceptance => {:message => "Please accept the Privacy policy."}
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
   # validates :password, :presence => { :message => "A password is required."}
 
@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   has_many :suggested_all, :through => :suggest, :source => :artist
   has_many :notifications, :dependent => :delete_all
   has_many :release_notifications, :through => :notifications, :source => :release
-    
+
   before_save :default_values
 
   def default_values
@@ -35,15 +35,15 @@ class User < ActiveRecord::Base
   def self.ordered
     order('first_name, last_name')
   end
-  
+
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
 
     if user = self.find_by_fbid(data.id)
       user
     else # Create a user with a stub password.
-      user = self.new(:email => data.email, :password => Devise.friendly_token[0,20], :fbid => data.id, :first_name => data.first_name, :last_name => data.last_name)
-      user.confirm! 
+      user = self.new(:email => data.email, :password => Devise.friendly_token[0, 20], :fbid => data.id, :first_name => data.first_name, :last_name => data.last_name)
+      user.confirm!
       user.roles << Role.where(:name => 'User').first
 
       user.save!
@@ -63,7 +63,7 @@ class User < ActiveRecord::Base
       end
     end
   end
-  
+
   def soft_delete
     # assuming you have deleted_at column added already
     update_attribute(:deleted_at, Time.current)
@@ -75,17 +75,17 @@ class User < ActiveRecord::Base
 
   def friends_with? user, friends
     if friends.include? user.fbid
-    true
+      true
     else
-    false
+      false
     end
   end
 
   def manager?
     if managing.count > 0
-    true
+      true
     else
-    false
+      false
     end
   end
 
@@ -122,69 +122,69 @@ class User < ActiveRecord::Base
 
   def following?(artist_id)
     if !Follow.where(:artist_id => artist_id, :user_id => id).empty?
-    true
+      true
     else
-    false
+      false
     end
   end
 
   def managing?(artist_id)
     if !Manage.where(:artist_id => artist_id, :user_id => id).empty?
-    true
+      true
     else
-    false
+      false
     end
   end
 
   def suggested
-    suggested_all.where("suggests.ignore = ?",false)
+    suggested_all.where("suggests.ignore = ?", false)
   end
 
   def suggested?(artist_id)
     if !Suggest.where(:artist_id => artist_id, :user_id => id).empty?
-    true
+      true
     else
-    false
+      false
     end
   end
-  
+
   def recent_activity(opts={:limit => 20})
-    recent_follows = self.follow.includes(:artist,:user).order('updated_at DESC').limit(opts[:limit])
+    recent_follows = self.follow.includes(:artist, :user).order('updated_at DESC').limit(opts[:limit])
     recent_follows.collect! { |follow| {
         :action => 'follow',
         :follow => follow,
         :user => follow.user,
         :artist => follow.artist,
         :time => follow.created_at
-      } 
+    }
     }
 
-    combined = recent_follows.sort_by!{|action| action[:time]}.reverse
+    combined = recent_follows.sort_by! { |action| action[:time] }.reverse
     return combined
   end
 
   # This works but is a very SQL heavy solution
   def self.recent_activities users
     activities = []
-    if !users 
+    if !users
       return []
     end
     users.each do |user|
       u = User.find(user)
       activities += u.recent_activity
     end
-    activities.sort_by!{|action| action[:time] }.reverse!
-    
-    return activities[0,10]
+    activities.sort_by! { |action| action[:time] }.reverse!
+
+    return activities[0, 10]
   end
 
   def self.email_frequencies
     [
-      ['Daily',1],
-      ['Weekly',2],
-      ['Fortnightly',3],
-      ['Monthly',4],
-      ['Never',5],
+        ['Daily', 1],
+        ['Weekly', 2],
+        ['Fortnightly', 3],
+        ['Monthly', 4],
+        ['Never', 5],
     ]
   end
 

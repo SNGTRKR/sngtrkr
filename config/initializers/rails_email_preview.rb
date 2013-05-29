@@ -1,6 +1,6 @@
 require 'rails_email_preview'
 RailsEmailPreview.setup do |config|
-  config.preview_classes = [ UserMailer::Preview ]
+  config.preview_classes = [UserMailer::Preview]
 end
 
 # If you want to render it within the application layout, uncomment the following lines:

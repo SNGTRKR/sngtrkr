@@ -4,13 +4,13 @@ SNGTRKR::Application.configure do
 
 # Settings specified here will take precedence over those in config/application.rb
 
-  # Code is not reloaded between requests
+# Code is not reloaded between requests
   config.cache_classes = true
 
   # Full error reports are disabled and caching is turned on
-  config.consider_all_requests_local       = false
+  config.consider_all_requests_local = false
   config.action_controller.perform_caching = true
-  config.cache_store = :dalli_store, { :namespace => "sngtrkr", :compress => true }
+  config.cache_store = :dalli_store, {:namespace => "sngtrkr", :compress => true}
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = false
@@ -79,12 +79,12 @@ SNGTRKR::Application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-	  :address              => "localhost",
-	  :port                 => 25,
-	  :domain               => 'sngtrkr.com',
-	  :enable_starttls_auto => false,
-	  :openssl_verify_mode => 'none'
-	}
+      :address => "localhost",
+      :port => 25,
+      :domain => 'sngtrkr.com',
+      :enable_starttls_auto => false,
+      :openssl_verify_mode => 'none'
+  }
 
 
   # config.middleware.use ExceptionNotifier,

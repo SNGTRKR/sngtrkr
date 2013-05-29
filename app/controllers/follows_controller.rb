@@ -8,7 +8,7 @@ class FollowsController < ApplicationController
 
   def create
     cached_current_user.follow_artist params[:artist_id]
-    
+
     @tracked_artist = Artist.find(params[:artist_id])
 
     # Generate suggestions based on this
@@ -28,9 +28,9 @@ class FollowsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to artist_path(:id => params[:artist_id]) } #format.html { render "artists/ajax_suggestion", :layout => false }
       if @artist
-        format.js { render :partial => 'follows/follow', :format => [:js]}
-        format.json { render :json => {:artist => @artist, 
-          :image_url => @artist.image.url(:sidebar_suggest), :followers => @artist.followed_users.count} }
+        format.js { render :partial => 'follows/follow', :format => [:js] }
+        format.json { render :json => {:artist => @artist,
+                                       :image_url => @artist.image.url(:sidebar_suggest), :followers => @artist.followed_users.count} }
       else
         format.json { render :nothing => true }
       end
@@ -46,14 +46,14 @@ class FollowsController < ApplicationController
       format.html { redirect_to cached_current_user }
     end
   end
-  
+
   def user_destroy
     cached_current_user.unfollow_artist params[:artist_id]
     @artist_id = params[:artist_id]
     respond_to do |format|
       format.js { render :partial => 'follows/unfollow', :format => [:js] }
       format.html { redirect_to artist_path(:id => params[:artist_id]) }
-      format.json { render :json => { :response => :success } }
+      format.json { render :json => {:response => :success} }
     end
   end
 

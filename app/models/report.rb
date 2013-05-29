@@ -7,8 +7,8 @@ class Report < ActiveRecord::Base
 
 
   def one_checkbox_selected
-  	if elements.blank?
-	  	errors.add_to_base("Please select at least one category.") 
-	  end
+    if elements.blank?
+      errors.add_to_base("Please select at least one category.")
+    end
   end
 end

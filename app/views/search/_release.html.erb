@@ -1,14 +1,17 @@
-             <div class="result">
-                <%= link_to [release.artist, release] do %>
-                  <img src="<%= release.image.medium %>" class="image" height="110" width="110"/>
-                <% end %>
-                <span>
+<div class="result">
+  <%= link_to [release.artist, release] do %>
+      <img src="<%= release.image.medium %>" class="image" height="110" width="110"/>
+  <% end %>
+  <span>
                   <div><%= link_to release.name, [release.artist, release] %></div>
-                  <%= link_to release.artist.name, release.artist, :class => 'artist_l' %><br/>
-                  <%= release.date.strftime("#{release.date.day.ordinalize} %B %Y ") %>
+    <%= link_to release.artist.name, release.artist, :class => 'artist_l' %><br/>
+    <%= release.date.strftime("#{release.date.day.ordinalize} %B %Y ") %>
                 </span>
-                <div class="btn btn-small buy" data-placement="bottom" id="<%= release.id %>">Buy</div>
-                <div class="btn btn-small share_release share" data-placement="bottom" id="<%= release.id %>"><i class="icon-share"></i>Share</div>
-                <%= render :partial => '/shared/buy_popover', :locals => { :bpop => release } %>
-                <%= render :partial => '/shared/release_popover', :locals => { :apop => release.artist, :rpop => release } %>
-              </div>
+
+  <div class="btn btn-small buy" data-placement="bottom" id="<%= release.id %>">Buy</div>
+  <div class="btn btn-small share_release share" data-placement="bottom" id="<%= release.id %>">
+    <i class="icon-share"></i>Share
+  </div>
+  <%= render :partial => '/shared/buy_popover', :locals => {:bpop => release} %>
+  <%= render :partial => '/shared/release_popover', :locals => {:apop => release.artist, :rpop => release} %>
+</div>

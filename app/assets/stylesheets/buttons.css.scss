@@ -1,146 +1,156 @@
 .btn {
-	margin-right:8px;
-	i {
-		position:relative;
-		top:1px;
-		margin-right:5px;
-	}
+  margin-right: 8px;
+  i {
+    position: relative;
+    top: 1px;
+    margin-right: 5px;
+  }
 }
+
 .btn-large {
-	font-family: "MuseoSans-500", Helvetica, Arial, sans-serif;		
+  font-family: "MuseoSans-500", Helvetica, Arial, sans-serif;
 }
+
 .btn-fb-large {
-	text-indent:44px;
-	position:relative;
-		.icon {
-			position:absolute;
-			width:44px;
-			height:43px;
-			top:0px;
-			left:0px;
-			@include border-top-left-radius(6px);
-			@include border-bottom-left-radius(6px);
-			.icon-facebook {
-				position:absolute;
-				font-size:38px;
-				margin:0;
-				text-indent:0px;
-				top:6px;
-				left:23px;
-			}
-			span {
-				height:6px;
-				background-color:#6d84b3;
-				@include border-bottom-left-radius(6px);
-				width:44px;
-				position:absolute;
-				bottom:1px;
-				left:0px;
-			}
-		}
-		.divider {
-			border-left: 1px solid #264285;
-			border-right: 1px solid rgba(109,128,171,0.5);
-			height: 41px;
-			position: absolute;
-			top: 1px;
-			left: 44px;
-		}
+  text-indent: 44px;
+  position: relative;
+  .icon {
+    position: absolute;
+    width: 44px;
+    height: 43px;
+    top: 0px;
+    left: 0px;
+    @include border-top-left-radius(6px);
+    @include border-bottom-left-radius(6px);
+    .icon-facebook {
+      position: absolute;
+      font-size: 38px;
+      margin: 0;
+      text-indent: 0px;
+      top: 6px;
+      left: 23px;
+    }
+    span {
+      height: 6px;
+      background-color: #6d84b3;
+      @include border-bottom-left-radius(6px);
+      width: 44px;
+      position: absolute;
+      bottom: 1px;
+      left: 0px;
+    }
+  }
+  .divider {
+    border-left: 1px solid #264285;
+    border-right: 1px solid rgba(109, 128, 171, 0.5);
+    height: 41px;
+    position: absolute;
+    top: 1px;
+    left: 44px;
+  }
 }
+
 .btn-fb-small {
-	text-indent:30px;
-	position:relative;
-		.icon {
-			position:absolute;
-			width:30px;
-			height:29px;
-			top:0px;
-			left:0px;
-			@include border-top-left-radius(6px);
-			@include border-bottom-left-radius(6px);
-			.icon-facebook {
-				position: absolute;
-				font-size: 24px;
-				margin: 0;
-				text-indent: 0px;
-				top: 5px;
-				left: 16px;
-			}
-			span {
-				height:4px;
-				background-color:#6d84b3;
-				@include border-bottom-left-radius(6px);
-				width:30px;
-				position:absolute;
-				bottom:1px;
-				left:0px;
-			}
-		}
-		.divider {
-			border-left: 1px solid #264285;
-			border-right: 1px solid rgba(109,128,171,0.5);
-			height: 27px;
-			position: absolute;
-			top: 1px;
-			left: 30px;
-		}
+  text-indent: 30px;
+  position: relative;
+  .icon {
+    position: absolute;
+    width: 30px;
+    height: 29px;
+    top: 0px;
+    left: 0px;
+    @include border-top-left-radius(6px);
+    @include border-bottom-left-radius(6px);
+    .icon-facebook {
+      position: absolute;
+      font-size: 24px;
+      margin: 0;
+      text-indent: 0px;
+      top: 5px;
+      left: 16px;
+    }
+    span {
+      height: 4px;
+      background-color: #6d84b3;
+      @include border-bottom-left-radius(6px);
+      width: 30px;
+      position: absolute;
+      bottom: 1px;
+      left: 0px;
+    }
+  }
+  .divider {
+    border-left: 1px solid #264285;
+    border-right: 1px solid rgba(109, 128, 171, 0.5);
+    height: 27px;
+    position: absolute;
+    top: 1px;
+    left: 30px;
+  }
 }
+
 .track {
-	width: 51px;
+  width: 51px;
 }
+
 .share_artist {
-	margin:0 !important;
+  margin: 0 !important;
 }
+
 .popover.bottom {
-	margin-top:14px !important;
+  margin-top: 14px !important;
 }
+
 .art_pop, .rel_pop, .buy_pop, .sngtrkr_pop {
-	display:none;
+  display: none;
 }
+
 .share_content {
-	line-height:20px !important;
-	div {
-		border-bottom:1px solid #ccc;
-		padding-bottom:10px;
-		a {
-			margin-right:8px;
-			color:transparent;
-			text-decoration:none !important;
-			z-index:2000;
-				&:last-child {
-					margin-right:0px;
-				}
-				img {
-					float:none;
-				}
-		}
-	}
-	span {
-		font-size:13px;
-		display:block;
-		margin:3px 0;
-	}
-	input[type="text"] {
-		color:$lightgray;
-		width:144px;
-		margin-bottom:0px;
-		font-size:11px;
-			&:focus {
-				color:$gray;
-			}
-	}
+  line-height: 20px !important;
+  div {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    a {
+      margin-right: 8px;
+      color: transparent;
+      text-decoration: none !important;
+      z-index: 2000;
+      &:last-child {
+        margin-right: 0px;
+      }
+      img {
+        float: none;
+      }
+    }
+  }
+  span {
+    font-size: 13px;
+    display: block;
+    margin: 3px 0;
+  }
+  input[type="text"] {
+    color: $lightgray;
+    width: 144px;
+    margin-bottom: 0px;
+    font-size: 11px;
+    &:focus {
+      color: $gray;
+    }
+  }
 }
+
 .buy_content {
-	a {
-		margin-right:8px;
-			&:last-child {
-				margin:0 !important;
-			}
-			img {
-				float:none !important;
-			}
-	}
+  a {
+    margin-right: 8px;
+    &:last-child {
+      margin: 0 !important;
+    }
+    img {
+      float: none !important;
+    }
+  }
 }
+
 .forgot_pass {
-	cursor:pointer;
+  cursor: pointer;
 }

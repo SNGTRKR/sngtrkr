@@ -4,4 +4,4 @@ set :deploy_to, "/var/www/sngtrkr_staging"
 
 require 'capistrano-unicorn'
 
-after 'deploy:restart', 'unicorn:restart'  # app preloaded
+after 'deploy:restart', 'unicorn:restart' # app preloaded
