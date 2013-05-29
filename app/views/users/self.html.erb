@@ -35,7 +35,7 @@
 <div class="g_main g_tabs">
   <div class="tab-content profile-tab-content" id="myTabContent">
     <div class="tab-pane active" id="tab1" data-user="<%= cached_current_user.id %>">
-      <% if !@user.following.count.zero? %>
+      <% if !@following.count.zero? %>
           <table class="table table-striped">
             <tbody>
             <% @following.each do |artist_tracked| %>

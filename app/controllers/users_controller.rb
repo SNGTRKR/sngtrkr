@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_filter :self_only, :except => [:show, :timeline, :self, :new, :create]
   before_filter :authenticate_user!, :except => [:new]
   load_and_authorize_resource :except => [:new]
+  cache_sweeper :user_sweeper
 
   def timeline
     @user = cached_current_user
@@ -20,7 +21,6 @@ class UsersController < ApplicationController
     # Check if this is your page
     if cached_current_user.id == params[:id].to_i
       @user = cached_current_user
-
       @following = @user.following.joins(:follow).select('artists.*, COUNT(follows.artist_id) as followers').group('artists.id').ordered.page(params[:page])
       @following_pages = @following.num_pages
       respond_to do |format|

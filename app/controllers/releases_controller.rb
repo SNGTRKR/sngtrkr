@@ -9,6 +9,7 @@ class ReleasesController < ApplicationController
 
   before_filter :managed_artists_only, :only => [:edit, :update, :create, :destroy, :new]
   skip_before_filter :authenticate_user!, :only => [:show]
+  cache_sweeper :release_sweeper
 
   # GET /releases/1
   # GET /releases/1.json

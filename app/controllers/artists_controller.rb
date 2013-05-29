@@ -2,18 +2,17 @@ class ArtistsController < ApplicationController
   # GET /artists
   # GET /artists.json
 
-  load_and_authorize_resource :except => [:search]
-
   before_filter :authenticate_user!, :except => [:show, :search, :index]
-
   before_filter :managed_artists_only, :only => [:edit, :update]
+  load_and_authorize_resource :except => [:search]
+  cache_sweeper :artist_sweeper
 
   # GET /artists/1
   # GET /artists/1.json
   def show
     @a_param = params[:id]
     @current_artist = Artist.find(@a_param)
-    @artist = Rails.cache.fetch "artist_releases/#{@current_artist.id}-#{@current_artist.updated_at}", expires_in: 2.hours do
+    @artist = Rails.cache.fetch "artist/artists-#{@current_artist.id}", expires_in: 2.hours do
       Artist.includes(:releases).find(@a_param)
     end
     @user = cached_current_user
