@@ -34,20 +34,10 @@ class Admin::AdminController < ApplicationController
       }
       @stats_by_day.reverse
     end
+    @popular_artists = Artist.select("artists.*,count(follows.id) as follow_count").joins(:follow).group("follows.artist_id").having("follow_count > 2").order("follow_count DESC").limit(row_length)
 
-    @popular_artists = Artist.find(:all, :select => 'artists.*, count(follows.id) as follow_count',
-                                   :joins => 'left outer join follows on follows.artist_id = artists.id',
-                                   :group => 'artists.id',
-                                   :order => 'follow_count DESC',
-                                   :limit => row_length
-    )
+    @prolific_artists = User.select("users.*, count(follows.id) as follow_count").joins(:follow).group("follows.artist_id").having("follows_count > 2").order("follows_count DESC").limit(row_length)
 
-    @prolific_artists = User.find(:all, :select => 'users.*, count(follows.id) as follow_count',
-                                  :joins => 'left outer join follows on follows.user_id = users.id',
-                                  :group => 'users.id',
-                                  :order => 'follow_count DESC',
-                                  :limit => row_length
-    )
     @reports = Report.all
 
   end

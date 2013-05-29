@@ -58,11 +58,13 @@ class Artist < ActiveRecord::Base
       count = 1
     end
     # Crap and slow
-    Artist.find(:all, :select => 'artists.*',
-                :joins => 'left outer join follows on follows.artist_id = artists.id',
-                :group => 'artists.id',
-                :having => "count(follows.id) >= #{count}",
-                :limit => 5)
+    # Removed as :all is deprecated in rails 3.2
+    #Artist.find.all( :select => 'artists.*',
+    #            :joins => 'left outer join follows on follows.artist_id = artists.id',
+    #            :group => 'artists.id',
+    #            :having => "count(follows.id) >= #{count}",
+    #            :limit => 5)
+    Artist.select('artists.*, count(follows.id) as follow_count').joins(:follow).group("follows.artist_id").having("follow_count > 2").order("follow_count DESC").limit(5)
   end
 
   def self.popularity
