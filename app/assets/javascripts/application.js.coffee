@@ -210,21 +210,23 @@ $(document).ready ->
       window.location = "/artists/" + data.id
 
   dataquery = $('.search-data-query')
+  searchquery = $('.search-query')
 
-  $('.search-query').bind "input", ->
-    if $('.search-query').val() is ""
+
+  searchquery.bind "input", ->
+    if searchquery.val() is ""
       dataquery.hide()
     else
-      s_query = $('.search-query').val()
+      s_query = searchquery.val()
       dataquery.show().html("<a href ='/search?utf8=✓&query=" + s_query + "'><div>Search for '<span>" + s_query + "</span>'</div></a>").addClass "data-query-highlight"
 
-  $('.search-query').blur ->
+  searchquery.blur ->
     setTimeout (->
       dataquery.hide()
     ), 150
 
-  $('.search-query').focus ->
-    unless $('.search-query').val() is ""
+  searchquery.focus ->
+    unless searchquery.val() is ""
       dataquery.show().addClass "data-query-highlight"
 
   dataquery.hover ->
@@ -233,7 +235,7 @@ $(document).ready ->
   $('.tt-dropdown-menu').hover ->
     dataquery.removeClass "data-query-highlight"
 
-  $(".search-query").keydown (event) ->
+  searchquery.keydown (event) ->
     dataquery.removeClass "data-query-highlight"  if event.keyCode is 40
     dataquery.removeClass "data-query-highlight"  if event.keyCode is 38
 
@@ -249,6 +251,7 @@ $(document).ready ->
 
   $(document).mousedown (e) ->
     if e.button is 2
+      dataquery.hide()
       $('.tt-dropdown-menu').hide()
       false
     else
