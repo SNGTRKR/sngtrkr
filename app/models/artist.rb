@@ -36,13 +36,13 @@ class Artist < ActiveRecord::Base
 
   # caching related releases on release page. either updated in 1 hour or via an updated_at attribute change
   def related_releases
-    Rails.cache.fetch("releases/#{id}-#{updated_at}", :expires_in => 1.hour) do
+    Rails.cache.fetch("releases/release-#{id}", :expires_in => 1.hour) do
       real_releases.all(:order => 'date DESC', :limit => 15)
     end
   end
 
   def count_release
-    Rails.cache.fetch("release_count/#{id}-#{updated_at}", :expires_in => 1.hour) do
+    Rails.cache.fetch("release_count/release-#{id}", :expires_in => 1.hour) do
       releases.count
     end
   end
@@ -57,13 +57,7 @@ class Artist < ActiveRecord::Base
     else
       count = 1
     end
-    # Crap and slow
-    # Removed as :all is deprecated in rails 3.2
-    #Artist.find.all( :select => 'artists.*',
-    #            :joins => 'left outer join follows on follows.artist_id = artists.id',
-    #            :group => 'artists.id',
-    #            :having => "count(follows.id) >= #{count}",
-    #            :limit => 5)
+
     Artist.select('artists.*, count(follows.id) as follow_count').joins(:follow).group("follows.artist_id").having("follow_count > 2").order("follow_count DESC").limit(5)
   end
 

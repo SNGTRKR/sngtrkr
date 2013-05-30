@@ -218,31 +218,41 @@ $(document).ready ->
       s_query = $('.search-query').val()
       dataquery.show().html("<a href ='/search?utf8=✓&query=" + s_query + "'><div>Search for '<span>" + s_query + "</span>'</div></a>").addClass "data-query-highlight"
 
-    $('.search-query').blur ->
-      setTimeout (->
-        dataquery.hide()
-      ), 150
+  $('.search-query').blur ->
+    setTimeout (->
+      dataquery.hide()
+    ), 150
 
-    $('.search-query').focus ->
-      unless $('.search-query').val() is ""
-        dataquery.show().addClass "data-query-highlight"
+  $('.search-query').focus ->
+    unless $('.search-query').val() is ""
+      dataquery.show().addClass "data-query-highlight"
 
-    dataquery.hover ->
-      $('.tt-suggestion').removeClass 'tt-is-under-cursor'
+  dataquery.hover ->
+    $('.tt-suggestion').removeClass 'tt-is-under-cursor'
 
-    $('.tt-dropdown-menu').hover ->
-      dataquery.removeClass "data-query-highlight"
+  $('.tt-dropdown-menu').hover ->
+    dataquery.removeClass "data-query-highlight"
 
-    $(".search-query").keydown (event) ->
-      dataquery.removeClass "data-query-highlight"  if event.keyCode is 40
-      dataquery.removeClass "data-query-highlight"  if event.keyCode is 38
+  $(".search-query").keydown (event) ->
+    dataquery.removeClass "data-query-highlight"  if event.keyCode is 40
+    dataquery.removeClass "data-query-highlight"  if event.keyCode is 38
 
-      unless $('.tt-suggestion').hasClass "tt-is-under-cursor"
-        dataquery.addClass "data-query-highlight"  if event.keyCode is 38
-        dataquery.addClass "data-query-highlight"  if event.keyCode is 40
+    unless $('.tt-suggestion').hasClass "tt-is-under-cursor"
+      dataquery.addClass "data-query-highlight"  if event.keyCode is 38
+      dataquery.addClass "data-query-highlight"  if event.keyCode is 40
 
-      if dataquery.hasClass "data-query-highlight"
-        $('.navbar-search').submit()  if event.keyCode is 13
+    if dataquery.hasClass "data-query-highlight"
+      $('.navbar-search').submit()  if event.keyCode is 13
+
+  $(document)[0].oncontextmenu = ->
+  false
+
+  $(document).mousedown (e) ->
+    if e.button is 2
+      $('.tt-dropdown-menu').hide()
+      false
+    else
+      true
 
 
 $(document).ajaxComplete ->
