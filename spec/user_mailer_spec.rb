@@ -8,7 +8,7 @@ describe "UserMailer" do
 
   context "when a release is added" do
     it "emails followers" do
-      @user.following << @artist
+      @user.followed_artists << @artist
       create(:release, :artist => @artist)
       email = UserMailer.new_releases(@user)
       email.should_not eq false
@@ -16,7 +16,7 @@ describe "UserMailer" do
     end
 
     it "does not email non followers" do
-      @user.following << @artist
+      @user.followed_artists << @artist
       @user2 = create(:user)
       create(:release, :artist => @artist)
       email = UserMailer.new_releases(@user2)
@@ -25,7 +25,7 @@ describe "UserMailer" do
 
     it "marks sent notifications as sent" do
       Notification.count.should eq 0
-      @user.following << @artist
+      @user.followed_artists << @artist
       @artist.releases.build(attributes_for(:release)).save
       Notification.first.sent.should eq false
       UserMailer.new_releases(@user)
@@ -37,9 +37,9 @@ describe "UserMailer" do
 
     it "leaves unsent notifications as unsent" do
       Notification.count.should eq 0
-      @user.following << @artist
+      @user.followed_artists << @artist
       @user2 = create(:user)
-      @user2.following << @artist
+      @user2.followed_artists << @artist
       @artist.releases.build(attributes_for(:release)).save
       Notification.where(:sent => true).length.should eq 0
       UserMailer.new_releases(@user)
@@ -52,13 +52,13 @@ describe "UserMailer" do
 
   context "when there are no new releases" do
     it "does not email anyone" do
-      @user.following << @artist
+      @user.followed_artists << @artist
       email = UserMailer.new_releases(@user)
       email.is_a?(ActionMailer::Base::NullMail).should eq true
     end
 
     it "does not resend sent notifications" do
-      @user.following << @artist
+      @user.followed_artists << @artist
       release = @artist.releases.build(attributes_for(:release))
       release.save
       UserMailer.new_releases(@user)

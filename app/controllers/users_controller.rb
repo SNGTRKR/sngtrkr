@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     # Check if this is your page
     if current_user.id == params[:id].to_i
       @user = current_user
-      @following = @user.following.ordered.page(params[:page])
+      @following = @user.followed_artists.ordered.page(params[:page])
       @following_pages = @following.num_pages
       respond_to do |format|
         format.js { render :partial => 'users/new_following', :formats => [:js] }
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     else
 
       @friend = User.find(params[:id])
-      @following = @friend.following.ordered.page(params[:page])
+      @following = @friend.followed_artists.ordered.page(params[:page])
       # Do we want to stop users viewing other users if they aren't facebook friends?
       #      if !current_user.friends_with? @friend, session["friend_ids"]
       #        return redirect_to :root, :error => "You do not have permissions to view this user"

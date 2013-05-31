@@ -13,16 +13,16 @@ class User < ActiveRecord::Base
   validates :first_name, :presence => {:message => "A first name is required."}
   validates :last_name, :presence => {:message => "A last name is required."}
   validates :privacy_policy, :acceptance => {:message => "Please accept the Privacy policy."}
-  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+  validates_format_of :email, :with => /@/
   # validates :password, :presence => { :message => "A password is required."}
 
-  has_many :follow, :dependent => :destroy
-  has_many :suggest, :dependent => :destroy
+  has_many :follows, :dependent => :destroy
+  has_many :suggests, :dependent => :destroy
   has_many :feedbacks
   has_and_belongs_to_many :roles
 
-  has_many :following, :through => :follow, :source => :artist
-  has_many :suggested_all, :through => :suggest, :source => :artist
+  has_many :followed_artists, :through => :follows, :source => :artist
+  has_many :suggested_artists, :through => :suggests, :source => :artist
   has_many :notifications, :dependent => :delete_all
   has_many :release_notifications, :through => :notifications, :source => :release
 
@@ -75,27 +75,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def follow_artist artist_id
-    t = follow.create(:artist_id => artist_id)
-    return t.id
-  end
-
-  def unfollow_artist artist_id
-    follow.delete(follow.where(:user_id => self.id, :artist_id => artist_id))
-  end
-
-  def suggest_artist artist_id
-    t = suggest.create(:artist_id => artist_id)
-    return t.id
-  end
-
-  def unsuggest_artist(artist_id)
-    suggest.where(:artist_id => artist_id).each do |f|
-      f.ignore = true
-      f.save
-    end
-  end
-
   def following?(artist_id)
     unless @follow_ids
       @follow_ids = Follow.where(:user_id => id).map{|f| f.artist_id }
@@ -103,10 +82,6 @@ class User < ActiveRecord::Base
 
     return @follow_ids.include? artist_id
 
-  end
-
-  def suggested
-    suggested_all.where("suggests.ignore = ?", false)
   end
 
   def suggested?(artist_id)
@@ -118,7 +93,7 @@ class User < ActiveRecord::Base
   end
 
   def recent_activity(opts={:limit => 20})
-    recent_follows = self.follow.includes(:artist, :user).order('updated_at DESC').limit(opts[:limit])
+    recent_follows = self.follows.includes(:artist, :user).order('updated_at DESC').limit(opts[:limit])
     recent_follows.collect! { |follow| {
         :action => 'follow',
         :follow => follow,
@@ -159,7 +134,7 @@ class User < ActiveRecord::Base
 
   def self.serialize_from_session(key,other)
     single_key = key.is_a?(Array) ? key.first : key
-    Rails.cache.fetch("users/user-#{single_key}") { User.includes(:roles,:following).find(single_key) }
+    Rails.cache.fetch("users/user-#{single_key}") { User.includes(:roles,:followed_artists).find(single_key) }
   end
 
 end

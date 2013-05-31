@@ -8,11 +8,11 @@ class Artist < ActiveRecord::Base
 
   mount_uploader :image, ArtistUploader, mount_on: :image_file_name
 
-  has_many :follow, :dependent => :delete_all
-  has_many :suggest, :dependent => :delete_all
+  has_many :follows, :dependent => :delete_all
+  has_many :suggests, :dependent => :delete_all
 
-  has_many :followed_users, :through => :follow, :source => :user
-  has_many :suggested_users, :through => :suggest, :source => :user
+  has_many :followed_users, :through => :follows, :source => :user
+  has_many :suggested_users, :through => :suggests, :source => :user
 
   if !Rails.env.test?
     searchable :auto_index => true, :auto_remove => true do
@@ -84,8 +84,8 @@ class Artist < ActiveRecord::Base
 
   def delete_children_for_ignored
     if self.ignore
-      self.follow.destroy_all
-      self.suggest.destroy_all
+      self.follows.destroy_all
+      self.suggests.destroy_all
     end
   end
 
@@ -102,7 +102,7 @@ class Artist < ActiveRecord::Base
   end
 
   def followers
-    Follow.where("artist_id = ?", self.id).count
+    follows.count
   end
 
   def label?

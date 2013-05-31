@@ -53,7 +53,7 @@ class ApplicationController < ActionController::Base
   # For use in the featured content partial
   def featured_artists
     count = 5
-    top_artists = Artist.select('artists.id').joins(:follow).group('artists.id').having("count(follows.id) > #{count}")
+    top_artists = Artist.select('artists.id').joins(:follows).group('artists.id').having("count(follows.id) > #{count}")
     @latest_releases = Release.order("date DESC").where(:artist_id => top_artists).limit(4)
   end
 

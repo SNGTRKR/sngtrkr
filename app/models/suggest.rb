@@ -8,6 +8,8 @@ class Suggest < ActiveRecord::Base
   before_save :default_values
   before_create :check_not_following
 
+  scope :relevant, where(ignore: false)
+
   def default_values
     # Don't ignore new suggestions
     self.ignore ||= false
@@ -21,11 +23,11 @@ class Suggest < ActiveRecord::Base
   end
 
   def self.search(user_id, artist_id)
-    self.find(:all, :conditions => ["user_id = '#{user_id}' AND artist_id = '#{artist_id}' AND suggests.ignore = ?", false])
+    self.relevant.find(:all, :conditions => ["user_id = '#{user_id}' AND artist_id = '#{artist_id}'"])
   end
 
   def self.user_suggested(user_id)
-    self.find(:all, :conditions => ["user_id = '#{user_id}' AND suggests.ignore = ?", false])
+    self.relevant.find(:all, :conditions => ["user_id = '#{user_id}'"])
   end
 
 end

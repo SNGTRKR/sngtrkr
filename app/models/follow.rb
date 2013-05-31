@@ -9,16 +9,8 @@ class Follow < ActiveRecord::Base
 
   before_destroy :destroy_unfollowed_artist
 
-  def delete_suggestion
-    Suggest.where(:user_id => user_id, :artist_id => artist_id).destroy_all
-  end
-
   def self.search(user_id, artist_id)
     find(:all, :conditions => ["user_id = '#{user_id}' AND artist_id = '#{artist_id}'"])
-  end
-
-  def self.user_follows(user_id)
-    find(:all, :conditions => ["user_id = '#{user_id}'"])
   end
 
   def destroy_unfollowed_artist
@@ -27,5 +19,8 @@ class Follow < ActiveRecord::Base
     end
   end
 
+  def delete_suggestion
+    Suggest.where(:user_id => user_id, :artist_id => artist_id).destroy_all
+  end
 
 end

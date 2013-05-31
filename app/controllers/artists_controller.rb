@@ -25,7 +25,7 @@ class ArtistsController < ApplicationController
       format.html # show.html.erb
       format.json { render :json => @artist }
       format.js do
-        @follow = current_user.follow.where(:artist_id => params[:id]).first
+        @follow = current_user.follows.where(:artist_id => params[:id]).first
       end
     end
   end
