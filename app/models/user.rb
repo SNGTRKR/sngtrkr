@@ -28,12 +28,10 @@ class User < ActiveRecord::Base
 
   before_save :default_values
 
+  scope :ordered, order('first_name, last_name')
+
   def default_values
     self.email_frequency ||= 1
-  end
-
-  def self.ordered
-    order('first_name, last_name')
   end
 
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
@@ -69,34 +67,12 @@ class User < ActiveRecord::Base
     update_attribute(:deleted_at, Time.current)
   end
 
-  def role?(role)
-    return !!self.roles.find_by_name(role.to_s.camelize)
-  end
-
   def friends_with? user, friends
     if friends.include? user.fbid
       true
     else
       false
     end
-  end
-
-  def manager?
-    if managing.count > 0
-      true
-    else
-      false
-    end
-  end
-
-  def manage_artist artist_id
-    t = manage.create(:artist_id => artist_id)
-    t.save
-    return t.id
-  end
-
-  def unmanage_artist artist_id
-    manage.delete(manage.where(:user_id => self.id, :artist_id => artist_id))
   end
 
   def follow_artist artist_id
@@ -121,19 +97,12 @@ class User < ActiveRecord::Base
   end
 
   def following?(artist_id)
-    if !Follow.where(:artist_id => artist_id, :user_id => id).empty?
-      true
-    else
-      false
+    unless @follow_ids
+      @follow_ids = Follow.where(:user_id => id).map{|f| f.artist_id }
     end
-  end
 
-  def managing?(artist_id)
-    if !Manage.where(:artist_id => artist_id, :user_id => id).empty?
-      true
-    else
-      false
-    end
+    return @follow_ids.include? artist_id
+
   end
 
   def suggested
@@ -141,11 +110,11 @@ class User < ActiveRecord::Base
   end
 
   def suggested?(artist_id)
-    if !Suggest.where(:artist_id => artist_id, :user_id => id).empty?
-      true
-    else
-      false
+    unless @suggest_ids
+      @suggest_ids = Suggest.where(:user_id => id, :ignore => false).map{|f| f.artist_id }
     end
+
+    return @suggest_ids.include? artist_id
   end
 
   def recent_activity(opts={:limit => 20})
