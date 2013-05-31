@@ -7,21 +7,29 @@ class ApplicationController < ActionController::Base
   cache_sweeper :user_sweeper
 
   #check_authorization  :unless => :devise_controller? # Breaks rails admin
-  def cached_current_user
-    current_user
-  end
-
-  helper_method :cached_current_user
 
   def define_user
+    # TODO: This works but could use proper caching with memcache instead of session
     if user_signed_in?
-      @app_friends = []
-      @app_friends = session["friends"]
-      @activities = User.recent_activities session["friends"]
+      @app_friends = session["friends"] unless @app_friends
+      @activities = User.recent_activities session["friends"] unless @activities
     else
-      @activities = []
     end
   end
+
+  alias_method :devise_current_user, :current_user
+  def current_user
+    if params[:user_id].blank?
+      devise_current_user # TODO: Cache this information
+    else
+      Rails.cache.fetch("users/user-#{params[:user_id]}") { User.includes(:roles).find(params[:user_id]) }
+    end   
+  end
+
+  def admin?
+    current_user.roles.map{|r| r.name }.include? "Admin"
+  end
+  helper_method :admin?
 
   # This action is to ensure a user cannot simply hack a URL to view another user's area
   def self_only
@@ -32,11 +40,11 @@ class ApplicationController < ActionController::Base
       id = params[:id]
     end
     if (id == "me") then
-      id = cached_current_user.id
+      id = current_user.id
     else
       id = id.to_i
     end
-    if (id != cached_current_user.id && !cached_current_user.role?(:admin))
+    if (id != current_user.id && admin?)
       redirect_to :root, :flash => {:error => "You cannot change the settings of another user. If you are seeing
         this message when you are this user, contact us at support@sngtrkr.com"}
     end
@@ -72,8 +80,8 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource_or_scope)
-    if cached_current_user.sign_in_count == 1 # First time user
-      u = cached_current_user
+    if current_user.sign_in_count == 1 # First time user
+      u = current_user
       u.sign_in_count += 1
       u.save
       return '/intro'

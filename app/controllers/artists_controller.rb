@@ -15,7 +15,7 @@ class ArtistsController < ApplicationController
     @artist = Rails.cache.fetch "artist/artists-#{@current_artist.id}", expires_in: 2.hours do
       Artist.includes(:releases).find(@a_param)
     end
-    @user = cached_current_user
+    @user = current_user
     # @timeline = Rails.cache.fetch "artist_timeline/#{@current_artist.id}-#{@current_artist.updated_at}", expires_in: 2.hours do
     #   Timeline.artist(@a_param)
     # end
@@ -25,7 +25,7 @@ class ArtistsController < ApplicationController
       format.html # show.html.erb
       format.json { render :json => @artist }
       format.js do
-        @follow = cached_current_user.follow.where(:artist_id => params[:id]).first
+        @follow = current_user.follow.where(:artist_id => params[:id]).first
       end
     end
   end
@@ -104,7 +104,7 @@ class ArtistsController < ApplicationController
 
   # Used to import a single artist at a time
   def import
-    @artist = ArtistScraper.fb_single_import(params[:token], params[:fb_id], cached_current_user.id)
+    @artist = ArtistScraper.fb_single_import(params[:token], params[:fb_id], current_user.id)
     @url = artist_path(@artist)
     respond_to do |format|
       format.js
@@ -113,7 +113,7 @@ class ArtistsController < ApplicationController
 
   # For first time users waiting for some initial artists to follow.
   def first_suggestions
-    @user = cached_current_user
+    @user = current_user
     @six = 'false'
     @six = 'true' unless @user.suggested.count < 6
     respond_to do |format|

@@ -10,7 +10,7 @@ class Admin::AdminController < ApplicationController
   end
 
   def overview
-    unless cached_current_user.roles[0].name == "Admin"
+    unless admin?
       return redirect_to :root
     end
 

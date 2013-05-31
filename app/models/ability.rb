@@ -12,7 +12,7 @@ class Ability
       user_permissions(user)
     end
 
-    if user.role? :admin
+    if user.roles.map{|r| r.name }.include? "Admin"
       # Admin permissions
       admin_permissions(user)
     end

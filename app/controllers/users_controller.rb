@@ -7,9 +7,9 @@ class UsersController < ApplicationController
   cache_sweeper :user_sweeper
 
   def timeline
-    @user = cached_current_user
+    @user = current_user
     params[:page] ||= 0
-    @timeline = Timeline.user(cached_current_user.id, params[:page])
+    @timeline = Timeline.user(current_user.id, params[:page])
     respond_to do |format|
       format.html
     end
@@ -19,9 +19,9 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     # Check if this is your page
-    if cached_current_user.id == params[:id].to_i
-      @user = cached_current_user
-      @following = @user.following.joins(:follow).select('artists.*, COUNT(follows.artist_id) as followers').group('artists.id').ordered.page(params[:page])
+    if current_user.id == params[:id].to_i
+      @user = current_user
+      @following = @user.following.ordered.page(params[:page])
       @following_pages = @following.num_pages
       respond_to do |format|
         format.js { render :partial => 'users/new_following', :formats => [:js] }
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
       @friend = User.find(params[:id])
       @following = @friend.following.ordered.page(params[:page])
       # Do we want to stop users viewing other users if they aren't facebook friends?
-      #      if !cached_current_user.friends_with? @friend, session["friend_ids"]
+      #      if !current_user.friends_with? @friend, session["friend_ids"]
       #        return redirect_to :root, :error => "You do not have permissions to view this user"
       #      end
       respond_to do |format|
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   end
 
   def self
-    redirect_to "/users/#{cached_current_user.id}"
+    redirect_to "/users/#{current_user.id}"
   end
 
   # Allows a user to see their profile from an oustide perspective
@@ -93,7 +93,7 @@ class UsersController < ApplicationController
   end
 
   def recommend
-    @user = cached_current_user
+    @user = current_user
     if @user.sign_in_count <= 2
       @first_time = true
     else

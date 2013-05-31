@@ -74,8 +74,8 @@
 </div>
 </div>
 <div class="g_main release_info">
-  <% if cached_current_user %>
-      <% if cached_current_user.role? :admin %>
+  <% if current_user %>
+      <% if admin? %>
           <div class="image">
             <div class="front">
               <%= image_tag @release.image.large %>

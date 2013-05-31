@@ -190,7 +190,7 @@ class User < ActiveRecord::Base
 
   def self.serialize_from_session(key,other)
     single_key = key.is_a?(Array) ? key.first : key
-    Rails.cache.fetch("users/user-#{single_key}") { User.find(single_key) }
+    Rails.cache.fetch("users/user-#{single_key}") { User.includes(:roles,:following).find(single_key) }
   end
 
 end
