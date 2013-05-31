@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   validates :last_name, :presence => {:message => "A last name is required."}
   validates :privacy_policy, :acceptance => {:message => "Please accept the Privacy policy."}
   validates_format_of :email, :with => /@/
+  #validates :leave_reason, :inclusion => {:in => [1,2,3,4]}
   # validates :password, :presence => { :message => "A password is required."}
 
   has_many :follows, :dependent => :destroy
@@ -62,9 +63,8 @@ class User < ActiveRecord::Base
     end
   end
 
-  def soft_delete
-    # assuming you have deleted_at column added already
-    update_attribute(:deleted_at, Time.current)
+  def soft_delete(params)
+    update_attributes(:deleted_at => Time.current, :leave_reason => params)
   end
 
   def friends_with? user, friends
