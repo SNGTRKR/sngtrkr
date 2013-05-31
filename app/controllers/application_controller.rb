@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   #check_authorization  :unless => :devise_controller? # Breaks rails admin
   def cached_current_user
-    Rails.cache.fetch("users/user-#{current_user.id}", :expires_in => 1.day) { current_user }
+    current_user
   end
 
   helper_method :cached_current_user

@@ -16,7 +16,7 @@ SNGTRKR::Application.configure do
 
   # Necessary for live updating mailer
   config.action_controller.perform_caching = false
-  config.cache_store = :dalli_store, {:namespace => "sngtrkr", :compress => true}
+  config.cache_store = :dalli_store, { :namespace => "sngtrkr", :compress => true }
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
