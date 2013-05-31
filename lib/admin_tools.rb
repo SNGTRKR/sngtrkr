@@ -6,18 +6,18 @@ class AdminTools
   # Had to do it myself because their rake seems to crash for unknown reasons.
   # This also has the advantage of checking if the file exists rather than just assuming all don't.
   # We assume if the large image is missing, we need to reprocess this item.
-  # AdminTools.reprocess_missing_images Release
-  # AdminTools.reprocess_missing_images Artist
-  def self.reprocess_missing_images klass
+  # AdminTools.reprocess_missing_images Release, :medium
+  # AdminTools.reprocess_missing_images Artist, :large
+  def self.reprocess_missing_images klass, missing_style
     klass.find_each do |inst|
       rep = false
       puts "START #{inst.id}"
       unless inst.image.present?
         next
       end
-      large_image = inst.image(:large)
+      image = inst.image(missing_style)
       begin
-        actual = open(large_image)
+        actual = open(image)
       rescue
         rep = true
       end
@@ -29,11 +29,11 @@ class AdminTools
       puts "REPROCESS #{inst.id}"
 
       begin
-        inst.image.reprocess!
+        inst.image.reprocess!(missing_style)
       rescue
         inst.image.destroy
       end
     end
-  end
 
+  end
 end
