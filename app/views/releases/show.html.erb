@@ -14,7 +14,7 @@
       <div class="g_sidebar">
         <div class="release_artist g_fixed">
           <div class="scrollable">
-            <div class="scrollable_inner"><%= render :partial => '/shared/artist_popover', :locals => {:apop => @artist} %>
+            <div class="scrollable_inner">
               <%= image_tag @artist.image.large %>
               <h2><%= link_to @artist.name, @artist %></h2>
 
@@ -160,8 +160,8 @@
                   <i class="icon-share"></i>Share
                 </div>
               </div>
-              <%= render :partial => '/shared/buy_popover', :locals => {:bpop => release} %>
-              <%= render :partial => '/shared/release_popover', :locals => {:apop => @artist, :rpop => release} %>
+              <%= buy_popover release %>
+              <%= release_popover release, @artist %>
             </div>
         <% end %>
       </div>
@@ -169,9 +169,9 @@
 </div>
 </div>
 <% cache "release_popups/#{@release.id}-#{@release.updated_at}", expires_in: 2.hours do %>
-    <%= render :partial => '/shared/artist_popover', :locals => {:apop => @artist} %>
-    <%= render :partial => '/shared/release_popover', :locals => {:apop => @artist, :rpop => @release} %>
-    <%= render :partial => '/shared/buy_popover', :locals => {:bpop => @release} %>
+    <%= artist_popover @artist %>
+    <%= release_popover @release, @artist %>
+    <%= buy_popover @release %>
     <% @report = Report.new %>
     <div id="reportModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-body">
