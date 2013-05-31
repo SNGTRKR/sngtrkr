@@ -35,7 +35,8 @@
 <div class="g_main g_tabs">
   <div class="tab-content profile-tab-content" id="myTabContent">
     <div class="tab-pane active" id="tab1" data-user="<%= current_user.id %>">
-      <% if !@following.count.user.following     <table class="table table-striped">
+      <% if !@following.count.zero? %>
+          <table class="table table-striped">
             <tbody>
             <% @following.each do |artist_tracked| %>
                 <tr id="row-<%= artist_tracked.id %>" class="animated">
