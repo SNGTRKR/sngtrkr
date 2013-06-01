@@ -5,10 +5,4 @@ class Report < ActiveRecord::Base
   serialize :elements
   validates :comments, :presence => true
 
-
-  def one_checkbox_selected
-    if elements.blank?
-      errors.add_to_base("Please select at least one category.")
-    end
-  end
 end
