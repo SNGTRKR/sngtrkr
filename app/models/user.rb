@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   validates :last_name, :presence => {:message => "A last name is required."}
   validates :privacy_policy, :acceptance => {:message => "Please accept the Privacy policy."}
   validates_format_of :email, :with => /@/
-  #validates :leave_reason, :inclusion => {:in => [1,2,3,4]}
+  validates :leave_reason, :inclusion => { :in => [1,2,3,4], :message => "Please select your reason for leaving." }
   # validates :password, :presence => { :message => "A password is required."}
 
   has_many :follows, :dependent => :destroy

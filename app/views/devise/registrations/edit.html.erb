@@ -58,8 +58,8 @@
   <div class="modal-body">
     <h2>Delete your account</h2>
     <p>We are sad to see you leave us, please take a few seconds to select why you’re leaving.</p>
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :method => :delete) do |f| %>
-        <%= select_tag(:leave_reason, options_for_select([['Please select an option',0],['Too complicated', 1], ['Not enough information', 2], ['Too many emails', 3], ['Worried about privacy', 4] ])) %>
+    <%= form_for(resource, :validate => true, :as => resource_name, :url => registration_path(resource_name), :method => :delete) do |f| %>
+        <%= f.select(:leave_reason, [['Too complicated', 1], ['Not enough information', 2], ['Too many emails', 3], ['Worried about privacy', 4]], :include_blank => "Please select an option") %>
         </div>
         <div class="modal-footer">
           <%= f.submit 'Delete'%>
