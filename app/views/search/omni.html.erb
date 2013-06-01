@@ -69,7 +69,7 @@
                 <div class="btn btn-small share_artist share" data-placement="bottom" id="<%= artist.id %>">
                   <i class="icon-share"></i>Share
                 </div>
-                <%= render :partial => '/shared/artist_popover', :locals => {:apop => artist} %>
+                <%= artist_popover artist %>
               </div>
           <% end %>
           <% @releases.take(5).each do |release| %>
@@ -87,8 +87,8 @@
                 <div class="btn btn-small share_release share" data-placement="bottom" id="<%= release.id %>">
                   <i class="icon-share"></i>Share
                 </div>
-                <%= render :partial => '/shared/buy_popover', :locals => {:bpop => release} %>
-                <%= render :partial => '/shared/release_popover', :locals => {:apop => release.artist, :rpop => release} %>
+                <%= buy_popover release %>
+                <%= release_popover release, release.artist %>
               </div>
           <% end %>
 
@@ -119,7 +119,7 @@
                 <div class="btn btn-small share_artist share" data-placement="bottom" id="<%= artist.id %>">
                   <i class="icon-share"></i>Share
                 </div>
-                <%= render :partial => '/shared/artist_popover', :locals => {:apop => artist} %>
+                <%= artist_popover artist %>
               </div>
           <% end %>
       <% end %>
@@ -151,8 +151,8 @@
                 <div class="btn btn-small share_release share" data-placement="bottom" id="<%= release.id %>">
                   <i class="icon-share"></i>Share
                 </div>
-                <%= render :partial => '/shared/buy_popover', :locals => {:bpop => release} %>
-                <%= render :partial => '/shared/release_popover', :locals => {:apop => release.artist, :rpop => release} %>
+                <%= buy_popover release %>
+                <%= release_popover release, release.artist %>
               </div>
           <% end %>
 

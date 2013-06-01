@@ -39,6 +39,19 @@ module ApplicationHelper
     :user
   end
 
+  # popover helpers
+  def artist_popover artist_obj
+    render :partial => 'shared/artist_popover', :locals => { :apop => artist_obj }
+  end
+
+  def buy_popover buy_obj
+    render :partial => 'shared/buy_popover', :locals => { :bpop => buy_obj }
+  end
+
+  def release_popover release_obj, artist_obj
+    render :partial => 'shared/release_popover', :locals => { :rpop => release_obj, :apop => artist_obj }
+  end
+
   def resource
     @resource ||= User.new
   end

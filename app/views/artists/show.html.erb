@@ -89,5 +89,5 @@
 </div>
 </div>
 <% cache "artist_popup/#{@artist.id}-#{@artist.updated_at}", expires_in: 1.week do %>
-    <%= render :partial => '/shared/artist_popover', :locals => {:apop => @artist} %>
+    <%= artist_popover @artist %>
 <% end %>

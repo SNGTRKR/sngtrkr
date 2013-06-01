@@ -9,9 +9,10 @@ class UsersController::RegistrationsController < Devise::RegistrationsController
   end
 
   def destroy
-    resource.soft_delete
-    set_flash_message :notice, :destroyed
-    sign_out_and_redirect(resource)
+    resource.soft_delete(params[:leave_reason])
+    Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
+    set_flash_message :notice, :destroyed if is_navigational_format?
+    respond_with_navigational(resource){ redirect_to after_sign_out_path_for(resource_name) }
   end
 
   def update

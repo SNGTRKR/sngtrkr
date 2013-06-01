@@ -83,15 +83,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy_with_reason
-    Rails.logger.info(params)
-    @user = User.find(params[:id])
-    @user.leave_reason = params[:leave_reason]
-    @user.soft_delete
-    sign_out(@user)
-    redirect_to :root, :notice => "<p>Your account has been removed from the site. Note that we will retain your data privately, so if you change your mind, you can rejoin anytime. If you wish to have your data completely removed, please email support@sngtrkr.com</p>"
-  end
-
   def recommend
     @user = current_user
     if @user.sign_in_count <= 2
