@@ -58,8 +58,8 @@ SNGTRKR::Application.routes.draw do
 
   resources :artists, :except => [:index] do
     collection do
-      match 'import/:fb_id', :action => 'import'
       match 'preview'
+      get 'fb_import/:fb_id', :action => 'fb_import'
       get 'first_suggestions'
       match 'unfollow' => 'Follows#batch_destroy'
     end

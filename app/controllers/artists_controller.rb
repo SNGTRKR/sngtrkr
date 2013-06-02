@@ -102,8 +102,8 @@ class ArtistsController < ApplicationController
     end
   end
 
-  # Used to import a single artist at a time
-  def import
+  # Used to import a single artist at a time from Facebook
+  def fb_import
     @artist = ArtistScraper.fb_single_import(params[:token], params[:fb_id], current_user.id)
     @url = artist_path(@artist)
     respond_to do |format|
