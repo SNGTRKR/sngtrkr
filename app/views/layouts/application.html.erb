@@ -199,7 +199,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
               Sign in with Facebook
           <% end %>
         </div>
-        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :validate => true) do |f| %>
 
             <%= f.label "First name" %>
             <%= f.text_field :first_name %>

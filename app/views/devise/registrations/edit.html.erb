@@ -45,25 +45,25 @@
         <li class="monthly">Monthly</li>
         <li class="never">Never</li>
       </ul>
-      <input class="btn" type="submit" value="Save">
+      <%= f.submit 'Save', :class => 'btn' %>
   <% end %>
 
   <h2>Delete my account</h2>
 
-  <p>Your account, tracked artists and all personal details will be permanently removed.</p>
-  <div class="btn" data-target="#deleteModal" data-toggle="modal">Cancel my account</div>
+  <p>Your account, tracked artists and all personal details will be removed.</p>
+  <div class="btn del" data-target="#deleteModal" data-toggle="modal">Cancel my account</div>
 </div>
 
 <div id="deleteModal" class="modal hide fade" tabindex="-1" role="dialog">
   <div class="modal-body">
     <h2>Delete your account</h2>
     <p>We are sad to see you leave us, please take a few seconds to select why you’re leaving.</p>
-    <%= form_for(resource, :validate => true, :as => resource_name, :url => registration_path(resource_name), :method => :delete) do |f| %>
-        <%= f.select(:leave_reason, [['Too complicated', 1], ['Not enough information', 2], ['Too many emails', 3], ['Worried about privacy', 4]], :include_blank => "Please select an option") %>
+    <%= form_for(resource, :validate => true, :as => resource_name, :url => registration_path(resource_name), :method => :delete, :id => 'delete_user') do |f| %>
+        <%= f.select(:leave_reason, [['Too complicated', 1], ['Not enough information', 2], ['Too many emails', 3], ['Worried about privacy', 4]]) %>
         </div>
         <div class="modal-footer">
-          <%= f.submit 'Delete'%>
-          <div class="cancel" data-dismiss="modal">Cancel</div>
+          <%= f.submit 'Delete', :class => 'btn' %>
+          <button type="button" class="cancel" data-dismiss="modal">Cancel</div>
     <% end %>
     </div>
 </div>

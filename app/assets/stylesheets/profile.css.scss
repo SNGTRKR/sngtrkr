@@ -185,6 +185,9 @@
   #new_pass {
     float: left;
   }
+  .del {
+    margin-bottom: 20px;
+  }
 }
 
 .profile_left_sidebar {
@@ -193,12 +196,6 @@
     line-height: 28px !important;
     margin: 15px 0 0;
   }
-  // p {
-  // 	width:170px;
-  // 	float:left;
-  // 	margin-top:15px;
-  // 	font-size:13px;
-  // }
   .icon {
     float: left;
     position: relative;
