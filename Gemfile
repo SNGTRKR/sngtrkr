@@ -51,7 +51,6 @@ gem 'itunes-search-api'
 
 # ADMIN
 gem 'rails_admin'
-gem 'exception_notification', :require => 'exception_notifier'
 
 # DEBUGGING
 gem 'rollbar', '~> 0.9.6'
