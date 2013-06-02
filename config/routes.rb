@@ -4,9 +4,9 @@ SNGTRKR::Application.routes.draw do
 
   root :to => "pages#home"
 
-  match 'pages/:action' => 'pages#:action'
+  get 'pages/:action' => 'pages#:action'
 
-  #match '/:id' => "shortener/shortened_urls#show"
+  #get '/:id' => "shortener/shortened_urls#show"
 
   if Rails.env.development?
     mount RailsEmailPreview::Engine, :at => 'mail_preview' # You can choose any URL here
@@ -18,14 +18,14 @@ SNGTRKR::Application.routes.draw do
       root :to => "admin#overview"
       mount RailsAdmin::Engine => '/rails', :as => 'rails_admin'
       mount Sidekiq::Web => '/sidekiq'
-      match '/:action' => "admin#:action"
+      get '/:action' => "admin#:action"
     end
   end
 
-  match '/about' => "Pages#about"
-  match '/terms' => "Pages#terms"
-  match '/privacy' => "Pages#privacy"
-  match '/release_magic/:store/:url' => "Releases#magic"
+  get '/about' => "pages#about"
+  get '/terms' => "pages#terms"
+  get '/privacy' => "pages#privacy"
+  get '/release_magic/:store/:url' => "releases#magic"
 
   devise_for :users, :controllers => {
       :registrations => "users_controller/registrations",
@@ -36,20 +36,20 @@ SNGTRKR::Application.routes.draw do
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   end
 
-  match '/tl' => "Users#timeline"
+  get '/tl' => "users#timeline"
 
   resources :users, :except => [:index, :edit, :update] do
     member do
-      match 'public'
+      get 'public'
       get 'destroy_confirm'
       post 'destroy_with_reason'
       get 'friends'
       get 'recommend'
-      get 'timeline/:page' => 'Timeline#index'
+      get 'timeline/:page' => 'timeline#index'
     end
     collection do
-      match 'me', :action => 'self'
-      match 'me/timeline/:page' => 'Timeline#index'
+      get 'me', :action => 'self'
+      get 'me/timeline/:page' => 'timeline#index'
     end
     resources :manages
   end
@@ -58,17 +58,17 @@ SNGTRKR::Application.routes.draw do
 
   resources :artists, :except => [:index] do
     collection do
-      match 'preview'
       get 'fb_import/:fb_id', :action => 'fb_import'
+      get 'preview'
       get 'first_suggestions'
-      match 'unfollow' => 'Follows#batch_destroy'
+      get 'unfollow' => 'follows#batch_destroy'
     end
     resources :releases
-    match 'scrape_confirm' => 'Artists#scrape_confirm'
+    get 'scrape_confirm' => 'artists#scrape_confirm'
     resources :follows, :except => [:destroy, :edit]
-    match 'unfollow' => 'Follows#user_destroy'
+    get 'unfollow' => 'follows#user_destroy'
     #resources :suggests, :except => [:destroy,:edit]
-    match 'unsuggest' => 'Suggests#destroy'
+    get 'unsuggest' => 'suggests#destroy'
   end
 
   # Allows us to have intuitive /artist/1/follow URLs that actually deal with the
