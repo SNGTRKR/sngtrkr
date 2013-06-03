@@ -7,6 +7,15 @@ require 'open-uri'
 
 module Scraper2
 
+	# Add class instance variables for sub-scrapers so that we can replace 
+	# them with doubles when testing.
+	attr_accessor :facebook_scraper
+	attr_accessor :itunes_scraper
+	attr_accessor :lastfm_scraper
+	@facebook_scraper = Facebook
+	@itunes_scraper = Itunes
+	@lastfm_scraper = LastFm
+
 	# Import an artist for a user
 	def self.import_artist hash
 		artist = scrape_artist hash
@@ -22,19 +31,19 @@ module Scraper2
 	def self.scrape_artist hash
 		# Attempt to gather information from all the sources we got
 		if hash[:fb_id] and hash[:fb_access_token]
-			artist = Facebook.scrape_artist hash[:fb_id], hash[:fb_access_token]
+			artist = facebook_scraper.scrape_artist hash[:fb_id], hash[:fb_access_token]
 		elsif hash[:itunes_id]
-			artist = Itunes.scrape_artist hash[:itunes_id]
+			artist = itunes_scraper.scrape_artist hash[:itunes_id]
 		end
 
 		# Bail out if we don't have an artist to scrape from
 		return false unless artist
 
 		unless artist.itunes_id
-			Itunes.associate_artist_with_store artist
+			itunes_scraper.associate_artist_with_store artist
 		end
 
-		LastFm.improve_artist_info artist
+		lastfm_scraper.improve_artist_info artist
 
 		scrape_artist_image artist
 
@@ -48,7 +57,7 @@ module Scraper2
 
 	# Scrape all known sources (last.fm) for artist image
 	def self.scrape_artist_image artist
-		prospective_image = LastFm.artist_image artist
+		prospective_image = lastfm_scraper.artist_image artist
 
 		return false unless prospective_image
     puts "Valid image: #{@image_url.inspect}"

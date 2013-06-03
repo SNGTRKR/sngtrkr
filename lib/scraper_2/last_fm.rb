@@ -4,8 +4,8 @@ require 'scraper_2/exceptions'
 module Scraper2
   class LastFm
 
-    @@api_endpoint = "http://ws.audioscrobbler.com/2.0/"
-    @@api_key = "6541dc514e866d40539bfe4eddde211c"
+    @api_endpoint = "http://ws.audioscrobbler.com/2.0/"
+    @api_key = "6541dc514e866d40539bfe4eddde211c"
 
     # Takes an existing Artist object and improves name and bio
     def self.improve_artist_info artist
@@ -28,7 +28,7 @@ module Scraper2
         raise "Artist or album names are not strings: #{artist_name.inspect},  #{album_name.inspect}"
       end
       begin
-        album_info = Hash.from_xml(open("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&artist=#{CGI.escape(artist_name)}&album=#{CGI.escape(album_name)}&api_key=#{@@api_key}&autocorrect=1", :proxy => @proxy))
+        album_info = Hash.from_xml(open("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&artist=#{CGI.escape(artist_name)}&album=#{CGI.escape(album_name)}&api_key=#{@api_key}&autocorrect=1", :proxy => @proxy))
       rescue
         Rails.logger.error("URL Issue for artist_name: '#{artist_name.inspect}' and album-name: '#{album_name.inspect}'")
         return false
@@ -62,7 +62,7 @@ module Scraper2
     private
     def self.get_artist_info(artist_name)
       safe_name = CGI.escape(artist_name)
-      Hash.from_xml(open("#{@@api_endpoint}?method=artist.getinfo&artist=#{safe_name}&api_key=#{@@api_key}&autocorrect=1"))
+      Hash.from_xml(open("#{@api_endpoint}?method=artist.getinfo&artist=#{safe_name}&api_key=#{@api_key}&autocorrect=1"))
     end
   end
 end
