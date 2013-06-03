@@ -13,7 +13,7 @@ module Scraper2
       if artist_info["lfm"]["artist"]["name"]
         artist.name = artist_info["lfm"]["artist"]["name"]
       end
-      summary = @artist_info["lfm"]["artist"]["bio"]["summary"].to_s
+      summary = artist_info["lfm"]["artist"]["bio"]["summary"].to_s
       if summary =~ /is not an artist/
         raise ArtistScrapeError, "LastFm: #{artist.name} not a real artist"
       end

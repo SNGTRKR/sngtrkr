@@ -123,25 +123,89 @@ end
 
 describe "Scraper2::LastFm" do
 
+  let(:good_api_response) do
+    # Not technically accurate Radiohead info... If you were wanting that.
+    { "lfm"=>{"status"=>"ok", 
+        "artist"=>{"name"=>"Radiohead", 
+          "mbid"=>"a74b1b7f-71a5-4011-9441-d0b5e4122711", 
+          "bandmembers"=>{"member"=>[{"name"=>"Thom Yorke", "yearfrom"=>"1986"}, {"name"=>"Phil Selway", "yearfrom"=>"1986"}]}, 
+          "url"=>"http://www.last.fm/music/Radiohead", 
+          "image"=>["http://userserve-ak.last.fm/serve/34/3371617.jpg", 
+            "http://userserve-ak.last.fm/serve/500/3371617/Radiohead+rhpics3pt4.jpg"], 
+          "streamable"=>"1", 
+          "ontour"=>"0", 
+          "stats"=>{"listeners"=>"4078088", 
+          "playcount"=>"374649945"}, 
+          "similar"=>{"artist"=>[{"name"=>"Thom Yorke", 
+          "url"=>"http://www.last.fm/music/Thom+Yorke", 
+          "image"=>["http://userserve-ak.last.fm/serve/34/4556396.gif", 
+            "http://userserve-ak.last.fm/serve/500/4556396/Thom+Yorke.gif"]}]}, 
+          "tags"=>{"tag"=>[{"name"=>"alternative", 
+            "url"=>"http://www.last.fm/tag/alternative"}, 
+            {"name"=>"electronic", 
+            "url"=>"http://www.last.fm/tag/electronic"}]}, 
+          "bio"=>{"links"=>{"link"=>{"rel"=>"original", 
+            "href"=>"http://www.last.fm/music/Radiohead/+wiki"}}, 
+            "published"=>"Fri, 30 Jan 2009 20:18:28 +0000", 
+            "summary"=>"BIO SUMMARY", 
+            "content"=>"FULL CONTENT", 
+            "placeformed"=>"Abingdon, Oxfordshire, United Kingdom", 
+            "yearformed"=>"1986", 
+            "formationlist"=>{"formation"=>{"yearfrom"=>"1986", 
+            "yearto"=>nil}}
+          }
+        }
+      }
+    }
+  end
+
+  let(:bad_api_response) do
+    {"lfm"=>{"status"=>"ok", 
+    "artist"=>{"name"=>"UKF Drum & Bass", 
+    "mbid"=>nil, 
+    "url"=>"http://www.last.fm/music/UKF+Drum+&+Bass", 
+    "image"=>["http://userserve-ak.last.fm/serve/34/76805252.jpg", 
+      "http://userserve-ak.last.fm/serve/500/76805252/UKF+Drum++Bass+gg.jpg"], 
+    "streamable"=>"0", 
+    "ontour"=>"0", 
+    "stats"=>{"listeners"=>"230", 
+    "playcount"=>"22656"}, 
+    "similar"=>{}, 
+    "tags"=>{"tag"=>{"name"=>"drum & bass", 
+    "url"=>"http://www.last.fm/tag/drum%2B%2526%2Bbass"}}, 
+    "bio"=>{"links"=>{"link"=>{"rel"=>"original", 
+    "href"=>"http://www.last.fm/music/UKF+Drum+&+Bass/+wiki"}}, 
+    "published"=>"Fri, 
+    13 Apr 2012 16:39:25 +0000", 
+    "summary"=>"\nThis is not an artist", 
+    "content"=>"\nThis is not an artist"}}}}
+  end
+
   context "when a real Artist is given for improvement" do
+    before(:each) {Scraper2::LastFm.stub(:get_artist_info) {good_api_response} }
+    let(:artist) {Scraper2::LastFm.improve_artist_info Artist.new()}
     it "improves the name" do
-      pending
+      artist.name.should eq "Radiohead"
     end
     it "improves the bio" do
-      pending
+      artist.bio.should eq "BIO SUMMARY"
     end
 
   end
 
   context "when a non-existent Artist is given for improvement" do
-    it "throws an ArtistScrapeError" do
-      pending
+    before(:each) {Scraper2::LastFm.stub(:get_artist_info) {bad_api_response} }
+    let(:artist) {Scraper2::LastFm.improve_artist_info Artist.new()}
+    it "should raise" do
+      expect { artist }.to raise_error(ArtistScrapeError)
     end
   end
 
   context "when a good Artist is given for image scraping" do
+    before(:each) {Scraper2::LastFm.stub(:get_artist_info) {good_api_response} }
+    let(:artist_image) {Scraper2::LastFm.artist_image Artist.new()}
     it "finds an image" do
-      pending
+      artist_image.should eq "http://userserve-ak.last.fm/serve/500/3371617/Radiohead+rhpics3pt4.jpg"
     end
   end
 
