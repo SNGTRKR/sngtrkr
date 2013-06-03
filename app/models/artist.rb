@@ -1,6 +1,7 @@
 class Artist < ActiveRecord::Base
   validates :name, :presence => true
   validates :fbid, :presence => true, :uniqueness => true
+  attr_accessor :prospective_image
 
   has_many :releases, :dependent => :destroy
 
@@ -65,9 +66,13 @@ class Artist < ActiveRecord::Base
     order('updated_at DESC')
   end
 
-  def itunes
+  def itunes(original=false)
     if itunes?
-      return "http://clk.tradedoubler.com/click?p=23708&a=2098473&url=#{CGI.escape(super)}"
+      if original
+        return super() # Non optional brackets get rid of the original argument
+      else
+        return "http://clk.tradedoubler.com/click?p=23708&a=2098473&url=#{CGI.escape(super())}"
+      end
     else
       return nil
     end

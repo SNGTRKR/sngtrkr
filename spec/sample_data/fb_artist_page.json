@@ -1,0 +1,18 @@
+{
+  "id": "214987045200179", 
+  "name": "Joker", 
+  "general_manager": "charles.holgate@gmail.com", 
+  "booking_agent": "francesco@echolocationtalent.com", 
+  "website": "http://www.myspace.com/thejokerproductions http://twitter.com/Joker http://youtube.com/Joker http://soundcloud.com/Joker", 
+  "likes": 28857, 
+  "hometown": "Bristol",
+  "genre": "Dubstep",
+  "record_label": "Lablol",
+  "bio": "He Joker Boi",
+  "picture": {
+    "data": {
+      "url": "http://profile.ak.fbcdn.net/hprofile-ak-ash4/372933_214987045200179_1036045077_q.jpg", 
+      "is_silhouette": false
+    }
+  }
+}
