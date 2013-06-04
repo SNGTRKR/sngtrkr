@@ -264,7 +264,7 @@ $(document).ajaxComplete ->
 popover_triggers = ->
   $(".share_sngtrkr").popover
     html: true
-    content: $(".sngtrkr_pop").html();
+    content: $(".sngtrkr_pop").html()
 
   $(".share_artist").each ->
     $elem = $(this)
