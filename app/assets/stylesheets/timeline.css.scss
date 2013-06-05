@@ -10,14 +10,14 @@
   display:inline-block;
     .image {
         div {
-          background-color:$darkgray;
+          background-color:#000;
           @include opacity(0);      
           @include transition-property(opacity);
-          @include transition-duration(0.5s);
-          @include transition-timing-function(ease-in);
+          @include transition-duration(0.4s);
+          @include transition-timing-function(linear);
         }
         &:hover div {
-          @include opacity(0.3);
+          @include opacity(0.35);
         }
         img, div {
           @include border-top-left-radius(3px);
@@ -57,13 +57,32 @@
     .actions {
       span {
         border:1px solid #B7B7B7;
-        @include border-radius(2px);
+        @include border-radius(3px);
         padding:6px;
         margin-right:5px;
         color:$gray;
+        position:relative;
+        cursor:pointer;
+          &:first-child {
+            padding:6px 6px 6px 8px;
+          }
+          &:last-child {
+            padding:6px 9px 6px 7px;
+          }
+          &:nth-child(2) {
+            padding:7px 4px 5px 9px;
+            position: relative;
+            top: 1px;
+          }
+          &:hover {
+            color:$darkgray !important;
+          }
       }
       i {
           color:$gray;
+      }
+      .icon-calendar {
+        margin-right:4px;
       }
     }
 }

@@ -1,10 +1,12 @@
 <% artist_page ||= 'false' %>
 
 <div id="release <%= release.id %>" class="release">
-  <div class="image">
-    <img src="<%= release.image.large.url %>" height="181" width="181"/>
-    <div></div>
-  </div>
+  <%= link_to [release.artist, release] do%>
+    <div class="image">
+      <img src="<%= release.image.large.url %>" height="181" width="181"/>
+      <div></div>
+    </div>
+  <% end %>
   <div class="info">
     <%= link_to [release.artist, release] do%><h2><%= release.name %></h2><% end %>
     <%= link_to release.artist do %><h3><%= release.artist.name %></h3><% end %>
