@@ -55,27 +55,38 @@
         }
     }
     .actions {
-      span {
+      .act {
         border:1px solid #B7B7B7;
         @include border-radius(3px);
         padding:6px;
         margin-right:5px;
         color:$gray;
         position:relative;
-        cursor:pointer;
           &:first-child {
             padding:6px 6px 6px 8px;
           }
           &:last-child {
             padding:6px 9px 6px 7px;
+            cursor:pointer;
           }
           &:nth-child(2) {
             padding:7px 4px 5px 9px;
             position: relative;
             top: 1px;
+            cursor:pointer;
           }
           &:hover {
-            color:$darkgray !important;
+            i {
+              color:$darkgray;
+            }
+          }
+          &.active {
+            background-image: none;
+            outline: 0;
+            @include box-shadow(inset 0 2px 4px rgba(0, 0, 0, .15), 0 1px 2px rgba(0, 0, 0, .05));
+              i {
+                color:$darkgray;
+              }
           }
       }
       i {

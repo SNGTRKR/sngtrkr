@@ -12,14 +12,16 @@
     <%= link_to release.artist do %><h3><%= release.artist.name %></h3><% end %>
   </div>
   <div class="actions">
-    <span>
+    <span class="act">
       <i class="icon-calendar"></i>
       <%= release.date.strftime(" %d/%m/%Y") %>
     </span>
-    <span>
+    <span class="share_release share act" data-placement="bottom" id="<%= release.id %>">
       <i class="icon-share"></i>
     </span>
-    <span>
+    <span class="buy act" data-placement="bottom" id="<%= release.id %>">
       <i class="icon-shopping-cart"></i></span>
   </div>
+  <%= buy_popover release %>
+  <%= release_popover release, release.artist %>
 </div>
