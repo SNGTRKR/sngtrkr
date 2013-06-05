@@ -1,76 +1,23 @@
 <% artist_page ||= 'false' %>
-<% date_format ||= " %B" %>
 
-<li class="release-outer release-outer-<%= cycle('odd', 'even') %>" data-release-id="<%= release.id %>" data-release-date="<%= release.date %>">
-  <div class="joining-line"></div>
-  <div class="each-release" style="background-image:url(<%= release.image.release_i.url %>)">
-    <div class="r-grad"></div>
-    <div class="release-date">
-
-    </div>
-    <div class="release-info">
-      <h2><%= link_to release.name, [release.artist, release] %></h2>
-      <% if artist_page == 'false' %>
-          <h3><%= link_to release.artist.name, release.artist %></h3>
-      <% end %>
-      <p>
-        <strong><%= release.date.strftime("#{release.date.day.ordinalize} "+date_format) %></strong>
-        <% if release.label_name? %>
-            on
-            <span class="tooltip-parent" data-title="Label Name" data-placement="right"><%= release.label_name %></span>
-        <% end %>
-      </p>
-      <ul class="release-menu">
-        <div>
-          <li class="buy-release">Buy</li>
-          <li>&nbsp;</li>
-          <li class="share-release">Share</li>
-        </div>
-      </ul>
-    </div>
-    <div class="opac-50"></div>
-    <div class="share-release-list">
-      <h4>Share this release</h4>
-      <ul>
-        <a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [release.artist, release] %>%2F&t=SNGTRKR','ShareSNGTRKRonFacebook','scrollbars=no,width=620,height=340'); return false;">
-          <li class="fb-icon fb-button">
-            <i class="icon-facebook"></i>
-          </li>
-        </a>
-        <a href="#" title="Share on Twitter" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.sngtrkr.com&text=<%= release.artist.name%>+&#45;+<%= release.name %>+released+on+<%= release.label_name %>.+Check+out+<%= release.artist.name %>+on+SNGTRKR+&#45;+www.sngtrkr.com<%= url_for [release.artist, release] %>&via=SNGTRKR','ShareSNGTRKRonTwitter','scrollbars=no,width=620,height=340'); return false;">
-          <li class="twit-icon twitter-button">
-            <i class="icon-twitter"></i>
-          </li>
-        </a>
-        <a href="#" title="Share on Google Plus" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for [release.artist, release] %>','ShareSNGTRKRonGooglePlus','scrollbars=no,width=620,height=340'); return false;">
-          <li class="goo-icon google-button">
-            <i class="icon-google-plus"></i>
-          </li>
-        </a>
-
-        <div class="clear"></div>
-      </ul>
-      <div class="share-cancel">
-        Cancel
-      </div>
-    </div>
-    <div class="buy-release-list">
-      <h4>Buy this release</h4>
-      <% buy_count = [release.itunes?, release.amazon?, release.sdigital?].count(true) %>
-      <ul class="buy-count-<%= buy_count %>">
-        <% if release.itunes? %>
-            <li><%= link_to image_tag("/images/itunes.png", :alt => "iTunes", :title => "iTunes"), release.itunes, :target => "_blank" %></li>
-        <% end %>
-        <% if release.amazon? %>
-            <li><%= link_to image_tag("/images/amazon.png", :alt => "Amazon", :title => "Amazon"), release.amazon, :target => "_blank" %></li>
-        <% end %>
-        <% if release.sdigital? %>
-            <li><%= link_to image_tag("/images/7digital.png", :alt => "7Digital", :title => "7Digital"), release.sdigital, :target => "_blank" %></li>
-        <% end %>
-        <div class="clear"></div>
-      </ul>
-      <div class="clear"></div>
-      <div class="buy-cancel">Cancel</div>
-    </div>
+<div id="release <%= release.id %>" class="release">
+  <div class="image">
+    <img src="<%= release.image.large.url %>" height="181" width="181"/>
+    <div></div>
   </div>
-</li>
+  <div class="info">
+    <%= link_to [release.artist, release] do%><h2><%= release.name %></h2><% end %>
+    <%= link_to release.artist do %><h3><%= release.artist.name %></h3><% end %>
+  </div>
+  <div class="actions">
+    <span>
+      <i class="icon-calendar"></i>
+      <%= release.date.strftime(" %d/%m/%Y") %>
+    </span>
+    <span>
+      <i class="icon-share"></i>
+    </span>
+    <span>
+      <i class="icon-shopping-cart"></i></span>
+  </div>
+</div>
