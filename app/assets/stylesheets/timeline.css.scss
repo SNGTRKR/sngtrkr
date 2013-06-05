@@ -1,7 +1,7 @@
 .release {
   background:#fff;
   @include border-radius(3px);
-  @include box-shadow(0 0 5px rgba(0,0,0,0.25));
+  @include box-shadow(0 0 6px rgba(0,0,0,0.2));
   height:96px;
   width:200px;
   margin:12px;
@@ -56,23 +56,24 @@
     }
     .actions {
       .act {
-        border:1px solid #B7B7B7;
+        border:1px solid #e5e5e5;
         @include border-radius(3px);
         padding:6px;
         margin-right:5px;
-        color:$gray;
+        color:#848484;
         position:relative;
+        @include box-shadow(inset 0 0 0 1px #f9f9f9);
           &:first-child {
             padding:6px 6px 6px 8px;
-          }
-          &:last-child {
-            padding:6px 9px 6px 7px;
-            cursor:pointer;
           }
           &:nth-child(2) {
             padding:7px 4px 5px 9px;
             position: relative;
             top: 1px;
+            cursor:pointer;
+          }
+          &:last-child {
+            padding:6px 10px 6px 8px;
             cursor:pointer;
           }
           &:hover {
