@@ -204,7 +204,7 @@ $(document).ready ->
     engine: Hogan
     limit: 6
   ).on "typeahead:selected", ($e, data) ->
-    if data.identifier is "release"
+    if data.identifier is "release_search"
       window.location = "/artists/" + data.artist_id + "/releases/" + data.id
     else
       window.location = "/artists/" + data.id
