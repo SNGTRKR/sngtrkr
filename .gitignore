@@ -36,3 +36,6 @@ config/environments/personal/private.rb
 /solr/data
 /solr/pids
 public/uploads/*
+
+.vagrant/
+.kitchen/
