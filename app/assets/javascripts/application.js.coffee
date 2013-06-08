@@ -266,6 +266,7 @@ popover_triggers = ->
   $(".share_sngtrkr").popover
     html: true
     content: $(".sngtrkr_pop").html()
+    placement: "bottom"
 
   $(".share_artist").each ->
     $elem = $(this)
@@ -273,6 +274,7 @@ popover_triggers = ->
     $elem.popover
       html: true
       content: $(".art_pop_" + art_id).html()
+      placement: "bottom"
 
   $(".share_release").each ->
     $elem = $(this)
@@ -280,6 +282,7 @@ popover_triggers = ->
     $elem.popover
       html: true
       content: $(".rel_pop_" + rel_id).html()
+      placement: "bottom"
 
   $(".buy").each ->
     $elem = $(this)
@@ -287,6 +290,7 @@ popover_triggers = ->
     $elem.popover
       html: true
       content: $(".buy_pop_" + buy_id).html()
+      placement: "bottom"
 
 
 	

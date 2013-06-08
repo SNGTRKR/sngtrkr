@@ -32,7 +32,7 @@
 </div>
 <%= follow_button @artist %>
 <% cache "social_links/#{@artist.id}-#{@artist.updated_at}", expires_in: 1.week do %>
-    <div class="btn share_artist share" data-placement="bottom" id="<%= @artist.id %>"><i class="icon-share"></i>Share
+    <div class="btn share_artist share" id="<%= @artist.id %>"><i class="icon-share"></i>Share
     </div>
     <ul>
       <% if @artist.fbid? %>
@@ -115,8 +115,8 @@
         <p class="tip" data-title="Release date" data-placement="left">
           <i class="icon-calendar"></i><%= @release.date.strftime("#{@release.date.day.ordinalize} %B %Y ") %></p>
 
-        <div class="btn buy" data-placement="bottom" id="<%= @release.id %>">Buy</div>
-        <div class="btn share_release share" data-placement="bottom" id="<%= @release.id %>"><i class="icon-share"></i>Share
+        <div class="btn buy" id="<%= @release.id %>">Buy</div>
+        <div class="btn share_release share" id="<%= @release.id %>"><i class="icon-share"></i>Share
         </div>
         <div class="btn report" data-toggle="modal" data-target="#reportModal">Report</div>
       </div>
@@ -155,8 +155,8 @@
             </span>
 
               <div class="actions">
-                <div class="btn buy" data-placement="bottom" id="<%= release.id %>">Buy</div>
-                <div class="btn share_release share" data-placement="bottom" id="<%= release.id %>">
+                <div class="btn buy" id="<%= release.id %>">Buy</div>
+                <div class="btn share_release share" id="<%= release.id %>">
                   <i class="icon-share"></i>Share
                 </div>
               </div>

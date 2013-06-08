@@ -66,7 +66,7 @@
                   <%= artist.followers %> trackers
                 </span>
                 <%= follow_button_small artist %>
-                <div class="btn btn-small share_artist share" data-placement="bottom" id="<%= artist.id %>">
+                <div class="btn btn-small share_artist share" id="<%= artist.id %>">
                   <i class="icon-share"></i>Share
                 </div>
                 <%= artist_popover artist %>
@@ -83,8 +83,8 @@
                   <%= release.date.strftime("#{release.date.day.ordinalize} %B %Y ") %>
                 </span>
 
-                <div class="btn btn-small buy" data-placement="bottom" id="<%= release.id %>">Buy</div>
-                <div class="btn btn-small share_release share" data-placement="bottom" id="<%= release.id %>">
+                <div class="btn btn-small buy" id="<%= release.id %>">Buy</div>
+                <div class="btn btn-small share_release share" id="<%= release.id %>">
                   <i class="icon-share"></i>Share
                 </div>
                 <%= buy_popover release %>
@@ -116,7 +116,7 @@
                   <%= artist.followers %> trackers
                 </span>
                 <%= follow_button_small artist %>
-                <div class="btn btn-small share_artist share" data-placement="bottom" id="<%= artist.id %>">
+                <div class="btn btn-small share_artist share" id="<%= artist.id %>">
                   <i class="icon-share"></i>Share
                 </div>
                 <%= artist_popover artist %>
@@ -147,8 +147,8 @@
                   <%= release.date.strftime("#{release.date.day.ordinalize} %B %Y ") %>
                 </span>
 
-                <div class="btn btn-small buy" data-placement="bottom" id="<%= release.id %>">Buy</div>
-                <div class="btn btn-small share_release share" data-placement="bottom" id="<%= release.id %>">
+                <div class="btn btn-small buy" id="<%= release.id %>">Buy</div>
+                <div class="btn btn-small share_release share" id="<%= release.id %>">
                   <i class="icon-share"></i>Share
                 </div>
                 <%= buy_popover release %>
