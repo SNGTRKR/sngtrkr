@@ -27,7 +27,7 @@ class SearchController < ApplicationController
           :id => a.id,
           :label => a.label_name,
           :image => a.image.small,
-          :identifier => "artist",
+          :identifier => "artist_search",
       }
     end
 
@@ -53,7 +53,7 @@ class SearchController < ApplicationController
           :id => r.id,
           :artist_id => r.artist_id,
           :image => r.image.small,
-          :identifier => "release",
+          :identifier => "release_search",
       }
     end
 

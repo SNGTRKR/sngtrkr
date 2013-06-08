@@ -32,7 +32,7 @@
 <%= follow_button @artist %>
 
 <% cache "social_links/#{@artist.id}-#{@artist.updated_at}", expires_in: 1.week do %>
-    <div class="btn share share_artist" data-placement="bottom" id="<%= @artist.id %>"><i class="icon-share"></i>Share
+    <div class="btn share share_artist" id="<%= @artist.id %>"><i class="icon-share"></i>Share
     </div>
     <ul>
       <% if @artist.fbid? %>
