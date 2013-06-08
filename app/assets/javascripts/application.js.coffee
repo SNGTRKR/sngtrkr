@@ -260,6 +260,7 @@ $(document).ready ->
 
 $(document).ajaxComplete ->
   popover_triggers()
+  
 
 popover_triggers = ->
   $(".share_sngtrkr").popover
