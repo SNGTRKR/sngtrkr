@@ -15,6 +15,6 @@
       </a>
     </div>
     <span>Link:</span>
-    <input type="text" onClick="this.select();" value="<%= request.url %>">
+    <input type="text" onClick="this.select();" value="<%= root_url.chomp('/') %><%= artist_release_path(apop, rpop) %>">
   </div>
 </div>
