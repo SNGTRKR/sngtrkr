@@ -48,3 +48,31 @@ header {
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392 !important;
   }
 }
+.fadeTo_white {
+  overflow:hidden;
+  white-space:nowrap;
+    &:after {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 30px;
+      content: "";
+      @include background-image(linear-gradient(left,rgba(255,255,255,0),rgba(255,255,255,1)));
+    }
+}
+.fadeTo_grey {
+  overflow:hidden;
+  white-space:nowrap;
+    &:after {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 30px;
+      content: "";
+      @include background-image(linear-gradient(left,rgba(42,42,42,0),rgba(42,42,42,1)));
+    }
+}

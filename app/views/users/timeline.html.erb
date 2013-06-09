@@ -3,6 +3,26 @@
 <% content_for :description do %><%= current_user.first_name %>'s personalised timeline of artist releases, where they can view new and old releases while being able to listen to and buy tracks.
 <% end %>
 <div class="g_timeline">
+	<div class="release recommend_artists">
+    	<h2>Recommended artists</h2>
+    	<div id="recommend_carousel" class="carousel slide">
+		  <!-- Carousel items -->
+		  <div class="carousel-inner">
+		  	<% @artists.each_slice(3) do |slice| %>
+			    <div class="item">
+			    	<% slice.each do |artist| %>
+			    		<%= artist.name %>
+			    	<% end %>
+			    </div>
+		    <% end %>
+		  </div>
+		  <div class="pins">
+			  <i data-target="#recommend_carousel" data-slide-to="0" class="active icon-circle"></i>
+		      <i data-target="#recommend_carousel" data-slide-to="1" class="icon-circle"></i>
+		      <i data-target="#recommend_carousel" data-slide-to="2" class="icon-circle"></i>
+		  </div>
+		</div>
+    </div>
     <% if @timeline.empty? %>
         <%= render 'timeline/user_empty' %>
     <% else %>

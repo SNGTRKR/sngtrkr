@@ -281,7 +281,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
     Modernizr.load([
         {
             test: Modernizr.csstransitions,
-            nope: ['css3-fallback']
+            nope: ['<%= asset_path("css3-fallback.js") %>']
         }
     ]);
 </script>

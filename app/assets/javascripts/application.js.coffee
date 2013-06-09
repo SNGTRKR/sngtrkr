@@ -35,18 +35,18 @@ $(document).ready ->
 
   #popovers for buy and share
   $(".share, .buy").click ->
-    $(this).toggleClass "active"
+    $(@).toggleClass "active"
 
   $("body").on "click", ".popover a", ->
     $(".share, .buy").each ->
-      $(this).popover "hide"
-      $(this).removeClass "active"
+      $(@).popover "hide"
+      $(@).removeClass "active"
 
   $("body").on "click", (e) ->
     $(".share, .buy").each ->
-      if not ($(this).is(e.target) or $(this).has(e.target).length > 0) and $(this).siblings(".popover").length isnt 0 and $(this).siblings(".popover").has(e.target).length is 0
-        $(this).popover "hide"
-        $(this).removeClass "active"
+      if not ($(@).is(e.target) or $(@).has(e.target).length > 0) and $(@).siblings(".popover").length isnt 0 and $(@).siblings(".popover").has(e.target).length is 0
+        $(@).popover "hide"
+        $(@).removeClass "active"
 
   $('.image').click ->
     $('.front').toggleClass('front-flip')
@@ -63,7 +63,7 @@ $(document).ready ->
   $('.login').click ->
     $('#user_signup').modal "hide"
     $('#forgot_password').modal "hide"
-    $(this).parent().addClass "active"
+    $(@).parent().addClass "active"
 
   $('#user_login').on "hidden", ->
     $('.login').parent().removeClass "active"
@@ -82,19 +82,19 @@ $(document).ready ->
   $(".alert").removeClass("fadeOutUp").show().addClass "fadeInDown"
   window.setTimeout (->
     $(".alert").removeClass("fadeInDown").addClass("fadeOutUp").one "webkitAnimationEnd animationend", ->
-      $(this).remove();
+      $(@).remove();
   ), 4000
 
   #allow anchor links for nav tabs
-  url = document.location.toString()
-  $(".nav-tabs a[href=#" + url.split("#")[1] + "]").tab "show"  if url.match("#")
+  # url = document.location.toString()
+  # $(".nav-tabs a[href=#" + url.split("#")[1] + "]").tab "show"  if url.match("#")
 
   #homepage release animation
   $container = $("#releases")
   $releases = $container.children("a")
   timeout = undefined
   $releases.on "mouseenter", (event) ->
-    $single_release = $(this)
+    $single_release = $(@)
     clearTimeout timeout
     timeout = setTimeout(->
       return false  if $single_release.hasClass("active")
@@ -116,7 +116,7 @@ $(document).ready ->
 
   #enable client side validation within modals
   $('.modal').on 'shown', ->
-    $(this).find('input:visible:first').focus().end().find('form').enableClientSideValidations()
+    $(@).find('input:visible:first').focus().end().find('form').enableClientSideValidations()
 
   #scrollable left sidebar
   $(window).load ->
@@ -257,6 +257,11 @@ $(document).ready ->
     else
       true
 
+  $('.release:nth-child(5)').append "<div class=\'release recommend_artists\'><h2>Recommended artists</h2></div>"
+  $('.recommend_artists #recommend_carousel .carousel-inner .item:first-child').addClass 'active'
+
+  # $('.release:nth-child(9n+1)').append "<div>HAI</div>"
+
 
 $(document).ajaxComplete ->
   popover_triggers()
@@ -269,7 +274,7 @@ popover_triggers = ->
     placement: "bottom"
 
   $(".share_artist").each ->
-    $elem = $(this)
+    $elem = $(@)
     art_id = $elem.attr("id")
     $elem.popover
       html: true
@@ -277,7 +282,7 @@ popover_triggers = ->
       placement: "bottom"
 
   $(".share_release").each ->
-    $elem = $(this)
+    $elem = $(@)
     rel_id = $elem.attr("id")
     $elem.popover
       html: true
@@ -285,7 +290,7 @@ popover_triggers = ->
       placement: "bottom"
 
   $(".buy").each ->
-    $elem = $(this)
+    $elem = $(@)
     buy_id = $elem.attr("id")
     $elem.popover
       html: true

@@ -2,12 +2,13 @@
   background:#fff;
   @include border-radius(3px);
   @include box-shadow(0 0 6px rgba(0,0,0,0.2));
-  height:96px;
-  width:200px;
-  margin:12px;
+  height:326px;
+  width:220px;
+  margin:12px 13px 12px 12px;
   padding:220px 10px 10px;
   position:relative;
-  display:inline-block;
+  float:left;
+  @include box-sizing(border-box);
     .image {
         div {
           background-color:#000;
@@ -30,8 +31,14 @@
         }
     }
     .info {
-        a:first-child {
-          color:$orange;
+      overflow:hidden;
+      position:relative;
+      margin-bottom: 1px;
+        a {
+          @extend .fadeTo_white;
+            &:first-child {
+              color: $orange;
+            }
         }
         h2 {
           color:$orange !important;
@@ -58,22 +65,34 @@
       .act {
         border:1px solid #e5e5e5;
         @include border-radius(3px);
-        padding:6px;
         margin-right:5px;
         color:#848484;
         position:relative;
-        @include box-shadow(inset 0 0 0 1px #f9f9f9);
-          &:first-child {
+        @include box-shadow(0 1px 0 rgba(0,0,0,.05));
+        @include transition-property(background-color, border-color, box-shadow, color);
+        @include transition-duration(.218s,.218s,.218s,.218s);
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        background-color: #fff;
+        border: 1px solid #d9d9d9;
+        cursor: pointer;
+        outline: none;
+        width: auto;
+        background-image: none;
+        -webkit-appearance: none;
+          &.date {
             padding:6px 6px 6px 8px;
+            font-size:13px;
           }
-          &:nth-child(2) {
-            padding:7px 4px 5px 9px;
+          &.share_release {
+            padding:6px 4px 4px 9px;
             position: relative;
             top: 1px;
             cursor:pointer;
           }
-          &:last-child {
-            padding:6px 10px 6px 8px;
+          &.buy {
+            padding:5px 10px 5px 8px;
             cursor:pointer;
           }
           &:hover {
@@ -84,10 +103,26 @@
           &.active {
             background-image: none;
             outline: 0;
+            border-color: #bfbfbf;
+            -webkit-appearance: none;
+            @include box-shadow(0 1px 0 rgba(0,0,0,.1));
             @include box-shadow(inset 0 2px 4px rgba(0, 0, 0, .15), 0 1px 2px rgba(0, 0, 0, .05));
               i {
                 color:$darkgray;
               }
+              &:hover {
+                border-color: #bfbfbf;
+                background-image: none;
+                -webkit-appearance: none;
+                @include box-shadow(0 1px 0 rgba(0,0,0,.1));
+                @include box-shadow(inset 0 2px 4px rgba(0, 0, 0, .15), 0 1px 2px rgba(0, 0, 0, .05));
+              }
+          }
+          &:hover {
+            border-color: #bfbfbf;
+            background-image: none;
+            -webkit-appearance: none;
+            @include box-shadow(0 1px 0 rgba(0,0,0,.1));
           }
       }
       i {
@@ -95,6 +130,23 @@
       }
       .icon-calendar {
         margin-right:4px;
+      }
+    }
+}
+.recommend_artists {
+  padding:10px !important;
+    h2 {
+        border-bottom: 1px #d1d1d1 solid;
+        line-height: 28px !important;
+        margin:0 0 20px;
+    }
+    .pins {
+      i {
+        color:rgba(158,158,158, 0.45);
+        text-align:center;
+          &.active {
+            color:rgba(77,77,77,0.8);
+          }
       }
     }
 }
