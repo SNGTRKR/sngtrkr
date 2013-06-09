@@ -39,3 +39,16 @@ execute "start development server" do
 	cwd "/home/vagrant/sngtrkr_rails_dev"
 	command "/home/vagrant/.rbenv/shims/rails server -d --pid `pwd`/tmp/pids/webrick.pid"
 end
+
+execute "stop development sidekiq client" do
+	cwd "/home/vagrant/sngtrkr_rails_dev"
+	command "kill -9 $(cat `pwd`/tmp/pids/sidekiq.pid)"
+	only_if do
+		File.exists? "/home/vagrant/sngtrkr_rails_dev/tmp/pids/sidekiq.pid"
+	end
+end
+
+execute "start development sidekiq client" do
+	cwd "/home/vagrant/sngtrkr_rails_dev"
+	command "/home/vagrant/.rbenv/shims/sidekiq -d --pidfile `pwd`/tmp/pids/sidekiq.pid -L `pwd`/log/sidekiq.log"
+end

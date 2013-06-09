@@ -3,8 +3,4 @@
 #   sidekiq -C config.yml
 ---
 :verbose: false
-:concurrency: 1
-:queues:
-  - [artists, 10]
-  - [artist, 5]
-  - [release, 1]
+:concurrency: 25
