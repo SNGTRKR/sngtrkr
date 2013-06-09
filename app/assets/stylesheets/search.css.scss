@@ -79,28 +79,34 @@
         img {
           height: 40px;
           width: 40px;
-          float: left;
+          float:left;
           margin-right: 10px;
         }
         span {
-          display: block;
-          float: left;
+          display:inline-block;
+          width:220px;
+          margin-right:7px; 
+          @extend .fadeTo_grey;
+          position:relative;
         }
-        .artist {
+        .artist_search {
           background-image: url(/images/ppl_white.png);
           background-repeat: no-repeat;
           width: 30px;
           height: 20px;
-          float: right;
-          margin: 10px 5px 0 0;
+          display:inline-block;
+          position:relative;
+          bottom:3px;
         }
-        .release-search {
+        .release_search {
           background-image: url(/images/release_wht.png);
           background-repeat: no-repeat;
           height: 20px;
           width: 20px;
-          float: right;
-          margin: 11px 10px 0 0;
+          display:inline-block;
+          position:relative;
+          bottom:4px;
+          left:4px;
         }
       }
 
@@ -108,6 +114,13 @@
     .tt-is-under-cursor {
       background-color: $blue;
       color: #fff;
+        span:after {
+          background-image: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, rgba(69,161,198,0)), color-stop(100%, #45a1c6)) !important;
+          background-image: -webkit-linear-gradient(left, rgba(69,161,198,0),#45a1c6) !important;
+          background-image: -moz-linear-gradient(left, rgba(69,161,198,0),#45a1c6) !important;
+          background-image: -o-linear-gradient(left, rgba(69,161,198,0),#45a1c6) !important;
+          background-image: linear-gradient(left, rgba(69,161,198,0),#45a1c6) !important;
+        }
     }
   }
   .tt-dataset-query {
