@@ -1,19 +1,21 @@
-development:
-  solr:
-    hostname: localhost
-    port: 8980
-    log_level: INFO
-  auto_commit_after_delete_request: true
-
-test:
-  solr:
-    hostname: localhost
-    port: 8981
-    log_level: OFF
-
 production:
   solr:
     hostname: localhost
-    port: 8983
+    port: 8080 #tomcat defaults to port 8080
+    path: '/solr'
     log_level: WARNING
-  auto_commit_after_request: true  
+  auto_commit_after_delete_request: true
+development:
+  solr:
+    hostname: localhost
+    port: 8080 #tomcat defaults to port 8080
+    path: '/solr'
+    log_level: INFO
+  auto_commit_after_delete_request: true
+test:
+  solr:
+    hostname: localhost
+    port: 8080 #tomcat defaults to port 8080
+    path: '/solr'
+    log_level: WARNING
+  auto_commit_after_delete_request: true

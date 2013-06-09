@@ -1,6 +1,6 @@
 #
-# Cookbook Name:: rbenv
-# Recipe:: install
+# Cookbook Name:: sngtrkr
+# Recipe:: common
 #
 
 # Pass our environment variables through to the Vagrant box
@@ -29,6 +29,8 @@ directory '/root' do
 	mode 0755
 end
 
+include_recipe "ruby_stack"
+
 directory "/home/vagrant/sngtrkr_rails_prod" do
 	action :create
 	owner "vagrant"
@@ -41,12 +43,6 @@ directory "/home/vagrant/sngtrkr_rails_staging" do
 	group "vagrant"
 end
 
-directory "/home/vagrant/sngtrkr_rails_dev" do
-	action :create
-	owner "vagrant"
-	group "vagrant"
-end
-
 # Copy our configuration files onto the system.
 cookbook_file "/etc/nginx/sites-available/sngtrkr_rails_staging.conf" do
 	source "nginx_rails_staging.conf"
@@ -54,17 +50,18 @@ cookbook_file "/etc/nginx/sites-available/sngtrkr_rails_staging.conf" do
 	group "root"
 end
 
-execute "bundle install for the development area" do
-	command "/home/vagrant/.rbenv/shims/bundle install"
-	cwd "/home/vagrant/sngtrkr_rails_dev"
+package "htop"
+
+# Install Solr
+
+package "openjdk-6-jdk"
+
+package "solr-tomcat"
+
+execute "autostart memcached" do
+	command "sudo update-rc.d memcached enable"
 end
 
-# Create test/development DB if it doesn't exist
-execute "create test/development db" do
-	cwd "/home/vagrant/sngtrkr_rails_dev"
-	command "/home/vagrant/.rbenv/shims/rake db:setup RAILS_ENV=development"
-	not_if do
-		secrets = data_bag_item("sngtrkr", "secrets")
-		system("mysql -u root -p#{secrets['SNGTRKR_DB_PW']} -e \"SHOW DATABASES;\" | grep sngtrkr_dev_db")
-	end
+execute "autostart tomcat (solr)" do
+	command "sudo update-rc.d tomcat6 enable"
 end

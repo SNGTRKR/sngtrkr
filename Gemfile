@@ -12,6 +12,7 @@ gem "best_in_place"
 group :production do
   gem 'unicorn'
   gem 'therubyracer'
+  gem 'rollbar', '~> 0.9.6'
 end
 
 gem 'sitemap_generator', :require => false
@@ -51,9 +52,6 @@ gem 'itunes-search-api'
 
 # ADMIN
 gem 'rails_admin'
-
-# DEBUGGING
-gem 'rollbar', '~> 0.9.6'
 
 group :development do
   gem "better_errors"
@@ -96,5 +94,4 @@ gem 'shortener'
 gem 'kaminari'
 
 gem 'sunspot_rails' #, :git => "git://github.com/mkrisher/sunspot.git", :branch => "task_warning_bypass"
-gem 'sunspot_solr' #, :git => "git://github.com/mkrisher/sunspot.git", :branch => "task_warning_bypass"
 
