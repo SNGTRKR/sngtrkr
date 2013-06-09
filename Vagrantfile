@@ -6,6 +6,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "quantal"
   config.vm.box_url = "http://cloud-images.ubuntu.com/raring/current/raring-server-cloudimg-vagrant-amd64-disk1.box"
   config.vm.network :forwarded_port, guest: 80, host: 8080
+  config.vm.network :forwarded_port, guest: 3000, host: 3000
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -20,7 +21,7 @@ Vagrant.configure("2") do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  config.vm.synced_folder "../sngtrkr", "/home/vagrant/sngtrkr_rails_staging/current"
+  config.vm.synced_folder "../sngtrkr", "/home/vagrant/sngtrkr_rails_dev"
 
   config.vm.provider :virtualbox do |vb|
     # Use VBoxManage to customize the VM. For example to change memory:
