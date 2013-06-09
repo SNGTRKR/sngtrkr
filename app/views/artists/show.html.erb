@@ -21,9 +21,7 @@
 <% end %>
 <div class="trackers">
   <%= image_tag "/images/ppl_black.png" %>
-  <span id="tracker-<%= @artist.id %>"><%= @artist.followers %></span> tracker
-  <% if @artist.followers > 1 %>s
-  <% end %>
+  <span id="tracker-<%= @artist.id %>"><%= pluralize @artist.followers, "tracker" %></span>
 </div>
 <div class="releases">
   <%= image_tag "/images/release_blk.png" %>
