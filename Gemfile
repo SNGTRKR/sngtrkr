@@ -61,6 +61,9 @@ group :development do
   gem 'meta_request' #, '0.2.1'
   gem 'pry'
   gem 'capistrano-unicorn', :require => false
+
+  gem 'chef', :require => false
+  gem 'knife-solo_data_bag', :require => false
 end
 
 group :assets do

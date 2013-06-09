@@ -39,3 +39,4 @@ public/uploads/*
 
 .vagrant/
 .kitchen/
+data_bags/sngtrkr/secrets.json

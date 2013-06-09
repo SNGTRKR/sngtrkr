@@ -20,7 +20,7 @@ Vagrant.configure("2") do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  # config.vm.synced_folder "../data", "/vagrant_data"
+  config.vm.synced_folder "../sngtrkr", "/home/vagrant/sngtrkr_rails_staging/current"
 
   config.vm.provider :virtualbox do |vb|
     # Use VBoxManage to customize the VM. For example to change memory:
@@ -49,11 +49,13 @@ Vagrant.configure("2") do |config|
         "vendor_gems" => true
       },
       'mysql' => {
-        "server_root_password" => "abzNxvTcrge5w0YZEk41",
-        "server_repl_password" => "abzNxvTcrge5w0YZEk41",
-        "server_debian_password" => "abzNxvTcrge5w0YZEk41"
+        "server_root_password" => ENV['SNGTRKR_DB_PW'],
+        "server_repl_password" => ENV['SNGTRKR_DB_PW'],
+        "server_debian_password" => ENV['SNGTRKR_DB_PW']
       }
     }
+
+    chef.data_bags_path = "data_bags"
   end
 
 end
