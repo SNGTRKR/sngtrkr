@@ -2,13 +2,13 @@
   background:#fff;
   @include border-radius(3px);
   @include box-shadow(0 0 6px rgba(0,0,0,0.2));
-  height:96px;
-  width:200px;
+  height:326px;
+  width:220px;
   margin:12px 13px 12px 12px;
   padding:220px 10px 10px;
   position:relative;
-  display:inline-block;
   float:left;
+  @include box-sizing(border-box);
     .image {
         div {
           background-color:#000;
@@ -69,9 +69,13 @@
         color:#848484;
         position:relative;
         @include box-shadow(0 1px 0 rgba(0,0,0,.05));
-        -webkit-transition: background-color .218s,border-color .218s,box-shadow .218s;
-        transition: background-color .218s,border-color .218s,box-shadow .218s;
+        -moz-transition: background-color .218s,border-color .218s,box-shadow .218s,color .218s;
+        -webkit-transition: background-color .218s,border-color .218s,box-shadow .218s,color .218s;
+        -o-transition: background-color .218s,border-color .218s,box-shadow .218s,color .218s;
+        transition: background-color .218s,border-color .218s,box-shadow .218s,color .218s;
         -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
         background-color: #fff;
         border: 1px solid #d9d9d9;
         cursor: pointer;
@@ -101,25 +105,26 @@
           &.active {
             background-image: none;
             outline: 0;
+            border-color: #bfbfbf;
+            -webkit-appearance: none;
+            @include box-shadow(0 1px 0 rgba(0,0,0,.1));
             @include box-shadow(inset 0 2px 4px rgba(0, 0, 0, .15), 0 1px 2px rgba(0, 0, 0, .05));
               i {
                 color:$darkgray;
               }
               &:hover {
-                -webkit-box-shadow: 0 1px 0 rgba(0,0,0,.1);
-                box-shadow: 0 1px 0 rgba(0,0,0,.1);
                 border-color: #bfbfbf;
                 background-image: none;
                 -webkit-appearance: none;
+                @include box-shadow(0 1px 0 rgba(0,0,0,.1));
                 @include box-shadow(inset 0 2px 4px rgba(0, 0, 0, .15), 0 1px 2px rgba(0, 0, 0, .05));
               }
           }
           &:hover {
-            -webkit-box-shadow: 0 1px 0 rgba(0,0,0,.1);
-            box-shadow: 0 1px 0 rgba(0,0,0,.1);
             border-color: #bfbfbf;
             background-image: none;
             -webkit-appearance: none;
+            @include box-shadow(0 1px 0 rgba(0,0,0,.1));
           }
       }
       i {
