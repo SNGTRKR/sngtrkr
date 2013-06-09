@@ -69,10 +69,8 @@
         color:#848484;
         position:relative;
         @include box-shadow(0 1px 0 rgba(0,0,0,.05));
-        -moz-transition: background-color .218s,border-color .218s,box-shadow .218s,color .218s;
-        -webkit-transition: background-color .218s,border-color .218s,box-shadow .218s,color .218s;
-        -o-transition: background-color .218s,border-color .218s,box-shadow .218s,color .218s;
-        transition: background-color .218s,border-color .218s,box-shadow .218s,color .218s;
+        @include transition-property(background-color, border-color, box-shadow, color);
+        @include transition-duration(.218s,.218s,.218s,.218s);
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
@@ -133,5 +131,19 @@
       .icon-calendar {
         margin-right:4px;
       }
+    }
+}
+.recommend_artists {
+  padding:10px !important;
+    h2 {
+        border-bottom: 1px #d1d1d1 solid;
+        line-height: 28px !important;
+        margin:0 0 20px;
+    }
+    i {
+      color:rgba(158,158,158, 0.45);
+        &.active {
+          color:rgba(77,77,77,0.8);
+        }
     }
 }
