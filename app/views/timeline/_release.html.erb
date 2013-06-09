@@ -1,6 +1,6 @@
 <% artist_page ||= 'false' %>
 
-<div id="release <%= release.id %>" class="release">
+<div id="release_<%= release.id %>" class="release">
   <%= link_to [release.artist, release] do%>
     <div class="image">
       <img src="<%= release.image.large.url %>" height="181" width="181"/>
@@ -12,14 +12,14 @@
     <%= link_to release.artist do %><h3><%= release.artist.name %></h3><% end %>
   </div>
   <div class="actions">
-    <span class="act">
+    <span class="act date">
       <i class="icon-calendar"></i>
       <%= release.date.strftime(" %d/%m/%Y") %>
     </span>
-    <span class="share_release share act" data-placement="bottom" id="<%= release.id %>">
+    <span class="share_release share act" id="<%= release.id %>">
       <i class="icon-share-alt"></i>
     </span>
-    <span class="buy act" data-placement="bottom" id="<%= release.id %>">
+    <span class="buy act" id="<%= release.id %>">
       <i class="icon-shopping-cart"></i></span>
   </div>
   <%= buy_popover release %>

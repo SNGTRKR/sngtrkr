@@ -4751,6 +4751,7 @@ a.thumbnail:focus {
     line-height: 1;
     opacity: 0;
     filter: alpha(opacity=0);
+    font-family: "MuseoSans-500", Helvetica, Arial, sans-serif !important;
 }
 
 .tooltip.in {
