@@ -8,13 +8,19 @@
     	<div id="recommend_carousel" class="carousel slide">
 		  <!-- Carousel items -->
 		  <div class="carousel-inner">
-		    <div class="active item">Slide 1</div>
-		    <div class="item">Slide 2</div>
-		    <div class="item">Slide 3</div>
+		  	<% @artists.each_slice(3) do |slice| %>
+			    <div class="item">
+			    	<% slice.each do |artist| %>
+			    		<%= artist.name %>
+			    	<% end %>
+			    </div>
+		    <% end %>
 		  </div>
-		  <i data-target="#myCarousel" data-slide-to="0" class="active icon-circle"></i>
-	      <i data-target="#myCarousel" data-slide-to="1" class="icon-circle"></i>
-	      <i data-target="#myCarousel" data-slide-to="2" class="icon-circle"></i>
+		  <div class="pins">
+			  <i data-target="#myCarousel" data-slide-to="0" class="active icon-circle"></i>
+		      <i data-target="#myCarousel" data-slide-to="1" class="icon-circle"></i>
+		      <i data-target="#myCarousel" data-slide-to="2" class="icon-circle"></i>
+		  </div>
 		</div>
     </div>
     <% if @timeline.empty? %>

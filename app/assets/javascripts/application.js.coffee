@@ -86,8 +86,8 @@ $(document).ready ->
   ), 4000
 
   #allow anchor links for nav tabs
-  url = document.location.toString()
-  $(".nav-tabs a[href=#" + url.split("#")[1] + "]").tab "show"  if url.match("#")
+  # url = document.location.toString()
+  # $(".nav-tabs a[href=#" + url.split("#")[1] + "]").tab "show"  if url.match("#")
 
   #homepage release animation
   $container = $("#releases")
@@ -256,6 +256,9 @@ $(document).ready ->
       false
     else
       true
+
+  $('.release:nth-child(5)').append "<div class=\'release recommend_artists\'><h2>Recommended artists</h2></div>"
+  $('.recommend_artists #recommend_carousel .carousel-inner .item:first-child').addClass 'active'
 
   # $('.release:nth-child(9n+1)').append "<div>HAI</div>"
 

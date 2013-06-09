@@ -140,10 +140,13 @@
         line-height: 28px !important;
         margin:0 0 20px;
     }
-    i {
-      color:rgba(158,158,158, 0.45);
-        &.active {
-          color:rgba(77,77,77,0.8);
-        }
+    .pins {
+      i {
+        color:rgba(158,158,158, 0.45);
+        text-align:center;
+          &.active {
+            color:rgba(77,77,77,0.8);
+          }
+      }
     }
 }
