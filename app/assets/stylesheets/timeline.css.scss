@@ -149,4 +149,27 @@
           }
       }
     }
+    .carousel_suggest {
+      overflow:hidden;
+      margin-bottom:17px;
+        img {
+          height:60px;
+          width:60px;
+          float:left;
+          margin-right:10px;
+        }
+        span {
+          display:block;
+            div {
+              margin-bottom:3px;
+                a {
+                  color: $orange;
+                  font-family: "MuseoSans-500", Helvetica, Arial, sans-serif !important;
+                }
+            }
+        }
+        a:last-child {
+          margin-top:3px;
+        }
+    }
 }
