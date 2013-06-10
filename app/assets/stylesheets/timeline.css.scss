@@ -35,7 +35,7 @@
       position:relative;
       margin-bottom: 1px;
         a {
-          @extend .fadeTo_white;
+          @extend .fade_to_white;
             &:first-child {
               color: $orange;
             }
@@ -134,20 +134,30 @@
     }
 }
 .recommend_artists {
-  padding:10px !important;
+  padding:12px !important;
     h2 {
         border-bottom: 1px #d1d1d1 solid;
         line-height: 28px !important;
         margin:0 0 20px;
     }
     .pins {
-      i {
-        color:rgba(158,158,158, 0.45);
-        text-align:center;
-          &.active {
-            color:rgba(77,77,77,0.8);
-          }
-      }
+      width:49px;
+      margin:5px auto 0;
+        i {
+          color:rgba(158,158,158, 0.45);
+          font-size:13px;
+          cursor:pointer;
+          margin-right:4px;
+          @include transition-property(color);
+          @include transition-duration(0.2s);
+          @include transition-timing-function(ease-in);
+            &.active {
+              color:rgba(77,77,77,0.8);
+            }
+            &:last-child {
+              margin:0px;
+            }
+        }
     }
     .carousel_suggest {
       overflow:hidden;
@@ -160,6 +170,8 @@
         }
         span {
           display:block;
+          @extend .fade_to_white;
+          height:31px;
             div {
               margin-bottom:3px;
                 a {
@@ -168,8 +180,9 @@
                 }
             }
         }
-        a:last-child {
-          margin-top:3px;
+        .btn-small {
+          margin-top:5px;
+          padding:1px 10px;
         }
     }
 }

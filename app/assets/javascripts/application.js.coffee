@@ -262,7 +262,6 @@ $(document).ready ->
 
   # $('.release:nth-child(9n+1)').append "<div>HAI</div>"
 
-
 $(document).ajaxComplete ->
   popover_triggers()
   
@@ -296,9 +295,6 @@ popover_triggers = ->
       html: true
       content: $(".buy_pop_" + buy_id).html()
       placement: "bottom"
-
-
-	
 
 
 

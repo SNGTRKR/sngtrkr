@@ -12,6 +12,6 @@
   <div class="btn btn-small share_release share" id="<%= release.id %>">
     <i class="icon-share"></i>Share
   </div>
-  <%= render :partial => '/shared/buy_popover', :locals => {:bpop => release} %>
-  <%= render :partial => '/shared/release_popover', :locals => {:apop => release.artist, :rpop => release} %>
+  <%= buy_popover release %>
+  <%= release_popover release release.artist %>
 </div>

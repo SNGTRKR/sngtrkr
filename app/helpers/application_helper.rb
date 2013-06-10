@@ -34,6 +34,12 @@ module ApplicationHelper
     end
   end
 
+  def follow_button_carousel artist
+    return link_to(artist_follows_path(artist), :format => :html, :method => :post,
+                   :class => "add-trkr-carousel btn btn-small follow-#{artist.id}", :remote => true, :'data-id' => artist.id) do
+      'Track'
+    end.html_safe
+  end
   # allows devise forms to be displayed outside the devise controller
   def resource_name
     :user

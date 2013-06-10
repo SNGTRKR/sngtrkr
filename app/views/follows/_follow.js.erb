@@ -11,8 +11,7 @@ $("a.add-trkr").bind("ajax:complete", function () {
     });
 });
 $("a.add-trkr-small").bind("ajax:complete", function () {
-    var artist_id;
-    artist_id = $(this).data("id");
+    var artist_id = $(this).data("id");
     $(this).replaceWith("<a href=\"/artists/" + artist_id + "/unfollow\" class=\"remove-trkr-small btn btn-small active\" data-id=\"" + artist_id + "\" data-method=\"post\" data-remote=\"true\" rel=\"nofollow\">Tracked</a>");
     FB.api("/me/sngtrkr:track", "post", {
         artist: "http://sngtrkr.com/artists/" + $(this).data("id")
@@ -20,4 +19,16 @@ $("a.add-trkr-small").bind("ajax:complete", function () {
         console.log("FB Open Graph Posted");
         console.log(response);
     });
+});
+$('a.add-trkr-carousel').bind("ajax:beforeSend", function () {
+    $(this).parent().addClass('fadeOutUp');
+}).bind("ajax:success", function() {
+    $(this).parent().replaceWith("<%=j render :partial => 'timeline/carousel_suggest', :object => @new_artist %>");
+    FB.api("/me/sngtrkr:track", "post", {
+        artist: "http://sngtrkr.com/artists/" + $(this).data("id")
+    }, function (response) {
+        console.log("FB Open Graph Posted");
+        console.log(response);
+    });
+    console.log("SUGGEST SUCCESSFUL");
 });

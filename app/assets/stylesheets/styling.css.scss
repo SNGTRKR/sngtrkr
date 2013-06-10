@@ -48,8 +48,7 @@ header {
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392 !important;
   }
 }
-// Change to fade_to_white
-.fadeTo_white {
+.fade_to_white {
   overflow:hidden;
   white-space:nowrap;
     &:after {
@@ -63,8 +62,7 @@ header {
       @include background-image(linear-gradient(left,rgba(255,255,255,0),rgba(255,255,255,1)));
     }
 }
-// Change to fade_to_grey
-.fadeTo_grey {
+.fade_to_grey {
   overflow:hidden;
   white-space:nowrap;
     &:after {
@@ -77,4 +75,28 @@ header {
       content: "";
       @include background-image(linear-gradient(left,rgba(42,42,42,0),rgba(42,42,42,1)));
     }
+}
+.carousel-fade {
+  .carousel-inner {
+    .item {
+      @include opacity(0);
+      @include transition-property(opacity);
+      @include transition-duration(0.5s);
+      @include transition-timing-function(ease-in);
+    }
+    .active {
+      @include opacity(1);
+      &.left, &.right {
+        left: 0;
+        @include opacity(0);
+        z-index: 1;
+      }
+    }
+    .next.left, .prev.right {
+      @include opacity(1);
+    }
+  }
+  .carousel-control {
+    z-index: 2;
+  }
 }
