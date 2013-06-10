@@ -42,6 +42,11 @@ class Artist < ActiveRecord::Base
     end
   end
 
+  # Load all artist releases upon tracking a new artist on the timeline
+  def timeline_releases
+    real_releases.all(:order => 'date DESC')
+  end
+
   def count_release
     Rails.cache.fetch("release_count/release-#{id}", :expires_in => 1.hour) do
       releases.count

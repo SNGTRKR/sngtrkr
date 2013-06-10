@@ -7,6 +7,7 @@ SNGTRKR::Application.routes.draw do
   get 'pages/:action' => 'pages#:action'
 
   #get '/:id' => "shortener/shortened_urls#show"
+  get '/timeline_releases/populate' => 'timeline#populate_user_timeline'
 
   if Rails.env.development?
     mount RailsEmailPreview::Engine, :at => 'mail_preview' # You can choose any URL here
