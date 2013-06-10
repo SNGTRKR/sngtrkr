@@ -357,6 +357,7 @@ GEM
     sunspot_rails (2.0.0)
       nokogiri
       sunspot (= 2.0.0)
+    sunspot_solr (2.0.0)
     systemu (2.5.2)
     temple (0.6.3)
     therubyracer (0.11.4)
@@ -439,6 +440,7 @@ DEPENDENCIES
   sitemap_generator
   slim
   sunspot_rails
+  sunspot_solr
   therubyracer
   turbo-sprockets-rails3
   twitter

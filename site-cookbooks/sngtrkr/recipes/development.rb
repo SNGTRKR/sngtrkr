@@ -33,11 +33,7 @@ execute "stop development server" do
 	only_if do
 		File.exists? "/home/vagrant/sngtrkr_rails_dev/tmp/pids/webrick.pid"
 	end
-end
-
-execute "start development server" do
-	cwd "/home/vagrant/sngtrkr_rails_dev"
-	command "/home/vagrant/.rbenv/shims/rails server -d --pid `pwd`/tmp/pids/webrick.pid"
+	ignore_failure true
 end
 
 execute "stop development sidekiq client" do
@@ -46,9 +42,21 @@ execute "stop development sidekiq client" do
 	only_if do
 		File.exists? "/home/vagrant/sngtrkr_rails_dev/tmp/pids/sidekiq.pid"
 	end
+	ignore_failure true
+end
+
+execute "start development server" do
+	cwd "/home/vagrant/sngtrkr_rails_dev"
+	command "/home/vagrant/.rbenv/shims/rails server -d --pid `pwd`/tmp/pids/webrick.pid"
 end
 
 execute "start development sidekiq client" do
 	cwd "/home/vagrant/sngtrkr_rails_dev"
 	command "/home/vagrant/.rbenv/shims/sidekiq -d --pidfile `pwd`/tmp/pids/sidekiq.pid -L `pwd`/log/sidekiq.log"
+end
+
+execute "start solr server (silent failure possible)" do
+	cwd "/home/vagrant/sngtrkr_rails_dev"
+	command "/home/vagrant/.rbenv/shims/rake sunspot:solr:start"
+	ignore_failure true
 end

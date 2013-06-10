@@ -94,4 +94,4 @@ gem 'shortener'
 gem 'kaminari'
 
 gem 'sunspot_rails' #, :git => "git://github.com/mkrisher/sunspot.git", :branch => "task_warning_bypass"
-
+gem 'sunspot_solr'

@@ -55,7 +55,12 @@ Vagrant.configure("2") do |config|
         'mysql' => {
           "server_root_password" => ENV['SNGTRKR_DB_PW'],
           "server_repl_password" => ENV['SNGTRKR_DB_PW'],
-          "server_debian_password" => ENV['SNGTRKR_DB_PW']
+          "server_debian_password" => ENV['SNGTRKR_DB_PW'],
+          "tunable" => {
+            "key_buffer_size" => "16M",
+            "innodb_buffer_pool_size" => "64M",
+            "innodb_additional_mem_pool_size" => "2M"
+          }
         }
       }
 
