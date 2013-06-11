@@ -6,8 +6,6 @@ class ArtistUploader < CarrierWave::Uploader::Base
   include Sprockets::Helpers::RailsHelper
   include Sprockets::Helpers::IsolatedHelper
 
-  storage :fog
-
   def store_dir
     ":class/images/:id_partition/"
   end

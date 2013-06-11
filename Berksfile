@@ -10,6 +10,7 @@ cookbook 'ohai'
 cookbook 'redisio'
 cookbook 'ulimit'
 cookbook 'openssl'
+cookbook 'imagemagick'
 
 # Ruby Cookbooks
 cookbook 'rbenv', git: 'git://github.com/fnichol/chef-rbenv.git', ref: "v0.7.2"

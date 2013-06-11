@@ -25,10 +25,10 @@ describe "ReleaseScraper" do
 
     # Test for successfull image replacement
     r.image.identifier.should eq "release_100.jpeg"
-    image_size = open(r.image.url).size
+    image_size = open(r.image.path).size
     @rs.class.improve_image r, :test_image => "http://www.simplyzesty.com/wp-content/uploads/2012/02/Google-logo.jpg"
     r.save
-    new_image_size = open(r.image.url).size
+    new_image_size = open(r.image.path).size
     new_image_size.should_not == image_size
 
   end

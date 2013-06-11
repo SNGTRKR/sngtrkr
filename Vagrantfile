@@ -41,6 +41,7 @@ Vagrant.configure("2") do |config|
       chef.add_recipe "redisio::install"
       chef.add_recipe "redisio::enable"
       chef.add_recipe "database"
+      chef.add_recipe "imagemagick"
 
       chef.add_recipe "sngtrkr::common"
       chef.add_recipe "sngtrkr::development"

@@ -11,8 +11,8 @@ namespace :db do
   		next
   	end
 
-  	Artist.delete_all
-  	Release.delete_all
+    Release.destroy_all
+  	Artist.destroy_all
   	100.times do |n|
   		FactoryGirl.create(:artist_with_releases)
   	end
