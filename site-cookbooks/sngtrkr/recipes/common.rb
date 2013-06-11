@@ -29,11 +29,11 @@ end
 ruby_block "tweak ruby GC config" do
 	block do
 		file = Chef::Util::FileEdit.new("/home/vagrant/.profile") # Regretably needed or next line breaks
-		file.search_file_replace_line(/RUBY_GC_MALLOC_LIMIT=/, "export RUBY_GC_MALLOC_LIMIT=90000000")
+		file.search_file_replace_line(/RUBY_GC_MALLOC_LIMIT=/, "export RUBY_GC_MALLOC_LIMIT=16000000")
 		file.write_file
 
 		file = Chef::Util::FileEdit.new("/home/vagrant/.profile") # Regretably needed or next line breaks
-		file.insert_line_if_no_match(/RUBY_GC_MALLOC_LIMIT=/, "export RUBY_GC_MALLOC_LIMIT=90000000")
+		file.insert_line_if_no_match(/RUBY_GC_MALLOC_LIMIT=/, "export RUBY_GC_MALLOC_LIMIT=16000000")
 		file.write_file
 
 		file = Chef::Util::FileEdit.new("/home/vagrant/.profile") # Regretably needed or next line breaks
@@ -46,6 +46,12 @@ ruby_block "tweak ruby GC config" do
 
 		ENV["RUBY_GC_MALLOC_LIMIT"] = "90000000"
 		ENV["LD_PRELOAD"] = "/usr/lib/libtcmalloc_minimal.so.4"
+	end
+end
+
+ruby_block "add rb env shims to path" do
+	block do
+		ENV["PATH"] += ":/home/vagrant/.rbenv/shims"
 	end
 end
 

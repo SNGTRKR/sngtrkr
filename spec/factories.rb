@@ -1,8 +1,8 @@
 FactoryGirl.define do
 
   factory :user do
-    first_name "John"
-    last_name "Doe"
+    first_name Faker::Name.first_name
+    last_name Faker::Name.last_name
     sequence(:email) { |n| "user#{n}@factory.com" }
     password "1234554321"
     email_frequency 1
@@ -11,7 +11,7 @@ FactoryGirl.define do
   end
 
   factory :artist do
-    name "RadioTest"
+    name Faker::Name.name
     sequence(:fbid) { |n| n }
     sequence(:itunes_id) { |n| n }
     sequence(:sdid) { |n| n }
@@ -21,11 +21,20 @@ FactoryGirl.define do
         artist.followed_users = [FactoryGirl.create(:user)]
       end
     end
+
+    factory :artist_with_releases do
+      after(:create) do |artist|
+        5.times do
+          artist.releases << build(:release, artist: artist)
+        end
+      end
+    end
+
   end
 
   factory :release do
     association :artist, factory: :artist
-    sequence(:name) { |n| "ReleaseTest#{n}" }
+    sequence(:name) { |n| "#{Faker::Lorem.words(2)} #{n}" }
     sequence(:date) { |d| Date.today - d.days }
   end
 

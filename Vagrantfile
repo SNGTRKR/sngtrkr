@@ -28,7 +28,7 @@ Vagrant.configure("2") do |config|
 
     dev.vm.provider :virtualbox do |vb|
       # Use VBoxManage to customize the VM. For example to change memory:
-      vb.customize ["modifyvm", :id, "--memory", "1024"]
+      vb.customize ["modifyvm", :id, "--memory", "2048"]
     end
 
     dev.vm.provision :chef_solo do |chef|
@@ -61,6 +61,9 @@ Vagrant.configure("2") do |config|
             "innodb_buffer_pool_size" => "64M",
             "innodb_additional_mem_pool_size" => "2M"
           }
+        },
+        'sngtrkr' => {
+          'seed_db' => true # set me to true for FIRST TIME provision only
         }
       }
 

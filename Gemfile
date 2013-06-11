@@ -21,14 +21,15 @@ gem 'mysql2'
 
 group :test do
   gem 'rspec-rails'
-  gem 'factory_girl_rails', '~> 4.0'
   gem 'database_cleaner'
   gem 'rake'
   gem 'capybara'
 end
 
-gem 'capistrano'
-gem 'rvm-capistrano'
+group :test, :development do
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'faker'
+end
 
 # CACHING
 gem 'dalli'
@@ -54,6 +55,8 @@ gem 'itunes-search-api'
 gem 'rails_admin'
 
 group :development do
+  gem 'capistrano'
+  gem 'rvm-capistrano'
   gem "better_errors"
   gem "binding_of_caller"
   gem 'meta_request' #, '0.2.1'
