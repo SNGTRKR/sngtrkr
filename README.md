@@ -19,6 +19,14 @@ prompts for credentials. This will do:
 
 	git ls-remote https://github.com/MattBessey/sngtrkr.git
 
+## Configuring The Dev Environment
+[Vagrant](http://www.vagrantup.com/) is used to virtualise the entire development environment to ensure consistent environments for all developers, and make moving the dev environment to production that much easier. You will need both Vagrant and [VirtualBox](https://www.virtualbox.org/) installed before continuing.
+
+After that's done the process is simply to `cd` into the project, then run `vagrant up`! If the configuration process has any problems, run `vagrant reload` to restart the PC and continue. This should not be a problem, if it is, contact Matt. When the configuration process is complete, you can access the machine with `vagrant ssh`. Check out `Vagrantfile` to get an idea of what servers are installed for you and are automatically running.
+
+For further boots, the server can be suspended with `vagrant suspend` and resumed again with `vagrant up`. 
+
 ## Hosts Configuration
-If you want to do anything significant in dev, involving the FB api, you need to change your `/etc/hosts` file
+To enable facebook login during development, you need to change your `/etc/hosts` file
 to point `dev.sngtrkr.com` at `127.0.0.1`. Now to develop go to `http://dev.sngtrkr.com:3000`.
+
