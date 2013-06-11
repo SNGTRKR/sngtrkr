@@ -13,7 +13,7 @@ class FollowsController < ApplicationController
     
     # TODO: Generate suggestions based on follow
 
-    @artist = current_user.suggested[5] rescue nil
+    @new_artist = current_user.suggested_artists[5] rescue nil
     respond_to do |format|
       format.html { redirect_to artist_path(:id => params[:artist_id]) } #format.html { render "artists/ajax_suggestion", :layout => false }
         format.js { render :partial => 'follows/follow', :format => [:js] }

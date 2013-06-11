@@ -1,39 +1,15 @@
 <% @following.each do |artist_tracked| %>
     <tr id="row-<%= artist_tracked.id %>" class="animated">
       <td>
-        <%= link_to artist_path(artist_tracked) do %>
-            <%= image_tag artist_tracked.image.medium.url, :class => "image", :height => "75", :width => "75" %>
-        <% end %>
-        <%= link_to artist_path(artist_tracked) do %>
-            <%= artist_tracked.name %>
-        <% end %>
+        <%= link_to image_tag(artist_tracked.image.medium, :class => "image", :height => "75", :width => "75"), artist_path(artist_tracked) %>
+        <%= link_to artist_tracked.name, artist_path(artist_tracked) %>
         <span class="actions">
-                              <%= follow_button artist_tracked %>
+          <%= follow_button artist_tracked %>
           <div class="btn share share_artist" id="<%= artist_tracked.id %>" data-placement="bottom">
             <i class="icon-share"></i>Share
           </div>
-                            </span>
-
-        <div class="art_pop_<%= artist_tracked.id %> art_pop">
-          <div class="share_content">
-            <div>
-              <a href="#" title="Share on Facebook" onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.sngtrkr.com<%= url_for artist_tracked %>%2F&t=SNGTRKR','ShareSNGTRKRonFacebook','scrollbars=no,width=620,height=340'); return false;">
-                <%= image_tag "/images/social/fb.png", :alt => "Facebook" %>
-              </a>
-              <a href="#" title="Share on Twitter" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.sngtrkr.com&text=<%= artist_tracked.name %>+is+using+SNGTRKR+to+keep+their+fans+up+to+date+with+releases.+Check+them+out+&#45;+www.sngtrkr.com<%= url_for artist_tracked %>&via=SNGTRKR','ShareSNGTRKRonTwitter','scrollbars=no,width=620,height=340'); return false;">
-                <%= image_tag "/images/social/twitter.png", :alt => "Twitter" %>
-              </a>
-              <a href="#" title="Share on Tumblr" onClick="MyWindow=window.open('http://www.tumblr.com/share/link?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for artist_tracked %>&name=<%= artist_tracked.name %>&description=<%= artist_tracked.name %> online:<br/><% if artist_tracked.fbid? %>http://www.facebook.com/<%= artist_tracked.fbid %><br/><% end %><% if artist_tracked.twitter? %>http://www.twitter.com/<%= artist_tracked.twitter %><br/><% end %><% if artist_tracked.youtube? %>http://www.youtube.com/<%= artist_tracked.youtube %><br/><% end %><% if artist_tracked.soundcloud? %>http://www.soundcloud.com/<%= artist_tracked.soundcloud %><br/><% end %><% if artist_tracked.website? %><%= artist_tracked.website %><% end %>','Share on Tumblr','scrollbars=no,width=620,height=340'); return false;">
-                <%= image_tag "/images/social/tb.png", :alt => "Tumblr" %>
-              </a>
-              <a href="#" title="Share on Google Plus" onClick="MyWindow=window.open('https://plus.google.com/share?url=http%3A%2F%2Fwww.sngtrkr.com<%= url_for artist_tracked %>','ShareSNGTRKRonGooglePlus','scrollbars=no,width=620,height=340'); return false;">
-                <%= image_tag "/images/social/gplus.png", :alt => "Google+" %>
-              </a>
-            </div>
-            <span>Link:</span>
-            <input type="text" onClick="this.select();" value="<%= root_url %><%= url_for(artist_tracked) %>">
-          </div>
-        </div>
+        </span>
+        <%= artist_popover artist_tracked %> 
       </td>
     </tr>
 <% end %>

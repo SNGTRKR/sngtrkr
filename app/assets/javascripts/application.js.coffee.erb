@@ -257,7 +257,9 @@ $(document).ready ->
     else
       true
 
-  $('.release:nth-child(5)').append "<div class=\'release recommend_artists\'><h2>Recommended artists</h2></div>"
+  $('#recommend_carousel').carousel(
+    interval: false
+  )
   $('.recommend_artists #recommend_carousel .carousel-inner .item:first-child').addClass 'active'
 
   # $('.release:nth-child(9n+1)').append "<div>HAI</div>"

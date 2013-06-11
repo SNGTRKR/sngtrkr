@@ -1,0 +1,8 @@
+<div id="suggest_<%= carousel_suggest.id %>" class="carousel_suggest animated">
+	<%= link_to image_tag(carousel_suggest.image.medium, :height => '75', :width => '75'), carousel_suggest %>
+	<span>
+		<div><%= link_to carousel_suggest.name, carousel_suggest %></div>
+		<%= carousel_suggest.label_name %>
+	</span>
+	<%= follow_button_carousel carousel_suggest %>
+</div>

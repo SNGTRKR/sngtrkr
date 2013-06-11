@@ -10,5 +10,5 @@
   <%= follow_button_small artist %>
   <div class="btn btn-small share_artist share" data-placement="bottom" id="<%= artist.id %>"><i class="icon-share"></i>Share
   </div>
-  <%= render :partial => '/shared/artist_popover', :locals => {:apop => artist} %>
+  <%= artist_popover artist %>
 </div>

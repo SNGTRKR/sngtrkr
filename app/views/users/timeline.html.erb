@@ -5,20 +5,12 @@
 <div class="g_timeline">
 	<div class="release recommend_artists">
     	<h2>Recommended artists</h2>
-    	<div id="recommend_carousel" class="carousel slide">
-		  <!-- Carousel items -->
+    	<div id="recommend_carousel" class="carousel slide carousel-fade">
 		  <div class="carousel-inner">
 		  	<% @artists.each_slice(3) do |slice| %>
 			    <div class="item">
 			    	<% slice.each do |artist| %>
-			    	<div id="suggest_<%= artist.id %>" class="carousel_suggest">
-		    			<%= link_to image_tag(artist.image.medium, :height => '75', :width => '75'), artist %>
-		    			<span>
-		    				<div><%= link_to artist.name, artist %></div>
-		    				<%= artist.label_name %>
-		    			</span>
-			    		<%= follow_button_small artist %>
-			    	</div>
+			    	<%= render :partial => "timeline/carousel_suggest", :object => artist %>
 			    	<% end %>
 			    </div>
 		    <% end %>
