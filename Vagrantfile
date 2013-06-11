@@ -63,7 +63,7 @@ Vagrant.configure("2") do |config|
           }
         },
         'sngtrkr' => {
-          'seed_db' => true # set me to true for FIRST TIME provision only
+          'seed_db' => false # set me to true for FIRST TIME provision only
         }
       }
 

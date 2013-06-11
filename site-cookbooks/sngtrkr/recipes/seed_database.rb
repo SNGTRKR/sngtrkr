@@ -7,4 +7,5 @@
 execute "seed database" do
 	command "rake db:fake_seed"
 	cwd "/home/vagrant/sngtrkr_rails_dev"
+	only_if node[:sngtrkr][:seed_db]
 end

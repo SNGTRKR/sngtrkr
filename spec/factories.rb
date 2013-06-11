@@ -11,7 +11,7 @@ FactoryGirl.define do
   end
 
   factory :artist do
-    name Faker::Name.name
+    name "#{Faker::Name.first_name} #{Faker::Name.last_name}"
     sequence(:fbid) { |n| n }
     sequence(:itunes_id) { |n| n }
     sequence(:sdid) { |n| n }
@@ -34,7 +34,7 @@ FactoryGirl.define do
 
   factory :release do
     association :artist, factory: :artist
-    sequence(:name) { |n| "#{Faker::Lorem.words(2)} #{n}" }
+    sequence(:name) { |n| "#{Faker::Lorem.words(2).map{|w| w.capitalize! }.join(' ')} #{n}" }
     sequence(:date) { |d| Date.today - d.days }
   end
 
