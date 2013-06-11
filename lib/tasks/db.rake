@@ -11,13 +11,22 @@ namespace :db do
   		next
   	end
 
+    matt = User.find_by_email("bessey@gmail.com")
+    billy = User.find_by_email("tom.alan.dallimore@googlemail.com")
+
     Release.destroy_all
   	Artist.destroy_all
   	100.times do |n|
-  		FactoryGirl.create(:artist_with_releases)
+  		artist = FactoryGirl.create(:artist_with_releases)
+      # Suggests 1 in 3 artists to the developers, populating their timelines
+      if n % 3 == 0
+        matt.followed_artists << artist
+        billy.followed_artists << artist
+      end
   	end
 
   	puts "Created #{Artist.count} dummy artists, and #{Release.count} dummy releases."
+
   end
 
 end
