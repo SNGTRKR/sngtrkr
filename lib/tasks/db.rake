@@ -16,8 +16,11 @@ namespace :db do
 
     Release.destroy_all
   	Artist.destroy_all
-  	100.times do |n|
-  		artist = FactoryGirl.create(:artist_with_releases)
+  	50.times do |n|
+  		artist = FactoryGirl.create(:artist, :with_random_image)
+      4.times do
+        FactoryGirl.create(:release, :with_random_image, artist: artist)
+      end
       # Suggests 1 in 3 artists to the developers, populating their timelines
       if n % 3 == 0
         matt.followed_artists << artist

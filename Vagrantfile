@@ -5,7 +5,7 @@ Vagrant.configure("2") do |config|
   config.berkshelf.enabled = true
 
   config.vm.define :dev do |dev|
-    dev.vm.box = "quantal"
+    dev.vm.box = "raring"
     dev.vm.box_url = "http://cloud-images.ubuntu.com/raring/current/raring-server-cloudimg-vagrant-amd64-disk1.box"
     dev.vm.network :forwarded_port, guest: 80, host: 8000
     dev.vm.network :forwarded_port, guest: 3000, host: 3000
@@ -20,14 +20,9 @@ Vagrant.configure("2") do |config|
     # your network.
     # dev.vm.network :public_network
 
-    # Share an additional folder to the guest VM. The first argument is
-    # the path on the host to the actual folder. The second argument is
-    # the path on the guest to mount the folder. And the optional third
-    # argument is a set of non-required options.
     dev.vm.synced_folder "../sngtrkr", "/home/vagrant/sngtrkr_rails_dev"
 
     dev.vm.provider :virtualbox do |vb|
-      # Use VBoxManage to customize the VM. For example to change memory:
       vb.customize ["modifyvm", :id, "--memory", "2048"]
     end
 
@@ -64,7 +59,9 @@ Vagrant.configure("2") do |config|
           }
         },
         'sngtrkr' => {
-          'seed_db' => false # set me to true for FIRST TIME provision only
+          'seed_db' => true, # set me to true for FIRST TIME provision only
+          'shims_path' => "/home/vagrant/.rbenv/bin/rbenv exec ",
+          'app_path' => "/home/vagrant/sngtrkr_rails_dev"
         }
       }
 

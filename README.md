@@ -22,6 +22,8 @@ prompts for credentials. This will do:
 ## Configuring The Dev Environment
 [Vagrant](http://www.vagrantup.com/) is used to virtualise the entire development environment to ensure consistent environments for all developers, and make moving the dev environment to production that much easier. You will need both Vagrant and [VirtualBox](https://www.virtualbox.org/) installed before continuing.
 
+Next you need to create `data_bags/secrets.json` which will store API keys and other such sensitive data not held in the repo. Duplicate the example file and make the necessary adjustments.
+
 After that's done the process is simply to `cd` into the project, then run `vagrant up`! If the configuration process has any problems, run `vagrant reload` to restart the PC and continue. This should not be a problem, if it is, contact Matt. When the configuration process is complete, you can access the machine with `vagrant ssh`. Check out `Vagrantfile` to get an idea of what servers are installed for you and are automatically running.
 
 For further boots, the server can be suspended with `vagrant suspend` and resumed again with `vagrant up`. 

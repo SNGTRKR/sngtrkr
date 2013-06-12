@@ -3,7 +3,8 @@
 # Recipe:: common
 #
 
-package "libtcmalloc-minimal4"
+package "libtcmalloc-minimal4" # Ruby optimisation
+package "openjdk-6-jre" # Solr needs me
 
 # Pass our environment variables through to the Vagrant box
 ruby_block "insert secret environment variables" do
@@ -28,30 +29,24 @@ end
 
 ruby_block "tweak ruby GC config" do
 	block do
-		file = Chef::Util::FileEdit.new("/home/vagrant/.profile") # Regretably needed or next line breaks
-		file.search_file_replace_line(/RUBY_GC_MALLOC_LIMIT=/, "export RUBY_GC_MALLOC_LIMIT=16000000")
-		file.write_file
-
-		file = Chef::Util::FileEdit.new("/home/vagrant/.profile") # Regretably needed or next line breaks
-		file.insert_line_if_no_match(/RUBY_GC_MALLOC_LIMIT=/, "export RUBY_GC_MALLOC_LIMIT=16000000")
-		file.write_file
-
-		file = Chef::Util::FileEdit.new("/home/vagrant/.profile") # Regretably needed or next line breaks
-		file.search_file_replace_line(/LD_PRELOAD=/, "export LD_PRELOAD=/usr/lib/libtcmalloc_minimal.so.4")
-		file.write_file
-
-		file = Chef::Util::FileEdit.new("/home/vagrant/.profile") # Regretably needed or next line breaks
-		file.insert_line_if_no_match(/LD_PRELOAD=/, "export LD_PRELOAD=/usr/lib/libtcmalloc_minimal.so.4")
-		file.write_file
-
-		ENV["RUBY_GC_MALLOC_LIMIT"] = "90000000"
+		ENV["RUBY_GC_MALLOC_LIMIT"] = "16000000"
 		ENV["LD_PRELOAD"] = "/usr/lib/libtcmalloc_minimal.so.4"
-	end
-end
 
-ruby_block "add rb env shims to path" do
-	block do
-		ENV["PATH"] += ":/home/vagrant/.rbenv/shims"
+		file = Chef::Util::FileEdit.new("/home/vagrant/.profile") # Regretably needed or next line breaks
+		file.search_file_replace_line(/RUBY_GC_MALLOC_LIMIT=/, "export RUBY_GC_MALLOC_LIMIT=#{ENV["RUBY_GC_MALLOC_LIMIT"]}")
+		file.write_file
+
+		file = Chef::Util::FileEdit.new("/home/vagrant/.profile") # Regretably needed or next line breaks
+		file.insert_line_if_no_match(/RUBY_GC_MALLOC_LIMIT=/, "export RUBY_GC_MALLOC_LIMIT=#{ENV["RUBY_GC_MALLOC_LIMIT"]}")
+		file.write_file
+
+		file = Chef::Util::FileEdit.new("/home/vagrant/.profile") # Regretably needed or next line breaks
+		file.search_file_replace_line(/LD_PRELOAD=/, "export LD_PRELOAD=#{ENV["LD_PRELOAD"]}")
+		file.write_file
+
+		file = Chef::Util::FileEdit.new("/home/vagrant/.profile") # Regretably needed or next line breaks
+		file.insert_line_if_no_match(/LD_PRELOAD=/, "export LD_PRELOAD=#{ENV["LD_PRELOAD"]}")
+		file.write_file
 	end
 end
 
@@ -61,6 +56,7 @@ directory '/root' do
 end
 
 include_recipe "ruby_stack"
+include_recipe "rbenv::vagrant"
 
 directory "/home/vagrant/sngtrkr_rails_prod" do
 	action :create
