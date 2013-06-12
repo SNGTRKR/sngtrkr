@@ -18,7 +18,7 @@
 <% cache "user_info_2/#{@user.id}-#{@user.updated_at}", expires_in: 24.hours do %>
     </li>
     <li>
-      <a href="#tab2" data-toggle="tab"><%= image_tag "/images/ppl_black.png", :class => "blk ppl" %><%= image_tag "/images/ppl_white.png", :class => "wht ppl" %><%= @app_friends.count %>
+      <a href="#tab2" data-toggle="tab"><span class="blk ppl"></span><span class="wht ppl"></span><%= @app_friends.count %>
         friend
         <% if @app_friends.count > 1 %>s
         <% end %></a>
@@ -84,7 +84,7 @@
         <div class="scrollable">
           <div class="scrollable_inner">
             <div class="share_sidebar">
-              <%= image_tag "/images/computer_small.png", :id => "computer_small", :alt => "Stay connected" %>
+              <div id="computer_small"></div>
               <div class="actions">
                 <h3>Stay connected</h3>
 

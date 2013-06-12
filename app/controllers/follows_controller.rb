@@ -42,6 +42,7 @@ class FollowsController < ApplicationController
   def user_destroy
     current_user.followed_artists.delete(Artist.find(params[:artist_id]))
     @artist_id = params[:artist_id]
+    binding.pry
     respond_to do |format|
       format.js { render :partial => 'follows/unfollow', :format => [:js] }
       format.html { redirect_to artist_path(:id => params[:artist_id]) }

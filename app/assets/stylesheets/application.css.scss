@@ -1,10 +1,16 @@
-  @import "compass/css3/";
+@import "compass/css3/";
 
+/* Sprite settings */
+$icono-layout:horizontal; 
+@import "icono/*.png";
+
+/* Global variables */
 $orange: #DC5A24;
 $blue: #45A1C6;
 $darkgray: #333333;
 $gray: #666666;
 $lightgray: #DDDDDD;
+
 @font-face {
   font-family: "MuseoSans-100";
   src: url("/font/MuseoSans-100.otf");
@@ -29,32 +35,40 @@ $lightgray: #DDDDDD;
   src: local("?"), url("/font/MuseoSans_700.otf") format("opentype");
 }
 
-@import "grid.css.scss";
-@import "font-awesome";
-@import "navbar.css.scss";
-@import "headers.css.scss";
-@import "styling.css.scss";
-@import "tabs.css.scss";
-@import "buttons.css.scss";
-@import "admin.css.scss";
-//Pages
-@import "home.css.scss";
-@import "about.css.scss";
-@import "search.css.scss";
-@import "release.css.scss";
-@import "profile.css.scss";
-@import "artist.css.scss";
-@import "timeline.css.scss";
-
 body {
   line-height: 1.8em !important;
-  background: url('/images/bg_body-noise.png') repeat;
+  background:url(/images/bg_body-noise.png) repeat;
   text-shadow: 0.5px 0.5px 0 rgba(240, 240, 240, 1);
 }
 
 .container-fluid {
   min-width: 850px;
 }
+/* ============================= */
+/* ! Sprite declarations  */
+/* ============================= */
+  .sp-sngtrkr-small { @include icono-sprite(logo_small); }
+  .sp-message { @include icono-sprite(message); }
+  .sp-people { @include icono-sprite(people); }
+  .sp-ppl-black { @include icono-sprite(ppl_black); }
+  .sp-ppl-white { @include icono-sprite(ppl_white); }
+  .sp-release-black { @include icono-sprite(release_blk); }
+  .sp-release-white { @include icono-sprite(release_wht); }
+  .sp-tab-small { @include icono-sprite(tab2); }
+  .sp-tab-large { @include icono-sprite(tab); }
+  .sp-twitter-blue { @include icono-sprite(twitter_circle_blu); }
+  .sp-twitter-white { @include icono-sprite(twitter_circle_wht); }
+  .sp-7d { @include icono-sprite(sevendigital); }
+  .sp-youtube { @include icono-sprite(yt); }
+  .sp-facebook { @include icono-sprite(fb); }
+  .sp-googleplus { @include icono-sprite(gplus); }
+  .sp-itunes { @include icono-sprite(it); }
+  .sp-soundcloud { @include icono-sprite(sc); }
+  .sp-tumblr { @include icono-sprite(tb); }
+  .sp-twitter { @include icono-sprite(twitter); }
+  .sp-www { @include icono-sprite(www); }
+  .sp-devices { @include icono-sprite(computer_small); }
+
 
 /* ============================= */
 /* ! Layout for tablet  */
@@ -95,3 +109,19 @@ body {
     }
   }
 }
+@import "grid.css.scss";
+@import "font-awesome";
+@import "navbar.css.scss";
+@import "headers.css.scss";
+@import "styling.css.scss";
+@import "tabs.css.scss";
+@import "buttons.css.scss";
+@import "admin.css.scss";
+//Pages
+@import "home.css.scss";
+@import "about.css.scss";
+@import "search.css.scss";
+@import "release.css.scss";
+@import "profile.css.scss";
+@import "artist.css.scss";
+@import "timeline.css.scss";

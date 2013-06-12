@@ -17,14 +17,26 @@
     line-height: 25px !important;
   }
   .trackers {
-    img {
+    div {
+      height:20px;
+      width:30px;
+      display:inline-block;
+      @extend .sp-ppl-black;
       margin-right: 10px;
+      position: relative;
+      top: 4px;
     }
   }
   .releases {
     margin: 7px 0 15px;
-    img {
+    div {
+      height:20px;
+      width:20px;
+      display:inline-block;
+      @extend .sp-release-black;
       margin: 0 14px 0 5px;
+      position: relative;
+      top: 5px;
     }
   }
   .track {
@@ -37,17 +49,40 @@
       overflow: hidden;
       line-height: 30px;
       font-size: 13px !important;
-      p, img {
-        float: left;
-      }
-      p {
-        margin-left: 10px;
-      }
       a {
         color: $darkgray;
-        &:hover {
-          color: $blue;
-        }
+          div, img {
+            float: left;
+          }    
+          div {
+            height:30px;
+            width:30px;
+            margin-right:10px;
+          } 
+          &:hover {
+            color: $blue;
+          }
+          .facebook {
+            @extend .sp-facebook;
+          }
+          .twitter {
+            @extend .sp-twitter;
+          }
+          .youtube {
+            @extend .sp-youtube;
+          }
+          .soundcloud {
+            @extend .sp-soundcloud;
+          }
+          .website {
+            @extend .sp-www;
+          }
+          .sdigital {
+            @extend .sp-7d;
+          }
+          .itunes {
+            @extend .sp-itunes;
+          }
       }
     }
   }

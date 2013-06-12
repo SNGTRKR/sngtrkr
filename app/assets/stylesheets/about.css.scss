@@ -51,12 +51,20 @@
           font-size: 28px;
         }
         .blu {
+          @extend .sp-twitter-blue;
           display: none;
+        }
+        .wht {
+          @extend .sp-twitter-white;
+        }
+        .wht, .blu {
+          height:65px;
+          width:65px;
         }
         &:hover, &:focus {
           color: $blue !important;
           .blu {
-            display: inline-block;
+            display: block;
           }
           .wht {
             display: none;

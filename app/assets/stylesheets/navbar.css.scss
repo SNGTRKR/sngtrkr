@@ -85,7 +85,10 @@
   }
   .brand {
     padding: 0 0 0 20px !important;
-    img {
+    .sngtrkr_logo {
+      @extend .sp-sngtrkr-small;
+      height:44px;
+      width:133px;
       margin: 3px 20px 3px 20px !important;
     }
   }
@@ -124,7 +127,7 @@
         font-size: 15px;
         color: #ccc;
       }
-      img {
+      .about, .support {
         opacity: 0.3;
         filter: alpha(opacity=30);
       }
@@ -135,10 +138,25 @@
         opacity: 1;
         filter: alpha(opacity=100);
       }
-      &:hover > img {
+      &:hover > .about {
         opacity: 1;
         filter: alpha(opacity=100);
       }
+      &:hover > .support {
+        opacity: 1;
+        filter: alpha(opacity=100);
+      }
+    }
+    .about, .support {
+      width:75px;
+      height:60px;
+      margin:0 auto;
+    }
+    .about {
+      @extend .sp-people;
+    }
+    .support {
+      @extend .sp-message;
     }
   }
 }

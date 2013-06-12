@@ -1,7 +1,7 @@
 .nav-tabs > .active > a, .nav-tabs > .active > a:hover, .nav-tabs > .active > a:focus {
   color: #fff !important;
   cursor: default;
-  background-image: url('/images/tab.png') !important;
+  @extend .sp-tab-large;
   .blk {
     display: none;
   }
@@ -46,12 +46,34 @@
       font-size: 15px !important;
     }
     .ppl {
+      display:inline-block;
+      width:30px;
+      height:20px;
       margin: -4px 12px 0 0;
+      position: relative;
+      top: 5px;
+        &.wht {
+          @extend .sp-ppl-white;
+        }
+        &.blk {
+          @extend .sp-ppl-black;
+        }
     }
     .rel {
+      display:inline-block;
+      width:20px;
+      height:20px;
       margin: -4px 16px 0 5px;
+      position: relative;
+      top: 4px;
+        &.wht {
+          @extend .sp-release-white;
+        }
+        &.blk {
+          @extend .sp-release-black;
+        }
     }
-    .wht {
+    .wht {   
       display: none;
     }
 

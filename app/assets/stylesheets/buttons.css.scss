@@ -119,14 +119,28 @@
       &:last-child {
         margin-right: 0px;
       }
-      img {
-        float: none;
+      .facebook {
+        @extend .sp-facebook;
+      }
+      .twitter {
+        @extend .sp-twitter;
+      }
+      .googleplus {
+        @extend .sp-googleplus;
+      }
+      .tumblr {
+        @extend .sp-tumblr;
+      }
+      span {
+        height:30px;
+        width:30px;
+        display:inline-block;
       }
     }
   }
-  span {
+  .link {
     font-size: 13px;
-    display: block;
+    display:block;
     margin: 3px 0;
   }
   input[type="text"] {
@@ -141,15 +155,24 @@
 }
 
 .buy_content {
-  a {
-    margin-right: 8px;
-    &:last-child {
-      margin: 0 !important;
+  height:30px;
+    a {
+      margin-right: 8px;
+      display:inline-block;
+        &:last-child {
+          margin: 0 !important;
+        }
+        div {
+          height:30px;
+          width:30px;
+        }
+        .itunes {
+          @extend .sp-itunes;
+        }
+        .sdigital {
+          @extend .sp-7d;
+        }
     }
-    img {
-      float: none !important;
-    }
-  }
 }
 
 .forgot_pass {

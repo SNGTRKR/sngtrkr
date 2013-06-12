@@ -20,11 +20,11 @@
             <h3><%= @artist.label_name %></h3>
 <% end %>
 <div class="trackers">
-  <%= image_tag "/images/ppl_black.png" %>
+  <div></div>
   <span id="tracker-<%= @artist.id %>"><%= pluralize @artist.followers, "tracker" %></span>
 </div>
 <div class="releases">
-  <%= image_tag "/images/release_blk.png" %>
+  <div></div>
   <%= pluralize @release_count, "release" %>
 </div>
 <%= follow_button @artist %>
@@ -35,34 +35,34 @@
     <ul>
       <% if @artist.fbid? %>
           <li>
-            <a href="http://www.facebook.com/<%= @artist.fbid %>" target="_blank"><%= image_tag "/images/social/fb.png" %>
+            <a href="http://www.facebook.com/<%= @artist.fbid %>" target="_blank"><div class="facebook"></div>
               <p>Facebook</p></a></li>
       <% end %>
       <% if @artist.twitter? %>
           <li>
-            <a href="http://www.twitter.com/<%= @artist.twitter %>" target="_blank"><%= image_tag "/images/social/twitter.png" %>
+            <a href="http://www.twitter.com/<%= @artist.twitter %>" target="_blank"><div class="twitter"></div>
               <p>Twitter</p></a></li>
       <% end %>
       <% if @artist.youtube? %>
           <li>
-            <a href="http://www.youtube.com/<%= @artist.youtube %>" target="_blank"><%= image_tag "/images/social/yt.png" %>
+            <a href="http://www.youtube.com/<%= @artist.youtube %>" target="_blank"><div class="youtube"></div>
               <p>YouTube</p></a></li>
       <% end %>
       <% if @artist.soundcloud? %>
           <li>
-            <a href="http://www.soundcloud.com/<%= @artist.soundcloud %>" target="_blank"><%= image_tag "/images/social/sc.png" %>
+            <a href="http://www.soundcloud.com/<%= @artist.soundcloud %>" target="_blank"><div class="soundcloud"></div>
               <p>Soundcloud</p></a></li>
       <% end %>
       <% if @artist.website? %>
-          <li><a href="http://<%= @artist.website %>" target="_blank"><%= image_tag "/images/social/www.png" %>
+          <li><a href="http://<%= @artist.website %>" target="_blank"><div class="website"></div>
             <p>Website</p></a></li>
       <% end %>
       <% if @artist.sd? %>
-          <li><a href="<%= @artist.sd %>" target="_blank"><%= image_tag "/images/social/7d.png" %><p>7Digital</p></a>
+          <li><a href="<%= @artist.sd %>" target="_blank"><div class="sdigital"></div><p>7Digital</p></a>
           </li>
       <% end %>
       <% if @artist.itunes? %>
-          <li><a href="<%= @artist.itunes %>" target="_blank"><%= image_tag "/images/social/it.png" %><p>iTunes</p></a>
+          <li><a href="<%= @artist.itunes %>" target="_blank"><div class="itunes"></div><p>iTunes</p></a>
           </li>
       <% end %>
     </ul>

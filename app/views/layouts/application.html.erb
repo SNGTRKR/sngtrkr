@@ -60,7 +60,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
       <div class="
         <%= "offset1" unless user_signed_in? and admin? %> span2">
         <a href="/about">
-          <%= image_tag "/images/people.png" %>
+          <div class="about"></div>
           <h4>About</h4>
         </a>
       </div>
@@ -73,7 +73,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
           </div>
           <div class="span2">
             <a href="http://support.sngtrkr.com">
-              <%= image_tag "/images/message.png" %>
+              <div class="support"></div>
               <h4>Support</h4>
             </a>
           </div>
@@ -108,11 +108,11 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
     <div class="navbar-inner">
       <% if current_user %>
           <%= link_to tl_path, :class => "brand" do %>
-              <%= image_tag "/images/logo-small.png" %>
+              <div class="sngtrkr_logo"></div>
           <% end %>
       <% else %>
           <%= link_to :root, :class => "brand" do %>
-              <%= image_tag "/images/logo-small.png" %>
+              <div class="sngtrkr_logo"></div>
           <% end %>
       <% end %>
       <ul class="nav">
