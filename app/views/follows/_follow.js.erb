@@ -25,14 +25,7 @@ $('a.add-trkr-carousel').bind("ajax:beforeSend", function () {
 }).bind("ajax:success", function() {
     var artist_id = $(this).data("id");
     $(this).parent().replaceWith("<%=j render :partial => 'timeline/carousel_suggest', :object => @new_artist %>");
-    // $.ajax({
-    //    url:'/timeline_releases/populate',
-    //    data:(
-    //      'timeline_artist=' + artist_id
-    //    )
-    // })
     var url = "/timeline_releases/populate?timeline_artist="+artist_id
-    console.log("URL: " + url);
     $.get(url);
     FB.api("/me/sngtrkr:track", "post", {
         artist: "http://sngtrkr.com/artists/" + $(this).data("id")
