@@ -80,14 +80,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource_or_scope)
-    if current_user.sign_in_count == 1 # First time user
-      u = current_user
-      u.sign_in_count += 1
-      u.save
-      return '/intro'
-    else
-      return '/tl'
-    end
+    return '/tl'
   end
 
   around_filter :disable_gc
