@@ -7,12 +7,6 @@
 # English is missing for this Ubuntu image for some reason?
 package "language-pack-en"
 
-directory "#{node[:sngtrkr][:app_path]}" do
-	action :create
-	owner "vagrant"
-	group "vagrant"
-end
-
 execute "bundle install for the development area" do
 	command "su vagrant -l -c 'cd #{node[:sngtrkr][:app_path]} && 
 		bash -i #{node[:sngtrkr][:shims_path]}bundle install'"

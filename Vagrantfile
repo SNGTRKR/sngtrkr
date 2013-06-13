@@ -13,17 +13,17 @@ Vagrant.configure("2") do |config|
 
     # Create a private network, which allows host-only access to the machine
     # using a specific IP.
-    # dev.vm.network :private_network, ip: "192.168.33.10"
+    dev.vm.network :private_network, ip: "192.168.33.10"
 
     # Create a public network, which generally matched to bridged network.
     # Bridged networks make the machine appear as another physical device on
     # your network.
     # dev.vm.network :public_network
 
-    dev.vm.synced_folder "../sngtrkr", "/home/vagrant/sngtrkr_rails_dev"
+    dev.vm.synced_folder ".", "/home/vagrant/sngtrkr_rails_dev", :nfs => true
 
     dev.vm.provider :virtualbox do |vb|
-      vb.customize ["modifyvm", :id, "--memory", "2048"]
+      vb.customize ["modifyvm", :id, "--memory", "1500"]
     end
 
     dev.vm.provision :chef_solo do |chef|
@@ -60,8 +60,9 @@ Vagrant.configure("2") do |config|
         },
         'sngtrkr' => {
           'seed_db' => true, # set me to true for FIRST TIME provision only
+          'seed_images' => false, # warning: this is incredibly slow, it is after all saving ~2000 images
           'shims_path' => "/home/vagrant/.rbenv/bin/rbenv exec ",
-          'app_path' => "/home/vagrant/sngtrkr_rails_dev"
+          'app_path' => "/home/vagrant/sngtrkr_rails_dev",
         }
       }
 
