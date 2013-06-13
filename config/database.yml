@@ -28,7 +28,7 @@ production:
   encoding: utf8
   database: sngtrkr_db
   host: localhost 
-  pool: 20
+  pool: 30
   username: <%= ENV['SNGTRKR_DB_USER'] %>
   password: <%= ENV['SNGTRKR_DB_PW'] %>
   socket: /var/run/mysqld/mysqld.sock

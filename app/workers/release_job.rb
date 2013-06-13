@@ -1,12 +1,8 @@
 require 'sidekiq'
 class ReleaseJob
 
-  def test
-    return 4
-  end
-
   include Sidekiq::Worker
-  sidekiq_options :queue => :release
+  sidekiq_options :queue => :releases, :backtrace => true
 
   def perform(artist_id)
     if artist_id.blank?

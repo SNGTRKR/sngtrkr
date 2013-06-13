@@ -2,5 +2,8 @@
 # Options here can still be overridden by cmd line args.
 #   sidekiq -C config.yml
 ---
-:verbose: false
+:verbose: true
 :concurrency: 25
+:queues:
+  - [artists, 10]
+  - [releases, 10]
