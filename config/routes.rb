@@ -17,7 +17,7 @@ SNGTRKR::Application.routes.draw do
   namespace :admin do
     constraints lambda { |request| request.env["warden"].authenticate? and User.find(request.env["warden"].user).roles.first.name == "Admin" } do
       root :to => "admin#overview"
-      mount RailsAdmin::Engine => '/rails', :as => 'rails_admin'
+      mount RailsAdmin::Engine => '/db'
       mount Sidekiq::Web => '/sidekiq'
       get '/:action' => "admin#:action"
     end
