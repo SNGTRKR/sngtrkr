@@ -14,8 +14,8 @@ end
 
 # Create test/development DB if it doesn't exist
 execute "create test/development db" do
-	command "su vagrant -l -c '#{node[:sngtrkr][:app_path]} &&
-		bash -i #{node[:sngtrkr][:shims_path]}rake db:setup RAILS_ENV=development"
+	command "su vagrant -l -c 'cd #{node[:sngtrkr][:app_path]} &&
+		bash -i #{node[:sngtrkr][:shims_path]}rake db:setup RAILS_ENV=development'"
 	not_if do
 		secrets = data_bag_item("sngtrkr", "secrets")
 		(system("mysql -u root -p#{secrets['SNGTRKR_DB_PW']} -e \"SHOW DATABASES;\" | grep sngtrkr_dev_db") or
