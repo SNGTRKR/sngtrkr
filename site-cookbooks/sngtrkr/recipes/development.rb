@@ -48,7 +48,7 @@ end
 
 execute "start development sidekiq client" do
 	command "su vagrant -l -c 'cd #{node[:sngtrkr][:app_path]} &&
-		bash -i #{node[:sngtrkr][:shims_path]}sidekiq -d --pidfile `pwd`/tmp/pids/sidekiq.pid -L `pwd`/log/sidekiq.log'"
+		bash -i #{node[:sngtrkr][:shims_path]}sidekiq --config config/sidekiq.yml -d --pidfile tmp/pids/sidekiq.pid -L log/sidekiq.log' "
 end
 
 execute "start solr server (silent failure possible)" do

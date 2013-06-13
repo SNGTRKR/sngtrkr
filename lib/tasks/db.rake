@@ -4,9 +4,8 @@ namespace :db do
   	if Rails.env.production?
   		raise "NOT GOING TO LET YOU DO THIS IN PRODUCTION BRO"
   	end
-
-	  args.with_defaults(:overwrite => false, :seed_images => false)
-  	if !args.overwrite and (Artist.count > 0 or Release.count > 0)
+	  args.with_defaults(:overwrite => "false", :seed_images => "false")
+  	if args.overwrite == "false" and (Artist.count > 0 or Release.count > 0)
   		puts "Not seeding database as it already has contents and :overwrite=#{args.overwrite}"
   		next
   	end
@@ -17,7 +16,7 @@ namespace :db do
     Release.destroy_all
   	Artist.destroy_all
   	50.times do |n|
-      if args.seed_images
+      if args.seed_images == "true"
     		artist = FactoryGirl.create(:artist, :with_random_image)
         4.times do
           FactoryGirl.create(:release, :with_random_image, artist: artist)

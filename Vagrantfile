@@ -42,6 +42,13 @@ Vagrant.configure("2") do |config|
       chef.add_recipe "sngtrkr::development"
 
       chef.json = { 
+        # CUSTOM SNGTRKR CONFIGURATION PARAMETERS
+        'sngtrkr' => {
+          'seed_db' => true, # set me to true for FIRST TIME provision only
+          'seed_images' => false, # warning: this is incredibly slow, it is after all saving ~2000 images
+          'shims_path' => "/home/vagrant/.rbenv/bin/rbenv exec ",
+          'app_path' => "/home/vagrant/sngtrkr_rails_dev",
+        },
         'ruby_stack' => {
           "rubies" => ['2.0.0-p195'],
           "global" => '2.0.0-p195',
@@ -58,12 +65,6 @@ Vagrant.configure("2") do |config|
             "innodb_additional_mem_pool_size" => "2M"
           }
         },
-        'sngtrkr' => {
-          'seed_db' => true, # set me to true for FIRST TIME provision only
-          'seed_images' => false, # warning: this is incredibly slow, it is after all saving ~2000 images
-          'shims_path' => "/home/vagrant/.rbenv/bin/rbenv exec ",
-          'app_path' => "/home/vagrant/sngtrkr_rails_dev",
-        }
       }
 
       chef.data_bags_path = "data_bags"
