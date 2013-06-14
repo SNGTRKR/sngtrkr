@@ -29,6 +29,7 @@ end
 group :test, :development do
   gem 'factory_girl_rails', '~> 4.0'
   gem 'faker'
+  gem 'pry'
 end
 
 # CACHING
@@ -60,7 +61,6 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem 'meta_request' #, '0.2.1'
-  gem 'pry'
   gem 'capistrano-unicorn', :require => false
 
   gem 'chef', :require => false
