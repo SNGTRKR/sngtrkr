@@ -3,14 +3,18 @@ class ArtistJob
   include Sidekiq::Worker
   sidekiq_options :queue => :artists, :backtrace => true
 
-  def perform access_token, user_id
+  def perform access_token, user_id, first_time = false
     artists = get_artists_from_facebook(access_token)
 
     new_artists, old_artists = filter_existing_artists(artists)
 
     suggest_existing_artists(user_id, old_artists)
 
-    import_new_artists(access_token, user_id, new_artists)
+    import_new_artists(
+      access_token: access_token, 
+      user_id: user_id, 
+      artists: new_artists,
+      first_time: first_time)
   end
 
   private
@@ -44,14 +48,13 @@ class ArtistJob
     end
   end
 
-  def import_new_artists(access_token, user_id, artists)
-    artists.each do |artist|
+  def import_new_artists opts
+    opts[:artists].each do |artist|
       ArtistSubJob.perform_async(
-        access_token: access_token, 
-        user_id: user_id, 
+        access_token: opts[:access_token], 
+        user_id: opts[:user_id], 
         artist: artist,
-        first_time: false
-        )
+        first_time: false)
     end
   end
 

@@ -28,10 +28,15 @@ module Scraper2
 	end
 
 	# Scrape all known sources (facebook / itunes / last.fm) for artist info
+	#
+	# Expects parameters:
+	# (:fb_id, :fb_access_token) | :itunes_id | :fb_data
 	def self.scrape_artist hash
 		# Attempt to gather information from all the sources we got
-		if hash[:fb_id] and hash[:fb_access_token]
-			artist = facebook_scraper.scrape_artist hash[:fb_id], hash[:fb_access_token]
+		if hash[:fb_data]
+			artist = facebook_scraper.scrape_artist(fb_data: hash[:fb_data])
+		elsif hash[:fb_id] and hash[:fb_access_token]
+			artist = facebook_scraper.scrape_artist(page_id: hash[:fb_id], access_token: hash[:fb_access_token])
 		elsif hash[:itunes_id]
 			artist = itunes_scraper.scrape_artist hash[:itunes_id]
 		end

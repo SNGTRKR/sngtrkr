@@ -5,13 +5,14 @@ describe Scraper2::Facebook do
     @bad_graph_response = {"error" => { "message" => "Unsupported get request."}}
   end
 
+  let(:artist) {Scraper2::Facebook.scrape_artist page_id: 12345, access_token: "testaccesstoken"}
+
   context "when a good page is scraped" do
 
     before(:each) do
       Scraper2::Facebook.stub(:get_page_from_graph) { @good_graph_response }
     end
 
-    let(:artist) {Scraper2::Facebook.scrape_artist 12345, "testaccesstoken"}
 
     it "returns an Artist object" do
       artist.is_a?(Artist).should eq true
@@ -51,7 +52,6 @@ describe Scraper2::Facebook do
 
   context "when a bad page is scraped" do
     before(:each) { Scraper2::Facebook.stub(:get_page_from_graph) { @bad_graph_response } }
-    let(:artist) {Scraper2::Facebook.scrape_artist 12345, "testaccesstoken"}
 
     it "returns false" do
       artist.should eq false
