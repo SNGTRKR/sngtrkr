@@ -16,6 +16,7 @@ class ArtistSubJob
     # binding.pry
     artist.save
     follow_or_suggest_artist opts[:user_id], artist.id, opts[:first_time]
+    ReleaseJob.perform_async(artist.id)
   end
 
   private

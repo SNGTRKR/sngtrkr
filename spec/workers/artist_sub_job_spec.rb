@@ -24,6 +24,11 @@ describe ArtistSubJob do
 			job.perform(hash)
 		end
 
+		it "calls the release scraper job" do
+			ReleaseJob.should_receive(:perform_async).once
+			job.perform(hash)
+		end
+
 		context "when first_time is true" do
 
 			it "follows the artist" do
