@@ -16,9 +16,16 @@
             <a href="#tab3" data-toggle="tab"><i class="icon-check"></i>Release reports</a>
           </li>
         </ul>
-        <%= link_to "./mail_preview" do %>
-            <div class="btn"><i class="icon-envelope"></i>Preview emails</div>
-        <% end %>
+        <%= link_to "./mail_preview" do %><div class="btn">
+          <i class="icon-envelope"></i>Preview emails
+        </div><% end %>
+        <br><br>
+        <%= link_to "/admin/sidekiq" do %>
+            <div class="btn"><i class="icon-tasks"></i>Sidekiq</div><% end %>
+        <br><br>
+        <%= link_to "/admin/rails" do %>
+            <div class="btn"><i class="icon-filter"></i>DB Admin
+            </div><% end %>
       </div>
     </div>
   </div>

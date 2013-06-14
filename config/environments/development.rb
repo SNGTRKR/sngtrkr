@@ -53,3 +53,6 @@ private_config = Rails.root + "config/environments/personal/private.rb"
 if File.exists? private_config
   load private_config
 end
+
+# Allow usage on Vagrant
+BetterErrors::Middleware.allow_ip! "10.0.2.2" if defined? BetterErrors && Rails.env == :development

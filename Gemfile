@@ -12,6 +12,7 @@ gem "best_in_place"
 group :production do
   gem 'unicorn'
   gem 'therubyracer'
+  gem 'rollbar', '~> 0.9.6'
 end
 
 gem 'sitemap_generator', :require => false
@@ -20,14 +21,15 @@ gem 'mysql2'
 
 group :test do
   gem 'rspec-rails'
-  gem 'factory_girl_rails', '~> 4.0'
   gem 'database_cleaner'
   gem 'rake'
   gem 'capybara'
 end
 
-gem 'capistrano'
-gem 'rvm-capistrano'
+group :test, :development do
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'faker'
+end
 
 # CACHING
 gem 'dalli'
@@ -52,15 +54,17 @@ gem 'itunes-search-api'
 # ADMIN
 gem 'rails_admin'
 
-# DEBUGGING
-gem 'rollbar', '~> 0.9.6'
-
 group :development do
+  gem 'capistrano'
+  gem 'rvm-capistrano'
   gem "better_errors"
   gem "binding_of_caller"
   gem 'meta_request' #, '0.2.1'
   gem 'pry'
   gem 'capistrano-unicorn', :require => false
+
+  gem 'chef', :require => false
+  gem 'knife-solo_data_bag', :require => false
 end
 
 group :assets do
@@ -93,5 +97,4 @@ gem 'shortener'
 gem 'kaminari'
 
 gem 'sunspot_rails' #, :git => "git://github.com/mkrisher/sunspot.git", :branch => "task_warning_bypass"
-gem 'sunspot_solr' #, :git => "git://github.com/mkrisher/sunspot.git", :branch => "task_warning_bypass"
-
+gem 'sunspot_solr'

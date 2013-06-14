@@ -1,3 +1,4 @@
+require 'sidekiq/web'
 SNGTRKR::Application.routes.draw do
 
   resources :reports
@@ -13,11 +14,10 @@ SNGTRKR::Application.routes.draw do
     mount RailsEmailPreview::Engine, :at => 'mail_preview' # You can choose any URL here
   end
 
-  constraints lambda { |request| request.env["warden"].authenticate? and User.find(request.env["warden"].user).roles.first.name == "Admin" } do
-    require 'sidekiq/web'
-    namespace :admin do
+  namespace :admin do
+    constraints lambda { |request| request.env["warden"].authenticate? and User.find(request.env["warden"].user).roles.first.name == "Admin" } do
       root :to => "admin#overview"
-      mount RailsAdmin::Engine => '/rails', :as => 'rails_admin'
+      mount RailsAdmin::Engine => '/db'
       mount Sidekiq::Web => '/sidekiq'
       get '/:action' => "admin#:action"
     end

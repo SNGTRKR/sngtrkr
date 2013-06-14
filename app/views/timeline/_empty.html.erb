@@ -1,6 +1,6 @@
 <ul class="ajax-recommended-artists timeline-recommendations">
-  <% if @user.suggested.count >= 4 %>
-      <%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested[0, 4] %>
+  <% if @user.suggested_artists.count >= 4 %>
+      <%= render :partial => 'shared/artist_suggestion', :collection => @user.suggested_artists.limit(4) %>
   <% else %>
       <!--<div class="loading load-timeline">
 		<h3>Please wait...</h3>

@@ -1,0 +1,74 @@
+{
+  "sha": "c0efc698dae0fa580f6f9051ea5548da49af5889",
+  "sources": {
+    "apt": {
+      "locked_version": "1.10.0"
+    },
+    "build-essential": {
+      "locked_version": "1.4.0"
+    },
+    "database": {
+      "locked_version": "1.4.0"
+    },
+    "memcached": {
+      "locked_version": "1.4.0"
+    },
+    "mysql": {
+      "locked_version": "3.0.0"
+    },
+    "nginx": {
+      "locked_version": "1.6.0"
+    },
+    "ohai": {
+      "locked_version": "1.1.8"
+    },
+    "redisio": {
+      "locked_version": "1.5.0"
+    },
+    "rbenv": {
+      "locked_version": "1.4.2"
+    },
+    "ruby_build": {
+      "locked_version": "0.8.0"
+    },
+    "ulimit": {
+      "locked_version": "0.2.0"
+    },
+    "openssl": {
+      "locked_version": "1.0.2"
+    },
+    "sngtrkr": {
+      "locked_version": "0.1.0",
+      "path": "site-cookbooks/sngtrkr"
+    },
+    "postgresql": {
+      "locked_version": "3.0.0",
+      "constraint": ">= 1.0.0"
+    },
+    "aws": {
+      "locked_version": "0.101.0"
+    },
+    "xfs": {
+      "locked_version": "1.1.0"
+    },
+    "runit": {
+      "locked_version": "1.1.4",
+      "constraint": "~> 1.0"
+    },
+    "yum": {
+      "locked_version": "2.2.2"
+    },
+    "git": {
+      "locked_version": "2.5.2"
+    },
+    "dmg": {
+      "locked_version": "1.1.0"
+    },
+    "windows": {
+      "locked_version": "1.9.0"
+    },
+    "chef_handler": {
+      "locked_version": "1.1.4"
+    }
+  }
+}

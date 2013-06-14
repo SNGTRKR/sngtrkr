@@ -35,4 +35,10 @@ config/environments/personal/private.rb
 .bundle/
 /solr/data
 /solr/pids
-public/uploads/*
+public/uploads/
+
+.vagrant/
+.kitchen/
+data_bags/sngtrkr/secrets.json
+public/cw_dev/
+public/cw_test/

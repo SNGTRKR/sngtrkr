@@ -6,10 +6,14 @@ class ReleaseUploader < CarrierWave::Uploader::Base
   include Sprockets::Helpers::RailsHelper
   include Sprockets::Helpers::IsolatedHelper
 
-  storage :fog
-
   def store_dir
-    ":class/images/:id_partition/"
+    if Rails.env.production?
+      ":class/images/:id_partition/"
+    elsif Rails.env.test?
+      "cw_test/:class/images/:id_partition/"
+    elsif Rails.env.development?
+      "cw_dev/:class/images/:id_partition/"
+    end
   end
 
   def default_url
@@ -43,8 +47,10 @@ class ReleaseUploader < CarrierWave::Uploader::Base
     process resize_to_fill: [50, 50]
   end
 
-  def extension_white_list
-    %w(jpg jpeg gif png)
+  if Rails.env.production?
+    def extension_white_list
+      %w(jpg jpeg gif png)
+    end
   end
 
 end

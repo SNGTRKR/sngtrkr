@@ -1,7 +1,7 @@
 require 'sidekiq'
 class ArtistJob
   include Sidekiq::Worker
-  sidekiq_options :queue => :artists
+  sidekiq_options :queue => :artists, :backtrace => true
 
   def perform access_token, user_id
     start_time = Time.now
