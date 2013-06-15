@@ -21,4 +21,3 @@ IMPORT_REPLACE = true
 
 require_dependency 'scraper'
 require_dependency 'release_scraper'
-require_dependency 'artist_scraper'

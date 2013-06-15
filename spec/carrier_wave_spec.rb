@@ -1,12 +1,11 @@
 require 'spec_helper'
-require 'open-uri'
-describe "ImageUploaders" do
+describe "CarrierWave" do
 
   before :each do
     @a = create(:artist_with_follower)
   end
 
-  it "uploads an artist image to S3" do
+  it "saves an artist image" do
     @a.image.identifier.should eq nil
     image = File.open(File.join('spec', 'sample_data', 'release_100.jpeg'))
     @a.image = image
@@ -14,7 +13,7 @@ describe "ImageUploaders" do
     @a.image.identifier.should_not eq nil
   end
 
-  it "uploads a release image to S3" do
+  it "saves an artist image" do
     image = File.open(File.join('spec', 'sample_data', 'release_100.jpeg'))
     release = create(:release)
     release.image.identifier.should eq nil

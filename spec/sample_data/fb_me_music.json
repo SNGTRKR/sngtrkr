@@ -1,0 +1,103 @@
+[
+    {
+      "name": "Medicinal Sounds", 
+      "general_manager": "Femi Idowu-Read, Mario Booth, Matt Taylor", 
+      "genre": "Reggae, Ska, Dub, Jungle and anything in between.", 
+      "hometown": "England", 
+      "website": "medicinalsounds.tumblr.com | @medicinal_sound", 
+      "likes": 701, 
+      "id": "1", 
+      "created_time": "2012-11-02T17:21:59+0000", 
+      "picture": {
+        "data": {
+          "url": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/276800_222774124455380_2061981111_q.jpg", 
+          "is_silhouette": false
+        }
+      }
+    }, 
+    {
+      "name": "The Upbeats", 
+      "booking_agent": "NZ/AUS: sharon@topshelfagency.com US/CAN: rob@circletalentagency.com UK/EU: nickreddick@primarytalent.com  ", 
+      "record_label": "Non Vogue, Vision Recordings", 
+      "genre": "Drum and Bass", 
+      "hometown": "Wellington", 
+      "website": "www.theupbeats.co.nz www.myspace.com/theupbeatsnz", 
+      "bio": "I do music.", 
+      "likes": 49753, 
+      "id": "2", 
+      "created_time": "2012-10-02T19:39:20+0000", 
+      "picture": {
+        "data": {
+          "url": "http://profile.ak.fbcdn.net/hprofile-ak-ash3/71016_120526688539_1798580786_q.jpg", 
+          "is_silhouette": false
+        }
+      }
+    }, 
+    {
+      "name": "MODESTEP", 
+      "general_manager": "Raw Power Management", 
+      "booking_agent": "Brian Edelman @ WME (US) / Francesco Caccamo @ http://www.echolocationtalent.com", 
+      "record_label": "A&M / Max Records", 
+      "genre": "Electronic / Rock", 
+      "hometown": "London", 
+      "website": "http://www.modestep.com", 
+      "bio": "I do music.", 
+      "likes": 447723, 
+      "id": "3", 
+      "created_time": "2012-08-21T14:16:14+0000", 
+      "picture": {
+        "data": {
+          "url": "http://profile.ak.fbcdn.net/hprofile-ak-ash4/373040_174002005811_803957626_q.jpg", 
+          "is_silhouette": false
+        }
+      }
+    }, 
+    {
+      "name": "UKF", 
+      "website": "http://www.ukfmusic.com http://www.ukflive.com", 
+      "likes": 182356, 
+      "id": "4", 
+      "created_time": "2012-07-20T15:35:52+0000", 
+      "picture": {
+        "data": {
+          "url": "http://profile.ak.fbcdn.net/hprofile-ak-prn1/162032_209644449062768_865344111_q.jpg", 
+          "is_silhouette": false
+        }
+      }
+    }, 
+    {
+      "name": "Stamina MC", 
+      "booking_agent": "mark[at]esp-agency[dot]com", 
+      "record_label": "www.facebook.com/digitalsoundboy", 
+      "genre": "Drum & Bass, with a view to expansion...", 
+      "hometown": "Londinium", 
+      "website": "www.staminamc.com", 
+      "bio": "I do music.", 
+      "likes": 22210, 
+      "id": "5", 
+      "created_time": "2012-07-15T03:36:08+0000", 
+      "picture": {
+        "data": {
+          "url": "http://profile.ak.fbcdn.net/hprofile-ak-ash4/373020_49606610775_73261339_q.jpg", 
+          "is_silhouette": false
+        }
+      }
+    }, 
+    {
+      "name": "Paramore", 
+      "general_manager": "Fly South Music Group", 
+      "booking_agent": "The Agency Group", 
+      "record_label": "Fueled By Ramen", 
+      "hometown": "Franklin, Tennessee", 
+      "website": "http://www.paramore.net", 
+      "likes": 26031177, 
+      "id": "6", 
+      "created_time": "2012-07-01T22:04:08+0000", 
+      "picture": {
+        "data": {
+          "url": "http://profile.ak.fbcdn.net/hprofile-ak-ash4/373044_5388374962_130983631_q.jpg", 
+          "is_silhouette": false
+        }
+      }
+    }
+  ]
