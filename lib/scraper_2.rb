@@ -55,29 +55,15 @@ module Scraper2
 
 	# Scrape all known sources (last.fm) for artist image
 	def self.scrape_artist_image artist
-		prospective_image = LastFm.artist_image artist
-
-		return false unless prospective_image
-    puts "Valid image: #{@image_url.inspect}"
-    io = open(URI.escape(@image_url))
-    if io
-      def io.original_filename;
-        base_uri.path.split('/').last;
-      end
-
-      io.original_filename.blank? ? nil : io
-      artist.image = io
-    end
+    artist.image = LastFm.artist_image(artist)
 	end
 
 	### RELEASE
 
-	def self.scrape_releases_for artist
-		itunes_releases = Itunes.scrape_releases_for artist
+	def self.import_releases_for artist
+		releases = scrape_releases_for artist
 
-		# TODO: Get artwork
-
-		save_all(itunes_releases)
+		save_all(releases)
 	end
 
 	### GENERAL
@@ -101,6 +87,18 @@ module Scraper2
 	end
 
 	### RELEASE
+
+	def self.scrape_releases_for artist
+		itunes_releases = Itunes.scrape_releases_for artist
+
+		itunes_releases.each do |r|
+			r.image = LastFm.release_image(artist.name, r.name)
+		end
+
+		releases = itunes_releases
+
+		return releases
+	end
 
 
 end
