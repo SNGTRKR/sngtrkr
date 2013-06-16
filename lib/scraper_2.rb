@@ -7,14 +7,7 @@ require 'open-uri'
 
 module Scraper2
 
-	# Add class instance variables for sub-scrapers so that we can replace 
-	# them with doubles when testing.
-	attr_accessor :facebook_scraper
-	attr_accessor :itunes_scraper
-	attr_accessor :lastfm_scraper
-	@facebook_scraper = Facebook
-	@itunes_scraper = Itunes
-	@lastfm_scraper = LastFm
+	### ARTIST 
 
 	# Import an artist for a user
 	def self.import_artist hash
@@ -34,21 +27,21 @@ module Scraper2
 	def self.scrape_artist hash
 		# Attempt to gather information from all the sources we got
 		if hash[:fb_data]
-			artist = facebook_scraper.scrape_artist(fb_data: hash[:fb_data])
+			artist = Facebook.scrape_artist(fb_data: hash[:fb_data])
 		elsif hash[:fb_id] and hash[:fb_access_token]
-			artist = facebook_scraper.scrape_artist(page_id: hash[:fb_id], access_token: hash[:fb_access_token])
+			artist = Facebook.scrape_artist(page_id: hash[:fb_id], access_token: hash[:fb_access_token])
 		elsif hash[:itunes_id]
-			artist = itunes_scraper.scrape_artist hash[:itunes_id]
+			artist = Itunes.scrape_artist hash[:itunes_id]
 		end
 
 		# Bail out if we don't have an artist to scrape from
 		return false unless artist
 
 		unless artist.itunes_id
-			itunes_scraper.associate_artist_with_store artist
+			Itunes.associate_artist_with_store artist
 		end
 
-		lastfm_scraper.improve_artist_info artist
+		LastFm.improve_artist_info artist
 
 		scrape_artist_image artist
 
@@ -62,7 +55,7 @@ module Scraper2
 
 	# Scrape all known sources (last.fm) for artist image
 	def self.scrape_artist_image artist
-		prospective_image = lastfm_scraper.artist_image artist
+		prospective_image = LastFm.artist_image artist
 
 		return false unless prospective_image
     puts "Valid image: #{@image_url.inspect}"
@@ -77,6 +70,18 @@ module Scraper2
     end
 	end
 
+	### RELEASE
+
+	def self.scrape_releases_for artist
+		itunes_releases = Itunes.scrape_releases_for artist
+
+		# TODO: Get artwork
+
+		save_all(itunes_releases)
+	end
+
+	### GENERAL
+
 	# Batch save array of items to DB
 	def self.save_all array
 		array.each(&:save)
@@ -88,9 +93,14 @@ module Scraper2
 	end
 
 	private
+
+	### ARTIST
+
 	def self.follow_artist user, artist
 		user.followed_artists << artist
 	end
+
+	### RELEASE
 
 
 end
