@@ -85,8 +85,10 @@ class Release < ActiveRecord::Base
     date.strftime('%d/%m/%Y')
   end
 
-  def itunes
-    if itunes?
+  def itunes(original=false)
+    if original
+      return super()
+    elsif itunes?
       return "http://clk.tradedoubler.com/click?p=23708&a=2098473&url=#{CGI.escape(super)}"
     else
       return nil

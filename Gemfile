@@ -50,7 +50,7 @@ gem "carrierwave"
 
 # SCRAPING GEMS
 gem 'scrobbler'
-gem 'itunes-search-api'
+gem 'itunes-search-api', github: 'bessey/itunes-search-api', branch: 'multi-lookup'
 
 # ADMIN
 gem 'rails_admin'
