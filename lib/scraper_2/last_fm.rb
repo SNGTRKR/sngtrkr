@@ -39,7 +39,7 @@ module Scraper2
     def self.release_image(artist_name, album_name)
       album_info = get_album_info(artist_name, album_name)
       if album_info and album_info['image'] and album_info['image'].last.is_a?(String)
-        return album_info['image'].last
+        return open_image(album_info['image'].last)
       end
       return nil
     end
@@ -51,10 +51,10 @@ module Scraper2
         return nil
       end
       
-      image
+      open_image(image)
     end
 
-    # private
+    private
     def self.get_artist_info(artist_name)
       safe_name = CGI.escape(artist_name)
       Hash.from_xml(open("#{@api_endpoint}?method=artist.getinfo&artist=#{safe_name}&api_key=#{@api_key}&autocorrect=1"))["lfm"]["artist"]
@@ -69,5 +69,20 @@ module Scraper2
     rescue
       false
     end
+
+    def self.open_image(url)
+      io = open(URI.escape(@url))
+      if io
+        def io.original_filename;
+          base_uri.path.split('/').last;
+        end
+
+        io.original_filename.blank? ? nil : io
+        return io
+      else
+        return nil
+      end
+    end
+
   end
 end

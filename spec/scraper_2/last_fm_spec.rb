@@ -60,8 +60,10 @@ describe Scraper2::LastFm do
     let(:artist_image) {Scraper2::LastFm.artist_image Artist.new()}
     context "when a good Artist is given" do
       it "finds an image" do
+        tmp_file = Tempfile.new("foo")
         Scraper2::LastFm.stub(:get_artist_info) {good_api_response}
-        artist_image.should eq "http://userserve-ak.last.fm/serve/500/3371617/Radiohead+rhpics3pt4.jpg"
+        Scraper2::LastFm.stub(:open_image).with("http://userserve-ak.last.fm/serve/500/3371617/Radiohead+rhpics3pt4.jpg") {tmp_file}
+        expect(artist_image).to eq tmp_file
       end
     end
 
@@ -107,13 +109,15 @@ describe Scraper2::LastFm do
 
     context "when a good response is returned" do
       it "finds an image" do
+        tmp_file = Tempfile.new("foo")
         Scraper2::LastFm.stub(:get_album_info) {good_api_response}
-        expect(Scraper2::LastFm.release_image("Pink Floyd", "The Wall")).to eq "http://userserve-ak.last.fm/best_image.png"
+        Scraper2::LastFm.stub(:open_image).with("http://userserve-ak.last.fm/best_image.png") {tmp_file}
+        expect(Scraper2::LastFm.release_image("Pink Floyd", "The Wall")).to eq tmp_file
       end
     end
 
     context "when a bad response is returned" do
-      it "finds an image" do
+      it "returns nil" do
         Scraper2::LastFm.stub(:get_album_info) {bad_api_response}
         expect(Scraper2::LastFm.release_image("Pink Floyd", "The Wall")).to eq nil
       end
