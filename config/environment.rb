@@ -20,4 +20,3 @@ end
 IMPORT_REPLACE = true
 
 require_dependency 'scraper'
-require_dependency 'release_scraper'
