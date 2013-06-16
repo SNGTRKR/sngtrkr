@@ -10,10 +10,10 @@ module Scraper2
     # Takes an existing Artist object and improves name and bio
     def self.improve_artist_info artist
       artist_info = get_artist_info(artist.name)
-      if artist_info["lfm"]["artist"]["name"]
-        artist.name = artist_info["lfm"]["artist"]["name"]
+      if artist_info["name"]
+        artist.name = artist_info["name"]
       end
-      summary = artist_info["lfm"]["artist"]["bio"]["summary"].to_s
+      summary = artist_info["bio"]["summary"].to_s
       if summary =~ /is not an artist/
         raise ArtistScrapeError, "LastFm: #{artist.name} not a real artist"
       end
@@ -28,41 +28,46 @@ module Scraper2
         raise "Artist or album names are not strings: #{artist_name.inspect},  #{album_name.inspect}"
       end
       begin
-        album_info = Hash.from_xml(open("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&artist=#{CGI.escape(artist_name)}&album=#{CGI.escape(album_name)}&api_key=#{@api_key}&autocorrect=1", :proxy => @proxy))
+        album_info = Hash.from_xml(open("#{@api_endpoint}?method=album.getinfo&artist=#{CGI.escape(artist_name)}&album=#{CGI.escape(album_name)}&api_key=#{@api_key}&autocorrect=1"))
       rescue
         Rails.logger.error("URL Issue for artist_name: '#{artist_name.inspect}' and album-name: '#{album_name.inspect}'")
         return false
-      end
-      begin
-        album_info = album_info['lfm']['album']
-      rescue
-        return false # If there's an issue here, there were probably no results.
       end
       return album_info
     end
 
     def self.release_image(artist_name, album_name)
-      album_info = lastfm_album_info(artist_name, album_name)
+      album_info = get_album_info(artist_name, album_name)
       if album_info and album_info['image'] and album_info['image'].last.is_a?(String)
-        image = album_info['image'].last
+        return album_info['image'].last
       end
-      return image
+      return nil
     end
 
     def self.artist_image(artist_name)
       artist_info = get_artist_info(artist_name)
-      image = artist_info["lfm"]["artist"]["image"].try(:last)
+      image = artist_info["image"].try(:last)
       unless image.is_a? String
-        return false
+        return nil
       end
       
       image
     end
 
-    private
+    # private
     def self.get_artist_info(artist_name)
       safe_name = CGI.escape(artist_name)
-      Hash.from_xml(open("#{@api_endpoint}?method=artist.getinfo&artist=#{safe_name}&api_key=#{@api_key}&autocorrect=1"))
+      Hash.from_xml(open("#{@api_endpoint}?method=artist.getinfo&artist=#{safe_name}&api_key=#{@api_key}&autocorrect=1"))["lfm"]["artist"]
+    rescue
+      false
+    end
+
+    def self.get_album_info(artist_name, album_name)
+      safe_artist_name = CGI.escape(artist_name)
+      safe_album_name = CGI.escape(album_name)
+      Hash.from_xml(open("#{@api_endpoint}?method=album.getinfo&artist=#{safe_artist_name}&album=#{safe_album_name}&api_key=#{@api_key}&autocorrect=1"))["lfm"]["artist"]
+    rescue
+      false
     end
   end
 end
