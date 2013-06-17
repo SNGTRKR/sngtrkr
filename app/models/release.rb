@@ -46,10 +46,12 @@ class Release < ActiveRecord::Base
     feat = / (\(|\[)(f|F)eat[^\)]*(\)|\])/
     ep = /( - |- | )?(\(|\[)?(EP|(S|s)ingle|(A|a)lbum)(\)|\])?/
     itunes_remix = /(\(|\[)(R|r)emixes(\)|\])/
-    ret = name.gsub(name.match(feat).to_s, "")
-    ret = ret.gsub(ret.match(itunes_remix).to_s, "")
-    ret = ret.gsub(ret.match(ep).to_s, "")
-    self.name = ret.strip # Remove whitespace at either end
+    deluxe_edition = /(\(|\[)Deluxe (Edition|Version)(\)|\])/
+    self.name.gsub!(self.name.match(feat).to_s, "")
+    self.name.gsub!(self.name.match(itunes_remix).to_s, "")
+    self.name.gsub!(self.name.match(ep).to_s, "")
+    self.name.gsub!(self.name.match(deluxe_edition).to_s, "")
+    self.name.strip! # Remove whitespace at either end
 
     true
   end
