@@ -40,6 +40,7 @@ gem 'rails_email_preview'
 
 # BACKGROUND TASKS
 gem 'sidekiq', :require => false
+gem 'sidekiq-failures'
 gem 'slim'
 gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'whenever', :require => false

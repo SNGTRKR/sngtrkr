@@ -35,7 +35,7 @@ module Scraper2
 		end
 
 		# Bail out if we don't have an artist to scrape from
-		return false unless artist
+		raise ArtistScrapeError, "No artist to work with from Itunes or Facebook" unless artist
 
 		unless artist.itunes_id
 			Itunes.associate_artist_with_store artist
@@ -47,15 +47,14 @@ module Scraper2
 
 		return artist
 
-	rescue ArtistScrapeError => e
-		puts "Artist failed to scrape:"
-		p e.message
+	# Exit if the artist is not valid.
+	rescue ValidationError
 		return false
 	end
 
 	# Scrape all known sources (last.fm) for artist image
 	def self.scrape_artist_image artist
-    artist.image = LastFm.artist_image(artist)
+    artist.image = LastFm.artist_image(artist.name)
 	end
 
 	### RELEASE
@@ -89,7 +88,11 @@ module Scraper2
 	### RELEASE
 
 	def self.scrape_releases_for artist
-		itunes_releases = Itunes.scrape_releases_for artist
+		itunes_releases = []
+
+		if artist.itunes_id
+			itunes_releases = Itunes.scrape_releases_for artist
+		end
 
 		itunes_releases.each do |r|
 			r.image = LastFm.release_image(artist.name, r.name)

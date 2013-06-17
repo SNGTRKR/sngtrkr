@@ -94,7 +94,7 @@ describe Scraper2::Itunes do
       Itunes.scrape_releases_for(artist).length.should eq 0
     end
 
-    context "a release in the result set" do
+    context "for a release in the result set" do
       let(:first_release) { Itunes.scrape_releases_for(build(:artist, itunes_id: 10, id: 5))[0] }
       it "fills the artist_id" do
         first_release.artist_id.should eq 5

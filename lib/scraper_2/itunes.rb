@@ -22,7 +22,14 @@ module Scraper2
 		# Scrapes *all* releases, no discrimination about duplicates. Its up to Scraper2 to deal
 		# with the merging of these results into other records, if needed.
 		def self.scrape_releases_for artist
+			raise "Scrape error: itunes_id blank for #{artist.id} - #{artist.name}" if artist.itunes_id.nil?
+
 			store_releases = get_releases_from_store(artist.itunes_id)
+
+			if store_releases.nil?
+				raise "Scrape error: No releases for #{artist.id} - #{artist.name}"
+			end
+
 			releases = store_releases.map{ |r| process_store_release(artist.id, r) }
 
 			return releases

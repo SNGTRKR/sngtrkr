@@ -1,10 +1,10 @@
 require 'sidekiq'
 class ArtistJob
   include Sidekiq::Worker
-  sidekiq_options :queue => :artists, :backtrace => true
+  sidekiq_options :queue => :artists, :retry => false
 
   def perform access_token, user_id, first_time = false
-    artists = get_artists_from_facebook(access_token)
+    artists = Scraper2::Facebook.get_all_artists_for_user(access_token)
 
     new_artists, old_artists = filter_existing_artists(artists)
 
@@ -18,14 +18,6 @@ class ArtistJob
   end
 
   private
-
-  def get_artists_from_facebook access_token
-    graph = Koala::Facebook::API.new(access_token)
-    return graph.get_connections(
-      "me", 
-      "music?fields=name,general_manager,booking_agent,record_label,genre,hometown,website,bio,picture,likes"
-      )
-  end
 
   # Split artists into existing in DB count, and new
   def filter_existing_artists artists
@@ -50,11 +42,13 @@ class ArtistJob
 
   def import_new_artists opts
     opts[:artists].each do |artist|
-      ArtistSubJob.perform_async(
+      hash = {
         access_token: opts[:access_token], 
         user_id: opts[:user_id], 
         artist: artist,
-        first_time: false)
+        first_time: opts[:first_time]
+      }
+      ArtistSubJob.perform_async(hash)
     end
   end
 

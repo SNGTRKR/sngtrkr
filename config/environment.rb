@@ -5,10 +5,7 @@ $proxy = nil
 
 Date::DATE_FORMATS.merge!(:default => "%d/%m/%y")
 
-# Initialize the rails application
-SNGTRKR::Application.initialize!
-
-if Rails.env.production?
+if ENV["RAILS_ENV"] == "production"
   FB_APP_ID = '344989472205984'
   FB_APP_SECRET = 'f292de39b6ea01f60ac1c0f6bb2f054f'
 else
@@ -16,7 +13,8 @@ else
   FB_APP_SECRET = '1b0a8ec279073577928e87c37c7be342'
 end
 
-# Specify wether or not in development mode imported artists are reimported on every launch or not
-IMPORT_REPLACE = true
+# Initialize the rails application
+SNGTRKR::Application.initialize!
 
 require_dependency 'scraper'
+require_dependency 'scraper_2'

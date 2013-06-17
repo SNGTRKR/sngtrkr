@@ -12,13 +12,14 @@ module Scraper2
     def self.scrape_artist opts
       if opts[:fb_data]
         graph_artist = opts[:fb_data]
-      else  
+      elsif opts[:page_id] and opts[:access_token]  
         graph_artist = get_page_from_graph opts[:page_id], opts[:access_token]
+      else
+        raise "Scrape error: none of (:page_id, :access_token) | :fb_data specified. Hash: #{opts}"
       end
-      return false if graph_artist["error"]
-
+      
       artist = Artist.new(
-        name: graph_artist["name"],
+        name: clean_name(graph_artist["name"]),
         fbid: graph_artist["id"],
         bio: graph_artist["bio"],
         genre: find_first(graph_artist["genre"]),
@@ -51,16 +52,40 @@ module Scraper2
 
     end
 
+    def self.get_all_artists_for_user access_token
+      graph = Koala::Facebook::API.new(access_token)
+      music = graph.get_connections(
+        "me", 
+        "music?fields=name,general_manager,booking_agent,record_label,genre,hometown,website,bio,picture,likes"
+        )
+      if !music.is_a?(Array)
+        raise "Graph error (music): #{music} with token #{access_token}"
+      end
+
+      return music
+    end
+
     private
 
     def self.get_page_from_graph page_id, access_token
       graph = @graph_api.new(access_token)
-      return graph.api("/#{page_id}?fields=name,general_manager,booking_agent,record_label,genre,hometown,website,bio,picture,likes")
+      page = graph.api("/#{page_id}?fields=name,general_manager,booking_agent,record_label,genre,hometown,website,bio,picture,likes")
+      if !page_id.is_a?(Hash) or page["error"]
+        raise "Graph error (page): #{page} with token #{access_token}, for page_id #{page_id}"
+      end
+
+      return page
     end
 
     def self.find_first list
       split_regexp = /[,\/|+\.]/
       list.split(split_regexp).first rescue nil
+    end
+
+    # FB Pages tend to be named badly to avoid conflicts with other brands
+    def self.clean_name name
+      regex = /\(.*?\)/
+      name.gsub(regex,"").strip
     end
 
   end

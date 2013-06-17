@@ -47,11 +47,15 @@ class User < ActiveRecord::Base
       user.save!
     end
 
-    if user.sign_in_count < 2
-      ArtistJob.perform_async(access_token.credentials.token, user.id)
+    if user.sign_in_count > 1
+      first_time = false
+    else
+      first_time = true
     end
-    user
 
+    ArtistJob.perform_async(access_token.credentials.token, user.id, first_time)
+    
+    return user
   end
 
   def self.new_with_session(params, session)

@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'spec_helper'
 describe Scraper2::LastFm do
   let(:good_api_response) do
@@ -49,7 +50,7 @@ describe Scraper2::LastFm do
       context "and they are non-existent" do
         before(:each) {Scraper2::LastFm.stub(:get_artist_info) {bad_api_response} }
         it "should raise" do
-          expect { artist }.to raise_error(ArtistScrapeError)
+          expect { artist }.to raise_error(ValidationError)
         end
       end
 
@@ -57,20 +58,27 @@ describe Scraper2::LastFm do
   end
 
   describe "#artist_image" do
-    let(:artist_image) {Scraper2::LastFm.artist_image Artist.new()}
-    context "when a good Artist is given" do
+    let(:artist_image) {Scraper2::LastFm.artist_image build(:artist).name}
+    context "when a good name is given" do
       it "finds an image" do
         tmp_file = Tempfile.new("foo")
         Scraper2::LastFm.stub(:get_artist_info) {good_api_response}
         Scraper2::LastFm.stub(:open_image).with("http://userserve-ak.last.fm/serve/500/3371617/Radiohead+rhpics3pt4.jpg") {tmp_file}
+        Scraper2::LastFm.should_receive(:open_image).with("http://userserve-ak.last.fm/serve/500/3371617/Radiohead+rhpics3pt4.jpg").once
         expect(artist_image).to eq tmp_file
       end
     end
 
-    context "when a bad Artist is given" do
+    context "when a bad name is given" do
       it "returns nil" do
         Scraper2::LastFm.stub(:get_artist_info) {bad_api_response}
         expect(artist_image).to eq nil
+      end
+    end
+
+    context "when rubbish is given" do
+      it "returns ArgumentError" do
+        expect{Scraper2::LastFm.artist_image 4}.to raise_error ArgumentError
       end
     end
 
@@ -116,12 +124,48 @@ describe Scraper2::LastFm do
       end
     end
 
+    context "when an imageless response is returned" do
+      it "returns nil" do
+        response = bad_api_response
+        response.delete("image")
+        Scraper2::LastFm.stub(:get_album_info) {response}
+        expect(Scraper2::LastFm.release_image("Pink Floyd", "The Wall")).to eq nil
+      end
+    end
+
+    context "when an image URL-less response is returned" do
+      it "returns nil" do
+        response = bad_api_response
+        response["image"] = [{"size"=>"small"}, {"size"=>"mega"}]
+        Scraper2::LastFm.stub(:get_album_info) {response}
+        expect(Scraper2::LastFm.release_image("Pink Floyd", "The Wall")).to eq nil
+      end
+    end
+
     context "when a bad response is returned" do
       it "returns nil" do
         Scraper2::LastFm.stub(:get_album_info) {bad_api_response}
         expect(Scraper2::LastFm.release_image("Pink Floyd", "The Wall")).to eq nil
       end
     end
+  end
+
+  describe "integration" do
+    it "returns valid artist info" do
+      artist_info = Scraper2::LastFm.send(:get_artist_info, "Radiohead")
+      expect(artist_info["name"]).to eq "Radiohead"
+    end
+
+    it "returns valid album info" do
+      album_info = Scraper2::LastFm.send(:get_album_info, "Radiohead", "In Rainbows")
+      expect(album_info["name"]).to eq "In Rainbows"
+    end
+
+    it "handles ASCII crazy artists" do
+      artist_info = Scraper2::LastFm.send(:get_artist_info, "Justicé")
+      expect(artist_info["name"]).to eq "Justicé"
+    end
+
   end
 
 end

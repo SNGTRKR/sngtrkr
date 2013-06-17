@@ -3,7 +3,20 @@ describe Scraper2 do
 
   describe "#import_artist" do
 
-    let(:import_artist) { Scraper2.import_artist :user => build(:user), :fb_id => 123, :fb_access_token => "abc" }
+    let(:import_artist) { Scraper2.import_artist user: build(:user), fb_id: 123, fb_access_token: "abc" }
+
+    context "when an invalid artist is scraped" do
+      it "returns false" do
+        Scraper2.stub(:scrape_artist) {false}
+        import_artist.should eq false
+      end
+    end
+
+  end
+
+  describe "#scrape_artist" do
+
+    let(:import_artist) { Scraper2.import_artist user: build(:user), fb_id: 123, fb_access_token: "abc" }
 
     # TODO: Checking for method calls does not test the output. Should rewrite.
     context "when an artist is scraped from FB" do
@@ -31,13 +44,6 @@ describe Scraper2 do
       end
     end
 
-    context "when an invalid artist is scraped" do
-      it "returns false" do
-        Scraper2::Facebook.stub(:scrape_artist) {false}
-        import_artist.should eq false
-      end
-    end
-
   end
 
   describe "#import_releases_for artist" do
@@ -47,6 +53,8 @@ describe Scraper2 do
       @release_array = []
       5.times { @release_array << build(:release, artist: artist) }
       Scraper2::Itunes.stub(:scrape_releases_for) { @release_array }
+      @tmp_file = Tempfile.new("foo")
+      Scraper2::LastFm.stub(:release_image) { @tmp_file }
     end
 
     it "saves all returned Itunes releases" do
@@ -58,10 +66,8 @@ describe Scraper2 do
     end
 
     it "assigns all releases images" do
-      tmp_file = Tempfile.new("foo")
-      Scraper2::LastFm.stub(:release_image) { tmp_file }
       @release_array.each do |r|
-        r.should_receive(:image=).with(tmp_file).once
+        r.should_receive(:image=).with(@tmp_file).once
       end
 
       Scraper2.import_releases_for artist
