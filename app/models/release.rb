@@ -10,8 +10,8 @@ class Release < ActiveRecord::Base
   has_many :user_notifications, :through => :notifications, :source => :user
   belongs_to :artist
 
-  if !Rails.env.test?
-    searchable :auto_index => true, :auto_remove => true do
+  if Rails.configuration.x.solr.enable_indexing
+    searchable do
       text :name, :boost => 2.0, :as => :code_textp
       text :artist_name, :as => :code_textp do
         artist.try(:name)

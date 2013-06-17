@@ -24,6 +24,7 @@ group :test do
   gem 'database_cleaner'
   gem 'rake'
   gem 'capybara'
+  gem 'sunspot-rails-tester'
 end
 
 group :test, :development do
