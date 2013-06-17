@@ -23,18 +23,6 @@ class ReleaseUploader < CarrierWave::Uploader::Base
   process resize_to_fit: [500, 500]
   process :quality => 50
 
-  version :release_i do
-    process resize_to_fill: [310, 311]
-  end
-
-  version :release_carousel do
-    process resize_to_fill: [116, 116]
-  end
-
-  version :activity_release do
-    process resize_to_fill: [40, 40]
-  end
-
   version :large do
     process resize_to_fill: [230, 230]
   end
