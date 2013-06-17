@@ -47,7 +47,7 @@ module Scraper2
       response = open("#{@api_endpoint}?method=artist.getinfo&artist=#{safe_name}&api_key=#{@api_key}&autocorrect=1")
       return Hash.from_xml(response)["lfm"]["artist"]
     rescue OpenURI::HTTPError => e
-      raise ValidationError, e 
+      raise ValidationError, "#{e} - #{artist_name}" 
     rescue Exception => e
       raise "LastFm error: Artist response not as expected for #{artist_name}. #{response} #{e} #{url}"
     end
@@ -58,7 +58,7 @@ module Scraper2
       response = open("#{@api_endpoint}?method=album.getinfo&artist=#{safe_artist_name}&album=#{safe_album_name}&api_key=#{@api_key}&autocorrect=1")
       return Hash.from_xml(response)["lfm"]["album"]
     rescue OpenURI::HTTPError => e
-      raise ValidationError, e 
+      raise ValidationError, "#{e} - #{artist_name}, #{album_name}" 
     rescue Exception => e
       raise "LastFm error: Album response not as expected for #{artist_name}, #{album_name}. #{response} #{e}"
     end
