@@ -51,11 +51,15 @@ execute "start development sidekiq client" do
 		bash -i #{node[:sngtrkr][:shims_path]}sidekiq --config config/sidekiq.yml -d --pidfile tmp/pids/sidekiq.pid -L log/sidekiq.log' "
 end
 
-execute "start solr server (silent failure possible)" do
-	command "su vagrant -l -c 'cd #{node[:sngtrkr][:app_path]} &&
-		bash -i #{node[:sngtrkr][:shims_path]}rake sunspot:solr:start'"
+execute "stop solr server" do
+	command "kill $(cat /home/vagrant/sngtrkr_rails_dev/solr/pids/development/sunspot-solr-development.pid)"
+	only_if do
+		File.exists? "#{node[:sngtrkr][:app_path]}/solr/pids/development/sunspot-solr-development.pid"
+	end
 	ignore_failure true
 end
 
-# Load in our database copy if available
-include_recipe "sngtrkr::seed_database"
+execute "start solr server" do
+	command "su vagrant -l -c 'cd #{node[:sngtrkr][:app_path]} &&
+		bash -i #{node[:sngtrkr][:shims_path]}rake sunspot:solr:start RAILS_ENV=development'"
+end
