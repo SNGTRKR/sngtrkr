@@ -1,5 +1,5 @@
 CarrierWave.configure do |config|
-  if Rails.env.development? || Rails.env.test?
+  if Rails.configuration.x.carrierwave.test_mode
     config.storage = :file
     config.root = File.join(Rails.root + "public") if Rails.env.development? or Rails.env.test?
   else
@@ -12,7 +12,10 @@ CarrierWave.configure do |config|
     config.fog_directory = "sngtrkr-production" # required
     config.asset_host = "http://sngtrkr-production.s3.amazonaws.com"
     config.fog_public = true # optional, defaults to true
-    config.fog_attributes = {'Cache-Control' => 'max-age=315576000'} # optional, defaults to {}
+    config.fog_attributes = {
+      'Cache-Control' => 'max-age=315576000',
+      'x-amz-storage-class' => 'REDUCED_REDUNDANCY'
+    }
   end
 
   if Rails.env.test?

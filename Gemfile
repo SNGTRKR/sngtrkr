@@ -55,6 +55,7 @@ gem 'itunes-search-api', github: 'bessey/itunes-search-api', branch: 'multi-look
 
 # ADMIN
 gem 'rails_admin'
+gem 'custom_configuration'
 
 group :development do
   gem 'capistrano'
@@ -66,6 +67,7 @@ group :development do
 
   gem 'chef', :require => false
   gem 'knife-solo_data_bag', :require => false
+  # gem 'rack-mini-profiler'
 end
 
 group :assets do

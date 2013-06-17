@@ -37,5 +37,10 @@ SNGTRKR::Application.configure do
 
   ActionMailer::Base.default :from => "SNGTRKR <noreply@sngtrkr.com>"
 
+  # Custom SNGTRKR configuration options
+  config.x.solr.enable_indexing = false
+  config.x.carrierwave.test_mode = true
+  config.x.carrierwave.extension_whitelist = false
+  config.x.facebook.test_mode = true
 
 end

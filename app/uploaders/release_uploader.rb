@@ -7,12 +7,12 @@ class ReleaseUploader < CarrierWave::Uploader::Base
   include Sprockets::Helpers::IsolatedHelper
 
   def store_dir
-    if Rails.env.production?
-      ":class/images/:id_partition/"
-    elsif Rails.env.test?
+    if Rails.env.test?
       "cw_test/:class/images/:id_partition/"
     elsif Rails.env.development?
       "cw_dev/:class/images/:id_partition/"
+    else
+      ":class/images/:id_partition/"
     end
   end
 
