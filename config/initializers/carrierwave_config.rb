@@ -1,8 +1,7 @@
 CarrierWave.configure do |config|
   if Rails.env.development? || Rails.env.test?
     config.storage = :file
-    config.root = File.join(Rails.root + "public" + "cw_dev") if Rails.env.development?
-    config.root = File.join(Rails.root + "public" + "cw_test") if Rails.env.test?
+    config.root = File.join(Rails.root + "public") if Rails.env.development? or Rails.env.test?
   else
     config.fog_credentials = {
         :provider => 'AWS', # required
@@ -15,6 +14,11 @@ CarrierWave.configure do |config|
     config.fog_public = true # optional, defaults to true
     config.fog_attributes = {'Cache-Control' => 'max-age=315576000'} # optional, defaults to {}
   end
+
+  if Rails.env.test?
+    config.enable_processing = false
+  end
+
 end
 
 module CarrierWave
