@@ -18,5 +18,4 @@ end
 # Initialize the rails application
 SNGTRKR::Application.initialize!
 
-require_dependency 'scraper'
 require_dependency 'scraper_2'

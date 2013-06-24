@@ -11,13 +11,19 @@ module Scraper2
 
 	# Import an artist for a user
 	def self.import_artist hash
+    hash.reverse_merge!(first_time: false) 
 		artist = scrape_artist hash
 		return false unless artist and artist.save
 
-		if hash[:user]
-			follow_artist hash[:user], artist
+		if hash[:user] 
+			if hash[:first_time]
+				follow_artist hash[:user], artist 
+			else
+				suggest_artist hash[:user], artist
+			end
 		end
 
+		return true
 	end
 
 	# Scrape all known sources (facebook / itunes / last.fm) for artist info
@@ -65,6 +71,12 @@ module Scraper2
 		save_all(releases)
 	end
 
+	def self.scrape_all_missing_release_images
+    Release.latest_missing_images.find_each do |r|
+    	r.save if scrape_missing_release_images(r)
+    end		
+	end
+
 	### GENERAL
 
 	# Batch save array of items to DB
@@ -85,6 +97,10 @@ module Scraper2
 		user.followed_artists << artist
 	end
 
+	def self.suggest_artist user, artist
+		user.suggested_artists << artist
+	end
+
 	### RELEASE
 
 	def self.scrape_releases_for artist
@@ -101,6 +117,21 @@ module Scraper2
 		releases = itunes_releases
 
 		return releases
+	end
+
+	def scrape_missing_release_images r
+    if r.image_last_attempt and (r.image_last_attempt + (2^r.image_attempts).hour) > Time.now
+      return false
+    end
+    r.image_attempts = r.image_attempts ? r.image_attempts += 1 : 0
+    r.image_last_attempt = Time.now
+    artist_name = r.artist.try(:name)
+    if artist_name.nil? then
+      return false
+    end
+    r.image = LastFm.release_image(artist_name, r.name)
+
+    return true
 	end
 
 

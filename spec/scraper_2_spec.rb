@@ -16,16 +16,17 @@ describe Scraper2 do
 
   describe "#scrape_artist" do
 
-    let(:import_artist) { Scraper2.import_artist user: build(:user), fb_id: 123, fb_access_token: "abc" }
+    let(:import_artist) { Scraper2.import_artist user: create(:user), fb_id: 123, fb_access_token: "abc" }
+
+    before(:each) do
+      Scraper2::Facebook.stub(:scrape_artist) {build(:artist, :itunes_id => nil)}
+      Scraper2::LastFm.stub(:improve_artist_info)
+      Scraper2::LastFm.stub(:artist_image)
+      Scraper2::Itunes.stub(:associate_artist_with_store)
+    end
 
     # TODO: Checking for method calls does not test the output. Should rewrite.
     context "when an artist is scraped from FB" do
-      before(:each) do
-        Scraper2::Facebook.stub(:scrape_artist) {build(:artist, :itunes_id => nil)}
-        Scraper2::LastFm.stub(:improve_artist_info)
-        Scraper2::LastFm.stub(:artist_image)
-        Scraper2::Itunes.stub(:associate_artist_with_store)
-      end
       
       it "calls the Facebook scraper once" do
         Scraper2::Facebook.should_receive(:scrape_artist).once
@@ -42,6 +43,22 @@ describe Scraper2 do
         Scraper2::Itunes.should_receive(:associate_artist_with_store).once
         import_artist
       end
+    end
+
+    context "when a user imports an artist" do
+
+      it "follows for new user" do
+        count = Follow.count
+        Scraper2.import_artist user: create(:user), fb_id: 123, fb_access_token: "abc", first_time: true
+        expect(Follow.count-count).to eq 1
+      end
+
+      it "suggests for returning user" do
+        count = Suggest.count
+        import_artist
+        expect(Suggest.count-count).to eq 1
+      end
+
     end
 
   end
@@ -71,6 +88,37 @@ describe Scraper2 do
       end
 
       Scraper2.import_releases_for artist
+    end
+  end
+
+  describe "#scrape_all_missing_release_images" do
+    context "when 2 releases with images, and 1 without are in DB" do
+      before(:each) do
+        @a = build(:release, :with_random_image)
+        @b = build(:release, :with_random_image)
+        @c = build(:release)
+        Release.stub_chain(:latest_missing_images,:find_each) do
+         [@a, @b, @c]
+        end
+      end
+
+      let(:scrape) { Scraper2.scrape_all_missing_release_images }
+
+      it "assigns the 1 without image an image" do
+        Scraper2.should_receive(:scrape_missing_release_images).once.with(@c)
+        scrape
+      end
+
+      it "saves the 1 without image" do
+        Release.any_instance.should_receive(:save).once
+        scrape
+      end
+
+      it "does nothing to the 2 with images" do
+        Scraper2.should_not_receive(:scrape_missing_release_images).with(@a)
+        Scraper2.should_not_receive(:scrape_missing_release_images).with(@b)
+        scrape
+      end
     end
   end
 
