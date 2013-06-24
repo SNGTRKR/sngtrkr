@@ -27,6 +27,7 @@ class Release < ActiveRecord::Base
   after_create :notify_followers
 
   scope :unsaved_images, where('(image_file_name is null or image_file_name = "") and image_source is not null and image_source != ""')
+  scope :latest_missing_images, includes(:artist).where('image_file_name is null or image_file_name = ""').order('created_at DESC')
 
   before_save :default_values
   before_save :metadata_cleanup
@@ -94,61 +95,6 @@ class Release < ActiveRecord::Base
       return "http://clk.tradedoubler.com/click?p=23708&a=2098473&url=#{CGI.escape(super())}"
     else
       return nil
-    end
-  end
-
-  def self.save_scraped_images
-    Release.unsaved_images.each do |r|
-      # Attempts to save an image with exponential backoff
-      if !r.image_file_name and r.image_source
-        if !r.image_last_attempt or (r.image_last_attempt + (2^r.image_attempts).hour) > Time.now
-          puts "Would be saving" + r.image_source
-          r.image_attempts = r.image_attempts ? r.image_attempts += 1 : 0
-          r.image_last_attempt = Time.now
-
-          io = open(r.image_source)
-          if io
-            def io.original_filename;
-              base_uri.path.split('/').last;
-            end
-
-            io.original_filename.blank? ? nil : io
-            r.image = io
-          end
-
-          r.save
-        end
-      end
-    end
-  end
-
-  def self.download_missing_images
-    Release.includes(:artist).where('image_file_name is null or image_file_name = ""').order('created_at DESC').limit(500).each do |r|
-      if r.image_last_attempt and (r.image_last_attempt + (2^r.image_attempts).hour) > Time.now
-        next
-      end
-      r.image_attempts = r.image_attempts ? r.image_attempts += 1 : 0
-      r.image_last_attempt = Time.now
-      artist_name = r.artist.try(:name)
-      if artist_name.nil? then
-        next
-      end
-      album_info = Scraper.lastfm_album_info(r.artist.name, r.name)
-      if album_info and album_info['image'].is_a? Array
-        best_artwork = album_info['image'].last
-        if best_artwork and best_artwork.is_a?(String)
-          io = open(best_artwork)
-          if io
-            def io.original_filename;
-              base_uri.path.split('/').last;
-            end
-
-            io.original_filename.blank? ? nil : io
-            r.image = io
-          end
-        end
-      end
-      r.save
     end
   end
 
