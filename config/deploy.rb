@@ -1,10 +1,10 @@
 set :application, "sngtrkr"
-set :user, "deploy"
+set :user, "vagrant"
 set :scm, 'git'
 set :repository, "https://github.com/SNGTRKR/sngtrkr.git"
 set :scm_verbose, true
-set :domain, 'sngtrkr.com'
-set :applicationdir, "/var/www/sngtrkr"
+set :domain, 'do.sngtrkr.com'
+set :applicationdir, "/home/vagrant/sngtrkr_rails_prod"
 set(:deploy_to) { applicationdir }
 set :rvm_ruby_string, "2.0"
 set :rvm_type, :user

@@ -25,7 +25,7 @@ gems = (rubies.inject({}) do |hash, rubie|
   hash.merge!({ rubie => [{ 'name' => 'bundler' }] })
 end)
 
-node['rbenv']['user_installs'] = Array(node['ruby_stack']['users']).inject([]) do |array, user|
+node.default['rbenv']['user_installs'] = Array(node['ruby_stack']['users']).inject([]) do |array, user|
   array.push({
     'user'      => user,
     'rubies'    => node['ruby_stack']['rubies'],

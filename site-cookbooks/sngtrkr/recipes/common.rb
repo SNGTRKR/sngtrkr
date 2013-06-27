@@ -3,8 +3,28 @@
 # Recipe:: common
 #
 
+execute "disable password login" do
+ command "sed -i 's/#.*PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config"
+end
+
+service "ssh" do
+ action :restart
+end
+
 package "libtcmalloc-minimal4" # Ruby optimisation
 package "openjdk-6-jre" # Solr needs me
+
+directory "/home/vagrant/.ssh" do
+	owner 'vagrant'
+	recursive true
+end
+
+file "/home/vagrant/.profile" do
+	content "# Generated .profile by Chef\n"
+	user "vagrant"
+
+	not_if { File.exists? "/home/vagrant/.profile" }
+end
 
 # Pass our environment variables through to the Vagrant box
 ruby_block "insert secret environment variables" do

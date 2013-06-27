@@ -3,6 +3,7 @@
 # Recipe:: development
 #
 # Reliant on common
+include_recipe "sngtrkr::common"
 
 # English is missing for this Ubuntu image for some reason?
 package "language-pack-en"
