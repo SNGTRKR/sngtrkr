@@ -10,6 +10,17 @@ describe "ItunesRss" do
     @rss_items = ItunesRss.fetch_releases(File.open('spec/sample_data/itunes_rss_10.xml'))
   end
 
+  before :each do
+    ITunesSearchAPI.stub(:lookup) do |inp|
+      {
+        "artistId" => inp[:id],
+        "albumLink" => "url",
+        "collectionName" => "test",
+        "releasedate" => Date.today+inp[:id],
+      }
+    end
+  end
+
   it "converts itunes rss feed to object" do
     @rss_items[0]["title"].should eq "People Like Me - Kassidy"
   end

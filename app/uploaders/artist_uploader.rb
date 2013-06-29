@@ -7,12 +7,12 @@ class ArtistUploader < CarrierWave::Uploader::Base
   include Sprockets::Helpers::IsolatedHelper
 
   def store_dir
-    if Rails.env.production?
-      ":class/images/:id_partition/"
-    elsif Rails.env.test?
+    if Rails.env.test?
       "cw_test/:class/images/:id_partition/"
     elsif Rails.env.development?
       "cw_dev/:class/images/:id_partition/"
+    else
+      ":class/images/:id_partition/"
     end
   end
 
@@ -23,31 +23,14 @@ class ArtistUploader < CarrierWave::Uploader::Base
   process resize_to_fit: [800, 800]
   process :quality => 50
 
-  version :profile do
-    process resize_to_fill: [310, 369]
-  end
-
-  version :recommend do
-    process resize_to_fill: [212, 178]
-  end
-
   version :large do
     process resize_to_fill: [200, 200]
   end
-
-  version :manage do
-    process resize_to_fill: [100, 100]
-  end
-
   version :medium, :from_version => :large do
     process resize_to_fill: [100, 100]
   end
 
   version :small, :from_version => :medium do
-    process resize_to_fill: [50, 50]
-  end
-
-  version :sidebar_suggest do
     process resize_to_fill: [50, 50]
   end
 

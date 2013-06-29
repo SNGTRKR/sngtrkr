@@ -17,6 +17,12 @@ describe "Release" do
 
       release = create(:release, :name => "Riggy Pop - EP")
       release.name.should eq "Riggy Pop"
+
+      release = create(:release, :name => "Riggy Pop (Deluxe Edition)")
+      release.name.should eq "Riggy Pop"
+
+      release = create(:release, :name => "Riggy Pop (Deluxe Version)")
+      release.name.should eq "Riggy Pop"
     end
 
     it "combines data of duplicates together" do

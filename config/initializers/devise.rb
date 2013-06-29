@@ -215,15 +215,8 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end
-  if Rails.env.production?
-    app_id = '344989472205984'
-    app_secret = 'f292de39b6ea01f60ac1c0f6bb2f054f'
-  else
-    app_id = '294743537267038'
-    app_secret = '1b0a8ec279073577928e87c37c7be342'
-  end
 
   require "omniauth-facebook"
-  config.omniauth :facebook, app_id, app_secret, :scope => 'email,user_likes', :display => 'popup'
+  config.omniauth :facebook, FB_APP_ID, FB_APP_SECRET, :scope => 'email,user_likes', :display => 'popup'
 
 end

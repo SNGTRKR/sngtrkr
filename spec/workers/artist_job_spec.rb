@@ -4,7 +4,7 @@ describe ArtistJob do
   
 	describe "#perform" do
 		before(:each) do 
-			Koala::Facebook::API.any_instance.stub(:get_connections) do 
+			Scraper2::Facebook.stub(:get_all_artists_for_user) do 
 				# Contains 6 artists with FB IDs 1..6
 				JSON.parse(IO.read("spec/sample_data/fb_me_music.json"))
 			end
@@ -37,6 +37,18 @@ describe ArtistJob do
 
 		it "calls ArtistSubJob for every new artist" do
 			ArtistSubJob.should_receive(:perform_async).exactly(4).times
+			job.perform("AT1234", user.id)
+		end
+
+		it "passes the correct data into ArtistSubJob" do
+			artist = JSON.parse(IO.read("spec/sample_data/fb_me_music.json"))[3]
+			ArtistSubJob.should_receive(:perform_async).with(hash_including(
+				access_token: "AT1234",
+				user_id: user.id,
+				artist: artist,
+				first_time: false
+				)).at_least(1).times
+			ArtistSubJob.should_receive(:perform_async).exactly(3).times
 			job.perform("AT1234", user.id)
 		end
 

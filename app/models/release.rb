@@ -10,8 +10,8 @@ class Release < ActiveRecord::Base
   has_many :user_notifications, :through => :notifications, :source => :user
   belongs_to :artist
 
-  if !Rails.env.test?
-    searchable :auto_index => true, :auto_remove => true do
+  if Rails.configuration.x.solr.enable_indexing
+    searchable do
       text :name, :boost => 2.0, :as => :code_textp
       text :artist_name, :as => :code_textp do
         artist.try(:name)
@@ -46,10 +46,12 @@ class Release < ActiveRecord::Base
     feat = / (\(|\[)(f|F)eat[^\)]*(\)|\])/
     ep = /( - |- | )?(\(|\[)?(EP|(S|s)ingle|(A|a)lbum)(\)|\])?/
     itunes_remix = /(\(|\[)(R|r)emixes(\)|\])/
-    ret = name.gsub(name.match(feat).to_s, "")
-    ret = ret.gsub(ret.match(itunes_remix).to_s, "")
-    ret = ret.gsub(ret.match(ep).to_s, "")
-    self.name = ret.strip # Remove whitespace at either end
+    deluxe_edition = /(\(|\[)Deluxe (Edition|Version)(\)|\])/
+    self.name.gsub!(self.name.match(feat).to_s, "")
+    self.name.gsub!(self.name.match(itunes_remix).to_s, "")
+    self.name.gsub!(self.name.match(ep).to_s, "")
+    self.name.gsub!(self.name.match(deluxe_edition).to_s, "")
+    self.name.strip! # Remove whitespace at either end
 
     true
   end
@@ -85,9 +87,11 @@ class Release < ActiveRecord::Base
     date.strftime('%d/%m/%Y')
   end
 
-  def itunes
-    if itunes?
-      return "http://clk.tradedoubler.com/click?p=23708&a=2098473&url=#{CGI.escape(super)}"
+  def itunes(original=false)
+    if original
+      return super()
+    elsif itunes?
+      return "http://clk.tradedoubler.com/click?p=23708&a=2098473&url=#{CGI.escape(super())}"
     else
       return nil
     end

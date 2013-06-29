@@ -24,6 +24,7 @@ group :test do
   gem 'database_cleaner'
   gem 'rake'
   gem 'capybara'
+  gem 'sunspot-rails-tester'
 end
 
 group :test, :development do
@@ -40,6 +41,7 @@ gem 'rails_email_preview'
 
 # BACKGROUND TASKS
 gem 'sidekiq', :require => false
+gem 'sidekiq-failures'
 gem 'slim'
 gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'whenever', :require => false
@@ -50,10 +52,11 @@ gem "carrierwave"
 
 # SCRAPING GEMS
 gem 'scrobbler'
-gem 'itunes-search-api'
+gem 'itunes-search-api', github: 'bessey/itunes-search-api', branch: 'multi-lookup'
 
 # ADMIN
 gem 'rails_admin'
+gem 'custom_configuration'
 
 group :development do
   gem 'capistrano'
@@ -65,6 +68,7 @@ group :development do
 
   gem 'chef', :require => false
   gem 'knife-solo_data_bag', :require => false
+  # gem 'rack-mini-profiler'
 end
 
 group :assets do

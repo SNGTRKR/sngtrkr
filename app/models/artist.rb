@@ -15,8 +15,8 @@ class Artist < ActiveRecord::Base
   has_many :followed_users, :through => :follows, :source => :user
   has_many :suggested_users, :through => :suggests, :source => :user
 
-  if !Rails.env.test?
-    searchable :auto_index => true, :auto_remove => true do
+  if Rails.configuration.x.solr.enable_indexing
+    searchable do
       text :name, :boost => 2.0, :as => :code_textp
       text :label_name
       boolean :ignore

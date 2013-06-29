@@ -38,4 +38,12 @@ namespace :db do
 
   end
 
+  desc "Clear the database, and the Sunspot data store"  
+  task :reset => [:environment] do
+    Rake::Task["db:setup"].invoke
+    Rake::Task["sunspot:solr:stop"].invoke
+    FileUtils.rm_rf(File.join(Rails.root,"solr","data"))
+    Rake::Task["sunspot:solr:start"].invoke
+  end
+
 end

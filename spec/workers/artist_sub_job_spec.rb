@@ -14,13 +14,20 @@ describe ArtistSubJob do
 			}
 		end
 
-		it "calls the facebook scraper" do
-			Scraper2::Facebook.should_receive(:scrape_artist).once.and_call_original	
+		before(:each) {Scraper2.stub(:scrape_artist){ build(:artist) } }
+
+		it "calls the artist scraper" do
+			Scraper2.should_receive(:scrape_artist).with(fb_data: hash[:artist]){build(:artist)}.once
 			job.perform(hash)
 		end
 
 		it "saves the artist to the db" do
 			Artist.any_instance.should_receive(:save).once.and_call_original	
+			job.perform(hash)
+		end
+
+		it "calls the release scraper job" do
+			ReleaseJob.should_receive(:perform_async).once
 			job.perform(hash)
 		end
 

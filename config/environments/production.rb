@@ -93,6 +93,11 @@ SNGTRKR::Application.configure do
   #     :exception_recipients => %w{bessey@gmail.com},
   #     :ignore_if            => lambda { |env, e| e.message =~ /SCRAPER/ }
 
+  # Custom SNGTRKR configuration options
+  config.x.solr.enable_indexing = true
+  config.x.carrierwave.test_mode = false
+  config.x.carrierwave.extension_whitelist = true
+  config.x.facebook.test_mode = false
 
 end
 
