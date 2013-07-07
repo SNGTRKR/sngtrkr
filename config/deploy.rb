@@ -42,11 +42,7 @@ namespace :solr do
 
   desc "reindex the whole database"
   task :reindex, :roles => :app do
-    stop
-    run "rm -rf #{shared_path}/solr/data/*"
-    start
-    puts "You need to run this yourself now:"
-    puts "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:reindex"
+    run "cd #{current_path} && yes | RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:reindex"
   end
 
   desc "Symlink in-progress deployment to a shared Solr index"
