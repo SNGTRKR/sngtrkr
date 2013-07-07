@@ -51,6 +51,7 @@ ruby_block "tweak ruby GC config" do
 	block do
 		ENV["RUBY_GC_MALLOC_LIMIT"] = "16000000"
 		ENV["LD_PRELOAD"] = "/usr/lib/libtcmalloc_minimal.so.4"
+		ENV["HOME"] = "/home/vagrant"
 
 		file = Chef::Util::FileEdit.new("/home/vagrant/.profile") # Regretably needed or next line breaks
 		file.search_file_replace_line(/RUBY_GC_MALLOC_LIMIT=/, "export RUBY_GC_MALLOC_LIMIT=#{ENV["RUBY_GC_MALLOC_LIMIT"]}")
@@ -70,13 +71,9 @@ ruby_block "tweak ruby GC config" do
 	end
 end
 
-# Required for git to download rubyenv to.
-directory '/root' do
-	mode 0755
-end
-
-include_recipe "ruby_stack"
-include_recipe "rbenv::vagrant"
+# include_recipe "ruby_stack"
+include_recipe "ruby_build"
+include_recipe "rbenv::user"
 
 directory "/home/vagrant/sngtrkr_rails_prod" do
 	action :create
@@ -93,6 +90,14 @@ end
 # Copy our configuration files onto the system.
 cookbook_file "/etc/nginx/sites-available/sngtrkr_rails_staging.conf" do
 	source "nginx_rails_staging.conf"
+	mode 0644
+	owner "root"
+	group "root"
+end
+
+cookbook_file "/etc/nginx/sites-available/sngtrkr_rails_prod.conf" do
+	source "nginx_rails_prod.conf"
+	mode 0644
 	owner "root"
 	group "root"
 end

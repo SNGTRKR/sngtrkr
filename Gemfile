@@ -60,15 +60,15 @@ gem 'custom_configuration'
 
 group :development do
   gem 'capistrano'
-  gem 'rvm-capistrano'
   gem "better_errors"
   gem "binding_of_caller"
   gem 'meta_request' #, '0.2.1'
   gem 'capistrano-unicorn', :require => false
 
-  gem 'chef', :require => false
+  gem 'chef', :require => false, github: "smaftoul/chef", branch: "patch-1"
   gem 'knife-solo_data_bag', :require => false
   # gem 'rack-mini-profiler'
+  gem 'ruby-prof'
 end
 
 group :assets do
