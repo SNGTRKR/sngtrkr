@@ -1,6 +1,6 @@
 set :branch, 'staging'
-set :applicationdir, "/var/www/sngtrkr_staging"
-set :deploy_to, "/var/www/sngtrkr_staging"
+set :applicationdir, "/home/vagrant/sngtrkr_rails_prod"
+set :deploy_to, "/home/vagrant/sngtrkr_rails_prod"
 
 require 'capistrano-unicorn'
 

@@ -3,11 +3,9 @@ set :user, "vagrant"
 set :scm, 'git'
 set :repository, "https://github.com/SNGTRKR/sngtrkr.git"
 set :scm_verbose, true
-set :domain, 'do.sngtrkr.com'
+set :domain, '82.196.15.184'
 set :applicationdir, "/home/vagrant/sngtrkr_rails_prod"
 set(:deploy_to) { applicationdir }
-set :rvm_ruby_string, "2.0"
-set :rvm_type, :user
 
 role(:web) { domain } # Your HTTP server, Apache/etc
 role(:app) { domain } # This may be the same as your `Web` server
@@ -18,7 +16,6 @@ set :default_stage, "staging"
 require 'capistrano/ext/multistage'
 
 # Bundler for remote gem installs
-require "rvm/capistrano"
 require "bundler/capistrano"
 
 # Only keep the latest 3 releases
@@ -30,6 +27,7 @@ set :deploy_via, :remote_cache
 
 # additional settings
 default_run_options[:pty] = true # Forgo errors when deploying from windows
+default_run_options[:shell] = '/bin/bash --login'
 
 namespace :solr do
   desc "start solr"
