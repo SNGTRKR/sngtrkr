@@ -1,1 +1,4 @@
-console.log("<%= @releases.each do |release| %><%= release.artist.name %>:<%= release.name %>, <% end %>");
+// console.log("<%= @releases.each do |release| %><%= release.artist.name %>:<%= release.name %>, <% end %>");
+console.log("New releases triggered");
+$('.release:first-child').before("HAI");
+// $('.release:first-child').before('<%= @releases.each do |release| %><%=j render :partial => "timeline/release", :locals => { :release => release } %><% end %>')

@@ -24,6 +24,8 @@ prompts for credentials. This will do:
 
 Next you need to create `data_bags/secrets.json` which will store API keys and other such sensitive data not held in the repo. Duplicate the example file and make the necessary adjustments.
 
+Lastly, you will need to install the [berkshelf](http://berkshelf.com/) vagrant plugin. To do so, please run the following command: `sudo vagrant plugin install vagrant-berkshelf`.
+
 After that's done the process is simply to `cd` into the project, then run `vagrant up`! During boot Vagrant needs root access, so you will be asked for your password. If the configuration process has any problems, run `vagrant reload` to restart the PC and continue. This should not be a repeat problem, if it is, contact Matt. When the configuration process is complete, you can access the machine with `vagrant ssh`. Check out `Vagrantfile` to get an idea of what servers are installed for you and are automatically running.
 
 For further boots, the server can be suspended with `vagrant suspend` and resumed again with `vagrant up`. 

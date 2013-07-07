@@ -2,7 +2,7 @@ $("a.add-trkr").bind("ajax:complete", function () {
     var artist_id = $(this).data("id");
     $(this).replaceWith("<a href=\"/artists/" + artist_id + "/unfollow\" class=\"remove-trkr btn track active\" data-id=\"" + artist_id + "\" data-method=\"post\" data-remote=\"true\" rel=\"nofollow\">Tracked</a>");
     <% @artist = Artist.find(params[:artist_id]) %>
-    $('#tracker-' + artist_id).text(<%= @artist.followers %>);
+    $('#tracker-' + artist_id).text(<%= pluralize @artist.followers, "tracker" %>);
     FB.api("/me/sngtrkr:track", "post", {
         artist: "http://sngtrkr.com/artists/" + $(this).data("id")
     }, function (response) {
@@ -25,14 +25,7 @@ $('a.add-trkr-carousel').bind("ajax:beforeSend", function () {
 }).bind("ajax:success", function() {
     var artist_id = $(this).data("id");
     $(this).parent().replaceWith("<%=j render :partial => 'timeline/carousel_suggest', :object => @new_artist %>");
-    // $.ajax({
-    //    url:'/timeline_releases/populate',
-    //    data:(
-    //      'timeline_artist=' + artist_id
-    //    )
-    // })
     var url = "/timeline_releases/populate?timeline_artist="+artist_id
-    console.log("URL: " + url);
     $.get(url);
     FB.api("/me/sngtrkr:track", "post", {
         artist: "http://sngtrkr.com/artists/" + $(this).data("id")

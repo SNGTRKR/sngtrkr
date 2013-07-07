@@ -1,6 +1,6 @@
 .profile-tabs {
   .nav-tabs > .active > a, .nav-tabs > .active > a:hover, .nav-tabs > .active > a:focus {
-    background-image: url('/images/tab2.png') !important;
+    @extend .sp-tab-small;
   }
   .nav-tabs {
     margin-bottom: 10px !important;
@@ -227,6 +227,9 @@
     #computer_small {
       float: left;
       margin: -5px 10px 0 -3px;
+      @extend .sp-devices;
+      width:127px;
+      height:112px;
     }
     .actions {
       float: left;

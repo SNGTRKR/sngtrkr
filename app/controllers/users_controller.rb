@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user = current_user
     params[:page] ||= 0
     @timeline = Timeline.user(current_user.id, params[:page])
-    @artists = current_user.suggested_artists.limit(9)
+    @artists = current_user.suggested_artists.limit(18)
     respond_to do |format|
       format.html
     end
