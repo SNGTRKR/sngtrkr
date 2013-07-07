@@ -17,7 +17,7 @@ module SNGTRKR
     config.assets.initialize_on_precompile = false
 
     config.assets.precompile += ['rails_admin/rails_admin.css', 'rails_admin/rails_admin.js',
-                                 'sidekiq/application.js', 'sidekiq/*.css']
+                                 'sidekiq/application.js', 'sidekiq/*.css', 'javascripts/css3-fallback.js']
 
     config.assets.expire_after 2.weeks
 
