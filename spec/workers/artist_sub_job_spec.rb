@@ -14,15 +14,10 @@ describe ArtistSubJob do
 			}
 		end
 
-		before(:each) {Scraper2.stub(:scrape_artist){ build(:artist) } }
+		before(:each) {Scraper2.stub(:import_artist){ build(:artist) } }
 
 		it "calls the artist scraper" do
-			Scraper2.should_receive(:scrape_artist).with(fb_data: hash[:artist]){build(:artist)}.once
-			job.perform(hash)
-		end
-
-		it "saves the artist to the db" do
-			Artist.any_instance.should_receive(:save).once.and_call_original	
+			Scraper2.should_receive(:import_artist).with(hash_including(fb_data: hash[:artist])) {build(:artist)}.once
 			job.perform(hash)
 		end
 
@@ -33,8 +28,8 @@ describe ArtistSubJob do
 
 		context "when first_time is true" do
 
-			it "follows the artist" do
-				Follow.should_receive(:create).once
+			it "passes that through" do
+				Scraper2.should_receive(:import_artist).with(hash_including(first_time: true))
 
 				opts = hash
 				opts[:first_time] = true
@@ -45,9 +40,8 @@ describe ArtistSubJob do
 
 		context "when first_time is false" do
 
-			it "suggests the artist" do
-				Suggest.should_receive(:create).once
-
+			it "passes that through" do
+				Scraper2.should_receive(:import_artist).with(hash_including(first_time: false))
 				job.perform(hash)
 			end
 
