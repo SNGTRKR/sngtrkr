@@ -45,13 +45,14 @@ SNGTRKR::Application.configure do
 
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = {:host => 'localhost:3000'}
+  config.action_mailer.default_url_options = {:host => 'dev.sngtrkr.com:3000'}
 
   # Custom SNGTRKR configuration options
   config.x.solr.enable_indexing = true
   config.x.carrierwave.test_mode = true
   config.x.carrierwave.extension_whitelist = false
   config.x.facebook.test_mode = true
+
 
 end
 

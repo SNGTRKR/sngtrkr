@@ -24,7 +24,17 @@ class User < ActiveRecord::Base
   has_many :followed_artists, :through => :follows, :source => :artist
   has_many :suggested_artists, :through => :suggests, :source => :artist
   has_many :notifications, :dependent => :delete_all
-  has_many :release_notifications, :through => :notifications, :source => :release
+  has_many :release_notifications, :through => :notifications, :source => :release do
+    def current
+      select("`releases`.*, `notifications`.`id` AS `notification_id`")
+      .where("`releases`.`date` < ? AND `notifications`.`sent` = ?", Date.today+1, false).limit(20)
+    end
+
+    def artist_names
+      select('DISTINCT `releases`.`artist_id`')
+      .where("`releases`.`date` < ? AND `notifications`.`sent` = ?", Date.today+1, false).limit(3).collect { |r| r.artist.name }.join(', ')
+    end
+  end
 
   before_save :default_values
 

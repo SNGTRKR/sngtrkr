@@ -27,7 +27,7 @@
       <table border="0" width="600" bgcolor="#EEEEEE" style="background-color:#EEEEEE;" cellpadding="0" cellspacing="0">
         <tr align="left">
           <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "20", :height => "50" %></td>
-          <td><%= link_to(image_tag("/images/email/image-314077-623952.jpg", :alt => "SNGTRKR", :style => "display:block;border:none;", :width => "63", :height => "50"), @domain, :target => "blank") %></td>
+          <td><%= link_to(image_tag("/images/email/image-314077-623952.jpg", :alt => "SNGTRKR", :style => "display:block;border:none;", :width => "63", :height => "50"), :root, :target => "blank", only_path: false) %></td>
           <td align="left" width="447" height="50">
             <p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #333333 !important; font-size: 13px; line-height: 17px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;">
               <strong><%= @user.first_name %> <%= @user.last_name %></strong><br/><%= yield :email_subject %></p></td>

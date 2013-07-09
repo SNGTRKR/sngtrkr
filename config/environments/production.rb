@@ -85,6 +85,7 @@ SNGTRKR::Application.configure do
       :enable_starttls_auto => false,
       :openssl_verify_mode => 'none'
   }
+  config.action_mailer.default_url_options = {:host => 'sngtrkr.com'}
 
 
   # config.middleware.use ExceptionNotifier,

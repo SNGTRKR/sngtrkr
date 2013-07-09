@@ -29,6 +29,8 @@ class Release < ActiveRecord::Base
   scope :unsaved_images, where('(image_file_name is null or image_file_name = "") and image_source is not null and image_source != ""')
   scope :latest_missing_images, includes(:artist).where('image_file_name is null or image_file_name = ""').order('created_at DESC')
 
+  scope :with_artist, -> {includes(:artist)}
+
   before_save :default_values
   before_save :metadata_cleanup
   after_save :combine_duplicates

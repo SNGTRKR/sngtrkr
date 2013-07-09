@@ -19,3 +19,4 @@ end
 SNGTRKR::Application.initialize!
 
 require_dependency 'scraper_2'
+require_dependency 'trucker'
