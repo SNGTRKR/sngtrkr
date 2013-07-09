@@ -11,7 +11,7 @@ module Scraper2
 
 	# Import an artist for a user
 	def self.import_artist hash
-    hash.reverse_merge!(first_time: false) 
+		hash.reverse_merge!(first_time: false) 
 		artist = scrape_artist hash
 		return false unless artist and artist.save
 
@@ -60,7 +60,7 @@ module Scraper2
 
 	# Scrape all known sources (last.fm) for artist image
 	def self.scrape_artist_image artist
-    artist.image = LastFm.artist_image(artist.name)
+		artist.image = LastFm.artist_image(artist.name)
 	end
 
 	### RELEASE
@@ -72,9 +72,9 @@ module Scraper2
 	end
 
 	def self.scrape_all_missing_release_images
-    Release.latest_missing_images.find_each do |r|
-    	r.save if scrape_missing_release_images(r)
-    end		
+		Release.latest_missing_images.find_each do |r|
+			r.save if scrape_missing_release_images(r)
+		end		
 	end
 
 	### GENERAL
@@ -119,19 +119,19 @@ module Scraper2
 		return releases
 	end
 
-	def scrape_missing_release_images r
-    if r.image_last_attempt and (r.image_last_attempt + (2^r.image_attempts).hour) > Time.now
-      return false
-    end
-    r.image_attempts = r.image_attempts ? r.image_attempts += 1 : 0
-    r.image_last_attempt = Time.now
-    artist_name = r.artist.try(:name)
-    if artist_name.nil? then
-      return false
-    end
-    r.image = LastFm.release_image(artist_name, r.name)
+	def self.scrape_missing_release_images r
+		if r.image_last_attempt and (r.image_last_attempt + (2^r.image_attempts).hour) > Time.now
+			return false
+		end
+		r.image_attempts = r.image_attempts ? r.image_attempts += 1 : 0
+		r.image_last_attempt = Time.now
+		artist_name = r.artist.try(:name)
+		if artist_name.nil? then
+			return false
+		end
+		r.image = LastFm.release_image(artist_name, r.name)
 
-    return true
+		return true
 	end
 
 

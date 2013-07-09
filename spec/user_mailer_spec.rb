@@ -5,6 +5,7 @@ describe "UserMailer" do
   let(:artist) {create(:artist)}
 
   context "when a release is added" do
+
     it "emails followers" do
       user.followed_artists << artist
       create(:release, artist: artist)
@@ -42,8 +43,8 @@ describe "UserMailer" do
       Notification.where(:sent => true).length.should eq 0
       UserMailer.new_releases(user)
 
-      Notification.where(:sent => false).first.user.should eq user2
-      Notification.where(:sent => true).first.user.should eq user
+      Notification.unsent.first.user.should eq user2
+      Notification.sent.first.user.should eq user
     end
 
   end

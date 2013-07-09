@@ -92,32 +92,27 @@ describe Scraper2 do
   end
 
   describe "#scrape_all_missing_release_images" do
-    context "when 2 releases with images, and 1 without are in DB" do
+    context "when 1 release with images, and 1 without are in DB" do
       before(:each) do
         @a = build(:release, :with_random_image)
-        @b = build(:release, :with_random_image)
-        @c = build(:release)
-        Release.stub_chain(:latest_missing_images,:find_each) do
-         [@a, @b, @c]
-        end
+        @b = build(:release)
+        Release.stub_chain(:latest_missing_images,:find_each).and_yield(@b)
       end
 
-      let(:scrape) { Scraper2.scrape_all_missing_release_images }
-
       it "assigns the 1 without image an image" do
-        Scraper2.should_receive(:scrape_missing_release_images).once.with(@c)
-        scrape
+        Scraper2.should_receive(:scrape_missing_release_images).once.with(@b)
+        Scraper2.scrape_all_missing_release_images
       end
 
       it "saves the 1 without image" do
+        LastFm.stub(:release_image)
         Release.any_instance.should_receive(:save).once
-        scrape
+        Scraper2.scrape_all_missing_release_images
       end
 
-      it "does nothing to the 2 with images" do
+      it "does nothing to the 1 with images" do
         Scraper2.should_not_receive(:scrape_missing_release_images).with(@a)
-        Scraper2.should_not_receive(:scrape_missing_release_images).with(@b)
-        scrape
+        Scraper2.scrape_all_missing_release_images
       end
     end
   end
