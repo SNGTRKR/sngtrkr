@@ -118,7 +118,6 @@ GEM
     custom_configuration (0.0.2)
       railties (> 3.0)
     dalli (2.6.3)
-    database_cleaner (0.9.1)
     debug_inspector (0.0.2)
     devise (2.2.3)
       bcrypt-ruby (~> 3.0)
@@ -425,7 +424,6 @@ DEPENDENCIES
   compass-rails (>= 1.0.0.rc.2)
   custom_configuration
   dalli
-  database_cleaner
   devise
   factory_girl_rails (~> 4.0)
   faker

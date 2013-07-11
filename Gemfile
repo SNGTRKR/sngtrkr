@@ -21,7 +21,6 @@ gem 'mysql2'
 
 group :test do
   gem 'rspec-rails'
-  gem 'database_cleaner'
   gem 'rake'
   gem 'capybara'
   gem 'sunspot-rails-tester'
