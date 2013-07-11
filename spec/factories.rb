@@ -8,7 +8,7 @@ FactoryGirl.define do
     sequence(:sdid) { |n| n }
 
     trait :with_random_image do
-      image { File.open(File.join(Rails.root, '/spec/sample_data/release_999.png')) }
+      image { File.open(File.join(Rails.root, '/spec/sample_data/release_100.jpeg')) }
     end
 
     factory :artist_with_follower do
@@ -25,7 +25,7 @@ FactoryGirl.define do
     sequence(:date) { |d| Date.today - d.days }
 
     trait :with_random_image do
-      image { File.open(File.join(Rails.root, '/spec/sample_data/release_999.png')) }
+      image { File.open(File.join(Rails.root, '/spec/sample_data/release_100.jpeg')) }
     end
   end
 

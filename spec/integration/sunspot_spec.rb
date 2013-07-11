@@ -3,7 +3,7 @@ describe Sunspot do
   describe Release do
     context "when a release is saved", :solr => true do
 
-      it "indexes the release" do
+      it "indexes the release", :integration => true do
         release = create(:release, name: "Test Solr Release")
         release.index!
         solr = Release.search do
@@ -19,7 +19,7 @@ describe Sunspot do
   describe Artist do
     context "when an artist is saved", :solr => true do
 
-      it "indexes the artist" do
+      it "indexes the artist", :integration => true do
         artist = create(:artist, name: "Test Solr Artist")
         artist.index!
         solr = Artist.search do

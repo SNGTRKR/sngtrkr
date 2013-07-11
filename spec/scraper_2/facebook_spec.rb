@@ -42,8 +42,11 @@ describe Scraper2::Facebook do
     context "when a bad page is scraped" do
       let(:bad_graph_response) { {"error" => { "message" => "Unsupported get request."}} }
 
+      before(:each) do
+        Scraper2::Facebook.stub(:get_page_from_graph) { bad_graph_response }
+      end
+
       it "raises an error" do
-        Koala::Facebook::API.any_instance.stub(:get_connections) { bad_graph_response }
         expect{artist}.to raise_error RuntimeError
       end
     end

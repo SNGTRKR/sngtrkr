@@ -2,7 +2,6 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-# require 'rspec/autorun'
 require 'capybara/rspec'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -39,5 +38,8 @@ RSpec.configure do |config|
     Sunspot.session = $original_sunspot_session
     Sunspot.remove_all!
   end
-  
+
+  # Skip integration tests by default
+  config.filter_run_excluding integration: true
+
 end

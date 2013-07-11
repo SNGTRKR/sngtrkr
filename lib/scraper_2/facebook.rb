@@ -17,6 +17,10 @@ module Scraper2
       else
         raise "Scrape error: none of (:page_id, :access_token) | :fb_data specified. Hash: #{opts}"
       end
+
+      if graph_artist["error"]
+        raise "Scrape error: #{graph_artist}"
+      end
       
       artist = Artist.new(
         name: clean_name(graph_artist["name"]),

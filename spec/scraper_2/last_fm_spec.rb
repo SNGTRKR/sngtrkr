@@ -151,17 +151,17 @@ describe Scraper2::LastFm do
   end
 
   describe "integration" do
-    it "returns valid artist info" do
+    it "returns valid artist info", :integration => true do
       artist_info = Scraper2::LastFm.send(:get_artist_info, "Radiohead")
       expect(artist_info["name"]).to eq "Radiohead"
     end
 
-    it "returns valid album info" do
+    it "returns valid album info", :integration => true do
       album_info = Scraper2::LastFm.send(:get_album_info, "Radiohead", "In Rainbows")
       expect(album_info["name"]).to eq "In Rainbows"
     end
 
-    it "handles ASCII crazy artists" do
+    it "handles ASCII crazy artists", :integration => true do
       artist_info = Scraper2::LastFm.send(:get_artist_info, "Justicé")
       expect(artist_info["name"]).to eq "Justicé"
     end
