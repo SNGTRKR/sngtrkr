@@ -66,12 +66,15 @@ describe Scraper2 do
   describe "#import_releases_for artist" do
     let(:artist) { create(:artist) }
 
-    before(:each) do
+    before do
+      @tmp_file = Tempfile.new("foo")
       @release_array = []
       5.times { @release_array << build(:release, artist: artist) }
+    end
+
+    before(:each) do
       Scraper2::Itunes.stub(:scrape_releases_for) { @release_array }
-      @tmp_file = Tempfile.new("foo")
-      Scraper2::LastFm.stub(:release_image) { @tmp_file }
+      Scraper2::LastFm.stub(:release_image) { nil }
     end
 
     it "saves all returned Itunes releases" do
@@ -83,6 +86,7 @@ describe Scraper2 do
     end
 
     it "assigns all releases images" do
+      Scraper2::LastFm.stub(:release_image) { @tmp_file }
       @release_array.each do |r|
         r.should_receive(:image=).with(@tmp_file).once
       end

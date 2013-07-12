@@ -101,7 +101,7 @@ describe Scraper2::Facebook do
       @test_users.delete(@user)
     end
 
-    it "fetches artists ok" do
+    it "fetches artists ok", integration: true do
       music = @graph.get_connections(
         "me", 
         "music?fields=name,general_manager,booking_agent,record_label,genre,hometown,website,bio,picture,likes"
@@ -109,7 +109,7 @@ describe Scraper2::Facebook do
       expect(music).to eq []
     end
 
-    it "fetches a page ok" do
+    it "fetches a page ok", integration: true do
       page = @graph.api("214987045200179/?fields=name,general_manager,booking_agent,record_label,genre,hometown,website,bio,picture,likes")
       expect(page["id"]).to eq "214987045200179"
     end
