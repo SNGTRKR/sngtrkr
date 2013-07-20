@@ -46,7 +46,18 @@ Vagrant.configure("2") do |config|
           'app_path' => "/home/vagrant/sngtrkr_rails_dev",
         },
         'rbenv' => { 
-          "group_users" => "vagrant",
+          "user_installs" => [{
+            "rubies" => ['2.0.0-p195'],
+            "global" => '2.0.0-p195',
+            'gems'    => {
+              '2.0.0-p195'    => [
+                { 'name'    => 'bundler' }
+              ]
+              },
+            "user" => "vagrant",
+            "group" => "vagrant",
+            "upgrade" => true
+          }]
         },
         'mysql' => {
           "server_root_password" => ENV['SNGTRKR_DB_PW'],

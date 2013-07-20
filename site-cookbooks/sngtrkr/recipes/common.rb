@@ -71,13 +71,9 @@ ruby_block "tweak ruby GC config" do
 	end
 end
 
-include_recipe "rbenv::default"
-include_recipe "rbenv::ruby_build"
-include_recipe "rbenv::rbenv_vars"
-rbenv_ruby "2.0.0-p195"
-rbenv_gem "bundler" do
-	ruby_version "2.0.0-p195"
-end
+# include_recipe "ruby_stack"
+include_recipe "ruby_build"
+include_recipe "rbenv::user_install"
 
 directory "/home/vagrant/sngtrkr_rails_prod" do
 	action :create
