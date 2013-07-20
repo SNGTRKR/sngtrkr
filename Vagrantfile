@@ -43,7 +43,7 @@ Vagrant.configure("2") do |config|
       chef.json = { 
         'sngtrkr' => {
           'shims_path' => "/home/vagrant/.rbenv/bin/rbenv exec ",
-          'app_path' => "/home/vagrant/sngtrkr_rails_prod",
+          'app_path' => "/home/vagrant/sngtrkr_rails_dev",
         },
         'rbenv' => { 
           "user_installs" => [{
