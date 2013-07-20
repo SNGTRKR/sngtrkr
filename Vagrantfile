@@ -39,19 +39,19 @@ Vagrant.configure("2") do |config|
       chef.add_recipe "imagemagick"
       chef.add_recipe "sudo"
       chef.add_recipe "sngtrkr::development"
-      chef.add_recipe "sngtrkr::common"
 
       chef.json = { 
-        # CUSTOM SNGTRKR CONFIGURATION PARAMETERS
         'sngtrkr' => {
           'shims_path' => "/home/vagrant/.rbenv/bin/rbenv exec ",
-          'app_path' => "/home/vagrant/sngtrkr_rails_dev",
+          'app_path' => "/home/vagrant/sngtrkr_rails_prod",
         },
-        'ruby_stack' => {
-          "rubies" => ['2.0.0-p195'],
-          "global" => '2.0.0-p195',
-          "users" =>  ["vagrant"],
-          "vendor_gems" => true
+        'rbenv' => { 
+          "user_installs" => [{
+            "rubies" => ['2.0.0-p195'],
+            "global" => '2.0.0-p195',
+            "user" => "vagrant",
+            "upgrade" => "sync"
+          }]
         },
         'mysql' => {
           "server_root_password" => ENV['SNGTRKR_DB_PW'],
