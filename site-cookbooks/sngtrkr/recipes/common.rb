@@ -73,7 +73,7 @@ end
 
 # include_recipe "ruby_stack"
 include_recipe "ruby_build"
-include_recipe "rbenv::user_install"
+include_recipe "rbenv::user"
 
 directory "/home/vagrant/sngtrkr_rails_prod" do
 	action :create

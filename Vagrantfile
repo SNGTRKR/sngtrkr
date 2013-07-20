@@ -55,8 +55,7 @@ Vagrant.configure("2") do |config|
               ]
               },
             "user" => "vagrant",
-            "group" => "vagrant",
-            "upgrade" => true
+            "group" => "vagrant"
           }]
         },
         'mysql' => {
