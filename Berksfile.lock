@@ -1,5 +1,4 @@
 {
-  "sha": "c0efc698dae0fa580f6f9051ea5548da49af5889",
   "sources": {
     "apt": {
       "locked_version": "1.10.0"
@@ -25,47 +24,49 @@
     "redisio": {
       "locked_version": "1.5.0"
     },
-    "rbenv": {
-      "locked_version": "1.4.2"
-    },
-    "ruby_build": {
-      "locked_version": "0.8.0"
-    },
     "ulimit": {
       "locked_version": "0.2.0"
     },
     "openssl": {
       "locked_version": "1.0.2"
     },
+    "imagemagick": {
+      "locked_version": "0.2.2"
+    },
+    "sudo": {
+      "locked_version": "2.1.2"
+    },
+    "rbenv": {
+      "locked_version": "0.7.2",
+      "git": "git://github.com/fnichol/chef-rbenv.git",
+      "ref": "f2b53292e810dd2b43f6121f9958f5f29979dcb1"
+    },
+    "ruby_build": {
+      "locked_version": "0.8.0"
+    },
     "sngtrkr": {
-      "locked_version": "0.1.0",
-      "path": "site-cookbooks/sngtrkr"
+      "path": "./site-cookbooks/sngtrkr"
     },
     "postgresql": {
-      "locked_version": "3.0.0",
-      "constraint": ">= 1.0.0"
+      "locked_version": "3.0.2"
     },
     "aws": {
-      "locked_version": "0.101.0"
+      "locked_version": "0.101.2"
     },
     "xfs": {
       "locked_version": "1.1.0"
     },
     "runit": {
-      "locked_version": "1.1.4",
-      "constraint": "~> 1.0"
+      "locked_version": "1.1.6"
     },
     "yum": {
-      "locked_version": "2.2.2"
+      "locked_version": "2.3.0"
     },
-    "git": {
-      "locked_version": "2.5.2"
-    },
-    "dmg": {
-      "locked_version": "1.1.0"
+    "java": {
+      "locked_version": "1.12.0"
     },
     "windows": {
-      "locked_version": "1.9.0"
+      "locked_version": "1.10.0"
     },
     "chef_handler": {
       "locked_version": "1.1.4"
