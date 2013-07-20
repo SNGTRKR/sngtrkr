@@ -17,7 +17,7 @@ On deployment, the server is set to cache login details to GitHub for months. In
 event it doesn't remember the login details, you will need to SSH into it and run a command that
 prompts for credentials. This will do:
 
-	git ls-remote https://github.com/MattBessey/sngtrkr.git
+	git ls-remote https://github.com/SNGTRKR/sngtrkr.git
 
 ## Configuring The Dev Environment
 [Vagrant](http://www.vagrantup.com/) is used to virtualise the entire development environment to ensure consistent environments for all developers, and make moving the dev environment to production that much easier. You will need both Vagrant and [VirtualBox](https://www.virtualbox.org/) installed before continuing.
