@@ -10,7 +10,7 @@ branches:
     - staging
 before_install:
   - sudo apt-get install -qq openjdk-6-jre
- env:
+env:
   - DB=mysql
 before_script:
   - mysql -e 'create database sngtrkr_test_db'
