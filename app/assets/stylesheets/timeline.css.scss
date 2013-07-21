@@ -81,11 +81,11 @@
         width: auto;
         background-image: none;
         -webkit-appearance: none;
-          &.date {
+          &.date, &.artist_tracker, &.artist_release {
             padding:6px 6px 6px 8px;
             font-size:13px;
           }
-          &.share_release {
+          &.share_release, &.share_artist {
             padding:6px 4px 4px 9px;
             position: relative;
             top: 1px;
@@ -204,17 +204,20 @@
   position: relative;
   // display:none;
     .hero_image {
-      height:220px;
-      position: absolute;
-      top:0px;
-      left:0px;
-      background-repeat: no-repeat;
-      background-size: 100%;
-      background-position: center;
-      width:100%;
-      @include border-top-left-radius(3px);
-      @include border-top-right-radius(3px);
-        div {
+      height: 203px;
+        div:first-child {
+          height:220px;
+          position: absolute;
+          top:0px;
+          left:0px;
+          background-repeat: no-repeat;
+          background-size: 100%;
+          background-position: center;
+          width:100%;
+          @include border-top-left-radius(3px);
+          @include border-top-right-radius(3px);
+        }
+        div:last-child {
           background-color:#000;
           @include opacity(0);      
           @include transition-property(opacity);
@@ -229,8 +232,17 @@
           width:100%;
           height:220px;
         }
-        &:hover div {
+        &:hover div:last-child {
           @include opacity(0.35);
         }
+    }
+    .info {
+      height:68px;
+    }
+    h2:hover {
+      text-decoration: underline;
+    }
+    h3:hover {
+      color:$darkgray !important;
     }
 }
