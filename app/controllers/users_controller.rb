@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     params[:page] ||= 0
     @timeline = Timeline.user(current_user.id, params[:page])
     @artists = current_user.suggested_artists.limit(18)
+    @following = @user.followed_artists.where('image_file_name IS NOT NULL').limit(1)
     respond_to do |format|
       format.html
     end
