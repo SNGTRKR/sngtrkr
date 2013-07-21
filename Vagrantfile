@@ -122,10 +122,15 @@ Vagrant.configure("2") do |config|
           "user_installs" => [{
             "rubies" => ['2.0.0-p195'],
             "global" => '2.0.0-p195',
+            'gems'    => {
+              '2.0.0-p195'    => [
+                { 'name'    => 'bundler' }
+              ]
+              },
             "user" => "vagrant",
-            "upgrade" => "sync"
+            "group" => "vagrant"
           }]
-        },
+          },
         'mysql' => {
           "server_root_password" => ENV['SNGTRKR_DB_PW'],
           "server_repl_password" => ENV['SNGTRKR_DB_PW'],
