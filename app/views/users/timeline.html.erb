@@ -3,6 +3,7 @@
 <% content_for :description do %><%= current_user.first_name %>'s personalised timeline of artist releases, where they can view new and old releases while being able to listen to and buy tracks.
 <% end %>
 <div class="g_timeline">
+    <!-- Recommended artists -->
 	<div class="release recommend_artists">
     	<h2>Recommended artists</h2>
     	<div id="recommend_carousel" class="carousel slide carousel-fade">
@@ -22,11 +23,28 @@
 		  </div>
 		</div>
     </div>
+    <!-- Hero artists -->
     <div class="release hero_artist">
         <% @following.each do |artist_tracked| %>
             <%= link_to artist_tracked do %>
-              <div class="hero_image" style="background-image:url(<%= artist_tracked.image.large.url %>);">
+              <div class="hero_image">
+                <div style="background-image:url(<%= artist_tracked.image.large.url %>);"></div>
                 <div></div>
+              </div>
+              <div class="info">
+                <%= link_to artist_tracked do%><h2><%= artist_tracked.name %></h2><% end %>
+                <h3>Dirtee Skank</h3>
+              </div>
+              <div class="actions">
+                <span class="act artist_tracker">
+                    <%= pluralize artist_tracked.followers, "tracker" %>
+                </span>
+                <span class="act artist_release">
+                    <%= pluralize artist_tracked.count_release, "release" %>
+                </span>
+                <span class="share_artist share act" id="<%= artist_tracked.id %>">
+                  <i class="icon-share-alt"></i>
+                </span>
               </div>
             <% end %>
         <% end %>
