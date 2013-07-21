@@ -1,3 +1,16 @@
 language: ruby
 rvm:
-  - 1.9.3
+  - 2.0.0
+script:
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec rake db:test:prepare
+  - rspec
+branches:
+  only:
+    - staging
+before_install:
+  - sudo apt-get install -qq openjdk-6-jre
+env:
+  - DB=mysql
+before_script:
+  - mysql -e 'create database sngtrkr_test_db'
