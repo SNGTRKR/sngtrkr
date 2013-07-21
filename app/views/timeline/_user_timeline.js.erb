@@ -1,8 +1,0 @@
-<% if @timeline.empty? %>
-console.log("No releases");
-<% else %>
-
-$('.release-list').append("<% @timeline.each do |release| %><%=j render :partial => 'timeline/release', :object => release %><% end %>");
-timeline_setup();
-
-<% end %>

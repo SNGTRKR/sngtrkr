@@ -9,7 +9,7 @@ class PagesController < ApplicationController
   def home
     if (user_signed_in?)
       flash.keep
-      # this may be triggering the url shortener loop
+      # FIXME: This may be triggering the url shortener loop
       return redirect_to '/tl'
     end
     @releases = Rails.cache.fetch("homepage_releases", :expires_in => 24.hours) do

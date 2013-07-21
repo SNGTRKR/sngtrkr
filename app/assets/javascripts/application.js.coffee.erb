@@ -9,12 +9,17 @@ $(document).ready ->
         top: 120,
         "slow"
       $("#show_info a").text "Close"
+      # Increase height of typehead results
+      $(".search-data-query").css 'top', 166
+      $('.tt-dropdown-menu').css 'top', 211
     else
       $("#more_info").slideUp "slow"
       $('.navbar').animate
         top: 0,
         "slow"
       $("#show_info a").text "Info"
+      $(".search-data-query").css 'top', 46
+      $('.tt-dropdown-menu').css 'top', 91
 
   #tooltip initiation
   $('.tip').tooltip()
@@ -199,7 +204,7 @@ $(document).ready ->
 
   $(".search-query").typeahead(
     remote: "/search.json?utf8=✓&query=%QUERY"
-    prefetch: "/search.json"
+    # prefetch: "/search.json"
     template: "<div class='inner-suggest'><img src='{{image.image.url}}'/><span><div>{{value}}</div>{{label}}{{artist_name}}</span><div class='{{identifier}}'></div></div>"
     engine: Hogan
     limit: 6
@@ -262,7 +267,7 @@ $(document).ready ->
   )
   $('.recommend_artists #recommend_carousel .carousel-inner .item:first-child').addClass 'active'
 
-  # $('.release:nth-child(9n+1)').append "<div>HAI</div>"
+  $('.recommend_artists').insertAfter('.release:nth-child(9)').show()
 
 $(document).ajaxComplete ->
   popover_triggers()
