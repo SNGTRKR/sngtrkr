@@ -2,15 +2,20 @@ language: ruby
 rvm:
   - 2.0.0
 script:
-  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - RAILS_ENV=test bundle exec rake db:setup --trace
   - bundle exec rake db:test:prepare
-  - rspec
+  - rspec --tag integration
 branches:
   only:
     - staging
 before_install:
   - sudo apt-get install -qq openjdk-6-jre
 env:
-  - DB=mysql
+  global:
+    - DB=mysql
+    - secure: "D03nOxJruKFvA4bbNZWf3uf690DVHaHvffkvueYF3lWJynovDlfOnD2s14YcIk1OPT83pTy6qMnF8ZaFtRH5ZSFGOhhyVQ41WZL2p5Na5jCwKzPh+yT28JHRCxRM65PsJe9TAFygG8jdckrtbXLsCcJBly4hnoBRj3EPCKVZJug="
+    - secure: "cqJFLpSWafkVm6O/4tFIYFLC8WOMm6yfWYUoA9Fu2XKw5ylBqDbGaoD5KMd7V7RNFIa+aZoODKWKJMuLfhR8pE7QChu8+haU10lAVzqhXGlh4ONiHZwyvAqYmvtIn8/F/Bw91B93Zu9tUqFiJ6w2zbs+NFp9ErTmOeIgkbFbhF0="
+    - secure: "XL3dTbVxj1z4/SSLQPt+DaneR2UJQ1BB2n4LGcqIql88trZaJJ17AkbV2cc/jig0f8CI1nxxdPohfrg5Tphb8JWKsfQuePCrhmpene7wBhcY4WeK1Xb97U2RyEDrKj/YVYONQEDgr2o6NgTosBR7sow0vLqnZfa0+ws39+dyvmc="
+    - secure: "R2yZbt7Pfwue/dXUv0mrw/YtwRLe1YoYznryyFlJGOjEdGK8dLQKtlj62Z9tm4u2Kugf+xgvIeu5GrjUOLdD0VIC2n3sMRWnREmxUCMXVUS2EGHvPeGkPAFcC4Th96gfZBOIBtzTjGwSnVJ8lX7VL3t8Q0IwavsFs2PmtTKzvZY="
 before_script:
   - mysql -e 'create database sngtrkr_test_db'
