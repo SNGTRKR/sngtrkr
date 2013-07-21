@@ -198,3 +198,39 @@
         }
     }
 }
+.hero_artist {
+  padding:17px !important;
+  width:465px;
+  position: relative;
+  // display:none;
+    .hero_image {
+      height:220px;
+      position: absolute;
+      top:0px;
+      left:0px;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-position: center;
+      width:100%;
+      @include border-top-left-radius(3px);
+      @include border-top-right-radius(3px);
+        div {
+          background-color:#000;
+          @include opacity(0);      
+          @include transition-property(opacity);
+          @include transition-duration(0.4s);
+          @include transition-timing-function(linear);
+          position: absolute;
+          z-index: 1;
+          top: 0px;
+          left:0px;
+          @include border-top-left-radius(3px);
+          @include border-top-right-radius(3px);
+          width:100%;
+          height:220px;
+        }
+        &:hover div {
+          @include opacity(0.35);
+        }
+    }
+}

@@ -22,6 +22,15 @@
 		  </div>
 		</div>
     </div>
+    <div class="release hero_artist">
+        <% @following.each do |artist_tracked| %>
+            <%= link_to artist_tracked do %>
+              <div class="hero_image" style="background-image:url(<%= artist_tracked.image.large.url %>);">
+                <div></div>
+              </div>
+            <% end %>
+        <% end %>
+    </div>
     <% if @timeline.empty? %>
         <%= render 'timeline/user_empty' %>
     <% else %>
