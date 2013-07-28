@@ -1,7 +1,7 @@
 @import "compass/css3/";
 
 /* Sprite settings */
-$icono-layout:horizontal; 
+$icono-layout:smart; 
 @import "icono/*.png";
 
 /* Global variables */
@@ -52,8 +52,10 @@ body {
   .sp-people { @include icono-sprite(people); }
   .sp-ppl-black { @include icono-sprite(ppl_black); }
   .sp-ppl-white { @include icono-sprite(ppl_white); }
+  .sp-ppl-grey { @include icono-sprite(ppl_grey); }
   .sp-release-black { @include icono-sprite(release_blk); }
   .sp-release-white { @include icono-sprite(release_wht); }
+  .sp-release-grey { @include icono-sprite(release_grey); }
   .sp-tab-small { @include icono-sprite(tab2); }
   .sp-tab-large { @include icono-sprite(tab); }
   .sp-twitter-blue { @include icono-sprite(twitter_circle_blu); }

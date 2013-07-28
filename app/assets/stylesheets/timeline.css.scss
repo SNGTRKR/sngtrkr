@@ -124,6 +124,19 @@
             -webkit-appearance: none;
             @include box-shadow(0 1px 0 rgba(0,0,0,.1));
           }
+          div {
+            display: inline-block;
+          }
+          &.artist_tracker div {
+            @extend .sp-ppl-grey;
+            width:20px;
+            height:14px;
+          }
+          &.artist_release div {
+            @extend .sp-release-grey;
+            width:12px;
+            height:12px;
+          }
       }
       i {
           color:$gray;

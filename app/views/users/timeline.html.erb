@@ -37,9 +37,11 @@
               </div>
               <div class="actions">
                 <span class="act artist_tracker">
+                    <div></div>
                     <%= pluralize artist_tracked.followers, "tracker" %>
                 </span>
                 <span class="act artist_release">
+                    <div></div>
                     <%= pluralize artist_tracked.count_release, "release" %>
                 </span>
                 <span class="share_artist share act" id="<%= artist_tracked.id %>">
