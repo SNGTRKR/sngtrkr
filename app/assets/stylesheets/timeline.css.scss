@@ -68,6 +68,7 @@
         margin-right:5px;
         color:#848484;
         position:relative;
+        font-family:"MuseoSans-500", Helvetica, Arial, sans-serif;
         @include box-shadow(0 1px 0 rgba(0,0,0,.05));
         @include transition-property(background-color, border-color, box-shadow, color);
         @include transition-duration(.218s,.218s,.218s,.218s);
@@ -96,9 +97,10 @@
             cursor:pointer;
           }
           &:hover {
-            i {
-              color:$darkgray;
-            }
+            color:$darkgray;
+              i {
+                color:$darkgray;
+              }
           }
           &.active {
             background-image: none;
