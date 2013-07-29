@@ -10,6 +10,8 @@ class TimelineController < ApplicationController
   end
 
   def populate_user_timeline
+    # Clear the user timeline cache before adding more to the timeline
+    Rails.cache.delete("timeline/timeline-#{current_user.id}")
   	@artist = Artist.find(params[:timeline_artist])
     @releases = @artist.timeline_releases
     respond_to do |format|

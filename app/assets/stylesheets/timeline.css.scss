@@ -87,10 +87,15 @@
             font-size:13px;
           }
           &.share_release, &.share_artist {
-            padding:6px 4px 4px 9px;
             position: relative;
             top: 1px;
             cursor:pointer;
+          }
+          &.share_release {
+            padding:6px 4px 4px 9px;
+          }
+          &.share_artist {
+            padding: 6px 8px 4px 9px;
           }
           &.buy {
             padding:5px 10px 5px 8px;
@@ -128,6 +133,9 @@
           }
           div {
             display: inline-block;
+            margin-right: 4px;
+            position: relative;
+            top: 2px;
           }
           &.artist_tracker div {
             @extend .sp-ppl-grey;
@@ -136,8 +144,8 @@
           }
           &.artist_release div {
             @extend .sp-release-grey;
-            width:12px;
-            height:12px;
+            width:14px;
+            height:14px;
           }
       }
       i {
@@ -214,10 +222,10 @@
     }
 }
 .hero_artist {
-  padding:17px !important;
+  padding:17px 17px 17px 10px !important;
   width:465px;
   position: relative;
-  // display:none;
+  display:none;
     .hero_image {
       height: 203px;
         div:first-child {

@@ -1,4 +1,5 @@
 class ArtistSweeper < ActionController::Caching::Sweeper
+  observe Artist
 
   def after_update(artist)
     expire_cache_for(artist)

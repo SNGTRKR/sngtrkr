@@ -84,6 +84,11 @@
         </a>
       </div>
   <% end %>
+  <% if @timeline.empty? %>
+      <%= render 'timeline/artist_empty' %>
+  <% else %>
+        <%= render :partial => 'timeline/release', :collection => @timeline %>
+  <% end %>
 </div>
 </div>
 <% cache "artist_popup/#{@artist.id}-#{@artist.updated_at}", expires_in: 1.week do %>

@@ -16,9 +16,9 @@ class ArtistsController < ApplicationController
       Artist.includes(:releases).find(@a_param)
     end
     @user = current_user
-    # @timeline = Rails.cache.fetch "artist_timeline/#{@current_artist.id}-#{@current_artist.updated_at}", expires_in: 2.hours do
-    #   Timeline.artist(@a_param)
-    # end
+    @timeline = Rails.cache.fetch "artist_timeline/#{@current_artist.id}-#{@current_artist.updated_at}", expires_in: 2.hours do
+      Timeline.artist(@a_param)
+    end
     Timeline.artist(@a_param)
     @release_count = @artist.count_release
     respond_to do |format|

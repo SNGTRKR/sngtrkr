@@ -90,23 +90,22 @@
           margin-right:7px; 
           @extend .fade_to_grey;
           position:relative;
+          height:38px;
+          float:left;
         }
         .artist_search {
           @extend .sp-ppl-white;
           width: 30px;
           height: 20px;
           display:inline-block;
-          position:relative;
-          bottom:3px;
+          margin-top:10px;
         }
         .release_search {
           @extend .sp-release-white;
           height: 20px;
           width: 20px;
           display:inline-block;
-          position:relative;
-          bottom:4px;
-          left:4px;
+          margin: 9px 0 0 4px;
         }
       }
 
