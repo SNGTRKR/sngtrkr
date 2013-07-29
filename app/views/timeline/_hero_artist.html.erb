@@ -1,0 +1,27 @@
+<div class="release hero_artist">
+    <% @following.each do |artist_tracked| %>
+        <%= link_to artist_tracked do %>
+          <div class="hero_image">
+            <div style="background-image:url(<%= artist_tracked.image.large.url %>);"></div>
+            <div></div>
+          </div>
+        <% end %>
+          <div class="info">
+            <%= link_to artist_tracked do%><h2><%= artist_tracked.name %></h2><% end %>
+            <h3><%= artist_tracked.label_name %></h3>
+          </div>
+          <div class="actions">
+            <span class="act artist_tracker">
+                <div></div>
+                <%= pluralize artist_tracked.followers, "tracker" %>
+            </span>
+            <span class="act artist_release">
+                <div></div>
+                <%= pluralize artist_tracked.count_release, "release" %>
+            </span>
+            <span class="share_artist share act" id="<%= artist_tracked.id %>">
+              <i class="icon-share-alt"></i>
+            </span>
+          </div>
+    <% end %>
+</div>

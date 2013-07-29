@@ -282,25 +282,22 @@ popover_triggers = ->
     placement: "bottom"
 
   $(".share_artist").each ->
-    $elem = $(@)
-    art_id = $elem.attr("id")
-    $elem.popover
+    art_id = $(@).attr("id")
+    $(@).popover
       html: true
       content: $(".art_pop_" + art_id).html()
       placement: "bottom"
 
   $(".share_release").each ->
-    $elem = $(@)
-    rel_id = $elem.attr("id")
-    $elem.popover
+    rel_id = $(@).attr("id")
+    $(@).popover
       html: true
       content: $(".rel_pop_" + rel_id).html()
       placement: "bottom"
 
   $(".buy").each ->
-    $elem = $(@)
-    buy_id = $elem.attr("id")
-    $elem.popover
+    buy_id = $(@).attr("id")
+    $(@).popover
       html: true
       content: $(".buy_pop_" + buy_id).html()
       placement: "bottom"

@@ -7,53 +7,27 @@
 	<div class="release recommend_artists">
     	<h2>Recommended artists</h2>
     	<div id="recommend_carousel" class="carousel slide carousel-fade">
-		  <div class="carousel-inner">
-		  	<% @artists.each_slice(6) do |slice| %>
-			    <div class="item">
-			    	<% slice.each do |artist| %>
-			    	<%= render :partial => "timeline/carousel_suggest", :object => artist %>
-			    	<% end %>
-			    </div>
-		    <% end %>
-		  </div>
-		  <div class="pins">
-			  <i data-target="#recommend_carousel" data-slide-to="0" class="active icon-circle"></i>
-		      <i data-target="#recommend_carousel" data-slide-to="1" class="icon-circle"></i>
-		      <i data-target="#recommend_carousel" data-slide-to="2" class="icon-circle"></i>
-		  </div>
-		</div>
+  		  <div class="carousel-inner">
+  		  	<% @artists.each_slice(6) do |slice| %>
+  			    <div class="item">
+  			    	<% slice.each do |artist| %>
+  			    	<%= render :partial => "timeline/carousel_suggest", :object => artist %>
+  			    	<% end %>
+  			    </div>
+  		    <% end %>
+  		  </div>
+  		  <div class="pins">
+  			  <i data-target="#recommend_carousel" data-slide-to="0" class="active icon-circle"></i>
+  		      <i data-target="#recommend_carousel" data-slide-to="1" class="icon-circle"></i>
+  		      <i data-target="#recommend_carousel" data-slide-to="2" class="icon-circle"></i>
+  		  </div>
+  		</div>
     </div>
     <!-- Hero artists -->
-    <div class="release hero_artist">
-        <% @following.each do |artist_tracked| %>
-            <%= link_to artist_tracked do %>
-              <div class="hero_image">
-                <div style="background-image:url(<%= artist_tracked.image.large.url %>);"></div>
-                <div></div>
-              </div>
-              <div class="info">
-                <%= link_to artist_tracked do%><h2><%= artist_tracked.name %></h2><% end %>
-                <h3><%= artist_tracked.label_name %></h3>
-              </div>
-              <div class="actions">
-                <span class="act artist_tracker">
-                    <div></div>
-                    <%= pluralize artist_tracked.followers, "tracker" %>
-                </span>
-                <span class="act artist_release">
-                    <div></div>
-                    <%= pluralize artist_tracked.count_release, "release" %>
-                </span>
-                <span class="share_artist share act" id="<%= artist_tracked.id %>">
-                  <i class="icon-share-alt"></i>
-                </span>
-              </div>
-            <% end %>
-        <% end %>
-    </div>
+    <%= render 'timeline/hero_artist' %>
     <% if @timeline.empty? %>
         <%= render 'timeline/user_empty' %>
     <% else %>
-          <%= render :partial => 'timeline/release', :collection => @timeline %>
+        <%= render :partial => 'timeline/release', :collection => @timeline %>
     <% end %>
 </div>
