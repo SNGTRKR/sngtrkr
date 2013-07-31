@@ -1,0 +1,21 @@
+.poppers {
+    display:none;
+}
+.walkthrough_backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    background-color: #000000;
+    @include opacity(0.8);
+}
+.pops {
+    z-index:2000;
+    color:#000;
+    @include border-radius(3px);
+}
+.popover {
+    z-index:2000 !important;
+}
