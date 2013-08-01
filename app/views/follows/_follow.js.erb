@@ -25,6 +25,7 @@ $('a.add-trkr-carousel').bind("ajax:beforeSend", function () {
 }).bind("ajax:success", function() {
     var artist_id = $(this).data("id");
     $(this).parent().replaceWith("<%=j render :partial => 'timeline/carousel_suggest', :object => @new_artist %>");
+    console.log("WOOP");
     var url = "/timeline_releases/populate?timeline_artist="+artist_id
     $.get(url);
     FB.api("/me/sngtrkr:track", "post", {

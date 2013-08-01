@@ -416,11 +416,17 @@ walkthrough = ->
         trigger: 'manual'
       ).popover 'show'
 
+    # Clean up the redundant class triggers
     $('body').on 'click', '.finish_walk', ->
       $('.scene_4').popover('hide').removeClass 'pops'
       $.scrollTo 0, 800
       $('.poppers').remove()
       $('.walkthrough_backdrop').remove()
+      $('.recommend_artists').removeClass 'scene_1'
+      $('.release:first-child').removeClass 'scene_2'
+      $('.navbar-search .search-query').removeClass 'scene_3'
+      $('.nav #show_info').removeClass 'scene_4'
+      $('.recommend_artists .carousel_suggest a').removeClass 'trigger_walk'
   
 
 

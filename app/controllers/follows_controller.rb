@@ -16,16 +16,16 @@ class FollowsController < ApplicationController
     @new_artist = current_user.suggested_artists[5] rescue nil
     respond_to do |format|
       format.html { redirect_to artist_path(:id => params[:artist_id]) } #format.html { render "artists/ajax_suggestion", :layout => false }
-        format.js { render :partial => 'follows/follow', :format => [:js] }
-        if @artist
-          format.json { render :json => { :artist => @artist,
-                                          :image_url => @artist.image.url(:sidebar_suggest),
-                                          :followers => @artist.followed_users.count
-                                        }
-                      }
-        else
-          format.json { render :nothing => true }
-        end
+      format.js { render :partial => 'follows/follow', :format => [:js] }
+      if @artist
+        format.json { render :json => { :artist => @artist,
+                                        :image_url => @artist.image.url.small,
+                                        :followers => @artist.followed_users.count
+                                      }
+                    }
+      else
+        format.json { render :nothing => true }
+      end
     end
 
   end
