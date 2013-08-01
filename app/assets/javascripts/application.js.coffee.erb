@@ -343,64 +343,84 @@ get_url_vars = ->
 
 walkthrough = ->
   if parseInt(get_url_vars()["walkthrough"]) is 1
-    $('<div class=\"walkthrough_backdrop\"></div>').insertAfter('.search-data-query')
+    $('<div class=\"walkthrough_backdrop\"></div><div class=\"poppers popover_content\">
+      <h2>Getting Started</h2>
+      <p>Let\'s get started by tracking some artists you may like, so you can build up your timeline.</p>
+  </div>
+  <div class=\"poppers popover_content_2\">
+      <h2>Exploring your timeline</h2>
+      <p>Discover, share and buy. Experience music, new and old, with a rich intuitive timeline.</p>
+      <div class=\"btn btn-small nxt_trigger_2\">Next</div>
+  </div>
+  <div class=\"poppers popover_content_3\">
+      <h2>Find more artists</h2>
+      <p>Can\'t find what you\'re looking for? Search our expansive database of artists and releases.</p>
+      <div class=\"btn btn-small nxt_trigger_3\">Next</div>
+  </div>
+  <div class=\"poppers popover_content_4\">
+      <h2>Need more help?</h2>
+      <p>If you need more help and information, check out of support section in the drop down sub menu.</p>
+      <div class=\"btn btn-small finish_walk\">Finish</div>
+  </div>').insertAfter('.search-data-query')
+    # Add the scene triggers to the related elements
+    $('.recommend_artists .carousel_suggest a').addClass 'trigger_walk'
+    $('.release:first-child').addClass 'scene_2'
+    $('.navbar-search .search-query').addClass 'scene_3'
+    $('.nav #show_info').addClass 'scene_4'
+
     # Start first scene
+    $.scrollTo $('.pops').offset()["top"]-($('.navbar').height()+10), 800
     $('.scene_1').popover(
       html: true
       content: $('.popover_content').html()
       placement: 'bottom'
+      trigger: 'manual'
     ).popover 'show'
-    $.scrollTo $('.pops').offset()["top"]-61, 800
 
     # Start second scene
-    # $('.nxt_trigger').click ->
-    #   $('.scene_1').popover('hide').removeClass 'pops'
-    #   $elem = $('.scene_2')
-    #   $elem.addClass 'pops'
-    #   $elem.popover(
-    #     html: true
-    #     content: $('.popover_content_2').html()
-    #     placement: 'bottom'
-    #   ).popover 'show'
+    $('.trigger_walk').click ->
+      $('.scene_1').popover('hide').removeClass 'pops'
+      $elem = $('.scene_2')
+      $elem.addClass 'pops'
+      $.scrollTo $('.scene_2').offset()["top"]-($('.navbar').height()+10), 800
+      $elem.popover(
+        html: true
+        content: $('.popover_content_2').html()
+        placement: 'bottom'
+        trigger: 'manual'
+      ).popover 'show'    
 
     # # Start third scene
-    # $('body').on 'click', '.nxt_trigger_2', ->
-    #   $('.scene_2').popover('hide').removeClass 'pops'
-    #   $.scrollTo 850, 800
-    #   $('.releases .span4 div').addClass('pops').removeClass('fadeOutUp').show().addClass 'fadeInDown'
-    #   window.setTimeout (->
-    #     $('.releases .span4:first-child div').addClass('scene_3').popover(
-    #       html: true
-    #       content: $('.popover_content_3').html()
-    #       placement: 'bottom'
-    #     ).popover 'show'
-    #   ), 2000
+    $('body').on 'click', '.nxt_trigger_2', ->
+      $('.scene_2').popover('hide').removeClass 'pops'
+      $elem = $('.scene_3')
+      $elem.addClass 'pops'
+      $.scrollTo 0, 800
+      $elem.popover(
+        html: true
+        content: $('.popover_content_3').html()
+        placement: 'bottom'
+        trigger: 'manual'
+      ).popover 'show'
 
     # # Start fourth scene
-    # $('body').on 'click', '.nxt_trigger_3', ->
-    #   $('.releases .span4 div').popover('hide').removeClass 'pops'
-    #   $('.navbar').css 'z-index', '1999'
-    #   $.scrollTo 0, 800
-    #   $('.scene_4').popover(
-    #     html: true
-    #     content: $('.popover_content_4').html()
-    #     placement: 'bottom'
-    #   ).popover 'show'
+    $('body').on 'click', '.nxt_trigger_3', ->
+      $('.scene_3').popover('hide').removeClass 'pops'
+      $elem = $('.scene_4')
+      $elem.addClass 'pops'
+      $.scrollTo 0, 800
+      $elem.popover(
+        html: true
+        content: $('.popover_content_4').html()
+        placement: 'bottom'
+        trigger: 'manual'
+      ).popover 'show'
 
-    # # Start fifth scene
-    # $('body').on 'click', '.nxt_trigger_4', ->
-    #   $('.scene_4').popover('hide').removeClass 'pops'
-    #   $('.scene_5').popover(
-    #     html: true
-    #     content: $('.popover_content_5').html()
-    #     placement: 'bottom'
-    #   ).popover 'show'
-
-    # $('body').on 'click', '.fin_trigger', ->
-    #   $('.scene_5').popover('hide').removeClass 'pops'
-    #   $.scrollTo 850, 800
-    #   $('.backdrop').remove()
-
+    $('body').on 'click', '.finish_walk', ->
+      $('.scene_4').popover('hide').removeClass 'pops'
+      $.scrollTo 0, 800
+      $('.poppers').remove()
+      $('.walkthrough_backdrop').remove()
   
 
 
