@@ -1,5 +1,44 @@
-# -*- mode: ruby -*-
-# vi: set ft=ruby :
+# Actions to validate
+VALIDATE_ACTIONS = [ 'halt', 'destroy', 'up', 'reload', 'provision' ]
+
+# Override default actions to check machine list
+class ValidateCommand < Vagrant.plugin(2, :command)
+  class << self
+    attr_accessor :delegate_action
+  end
+
+  def initialize argv, env
+    super(argv, env)
+    @argv = argv
+  end
+
+  def execute
+    vms = []
+    with_target_vms(@argv, :reverse => true) do | machine |
+      vms << machine
+    end
+    if vms.size > 1
+      puts 'Please specify a single VM'
+      1
+    else
+      with_target_vms(@argv, :reverse => true) do | machine |
+        machine.action(ValidateCommand.delegate_action)
+      end
+      0
+    end
+  end
+end
+
+# Wrap validate command in plugin and invoke for overridden actions
+class ValidatePlugin < Vagrant.plugin(2)
+  name "Validate"
+  VALIDATE_ACTIONS.each do | action |
+    command action do
+      ValidateCommand.delegate_action = action
+      ValidateCommand
+    end
+  end
+end
 
 Vagrant.configure("2") do |config|
   config.berkshelf.enabled = true
