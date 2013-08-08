@@ -1,6 +1,6 @@
 $("a.add-trkr").bind("ajax:complete", function () {
     var artist_id = $(this).data("id");
-    $(this).replaceWith("<a href=\"/artists/" + artist_id + "/unfollow\" class=\"remove-trkr btn track active\" data-id=\"" + artist_id + "\" data-method=\"post\" data-remote=\"true\" rel=\"nofollow\">Tracked</a>");
+    $(this).replaceWith("<%=j follow_button(@artist) %>");
     <% @artist = Artist.find(params[:artist_id]) %>
     $('#tracker-' + artist_id).text(<%= pluralize @artist.followers, "tracker" %>);
     FB.api("/me/sngtrkr:track", "post", {
@@ -12,7 +12,7 @@ $("a.add-trkr").bind("ajax:complete", function () {
 });
 $("a.add-trkr-small").bind("ajax:complete", function () {
     var artist_id = $(this).data("id");
-    $(this).replaceWith("<a href=\"/artists/" + artist_id + "/unfollow\" class=\"remove-trkr-small btn btn-small active\" data-id=\"" + artist_id + "\" data-method=\"post\" data-remote=\"true\" rel=\"nofollow\">Tracked</a>");
+    $(this).replaceWith("<%=j follow_button_small(@artist) %>");
     FB.api("/me/sngtrkr:track", "post", {
         artist: "http://sngtrkr.com/artists/" + $(this).data("id")
     }, function (response) {
@@ -20,19 +20,21 @@ $("a.add-trkr-small").bind("ajax:complete", function () {
         console.log(response);
     });
 });
-$('a.add-trkr-carousel').bind("ajax:beforeSend", function () {
-    $(this).parent().addClass('fadeOutUp');
-}).bind("ajax:success", function() {
-    var artist_id = $(this).data("id");
-    $(this).parent().replaceWith("<%=j render :partial => 'timeline/carousel_suggest', :object => @new_artist %>");
-    console.log("WOOP");
-    var url = "/timeline_releases/populate?timeline_artist="+artist_id
-    $.get(url);
-    FB.api("/me/sngtrkr:track", "post", {
-        artist: "http://sngtrkr.com/artists/" + $(this).data("id")
-    }, function (response) {
-        console.log("FB Open Graph Posted");
-        console.log(response);
+<% if @new_artist %>
+    $('a.add-trkr-carousel').bind("ajax:beforeSend", function () {
+        $(this).parent().addClass('fadeOutUp');
+    }).bind("ajax:success", function() {
+        var artist_id = $(this).data("id");
+        $(this).parent().replaceWith("<%=j render :partial => 'timeline/carousel_suggest', :object => @new_artist %>");
+        console.log("WOOP");
+        var url = "/timeline_releases/populate?timeline_artist="+artist_id
+        $.get(url);
+        FB.api("/me/sngtrkr:track", "post", {
+            artist: "http://sngtrkr.com/artists/" + $(this).data("id")
+        }, function (response) {
+            console.log("FB Open Graph Posted");
+            console.log(response);
+        });
+        console.log("SUGGEST SUCCESSFUL");
     });
-    console.log("SUGGEST SUCCESSFUL");
-});
+<% end %>

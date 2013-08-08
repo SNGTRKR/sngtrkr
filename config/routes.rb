@@ -65,8 +65,8 @@ SNGTRKR::Application.routes.draw do
     end
     resources :releases
     get 'scrape_confirm' => 'artists#scrape_confirm'
-    resources :follows, :except => [:destroy, :edit]
-    get 'unfollow' => 'follows#user_destroy'
+    get 'follow' => 'follows#create'
+    get 'unfollow' => 'follows#destroy'
     #resources :suggests, :except => [:destroy,:edit]
     get 'unsuggest' => 'suggests#destroy'
   end
