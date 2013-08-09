@@ -1,13 +1,15 @@
+console.log("BOO");
 $("a.remove-trkr").bind("ajax:complete", function () {
     var artist_id = $(this).data("id");
     var user_id = <%= current_user.id %>;
-    $(this).replaceWith("<%=j follow_button(@artist) %>");
+    $(this).replaceWith("<a href=\"/artists/" + artist_id + "/follow.js\" class=\"add-trkr btn track\" data-id=\"" + artist_id + "\" data-remote=\"true\">Track</a>");
     $('#tracking-' + user_id).text(<%= current_user.followed_artists.count %>);
-    $('#tracker-' + artist_id).text(<%= @artist.followers %>);
+    // TODO: Pluralize is currently causing an error. Need to investigate.
+    // $('#tracker-' + artist_id).text(<%= pluralize @artist.followers, "tracker" %>);
     $('#row-' + artist_id).addClass("fadeOutUp").slideUp();
 });
 $("a.remove-trkr-small").bind("ajax:complete", function () {
     var artist_id;
     artist_id = $(this).data("id");
-    $(this).replaceWith("<%=j follow_button(@artist) %>");
+    $(this).replaceWith("<a href=\"/artists/" + artist_id + "/follow.js\" class=\"add-trkr-small btn btn-small\" data-id=\"" + artist_id + "\" data-remote=\"true\">Track</a>");
 });
