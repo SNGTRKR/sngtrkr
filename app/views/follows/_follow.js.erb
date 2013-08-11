@@ -4,7 +4,7 @@ $("a.add-trkr").bind("ajax:complete", function () {
     $(this).replaceWith("<a href=\"/artists/" + artist_id + "/unfollow.js\" class=\"remove-trkr btn track active\" data-id=\"" + artist_id + "\" data-remote=\"true\">Tracked</a>");
     <% @artist = Artist.find(params[:artist_id]) %>
     // TODO: Pluralize is currently causing an error. Need to investigate.
-    //console.log(<%= pluralize(@artist.followers, "tracker") %>);
+    //console.log(<%= pluralize @artist.followers, "tracker" %>);
     //$('#tracker-' + artist_id).text(<%= pluralize(@artist.followers, "tracker") %>);
     FB.api("/me/sngtrkr:track", "post", {
         artist: "http://sngtrkr.com/artists/" + $(this).data("id")
@@ -29,7 +29,6 @@ $("a.add-trkr-small").bind("ajax:complete", function () {
     }).bind("ajax:success", function() {
         var artist_id = $(this).data("id");
         $(this).parent().replaceWith("<%=j render :partial => 'timeline/carousel_suggest', :object => @new_artist %>");
-        console.log("WOOP");
         var url = "/timeline_releases/populate?timeline_artist="+artist_id
         $.get(url);
         FB.api("/me/sngtrkr:track", "post", {
@@ -38,6 +37,5 @@ $("a.add-trkr-small").bind("ajax:complete", function () {
             console.log("FB Open Graph Posted");
             console.log(response);
         });
-        console.log("SUGGEST SUCCESSFUL");
     });
 <% end %>

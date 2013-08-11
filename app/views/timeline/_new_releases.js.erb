@@ -1,4 +1,31 @@
-// console.log("<%= @releases.each do |release| %><%= release.artist.name %>:<%= release.name %>, <% end %>");
-console.log("New releases triggered");
-$('.release:first-child').before("HAI");
-// $('.release:first-child').before('<%= @releases.each do |release| %><%=j render :partial => "timeline/release", :locals => { :release => release } %><% end %>')
+$('.release:first-child').before('<% @releases.each do |release| %><%=j render :partial => "timeline/release", :locals => { :release => release, :release_type => "fadeOutUp animated" } %><% end %>');
+new_timeline_releases = $('.release.fadeOutUp').length;
+var i = 1;
+function next() {
+    if (i <= new_timeline_releases)
+    {
+        $('.release.fadeOutUp:nth-child('+ i +')').removeClass('fadeOutUp').show().addClass('fadeInDown');
+        i++;
+        setTimeout(next, 1000);
+    }
+}
+next();
+if (parseInt(window.get_url_vars()["walkthrough"]) === 1) {
+    $('.release.animated').addClass('pops').css('pointer-events', 'none');
+    var $elem, delay_popover;
+    $('.scene_1').popover('hide').removeClass('pops');
+    $.scrollTo(0, 800);
+    delay_popover = (new_timeline_releases * 1000)+50;
+    setTimeout(function() {
+        console.log("SHOW POPOVER");
+        $('.release.fadeInDown:first-child').addClass('scene_2');
+        $elem = $('.scene_2');
+        $elem.addClass('pops');
+        $elem.popover({
+          html: true,
+          content: $('.popover_content_2').html(),
+          placement: 'bottom',
+          trigger: 'manual'
+        }).popover('show');
+    }, delay_popover);
+};

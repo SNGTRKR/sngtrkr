@@ -1,6 +1,4 @@
-<% artist_page ||= 'false' %>
-
-<div id="release_<%= release.id %>" class="release">
+<div id="release_<%= release.id %>" class="release <%= release_type %>">
   <%= link_to [release.artist, release] do%>
     <div class="image">
       <img src="<%= release.image.large.url %>" height="181" width="181"/>

@@ -8,18 +8,18 @@
     	<h2>Recommended artists</h2>
     	<div id="recommend_carousel" class="carousel slide carousel-fade">
   		  <div class="carousel-inner">
-  		  	<% @artists.each_slice(6) do |slice| %>
-  			    <div class="item">
-  			    	<% slice.each do |artist| %>
-  			    	<%= render :partial => "timeline/carousel_suggest", :object => artist %>
-  			    	<% end %>
-  			    </div>
-  		    <% end %>
+          <% @artists.each_slice(6) do |slice| %>
+              <div class="item">
+                  <% slice.each do |artist| %>
+                  <%= render :partial => "timeline/carousel_suggest", :object => artist %>
+                  <% end %>
+              </div>
+          <% end %>
   		  </div>
   		  <div class="pins">
   			  <i data-target="#recommend_carousel" data-slide-to="0" class="active icon-circle"></i>
-  		      <i data-target="#recommend_carousel" data-slide-to="1" class="icon-circle"></i>
-  		      <i data-target="#recommend_carousel" data-slide-to="2" class="icon-circle"></i>
+  		    <i data-target="#recommend_carousel" data-slide-to="1" class="icon-circle"></i>
+  		    <i data-target="#recommend_carousel" data-slide-to="2" class="icon-circle"></i>
   		  </div>
   		</div>
     </div>
@@ -28,6 +28,6 @@
     <% if @timeline.empty? %>
         <%= render 'timeline/user_empty' %>
     <% else %>
-        <%= render :partial => 'timeline/release', :collection => @timeline %>
+        <%= render :partial => 'timeline/release', :collection => @timeline, :locals => { :release_type => "" } %>
     <% end %>
 </div>

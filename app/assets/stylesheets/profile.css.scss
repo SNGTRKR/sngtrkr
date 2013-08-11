@@ -82,10 +82,12 @@
       th {
         padding: 0px 8px;
       }
-
       td {
         line-height: 76px;
         border: 0 !important;
+        @include transition-property(opacity);
+        @include transition-duration(0.4s);
+        @include transition-timing-function(ease-in);
         .image {
           margin-right: 15px;
         }

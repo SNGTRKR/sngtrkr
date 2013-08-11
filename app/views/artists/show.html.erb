@@ -88,7 +88,7 @@
   <% if @timeline.empty? %>
       <%= render 'timeline/artist_empty' %>
   <% else %>
-        <%= render :partial => 'timeline/release', :collection => @timeline %>
+        <%= render :partial => 'timeline/release', :collection => @timeline, :locals => { :release_type => "" } %>
   <% end %>
 </div>
 </div>

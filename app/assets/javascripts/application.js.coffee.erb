@@ -13,6 +13,7 @@ $(document).ready ->
   walkthrough()
   ui_slider()
   img_flip()
+  loading_animation()
 
   #tooltip initiation
   $('.tip').tooltip()
@@ -328,7 +329,7 @@ infinite_scrolling = ->
 ###
   Returns a JSON object of query strings and their values
 ###
-get_url_vars = ->
+window.get_url_vars = ->
   vars = []
   hash = undefined
   hashes = window.location.href.slice(window.location.href.indexOf("?") + 1).split("&")
@@ -364,7 +365,6 @@ walkthrough = ->
   </div>').insertAfter('.search-data-query')
     # Add the scene triggers to the related elements
     $('.recommend_artists .carousel_suggest a').addClass 'trigger_walk'
-    $('.release:first-child').addClass 'scene_2'
     $('.navbar-search .search-query').addClass 'scene_3'
     $('.nav #show_info').addClass 'scene_4'
 
@@ -380,19 +380,21 @@ walkthrough = ->
     # Start second scene
     $('.trigger_walk').click ->
       $('.scene_1').popover('hide').removeClass 'pops'
+      $.scrollTo 0, 800
+      $('.release.fadeOutUp:first-child').addClass 'scene_2'
       $elem = $('.scene_2')
       $elem.addClass 'pops'
-      $.scrollTo $('.scene_2').offset()["top"]-($('.navbar').height()+10), 800
       $elem.popover(
         html: true
         content: $('.popover_content_2').html()
         placement: 'bottom'
         trigger: 'manual'
-      ).popover 'show'    
+      ).popover 'show'   
 
     # # Start third scene
     $('body').on 'click', '.nxt_trigger_2', ->
       $('.scene_2').popover('hide').removeClass 'pops'
+      $('.release.fadeInDown').removeClass 'pops'
       $elem = $('.scene_3')
       $elem.addClass 'pops'
       $.scrollTo 0, 800
@@ -423,10 +425,29 @@ walkthrough = ->
       $('.poppers').remove()
       $('.walkthrough_backdrop').remove()
       $('.recommend_artists').removeClass 'scene_1'
-      $('.release:first-child').removeClass 'scene_2'
+      $('.release.fadeOutUp:first-child').removeClass 'scene_2'
       $('.navbar-search .search-query').removeClass 'scene_3'
       $('.nav #show_info').removeClass 'scene_4'
       $('.recommend_artists .carousel_suggest a').removeClass 'trigger_walk'
+
+loading_animation = ->
+  $.fn.spin.presets.standard =
+    lines: 9 # The number of lines to draw
+    length: 0 # The length of each line
+    width: 10 # The line thickness
+    radius: 18 # The radius of the inner circle
+    corners: 1 # Corner roundness (0..1)
+    rotate: 0 # The rotation offset
+    direction: 1 # 1: clockwise, -1: counterclockwise
+    color: "#dc5a24" # #rgb or #rrggbb
+    speed: 0.8 # Rounds per second
+    trail: 42 # Afterglow percentage
+    shadow: false # Whether to render a shadow
+    hwaccel: false # Whether to use hardware acceleration
+    className: "spinner" # The CSS class to assign to the spinner
+    zIndex: 2e9 # The z-index (defaults to 2000000000)
+    top: "auto" # Top position relative to parent in px
+    left: "auto" # Left position relative to parent in px
   
 
 
