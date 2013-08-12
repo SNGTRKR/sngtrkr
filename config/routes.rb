@@ -23,6 +23,7 @@ SNGTRKR::Application.routes.draw do
     end
   end
 
+  get '/explore' => "pages#explore"
   get '/about' => "pages#about"
   get '/terms' => "pages#terms"
   get '/privacy' => "pages#privacy"
@@ -37,7 +38,7 @@ SNGTRKR::Application.routes.draw do
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   end
 
-  get '/tl' => "users#timeline"
+  get '/timeline' => "users#timeline"
 
   resources :users, :except => [:index, :edit, :update] do
     member do

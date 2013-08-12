@@ -1,0 +1,31 @@
+<% content_for :title do %>Explore new music<% end %>
+<% content_for :description do %>One of the advantages of music being everywhere, is that we are always making new discoveries. With SNGTRKR you can quickly dive in and experience new artists and releases from an array of genres. It has never been so simple.<% end %>
+<% cache "explore_tab", expires_in: 1.month do %>
+<div class="g_two_col">
+    <div class="g_sidebar_large">
+        <div class="result_search g_fixed">
+            <h1>Explore</h1>
+            <div class="tabbable tabs-left search-tabs">
+            <ul id="myTab" class="nav nav-tabs nav-stacked each-tab">
+                <li class="active">
+                    <a href="#tab3" data-toggle="tab"><span class="blk rel"></span><span class="wht rel"></span>Recent releases</a>
+                </li>
+                <li>
+                    <a href="#tab2" data-toggle="tab"><span class="blk ppl"></span><span class="wht ppl"></span>Top artists</a>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </div>
+<% end %>
+    <div class="g_main g_tabs_large">
+        <div class="tab-content search-tab-content" id="myTabContent">
+            <div class="tab-pane active" id="tab1">
+                <%= render :partial => 'timeline/release', :collection => @recent_releases, :locals => { :release_type => "" } %>
+            </div>
+            <div class="tab-pane" id="tab2">
+
+            </div>
+        </div>
+    </div>
+</div>

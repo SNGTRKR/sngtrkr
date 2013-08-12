@@ -1,3 +1,4 @@
+<% content_for :title do %>Site overview<% end %>
 <div class="g_two_col">
   <div class="g_sidebar">
     <div class="g_fixed">
@@ -9,8 +10,7 @@
             <a href="#tab1" data-toggle="tab"><i class="icon-bar-chart"></i>Site activity</a>
           </li>
           <li>
-            <a href="#tab2" data-toggle="tab"><%= image_tag "/images/ppl_black.png", :class => "blk ppl" %><%= image_tag "/images/ppl_white.png", :class => "wht ppl" %>
-              Popular artists</a>
+            <a href="#tab2" data-toggle="tab"><span class="blk ppl"></span><span class="wht ppl"></span>Popular artists</a>
           </li>
           <li>
             <a href="#tab3" data-toggle="tab"><i class="icon-check"></i>Release reports</a>

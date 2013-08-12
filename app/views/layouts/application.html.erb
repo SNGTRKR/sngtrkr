@@ -107,7 +107,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
   <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
       <% if current_user %>
-          <%= link_to tl_path, :class => "brand" do %>
+          <%= link_to timeline_path, :class => "brand" do %>
               <div class="sngtrkr_logo"></div>
           <% end %>
       <% else %>
@@ -119,9 +119,14 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
         <li class="divider-vertical"></li>
         <% if current_user %>
             <li class="
-              <% if current_page?(tl_path) %>active
-              <% end %>"><a href="/tl">Timeline</a></li>
+              <% if current_page?(timeline_path) %>active
+              <% end %>"><%= link_to timeline_path do %>Timeline<% end %></li>
             <li class="divider-vertical"></li>
+        <% end %>
+            <li class="<% if current_page?(explore_path) %>active
+              <% end %>"><%= link_to explore_path do %>Explore<% end %></li>
+            <li class="divider-vertical"></li>
+        <% if current_user %>
             <li class="
               <% if current_page?(user_path(current_user)) %>active
               <% end %>">

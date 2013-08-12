@@ -84,9 +84,9 @@ class ApplicationController < ActionController::Base
       u = current_user
       u.sign_in_count += 1
       u.save
-      return '/tl?walkthrough=1'
+      return '/timeline?walkthrough=1'
     else
-      return '/tl?walkthrough=1'
+      return '/timeline'
     end
   end
 

@@ -108,11 +108,8 @@ class Release < ActiveRecord::Base
     else
       @tdomain = "http://sngtrkr.com"
     end
-    if @tart.genre?
-      @tgenre = "##{@tart.genre}"
-    end
-    @turl = Shortener::ShortenedUrl.generate("#{@tdomain}/artists/#{@tart.id}/releases/#{@trel.id}")
-    Twitter.update("#{@tart.name} - #{@trel.name}, released #{@trel.date.strftime("#{@trel.date.day.ordinalize} %B %Y ")} #{@tdomain}/#{@turl.unique_key}")
+    @turl = "#{@tdomain}/artists/#{@tart.id}/releases/#{@trel.id}"
+    Twitter.update("#{@tart.name} - #{@trel.name}, released #{@trel.date.strftime("#{@trel.date.day.ordinalize} %B %Y ")} #{@turl}")
     @trel.update_attribute(:tweet, true)
   end
 
