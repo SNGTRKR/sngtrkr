@@ -287,8 +287,9 @@ infinite_scrolling = ->
     #search query
     query = $('#tab3').data 'query'
     rel_last_load = new Date().getTime()
-    rel_page = 2
+   
     #release infinite scrolling
+    rel_page = 2
     $(".search-tab-content #tab3").bind "mousewheel", (event, delta) ->
       if delta < 0
         if $(document).scrollTop() > ($(document).height() - 1500) and (new Date().getTime() - rel_last_load) > 1000
@@ -298,10 +299,9 @@ infinite_scrolling = ->
           console.log url
           $.get url
           rel_page++
-
-    art_last_load = new Date().getTime()
-    art_page = 2
+  
     #artist infinite scrolling
+    art_page = 2
     $(".search-tab-content #tab2").bind "mousewheel", (event, delta) ->
       if delta < 0
         if $(document).scrollTop() > ($(document).height() - 1500) and (new Date().getTime() - art_last_load) > 1000
@@ -312,10 +312,9 @@ infinite_scrolling = ->
           $.get url
           art_page++
 
-    user_id = $('#tab1').data 'user'
-    trk_last_load = new Date().getTime()
-    trk_page = 2
     #artist_tracked list infinite scrolling
+    user_id = $('#tab1').data 'user'
+    trk_page = 2
     $(".profile-tab-content #tab1").bind "mousewheel", (event, delta) ->
       if delta < 0
         if $(document).scrollTop() > ($(document).height() - 1500) and (new Date().getTime() - trk_last_load) > 1000
@@ -325,6 +324,30 @@ infinite_scrolling = ->
           console.log url
           $.get url
           trk_page++
+
+    # Explore releases scrolling
+    erel_page = 2
+    $(".explore-tab-content #tab1").bind "mousewheel", (event, delta) ->
+      if delta < 0
+        if $(document).scrollTop() > ($(document).height() - 1500) and (new Date().getTime() - trk_last_load) > 1000
+          trk_last_load = new Date().getTime()
+          console.log "AJAX explore releases page load: " + erel_page
+          url = "/explore/release/" + erel_page
+          console.log url
+          $.get url
+          erel_page++
+
+    # Explore artists scrolling
+    eart_page = 2
+    $(".explore-tab-content #tab1").bind "mousewheel", (event, delta) ->
+      if delta < 0
+        if $(document).scrollTop() > ($(document).height() - 1500) and (new Date().getTime() - trk_last_load) > 1000
+          trk_last_load = new Date().getTime()
+          console.log "AJAX explore artists page load: " + eart_page
+          url = "/explore/artist/" + eart_page
+          console.log url
+          $.get url
+          eart_page++
 
 ###
   Returns a JSON object of query strings and their values

@@ -22,8 +22,11 @@ SNGTRKR::Application.routes.draw do
       get '/:action' => "admin#:action"
     end
   end
-
+  # Setup explore pages
   get '/explore' => "pages#explore"
+  get '/explore/release/:page' => 'pages#explore_release'
+  get '/explore/artist/:page' => 'pages#explore_artist'
+
   get '/about' => "pages#about"
   get '/terms' => "pages#terms"
   get '/privacy' => "pages#privacy"

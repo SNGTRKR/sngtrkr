@@ -1,0 +1,5 @@
+<% if @recent_releases.empty? %>
+    console.log("No more releases to explore");
+<% else %>
+    $('.explore-tab-content #tab1').append('<% @recent_releases.each do |release| %><%=j render :partial => "timeline/release", :object => release, :locals => { :release_type => "" } %><% end %>');
+<% end %>
