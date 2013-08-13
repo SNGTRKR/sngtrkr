@@ -74,7 +74,7 @@
 <div class="g_main artist_timeline">
   <% if !user_signed_in? %>
       <div id="artist_signup">
-        <p>Track <%= link_to @artist.name, @artist %> and others to keep up to date with new releases.</p>
+        <p>Track <%= @artist.name %> and others to keep up to date with new releases.</p>
         <%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-small") do %>
             <div class="icon"><span></span><i class="icon-facebook"></i></div>
             <div class="divider"></div>
