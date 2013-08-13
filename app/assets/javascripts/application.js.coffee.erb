@@ -39,9 +39,10 @@ timeline = ->
     )
     $('.recommend_artists #recommend_carousel .carousel-inner .item:first-child').addClass 'active'
 
-    $('.recommend_artists').insertAfter('.release:nth-child(9)').show()
+    $('.recommend_artists').insertAfter('.user_timeline .release:nth-child(9)').show()
 
-    $('.hero_artist').insertAfter('.release:nth-child(17)').show()
+    if $('.user_timeline .release').length >= 18
+      $('.hero_artist').insertAfter('.user_timeline .release:nth-child(18)').show()
 
 homepage_releases = ->
     #homepage release animation
