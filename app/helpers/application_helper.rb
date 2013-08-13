@@ -1,18 +1,30 @@
 module ApplicationHelper
 
-  def follow_button artist
+
+
+  def follow_button artist, btn_type
+    # Setup button type
+    # if btn_type == "normal"
+    #   btn_class = "btn"
+    #   btn_trkr = ""
+    # elsif btn_type == "small"
+    #   btn_class = "btn btn-small"
+    #   btn_trkr = "-small"
+    # end
+    btn_class = "btn"
+    btn_trkr = ""
     if user_signed_in?
       if current_user.following? artist.id
-        return link_to(artist_unfollow_path(artist, format: :js), :class => "remove-trkr btn track active", :remote => true, :'data-id' => artist.id) do
+        return link_to(artist_unfollow_path(artist, format: :js), :class => "remove-trkr#{btn_trkr} #{btn_class} track active", :remote => true, :'data-id' => artist.id) do
           'Tracked'
-        end.html_safe
+        end
       else
-        return link_to(artist_follow_path(artist, format: :js), :class => "add-trkr btn track", :remote => true, :'data-id' => artist.id) do
+        return link_to(artist_follow_path(artist, format: :js), :class => "add-trkr#{btn_trkr} #{btn_class} track", :remote => true, :'data-id' => artist.id) do
           'Track'
-        end.html_safe
+        end
       end
     else
-      return '<a data-target="#user_signup" data-toggle="modal"> <div class="btn track">Track</div> </a>'.html_safe
+      return '<a data-target="#user_signup" data-toggle="modal"> <div class="#{btn_class} track">Track</div> </a>'.html_safe
     end
   end
 
