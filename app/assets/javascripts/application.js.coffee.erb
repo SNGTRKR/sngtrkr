@@ -286,10 +286,10 @@ typeahead_engine = ->
 infinite_scrolling = ->
     #search query
     query = $('#tab3').data 'query'
-    rel_last_load = new Date().getTime()
    
     #release infinite scrolling
     rel_page = 2
+    rel_last_load = new Date().getTime()
     $(".search-tab-content #tab3").bind "mousewheel", (event, delta) ->
       if delta < 0
         if $(document).scrollTop() > ($(document).height() - 1500) and (new Date().getTime() - rel_last_load) > 1000
@@ -302,6 +302,7 @@ infinite_scrolling = ->
   
     #artist infinite scrolling
     art_page = 2
+    art_last_load = new Date().getTime()
     $(".search-tab-content #tab2").bind "mousewheel", (event, delta) ->
       if delta < 0
         if $(document).scrollTop() > ($(document).height() - 1500) and (new Date().getTime() - art_last_load) > 1000
@@ -315,6 +316,7 @@ infinite_scrolling = ->
     #artist_tracked list infinite scrolling
     user_id = $('#tab1').data 'user'
     trk_page = 2
+    trk_last_load = new Date().getTime()
     $(".profile-tab-content #tab1").bind "mousewheel", (event, delta) ->
       if delta < 0
         if $(document).scrollTop() > ($(document).height() - 1500) and (new Date().getTime() - trk_last_load) > 1000
@@ -327,6 +329,7 @@ infinite_scrolling = ->
 
     # Explore releases scrolling
     erel_page = 2
+    erel_last_load = new Date().getTime()
     $(".explore-tab-content #tab1").bind "mousewheel", (event, delta) ->
       if delta < 0
         if $(document).scrollTop() > ($(document).height() - 1500) and (new Date().getTime() - trk_last_load) > 1000
@@ -339,7 +342,8 @@ infinite_scrolling = ->
 
     # Explore artists scrolling
     eart_page = 2
-    $(".explore-tab-content #tab1").bind "mousewheel", (event, delta) ->
+    eart_last_load = new Date().getTime()
+    $(".explore-tab-content #tab2").bind "mousewheel", (event, delta) ->
       if delta < 0
         if $(document).scrollTop() > ($(document).height() - 1500) and (new Date().getTime() - trk_last_load) > 1000
           trk_last_load = new Date().getTime()
