@@ -82,9 +82,14 @@
         width: auto;
         background-image: none;
         -webkit-appearance: none;
+        font-size:13px;
           &.date, &.artist_tracker, &.artist_release {
             padding:6px 6px 6px 8px;
-            font-size:13px;
+          }
+          &.track_artist {
+            padding:6px 9px;
+            margin-right:1px;
+            text-decoration: none;
           }
           &.share_release, &.share_artist {
             position: relative;

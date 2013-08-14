@@ -8,6 +8,9 @@ module ApplicationHelper
     elsif btn_type == "small"
       btn_class = "btn btn-small"
       btn_trkr = "-small"
+    elsif btn_type == "tile"
+      btn_class = "act track_artist"
+      btn_trkr = "-tile"
     end
 
     if user_signed_in?
