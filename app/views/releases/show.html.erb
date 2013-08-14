@@ -28,7 +28,7 @@
   <div></div>
   <%= pluralize @release_count, "release" %>
 </div>
-<%= follow_button @artist %>
+<%= follow_button @artist, "normal" %>
 <% cache "social_links/#{@artist.id}-#{@artist.updated_at}", expires_in: 1.week do %>
     <div class="btn share_artist share" id="<%= @artist.id %>"><i class="icon-share"></i>Share
     </div>
