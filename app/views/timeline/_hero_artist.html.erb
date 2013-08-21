@@ -1,11 +1,25 @@
 <div class="release hero_artist artist">
     <% @following.each do |artist_tracked| %>
-        <%= link_to artist_tracked do %>
           <div class="hero_image">
-            <div style="background-image:url(<%= artist_tracked.image.large.url %>);"></div>
-            <div></div>
+            <%= link_to artist_tracked do %>
+              <div style="background-image:url(<%= artist_tracked.image.large.url %>);"></div>
+              <div class="grad"></div>
+            <% end %>
           </div>
-        <% end %>
+          <div class="pop_releases timeline_artist">
+            <a href="#">
+              <img alt="Missing" src="/images/release/medium/missing.png">
+            </a>
+            <a href="#">
+              <img alt="Missing" src="/images/release/medium/missing.png">
+            </a>
+            <a href="#">
+              <img alt="Missing" src="/images/release/medium/missing.png">
+            </a>
+            <a href="#">
+              <img alt="Missing" src="/images/release/medium/missing.png">
+            </a>
+          </div>
           <div class="info">
             <%= link_to artist_tracked do%><h2><%= artist_tracked.name %></h2><% end %>
             <h3><%= artist_tracked.label_name %></h3>

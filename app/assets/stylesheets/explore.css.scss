@@ -3,7 +3,6 @@
     width:365px !important;
         .hero_image {
             div:first-child {
-                height:255px !important;
                 width:255px !important;
                 @include border-top-left-radius(3px);
             }
