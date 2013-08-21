@@ -10,87 +10,87 @@
 <% content_for :title do %><%= @artist.name %> information and releases 2012
 <% end %>
 <% cache "artist_info/#{@artist.id}-#{@artist.updated_at}", expires_in: 12.hours do %>
-    <div class="g_three_col">
-      <div class="g_sidebar release_artist">
-        <div class="scrollable">
-          <div class="scrollable_inner">
-            <%= image_tag @artist.image.large %>
-            <h2><%= @artist.name %></h2>
+<div class="g_two_col">
+  <div class="g_sidebar release_artist">
+    <div class="scrollable">
+      <div class="scrollable_inner">
+        <%= image_tag @artist.image.large %>
+        <h2><%= @artist.name %></h2>
 
-            <h3><%= @artist.label_name %></h3>
+        <h3><%= @artist.label_name %></h3>
 <% end %>
-<div class="trackers">
-  <div></div>
-  <span id="tracker-<%= @artist.id %>"><%= pluralize @artist.followers, "tracker" %></span>
-</div>
-<div class="releases">
-  <div></div>
-  <%= pluralize @release_count, "release" %>
-</div>
-<%= follow_button @artist, "normal" %>
+        <div class="trackers">
+          <div></div>
+          <span id="tracker-<%= @artist.id %>"><%= pluralize @artist.followers, "tracker" %></span>
+        </div>
+        <div class="releases">
+          <div></div>
+          <%= pluralize @release_count, "release" %>
+        </div>
+        <%= follow_button @artist, "normal" %>
 
-<% cache "social_links/#{@artist.id}-#{@artist.updated_at}", expires_in: 1.week do %>
-    <div class="btn share share_artist" id="<%= @artist.id %>">
-      <i class="icon-share"></i>Share
-    </div>
-    <ul>
-      <% if @artist.fbid? %>
-          <li>
-            <a href="http://www.facebook.com/<%= @artist.fbid %>" target="_blank"><div class="facebook"></div>
-              <p>Facebook</p></a></li>
-      <% end %>
-      <% if @artist.twitter? %>
-          <li>
-            <a href="http://www.twitter.com/<%= @artist.twitter %>" target="_blank"><div class="twitter"></div>
-              <p>Twitter</p></a></li>
-      <% end %>
-      <% if @artist.youtube? %>
-          <li>
-            <a href="http://www.youtube.com/<%= @artist.youtube %>" target="_blank"><div class="youtube"></div>
-              <p>YouTube</p></a></li>
-      <% end %>
-      <% if @artist.soundcloud? %>
-          <li>
-            <a href="http://www.soundcloud.com/<%= @artist.soundcloud %>" target="_blank"><div class="soundcloud"></div>
-              <p>Soundcloud</p></a></li>
-      <% end %>
-      <% if @artist.website? %>
-          <li><a href="http://<%= @artist.website %>" target="_blank"><div class="website"></div>
-            <p>Website</p></a></li>
-      <% end %>
-      <% if @artist.sd? %>
-          <li><a href="<%= @artist.sd %>" target="_blank"><div class="sdigital"></div><p>7Digital</p></a>
-          </li>
-      <% end %>
-      <% if @artist.itunes? %>
-          <li><a href="<%= @artist.itunes %>" target="_blank"><div class="itunes"></div><p>iTunes</p></a>
-          </li>
-      <% end %>
-    </ul>
-<% end %>
-</div>
-</div>
-</div>
-<div class="g_main artist_timeline">
-  <% if !user_signed_in? %>
-      <div id="artist_signup">
-        <p>Track <%= @artist.name %> and others to keep up to date with new releases.</p>
-        <%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-small") do %>
-            <div class="icon"><span></span><i class="icon-facebook"></i></div>
-            <div class="divider"></div>
-            Sign in with Facebook
+        <% cache "social_links/#{@artist.id}-#{@artist.updated_at}", expires_in: 1.week do %>
+        <div class="btn share share_artist" id="<%= @artist.id %>">
+          <i class="icon-share"></i>Share
+        </div>
+        <ul>
+          <% if @artist.fbid? %>
+              <li>
+                <a href="http://www.facebook.com/<%= @artist.fbid %>" target="_blank"><div class="facebook"></div>
+                  <p>Facebook</p></a></li>
+          <% end %>
+          <% if @artist.twitter? %>
+              <li>
+                <a href="http://www.twitter.com/<%= @artist.twitter %>" target="_blank"><div class="twitter"></div>
+                  <p>Twitter</p></a></li>
+          <% end %>
+          <% if @artist.youtube? %>
+              <li>
+                <a href="http://www.youtube.com/<%= @artist.youtube %>" target="_blank"><div class="youtube"></div>
+                  <p>YouTube</p></a></li>
+          <% end %>
+          <% if @artist.soundcloud? %>
+              <li>
+                <a href="http://www.soundcloud.com/<%= @artist.soundcloud %>" target="_blank"><div class="soundcloud"></div>
+                  <p>Soundcloud</p></a></li>
+          <% end %>
+          <% if @artist.website? %>
+              <li><a href="http://<%= @artist.website %>" target="_blank"><div class="website"></div>
+                <p>Website</p></a></li>
+          <% end %>
+          <% if @artist.sd? %>
+              <li><a href="<%= @artist.sd %>" target="_blank"><div class="sdigital"></div><p>7Digital</p></a>
+              </li>
+          <% end %>
+          <% if @artist.itunes? %>
+              <li><a href="<%= @artist.itunes %>" target="_blank"><div class="itunes"></div><p>iTunes</p></a>
+              </li>
+          <% end %>
+        </ul>
         <% end %>
-        <a data-toggle="modal" data-target="#user_signup" class="signup">
-          <div class="btn btn-warning">Sign up</div>
-        </a>
       </div>
-  <% end %>
-  <% if @timeline.empty? %>
-      <%= render 'timeline/artist_empty' %>
-  <% else %>
-        <%= render :partial => 'timeline/release', :collection => @timeline, :locals => { :release_type => "" } %>
-  <% end %>
-</div>
+    </div>
+  </div>
+  <div class="g_main artist_timeline">
+    <% if !user_signed_in? %>
+        <div id="artist_signup">
+          <p>Track <%= @artist.name %> and others to keep up to date with new releases.</p>
+          <%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-small") do %>
+              <div class="icon"><span></span><i class="icon-facebook"></i></div>
+              <div class="divider"></div>
+              Sign in with Facebook
+          <% end %>
+          <a data-toggle="modal" data-target="#user_signup" class="signup">
+            <div class="btn btn-warning">Sign up</div>
+          </a>
+        </div>
+    <% end %>
+    <% if @timeline.empty? %>
+        <%= render 'timeline/artist_empty' %>
+    <% else %>
+          <%= render :partial => 'timeline/release', :collection => @timeline, :locals => { :release_type => "" } %>
+    <% end %>
+  </div>
 </div>
 <% cache "artist_popup/#{@artist.id}-#{@artist.updated_at}", expires_in: 1.week do %>
     <%= artist_popover @artist %>
