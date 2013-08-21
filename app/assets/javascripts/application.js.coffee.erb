@@ -48,7 +48,7 @@ timeline = ->
 homepage_releases = ->
     #homepage release animation
     $container = $(".pop_releases")
-    $releases = $container.children("a")
+    $releases = $container.closest('div').children("a")
     timeout = undefined
     $releases.on "mouseenter", (event) ->
       $single_release = $(@)

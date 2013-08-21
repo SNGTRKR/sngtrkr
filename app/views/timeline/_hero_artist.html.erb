@@ -7,7 +7,7 @@
             <% end %>
           </div>
           <div class="pop_releases timeline_artist">
-            <a href="#">
+            <!-- <a href="#">
               <img alt="Missing" src="/images/release/medium/missing.png">
             </a>
             <a href="#">
@@ -18,7 +18,10 @@
             </a>
             <a href="#">
               <img alt="Missing" src="/images/release/medium/missing.png">
-            </a>
+            </a> -->
+            <% artist_tracked.related_releases.take(4).each do |release| %>
+              <%= link_to image_tag(release.image.medium), [artist_tracked, release] %>
+            <% end %>
           </div>
           <div class="info">
             <%= link_to artist_tracked do%><h2><%= artist_tracked.name %></h2><% end %>
