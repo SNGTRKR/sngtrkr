@@ -24,7 +24,7 @@ module ApplicationHelper
         end.html_safe
       end
     else
-      return "<a data-target='#user_signup' data-toggle='modal'> <div class='#{btn_class}'>Track</div></a>".html_safe
+      return "<a data-target='#user_signup' data-toggle='modal' class='#{btn_class}'>Track</a>".html_safe
     end
   end
 
