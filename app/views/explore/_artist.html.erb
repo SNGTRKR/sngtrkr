@@ -1,10 +1,15 @@
 <div class="release artist explore_artist">
-  <%= link_to artist do %>
     <div class="hero_image">
-      <div style="background-image:url(<%= artist.image.large.url %>);"></div>
-      <div></div>
+      <%= link_to artist do %>
+        <div style="background-image:url(<%= artist.image.large.url %>);"></div>
+        <div class="grad"></div>
+      <% end %> 
     </div>
-  <% end %>
+    <div class="pop_releases">
+      <% artist.related_releases.take(2).each do |release| %>
+        <%= link_to (image_tag release.image.medium), [artist, release] %>
+      <% end %>
+    </div>
     <div class="info">
       <%= link_to artist do %><h2><%= artist.name %></h2><% end %>
       <h3><%= artist.label_name %></h3>

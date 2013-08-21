@@ -5,11 +5,11 @@
   height:326px;
   width:220px;
   margin:12px 13px 12px 12px;
-  padding:220px 10px 10px;
   position:relative;
   float:left;
   @include box-sizing(border-box);
     .image {
+      height:220px;
         div {
           background-color:#000;
           @include opacity(0);      
@@ -34,6 +34,7 @@
       overflow:hidden;
       position:relative;
       margin-bottom: 1px;
+      padding:0 10px;
         a {
           @extend .fade_to_white;
             &:first-child {
@@ -62,6 +63,7 @@
         }
     }
     .actions {
+      padding:0 10px 10px;
       .act {
         border:1px solid #e5e5e5;
         @include border-radius(3px);
@@ -164,12 +166,13 @@
       display:none;
     }
     &.artist {
-      padding:17px 17px 17px 10px !important;
       width:465px;
       position: relative;
       display:none;
         .hero_image {
-          height: 203px;
+          height: 220px;
+          position: relative;
+          overflow: hidden;
             div:first-child {
               height:220px;
               position: absolute;
@@ -178,11 +181,10 @@
               background-repeat: no-repeat;
               background-size: 100%;
               background-position: center;
-              width:100%;
+              width:220px;
               @include border-top-left-radius(3px);
-              @include border-top-right-radius(3px);
             }
-            div:last-child {
+            .grad {
               background-color:#000;
               @include opacity(0);      
               @include transition-property(opacity);
@@ -193,11 +195,10 @@
               top: 0px;
               left:0px;
               @include border-top-left-radius(3px);
-              @include border-top-right-radius(3px);
               width:100%;
               height:220px;
             }
-            &:hover div:last-child {
+            &:hover .grad {
               @include opacity(0.35);
             }
         }

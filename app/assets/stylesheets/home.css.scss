@@ -1,7 +1,7 @@
 #overflow {
   overflow: hidden;
   height: 394px;
-  #releases {
+  .pop_releases {
     margin-top: 34px;
     max-height: 330px;
     background-color: $gray;
@@ -17,7 +17,7 @@
       position: relative;
       -webkit-backface-visibility: hidden;
       &.blur {
-        opacity: 0.75;
+        @include opacity(0.75);
         filter: alpha(opacity=75);
       }
       &.active {
