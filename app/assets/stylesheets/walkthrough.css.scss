@@ -12,7 +12,7 @@
     @include opacity(0.8);
 }
 .pops {
-    z-index:2000;
+    z-index:1999;
     color:#000;
     @include border-radius(3px);
 }
