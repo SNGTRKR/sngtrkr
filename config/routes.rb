@@ -50,11 +50,11 @@ SNGTRKR::Application.routes.draw do
       post 'destroy_with_reason'
       get 'friends'
       get 'recommend'
-      get 'timeline/:page' => 'timeline#index'
+      # get 'timeline/:page' => 'timeline#index'
     end
     collection do
       get 'me', :action => 'self'
-      get 'me/timeline/:page' => 'timeline#index'
+      # get 'me/timeline/:page' => 'timeline#index'
     end
     resources :manages
   end

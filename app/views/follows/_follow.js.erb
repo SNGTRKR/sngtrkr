@@ -35,6 +35,7 @@ $("a.add-trkr-tile").bind("ajax:complete", function () {
 });
 <% if @new_artist %>
     $('a.add-trkr-carousel').bind("ajax:beforeSend", function () {
+        $(this).css('pointer-events', 'none').spin 'standard'
         $(this).parent().addClass('fadeOutUp');
     }).bind("ajax:success", function() {
         var artist_id = $(this).data("id");

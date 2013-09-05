@@ -24,7 +24,9 @@
   		</div>
     </div>
     <!-- Hero artists -->
-    <%= render 'timeline/hero_artist' %>
+    <% if @user.follows.count >= 20 %>
+      <%= render 'timeline/hero_artist' %>
+    <% end %>
     <% if @timeline.empty? %>
         <%= render 'timeline/user_empty' %>
     <% else %>

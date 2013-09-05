@@ -5,7 +5,7 @@ class TimelineController < ApplicationController
   def index
     @timeline = Timeline.user(@user.id, params[:page])
     respond_to do |format|
-      format.js { render :partial => "timeline/user_timeline", :formats => [:js] }
+      format.js { render :partial => "timeline/timeline", :formats => [:js] }
     end
   end
 

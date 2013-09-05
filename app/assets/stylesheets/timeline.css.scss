@@ -244,6 +244,7 @@
         }
         .info {
           height:68px;
+          @extend .fade_to_white;
         }
         h2:hover {
           text-decoration: underline;
