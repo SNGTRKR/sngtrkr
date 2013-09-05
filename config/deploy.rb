@@ -7,9 +7,7 @@ set :domain, '82.196.15.184'
 set :applicationdir, "/home/vagrant/sngtrkr_rails_prod"
 set(:deploy_to) { applicationdir }
 
-role(:web) { domain } # Your HTTP server, Apache/etc
-role(:app) { domain } # This may be the same as your `Web` server
-role(:db, :primary => true) { domain } # This is where Rails migrations will run
+server domain, :app, :web, :db, :primary => true
 
 set :stages, %w(production staging)
 set :default_stage, "staging"
