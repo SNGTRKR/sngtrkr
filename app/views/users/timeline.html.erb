@@ -8,13 +8,8 @@
     	<h2>Recommended artists</h2>
     	<div id="recommend_carousel" class="carousel slide carousel-fade">
   		  <div class="carousel-inner">
-          <% @artists.each_slice(6) do |slice| %>
-              <div class="item">
-                  <% slice.each do |artist| %>
-                  <%= render :partial => "timeline/carousel_suggest", :object => artist %>
-                  <% end %>
-              </div>
-          <% end %>
+
+          <%= render :partial => "timeline/carousel_suggest", :object => @artists %>
   		  </div>
   		  <div class="pins">
   			  <i data-target="#recommend_carousel" data-slide-to="0" class="active icon-circle"></i>

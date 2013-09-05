@@ -1,4 +1,3 @@
-console.log("WOOP");
 $("a.add-trkr").bind("ajax:complete", function () {
     var artist_id = $(this).data("id");
     $(this).replaceWith("<a href=\"/artists/" + artist_id + "/unfollow.js\" class=\"remove-trkr btn track active\" data-id=\"" + artist_id + "\" data-remote=\"true\">Tracked</a>");
@@ -35,7 +34,8 @@ $("a.add-trkr-tile").bind("ajax:complete", function () {
 });
 <% if @new_artist %>
     $('a.add-trkr-carousel').bind("ajax:beforeSend", function () {
-        $(this).css('pointer-events', 'none').spin 'standard'
+        $('.recommend_artists').css('pointer-events', 'none').spin('standard');
+        $('#recommend_carousel').css('opacity', '0.5');
         $(this).parent().addClass('fadeOutUp');
     }).bind("ajax:success", function() {
         var artist_id = $(this).data("id");
@@ -48,5 +48,7 @@ $("a.add-trkr-tile").bind("ajax:complete", function () {
             console.log("FB Open Graph Posted");
             console.log(response);
         });
+        $('.recommend_artists').css('pointer-events', 'auto').spin(false);
+        $('#recommend_carousel').css('opacity', '1');
     });
 <% end %>

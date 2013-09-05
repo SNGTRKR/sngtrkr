@@ -282,39 +282,45 @@
             }
         }
     }
-    .item {
-      overflow:hidden;
-      height:231px;
-        .carousel_suggest {
+    #recommend_carousel {     
+      @include opacity(1);
+      @include transition-property(opacity);
+      @include transition-duration(0.4s);
+      @include transition-timing-function(ease-in);
+        .item {
           overflow:hidden;
-          margin-bottom:17px;
-          float:left;
-          width:205px;
-          position:relative;
-            img {
-              height:60px;
-              width:60px;
+          height:231px;
+            .carousel_suggest {
+              overflow:hidden;
+              margin-bottom:17px;
               float:left;
-              margin-right:10px;
-            }
-            span {
-              display:block;
-              @extend .fade_to_white;
-              height:31px;
-                div {
-                  margin-bottom:3px;
-                    a {
-                      color: $orange;
-                      font-family: "MuseoSans-500", Helvetica, Arial, sans-serif !important;
+              width:205px;
+              position:relative;
+                img {
+                  height:60px;
+                  width:60px;
+                  float:left;
+                  margin-right:10px;
+                }
+                span {
+                  display:block;
+                  @extend .fade_to_white;
+                  height:31px;
+                    div {
+                      margin-bottom:3px;
+                        a {
+                          color: $orange;
+                          font-family: "MuseoSans-500", Helvetica, Arial, sans-serif !important;
+                        }
                     }
                 }
-            }
-            .btn-small {
-              margin-top:5px;
-              padding:1px 10px;
-            }
-            &:nth-child(odd) {
-              margin-right:21px;
+                .btn-small {
+                  margin-top:5px;
+                  padding:1px 10px;
+                }
+                &:nth-child(odd) {
+                  margin-right:21px;
+                }
             }
         }
     }
