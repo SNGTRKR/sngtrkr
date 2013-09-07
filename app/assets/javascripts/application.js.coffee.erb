@@ -49,14 +49,15 @@ timeline = ->
 homepage_releases = ->
     #homepage release animation
     $container = $(".pop_releases")
-    $releases = $container.closest('div').children("a")
+    $releases = $container.children("a")
     timeout = undefined
     $releases.on "mouseenter", (event) ->
       $single_release = $(@)
       clearTimeout timeout
       timeout = setTimeout(->
+        $related_releases = $single_release.parent().children()
         return false  if $single_release.hasClass("active")
-        $releases.not($single_release).removeClass("active").addClass "blur"
+        $related_releases.not($single_release).removeClass("active").addClass "blur"
         $single_release.removeClass("blur").addClass "active"
       , 75)
 
