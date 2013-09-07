@@ -33,6 +33,7 @@ $(window).resize ->
   hide_sidebar()
   scrollbar_resize()
 
+window.trigger_walk = 0
 
 timeline = ->
     $('#recommend_carousel').carousel(
@@ -422,19 +423,7 @@ walkthrough = ->
       trigger: 'manual'
     ).popover 'show'
 
-    # Start second scene
-    $('.trigger_walk').click ->
-      $('.scene_1').popover('hide').removeClass 'pops'
-      $.scrollTo 0, 800
-      $('.release.fadeOutUp:first-child').addClass 'scene_2'
-      $elem = $('.scene_2')
-      $elem.addClass 'pops'
-      $elem.popover(
-        html: true
-        content: $('.popover_content_2').html()
-        placement: 'bottom'
-        trigger: 'manual'
-      ).popover 'show'   
+    # See _new_releases.js.erb for second scene
 
     # # Start third scene
     $('body').on 'click', '.nxt_trigger_2', ->
@@ -475,6 +464,7 @@ walkthrough = ->
       $('.navbar-search .search-query').removeClass 'scene_3'
       $('.nav #show_info').removeClass 'scene_4'
       $('.recommend_artists .carousel_suggest a').removeClass 'trigger_walk'
+      window.trigger_walk = 1
 
 loading_animation = ->
   if $(".loading_block").length < 1

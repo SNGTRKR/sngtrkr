@@ -10,22 +10,21 @@ function next() {
     }
 }
 next();
-if (parseInt(window.get_url_vars()["walkthrough"]) === 1) {
-    $('.release.animated').addClass('pops').css('pointer-events', 'none');
-    var $elem, delay_popover;
-    $('.scene_1').popover('hide').removeClass('pops');
-    $.scrollTo(0, 800);
-    delay_popover = (new_timeline_releases * 1000)+50;
-    setTimeout(function() {
-        console.log("SHOW POPOVER");
-        $('.release.fadeInDown:first-child').addClass('scene_2');
-        $elem = $('.scene_2');
-        $elem.addClass('pops');
-        $elem.popover({
-          html: true,
-          content: $('.popover_content_2').html(),
-          placement: 'bottom',
-          trigger: 'manual'
-        }).popover('show');
-    }, delay_popover);
+if (parseInt(window.get_url_vars()["walkthrough"]) === 1 && window.trigger_walk === 0) {
+        $('.release.animated').addClass('pops').css('pointer-events', 'none');
+        var $elem, delay_popover;
+        $('.scene_1').popover('hide').removeClass('pops');
+        $.scrollTo(0, 800);
+        delay_popover = (new_timeline_releases * 1000)+50;
+        setTimeout(function() {
+            $('.release.fadeInDown:first-child').addClass('scene_2');
+            $elem = $('.scene_2');
+            $elem.addClass('pops');
+            $elem.popover({
+              html: true,
+              content: $('.popover_content_2').html(),
+              placement: 'bottom',
+              trigger: 'manual'
+            }).popover('show');
+        }, delay_popover);
 };
