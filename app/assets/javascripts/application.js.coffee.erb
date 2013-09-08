@@ -294,7 +294,7 @@ infinite_scrolling = ->
     #timelime scrolling
     last_load = new Date().getTime();;    
     page = 1
-    $('.g_timeline').bind "mousewheel", (event, delta) ->
+    $('.scroll_timeline').bind "mousewheel", (event, delta) ->
       if delta < 0
         if $(document).scrollTop() > ($(document).height() - 1500) and (new Date().getTime() - last_load) > 1000
           last_load = new Date().getTime();
