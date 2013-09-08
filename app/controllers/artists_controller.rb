@@ -26,7 +26,7 @@ class ArtistsController < ApplicationController
       format.json { render :json => @artist }
       format.js do
         @follow = current_user.follows.where(:artist_id => params[:id]).first
-        { render :partial => "timeline/artist_timeline", :formats => [:js] }
+        render :partial => "timeline/artist_timeline", :formats => [:js]
       end
     end
   end
