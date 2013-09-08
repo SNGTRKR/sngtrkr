@@ -299,7 +299,7 @@ infinite_scrolling = ->
         if $(document).scrollTop() > ($(document).height() - 1500) and (new Date().getTime() - last_load) > 1000
           last_load = new Date().getTime();
           console.log "AJAX timeline page load: " + page
-          $.get '/timeline?page' + page
+          $.get '/timeline?page=' + page
           page++
    
     #release infinite scrolling
