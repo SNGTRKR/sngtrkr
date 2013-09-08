@@ -1,5 +1,0 @@
-<% if @timeline.empty? %>
-    console.log("No more timeline artists");
-<% else %>
-    $('.g_timeline').append '<% @timeline.each do |release| %><%=j render :partial => "timeline/timeline", :object => release %><% end %>'
-<% end %>
