@@ -42,9 +42,9 @@ class Artist < ActiveRecord::Base
     end
   end
 
-  # Load all artist releases upon tracking a new artist on the timeline
+  # Load artist releases upon tracking a new artist on the timeline, limiting to 5 most recent
   def timeline_releases
-    real_releases.all(:order => 'date DESC')
+    real_releases.order('date DESC').limit(5)
   end
 
   def count_release
