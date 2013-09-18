@@ -233,6 +233,16 @@
       width:127px;
       height:112px;
     }
+    #buoy {
+      height:112px;
+      float:left;
+      width:105px;
+      margin:12px 21px 0 8px;
+      @extend .sp-buoy;
+    }
+    #buoy + .actions {
+      margin-top:25px;
+    }
     .actions {
       float: left;
       width: 165px;
