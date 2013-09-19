@@ -36,7 +36,7 @@ end
 gem 'dalli'
 
 # MAILER
-gem 'rails_email_preview'
+gem 'rails_email_preview', '~> 0.2.10'
 
 # BACKGROUND TASKS
 gem 'sidekiq', :require => false

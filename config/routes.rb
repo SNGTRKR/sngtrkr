@@ -11,7 +11,7 @@ SNGTRKR::Application.routes.draw do
   get '/timeline_releases/populate' => 'timeline#populate_user_timeline'
 
   if Rails.env.development?
-    mount RailsEmailPreview::Engine, :at => 'mail_preview' # You can choose any URL here
+    mount RailsEmailPreview::Engine, :at => 'emails' # You can choose any URL here
   end
 
   namespace :admin do
