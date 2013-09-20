@@ -32,23 +32,3 @@ $("a.add-trkr-tile").bind("ajax:complete", function () {
         console.log(response);
     });
 });
-<% if @new_artist %>
-    $('a.add-trkr-carousel').bind("ajax:beforeSend", function () {
-        $('.recommend_artists').css('pointer-events', 'none').spin('standard');
-        $('#recommend_carousel').css('opacity', '0.5');
-        $(this).parent().addClass('fadeOutUp');
-    }).bind("ajax:success", function() {
-        var artist_id = $(this).data("id");
-        $(this).parent().replaceWith("<%=j render :partial => 'timeline/carousel_suggest', :object => @new_artist %>");
-        var url = "/timeline_releases/populate?timeline_artist="+artist_id
-        $.get(url);
-        FB.api("/me/sngtrkr:track", "post", {
-            artist: "http://sngtrkr.com/artists/" + $(this).data("id")
-        }, function (response) {
-            console.log("FB Open Graph Posted");
-            console.log(response);
-        });
-        $('.recommend_artists').css('pointer-events', 'auto').spin(false);
-        $('#recommend_carousel').css('opacity', '1');
-    });
-<% end %>

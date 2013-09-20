@@ -14,6 +14,7 @@ $(document).ready ->
   ui_slider()
   img_flip()
   loading_animation_settings()
+  recommendation()
 
   #tooltip initiation
   $('.tip').tooltip()
@@ -25,6 +26,7 @@ $(document).ready ->
 $(document).ajaxComplete ->
   popover_triggers()
   homepage_releases()
+  recommendation()
 
 $(window).load ->
   scrollbar()
@@ -503,12 +505,25 @@ loading_animation_settings = ->
     top: "auto" # Top position relative to parent in px
     left: "auto" # Left position relative to parent in px
 
-  
+recommendation = ->
+  $("a.add-trkr-carousel").bind("ajax:beforeSend", ->
+    $(".recommend_artists").css("pointer-events", "none").spin "standard"
+    $("#recommend_carousel").css "opacity", "0.5"
+    $(this).parent().addClass "fadeOutUp"
+  ).bind "ajax:success", (xhr, data, response) ->
+    artist_id = $(this).data("id")
+    console.log data
+    $(this).parent().replaceWith '<div id="suggest_' + data.artist.id + '" class="carousel_suggest animated"><a href="/artists/' + data.artist.id + '"><img src="' + data.artist.image.url + '" alt="Recommendation" height="75" width="75" /></a><span><div><a href="/artists/' + data.artist.id + '">' + data.artist.name + '</div>' + data.artist.label_name + '</span><a href="/artists/' + data.artist.id + '/follow.json" class="add-trkr-carousel btn btn-small follow-' + data.artist.id + '" data-id="' + data.artist.id + '" data-remote="true">Track</a></div>'
+    url = "/timeline_releases/populate?timeline_artist=" + artist_id
+    $.get url
+    FB.api "/me/sngtrkr:track", "post",
+      artist: "http://sngtrkr.com/artists/" + $(this).data("id")
+    , (response) ->
+      console.log "FB Open Graph Posted"
+      console.log response
 
-
-  
-
-
+    $(".recommend_artists").css("pointer-events", "auto").spin false
+    $("#recommend_carousel").css "opacity", "1"
 
 
 

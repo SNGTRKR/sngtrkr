@@ -1,0 +1,10 @@
+new_recommendation = (data) ->
+  console.log "HAIIIIII"
+  return '<div id="suggest_<%= data.artist.id %>" class="carousel_suggest animated">
+  <%= link_to image_tag(data.artist.image.medium, :height => '75', :width => '75'), data.artist %>
+  <span>
+    <div><%= link_to data.artist.name, data.artist %></div>
+    <%= data.artist.label_name %>
+  </span>
+  <%= follow_button_carousel data.artist %>
+</div>'

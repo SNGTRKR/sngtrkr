@@ -8,20 +8,15 @@ class FollowsController < ApplicationController
 
   def create
     @artist = Artist.find(params[:artist_id])
-
     current_user.followed_artists << @artist
-    
-    # TODO: Generate suggestions based on follow
 
-    @new_artist = current_user.suggested_artists[5] rescue nil
+    @recommended = current_user.suggested_artists.first(18)
+    @artist = current_user.suggested_artists.where("artists.id NOT IN (?)", @recommended).first
+    @recommended << @artist
     respond_to do |format|
-      format.html { redirect_to artist_path(:id => params[:artist_id]) } #format.html { render "artists/ajax_suggestion", :layout => false }
+      format.html { redirect_to artist_path(:id => params[:artist_id]) }
       format.js { render :partial => 'follows/follow', :format => [:js] }
-      format.json { render :json => { :artist => @artist,
-                                      :image_url => @artist.image.url.small,
-                                      :followers => @artist.followed_users.count
-                                    }
-                  }
+      format.json { render :json => { :artist => @artist } }
     end
 
   end

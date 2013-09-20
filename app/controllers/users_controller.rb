@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = current_user
     params[:page] ||= 0
     @timeline = Timeline.user(@user.id, @p_param)
-    @artists = Artist.find(142)
+    @artists = @user.suggested_artists.first(18)
     @following = @user.followed_artists.where('image_file_name IS NOT NULL').limit(1)
     respond_to do |format|
       format.html
