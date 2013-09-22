@@ -5,9 +5,8 @@ $("a.remove-trkr").bind("ajax:beforeSend", function () {
     var artist_id = $(this).data("id");
     var user_id = <%= current_user.id %>;
     $(this).replaceWith("<a href=\"/artists/" + artist_id + "/follow.js\" class=\"add-trkr btn track\" data-id=\"" + artist_id + "\" data-remote=\"true\">Track</a>");
-    $('#tracking-' + user_id).text(<%= current_user.followed_artists.count %>);
-    // TODO: Pluralize is currently causing an error. Need to investigate.
-    // $('#tracker-' + artist_id).text(<%= pluralize @artist.followers, "tracker" %>);
+    $('#tracking-' + user_id).text("<%= current_user.followed_artists.count %>");
+    $('#tracker-' + artist_id).text("<%= pluralize(@artist.followers, 'tracker') %>");
     $('#row-' + artist_id).addClass("fadeOutUp").slideUp().spin(false);
 });
 

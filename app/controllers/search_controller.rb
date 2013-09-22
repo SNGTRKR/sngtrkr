@@ -66,7 +66,7 @@ class SearchController < ApplicationController
     @json_results = @releases_json + @artists_json
 
     respond_to do |format|
-      format.js { render :partial => "search/omni", :formats => [:js] }
+      format.js { render :partial => "search/omni", :format => [:js] }
       format.json { render :json => @json_results }
       format.html
     end

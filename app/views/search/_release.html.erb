@@ -1,4 +1,4 @@
-<div class="result">
+  <div class="result">
   <%= link_to [release.artist, release] do %>
       <img src="<%= release.image.medium %>" class="image" height="110" width="110"/>
   <% end %>
@@ -13,5 +13,5 @@
     <i class="icon-share"></i>Share
   </div>
   <%= buy_popover release %>
-  <%= release_popover release release.artist %>
+  <%= release_popover release, release.artist %>
 </div>

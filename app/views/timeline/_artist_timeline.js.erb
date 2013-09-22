@@ -1,7 +1,7 @@
-// console.log("HAI");
+console.log("HAI");
 <% if @timeline.empty? %>
     console.log("No more timeline artists");
 <% else %>
-    $('.artist_timeline').append '<% @timeline.each do |release| %><%=j render :partial => "timeline/release", :object => release %><% end %>'
+    $('.artist_timeline').append('<% @timeline.each do |release| %><%=j render :partial => "timeline/release", :object => release, :locals => { :release_type => "" } %><% end %>');
 <% end %>
 $('.loading_block').remove();

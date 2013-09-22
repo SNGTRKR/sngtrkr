@@ -16,18 +16,14 @@ class ArtistsController < ApplicationController
       Artist.includes(:releases).find(@a_param)
     end
     @user = current_user
-    @timeline = Rails.cache.fetch "artist_timeline/#{@current_artist.id}-#{@current_artist.updated_at}", expires_in: 2.hours do
-      Timeline.artist(@a_param).page(params[:page])
-    end
+    # @timeline = Rails.cache.fetch "artist_timeline/#{@current_artist.id}-#{@current_artist.updated_at}", expires_in: 2.hours do
+    @timeline = Timeline.artist(@a_param).page(params[:page])
+    # end
     Timeline.artist(@a_param)
     @release_count = @artist.count_release
     respond_to do |format|
+      format.js { render :partial => "timeline/artist_timeline", :format => [:js] } 
       format.html # show.html.erb
-      format.json { render :json => @artist }
-      format.js do
-        @follow = current_user.follows.where(:artist_id => params[:id]).first
-        render :partial => "timeline/artist_timeline", :formats => [:js]
-      end
     end
   end
 

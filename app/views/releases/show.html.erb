@@ -22,7 +22,7 @@
 <% end %>
 <div class="trackers">
   <div></div>
-  <span id="tracker-<%= @artist.id %>"><%= pluralize @artist.followers, "tracker" %></span>
+  <span id="tracker-<%= @artist.id %>"><%= pluralize(@artist.followers, "tracker") %></span>
 </div>
 <div class="releases">
   <div></div>

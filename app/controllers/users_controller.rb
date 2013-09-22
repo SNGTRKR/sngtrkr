@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     @artists = @user.suggested_artists.first(18)
     @following = @user.followed_artists.where('image_file_name IS NOT NULL').limit(1)
     respond_to do |format|
+      format.js { render :partial => 'timeline/user_timeline', :format => [:js] }
       format.html
     end
   end
@@ -27,7 +28,7 @@ class UsersController < ApplicationController
       @following = @user.followed_artists.ordered.page(params[:page])
       @following_pages = @following.num_pages
       respond_to do |format|
-        format.js { render :partial => 'users/new_following', :formats => [:js] }
+        format.js { render :partial => 'users/new_following', :format => [:js] }
         format.html { render '/users/self' }
       end
 

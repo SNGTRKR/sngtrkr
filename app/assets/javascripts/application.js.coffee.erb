@@ -294,7 +294,7 @@ infinite_scrolling = ->
     query = $('#tab3').data 'query'
 
     #timelime scrolling
-    user_time_last_load = new Date().getTime();  
+    user_time_last_load = new Date().getTime()
     page = 1
     $('.user_timeline').bind "mousewheel", (event, delta) ->
       if delta < 0
@@ -306,20 +306,21 @@ infinite_scrolling = ->
           $.get '/timeline?page=' + page
           page++
 
-    artist_time_last_load = new Date().getTime(); 
+    artist_time_last_load = new Date().getTime()
     timeline_page = 2     
     current_artist = $('.artist_timeline').data 'artist' 
+
     $('.artist_timeline').bind "mousewheel", (event, delta) ->
       if delta < 0
         if $(document).scrollTop() > ($(document).height() - 1500) and (new Date().getTime() - artist_time_last_load) > 1000
           $this = $(@)
           loading_animation($this)
-          artist_time_last_load = new Date().getTime();
+          artist_time_last_load = new Date().getTime()
           console.log "AJAX artist timeline page load: " + timeline_page
           $.get '/artists/' + current_artist + '?page=' + timeline_page
           timeline_page++
 
-    #release infinite scrolling
+    #release search infinite scrolling
     rel_page = 2
     rel_last_load = new Date().getTime()
     $(".search-tab-content #tab3").bind "mousewheel", (event, delta) ->
@@ -334,7 +335,7 @@ infinite_scrolling = ->
           $.get url
           rel_page++
   
-    #artist infinite scrolling
+    #artist search infinite scrolling
     art_page = 2
     art_last_load = new Date().getTime()
     $(".search-tab-content #tab2").bind "mousewheel", (event, delta) ->

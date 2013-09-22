@@ -1,14 +1,16 @@
 if ($('#tab2').is(':visible')) {
     <% if @artists_pages < params[:a_page].to_i %>
-    console.log('No artists left');
+        console.log('No artists left');
     <% else %>
-    $('#tab2').append("<% @artists.each do |artist| %><%=j render :partial => 'search/artist', :object => artist %><% end %>");
+        console.log("SHOW ARTISTS");
+        $('#tab2').append("<% @artists.each do |artist| %><%=j render :partial => 'search/artist', :object => artist %><% end %>");
     <% end %>
 } else {
     <% if @releases_pages < params[:r_page].to_i %>
-    console.log('No releases left');
+        console.log('No releases left');
     <% else %>
-    $('#tab3').append("<% @releases.each do |release| %><%=j render :partial => 'search/release', :object => release %><% end %>");
+        console.log("SHOW RELEASES");
+        $('#tab3').append("<% @releases.each do |release| %><%=j render :partial => 'search/release', :object => release %><% end %>");
     <% end %>
 }
 $('.loading_block').remove();

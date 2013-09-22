@@ -2,9 +2,7 @@ $("a.add-trkr").bind("ajax:complete", function () {
     var artist_id = $(this).data("id");
     $(this).replaceWith("<a href=\"/artists/" + artist_id + "/unfollow.js\" class=\"remove-trkr btn track active\" data-id=\"" + artist_id + "\" data-remote=\"true\">Tracked</a>");
     <% @artist = Artist.find(params[:artist_id]) %>
-    // TODO: Pluralize is currently causing an error. Need to investigate.
-    //console.log(<%= pluralize @artist.followers, "tracker" %>);
-    //$('#tracker-' + artist_id).text(<%= pluralize(@artist.followers, "tracker") %>);
+    $('#tracker-' + artist_id).text("<%= pluralize(@artist.followers, 'tracker') %>");
     FB.api("/me/sngtrkr:track", "post", {
         artist: "http://sngtrkr.com/artists/" + $(this).data("id")
     }, function (response) {

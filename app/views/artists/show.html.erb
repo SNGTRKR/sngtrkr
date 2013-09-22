@@ -7,7 +7,7 @@
 %>
 <% content_for :description do %><%= truncate((strip_tags @artist.bio || ""), :length => 150) %>
 <% end %>
-<% content_for :title do %><%= @artist.name %> information and releases 2012
+<% content_for :title do %><%= @artist.name %> information and releases 2013
 <% end %>
 <% cache "artist_info/#{@artist.id}-#{@artist.updated_at}", expires_in: 12.hours do %>
 <div class="g_two_col">
