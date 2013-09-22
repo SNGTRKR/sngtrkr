@@ -18,10 +18,7 @@
 <% cache "user_info_2/#{@user.id}-#{@user.updated_at}", expires_in: 24.hours do %>
     </li>
     <li>
-      <a href="#tab2" data-toggle="tab"><span class="blk ppl"></span><span class="wht ppl"></span><%= @app_friends.count %>
-        friend
-        <% if @app_friends.count > 1 %>s
-        <% end %></a>
+      <a href="#tab2" data-toggle="tab"><span class="blk ppl"></span><span class="wht ppl"></span><%= pluralize(@app_friends.count, 'friend') %></a>
     </li>
     </ul>
     <div class="clearfix"></div>

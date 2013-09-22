@@ -10,7 +10,8 @@ class ArtistUploader < CarrierWave::Uploader::Base
     if Rails.env.test?
       "cw_test/:class/images/:id_partition/"
     elsif Rails.env.development?
-      "cw_dev/:class/images/:id_partition/"
+      # "cw_dev/:class/images/:id_partition/"
+      ":class/images/:id_partition/"
     else
       ":class/images/:id_partition/"
     end
