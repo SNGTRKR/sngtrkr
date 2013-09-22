@@ -3,3 +3,4 @@
 <% else %>
     $('.user_timeline').append '<% @timeline.each do |release| %><%=j render :partial => "timeline/release", :object => release %><% end %>'
 <% end %>
+$('.loading_block').remove();

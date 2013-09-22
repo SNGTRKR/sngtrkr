@@ -11,3 +11,4 @@ if ($('#tab2').is(':visible')) {
     $('#tab3').append("<% @releases.each do |release| %><%=j render :partial => 'search/release', :object => release %><% end %>");
     <% end %>
 }
+$('.loading_block').remove();

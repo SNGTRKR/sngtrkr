@@ -3,3 +3,4 @@ console.log('No tracked artists left.');
 <% else %>
 $('#tab1 table tbody').append("<%=j render :partial => 'users/artist_followed' %>");
 <% end %>
+$('.loading_block').remove();
