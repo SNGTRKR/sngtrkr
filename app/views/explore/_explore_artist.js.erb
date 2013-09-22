@@ -2,4 +2,5 @@
     console.log("No more popular artists");
 <% else %>
     $('.explore-tab-content #tab2').append('<% @popular_artists.each do |artist| %><%=j render :partial => "explore/artist", :object => artist %><% end %>');
+    $('.loading_block').remove();
 <% end %>

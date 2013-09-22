@@ -299,6 +299,8 @@ infinite_scrolling = ->
     $('.user_timeline').bind "mousewheel", (event, delta) ->
       if delta < 0
         if $(document).scrollTop() > ($(document).height() - 1500) and (new Date().getTime() - user_time_last_load) > 1000
+          $this = $(@)
+          loading_animation($this)
           user_time_last_load = new Date().getTime();
           console.log "AJAX user timeline page load: " + page
           $.get '/timeline?page=' + page
@@ -310,6 +312,8 @@ infinite_scrolling = ->
     $('.artist_timeline').bind "mousewheel", (event, delta) ->
       if delta < 0
         if $(document).scrollTop() > ($(document).height() - 1500) and (new Date().getTime() - artist_time_last_load) > 1000
+          $this = $(@)
+          loading_animation($this)
           artist_time_last_load = new Date().getTime();
           console.log "AJAX artist timeline page load: " + timeline_page
           $.get '/artists/' + current_artist + '?page=' + timeline_page
@@ -321,7 +325,8 @@ infinite_scrolling = ->
     $(".search-tab-content #tab3").bind "mousewheel", (event, delta) ->
       if delta < 0
         if $(document).scrollTop() > ($(document).height() - 1500) and (new Date().getTime() - rel_last_load) > 1000
-          loading_animation()
+          $this = $(@)
+          loading_animation($this)
           rel_last_load = new Date().getTime()
           console.log "AJAX release page load: " + rel_page
           url = "/search?utf8=✓&query=" + query + "&r_page=" + rel_page
@@ -335,7 +340,8 @@ infinite_scrolling = ->
     $(".search-tab-content #tab2").bind "mousewheel", (event, delta) ->
       if delta < 0
         if $(document).scrollTop() > ($(document).height() - 1500) and (new Date().getTime() - art_last_load) > 1000
-          loading_animation()
+          $this = $(@)
+          loading_animation($this)
           art_last_load = new Date().getTime()
           console.log "AJAX artist page load: " + art_page
           url = "/search?utf8=✓&query=" + query + "&a_page=" + art_page
@@ -350,7 +356,8 @@ infinite_scrolling = ->
     $(".profile-tab-content #tab1").bind "mousewheel", (event, delta) ->
       if delta < 0
         if $(document).scrollTop() > ($(document).height() - 1500) and (new Date().getTime() - trk_last_load) > 1000
-          loading_animation()
+          $this = $(@)
+          loading_animation($this)
           trk_last_load = new Date().getTime()
           console.log "AJAX artist_tracked page load: " + trk_page
           url = "/users/" + user_id + "?page=" + trk_page
@@ -364,7 +371,8 @@ infinite_scrolling = ->
     $(".explore-tab-content #tab1").bind "mousewheel", (event, delta) ->
       if delta < 0
         if $(document).scrollTop() > ($(document).height() - 1500) and (new Date().getTime() - erel_last_load) > 1000
-          loading_animation()
+          $this = $(@)
+          loading_animation($this)
           erel_last_load = new Date().getTime()
           console.log "AJAX explore releases page load: " + erel_page
           url = "/explore/release/" + erel_page
@@ -378,7 +386,8 @@ infinite_scrolling = ->
     $(".explore-tab-content #tab2").bind "mousewheel", (event, delta) ->
       if delta < 0
         if $(document).scrollTop() > ($(document).height() - 1500) and (new Date().getTime() - eart_last_load) > 1000
-          loading_animation()
+          $this = $(@)
+          loading_animation($this)
           eart_last_load = new Date().getTime()
           console.log "AJAX explore artists page load: " + eart_page
           url = "/explore/artist/" + eart_page
@@ -480,9 +489,9 @@ walkthrough = ->
       $('.recommend_artists .carousel_suggest a').removeClass 'trigger_walk'
       window.trigger_walk = 1
 
-loading_animation = ->
+loading_animation = ($this) ->
   if $(".loading_block").length < 1
-    $(@).children().last().after('<div class="loading_block"></div>');
+    $this.children().last().after '<div class="loading_block"></div>'
     $('.loading_block').spin 'standard'
 
 
@@ -512,7 +521,6 @@ recommendation = ->
     $(this).parent().addClass "fadeOutUp"
   ).bind "ajax:success", (xhr, data, response) ->
     artist_id = $(this).data("id")
-    console.log data
     $(this).parent().replaceWith '<div id="suggest_' + data.artist.id + '" class="carousel_suggest animated"><a href="/artists/' + data.artist.id + '"><img src="' + data.artist.image.url + '" alt="Recommendation" height="75" width="75" /></a><span><div><a href="/artists/' + data.artist.id + '">' + data.artist.name + '</div>' + data.artist.label_name + '</span><a href="/artists/' + data.artist.id + '/follow.json" class="add-trkr-carousel btn btn-small follow-' + data.artist.id + '" data-id="' + data.artist.id + '" data-remote="true">Track</a></div>'
     url = "/timeline_releases/populate?timeline_artist=" + artist_id
     $.get url
@@ -524,6 +532,7 @@ recommendation = ->
 
     $(".recommend_artists").css("pointer-events", "auto").spin false
     $("#recommend_carousel").css "opacity", "1"
+    return false
 
 
 
