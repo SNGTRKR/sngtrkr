@@ -93,6 +93,11 @@
     .scrollable_inner {
       overflow-x: hidden;
       width: 235px;
+        .key_info {
+          width:200px;
+          position: relative;
+          @extend .fade_to_white;
+        }
     }
     .scrollbar {
       opacity: 0;

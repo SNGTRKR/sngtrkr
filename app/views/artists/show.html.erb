@@ -15,9 +15,10 @@
     <div class="scrollable">
       <div class="scrollable_inner">
         <%= image_tag @artist.image.large %>
-        <h2><%= @artist.name %></h2>
-
-        <h3><%= @artist.label_name %></h3>
+        <div class="key_info">
+          <h2><%= @artist.name %></h2>
+          <h3><%= @artist.label_name %></h3>
+        </div>
 <% end %>
         <div class="trackers">
           <div></div>
