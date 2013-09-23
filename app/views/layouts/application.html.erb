@@ -30,8 +30,6 @@
   <meta name="google-site-verification" content="ZZsezCrr3vgh_cZwliW6D-0q51Lm_fyvHBm9W2t0gpE"/>
   <link rel="icon" type="image/ico" href="<%= asset_path "/images/icon.png" %>">
   <%= stylesheet_link_tag "application", :media => "all" %>
-  <%= stylesheet_link_tag "/css/bootstrap.css", :media => "all" %>
-  <%= stylesheet_link_tag "/css/animations.css", :media => "all" %>
   <!-- Use Html5Shiv in order to allow IE render HTML5 -->
   <!--[if lt IE 9]>
   <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -282,7 +280,8 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
     </div>
 <% end %>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<%= javascript_include_tag "/javascript/bootstrap.js", "/javascript/modernizr-2.6.2-respond-1.1.0.min.js", "/javascript/jquery.hoverIntent.minified.js", "/javascript/jquery-ui-1.10.2.custom.min.js", "/javascript/rails.validations.js", "/javascript/jquery.mousewheel.min.js", "application", "/javascript/typeahead.js", "/javascript/hogan-2.0.0.js", "/javascript/jquery.scrollTo.min.js", "/javascript/spin.js", "/javascript/jquery.spin.js" %>
+<%= javascript_include_tag "third-party" %>
+<%= javascript_include_tag "/javascript/bootstrap.js", "application" %>
 <!-- "/javascript/jquery-1.9.1.min.js", -->
 <script>
     Modernizr.load([

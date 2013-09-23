@@ -1,5 +1,11 @@
 <% content_for :title do %>Explore new music<% end %>
-<% content_for :description do %>One of the advantages of music being everywhere, is that we are always making new discoveries. With SNGTRKR you can quickly dive in and experience new artists and releases from an array of genres. It has never been so simple.<% end %>
+<% content_for :og_name, "Track your favourite artists and never miss another release..."
+   content_for :og_url, request.url
+   content_for :og_image, File.join(root_url, "/images/icon.png")
+   content_for :og_description, "One of the advantages of music being everywhere, is that we are always making new discoveries. With SNGTRKR you can quickly dive in and experience new artists and releases from an array of genres. It has never been so simple."
+   content_for :og_type, "website"
+%>
+<% content_for :description, "One of the advantages of music being everywhere, is that we are always making new discoveries. With SNGTRKR you can quickly dive in and experience new artists and releases from an array of genres. It has never been so simple." %>
 <% cache "explore_tab", expires_in: 1.month do %>
 <div class="g_two_col">
     <div class="g_sidebar_large">

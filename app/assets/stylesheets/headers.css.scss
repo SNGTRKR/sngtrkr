@@ -2,12 +2,12 @@ h1 {
   color: $orange !important;
   text-shadow: 1px 1px 0 rgba(240, 240, 240, 1) !important;
   font-size: 30px !important;
-  span {
-    color: $blue !important;
-    font-family: "MuseoSans-100", Helvetica, Arial, sans-serif !important;
-    margin-top: 10px;
-    display: block;
-  }
+}
+h1.secondary {
+  color: $blue !important;
+  font-family: "MuseoSans-100", Helvetica, Arial, sans-serif !important;
+  margin-top: 10px !important;
+  display: block;
 }
 
 h2 {
