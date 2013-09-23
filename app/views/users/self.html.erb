@@ -1,32 +1,32 @@
 <% content_for :title do %><%= @user.first_name %>'s profile
 <% end %>
 <% cache "user_info_1/#{@user.id}-#{@user.updated_at}", expires_in: 24.hours do %>
-    <div class="g_three_col">
-      <div class="g_sidebar">
-        <div class="tabbable tabs-left profile-tabs g_fixed">
-          <div class="scrollable">
-            <div class="scrollable_inner">
-              <%= image_tag '//graph.facebook.com/'+@user.fbid+'/picture?width=200&height=200' %>
-              <h1><%= @user.first_name + " " + @user.last_name %></h1>
+<div class="g_three_col">
+  <div class="g_sidebar">
+    <div class="tabbable tabs-left profile-tabs g_fixed">
+      <div class="scrollable">
+        <div class="scrollable_inner">
+          <%= image_tag '//graph.facebook.com/'+@user.fbid+'/picture?width=200&height=200' %>
+          <h1><%= @user.first_name + " " + @user.last_name %></h1>
 
-              <p>Bristol, United Kingdom</p>
-              <ul id="myTab" class="nav nav-tabs nav-stacked each-tab">
-                <li class="active">
-<% end %>
-<a href="#tab1" data-toggle="tab"><i class="icon-screenshot"></i><span id="tracking-<%= current_user.id %>"><%= @user.follows.count %></span>
-  trackings</a>
-<% cache "user_info_2/#{@user.id}-#{@user.updated_at}", expires_in: 24.hours do %>
-    </li>
-    <li>
-      <a href="#tab2" data-toggle="tab"><span class="blk ppl"></span><span class="wht ppl"></span><%= pluralize(@app_friends.count, 'friend') %></a>
-    </li>
-    </ul>
-    <div class="clearfix"></div>
-    <%= link_to edit_user_registration_path(@user) do %><div class="btn"><i class="icon-pencil"></i>Edit</div>
-    <% end %>
-    </div>
-    </div>
-    </div>
+          <p>Bristol, United Kingdom</p>
+          <ul id="myTab" class="nav nav-tabs nav-stacked each-tab">
+            <li class="active">
+              <% end %>
+              <a href="#tab1" data-toggle="tab"><i class="icon-screenshot"></i><span id="tracking-<%= current_user.id %>"><%= @user.follows.count %></span>
+                trackings</a>
+                <% cache "user_info_2/#{@user.id}-#{@user.updated_at}", expires_in: 24.hours do %>
+              </li>
+              <li>
+                <a href="#tab2" data-toggle="tab"><span class="blk ppl"></span><span class="wht ppl"></span><%= pluralize(@app_friends.count, 'friend') %></a>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+            <%= link_to edit_user_registration_path(@user) do %><div class="btn"><i class="icon-pencil"></i>Edit</div>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
 <% end %>
 <div class="g_main g_tabs">
@@ -65,7 +65,7 @@
           <% @app_friends.each do |friend| %>
               <div>
                 <%= image_tag "//graph.facebook.com/"+friend.fbid+"/picture?width=75&height=75" %>
-                <span><%= friend.first_name + " " + friend.last_name %></span>
+                <span><%= link_to friend.first_name + " " + friend.last_name, friend %></span>
                 <%= Follow.where('user_id = ?', friend.id).count %> trackers
               </div>
           <% end %>
