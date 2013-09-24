@@ -282,6 +282,17 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
     </div>
 <% end %>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+    var _gaq = [
+        ['_setAccount', 'UA-32097152-1'],
+        ['_trackPageview']
+    ];
+    (function (d, t) {
+        var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+        g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g, s)
+    }(document, 'script'));
+</script>
 <%= javascript_include_tag "/javascript/bootstrap.js", "/javascript/modernizr-2.6.2-respond-1.1.0.min.js", "/javascript/jquery.hoverIntent.minified.js", "/javascript/jquery-ui-1.10.2.custom.min.js", "/javascript/rails.validations.js", "/javascript/jquery.mousewheel.min.js", "application", "/javascript/typeahead.js", "/javascript/hogan-2.0.0.js", "/javascript/jquery.scrollTo.min.js", "/javascript/spin.js", "/javascript/jquery.spin.js" %>
 <!-- "/javascript/jquery-1.9.1.min.js", -->
 <script>
@@ -291,17 +302,6 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
             nope: ['<%= asset_path("css3-fallback.js") %>']
         }
     ]);
-</script>
-<script>
-    var _gaq = [
-        ['_setAccount', 'UA-XXXXX-X'],
-        ['_trackPageview']
-    ];
-    (function (d, t) {
-        var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
-        g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
-        s.parentNode.insertBefore(g, s)
-    }(document, 'script'));
 </script>
   <div class="search-data-query"></div>
 </body>

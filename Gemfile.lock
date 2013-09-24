@@ -34,7 +34,7 @@ GIT
       yajl-ruby (~> 1.1)
 
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
     actionmailer (3.2.13)
       actionpack (= 3.2.13)

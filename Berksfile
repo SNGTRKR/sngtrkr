@@ -14,8 +14,8 @@ cookbook 'imagemagick'
 cookbook 'sudo'
 
 # Ruby Cookbooks
-cookbook 'rbenv', git: 'git://github.com/fnichol/chef-rbenv.git', ref: "v0.7.2"
-cookbook 'ruby_build', git: 'git://github.com/fnichol/chef-ruby_build.git', ref: "v0.8.0"
+cookbook 'rbenv', git: 'https://github.com/fnichol/chef-rbenv.git', ref: "v0.7.2"
+cookbook 'ruby_build', git: 'https://github.com/fnichol/chef-ruby_build.git', ref: "v0.8.0"
 
 # Custom Cookbooks
 cookbook 'sngtrkr', path: 'site-cookbooks/sngtrkr'
