@@ -15,6 +15,8 @@ FB_APP_ID = '344989472205984'
 FB_APP_SECRET = 'f292de39b6ea01f60ac1c0f6bb2f054f'
 # end
 
+
+
 # Initialize the rails application
 SNGTRKR::Application.initialize!
 
