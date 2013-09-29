@@ -33,10 +33,10 @@ namespace :solr do
     run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:start"
   end
 
-  # desc "stop solr"
-  # task :stop, :roles => :app, :except => {:no_release => true} do
-  #   run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:stop"
-  # end
+  desc "stop solr"
+  task :stop, :roles => :app, :except => {:no_release => true} do
+    run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:stop"
+  end
 
   desc "reindex the whole database"
   task :reindex, :roles => :app do
@@ -58,5 +58,7 @@ task :notify_rollbar, :roles => :app do
   run "curl https://api.rollbar.com/api/1/deploy/ -F access_token=#{rollbar_token} -F environment=#{rails_env} -F revision=#{revision} -F local_username=#{local_user} >/dev/null 2>&1", :once => true
 end
 
-after :deploy , 'solr'
-after 'solr', 'notify_rollbar'
+after :deploy , 'solr:start'
+after 'solr:start', 'solr:reindex'
+after 'solr:reindex', 'solr:symlink'
+after 'solr:symlink', 'notify_rollbar'
