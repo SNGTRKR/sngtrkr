@@ -33,10 +33,10 @@ namespace :solr do
     run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:start"
   end
 
-  desc "stop solr"
-  task :stop, :roles => :app, :except => {:no_release => true} do
-    run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:stop"
-  end
+  # desc "stop solr"
+  # task :stop, :roles => :app, :except => {:no_release => true} do
+  #   run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:stop"
+  # end
 
   desc "reindex the whole database"
   task :reindex, :roles => :app do
