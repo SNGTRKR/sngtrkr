@@ -2,7 +2,7 @@
 
 
 $(document).ready ->
-  analytics_tracking()
+  # analytics_tracking()
   navbar()
   popover_triggers()
   modal()
@@ -537,40 +537,40 @@ recommendation = ->
     $("#recommend_carousel").css "opacity", "1"
     return false
 
-analytics_tracking = ->
+# analytics_tracking = ->
 
-  # Confirm the gaq object exists
-  ga_enabled = if typeof _gaq is 'object' then true else false
-  SGA = new Sngtrkr_analytics_data ga_enabled
+#   # Confirm the gaq object exists
+#   ga_enabled = if typeof _gaq is 'object' then true else false
+#   SGA = new Sngtrkr_analytics_data ga_enabled
 
-  # Set up object for building and pushing the GA array
-  class Sngtrkr_analytics_data
+#   # Set up object for building and pushing the GA array
+#   class Sngtrkr_analytics_data
 
-    constructor: (@enabled) ->
-      @send()
+#     constructor: (@enabled) ->
+#       @send()
 
-    # Default event
-    event: "click"
+#     # Default event
+#     event: "click"
 
-    build: (tracker) ->
-      if tracker isnt undefined
-        @name = tracker[0]
-        @category = tracker[1]
+#     build: (tracker) ->
+#       if tracker isnt undefined
+#         @name = tracker[0]
+#         @category = tracker[1]
 
-      return ['_trackEvent', @category, @event, @name]
+#       return ['_trackEvent', @category, @event, @name]
 
-    send: (object) ->
-      if @enabled
-        console.log object
-        _gaq.push(@build(object))
-      return
+#     send: (object) ->
+#       if @enabled
+#         console.log object
+#         _gaq.push(@build(object))
+#       return
 
-  # Assign the click event to the relevant element and collate data attribute data
-  $('[data-tracking="true"').click ->
-    $this = $(@)
-    name = $this.attr 'data-tracking-name'
-    catgegory = $this.attr 'data-tracking-category'
-    SGA.send [name, category]
+#   # Assign the click event to the relevant element and collate data attribute data
+#   $('[data-tracking="true"').click ->
+#     $this = $(@)
+#     name = $this.attr 'data-tracking-name'
+#     catgegory = $this.attr 'data-tracking-category'
+#     SGA.send [name, category]
 
 
 
