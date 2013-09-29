@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails', '~> 3'
 
@@ -96,6 +96,9 @@ gem 'twitter'
 
 # URL Shortener
 gem 'shortener'
+
+# Monitoring
+gem 'newrelic_rpm'
 
 gem 'kaminari'
 
