@@ -81,19 +81,12 @@ SNGTRKR::Application.configure do
       :address              => "smtp.gmail.com",
       :port                 => 587,
       :domain               => 'sngtrkr.com',
-      :user_name            => 'tom.alan.dallimore@googlemail.com',
-      :password             => 'Dyson123#',
+      :user_name            => 'sngtrkr@gmail.com',
+      :password             => ENV["GMAIL_PASSWORD"],
       :authentication       => 'plain',
       :enable_starttls_auto => true
   }
   config.action_mailer.default_url_options = {:host => 'sngtrkr.com'}
-
-
-  # config.middleware.use ExceptionNotifier,
-  #     :email_prefix => "[SNGTRKR EXCEPTION] ",
-  #     :sender_address => %{"notifier" <notifier@sngtrkr.com>},
-  #     :exception_recipients => %w{bessey@gmail.com},
-  #     :ignore_if            => lambda { |env, e| e.message =~ /SCRAPER/ }
 
   # Custom SNGTRKR configuration options
   config.x.solr.enable_indexing = true
