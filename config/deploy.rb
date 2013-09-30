@@ -59,6 +59,5 @@ task :notify_rollbar, :roles => :app do
 end
 
 after :deploy , 'solr:start'
-after 'solr:start', 'solr:reindex'
-after 'solr:reindex', 'solr:symlink'
+after 'solr:start', 'solr:symlink'
 after 'solr:symlink', 'notify_rollbar'
