@@ -10,7 +10,7 @@ class PagesController < ApplicationController
     if (user_signed_in?)
       flash.keep
       # FIXME: This may be triggering the url shortener loop
-      return redirect_to '/timeline'
+      redirect_to '/timeline'
     end
     @releases = Rails.cache.fetch("homepage_releases", :expires_in => 24.hours) do
       Release.includes(:artist).all(:limit => 66)
