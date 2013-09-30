@@ -50,13 +50,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # For use in the featured content partial
-  def featured_artists
-    count = 5
-    top_artists = Artist.select('artists.id').joins(:follows).group('artists.id').having("count(follows.id) > #{count}")
-    @latest_releases = Release.order("date DESC").where(:artist_id => top_artists).limit(4)
-  end
-
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = exception.message
     redirect_to root_url
