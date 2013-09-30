@@ -4,7 +4,7 @@ rvm:
 script:
   - RAILS_ENV=test bundle exec rake db:setup --trace
   - bundle exec rake db:test:prepare
-  - rspec
+  - bundle exec rspec spec/
 branches:
   only:
     - staging
