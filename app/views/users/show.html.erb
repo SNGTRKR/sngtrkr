@@ -9,7 +9,7 @@
           <p>Bristol, United Kingdom</p>
           <ul id="myTab" class="nav nav-tabs nav-stacked each-tab">
             <li class="active">
-              <a href="#" onclick="return false;"><i class="icon-screenshot"></i><span><%= @friend.follows.count %></span>trackings</a>
+              <a href="#" onclick="return false;"><i class="icon-screenshot"></i><%= pluralize(@friend.follows.count, "trackers") %></a>
             </li>
           </ul>
           </div>
