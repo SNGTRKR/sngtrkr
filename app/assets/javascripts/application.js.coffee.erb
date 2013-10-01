@@ -295,6 +295,20 @@ infinite_scrolling = ->
     #search query
     query = $('#tab3').data 'query'
 
+    #friend timeline scrolling
+    friend_time_last_load = new Date().getTime()
+    friend_page = 2
+    friend_id = $('.friend_timeline').data 'friend'
+    $('.friend_timeline').bind "mousewheel", (event, delta) ->
+      if delta < 0
+        if $(document).scrollTop() > ($(document).height() - 1500) and (new Date().getTime() - friend_time_last_load) > 1000
+          $this = $(@)
+          loading_animation($this)
+          friend_time_last_load = new Date().getTime();
+          console.log "AJAX friend timeline page load: " + friend_page
+          $.get '/users/' + friend_id + '?page=' + friend_page
+          friend_page++
+
     #timelime scrolling
     user_time_last_load = new Date().getTime()
     page = 1

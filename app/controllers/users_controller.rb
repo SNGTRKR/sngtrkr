@@ -41,6 +41,7 @@ class UsersController < ApplicationController
       #        return redirect_to :root, :error => "You do not have permissions to view this user"
       #      end
       respond_to do |format|
+        format.js { render :partial => 'users/friend_artist', :format => [:js] }
         format.html # show.html.erb
       end
     end

@@ -1,0 +1,6 @@
+<% if @following.empty? %>
+    console.log("No more artists");
+<% else %>
+    $('.friend_timeline').append('<% @following.each do |artist| %><%=j render :partial => "explore/artist", :object => artist %><% end %>');
+<% end %>
+$('.loading_block').remove();

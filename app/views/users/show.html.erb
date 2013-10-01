@@ -1,20 +1,22 @@
 <% content_for :title do %>Friend: <%= @friend.first_name %> <%= @friend.last_name %><% end %>
 <div class="g_two_col">
-  <div class="g_sidebar ">
-    <div class="g_fixed friend_info">
+  <div class="g_sidebar">
+    <div class="tabbable tabs-left profile-tabs g_fixed">
       <div class="scrollable">
         <div class="scrollable_inner">
           <%= image_tag '//graph.facebook.com/'+@friend.fbid+'/picture?width=200&height=200' %>
-          <h1><%= @user.first_name + " " + @user.last_name %></h1>
-          <div class="trackers">
-            <div></div>
-            <span><%= pluralize @friend.follows.count, "tracker" %></span>
+          <h1><%= @friend.first_name + " " + @friend.last_name %></h1>
+          <p>Bristol, United Kingdom</p>
+          <ul id="myTab" class="nav nav-tabs nav-stacked each-tab">
+            <li class="active">
+              <a href="#" onclick="return false;"><i class="icon-screenshot"></i><span><%= @friend.follows.count %></span>trackings</a>
+            </li>
+          </ul>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="g_main artist_timeline">
+  <div class="g_main friend_timeline" data-friend="<%= @friend.id %>">
     <% if @following.empty? %>
     No followings
     <% else %>
