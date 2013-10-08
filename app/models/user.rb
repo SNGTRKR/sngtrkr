@@ -18,7 +18,6 @@ class User < ActiveRecord::Base
 
   has_many :follows, :dependent => :destroy
   has_many :suggests, :dependent => :destroy
-  has_many :feedbacks
   has_and_belongs_to_many :roles
 
   has_many :followed_artists, :through => :follows, :source => :artist

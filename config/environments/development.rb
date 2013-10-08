@@ -45,6 +45,16 @@ SNGTRKR::Application.configure do
 
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.smtp_settings = {
+    :address              => 'smtp.gmail.com',
+    :port                 => 587,
+    :domain               => 'dev.sngtrkr.com:3000',
+    :authentication       => 'plain',
+    :user_name            => 'tom.alan.dallimore',
+    :password             => ENV["GMAIL_PASSWORD"],
+    :enable_starttls_auto => true
+
+  }
   config.action_mailer.default_url_options = {:host => 'dev.sngtrkr.com:3000'}
 
   # Custom SNGTRKR configuration options
