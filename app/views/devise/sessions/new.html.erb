@@ -12,21 +12,3 @@
     <div class="icon"><span></span><i class="icon-facebook"></i></div>
     <div class="divider"></div>Sign in with Facebook
 <% end %>
-
-<%= form_for(resource, :validate => true, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
-    <%= f.label :email %>
-    <%= f.email_field :email, :autofocus => true %>
-
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-
-    <% if devise_mapping.rememberable? -%>
-        <%= f.label :remember_me, :class => "checkbox" do %><%= f.check_box :remember_me %>Remember me
-        <% end %>
-    <% end -%>
-
-    <%= f.submit "Login", :class => 'btn' %>
-<% end %>
-
-<a data-target="#forgot_password" data-toggle="modal" class="forgot_pass">Forgot password?</a>

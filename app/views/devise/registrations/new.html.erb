@@ -2,29 +2,6 @@
 
 <%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-large btn-large") do %>
     <div class="icon"><span></span><i class="icon-facebook"></i></div>
-    <div class="divider"></div>Sign in with Facebook
+    <div class="divider"></div>Sign up with Facebook
 <% end %>
 
-<%= form_for(resource, :validate => true, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name, :validate => true %>
-
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name, :validate => true %>
-
-    <%= f.label :email %>
-    <%= f.email_field :email %>
-
-    <%= f.label :password %>
-    <%= f.password_field :password, :validate => true %>
-
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-
-    <%= f.label :privacy_policy, :class => 'checkbox' do %>
-        <%= f.check_box :privacy_policy %>I agree to the <%= link_to "Privacy policy", privacy_path %>
-    <% end %>
-
-    <%= f.submit "Sign up", :class => 'btn' %>
-<% end %>

@@ -1,11 +1,4 @@
 GIT
-  remote: git://github.com/bcardarella/client_side_validations.git
-  revision: 75d0dad8e4d49ba16c25e511b6514ea1408d2423
-  branch: 3-2-stable
-  specs:
-    client_side_validations (3.2.5)
-
-GIT
   remote: git://github.com/bessey/itunes-search-api.git
   revision: 996c4986cdc1839928d0061720f6d4e46af5c32d
   branch: multi-lookup
@@ -433,7 +426,6 @@ DEPENDENCIES
   capybara
   carrierwave
   chef!
-  client_side_validations!
   compass-rails (>= 1.0.0.rc.2)
   custom_configuration
   dalli
