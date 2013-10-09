@@ -1,3 +1,8 @@
+<% if Rails.env.development?
+  @domain = 'http://dev.sngtrkr.com:3000'
+elsif Rails.env.production?
+  @domain = 'http://do.sngtrkr.com'
+end %>
 <html style="width: 100%; margin-top: 0px !important; padding-top: 0px !important;">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -21,23 +26,23 @@
       <!--HEADER-->
       <table border="0" width="600" bgcolor="#EEEEEE" style="background-color:#EEEEEE;" cellpadding="0" cellspacing="0">
         <tr>
-          <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "600", :height => "20" %></td>
+          <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "600", :height => "20" %></td>
         </tr>
       </table>
       <table border="0" width="600" bgcolor="#EEEEEE" style="background-color:#EEEEEE;" cellpadding="0" cellspacing="0">
         <tr align="left">
-          <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "20", :height => "50" %></td>
-          <td><%= link_to(image_tag("/images/email/image-314077-623952.jpg", :alt => "SNGTRKR", :style => "display:block;border:none;", :width => "63", :height => "50"), :root, :target => "blank", only_path: false) %></td>
+          <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "20", :height => "50" %></td>
+          <td><%= link_to(image_tag("#{@domain}/images/email/image-314077-623952.jpg", :alt => "SNGTRKR", :style => "display:block;border:none;", :width => "63", :height => "50"), :root, :target => "blank", only_path: false) %></td>
           <td align="left" width="447" height="50">
             <p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #333333 !important; font-size: 13px; line-height: 17px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;">
               <strong><%= @user.first_name %> <%= @user.last_name %></strong><br/><%= yield :email_subject %></p></td>
           <td><%= image_tag "//graph.facebook.com/#{@user.fbid}/picture?width=50&height=50", :style => 'display:block;border:none;' %></td>
-          <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "20", :height => "50" %></td>
+          <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "20", :height => "50" %></td>
         </tr>
       </table>
       <table border="0" width="600" bgcolor="#EEEEEE" style="background-color:#EEEEEE;border-bottom:1px #cccccc solid;" cellpadding="0" cellspacing="0">
         <tr>
-          <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "600", :height => "20" %></td>
+          <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "600", :height => "20" %></td>
         </tr>
       </table>
       <!--HEADER END-->
@@ -45,7 +50,7 @@
       <!--MAIN CONTENT-->
       <table bgcolor="#ffffff" border="0" width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
         <tr>
-          <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "600", :height => "30" %></td>
+          <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "600", :height => "30" %></td>
         </tr>
       </table>
       <!-- top padding -->
@@ -53,7 +58,7 @@
       <!-- bottom padding -->
       <table bgcolor="#ffffff" border="0" width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
         <tr>
-          <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "600", :height => "30" %></td>
+          <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "600", :height => "30" %></td>
         </tr>
       </table>
       <!--MAIN CONTENT END-->
@@ -61,13 +66,13 @@
       <!-- Main Footer -->
       <table border="0" width="600" bgcolor="#EEEEEE" style="background-color:#EEEEEE;border-top:1px #cccccc solid;" cellpadding="0" cellspacing="0">
         <tr>
-          <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "600", :height => "20" %></td>
+          <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "600", :height => "20" %></td>
 
         </tr>
       </table>
       <table border="0" width="600" bgcolor="#EEEEEE" style="background-color:#EEEEEE;" cellpadding="0" cellspacing="0">
         <tr align="left">
-          <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "50", :height => "42" %></td>
+          <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "50", :height => "42" %></td>
           <td align="left" width="382" height="37">
             <p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #666666 !important; font-size: 10px; line-height: 14px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;">Please
               do not reply to this message; it was sent from an unmonitored email address.This message is a service
@@ -75,19 +80,19 @@
 
             <p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #9e9e9e !important; font-size: 10px; line-height: 14px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;">Copyright
               2012 SNGTRKR. All rights reserved.</p></td>
-          <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "20", :height => "20" %></td>
-          <td><%= link_to(image_tag("/images/email/image-314079-623958.jpg", :alt => "Facebook", :style => "display:block;border:none;", :width => "33", :height => "37"), "https://www.facebook.com/sngtrkr", :target => "blank") %>
+          <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "20", :height => "20" %></td>
+          <td><%= link_to(image_tag("#{@domain}/images/email/image-314079-623958.jpg", :alt => "Facebook", :style => "display:block;border:none;", :width => "33", :height => "37"), "https://www.facebook.com/sngtrkr", :target => "blank") %>
           </td>
-          <td><%= link_to(image_tag("/images/email/image-314082-623961.jpg", :alt => "Twitter", :style => "display:block;border:none;", :width => "31", :height => "37"), "https://twitter.com/sngtrkr", :target => "blank") %>
+          <td><%= link_to(image_tag("#{@domain}/images/email/image-314082-623961.jpg", :alt => "Twitter", :style => "display:block;border:none;", :width => "31", :height => "37"), "https://twitter.com/sngtrkr", :target => "blank") %>
           </td>
-          <td><%= link_to(image_tag("/images/email/image-314085-623964.jpg", :alt => "Google+", :style => "display:block;border:none;", :width => "34", :height => "37"), "https://plus.google.com/111951759053908858363", :target => "blank") %>
+          <td><%= link_to(image_tag("#{@domain}/images/email/image-314085-623964.jpg", :alt => "Google+", :style => "display:block;border:none;", :width => "34", :height => "37"), "https://plus.google.com/111951759053908858363", :target => "blank") %>
           </td>
-          <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "50", :height => "42" %></td>
+          <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "50", :height => "42" %></td>
         </tr>
       </table>
       <table border="0" width="600" bgcolor="#EEEEEE" style="background-color:#EEEEEE;" cellpadding="0" cellspacing="0">
         <tr>
-          <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "600", :height => "20" %></td>
+          <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "600", :height => "20" %></td>
         </tr>
       </table>
       <!--FOOTER END-->

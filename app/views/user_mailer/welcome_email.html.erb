@@ -1,11 +1,15 @@
+<% if Rails.env.development?
+  @domain = 'http://dev.sngtrkr.com:3000'
+elsif Rails.env.production?
+  @domain = 'http://do.sngtrkr.com'
+end %>
 <%= content_for :email_title, "Welcome to SNGTRKR" %>
 <%= content_for :email_subject, "Welcome to SNGTRKR" %>
 <table bgcolor="#ffffff" border="0" width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
   <tr>
-    <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "50", :height => "30" %></td>
+    <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "50", :height => "30" %></td>
     <td align="left" width="500">
-      <p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #333333 !important; font-size: 13px; line-height: 17px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;">Hi <%= @user.first_name %>
-        ,</p>
+      <p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #333333 !important; font-size: 13px; line-height: 17px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;">Hi <%= @user.first_name %>,</p>
       <br/>
 
       <p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #333333 !important; font-size: 13px; line-height: 17px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;">Your
@@ -16,22 +20,22 @@
       <p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #333333 !important; font-size: 13px; line-height: 17px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;">Here’s
         how you can get started:</p>
     </td>
-    <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "50", :height => "30" %></td>
+    <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "50", :height => "30" %></td>
   </tr>
 </table>
 <table bgcolor="#ffffff" border="0" width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
   <tr>
-    <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "600", :height => "45" %></td>
+    <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "600", :height => "45" %></td>
   </tr>
 </table>
 <table bgcolor="#ffffff" border="0" width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
   <tr>
-    <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "50", :height => "30" %></td>
+    <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "50", :height => "30" %></td>
     <td>
       <table bgcolor="#ffffff" border="0" width="500" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
         <tr>
-          <td><%= image_tag "/images/email/welcome1.png", :style => "display:block;", :width => "130", :height => "129", :alt => "Find artists" %></td>
-          <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "45", :height => "30" %></td>
+          <td><%= image_tag "#{@domain}/images/email/welcome1.png", :style => "display:block;", :width => "130", :height => "129", :alt => "Find artists" %></td>
+          <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "45", :height => "30" %></td>
           <td>
             <h1 style="font-weight: normal; letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #45a1c6 !important; font-size: 20px; line-height: 22px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0; ">Find
               artists</h1>
@@ -44,26 +48,26 @@
       </table>
       <table bgcolor="#ffffff" border="0" width="500" cellpadding="0" cellspacing="0" style="background-color:#ffffff;border-bottom:1px #cccccc solid;">
         <tr>
-          <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "500", :height => "20" %></td>
+          <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "500", :height => "20" %></td>
         </tr>
       </table>
     </td>
-    <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "50", :height => "30" %></td>
+    <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "50", :height => "30" %></td>
   </tr>
 </table>
 <table bgcolor="#ffffff" border="0" width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
   <tr>
-    <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "50", :height => "30" %></td>
+    <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "50", :height => "30" %></td>
     <td>
       <table bgcolor="#ffffff" border="0" width="500" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
         <tr>
-          <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "500", :height => "25" %></td>
+          <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "500", :height => "25" %></td>
         </tr>
       </table>
       <table bgcolor="#ffffff" border="0" width="500" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
         <tr>
-          <td><%= image_tag "/images/email/welcome2.png", :style => "display:block;", :width => "130", :height => "115", :alt => "Find artists" %></td>
-          <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "45", :height => "30" %></td>
+          <td><%= image_tag "#{@domain}/images/email/welcome2.png", :style => "display:block;", :width => "130", :height => "115", :alt => "Find artists" %></td>
+          <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "45", :height => "30" %></td>
           <td>
             <h1 style="font-weight: normal; letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #45a1c6 !important; font-size: 20px; line-height: 22px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0; ">Connect
               with friends</h1>
@@ -76,26 +80,26 @@
       </table>
       <table bgcolor="#ffffff" border="0" width="500" cellpadding="0" cellspacing="0" style="background-color:#ffffff;border-bottom:1px #cccccc solid;">
         <tr>
-          <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "500", :height => "20" %></td>
+          <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "500", :height => "20" %></td>
         </tr>
       </table>
     </td>
-    <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "50", :height => "30" %></td>
+    <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "50", :height => "30" %></td>
   </tr>
 </table>
 <table bgcolor="#ffffff" border="0" width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
   <tr>
-    <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "50", :height => "30" %></td>
+    <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "50", :height => "30" %></td>
     <td>
       <table bgcolor="#ffffff" border="0" width="500" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
         <tr>
-          <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "500", :height => "13" %></td>
+          <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "500", :height => "13" %></td>
         </tr>
       </table>
       <table bgcolor="#ffffff" border="0" width="500" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
         <tr>
-          <td><%= image_tag "/images/email/welcome3.png", :style => "display:block;", :width => "130", :height => "115", :alt => "Discover new music" %></td>
-          <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "45", :height => "30" %></td>
+          <td><%= image_tag "#{@domain}/images/email/welcome3.png", :style => "display:block;", :width => "130", :height => "115", :alt => "Discover new music" %></td>
+          <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "45", :height => "30" %></td>
           <td>
             <h1 style="font-weight: normal; letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #45a1c6 !important; font-size: 20px; line-height: 22px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0; ">Discover
               new music</h1>
@@ -108,33 +112,33 @@
       </table>
       <table bgcolor="#ffffff" border="0" width="500" cellpadding="0" cellspacing="0" style="background-color:#ffffff;border-bottom:1px #cccccc solid;">
         <tr>
-          <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "500", :height => "15" %></td>
+          <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "500", :height => "15" %></td>
         </tr>
       </table>
     </td>
-    <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "50", :height => "30" %></td>
+    <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "50", :height => "30" %></td>
   </tr>
 </table>
 <table bgcolor="#ffffff" border="0" width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
   <tr>
-    <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "600", :height => "20" %></td>
+    <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "600", :height => "20" %></td>
   </tr>
 </table>
 <table bgcolor="#ffffff" border="0" width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
   <tr>
-    <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "231", :height => "38" %></td>
-    <td><%= link_to(image_tag("/images/email/getstarted.png", :alt => "Get started", :style => "display:block;border:none;", :width => "131", :height => "36"), :root, :target => "blank", only_path: false) %></td>
-    <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "231", :height => "38" %></td>
+    <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "231", :height => "38" %></td>
+    <td><%= link_to(image_tag("#{@domain}/images/email/getstarted.png", :alt => "Get started", :style => "display:block;border:none;", :width => "131", :height => "36"), @domain, :target => "blank") %></td>
+    <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "231", :height => "38" %></td>
   </tr>
 </table>
 <table bgcolor="#ffffff" border="0" width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
   <tr>
-    <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "600", :height => "20" %></td>
+    <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "600", :height => "20" %></td>
   </tr>
 </table>
 <table bgcolor="#ffffff" border="0" width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
   <tr>
-    <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "50", :height => "30" %></td>
+    <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "50", :height => "30" %></td>
     <td align="left" width="500">
       <p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #333333 !important; font-size: 13px; line-height: 17px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;">If
         you have any questions, head on over to our community driven
@@ -147,6 +151,6 @@
       <p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #333333 !important; font-size: 13px; line-height: 17px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;">The
         SNGTRKR Team</p>
     </td>
-    <td><%= image_tag "/images/email/clear.gif", :style => "display:block;", :width => "50", :height => "30" %></td>
+    <td><%= image_tag "#{@domain}/images/email/clear.gif", :style => "display:block;", :width => "50", :height => "30" %></td>
   </tr>
 </table>

@@ -1,20 +1,25 @@
+<% if Rails.env.development?
+  @domain = 'http://dev.sngtrkr.com:3000'
+elsif Rails.env.production?
+  @domain = 'http://do.sngtrkr.com'
+end %>
 <%= content_for :email_title, "SNGTRKR - New releases from #{@artist_names}" %>
 <%= content_for :email_subject, "Here is your #{@date_adjective} digest of releases" %>
 <table bgcolor="#ffffff" border="0" width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
     <tr>
-        <td><%= image_tag '/images/email/clear.gif', :style => 'display:block;', :width => '50', :height => '30' %></td>
+        <td><%= image_tag '#{@domain}/images/email/clear.gif', :style => 'display:block;', :width => '50', :height => '30' %></td>
         <td align="left" width="500">
             <% @releases.each do |release| %>
             <!-- beginning of release -->
             <table bgcolor="#ffffff" border="0" width="500" cellpadding="0" cellspacing="0" style="background-color:#ffffff;border-bottom:1px #cccccc solid;">
                 <tr>
-                    <td><%= image_tag '/images/email/clear.gif', :style => 'display:block;', :width => '1', :height => '15' %></td>
+                    <td><%= image_tag '#{@domain}/images/email/clear.gif', :style => 'display:block;', :width => '1', :height => '15' %></td>
                 </tr>
                 <tr>
                     <td>
                         <%= link_to image_tag(release.image.medium, :alt => 'Release cover art', :style => 'display:block;border:none;', :height => '100', :width => '100'), [release.artist, release], :target => '_blank' %>
                     </td>
-                    <td><%= image_tag '/images/email/clear.gif', :style => 'display:block;', :width => '15', :height => '100' %></td>
+                    <td><%= image_tag '#{@domain}/images/email/clear.gif', :style => 'display:block;', :width => '15', :height => '100' %></td>
                     <td align="left" width="385" height="100">
                         <table bgcolor="#ffffff" border="0" width="385" height="100" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
                             <tr>
@@ -26,7 +31,7 @@
                                     <table bgcolor="#ffffff" border="0" width="385" height="22" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
                                         <tr>
                                             <td width="35" height="22">
-                                                <%= image_tag '/images/email/image-314093-623982.jpg', :alt => 'Artist', :style => 'display:block;border:none;', :width => '25', :height => '22' %>
+                                                <%= image_tag '#{@domain}/images/email/image-314093-623982.jpg', :alt => 'Artist', :style => 'display:block;border:none;', :width => '25', :height => '22' %>
                                             <td>
                                             <td align="left" width="350" height="22">
                                                 <p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #333333 !important; font-size: 13px; line-height: 17px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;"><a href="http://www.sngtrkr.com/" target="_blank" style="color:#333333;text-decoration:none;margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;"><%= link_to release.artist, release.artist, :target => '_blank' %></a></p>
@@ -41,7 +46,7 @@
                                     <table bgcolor="#ffffff" border="0" width="385" height="22" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
                                         <tr>
                                             <td width="35" height="22">
-                                                <%= image_tag '/images/email/image-314094-623984.jpg', :alt => 'Release date', :style => 'display:block;border:none;', :width => '25', :height => '22' %>
+                                                <%= image_tag '#{@domain}/images/email/image-314094-623984.jpg', :alt => 'Release date', :style => 'display:block;border:none;', :width => '25', :height => '22' %>
                                             <td>
                                             <td align="left" width="350" height="22">
                                                 <p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #333333 !important; font-size: 13px; line-height: 17px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;"><%= release.date.strftime("#{release.date.day.ordinalize} %B %Y ") %></p>
@@ -51,25 +56,25 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><%= image_tag '/images/email/clear.gif', :style => 'display:block;', :width => '1', :height => '3' %></td>
+                                <td><%= image_tag '#{@domain}/images/email/clear.gif', :style => 'display:block;', :width => '1', :height => '3' %></td>
                             </tr>
                             <tr>
                                 <td align="left" width="385" height="22">
-                                    <%= link_to image_tag('/images/email/buy.png', :style => 'display:block;border:none;', :width => '63', :height => '22', :alt => 'Buy release'), [release.artist, release], :target => '_blank', :style => 'margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;' %>
+                                    <%= link_to image_tag('#{@domain}/images/email/buy.png', :style => 'display:block;border:none;', :width => '63', :height => '22', :alt => 'Buy release'), [release.artist, release], :target => '_blank', :style => 'margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;' %>
                                 </td>
                             </tr>
                         </table>
                     </td>
                 </tr>
                 <tr>
-                    <td><%= image_tag '/images/email/clear.gif', :style => 'display:block;', :width => '1', :height => '15' %></td>
+                    <td><%= image_tag '#{@domain}/images/email/clear.gif', :style => 'display:block;', :width => '1', :height => '15' %></td>
                 </tr>
             </table>
             <!-- end of release -->
             <% end %>
         </td>
         <td>
-          <%= image_tag '/images/email/clear.gif', :style => 'display:block;', :width => '50', :height => '30' %>
+          <%= image_tag '#{@domain}/images/email/clear.gif', :style => 'display:block;', :width => '50', :height => '30' %>
         </td>
     </tr>
 </table>
@@ -77,23 +82,23 @@
 <table bgcolor="#ffffff" border="0" width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
     <tr>
         <td>
-          <%= image_tag '/images/email/clear.gif', :style => 'display:block;', :width => '1', :height => '20' %>
+          <%= image_tag '#{@domain}/images/email/clear.gif', :style => 'display:block;', :width => '1', :height => '20' %>
         </td>
     </tr>
 </table>
 <table bgcolor="#ffffff" border="0" width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
     <tr>
         <td>
-          <%= image_tag '/images/email/clear.gif', :style => 'display:block;', :width => '50', :height => '36' %>
+          <%= image_tag '#{@domain}/images/email/clear.gif', :style => 'display:block;', :width => '50', :height => '36' %>
         </td>
         <td align="left" height="36" width="333">
           <p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #333333 !important; font-size: 13px; line-height: 17px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;width:333;">Check out your timeline for more releases</p>
         </td>
         <td>
-            <%= link_to image_tag('/images/email/browsetimeline.png', :alt => 'Browse your timeline', :style => 'display:block;border:none;', :height => '36', :width => '171'), 'http://www.sngtrkr.com/', :target => '_blank' %>
+            <%= link_to image_tag('#{@domain}/images/email/browsetimeline.png', :alt => 'Browse your timeline', :style => 'display:block;border:none;', :height => '36', :width => '171'), 'http://www.sngtrkr.com/', :target => '_blank' %>
         </td>
         <td>
-            <%= image_tag '/images/email/clear.gif', :style => 'display:block;', :width => '46', :height => '36' %>
+            <%= image_tag '#{@domain}/images/email/clear.gif', :style => 'display:block;', :width => '46', :height => '36' %>
         </td>
     </tr>
 </table>

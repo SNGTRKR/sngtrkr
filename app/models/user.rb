@@ -52,8 +52,8 @@ class User < ActiveRecord::Base
       user = self.new(:email => data.email, :password => Devise.friendly_token[0, 20], :fbid => data.id, :first_name => data.first_name, :last_name => data.last_name)
       user.confirm!
       user.roles << Role.where(:name => 'User').first
-
       user.save!
+      UserMailer.welcome_email(user).deliver
     end
 
     if user.sign_in_count > 1
