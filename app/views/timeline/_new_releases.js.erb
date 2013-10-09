@@ -7,6 +7,9 @@ function next() {
         $('.release.fadeOutUp:nth-child('+ i +')').removeClass('fadeOutUp').show().addClass('fadeInDown');
         i++;
         setTimeout(next, 1000);
+        if ($('.user_timeline .release').length >= 1) {
+            $('#timeline-empty').remove();
+        }
     }
 }
 next();
@@ -27,4 +30,7 @@ if (parseInt(window.get_url_vars()["walkthrough"]) === 1 && window.trigger_walk 
               trigger: 'manual'
             }).popover('show');
         }, delay_popover);
+        if ($('.user_timeline .release').length >= 1) {
+            $('#timeline-empty').remove();
+        }
 };

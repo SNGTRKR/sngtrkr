@@ -22,8 +22,8 @@ $(document).ready ->
   $('.tip').tooltip()
 
   #allow anchor links for nav tabs
-  url = document.location.toString()
-  $(".nav-tabs a[href=#" + url.split("#")[1] + "]").tab "show"  if url.match("#")
+  # url = document.location.toString()
+  # $(".nav-tabs a[href=#" + url.split("#")[1] + "]").tab "show"  if url.match("#")
 
 $(document).ajaxComplete ->
   popover_triggers()
@@ -45,7 +45,10 @@ timeline = ->
     )
     $('.recommend_artists #recommend_carousel .carousel-inner .item:first-child').addClass 'active'
 
-    $('.recommend_artists').insertAfter('.user_timeline .release:nth-child(9)').show()
+    if $('.user_timeline .release').length >= 9
+      $('.recommend_artists').insertAfter('.user_timeline .release:nth-child(9)').show()
+    else if $('.user_timeline .release').length <= 3
+      $('.recommend_artists').show()
 
     if $('.user_timeline .release').length >= 18
       $('.hero_artist').insertAfter('.user_timeline .release:nth-child(18)').show()
@@ -450,6 +453,7 @@ walkthrough = ->
       <div class=\"btn btn-small finish_walk\">Finish</div>
   </div>').insertAfter('.search-data-query')
     # Add the scene triggers to the related elements
+    $('#timeline-empty').remove()
     $('.recommend_artists .carousel_suggest a').addClass 'trigger_walk'
     $('.navbar-search .search-query').addClass 'scene_3'
     $('.nav #show_info').addClass 'scene_4'
