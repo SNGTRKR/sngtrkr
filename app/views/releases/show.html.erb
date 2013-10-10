@@ -128,9 +128,6 @@
             <div class="divider"></div>
             Sign in with Facebook
         <% end %>
-        <a data-toggle="modal" data-target="#user_signup" class="signup">
-          <div class="btn btn-warning">Sign up</div>
-        </a>
       </div>
   <% end %>
   <% cache "related_releases/#{@release.id}-#{@release.updated_at}", expires_in: 1.hour do %>
