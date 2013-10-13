@@ -1,14 +1,16 @@
 <div class="result">
-  <%= link_to artist do %>
-      <img src="<%= artist.image.medium %>" class="image" height="110" width="110"/>
+  <%= link_to artist, 'data-tracking' => 'true', 'data-tracking-category' => 'search', 'data-tracking-name' => 'result-artist' do %>
+    <img src="<%= artist.image.medium %>" class="image" height="110" width="110"/>
   <% end %>
   <span>
-                  <div><%= link_to artist.name, artist %></div>
+    <div><%= link_to artist.name, artist, 'data-tracking' => 'true', 'data-tracking-category' => 'search', 'data-tracking-name' => 'result-artist' %></div>
     <%= artist.label_name %><br/>
     <%= artist.followers %> trackers
-                </span>
-  <%= follow_button artist, "small" %>
-  <div class="btn btn-small share_artist share" data-placement="bottom" id="<%= artist.id %>"><i class="icon-share"></i>Share
+  </span>
+  <%= follow_button artist, "small", "search-result" %>
+  <div class="btn btn-small share_artist share" data-placement="bottom" id="<%= artist.id %>" data-tracking="true" data-tracking-category="search" data-tracking-name="share-artist">
+    <i class="icon-share"></i>
+    Share
   </div>
   <%= artist_popover artist %>
 </div>

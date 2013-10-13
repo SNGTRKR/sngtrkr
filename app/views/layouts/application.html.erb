@@ -64,25 +64,25 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
       </div>
       <% cache "second_menu", expires_in: 2.weeks do %>
           <div class="span2">
-            <a href="http://blog.sngtrkr.com">
+            <a href="http://blog.sngtrkr.com" target="_blank" data-tracking="true" data-tracking-category="navbar" data-tracking-name="blog">
               <i class="icon-rss"></i>
               <h4>Blog</h4>
             </a>
           </div>
           <div class="span2">
-            <a href="http://support.sngtrkr.com">
+            <a href="http://support.sngtrkr.com" target="_blank" data-tracking="true" data-tracking-category="navbar" data-tracking-name="support">
               <div class="support"></div>
               <h4>Support</h4>
             </a>
           </div>
           <div class="span2">
-            <a href="/terms">
+            <a href="/terms" data-tracking="true" data-tracking-category="navbar" data-tracking-name="terms">
               <i class="icon-file-alt"></i>
               <h4>Terms</h4>
             </a>
           </div>
           <div class="span2">
-            <a href="/privacy">
+            <a href="/privacy" data-tracking="true" data-tracking-category="navbar" data-tracking-name="privacy">
               <i class="icon-lock"></i>
               <h4>Privacy</h4>
             </a>
@@ -105,30 +105,25 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
   <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
       <% if current_user %>
-          <%= link_to timeline_path, :class => "brand" do %>
+          <%= link_to timeline_path, :class => "brand", 'data-tracking' => 'true', 'data-tracking-category' => 'navbar', 'data-tracking-name' => 'root-timeline' do %>
               <div class="sngtrkr_logo"></div>
           <% end %>
       <% else %>
-          <%= link_to :root, :class => "brand" do %>
+          <%= link_to :root, :class => "brand", 'data-tracking' => 'true', 'data-tracking-category' => 'navbar', 'data-tracking-name' => 'root-home' do %>
               <div class="sngtrkr_logo"></div>
           <% end %>
       <% end %>
       <ul class="nav">
         <li class="divider-vertical"></li>
         <% if current_user %>
-            <li class="
-              <% if current_page?(timeline_path) %>active
-              <% end %>"><%= link_to timeline_path do %>Timeline<% end %></li>
+            <li class="<%= active_page(timeline_path) %>"><%= link_to timeline_path, 'data-tracking' => 'true', 'data-tracking-category' => 'navbar', 'data-tracking-name' => 'timeline' do %>Timeline<% end %></li>
             <li class="divider-vertical"></li>
         <% end %>
-            <li class="<% if current_page?(explore_path) %>active
-              <% end %>"><%= link_to explore_path do %>Explore<% end %></li>
+            <li class="<%= active_page(explore_path) %>"><%= link_to explore_path, 'data-tracking' => 'true', 'data-tracking-category' => 'navbar', 'data-tracking-name' => 'explore' do %>Explore<% end %></li>
             <li class="divider-vertical"></li>
         <% if current_user %>
-            <li class="
-              <% if current_page?(user_path(current_user)) %>active
-              <% end %>">
-              <%= link_to user_path(current_user) do %>
+            <li class="<%= active_page(user_path(current_user)) %>">
+              <%= link_to user_path(current_user), 'data-tracking' => 'true', 'data-tracking-category' => 'navbar', 'data-tracking-name' => 'profile' do %>
                   Profile
               <% end %>
             </li>
@@ -138,7 +133,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
 
       <%= form_tag search_path, :method => 'get', :class => "navbar-search pull-left" do %>
           <%= text_field_tag(:query, params[:query], :autocomplete => 'off', :tabindex => "1", :placeholder => "Find artists and releases", :class => 'search-query') %>
-          <%= link_to "#submit" do %>
+          <%= link_to "#submit", 'data-tracking' => 'true', 'data-tracking-category' => 'navbar', 'data-tracking-name' => 'search' do %>
               <i class="icon-search"></i>
           <% end %>
       <% end %>
@@ -146,11 +141,11 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
         <li class="divider-vertical"></li>
         <li>
           <% if !current_user %>
-              <a data-toggle="modal" data-target="#user_login" class="login">
+              <a data-toggle="modal" data-target="#user_login" class="login" data-tracking="true" data-tracking-category="navbar" data-tracking-name="login">
                 Login
               </a>
           <% else %>
-              <%= link_to(destroy_user_session_path, :method => :delete) do %>
+              <%= link_to destroy_user_session_path, :method => :delete, 'data-tracking' => 'true', 'data-tracking-category' => 'navbar', 'data-tracking-name' => 'logout' do %>
                   Logout
               <% end %>
           <% end %>
@@ -158,13 +153,13 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
         <li class="divider-vertical"></li>
         <% if !current_user %>
             <li>
-              <a data-toggle="modal" data-target="#user_signup" class="signup">
+              <a data-toggle="modal" data-target="#user_signup" class="signup" data-tracking="true" data-tracking-category="navbar" data-tracking-name="signup">
                 <div class="btn btn-warning">Sign up</div>
               </a>
             </li>
             <li class="divider-vertical"></li>
         <% end %>
-        <li id="show_info"><a>Info</a></li>
+        <li id="show_info"><a data-tracking="true" data-tracking-category="navbar" data-tracking-name="open-info">Info</a></li>
         <li class="divider-vertical buffer"></li>
       </ul>
     </div>
@@ -196,7 +191,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
     <div class="modal hide fade" id="user_signup">
       <div class="modal-body">
         <div class="top">
-          <%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-large btn-large") do %>
+          <%= link_to user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-large btn-large", 'data-tracking' => 'true', 'data-tracking-category' => 'navbar', 'data-tracking-name' => 'signup-fb-signin' do %>
               <div class="icon"><span></span><i class="icon-facebook"></i></div>
               <div class="divider"></div>
               Sign up with Facebook
@@ -207,7 +202,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
     <div class="modal hide fade" id="user_login">
       <div class="modal-body">
         <div class="top">
-          <%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-large btn-large") do %>
+          <%= link_to user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-large btn-large", 'data-tracking' => 'true', 'data-tracking-category' => 'navbar', 'data-tracking-name' => 'login-fb-signin' do %>
               <div class="icon"><span></span><i class="icon-facebook"></i></div>
               <div class="divider"></div>
               Sign in with Facebook
@@ -228,7 +223,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
         }
     ]);
     var _gaq = [
-        ['_setAccount', 'UA-32097152-1'],
+        ['_setAccount', 'UA-32097152-2'],
         ['_trackPageview']
     ];
     (function (d, t) {

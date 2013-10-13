@@ -1,21 +1,23 @@
 <div class="release artist explore_artist">
     <div class="hero_image">
-      <%= link_to artist do %>
+      <%= link_to artist, 'data-tracking' => 'true', 'data-tracking-category' => 'explore', 'data-tracking-name' => 'explore-artist' do %>
         <div style="background-image:url(<%= artist.image.large.url %>);"></div>
         <div class="grad"></div>
       <% end %> 
     </div>
     <div class="pop_releases">
       <% artist.related_releases.take(2).each do |release| %>
-        <%= link_to (image_tag release.image.medium), [artist, release] %>
+        <%= link_to (image_tag release.image.medium), [artist, release], 'data-tracking' => 'true', 'data-tracking-category' => 'explore', 'data-tracking-name' => 'explore-artist-release' %>
       <% end %>
     </div>
     <div class="info">
-      <%= link_to artist do %><h2><%= artist.name %></h2><% end %>
+      <%= link_to artist, 'data-tracking' => 'true', 'data-tracking-category' => 'explore', 'data-tracking-name' => 'explore-artist' do %>
+        <h2><%= artist.name %></h2>
+      <% end %>
       <h3><%= artist.label_name %></h3>
     </div>
     <div class="actions">
-      <%= follow_button artist, "tile" %>
+      <%= follow_button artist, "tile", "explore-popular-artist" %>
       <span class="act artist_tracker">
           <div></div>
           <%= pluralize artist.followers, "tracker" %>
@@ -24,7 +26,7 @@
           <div></div>
           <%= pluralize artist.count_release, "release" %>
       </span>
-      <span class="share_artist share act" id="<%= artist.id %>">
+      <span class="share_artist share act" id="<%= artist.id %>" data-tracking="true" data-tracking-category="explore" data-tracking-name="explore-artist-share">
         <i class="icon-share-alt"></i>
       </span>
 

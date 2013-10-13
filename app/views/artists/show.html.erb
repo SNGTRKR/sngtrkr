@@ -28,43 +28,43 @@
           <div></div>
           <%= pluralize @release_count, "release" %>
         </div>
-        <%= follow_button @artist, "normal" %>
+        <%= follow_button @artist, "normal", "artist-profile" %>
 
         <% cache "social_links/#{@artist.id}-#{@artist.updated_at}", expires_in: 1.week do %>
-        <div class="btn share share_artist" id="<%= @artist.id %>">
+        <div class="btn share share_artist" id="<%= @artist.id %>" data-tracking="true" data-tracking-category="artist" data-tracking-name="share">
           <i class="icon-share"></i>Share
         </div>
         <ul>
           <% if @artist.fbid? %>
               <li>
-                <a href="http://www.facebook.com/<%= @artist.fbid %>" target="_blank"><div class="facebook"></div>
+                <a href="http://www.facebook.com/<%= @artist.fbid %>" target="_blank" data-tracking="true" data-tracking-category="artist" data-tracking-name="facebook"><div class="facebook"></div>
                   <p>Facebook</p></a></li>
           <% end %>
           <% if @artist.twitter? %>
               <li>
-                <a href="http://www.twitter.com/<%= @artist.twitter %>" target="_blank"><div class="twitter"></div>
+                <a href="http://www.twitter.com/<%= @artist.twitter %>" target="_blank" data-tracking="true" data-tracking-category="artist" data-tracking-name="twitter"><div class="twitter"></div>
                   <p>Twitter</p></a></li>
           <% end %>
           <% if @artist.youtube? %>
               <li>
-                <a href="http://www.youtube.com/<%= @artist.youtube %>" target="_blank"><div class="youtube"></div>
+                <a href="http://www.youtube.com/<%= @artist.youtube %>" target="_blank" data-tracking="true" data-tracking-category="artist" data-tracking-name="youtube"><div class="youtube"></div>
                   <p>YouTube</p></a></li>
           <% end %>
           <% if @artist.soundcloud? %>
               <li>
-                <a href="http://www.soundcloud.com/<%= @artist.soundcloud %>" target="_blank"><div class="soundcloud"></div>
+                <a href="http://www.soundcloud.com/<%= @artist.soundcloud %>" target="_blank" data-tracking="true" data-tracking-category="artist" data-tracking-name="soundcloud"><div class="soundcloud"></div>
                   <p>Soundcloud</p></a></li>
           <% end %>
           <% if @artist.website? %>
-              <li><a href="http://<%= @artist.website %>" target="_blank"><div class="website"></div>
+              <li><a href="http://<%= @artist.website %>" target="_blank" data-tracking="true" data-tracking-category="artist" data-tracking-name="website"><div class="website"></div>
                 <p>Website</p></a></li>
           <% end %>
           <% if @artist.sd? %>
-              <li><a href="<%= @artist.sd %>" target="_blank"><div class="sdigital"></div><p>7Digital</p></a>
+              <li><a href="<%= @artist.sd %>" target="_blank" data-tracking="true" data-tracking-category="artist" data-tracking-name="7-digital"><div class="sdigital"></div><p>7Digital</p></a>
               </li>
           <% end %>
           <% if @artist.itunes? %>
-              <li><a href="<%= @artist.itunes %>" target="_blank"><div class="itunes"></div><p>iTunes</p></a>
+              <li><a href="<%= @artist.itunes %>" target="_blank" data-tracking="true" data-tracking-category="artist" data-tracking-name="itunes"><div class="itunes"></div><p>iTunes</p></a>
               </li>
           <% end %>
         </ul>
@@ -76,7 +76,7 @@
     <% if !user_signed_in? %>
         <div id="artist_signup">
           <p>Track <%= @artist.name %> and others to keep up to date with new releases.</p>
-          <%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-small") do %>
+          <%= link_to(user_omniauth_authorize_path(:facebook), 'data-tracking' => 'true', 'data-tracking-category' => 'artist', 'data-tracking-name' => 'fb-signin', :class => "btn btn-primary btn-fb-small") do %>
               <div class="icon"><span></span><i class="icon-facebook"></i></div>
               <div class="divider"></div>
               Sign in with Facebook
@@ -86,7 +86,7 @@
     <% if @timeline.empty? %>
         <%= render 'timeline/artist_empty' %>
     <% else %>
-          <%= render :partial => 'timeline/release', :collection => @timeline, :locals => { :release_type => "" } %>
+          <%= render :partial => 'timeline/release', :collection => @timeline, :locals => { :release_type => "", :tracking_category => 'artist', :tracking_name => 'artist-timeline' } %>
     <% end %>
   </div>
 </div>

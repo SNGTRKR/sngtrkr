@@ -16,9 +16,10 @@
           <div class="scrollable">
             <div class="scrollable_inner">
               <%= image_tag @artist.image.large %>
-              <h2><%= link_to @artist.name, @artist %></h2>
-
-              <h3><%= @artist.label_name %></h3>
+              <div class="key_info">
+                <h2><%= link_to @artist.name, @artist %></h2>
+                <h3><%= @artist.label_name %></h3>
+              </div>
 <% end %>
 <div class="trackers">
   <div></div>
@@ -28,41 +29,41 @@
   <div></div>
   <%= pluralize @release_count, "release" %>
 </div>
-<%= follow_button @artist, "normal" %>
+<%= follow_button @artist, "normal", "release-profile" %>
 <% cache "social_links/#{@artist.id}-#{@artist.updated_at}", expires_in: 1.week do %>
-    <div class="btn share_artist share" id="<%= @artist.id %>"><i class="icon-share"></i>Share
+    <div class="btn share_artist share" id="<%= @artist.id %>" data-tracking="true" data-tracking-category="release" data-tracking-name="share-profile"><i class="icon-share"></i>Share
     </div>
     <ul>
       <% if @artist.fbid? %>
           <li>
-            <a href="http://www.facebook.com/<%= @artist.fbid %>" target="_blank"><div class="facebook"></div>
+            <a href="http://www.facebook.com/<%= @artist.fbid %>" target="_blank" data-tracking="true" data-tracking-category="release" data-tracking-name="facebook"><div class="facebook"></div>
               <p>Facebook</p></a></li>
       <% end %>
       <% if @artist.twitter? %>
           <li>
-            <a href="http://www.twitter.com/<%= @artist.twitter %>" target="_blank"><div class="twitter"></div>
+            <a href="http://www.twitter.com/<%= @artist.twitter %>" target="_blank" data-tracking="true" data-tracking-category="release" data-tracking-name="twitter"><div class="twitter"></div>
               <p>Twitter</p></a></li>
       <% end %>
       <% if @artist.youtube? %>
           <li>
-            <a href="http://www.youtube.com/<%= @artist.youtube %>" target="_blank"><div class="youtube"></div>
+            <a href="http://www.youtube.com/<%= @artist.youtube %>" target="_blank" data-tracking="true" data-tracking-category="release" data-tracking-name="youtube"><div class="youtube"></div>
               <p>YouTube</p></a></li>
       <% end %>
       <% if @artist.soundcloud? %>
           <li>
-            <a href="http://www.soundcloud.com/<%= @artist.soundcloud %>" target="_blank"><div class="soundcloud"></div>
+            <a href="http://www.soundcloud.com/<%= @artist.soundcloud %>" target="_blank" data-tracking="true" data-tracking-category="release" data-tracking-name="soundcloud"><div class="soundcloud"></div>
               <p>Soundcloud</p></a></li>
       <% end %>
       <% if @artist.website? %>
-          <li><a href="http://<%= @artist.website %>" target="_blank"><div class="website"></div>
+          <li><a href="http://<%= @artist.website %>" target="_blank" data-tracking="true" data-tracking-category="release" data-tracking-name="website"><div class="website"></div>
             <p>Website</p></a></li>
       <% end %>
       <% if @artist.sd? %>
-          <li><a href="<%= @artist.sd %>" target="_blank"><div class="sdigital"></div><p>7Digital</p></a>
+          <li><a href="<%= @artist.sd %>" target="_blank" data-tracking="true" data-tracking-category="release" data-tracking-name="7-digital"><div class="sdigital"></div><p>7Digital</p></a>
           </li>
       <% end %>
       <% if @artist.itunes? %>
-          <li><a href="<%= @artist.itunes %>" target="_blank"><div class="itunes"></div><p>iTunes</p></a>
+          <li><a href="<%= @artist.itunes %>" target="_blank" data-tracking="true" data-tracking-category="artist" data-tracking-name="itunes"><div class="itunes"></div><p>iTunes</p></a>
           </li>
       <% end %>
     </ul>
@@ -113,17 +114,17 @@
         <p class="tip" data-title="Release date" data-placement="left">
           <i class="icon-calendar"></i><%= @release.date.strftime("#{@release.date.day.ordinalize} %B %Y ") %></p>
 
-        <div class="btn buy" id="<%= @release.id %>">Buy</div>
-        <div class="btn share_release share" id="<%= @release.id %>"><i class="icon-share"></i>Share
+        <div class="btn buy" id="<%= @release.id %>" data-tracking="true" data-tracking-category="release" data-tracking-name="buy">Buy</div>
+        <div class="btn share_release share" id="<%= @release.id %>" data-tracking="true" data-tracking-category="release" data-tracking-name="share-release"><i class="icon-share"></i>Share
         </div>
-        <div class="btn report" data-toggle="modal" data-target="#reportModal">Report</div>
+        <div class="btn report" data-toggle="modal" data-target="#reportModal" data-tracking="true" data-tracking-category="release" data-tracking-name="report">Report</div>
       </div>
       <div class="clearfix"></div>
   <% end %>
   <% if !user_signed_in? %>
       <div id="release_signup">
         <p>Track <%= link_to @artist.name, @artist %> and others to keep up to date with new releases.</p>
-        <%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-small") do %>
+        <%= link_to(user_omniauth_authorize_path(:facebook), 'data-tracking' => 'true', 'data-tracking-category' => 'release', 'data-tracking-name' => 'fb-signin', :class => "btn btn-primary btn-fb-small") do %>
             <div class="icon"><span></span><i class="icon-facebook"></i></div>
             <div class="divider"></div>
             Sign in with Facebook
@@ -139,25 +140,7 @@
             next
           end
         %>
-            <div class="related">
-              <%= link_to [release.artist, release] do %>
-                  <img src="<%= release.image.medium %>" class="related_img" height="75" width="75"/>
-              <% end %>
-              <span>
-              <div><%= link_to release.name, [release.artist, release] %></div>
-                <%= release.label_name %><br/>
-                <%= release.date.strftime("#{release.date.day.ordinalize} %B %Y ") %>
-            </span>
-
-              <div class="actions">
-                <div class="btn buy" id="<%= release.id %>">Buy</div>
-                <div class="btn share_release share" id="<%= release.id %>">
-                  <i class="icon-share"></i>Share
-                </div>
-              </div>
-              <%= buy_popover release %>
-              <%= release_popover release, @artist %>
-            </div>
+          <%= render :partial => 'releases/related', :locals => {:release => release, :artist => @artist } %>
         <% end %>
       </div>
   <% end %>

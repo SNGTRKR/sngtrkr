@@ -1,16 +1,16 @@
-  <div class="result">
-  <%= link_to [release.artist, release] do %>
-      <img src="<%= release.image.medium %>" class="image" height="110" width="110"/>
+<div class="result">
+  <%= link_to [release.artist, release], 'data-tracking' => 'true', 'data-tracking-category' => 'search', 'data-tracking-name' => 'result-release' do %>
+    <img src="<%= release.image.medium %>" class="image" height="110" width="110"/>
   <% end %>
   <span>
-                  <div><%= link_to release.name, [release.artist, release] %></div>
-    <%= link_to release.artist.name, release.artist, :class => 'artist_l' %><br/>
+    <div><%= link_to release.name, [release.artist, release], 'data-tracking' => 'true', 'data-tracking-category' => 'search', 'data-tracking-name' => 'result-release' %></div>
+    <%= link_to release.artist.name, release.artist, :class => 'artist_l', 'data-tracking' => 'true', 'data-tracking-category' => 'search', 'data-tracking-name' => 'result-release-artist' %><br/>
     <%= release.date.strftime("#{release.date.day.ordinalize} %B %Y ") %>
-                </span>
-
-  <div class="btn btn-small buy" id="<%= release.id %>">Buy</div>
-  <div class="btn btn-small share_release share" id="<%= release.id %>">
-    <i class="icon-share"></i>Share
+  </span>
+  <div class="btn btn-small buy" id="<%= release.id %>" data-tracking="true" data-tracking-category="search" data-tracking-name="buy-release">Buy</div>
+  <div class="btn btn-small share_release share" id="<%= release.id %>" data-tracking="true" data-tracking-category="search" data-tracking-name="share-release">
+    <i class="icon-share"></i>
+    Share
   </div>
   <%= buy_popover release %>
   <%= release_popover release, release.artist %>

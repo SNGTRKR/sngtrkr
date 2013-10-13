@@ -1,12 +1,12 @@
 <div class="buy_pop buy_pop_<%= bpop.id %>">
   <div class="buy_content">
     <% if bpop.itunes? %>
-        <%= link_to bpop.itunes, :target => "_blank" do %>
+        <%= link_to bpop.itunes, :target => "_blank", 'data-tracking' => 'true', 'data-tracking-category' => 'buy-popover', 'data-tracking-name' => 'itunes' do %>
         	<div class="itunes"></div>
         <% end %>
     <% end %>
     <% if bpop.sdigital %>
-        <%= link_to bpop.sdigital, :target => "_blank" do %>
+        <%= link_to bpop.sdigital, :target => "_blank", 'data-tracking' => 'true', 'data-tracking-category' => 'buy-popover', 'data-tracking-name' => '7-digital' do %>
         	<div class="sdigital"></div>
         <% end %>
     <% end %>

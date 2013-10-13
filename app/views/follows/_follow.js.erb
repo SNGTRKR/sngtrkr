@@ -1,6 +1,7 @@
 $("a.add-trkr").bind("ajax:complete", function () {
     var artist_id = $(this).data("id");
-    $(this).replaceWith("<a href=\"/artists/" + artist_id + "/unfollow.js\" class=\"remove-trkr btn track active\" data-id=\"" + artist_id + "\" data-remote=\"true\">Tracked</a>");
+    var tracking_name = $(this).data("tracking-name");
+    $(this).replaceWith("<a href=\"/artists/" + artist_id + "/unfollow.js\" class=\"remove-trkr btn track active\" data-id=\"" + artist_id + "\" data-remote=\"true\" data-tracking=\"true\" data-tracking-category=\"unfollow\" data-tracking-name=\"" + tracking_name + "\">Tracked</a>");
     <% @artist = Artist.find(params[:artist_id]) %>
     $('#tracker-' + artist_id).text("<%= pluralize(@artist.followers, 'tracker') %>");
     FB.api("/me/sngtrkr:track", "post", {
@@ -12,7 +13,8 @@ $("a.add-trkr").bind("ajax:complete", function () {
 });
 $("a.add-trkr-small").bind("ajax:complete", function () {
     var artist_id = $(this).data("id");
-    $(this).replaceWith("<a href=\"/artists/" + artist_id + "/unfollow.js\" class=\"remove-trkr-small btn btn-small active\" data-id=\"" + artist_id + "\" data-remote=\"true\">Tracked</a>");
+    var tracking_name = $(this).data("tracking-name");
+    $(this).replaceWith("<a href=\"/artists/" + artist_id + "/unfollow.js\" class=\"remove-trkr-small btn btn-small active\" data-id=\"" + artist_id + "\" data-remote=\"true\" data-tracking=\"true\" data-tracking-category=\"unfollow\" data-tracking-name=\"" + tracking_name + "\">Tracked</a>");
     FB.api("/me/sngtrkr:track", "post", {
         artist: "http://sngtrkr.com/artists/" + $(this).data("id")
     }, function (response) {
@@ -22,7 +24,8 @@ $("a.add-trkr-small").bind("ajax:complete", function () {
 });
 $("a.add-trkr-tile").bind("ajax:complete", function () {
     var artist_id = $(this).data("id");
-    $(this).replaceWith("<a href=\"/artists/" + artist_id + "/unfollow.js\" class=\"remove-trkr-tile act track_artist active\" data-id=\"" + artist_id + "\" data-remote=\"true\">Tracked</a>");
+    var tracking_name = $(this).data("tracking-name");
+    $(this).replaceWith("<a href=\"/artists/" + artist_id + "/unfollow.js\" class=\"remove-trkr-tile act track_artist active\" data-id=\"" + artist_id + "\" data-remote=\"true\" data-tracking=\"true\" data-tracking-category=\"unfollow\" data-tracking-name=\"" + tracking_name + "\">Tracked</a>");
     FB.api("/me/sngtrkr:track", "post", {
         artist: "http://sngtrkr.com/artists/" + $(this).data("id")
     }, function (response) {

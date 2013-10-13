@@ -1,30 +1,18 @@
 <div class="release hero_artist artist">
     <% @following.each do |artist_tracked| %>
           <div class="hero_image">
-            <%= link_to artist_tracked do %>
+            <%= link_to artist_tracked, 'data-tracking' => 'true', 'data-tracking-category' => 'timeline', 'data-tracking-name' => 'user-timeline-hero-artist' do %>
               <div style="background-image:url(<%= artist_tracked.image.large.url %>);"></div>
               <div class="grad"></div>
             <% end %>
           </div>
           <div class="pop_releases timeline_artist">
-            <!-- <a href="#">
-              <img alt="Missing" src="/images/release/medium/missing.png">
-            </a>
-            <a href="#">
-              <img alt="Missing" src="/images/release/medium/missing.png">
-            </a>
-            <a href="#">
-              <img alt="Missing" src="/images/release/medium/missing.png">
-            </a>
-            <a href="#">
-              <img alt="Missing" src="/images/release/medium/missing.png">
-            </a> -->
             <% artist_tracked.related_releases.take(4).each do |release| %>
-              <%= link_to image_tag(release.image.medium), [artist_tracked, release] %>
+              <%= link_to image_tag(release.image.medium), [artist_tracked, release], 'data-tracking' => 'true', 'data-tracking-category' => 'timeline', 'data-tracking-name' => 'user-timeline-hero-release' %>
             <% end %>
           </div>
           <div class="info">
-            <%= link_to artist_tracked do%><h2><%= artist_tracked.name %></h2><% end %>
+            <%= link_to artist_tracked, 'data-tracking' => 'true', 'data-tracking-category' => 'timeline', 'data-tracking-name' => 'user-timeline-hero-artist' do %><h2><%= artist_tracked.name %></h2><% end %>
             <h3><%= artist_tracked.label_name %></h3>
           </div>
           <div class="actions">
@@ -36,7 +24,7 @@
                 <div></div>
                 <%= pluralize artist_tracked.count_release, "release" %>
             </span>
-            <span class="share_artist share act" id="<%= artist_tracked.id %>">
+            <span class="share_artist share act" id="<%= artist_tracked.id %>" data-tracking="true" data-tracking-category="timeline" data-tracking-name="user-timeline-hero-share">
               <i class="icon-share-alt"></i>
             </span>
           </div>

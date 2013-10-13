@@ -17,18 +17,18 @@
           <ul id="myTab" class="nav nav-tabs nav-stacked each-tab">
             <li class="active">
               <% end %>
-              <a href="#tab1" data-toggle="tab"><i class="icon-screenshot"></i><span id="tracking-<%= current_user.id %>"><%= @user.follows.count %></span>
+              <a href="#tab1" data-toggle="tab" data-tracking="true" data-tracking-category="profile" data-tracking-name="trackings-nav"><i class="icon-screenshot"></i><span id="tracking-<%= current_user.id %>"><%= @user.follows.count %></span>
                 trackings</a>
                 <% cache "user_info_2/#{@user.id}-#{@user.updated_at}", expires_in: 24.hours do %>
               </li>
               <% if @user.fbid? %>
                 <li>
-                  <a href="#tab2" data-toggle="tab"><span class="blk ppl"></span><span class="wht ppl"></span><%= pluralize(@app_friends.count, 'friend') %></a>
+                  <a href="#tab2" data-toggle="tab" data-tracking="true" data-tracking-category="profile" data-tracking-name="friends-nav"><span class="blk ppl"></span><span class="wht ppl"></span><%= pluralize(@app_friends.count, 'friend') %></a>
                 </li>
               <% end %>
             </ul>
             <div class="clearfix"></div>
-            <%= link_to edit_user_registration_path(@user) do %><div class="btn"><i class="icon-pencil"></i>Edit</div>
+            <%= link_to edit_user_registration_path(@user), 'data-tracking' => 'true', 'data-tracking-category' => 'profile', 'data-tracking-name' => 'edit' do %><div class="btn"><i class="icon-pencil"></i>Edit</div>
             <% end %>
           </div>
         </div>
@@ -44,11 +44,11 @@
             <% @following.each do |artist_tracked| %>
                 <tr id="row-<%= artist_tracked.id %>" class="animated">
                   <td>
-                    <%= link_to image_tag(artist_tracked.image.medium.url, :class => "image", :height => "75", :width => "75"), artist_path(artist_tracked) %>
-                    <%= link_to artist_tracked.name, artist_path(artist_tracked) %>
+                    <%= link_to image_tag(artist_tracked.image.medium.url, :class => "image", :height => "75", :width => "75"), artist_path(artist_tracked), 'data-tracking' => 'true', 'data-tracking-category' => 'profile', 'data-tracking-name' => 'tracked-artist' %>
+                    <%= link_to artist_tracked.name, artist_path(artist_tracked), 'data-tracking' => 'true', 'data-tracking-category' => 'release', 'data-tracking-name' => 'tracked-artist' %>
                     <span class="actions">
-                              <%= follow_button artist_tracked, "normal" %>
-                      <div class="btn share share_artist" id="<%= artist_tracked.id %>">
+                      <%= follow_button artist_tracked, "normal", "tracked-artist" %>
+                      <div class="btn share share_artist" id="<%= artist_tracked.id %>" data-tracking="true" data-tracking-category="profile" data-tracking-name="share-tracked">
                         <i class="icon-share"></i>Share
                       </div>
                             </span>
@@ -67,8 +67,8 @@
         <% if !@app_friends.empty? %>
             <% @app_friends.each do |friend| %>
                 <div>
-                  <%= image_tag "//graph.facebook.com/"+friend.fbid+"/picture?width=75&height=75", :height => "75", :width => "75" %>
-                  <span><%= link_to friend.first_name + " " + friend.last_name, friend %></span>
+                  <%= link_to image_tag("//graph.facebook.com/"+friend.fbid+"/picture?width=75&height=75", :height => "75", :width => "75"), friend, 'data-tracking' => 'true', 'data-tracking-category' => 'profile', 'data-tracking-name' => 'friend' %>
+                  <span><%= link_to friend.first_name + " " + friend.last_name, friend, 'data-tracking' => 'true', 'data-tracking-category' => 'profile', 'data-tracking-name' => 'friend' %></span>
                   <%= pluralize(Follow.where('user_id = ?', friend.id).count, "tracker") %>
                 </div>
             <% end %>
@@ -89,8 +89,8 @@
               <div class="actions">
                 <h3>Stay connected</h3>
                 <p>Share and discover new artists and releases with your friends</p>
-                <button class="btn btn-small share_sngtrkr share"><i class="icon-share"></i>Share
-                </button>
+                <a class="btn btn-small share_sngtrkr share" data-tracking="true" data-tracking-category="profile" data-tracking-name="share-sngtrkr"><i class="icon-share"></i>Share
+                </a>
               </div>
             </div>
             <div class="right_sidebar_item">
@@ -98,7 +98,7 @@
               <div class="actions">
                 <h3>Confused?</h3>
                 <p>Let us walk you through the basics of using the platform.</p>
-                <a class="btn btn-small" href="/timeline?walkthrough=1">Get started
+                <a class="btn btn-small" href="/timeline?walkthrough=1" data-tracking="true" data-tracking-category="profile" data-tracking-name="get-started">Get started
                 </a>
               </div>
             </div>
@@ -123,7 +123,7 @@
             <span class="googleplus"></span>
           </a>
         </div>
-        <span>Link:</span>
+        <span class="link">Link:</span>
         <input type="text" onClick="this.select();" value="<%= root_url %>">
       </div>
     </div>

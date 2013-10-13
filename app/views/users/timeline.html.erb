@@ -17,9 +17,9 @@
           <% end %>
   		  </div>
   		  <div class="pins">
-  			  <i data-target="#recommend_carousel" data-slide-to="0" class="active icon-circle"></i>
-  		    <i data-target="#recommend_carousel" data-slide-to="1" class="icon-circle"></i>
-  		    <i data-target="#recommend_carousel" data-slide-to="2" class="icon-circle"></i>
+  			  <i data-target="#recommend_carousel" data-slide-to="0" class="active icon-circle" data-tracking="true" data-tracking-category="timeline" data-tracking-name="recommended-pin-1"></i>
+  		    <i data-target="#recommend_carousel" data-slide-to="1" class="icon-circle" data-tracking="true" data-tracking-category="timeline" data-tracking-name="recommended-pin-2"></i>
+  		    <i data-target="#recommend_carousel" data-slide-to="2" class="icon-circle" data-tracking="true" data-tracking-category="timeline" data-tracking-name="recommended-pin-3"></i>
   		  </div>
   		</div>
     </div>
@@ -30,6 +30,6 @@
     <% if @timeline.empty? %>
         <%= render 'timeline/user_empty' %>
     <% else %>
-        <%= render :partial => 'timeline/release', :collection => @timeline, :locals => { :release_type => "" } %>
+        <%= render :partial => 'timeline/release', :collection => @timeline, :locals => { :release_type => "", :tracking_category => 'timeline', :tracking_name => 'user-timeline' } %>
     <% end %>
 </div>

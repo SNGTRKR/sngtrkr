@@ -13,14 +13,14 @@
           <div class="tabbable tabs-left search-tabs">
             <ul id="myTab" class="nav nav-tabs nav-stacked each-tab">
               <li class="active">
-                <a href="#tab1" data-toggle="tab"><i class="icon-search"></i>Top results</a>
+                <a href="#tab1" data-toggle="tab" data-tracking="true" data-tracking-category="search" data-tracking-name="top-results-nav"><i class="icon-search"></i>Top results</a>
               </li>
               <li>
-                <a href="#tab2" data-toggle="tab"><span class="blk ppl"></span><span class="wht ppl"></span>
+                <a href="#tab2" data-toggle="tab" data-tracking="true" data-tracking-category="search" data-tracking-name="artists-nav"><span class="blk ppl"></span><span class="wht ppl"></span>
                   Artists</a>
               </li>
               <li>
-                <a href="#tab3" data-toggle="tab"><span class="blk rel"></span><span class="wht rel"></span>
+                <a href="#tab3" data-toggle="tab" data-tracking="true" data-tracking-category="search" data-tracking-name="releases-nav"><span class="blk rel"></span><span class="wht rel"></span>
                   Releases</a>
               </li>
             </ul>
@@ -51,36 +51,10 @@
           <% end %>
       <% else %>
           <% @artists.take(5).each do |artist| %>
-              <div class="result">
-                <%= link_to image_tag(artist.image.medium, :class => 'image', :height => '110', :width => '110'), artist %>
-                <span>
-                  <div><%= link_to artist.name, artist %></div>
-                  <%= artist.label_name %><br/>
-                  <%= artist.followers %> trackers
-                </span>
-                <%= follow_button artist, "small" %>
-                <div class="btn btn-small share_artist share" id="<%= artist.id %>">
-                  <i class="icon-share"></i>Share
-                </div>
-                <%= artist_popover artist %>
-              </div>
+              <%= render :partial => 'search/artist', :object => artist %>
           <% end %>
           <% @releases.take(5).each do |release| %>
-              <div class="result">
-                <%= link_to image_tag(release.image.medium, :class => 'image', :height => '110', :width => '110'), [release.artist, release] %>
-                <span>
-                  <div><%= link_to release.name, [release.artist, release] %></div>
-                  <%= link_to release.artist.name, release.artist, :class => 'artist_l' %><br/>
-                  <%= release.date.strftime("#{release.date.day.ordinalize} %B %Y ") %>
-                </span>
-
-                <div class="btn btn-small buy" id="<%= release.id %>">Buy</div>
-                <div class="btn btn-small share_release share" id="<%= release.id %>">
-                  <i class="icon-share"></i>Share
-                </div>
-                <%= buy_popover release %>
-                <%= release_popover release, release.artist %>
-              </div>
+              <%= render :partial => 'search/release', :object => release %>
           <% end %>
 
       <% end %>
@@ -97,19 +71,7 @@
           <% end %>
       <% else %>
           <% @artists.each do |artist| %>
-              <div class="result">
-                <%= link_to image_tag(artist.image.medium, :class => 'image', :height => '110', :width => '110'), artist %>
-                <span>
-                  <div><%= link_to artist.name, artist %></div>
-                  <%= artist.label_name %><br/>
-                  <%= artist.followers %> trackers
-                </span>
-                <%= follow_button artist, "small" %>
-                <div class="btn btn-small share_artist share" id="<%= artist.id %>">
-                  <i class="icon-share"></i>Share
-                </div>
-                <%= artist_popover artist %>
-              </div>
+              <%= render :partial => 'search/artist', :object => artist %>
           <% end %>
       <% end %>
     </div>
@@ -126,21 +88,7 @@
       <% else %>
 
           <% @releases.each do |release| %>
-              <div class="result">
-                <%= link_to image_tag(release.image.medium, :class => 'image', :height => '110', :width => '110'), [release.artist, release] %>
-                <span>
-                  <div><%= link_to release.name, [release.artist, release] %></div>
-                  <%= link_to release.artist.name, release.artist, :class => 'artist_l' %><br/>
-                  <%= release.date.strftime("#{release.date.day.ordinalize} %B %Y ") %>
-                </span>
-
-                <div class="btn btn-small buy" id="<%= release.id %>">Buy</div>
-                <div class="btn btn-small share_release share" id="<%= release.id %>">
-                  <i class="icon-share"></i>Share
-                </div>
-                <%= buy_popover release %>
-                <%= release_popover release, release.artist %>
-              </div>
+              <%= render :partial => 'search/release', :object => release %>
           <% end %>
 
       <% end %>

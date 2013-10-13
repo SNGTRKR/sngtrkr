@@ -4,7 +4,7 @@
         <%= link_to image_tag(artist_tracked.image.medium, :class => "image", :height => "75", :width => "75"), artist_path(artist_tracked) %>
         <%= link_to artist_tracked.name, artist_path(artist_tracked) %>
         <span class="actions">
-          <%= follow_button artist_tracked, "normal" %>
+          <%= follow_button artist_tracked, "normal", "tracked-artist" %>
           <div class="btn share share_artist" id="<%= artist_tracked.id %>" data-placement="bottom">
             <i class="icon-share"></i>Share
           </div>

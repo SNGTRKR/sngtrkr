@@ -1,10 +1,11 @@
 module ApplicationHelper
 
-  def follow_button artist, btn_type
+  def follow_button artist, btn_type, tracking_name
     # Setup button type
     if btn_type == "normal"
       btn_class = "btn track"
       btn_trkr = ""
+
     elsif btn_type == "small"
       btn_class = "btn btn-small"
       btn_trkr = "-small"
@@ -15,22 +16,21 @@ module ApplicationHelper
 
     if user_signed_in?
       if current_user.following? artist.id
-        return link_to(artist_unfollow_path(artist, :format => [:js]), :class => "remove-trkr#{btn_trkr} #{btn_class} active", :remote => true, :'data-id' => artist.id) do
+        return link_to(artist_unfollow_path(artist, :format => [:js]), :class => "remove-trkr#{btn_trkr} #{btn_class} active", :remote => true, :'data-id' => artist.id, :'data-tracking' => 'true', :'data-tracking-category' => :'unfollow', :'data-tracking-name' => tracking_name) do
           'Tracked'
         end
       else
-        return link_to(artist_follow_path(artist, :format => [:js]), :class => "add-trkr#{btn_trkr} #{btn_class}", :remote => true, :'data-id' => artist.id) do
+        return link_to(artist_follow_path(artist, :format => [:js]), :class => "add-trkr#{btn_trkr} #{btn_class}", :remote => true, :'data-id' => artist.id, :'data-tracking' => 'true', :'data-tracking-category' => 'follow', :'data-tracking-name' => tracking_name)  do
           'Track'
         end.html_safe
       end
     else
-      return "<a data-target='#user_signup' data-toggle='modal' class='#{btn_class}'>Track</a>".html_safe
+      return "<a data-target='#user_signup' data-toggle='modal' class='#{btn_class}' data-tracking='true' data-tracking-category='follow' data-tracking-name='#{tracking_name}'>Track</a>".html_safe
     end
   end
 
   def follow_button_carousel artist
-    return link_to(artist_follow_path(artist, :format => [:json]), 
-                   :class => "add-trkr-carousel btn btn-small follow-#{artist.id}", :remote => true, :'data-id' => artist.id) do
+    return link_to artist_follow_path(artist, :format => [:json]), :class => "add-trkr-carousel btn btn-small follow-#{artist.id}", :remote => true, :'data-id' => artist.id, :'data-tracking' => 'true', :'data-tracking-category' => 'follow', :'data-tracking-name' => 'carousel-suggest' do
       'Track'
     end.html_safe
   end
@@ -58,6 +58,10 @@ module ApplicationHelper
 
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
+  end
+
+  def active_page page
+    "active" if current_page?(page)
   end
 
 end

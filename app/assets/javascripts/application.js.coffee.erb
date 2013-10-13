@@ -2,7 +2,7 @@
 
 
 $(document).ready ->
-  # analytics_tracking()
+  analytics_tracking()
   navbar()
   popover_triggers()
   modal()
@@ -150,11 +150,13 @@ navbar = ->
           top: 120,
           "slow"
         $("#show_info a").text "Close"
+        $(@).attr 'data-tracking-name', 'close-info'
         # Increase height of typehead results
         $(".search-data-query").css 'top', 166
         $('.tt-dropdown-menu').css 'top', 211
       else
         $("#more_info").slideUp "slow"
+        $(@).attr 'data-tracking-name', 'open-info'
         $('.navbar').animate
           top: 0,
           "slow"
@@ -164,7 +166,7 @@ navbar = ->
 
 popover_triggers = ->
     #popovers for buy and share
-    $(".share, .buy").click ->
+    $("body").on "click", ".share, .buy", ->
       $(@).toggleClass "active"
 
     $("body").on "click", ".popover a", ->
@@ -555,40 +557,50 @@ recommendation = ->
     $("#recommend_carousel").css "opacity", "1"
     return false
 
-# analytics_tracking = ->
+analytics_tracking = ->
+  # Confirm the gaq object exists
+  ga_enabled = if typeof _gaq is 'object' then true else false
+  window.SGA = new Sngtrkr_analytics_data ga_enabled
 
-#   # Confirm the gaq object exists
-#   ga_enabled = if typeof _gaq is 'object' then true else false
-#   SGA = new Sngtrkr_analytics_data ga_enabled
+  # Assign the click event to the relevant element and collate data attribute data
+  $('body').on 'click', '[data-tracking="true"]', ->
+    tracking_category = $(@).attr 'data-tracking-category'
+    if tracking_category == 'unfollow'
+      $this = $(@)
+      name = $this.attr 'data-tracking-name'
+      category = $this.attr 'data-tracking-category'
+      window.SGA.send [name, category]
+    else if $(@).hasClass 'active'
+      # return false
+    else
+      $this = $(@)
+      name = $this.attr 'data-tracking-name'
+      category = $this.attr 'data-tracking-category'
+      window.SGA.send [name, category]
 
-#   # Set up object for building and pushing the GA array
-#   class Sngtrkr_analytics_data
+# Set up object for building and pushing the GA array
+class Sngtrkr_analytics_data
 
-#     constructor: (@enabled) ->
-#       @send()
+  constructor: (@enabled) ->
+    @send()
 
-#     # Default event
-#     event: "click"
+  # Default event
+  event: "click"
 
-#     build: (tracker) ->
-#       if tracker isnt undefined
-#         @name = tracker[0]
-#         @category = tracker[1]
+  build: (tracker) ->
+    if tracker isnt undefined
+      @name = tracker[0]
+      @category = tracker[1]
 
-#       return ['_trackEvent', @category, @event, @name]
+    return ['_trackEvent', @category, @event, @name]
 
-#     send: (object) ->
-#       if @enabled
-#         console.log object
-#         _gaq.push(@build(object))
-#       return
+  send: (object) ->
+    if @enabled
+      console.log @build(object)
+      _gaq.push @build(object)
+    return
 
-#   # Assign the click event to the relevant element and collate data attribute data
-#   $('[data-tracking="true"').click ->
-#     $this = $(@)
-#     name = $this.attr 'data-tracking-name'
-#     catgegory = $this.attr 'data-tracking-category'
-#     SGA.send [name, category]
+
 
 
 

@@ -1,0 +1,20 @@
+<div class="related">
+  <%= link_to [release.artist, release], 'data-tracking' => 'true', 'data-tracking-category' => 'release', 'data-tracking-name' => 'related' do %>
+      <img src="<%= release.image.medium %>" class="related_img" height="75" width="75"/>
+  <% end %>
+  <span>
+  <div><%= link_to release.name, [release.artist, release], 'data-tracking' => 'true', 'data-tracking-category' => 'release', 'data-tracking-name' => 'related' %></div>
+    <%= release.label_name %><br/>
+    <%= release.date.strftime("#{release.date.day.ordinalize} %B %Y ") %>
+</span>
+
+  <div class="actions">
+    <div class="btn buy" id="<%= release.id %>" data-tracking="true" data-tracking-category="release" data-tracking-name="buy-related">Buy</div>
+    <div class="btn share_release share" id="<%= release.id %>" data-tracking="true" data-tracking-category="release" data-tracking-name="share-related">
+      <i class="icon-share"></i>Share
+    </div>
+  </div>
+  <%= buy_popover release %>
+  <%= release_popover release, artist %>
+</div>
+

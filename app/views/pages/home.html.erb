@@ -16,14 +16,14 @@
 <div id="overflow">
   <div class="pop_releases">
     <% @releases.each do |release| %>
-        <%= link_to image_tag(release.image.medium), [release.artist, release] %>
+        <%= link_to image_tag(release.image.medium), [release.artist, release], 'data-tracking' => 'true', 'data-tracking-category' => 'home', 'data-tracking-name' => 'featured-release' %>
     <% end %>
   </div>
 </div>
 <div class="g_content">
   <div class="homepage">
     <div class="signup-home">
-      <%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-large btn-large") do %>
+      <%= link_to user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-large btn-large", 'data-tracking' => 'true', 'data-tracking-category' => 'home', 'data-tracking-name' => 'upper-fb-signin' do %>
           <div class="icon"><span></span><i class="icon-facebook"></i></div>
           <div class="divider"></div>
           Sign in with Facebook
@@ -111,7 +111,7 @@
       </div>
     </div>
     <div class="signup-home">
-      <%= link_to(user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-large btn-large") do %>
+      <%= link_to user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-large btn-large", 'data-tracking' => 'true', 'data-tracking-category' => 'home', 'data-tracking-name' => 'lower-fb-signin' do %>
           <div class="icon"><span></span><i class="icon-facebook"></i></div>
           <div class="divider"></div>
           Sign in with Facebook

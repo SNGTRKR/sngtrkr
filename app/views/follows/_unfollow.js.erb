@@ -3,21 +3,22 @@ $("a.remove-trkr").bind("ajax:beforeSend", function () {
     $('#row-' + artist_id + ' td').css('opacity', '0.5').spin('standard');
 }).bind("ajax:complete", function () {
     var artist_id = $(this).data("id");
+    var tracking_name = $(this).data("tracking-name");
     var user_id = <%= current_user.id %>;
-    $(this).replaceWith("<a href=\"/artists/" + artist_id + "/follow.js\" class=\"add-trkr btn track\" data-id=\"" + artist_id + "\" data-remote=\"true\">Track</a>");
+    $(this).replaceWith("<a href=\"/artists/" + artist_id + "/follow.js\" class=\"add-trkr btn track\" data-id=\"" + artist_id + "\" data-remote=\"true\" data-tracking=\"true\" data-tracking-category=\"follow\" data-tracking-name=\"" + tracking_name + "\">Track</a>");
     $('#tracking-' + user_id).text("<%= current_user.followed_artists.count %>");
     $('#tracker-' + artist_id).text("<%= pluralize(@artist.followers, 'tracker') %>");
     $('#row-' + artist_id).addClass("fadeOutUp").slideUp().spin(false);
 });
 
 $("a.remove-trkr-small").bind("ajax:complete", function () {
-    var artist_id;
-    artist_id = $(this).data("id");
-    $(this).replaceWith("<a href=\"/artists/" + artist_id + "/follow.js\" class=\"add-trkr-small btn btn-small\" data-id=\"" + artist_id + "\" data-remote=\"true\">Track</a>");
+    var artist_id = $(this).data("id");
+    var tracking_name = $(this).data("tracking-name");
+    $(this).replaceWith("<a href=\"/artists/" + artist_id + "/follow.js\" class=\"add-trkr-small btn btn-small\" data-id=\"" + artist_id + "\" data-remote=\"true\" data-tracking=\"true\" data-tracking-category=\"follow\" data-tracking-name=\"" + tracking_name + "\">Track</a>");
 });
 
 $("a.remove-trkr-tile").bind("ajax:complete", function () {
-    var artist_id;
-    artist_id = $(this).data("id");
-    $(this).replaceWith("<a href=\"/artists/" + artist_id + "/follow.js\" class=\"add-trkr-tile act track_artist\" data-id=\"" + artist_id + "\" data-remote=\"true\">Track</a>");
+    var artist_id = $(this).data("id");
+    var tracking_name = $(this).data("tracking-name");
+    $(this).replaceWith("<a href=\"/artists/" + artist_id + "/follow.js\" class=\"add-trkr-tile act track_artist\" data-id=\"" + artist_id + "\" data-remote=\"true\" data-tracking=\"true\" data-tracking-category=\"follow\" data-tracking-name=\"" + tracking_name + "\">Track</a>");
 });
