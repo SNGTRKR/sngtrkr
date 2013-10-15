@@ -270,43 +270,43 @@ typeahead_engine = ->
         s_query = searchquery.val()
         dataquery.show().html("<a href ='/search?utf8=✓&query=" + s_query + "'><div>Search for '<span>" + s_query + "</span>'</div></a>").addClass "data-query-highlight"
 
-    # searchquery.blur ->
-    #   setTimeout (->
-    #     dataquery.hide()
-    #     # $('[data-tracking-name="logout"]').delay(1000).show(1)
-    #   ), 150
+    searchquery.blur ->
+      setTimeout (->
+        dataquery.hide()
+        # $('[data-tracking-name="logout"]').delay(1000).show(1)
+      ), 150
 
-    # searchquery.focus ->
-    #   unless searchquery.val() is ""
-    #     dataquery.show().addClass "data-query-highlight"
+    searchquery.focus ->
+      unless searchquery.val() is ""
+        dataquery.show().addClass "data-query-highlight"
 
-    # dataquery.hover ->
-    #   $('.tt-suggestion').removeClass 'tt-is-under-cursor'
+    dataquery.hover ->
+      $('.tt-suggestion').removeClass 'tt-is-under-cursor'
 
-    # $('.tt-dropdown-menu').hover ->
-    #   dataquery.removeClass "data-query-highlight"
+    $('.tt-dropdown-menu').hover ->
+      dataquery.removeClass "data-query-highlight"
 
-    # searchquery.keydown (event) ->
-    #   dataquery.removeClass "data-query-highlight"  if event.keyCode is 40
-    #   dataquery.removeClass "data-query-highlight"  if event.keyCode is 38
+    searchquery.keydown (event) ->
+      dataquery.removeClass "data-query-highlight"  if event.keyCode is 40
+      dataquery.removeClass "data-query-highlight"  if event.keyCode is 38
 
-    #   unless $('.tt-suggestion').hasClass "tt-is-under-cursor"
-    #     dataquery.addClass "data-query-highlight"  if event.keyCode is 38
-    #     dataquery.addClass "data-query-highlight"  if event.keyCode is 40
+      unless $('.tt-suggestion').hasClass "tt-is-under-cursor"
+        dataquery.addClass "data-query-highlight"  if event.keyCode is 38
+        dataquery.addClass "data-query-highlight"  if event.keyCode is 40
 
-    #   if dataquery.hasClass "data-query-highlight"
-    #     $('.navbar-search').submit()  if event.keyCode is 13
+      if dataquery.hasClass "data-query-highlight"
+        $('.navbar-search').submit()  if event.keyCode is 13
 
-    # $(document)[0].oncontextmenu = ->
-    # false
+    $(document)[0].oncontextmenu = ->
+    false
 
-    # $(document).mousedown (e) ->
-    #   if e.button is 2
-    #     dataquery.hide()
-    #     $('.tt-dropdown-menu').hide()
-    #     false
-    #   else
-    #     true
+    $(document).mousedown (e) ->
+      if e.button is 2
+        dataquery.hide()
+        $('.tt-dropdown-menu').hide()
+        false
+      else
+        true
 
 infinite_scrolling = ->
     #search query
