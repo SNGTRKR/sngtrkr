@@ -73,10 +73,11 @@ body {
   .sp-buoy { @include icono-sprite(buoy); }
 
 
+
 /* ============================= */
 /* ! Layout for tablet  */
 /* ============================= */
-@media only screen and (max-width: 1023px) {
+@media only screen and (max-width: 1024px) {
   body {
     .sections {
       .section {
@@ -90,15 +91,8 @@ body {
         }
       }
     }
-    .tt-dropdown-menu {
-      width: 248px;
-    }
-    .search-query:focus {
-      width: 206px !important;
-    }
   }
 }
-
 /* ============================= */
 /* ! Small desktop  */
 /* ============================= */

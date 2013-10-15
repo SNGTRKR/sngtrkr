@@ -1,5 +1,14 @@
 #= require jquery_ujs
-
+#= require bootstrap
+#= require hogan-2.0.0
+#= require jquery-ui-1.10.2.custom.min
+#= require jquery.hoverIntent.minified
+#= require jquery.mousewheel.min
+#= require jquery.scrollTo.min
+#= require spin
+#= require jquery.spin
+#= require modernizr-2.6.2-respond-1.1.0.min
+#= require typeahead
 
 $(document).ready ->
   analytics_tracking()
@@ -20,6 +29,8 @@ $(document).ready ->
 
   #tooltip initiation
   $('.tip').tooltip()
+
+  window.deviceEnabled = (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
 
   #allow anchor links for nav tabs
   # url = document.location.toString()
@@ -208,14 +219,14 @@ popover_triggers = ->
 
 modal = ->
     #enable client side validation within modals
-    $('.modal').on 'shown', ->
-      $(@).find('input:visible:first').focus().end().find('form').enableClientSideValidations()
+      # $('.modal').on 'shown', ->
+      #   $(@).find('input:visible:first').focus().end().find('form').enableClientSideValidations()
       
     #handling multiple modals, closing others when a modal is triggered
     $('.signup').click ->
       $('#user_login').modal "hide"
       $('#forgot_password').modal "hide"
-      $('.signup').children().addClass "active"
+      $(@).children().addClass "active"
 
     $('.login').click ->
       $('#user_signup').modal "hide"
@@ -228,12 +239,12 @@ modal = ->
     $('#user_signup').on "hidden", ->
       $('.signup').children().removeClass "active"
 
-    $('#user_login a').click ->
-      $('#user_login').modal "hide"
+    # $('#user_login a').click ->
+    #   $('#user_login').modal "hide"
 
-    $('#forgot_password a').click ->
-      $('#forgot_password').modal "hide"
-      $('.login').parent().addClass "active"
+    # $('#forgot_password a').click ->
+    #   $('#forgot_password').modal "hide"
+    #   $('.login').parent().addClass "active"
 
 typeahead_engine = ->
     $(".search-query").typeahead(
@@ -259,42 +270,43 @@ typeahead_engine = ->
         s_query = searchquery.val()
         dataquery.show().html("<a href ='/search?utf8=✓&query=" + s_query + "'><div>Search for '<span>" + s_query + "</span>'</div></a>").addClass "data-query-highlight"
 
-    searchquery.blur ->
-      setTimeout (->
-        dataquery.hide()
-      ), 150
+    # searchquery.blur ->
+    #   setTimeout (->
+    #     dataquery.hide()
+    #     # $('[data-tracking-name="logout"]').delay(1000).show(1)
+    #   ), 150
 
-    searchquery.focus ->
-      unless searchquery.val() is ""
-        dataquery.show().addClass "data-query-highlight"
+    # searchquery.focus ->
+    #   unless searchquery.val() is ""
+    #     dataquery.show().addClass "data-query-highlight"
 
-    dataquery.hover ->
-      $('.tt-suggestion').removeClass 'tt-is-under-cursor'
+    # dataquery.hover ->
+    #   $('.tt-suggestion').removeClass 'tt-is-under-cursor'
 
-    $('.tt-dropdown-menu').hover ->
-      dataquery.removeClass "data-query-highlight"
+    # $('.tt-dropdown-menu').hover ->
+    #   dataquery.removeClass "data-query-highlight"
 
-    searchquery.keydown (event) ->
-      dataquery.removeClass "data-query-highlight"  if event.keyCode is 40
-      dataquery.removeClass "data-query-highlight"  if event.keyCode is 38
+    # searchquery.keydown (event) ->
+    #   dataquery.removeClass "data-query-highlight"  if event.keyCode is 40
+    #   dataquery.removeClass "data-query-highlight"  if event.keyCode is 38
 
-      unless $('.tt-suggestion').hasClass "tt-is-under-cursor"
-        dataquery.addClass "data-query-highlight"  if event.keyCode is 38
-        dataquery.addClass "data-query-highlight"  if event.keyCode is 40
+    #   unless $('.tt-suggestion').hasClass "tt-is-under-cursor"
+    #     dataquery.addClass "data-query-highlight"  if event.keyCode is 38
+    #     dataquery.addClass "data-query-highlight"  if event.keyCode is 40
 
-      if dataquery.hasClass "data-query-highlight"
-        $('.navbar-search').submit()  if event.keyCode is 13
+    #   if dataquery.hasClass "data-query-highlight"
+    #     $('.navbar-search').submit()  if event.keyCode is 13
 
-    $(document)[0].oncontextmenu = ->
-    false
+    # $(document)[0].oncontextmenu = ->
+    # false
 
-    $(document).mousedown (e) ->
-      if e.button is 2
-        dataquery.hide()
-        $('.tt-dropdown-menu').hide()
-        false
-      else
-        true
+    # $(document).mousedown (e) ->
+    #   if e.button is 2
+    #     dataquery.hide()
+    #     $('.tt-dropdown-menu').hide()
+    #     false
+    #   else
+    #     true
 
 infinite_scrolling = ->
     #search query

@@ -1,4 +1,4 @@
-$('.release:first-child').before('<% @releases.each do |release| %><%=j render :partial => "timeline/release", :locals => { :release => release, :release_type => "fadeOutUp animated" } %><% end %>');
+$('.release:first-child').before('<% @releases.each do |release| %><%=j render :partial => "timeline/release", :locals => { :release => release, :release_type => "fadeOutUp animated", :tracking_category => "timeline", :tracking_name => "user-timeline" } %><% end %>');
 new_timeline_releases = $('.release.fadeOutUp').length;
 var i = 1;
 function next() {
