@@ -11,10 +11,10 @@ class UsersController < ApplicationController
     @user = current_user
     params[:page] ||= 0
     @timeline = Timeline.user(@user.id, @p_param)
-    if @user.suggested_artists.first(18)
-      @artists = @user.suggested_artists.first(18)
+    if @user.sign_in_count == 1
+      @artists = Artist.select("artists.*,count(follows.id) as follow_count").joins(:follows).group("follows.artist_id").having("follow_count > 2").order("follow_count DESC") 
     else 
-      @artists = Artist.last(18)
+      @artists = @user.suggested_artists.first(18)
     end
     @following = @user.followed_artists.where('image_file_name IS NOT NULL').limit(1)
     respond_to do |format|
