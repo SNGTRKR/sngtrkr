@@ -11,11 +11,11 @@ class UsersController < ApplicationController
     @user = current_user
     params[:page] ||= 0
     @timeline = Timeline.user(@user.id, @p_param)
-    # if @user.suggested_artists.first(18)
-      @artists = @user.suggested_artists
-    # else 
-    #   @artists = Artist.last(18)
-    # end
+    if @user.suggested_artists.first(18)
+      @artists = @user.suggested_artists.first(18)
+    else 
+      @artists = Artist.last(18)
+    end
     @following = @user.followed_artists.where('image_file_name IS NOT NULL').limit(1)
     respond_to do |format|
       format.js { render :partial => 'timeline/user_timeline', :format => [:js] }

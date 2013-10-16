@@ -16,7 +16,11 @@ class FollowsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to artist_path(:id => params[:artist_id]) }
       format.js { render :partial => 'follows/follow', :format => [:js] }
-      format.json { render :json => { :artist => @artist }, :status => :unprocessable_entity }
+      format.json { render :json => { :id => @artist.id,
+                                      :name => @artist.name,
+                                      :image_url => @artist.image.url,
+                                      :label => @artist.label_name
+                                    } }
     end
 
   end
