@@ -466,10 +466,12 @@ walkthrough = ->
       <div class=\"btn btn-small finish_walk\">Finish</div>
   </div>').insertAfter('.search-data-query')
     # Add the scene triggers to the related elements
+    $('.navbar').css 'pointer-events', 'none'
     $('#timeline-empty').remove()
     $('.recommend_artists .carousel_suggest a').addClass 'trigger_walk'
     $('.navbar-search .search-query').addClass 'scene_3'
     $('.nav #show_info').addClass 'scene_4'
+    $('.alert').remove()
 
     # Start first scene
     $.scrollTo $('.pops').offset()["top"]-($('.navbar').height()+10), 800
@@ -495,6 +497,7 @@ walkthrough = ->
         placement: 'bottom'
         trigger: 'manual'
       ).popover 'show'
+      $('.navbar .popover').css 'pointer-events', 'auto'
 
     # # Start fourth scene
     $('body').on 'click', '.nxt_trigger_3', ->
@@ -508,11 +511,13 @@ walkthrough = ->
         placement: 'bottom'
         trigger: 'manual'
       ).popover 'show'
+      $('.navbar .popover').css 'pointer-events', 'auto'
 
     # Clean up the redundant class triggers
     $('body').on 'click', '.finish_walk', ->
       $('.scene_4').popover('hide').removeClass 'pops'
       $.scrollTo 0, 800
+      $('.navbar').css 'pointer-events', 'auto'
       $('.release.animated').css 'pointer-events', 'auto'
       $('.poppers').remove()
       $('.walkthrough_backdrop').remove()
@@ -549,6 +554,11 @@ loading_animation_settings = ->
     left: "auto" # Left position relative to parent in px
 
 recommendation = ->
+  # if $('#recommend_carousel .carousel-inner').children().children().size() < 18
+  #   console.log "LESS THAN 18"
+  #   url = "/timeline_recommends/refresh"
+  #   $.get url
+
   $(document).on("ajax:beforeSend", "a.add-trkr-carousel", ->
     $(".recommend_artists").css("pointer-events", "none").spin "standard"
     $("#recommend_carousel").css "opacity", "0.5"
@@ -558,7 +568,6 @@ recommendation = ->
     $(this).parent().replaceWith '<div id="suggest_' + data.id + '" class="carousel_suggest animated"><a href="/artists/' + data.id + '"><img src="' + data.image_url + '" alt="Recommendation" height="75" width="75" /></a><span><div><a href="/artists/' + data.id + '">' + data.name + '</div>' + data.label_name + '</span><a href="/artists/' + data.id + '/follow.json" class="add-trkr-carousel btn btn-small follow-' + data.id + '" data-id="' + data.id + '" data-remote="true">Track</a></div>'
     url = "/timeline_releases/populate?timeline_artist=" + artist_id
     $.get url
-    console.log data
     FB.api "/me/sngtrkr:track", "post",
       artist: "http://sngtrkr.com/artists/" + $(this).data("id")
     , (response) ->

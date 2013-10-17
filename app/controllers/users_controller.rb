@@ -9,13 +9,13 @@ class UsersController < ApplicationController
   def timeline
     @p_param = params[:page]
     @user = current_user
+    if @user.suggested_artists.count >= 18
+      @artists = @user.suggested_artists.first(18)
+    else
+      @artists = Artist.select("artists.*,count(follows.id) as follow_count").joins(:follows).group("follows.artist_id").having("follow_count > 2").order("follow_count DESC").page(params[:page])
+    end
     params[:page] ||= 0
     @timeline = Timeline.user(@user.id, @p_param)
-    if @user.sign_in_count == 1
-      @artists = Artist.select("artists.*,count(follows.id) as follow_count").joins(:follows).group("follows.artist_id").having("follow_count > 2").order("follow_count DESC") 
-    else 
-      @artists = @user.suggested_artists.first(18)
-    end
     @following = @user.followed_artists.where('image_file_name IS NOT NULL').limit(1)
     respond_to do |format|
       format.js { render :partial => 'timeline/user_timeline', :format => [:js] }

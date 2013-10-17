@@ -1,0 +1,18 @@
+console.log("<%= current_user.id %>");
+console.log("REFRESH, BITCH!");
+refresh = setInterval(function() {
+    if ($('#recommend_carousel .carousel-inner').children().children().size() < 18) {
+        <%  if current_user.suggested_artists.count >= 18
+                @artists = current_user.suggested_artists.first(18)
+            else
+                @artists = Artist.select("artists.*,count(follows.id) as follow_count").joins(:follows).group("follows.artist_id").having("follow_count > 2").order("follow_count DESC").page(params[:page])
+            end
+        %>
+        console.log("<%= @artists %>");
+       $('#recommend_carousel .carousel-inner').html('<% @artists.each_slice(6) do |slice| %><div class="item"><% slice.each do |artist| %><%= render :partial => "timeline/carousel_suggest", :object => artist %><% end %></div><% end %>');
+       console.log("MOAR RELEASES, BITCH!");
+    } else {
+      console.log("RELEASES DONE, BITCH!");
+      return clearInterval(refresh);
+    }
+}, 50);
