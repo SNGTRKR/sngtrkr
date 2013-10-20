@@ -6,8 +6,9 @@
   width:220px;
   margin:10px 11px 10px 10px;
   position:relative;
-  float:left;
+  display: inline-block;
   @include box-sizing(border-box);
+  z-index:0;
     .image {
       height:220px;
         div {
@@ -252,6 +253,10 @@
         h3:hover {
           color:$darkgray !important;
         }
+    }
+    &.new_release {
+      pointer-events:none;
+      z-index:1999;
     }
 }
 .recommend_artists {

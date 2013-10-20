@@ -30,8 +30,11 @@ $(document).ready ->
   #tooltip initiation
   $('.tip').tooltip()
 
+  # detect if using mobile/tablet
   window.deviceEnabled = (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
 
+  $('.signin').click ->
+    $(@).find('div:last-child').text 'Signing in...'
   #allow anchor links for nav tabs
   # url = document.location.toString()
   # $(".nav-tabs a[href=#" + url.split("#")[1] + "]").tab "show"  if url.match("#")

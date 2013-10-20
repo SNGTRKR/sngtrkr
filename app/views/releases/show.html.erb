@@ -124,10 +124,10 @@
   <% if !user_signed_in? %>
       <div id="release_signup">
         <p>Track <%= link_to @artist.name, @artist %> and others to keep up to date with new releases.</p>
-        <%= link_to(user_omniauth_authorize_path(:facebook), 'data-tracking' => 'true', 'data-tracking-category' => 'release', 'data-tracking-name' => 'fb-signin', :class => "btn btn-primary btn-fb-small") do %>
+        <%= link_to(user_omniauth_authorize_path(:facebook), 'data-tracking' => 'true', 'data-tracking-category' => 'release', 'data-tracking-name' => 'fb-signin', :class => "btn btn-primary btn-fb-small signin") do %>
             <div class="icon"><span></span><i class="icon-facebook"></i></div>
             <div class="divider"></div>
-            Sign in with Facebook
+            <div>Sign in with Facebook</div>
         <% end %>
       </div>
   <% end %>

@@ -191,10 +191,10 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
     <div class="modal hide fade" id="user_signup">
       <div class="modal-body">
         <div class="top">
-          <%= link_to user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-large btn-large", 'data-tracking' => 'true', 'data-tracking-category' => 'navbar', 'data-tracking-name' => 'signup-fb-signin' do %>
+          <%= link_to user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-large btn-large signin", 'data-tracking' => 'true', 'data-tracking-category' => 'navbar', 'data-tracking-name' => 'signup-fb-signin' do %>
               <div class="icon"><span></span><i class="icon-facebook"></i></div>
               <div class="divider"></div>
-              Sign up with Facebook
+              <div>Sign up with Facebook</div>
           <% end %>
         </div>
         <div class="links">
@@ -205,10 +205,10 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
     <div class="modal hide fade" id="user_login">
       <div class="modal-body">
         <div class="top">
-          <%= link_to user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-large btn-large", 'data-tracking' => 'true', 'data-tracking-category' => 'navbar', 'data-tracking-name' => 'login-fb-signin' do %>
+          <%= link_to user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-fb-large btn-large signin", 'data-tracking' => 'true', 'data-tracking-category' => 'navbar', 'data-tracking-name' => 'login-fb-signin' do %>
               <div class="icon"><span></span><i class="icon-facebook"></i></div>
               <div class="divider"></div>
-              Sign in with Facebook
+              <div>Sign in with Facebook</div>
           <% end %>
         </div>
         <div class="links">

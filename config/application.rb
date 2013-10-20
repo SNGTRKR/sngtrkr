@@ -24,6 +24,9 @@ module SNGTRKR
 
     config.encoding = "utf-8"
 
+    # auto load lib files
+    config.autoload_paths += %W(#{config.root}/lib)
+
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
 

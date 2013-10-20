@@ -1,4 +1,4 @@
-$('.release:first-child').before('<% @releases.each do |release| %><%=j render :partial => "timeline/release", :locals => { :release => release, :release_type => "fadeOutUp animated", :tracking_category => "timeline", :tracking_name => "user-timeline" } %><% end %>');
+$('.release:first-child').before('<% @releases.each do |release| %><%=j render :partial => "timeline/release", :locals => { :release => release, :release_type => "fadeOutUp animated new_release", :tracking_category => "timeline", :tracking_name => "user-timeline" } %><% end %>');
 new_timeline_releases = $('.release.fadeOutUp').length;
 var i = 1;
 function next() {
@@ -14,7 +14,7 @@ function next() {
 }
 next();
 if (parseInt(window.get_url_vars()["walkthrough"]) === 1 && window.trigger_walk === 0) {
-        $('.release.animated').addClass('pops').css('pointer-events', 'none');
+        $('.release.animated').addClass('pops');
         var $elem, delay_popover;
         $('.scene_1').popover('hide').removeClass('pops');
         $.scrollTo(0, 800);

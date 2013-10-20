@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def timeline
     @p_param = params[:page]
     @user = current_user
-    if @user.suggested_artists.count >= 18
+    if @user.suggested_artists.count >= 18 || @user.sign_in_count == 1
       @artists = @user.suggested_artists.first(18)
     else
       @artists = Artist.select("artists.*,count(follows.id) as follow_count").joins(:follows).group("follows.artist_id").having("follow_count > 2").order("follow_count DESC").page(params[:page])
