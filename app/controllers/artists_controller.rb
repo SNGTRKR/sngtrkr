@@ -19,8 +19,8 @@ class ArtistsController < ApplicationController
     # @timeline = Rails.cache.fetch "artist_timeline/#{@current_artist.id}-#{@current_artist.updated_at}", expires_in: 2.hours do
     @timeline = Timeline.artist(@a_param).page(params[:page])
     # end
-    Timeline.artist(@a_param)
     @release_count = @artist.count_release
+    @events = @artist.songkick_events
     respond_to do |format|
       format.js { render :partial => "timeline/artist_timeline", :format => [:js] } 
       format.html # show.html.erb
