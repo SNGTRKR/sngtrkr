@@ -2,6 +2,7 @@ require 'scraper_2/itunes'
 require 'scraper_2/itunes_rss'
 require 'scraper_2/last_fm'
 require 'scraper_2/facebook'
+require 'scraper_2/songkick'
 require 'scraper_2/exceptions'
 require 'open-uri'
 
@@ -45,6 +46,11 @@ module Scraper2
 
 		unless artist.itunes_id
 			Itunes.associate_artist_with_store artist
+		end
+
+		# Assign songkick ID for artist
+		unless artist.songkick_id
+			Songkick.associate_id artist.name
 		end
 
 		LastFm.improve_artist_info artist
