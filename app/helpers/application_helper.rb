@@ -64,4 +64,12 @@ module ApplicationHelper
     "active" if current_page?(page)
   end
 
+  def signed_in_search(current_user)
+    if current_user
+      "navbar-search pull-left signed_in_search"
+    else
+      "navbar-search pull-left"
+    end
+  end
+
 end

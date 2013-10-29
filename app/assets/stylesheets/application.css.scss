@@ -72,7 +72,16 @@ body {
   .sp-devices { @include icono-sprite(computer_small); }
   .sp-buoy { @include icono-sprite(buoy); }
 
-
+/* ============================= */
+/* ! Portrait tablet  */
+/* ============================= */
+@media only screen and (max-width: 768px) {
+  body {
+    .search-query:focus {
+      width:100px !important;
+    }
+  }
+}
 
 /* ============================= */
 /* ! Layout for tablet  */
@@ -90,6 +99,9 @@ body {
           width: 379px !important;
         }
       }
+    }
+    .search-query:focus {
+      width:206px !important;
     }
   }
 }

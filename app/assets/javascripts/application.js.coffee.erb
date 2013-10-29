@@ -26,6 +26,7 @@ $(document).ready ->
   img_flip()
   loading_animation_settings()
   recommendation()
+  logged_in_search()
 
   #tooltip initiation
   $('.tip').tooltip()
@@ -46,11 +47,22 @@ $(document).ajaxComplete ->
 $(window).load ->
   scrollbar()
 
+
 $(window).resize ->
   hide_sidebar()
   scrollbar_resize()
+  logged_in_search()
 
 window.trigger_walk = 0
+
+logged_in_search = ->
+  if $(window).width() < 1013 && window.deviceEnabled is true
+    $('.signed_in_search .search-query').css 'width', '100'
+    $('.signed_in_search .tt-hint').css 'width', '100'
+    console.log "HAI"
+  else 
+    $('.signed_in_search .search-query').css 'width', '206'
+    $('.signed_in_search .tt-hint').css 'width', '206'
 
 timeline = ->
     $('#recommend_carousel').carousel(
@@ -114,38 +126,43 @@ img_flip = ->
       $('.back').toggleClass('back-flip')
       
 scrollbar = ->
-    #scrollable left sidebar
-    scroll_height = $('.scrollable_inner').outerHeight()
-    #grab height of inner scrollbar div
-    $('.scrollable_inner').css 'height', scroll_height
-    #assign height to inner scrollbar div
-    window_height = $(window).height()
-    #grab current window height
-    $('.scrollable').css 'height', window_height
-    #set parent scrollbar div as window height
-    full_scroll_height = scroll_height + 81
-    #add page navbar and padding when calculating scroll start point in comparison to window height
-    #check and add scrollbar if required on page load
-    if window_height < full_scroll_height
-      $('.scrollable_inner').css 'height', window_height - 81 #then calculating the height of the scrollable content, subtract the page navbar and padding
-    else
-      $('.scrollable_inner').css 'height', scroll_height
-    #if window height is not less than scrollbar inner div height, assign its original height
-    # Positioning the typeahead results
-    typepos = $('.search-query').offset()
-    $('.search-data-query').css "left", typepos["left"]
-    # Add the new attribute to the style tag, while retaining the current style attributes. Used to ensure !important rule is activated
-    $(".tt-dropdown-menu").attr "style", (i, s) ->
-      s + "left: " + typepos['left'] + "px !important;"
+    scroll_inner = $('.scrollable_inner')
+    if scroll_inner.is(':visible')
+      #scrollable left sidebar
+      scroll_height = scroll_inner.outerHeight()
+      #grab height of inner scrollbar div
+      scroll_inner.css 'height', scroll_height
+      #assign height to inner scrollbar div
+      window_height = $(window).height()
+      #grab current window height
+      $('.scrollable').css 'height', window_height
+      #set parent scrollbar div as window height
+      full_scroll_height = scroll_height + 81
+      #add page navbar and padding when calculating scroll start point in comparison to window height
+      #check and add scrollbar if required on page load
+      if window_height < full_scroll_height
+        scroll_inner.css 'height', window_height - 81 #then calculating the height of the scrollable content, subtract the page navbar and padding
+      else
+        scroll_inner.css 'height', scroll_height
+      #if window height is not less than scrollbar inner div height, assign its original height
+      # Positioning the typeahead results
+      typepos = $('.search-query').offset()
+      $('.search-data-query').css "left", typepos["left"]
+      # Add the new attribute to the style tag, while retaining the current style attributes. Used to ensure !important rule is activated
+      $(".tt-dropdown-menu").attr "style", (i, s) ->
+        s + "left: " + typepos['left'] + "px !important;"
 
 scrollbar_resize = ->
     #check and add scrollbar if required on window resizing in real time
-    window_height = $(window).height()
-    $('.scrollable').css 'height', window_height
-    if window_height < full_scroll_height
-      $('.scrollable_inner').css 'height', window_height - 81 #then calculating the height of the scrollable content, subtract the page navbar and padding
-    else
-      $('.scrollable_inner').css 'height', scroll_height
+    if $('.scrollable_inner').is(':visible')
+      window_height = $(window).height()
+      scroll_height = $('.scrollable_inner').outerHeight()
+      full_scroll_height = scroll_height + 81
+      $('.scrollable').css 'height', window_height
+      if window_height < full_scroll_height
+        $('.scrollable_inner').css 'height', window_height - 81 #then calculating the height of the scrollable content, subtract the page navbar and padding
+      else
+        $('.scrollable_inner').css 'height', scroll_height
 
 
 hide_sidebar = ->
@@ -275,7 +292,6 @@ typeahead_engine = ->
     searchquery.blur ->
       setTimeout (->
         dataquery.hide()
-        # $('[data-tracking-name="logout"]').delay(1000).show(1)
       ), 150
 
     searchquery.focus ->
@@ -623,8 +639,6 @@ class Sngtrkr_analytics_data
       console.log @build(object)
       _gaq.push @build(object)
     return
-
-
 
 
 

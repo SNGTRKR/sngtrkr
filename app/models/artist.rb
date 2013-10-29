@@ -124,17 +124,17 @@ class Artist < ActiveRecord::Base
   end
 
   # TEMP METHOD: Assign songkick IDs to current artists in the database
-  def songkick_artist
-    Artist.all.each do |artist|
-      artist_result = JSON.parse("http://api.songkick.com/api/3.0/search/artists.json?query=#{artist.name}&apikey=#{request.env['SONGKICK_API_KEY']}")
-      artist.songkick_id = artist_result["id"]
-      artist.save!
-    end
-  end
+  # def songkick_artist
+  #   Artist.all.each do |artist|
+  #     artist_result = JSON.parse("http://api.songkick.com/api/3.0/search/artists.json?query=#{artist.name}&apikey=#{request.env['SONGKICK_API_KEY']}")
+  #     artist.songkick_id = artist_result["id"]
+  #     artist.save!
+  #   end
+  # end
 
-  def songkick_events
-    events = JSON.parse("http://api.songkick.com/api/3.0/artists/#{songkick_id}/calendar.json?apikey={request.env['SONGKICK_API_KEY']}")
-    return events
-  end
+  # def songkick_events
+  #   events = JSON.parse("http://api.songkick.com/api/3.0/artists/#{songkick_id}/calendar.json?apikey={request.env['SONGKICK_API_KEY']}")
+  #   return events
+  # end
 
 end
