@@ -49,9 +49,9 @@ module Scraper2
 		end
 
 		# Assign songkick ID for artist
-		unless artist.songkick_id
-			Songkick.associate_id artist.name
-		end
+		# unless artist.songkick_id
+		# 	Songkick.associate_id artist.name
+		# end
 
 		LastFm.improve_artist_info artist
 

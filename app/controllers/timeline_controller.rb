@@ -13,9 +13,4 @@ class TimelineController < ApplicationController
     end
   end
 
-  # def refresh_recommends
-  #   respond_to do |format|
-  #     format.js { render :partial => "timeline/refresh_recommends", :formats => [:js] }
-  #   end
-  # end
 end

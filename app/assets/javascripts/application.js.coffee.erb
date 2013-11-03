@@ -573,11 +573,6 @@ loading_animation_settings = ->
     left: "auto" # Left position relative to parent in px
 
 recommendation = ->
-  # if $('#recommend_carousel .carousel-inner').children().children().size() < 18
-  #   console.log "LESS THAN 18"
-  #   url = "/timeline_recommends/refresh"
-  #   $.get url
-
   $(document).on("ajax:beforeSend", "a.add-trkr-carousel", ->
     $(".recommend_artists").css("pointer-events", "none").spin "standard"
     $("#recommend_carousel").css "opacity", "0.5"
