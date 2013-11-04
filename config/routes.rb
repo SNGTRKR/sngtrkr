@@ -49,7 +49,6 @@ SNGTRKR::Application.routes.draw do
       get 'destroy_confirm'
       post 'destroy_with_reason'
       get 'friends'
-      get 'recommend'
       # get 'timeline/:page' => 'timeline#index'
     end
     collection do

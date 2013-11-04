@@ -91,18 +91,4 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-  def recommend
-    @user = current_user
-    if @user.sign_in_count <= 2
-      @first_time = true
-    else
-      @first_time = false
-    end
-    respond_to do |format|
-      format.html
-      format.json
-    end
-  end
-
 end

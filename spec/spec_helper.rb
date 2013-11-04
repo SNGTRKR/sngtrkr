@@ -19,6 +19,12 @@ RSpec.configure do |config|
   # config.mock_with :rr
   config.include FactoryGirl::Syntax::Methods
 
+  # Include Devise in specs
+  config.include Devise::TestHelpers, :type => :controller
+
+  # Extend controller macros module
+  config.extend ControllerMacros, :type => :controller
+
   config.use_transactional_fixtures = true
 
   # If true, the base class of anonymous controllers will be inferred
