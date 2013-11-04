@@ -2,9 +2,6 @@ require 'spec_helper'
 describe SuggestsController do
 
 	login_user
-	before :each do 
-		@artist = FactoryGirl.create(:artist)
-	end	
 
 	controller.params[:artist_id].should_not be_nil
 	current_user.followed_artists = [1,2,3,4]
@@ -15,7 +12,7 @@ describe SuggestsController do
                 current_user.followed_artists.should have(5).items
             end
             it "redirects to the artist" do
-                response.should redirect_to artist_path(@artist)
+                response.should redirect_to artist_path(FactoryGirl.create(:artist))
             end
         end
         context "with invalid attributes" do
