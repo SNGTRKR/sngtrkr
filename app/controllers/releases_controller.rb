@@ -1,9 +1,5 @@
 class ReleasesController < ApplicationController
 
-  load_and_authorize_resource
-  # GET /releases
-  # GET /releases.json
-
   skip_authorization_check
   load_and_authorize_resource
 
@@ -24,12 +20,6 @@ class ReleasesController < ApplicationController
     end
   end
 
-  # GET /releases/1/edit
-  def edit
-    @artist = Artist.find(params[:artist_id])
-    @release = @artist.releases.find(params[:id])
-  end
-
   # POST /releases
   # POST /releases.json
   def create
@@ -41,23 +31,6 @@ class ReleasesController < ApplicationController
         format.html { redirect_to [@artist, @release], :notice => 'Release was successfully created.' }
       else
         format.html { render :action => "new" }
-      end
-    end
-  end
-
-  # PUT /releases/1
-  # PUT /releases/1.json
-  def update
-    @artist = Artist.find(params[:artist_id])
-    @release = Release.find(params[:id])
-
-    respond_to do |format|
-      if @release.update_attributes(params[:release])
-        format.html { redirect_to [@artist, @release], :notice => 'Release was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render :action => "edit" }
-        format.json { render :json => @release.errors, :status => :unprocessable_entity }
       end
     end
   end

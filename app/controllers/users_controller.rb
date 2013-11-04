@@ -55,33 +55,6 @@ class UsersController < ApplicationController
     redirect_to "/users/#{current_user.id}"
   end
 
-  # Allows a user to see their profile from an oustide perspective
-  def public
-    @friend = User.find(params[:id])
-    render :show
-  end
-
-  # GET /users/new
-  # GET /users/new.json
-  def new
-    @user = User.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render :json => @user }
-    end
-  end
-
-  # DELETE /users/1
-  # DELETE /users/1.json
-
-  def destroy_confirm
-    respond_to do |format|
-      format.html { render :delete_confirm, :layout => false }
-      format.json { head :no_content }
-    end
-  end
-
   def destroy
     @user = User.find(params[:id])
     @user.destroy

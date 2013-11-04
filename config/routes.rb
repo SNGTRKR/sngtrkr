@@ -46,7 +46,6 @@ SNGTRKR::Application.routes.draw do
   resources :users, :except => [:index, :edit, :update] do
     member do
       get 'public'
-      get 'destroy_confirm'
       post 'destroy_with_reason'
       get 'friends'
       # get 'timeline/:page' => 'timeline#index'
@@ -65,7 +64,6 @@ SNGTRKR::Application.routes.draw do
       get 'unfollow' => 'follows#batch_destroy'
     end
     resources :releases
-    get 'scrape_confirm' => 'artists#scrape_confirm'
     get 'follow' => 'follows#create'
     get 'unfollow' => 'follows#destroy'
     #resources :suggests, :except => [:destroy,:edit]

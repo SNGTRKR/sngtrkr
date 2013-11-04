@@ -35,15 +35,4 @@ class FollowsController < ApplicationController
       format.json { render :json => {:response => :success} }
     end
   end
-
-
-  def batch_destroy
-    params[:artist_ids].each do |id|
-      current_user.followed_artists.delete(Artist.find(id))
-    end
-    respond_to do |format|
-      format.html { redirect_to current_user }
-    end
-  end
-
 end

@@ -49,4 +49,9 @@ FactoryGirl.define do
     release "Evolution Theory"
   end
 
+  factory :suggest do
+    user_id FactoryGirl.create(:user).id
+    artist_id FactoryGirl.create(:artist).id
+    ignore false
+  end
 end

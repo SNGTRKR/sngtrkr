@@ -27,7 +27,7 @@ class Ability
     guest_permissions(user)
     can :manage, [User, Timeline]
     can :destroy, [Suggest]
-    can [:edit, :scrape_confirm], [Artist]
+    can :edit, [Artist]
     can [:edit, :previews, :create], Release
 
     can [:create, :destroy], [Follow]

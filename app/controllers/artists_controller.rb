@@ -88,19 +88,4 @@ class ArtistsController < ApplicationController
     end
   end
 
-  def scrape_confirm
-    @artist = Artist.find(params[:artist_id])
-    require 'open-uri'
-    if params[:store] == '7digital'
-      @sd_info = Scraper.artist_7digital_search params[:search]
-    elsif params[:store] == 'itunes'
-      @itunes_info = ActiveSupport::JSON.decode(open("http://itunes.apple.com/search?term=#{ CGI.escape(params[:search])}&country=GB&limit=10&entity=musicArtist"))['results']
-    else
-      return render :nothing => true
-    end
-    respond_to do |format|
-      format.js
-    end
-  end
-
 end
