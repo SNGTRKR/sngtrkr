@@ -1,16 +1,4 @@
 class ReportsController < ApplicationController
-  
-  # GET /reports/new
-  # GET /reports/new.json
-  def new
-    @report = Report.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @report }
-    end
-  end
-
   # POST /reports
   # POST /reports.json
   def create

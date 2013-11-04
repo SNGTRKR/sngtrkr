@@ -2,7 +2,7 @@ namespace :db do
   desc "Seed the database with dummy data using Faker, takes one argument dictating whether or not it should overwrite existing records."
   task :fake_seed, [:overwrite, :seed_images] => :environment do |t, args|
   	if Rails.env.production?
-  		raise "NOT GOING TO LET YOU DO THIS IN PRODUCTION BRO"
+  		raise "NOT GOING TO LET YOU DO THIS IN PRODUCTION BRO" #lulz
   	end
 	  args.with_defaults(:overwrite => "false", :seed_images => "false")
   	if args.overwrite == "false" and (Artist.count > 0 or Release.count > 0)

@@ -27,17 +27,6 @@ class ArtistsController < ApplicationController
     end
   end
 
-  # GET /artists/new
-  # GET /artists/new.json
-  def new
-    @artist = Artist.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render :json => @artist }
-    end
-  end
-
   # GET /artists/1/edit
   def edit
     @artist = Artist.find(params[:id])
@@ -98,30 +87,6 @@ class ArtistsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-  # Used to import a single artist at a time from Facebook
-  def fb_import
-    @artist = Scraper2::Facebook.scrape_artist(
-      access_token: params[:token], 
-      page_id: params[:fb_id])
-    current_user.followed_artists << @artist
-    @url = artist_path(@artist)
-    respond_to do |format|
-      format.js
-    end
-  end
-
-  # For first time users waiting for some initial artists to follow.
-  def first_suggestions
-    @user = current_user
-    @six = 'false'
-    @six = 'true' unless @user.suggested.count < 6
-    respond_to do |format|
-      format.js
-      format.json { render :json => @six }
-    end
-  end
-
 
   def scrape_confirm
     @artist = Artist.find(params[:artist_id])

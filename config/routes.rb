@@ -63,8 +63,6 @@ SNGTRKR::Application.routes.draw do
 
   resources :artists, :except => [:index] do
     collection do
-      get 'fb_import/:fb_id', :action => 'fb_import'
-      get 'first_suggestions'
       get 'unfollow' => 'follows#batch_destroy'
     end
     resources :releases
