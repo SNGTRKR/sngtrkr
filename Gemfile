@@ -13,10 +13,11 @@ group :production do
   gem 'unicorn'
   gem 'therubyracer'
   gem 'rollbar', '~> 0.9.6'
+  gem 'newrelic_rpm'
+  gem 'sitemap_generator', :require => false
+  gem 'whenever', :require => false
 end
 
-gem 'sitemap_generator', :require => false
-gem 'newrelic_rpm'
 gem 'mysql2'
 
 group :test do
@@ -36,7 +37,6 @@ end
 gem 'dalli'
 
 # MAILER
-gem 'rails_email_preview', '~> 0.2.10'
 gem 'maktoub'
 
 # BACKGROUND TASKS
@@ -44,7 +44,6 @@ gem 'sidekiq', :require => false
 gem 'sidekiq-failures'
 gem 'slim'
 gem 'sinatra', '>= 1.3.0', :require => nil
-gem 'whenever', :require => false
 
 gem 'fog'
 gem 'mini_magick'
@@ -59,7 +58,8 @@ gem 'rails_admin'
 gem 'custom_configuration'
 
 group :development do
-  gem 'capistrano'
+  gem 'rails_email_preview', '~> 0.2.10'
+  gem 'capistrano', "~> 2"
   gem "better_errors"
   gem "binding_of_caller"
   gem 'meta_request' #, '0.2.1'
@@ -97,9 +97,6 @@ gem 'twitter'
 
 # URL Shortener
 gem 'shortener'
-
-# Monitoring
-gem 'newrelic_rpm'
 
 gem 'kaminari'
 
