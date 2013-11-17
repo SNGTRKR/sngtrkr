@@ -31,7 +31,7 @@ describe ReleasesController do
             end
         end
         context "with invalid attributes" do
-            it "does not save the new release in the database"
+            it "does not save the new release in the database" do
                 expect {
                     post :create, release: FactoryGirl.attributes_for(:invalid_release)
                 }.to_not change(Release, :count)

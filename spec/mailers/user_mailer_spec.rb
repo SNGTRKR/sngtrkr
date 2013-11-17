@@ -3,7 +3,7 @@ describe UserMailer do
 
   describe "#new_releases_email" do
     before(:each) do
-      @mailer = mock
+      @mailer = double
       @mailer.stub(:deliver) { true }
     end
 

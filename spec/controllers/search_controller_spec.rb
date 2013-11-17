@@ -2,13 +2,13 @@ require 'spec_helper'
 describe SearchController do
 
 	search_query = "Test"
-	controller.params[:query].should_not be_nil
+	# controller.params[:query].should_not be_nil
 
 	describe Release do
 		context "when the artist database is searched", :solr => true do
 			it "returns a release json object" do
 				controller.params[:r_page].should_not be_nil
-				release = FactoryGirl.create(:release, :name "Test search release")
+				release = create(:release, name: "Test search release")
 				release.index!
 				release_result = Release.search do
 					fulltext search_query
@@ -34,7 +34,7 @@ describe SearchController do
 		context "when the release database is searched", :solr => true do
 			it "returns an artist json object" do
 				controller.params[:a_page].should_not be_nil
-				artist = FactoryGirl.create(:artist, name: "Test search artist")
+				artist = create(:artist, name: "Test search artist")
 				artist.index!
 				artist_result = Artist.search do
 					fulltext search_query

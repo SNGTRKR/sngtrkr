@@ -42,7 +42,7 @@ FactoryGirl.define do
   report_hash = { :release_name => "0", :artist => "1", :release_date => "0", :label => "0", :purchase_links => "0" }
 
   factory :report do
-    user_id FactoryGirl.create(:user).id
+    user
     comments "This is the additional comments for the report!"
     url "http://dev.sngtrkr.com:3000/artists/203/releases/173950"
     elements report_hash
@@ -50,8 +50,8 @@ FactoryGirl.define do
   end
 
   factory :suggest do
-    user_id FactoryGirl.create(:user).id
-    artist_id FactoryGirl.create(:artist).id
-    ignore false
+    user
+    artist
+    ignore { false }
   end
 end
