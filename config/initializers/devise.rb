@@ -222,4 +222,6 @@ Devise.setup do |config|
   require "omniauth-facebook"
   config.omniauth :facebook, FB_APP_ID, FB_APP_SECRET, :scope => 'email,user_likes', :display => 'popup'
 
+  config.secret_key = '440f03be671b7606ec17a1602f32b69cda8ffe55eaa89bf0a05ddca832e7bc6c447f4b1dfe4a7d3cdcafc5445b0f105f3fa0eae2ed93919f8d8c87253bf02458'
+
 end

@@ -1,12 +1,14 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 3'
+gem 'rails', '~> 4'
+gem 'protected_attributes'
+gem 'rails-observers'
+gem 'actionpack-action_caching'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'json'
-gem "best_in_place"
 
 # VERSION AND DEPLOYMENT
 group :production do
@@ -54,38 +56,32 @@ gem 'scrobbler'
 gem 'itunes-search-api', github: 'bessey/itunes-search-api', branch: 'multi-lookup'
 
 # ADMIN
-gem 'rails_admin'
 gem 'custom_configuration'
 
 group :development do
-  gem 'rails_email_preview', '~> 0.2.10'
+  gem 'mail_view', "~> 2"
   gem 'capistrano', "~> 2"
   gem "better_errors"
   gem "binding_of_caller"
   gem 'meta_request' #, '0.2.1'
   gem 'capistrano-unicorn', :require => false
-
-  gem 'chef', :require => false, github: "smaftoul/chef", branch: "patch-1"
-  gem 'knife-solo_data_bag', :require => false
   # gem 'rack-mini-profiler'
   gem 'ruby-prof'
 end
 
-group :assets do
-  # in production environments by default.
-  gem 'sass-rails', '>= 3.2.3'
-  gem 'compass-rails', '>= 1.0.0.rc.2'
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer'
+gem 'sass-rails', '~> 4'
+gem 'compass-rails', "~> 2.0.alpha.0"
+gem 'coffee-script'
+gem 'font-awesome-rails'
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+# gem 'therubyracer'
 
-  gem 'uglifier', '>= 1.0.3'
-  gem 'jquery-rails'
-  gem 'turbo-sprockets-rails3'
-end
+gem 'uglifier', '>= 1.0.3'
+gem 'jquery-rails'
 
 #gem 'client_side_validations', :github => 'bcardarella/client_side_validations', :branch => '3-2-stable'
 # Authentication
-gem 'devise'
+gem 'devise', '~> 3.2'
 gem 'cancan'
 
 # Facebook

@@ -11,13 +11,12 @@ SNGTRKR::Application.routes.draw do
   get '/timeline_releases/populate' => 'timeline#populate_user_timeline'
 
   if Rails.env.development?
-    mount RailsEmailPreview::Engine, :at => 'emails' # You can choose any URL here
+    mount MailView => 'emails'
   end
 
   namespace :admin do
     constraints lambda { |request| request.env["warden"].authenticate? and User.find(request.env["warden"].user).roles.first.name == "Admin" } do
       root :to => "admin#overview"
-      mount RailsAdmin::Engine => '/db'
       mount Sidekiq::Web => '/sidekiq'
       get '/:action' => "admin#:action"
     end
