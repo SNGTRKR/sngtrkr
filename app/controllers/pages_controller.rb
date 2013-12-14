@@ -14,9 +14,8 @@ class PagesController < ApplicationController
       # FIXME: This may be triggering the url shortener loop
       redirect_to '/timeline'
     end
-    @releases = Rails.cache.fetch("homepage_releases", :expires_in => 24.hours) do
-      Release.includes(:artist).all(:limit => 66)
-    end
+    @releases = Release.includes(:artist).all(:limit => 66)
+    # @releases = Rails.cache.fetch("homepage_releases", :expires_in => 24.hours) { Release.includes(:artist).all(:limit => 66) }
   end
 
   def explore

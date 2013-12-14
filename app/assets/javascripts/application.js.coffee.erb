@@ -180,13 +180,13 @@ navbar = ->
           top: 120,
           "slow"
         $("#show_info a").text "Close"
-        $(@).attr 'data-tracking-name', 'close-info'
+        $(@).attr 'data-tracking-name', 'open-info'
         # Increase height of typehead results
         $(".search-data-query").css 'top', 166
         $('.tt-dropdown-menu').css 'top', 211
       else
         $("#more_info").slideUp "slow"
-        $(@).attr 'data-tracking-name', 'open-info'
+        $(@).attr 'data-tracking-name', 'close-info'
         $('.navbar').animate
           top: 0,
           "slow"

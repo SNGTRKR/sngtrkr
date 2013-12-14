@@ -4,6 +4,7 @@ gem 'rails', '~> 4'
 gem 'protected_attributes'
 gem 'rails-observers'
 gem 'actionpack-action_caching'
+gem 'actionpack-page_caching'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -64,13 +65,14 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem 'meta_request' #, '0.2.1'
+  gem 'quiet_assets'
   gem 'capistrano-unicorn', :require => false
-  # gem 'rack-mini-profiler'
+  gem 'rack-mini-profiler'
   gem 'ruby-prof'
 end
 
 gem 'sass-rails', '~> 4'
-gem 'compass-rails', "~> 2.0.alpha.0"
+gem 'compass-rails', "~> 1.1.2"
 gem 'coffee-script'
 gem 'font-awesome-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -95,6 +97,8 @@ gem 'twitter'
 gem 'shortener'
 
 gem 'kaminari'
+
+gem 'global'
 
 gem 'sunspot_rails' #, :git => "git://github.com/mkrisher/sunspot.git", :branch => "task_warning_bypass"
 gem 'sunspot_solr'
