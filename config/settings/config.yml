@@ -1,0 +1,22 @@
+development:
+    domain: "http://dev.sngtrkr.com:3000"
+    upload_directory: ":class/images/:id_partition/" #"cw_dev/:class/images/:id_partition/"
+    mail_view:
+        enabled: true
+    rollbar:
+        enabled: false
+
+production:
+    domain: "http://sngtrkr.com"
+    upload_directory: ":class/images/:id_partition/"
+    mail_view:
+        enabled: false
+    rollbar:
+        enabled: true
+
+test:
+    upload_directory: "cw_test/:class/images/:id_partition/"
+    mail_view:
+        enabled: false
+    rollbar:
+        enabled: false

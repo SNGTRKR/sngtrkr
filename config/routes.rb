@@ -11,7 +11,7 @@ SNGTRKR::Application.routes.draw do
   get '/timeline_releases/populate' => 'timeline#populate_user_timeline'
 
   if Global.config.mail_view["enabled"]
-    mount MailView => 'emails'
+    mount RailsEmailPreview::Engine, at: 'emails'
   end
 
   namespace :admin do

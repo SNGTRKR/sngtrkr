@@ -1,0 +1,7 @@
+development:
+    popular_count: 1
+
+production:
+    popular_count: 5
+
+test:

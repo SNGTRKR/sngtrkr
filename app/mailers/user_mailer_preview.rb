@@ -1,4 +1,4 @@
-class UserMailPreview < MailView
+class UserMailerPreview
   def welcome_email
     r = Role.create(:name => 'Admin')
     user = User.new(:id => '29', 

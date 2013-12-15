@@ -60,7 +60,7 @@ gem 'itunes-search-api', github: 'bessey/itunes-search-api', branch: 'multi-look
 gem 'custom_configuration'
 
 group :development do
-  gem 'mail_view', "~> 2"
+  gem 'rails_email_preview'
   gem 'capistrano', "~> 2"
   gem "better_errors"
   gem "binding_of_caller"
@@ -75,13 +75,10 @@ gem 'sass-rails', '~> 4'
 gem 'compass-rails', "~> 1.1.2"
 gem 'coffee-script'
 gem 'font-awesome-rails'
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer'
 
 gem 'uglifier', '>= 1.0.3'
 gem 'jquery-rails'
 
-#gem 'client_side_validations', :github => 'bcardarella/client_side_validations', :branch => '3-2-stable'
 # Authentication
 gem 'devise', '~> 3.2'
 gem 'cancan'
