@@ -1,9 +1,8 @@
 # Should be 'production' by default, otherwise use other env 
 rails_env = ENV['RAILS_ENV'] || 'production'
 
-short = "prod"
 # Set your full path to application.
-app_path = "/home/vagrant/sngtrkr_rails_#{short}"
+app_path = "/var/www/sngtrkr"
 
 # Set unicorn options
 worker_processes 1
@@ -11,8 +10,6 @@ preload_app true
 timeout 180
 listen "#{app_path}/shared/sockets/unicorn.sock", :backlog => 64
 #listen "127.0.0.1:9000"
-
-user 'vagrant', 'vagrant'
 
 # Fill path to your app
 working_directory "#{app_path}/current"
