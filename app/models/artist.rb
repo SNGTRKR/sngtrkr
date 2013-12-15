@@ -58,11 +58,7 @@ class Artist < ActiveRecord::Base
   end
 
   def self.popular
-    if Rails.env.production?
-      count = 5
-    else
-      count = 1
-    end
+    count = Global.artist.popular_count
 
     Artist.select('artists.*, count(follows.id) as follow_count').joins(:follow).group("follows.artist_id").having("follow_count > 2").order("follow_count DESC").limit(5)
   end

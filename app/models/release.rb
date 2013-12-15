@@ -103,11 +103,7 @@ class Release < ActiveRecord::Base
   def self.twitter_update
     @trel = Release.where(:tweet => nil).order("date DESC").first
     @tart = Artist.find(@trel.artist_id)
-    if Rails.env.development?
-      @tdomain = "http://dev.sngtrkr.com:3000"
-    else
-      @tdomain = "http://sngtrkr.com"
-    end
+    @tdomain = Global.config.domain
     @turl = "#{@tdomain}/artists/#{@tart.id}/releases/#{@trel.id}"
     Twitter.update("#{@tart.name} - #{@trel.name}, released #{@trel.date.strftime("#{@trel.date.day.ordinalize} %B %Y ")} #{@turl}")
     @trel.update_attribute(:tweet, true)

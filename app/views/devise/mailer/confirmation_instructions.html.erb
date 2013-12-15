@@ -1,9 +1,4 @@
-<% if Rails.env.development?
-  @domain = 'http://dev.sngtrkr.com:3000'
-elsif Rails.env.production?
-  @domain = 'http://do.sngtrkr.com'
-end 
-%>
+<% @domain = Global.config.domain %>
 <html style="width: 100%; margin-top: 0px !important; padding-top: 0px !important;">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

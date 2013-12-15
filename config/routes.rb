@@ -10,7 +10,7 @@ SNGTRKR::Application.routes.draw do
   #get '/:id' => "shortener/shortened_urls#show"
   get '/timeline_releases/populate' => 'timeline#populate_user_timeline'
 
-  if Rails.env.development?
+  if Global.config.mail_view["enabled"]
     mount MailView => 'emails'
   end
 
