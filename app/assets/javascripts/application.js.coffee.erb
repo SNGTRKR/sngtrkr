@@ -71,12 +71,12 @@ timeline = ->
     $('.recommend_artists #recommend_carousel .carousel-inner .item:first-child').addClass 'active'
 
     if $('.user_timeline .release').length >= 9
-      $('.recommend_artists').insertAfter('.user_timeline .release:nth-child(9)').show()
+      $('.recommend_artists').insertAfter('.user_timeline .release:nth-child(9)').css 'display', 'inline-block'
     else if $('.user_timeline .release').length <= 3
-      $('.recommend_artists').show()
+      $('.recommend_artists').css 'display', 'inline-block'
 
     if $('.user_timeline .release').length >= 18
-      $('.hero_artist').insertAfter('.user_timeline .release:nth-child(18)').show()
+      $('.hero_artist').insertAfter('.user_timeline .release:nth-child(18)').css 'display', 'inline-block'
 
 homepage_releases = ->
     #homepage release animation
