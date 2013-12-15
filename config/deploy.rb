@@ -82,7 +82,7 @@ end
 namespace :assets do
     desc "Compile assets"
     task :compile, :roles => :app do
-        run "cd /var/www/sngtrkr/current && bundle exec rake assets:precompile"
+        run "cd /var/www/sngtrkr/current && RAILS_ENV=production RAILS_GROUPS=assets bundle exec rake assets:precompile"
     end
 end
 
