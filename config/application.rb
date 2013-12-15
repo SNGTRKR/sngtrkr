@@ -3,9 +3,6 @@ require 'rails/all'
 
 Bundler.require(:default, Rails.env)
 
-if ENV['SNGTRKR_AWS_ID'].blank?
-  raise "Environment variables not set. Probably not in the right shell script file."
-end
 
 module SNGTRKR
   class Application < Rails::Application
