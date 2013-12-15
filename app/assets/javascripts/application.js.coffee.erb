@@ -631,7 +631,6 @@ class Sngtrkr_analytics_data
 
   send: (object) ->
     if @enabled
-      console.log @build(object)
       _gaq.push @build(object)
     return
 

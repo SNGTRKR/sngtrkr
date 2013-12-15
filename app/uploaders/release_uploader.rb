@@ -10,7 +10,7 @@ class ReleaseUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    asset_path("/images/release/#{version_name}/missing.png")
+    asset_path("/release/#{version_name}/missing.png")
   end
 
   process resize_to_fit: [500, 500]
@@ -19,7 +19,6 @@ class ReleaseUploader < CarrierWave::Uploader::Base
   version :large do
     process resize_to_fill: [230, 230]
   end
-
   version :medium, :from_version => :large do
     process resize_to_fill: [150, 150]
   end

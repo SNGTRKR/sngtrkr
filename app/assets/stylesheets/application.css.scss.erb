@@ -10,33 +10,9 @@ $darkgray: #333333;
 $gray: #666666;
 $lightgray: #DDDDDD;
 
-@font-face {
-  font-family: "MuseoSans-100";
-  src: url("/font/MuseoSans-100.otf");
-  src: local("?"), url("/font/MuseoSans-100.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "MuseoSans-300";
-  src: url("/font/MuseoSans-300.otf");
-  src: local("?"), url("/font/MuseoSans-300.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "MuseoSans-500";
-  src: url("/font/MuseoSans_500.otf");
-  src: local("?"), url("/font/MuseoSans_500.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "MuseoSans-700";
-  src: url("/font/MuseoSans_700.otf");
-  src: local("?"), url("/font/MuseoSans_700.otf") format("opentype");
-}
-
 body {
   line-height: 1.8em !important;
-  background:url(/images/bg_body-noise.png) repeat;
+  background:url('<%= asset_path "bg_body-noise.png" %>') repeat;
   text-shadow: 0.5px 0.5px 0 rgba(240, 240, 240, 1);
 }
 
@@ -117,25 +93,26 @@ body {
     }
   }
 }
-@import "grid.css.scss";
-@import "font-awesome";
-@import "navbar.css.scss";
-@import "headers.css.scss";
-@import "styling.css.scss";
-@import "tabs.css.scss";
-@import "buttons.css.scss";
-@import "admin.css.scss";
+@import "grid";
+@import "navbar";
+@import "headers";
+@import "styling";
+@import "tabs";
+@import "buttons";
+@import "admin";
+@import "font";
 //Pages
-@import "home.css.scss";
-@import "about.css.scss";
-@import "search.css.scss";
-@import "release.css.scss";
-@import "profile.css.scss";
-@import "artist.css.scss";
-@import "timeline.css.scss";
+@import "home";
+@import "about";
+@import "search";
+@import "release";
+@import "profile";
+@import "artist";
+@import "timeline";
 @import "walkthrough";
 @import "explore";
 @import "friend";
 //External CSS files
 @import "bootstrap";
 @import "animations";
+@import "font-awesome.min";

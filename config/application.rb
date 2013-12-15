@@ -11,9 +11,6 @@ end
 module SNGTRKR
   class Application < Rails::Application
 
-    config.assets.precompile += ['rails_admin/rails_admin.css', 'rails_admin/rails_admin.js',
-                                 'sidekiq/application.js', 'sidekiq/*.css', 'css3-fallback.js']
-
     config.assets.expire_after 2.weeks
 
     # Stops connecting to database while precompiling assets on deployment with capistrano

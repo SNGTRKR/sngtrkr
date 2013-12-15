@@ -51,7 +51,8 @@ gem 'sinatra', '>= 1.3.0', :require => nil
 
 gem 'fog'
 gem 'mini_magick'
-gem "carrierwave"
+gem 'carrierwave'
+gem 'unf'
 
 # SCRAPING GEMS
 gem 'scrobbler'
@@ -75,7 +76,6 @@ end
 gem 'sass-rails', '~> 4'
 gem 'compass-rails'
 gem 'coffee-rails'
-gem 'font-awesome-rails'
 gem 'uglifier', '>= 1.0.3'
 gem 'jquery-rails'
 gem 'asset_sync'
