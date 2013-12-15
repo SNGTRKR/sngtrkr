@@ -35,7 +35,7 @@ SNGTRKR::Application.configure do
   config.assets.debug = true
 
   # Mail
-  config.assets.prefix = "/dev-assets"
+  config.assets.prefix = "/assets"
 
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp

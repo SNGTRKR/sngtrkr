@@ -1,7 +1,12 @@
 require File.expand_path('../boot', __FILE__)
 require 'rails/all'
 
-Bundler.require(:default, Rails.env)
+if defined?(Bundler)
+  # If you precompile assets before deploying to production, use this line
+  Bundler.require(*Rails.groups(:assets => %w(development test)))
+  # If you want your assets lazily compiled in production, use this line
+  # Bundler.require(:default, :assets, Rails.env)
+end
 
 module SNGTRKR
   class Application < Rails::Application
@@ -12,6 +17,8 @@ module SNGTRKR
 
     config.assets.expire_after 2.weeks
 
+    # Stops connecting to database while precompiling assets on deployment with capistrano
+    config.assets.initialize_on_precompile = true
 
     config.encoding = "utf-8"
 

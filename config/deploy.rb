@@ -83,10 +83,11 @@ namespace :assets do
         run "cd /var/www/sngtrkr/current && bundle exec rake assets:precompile"
     end
 end
-after 'deploy:update_code', 'configure:database' 
+
 after :deploy, 'configure:carrierwave'
 after 'configure:carrierwave', 'configure:asset_sync'
-after 'configure:asset_sync', 'configure:twitter'
+after 'configure:asset_sync', 'configure:database'
+after 'configure:database', 'configure:twitter'
 after 'configure:twitter' , 'solr:start'
 after 'solr:start', 'solr:symlink'
 after 'solr:symlink', 'assets:compile'
