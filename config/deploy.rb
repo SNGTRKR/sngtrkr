@@ -22,6 +22,9 @@ after "deploy:restart", "deploy:cleanup"
 
 # deploy config
 set :deploy_via, :remote_cache
+set :copy_exclude, [".git", ".DS_Store", ".gitignore", ".gitmodules"]
+set :normalize_asset_timestamps, false
+set :use_sudo, false
 
 # additional settings
 default_run_options[:pty] = true # Forgo errors when deploying from windows
