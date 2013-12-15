@@ -61,7 +61,7 @@ gem 'itunes-search-api', github: 'bessey/itunes-search-api', branch: 'multi-look
 gem 'custom_configuration'
 
 group :development do
-  gem 'capistrano', "~> 2"
+  gem 'capistrano', '~> 2.15'
   gem "better_errors"
   gem "binding_of_caller"
   gem 'meta_request' #, '0.2.1'
