@@ -1,6 +1,6 @@
 set :branch, 'staging'
-set :applicationdir, "/home/vagrant/sngtrkr_rails_prod"
-set :deploy_to, "/home/vagrant/sngtrkr_rails_prod"
+set :applicationdir, "/var/www/sngtrkr"
+set :deploy_to, "/var/www/sngtrkr"
 
 # Sidekiq
 require "sidekiq/capistrano"

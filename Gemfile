@@ -71,13 +71,15 @@ group :development do
   gem 'ruby-prof'
 end
 
-gem 'sass-rails', '~> 4'
-gem 'compass-rails', "~> 1.1.2"
-gem 'coffee-script'
-gem 'font-awesome-rails'
 
+gem 'sass-rails', '~> 4'
+gem 'compass-rails'
+gem 'coffee-rails'
+gem 'font-awesome-rails'
 gem 'uglifier', '>= 1.0.3'
 gem 'jquery-rails'
+gem 'asset_sync'
+
 
 # Authentication
 gem 'devise', '~> 3.2'

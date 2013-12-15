@@ -10,7 +10,7 @@ CarrierWave.configure do |config|
         :region => 'eu-west-1', # optional, defaults to 'us-east-1'
     }
     config.fog_directory = "sngtrkr-production" # required
-    config.asset_host = "http://sngtrkr-production.s3.amazonaws.com"
+    config.asset_host = "http://cdn4.sngtrkr.com"
     config.fog_public = true # optional, defaults to true
     config.fog_attributes = {
       'Cache-Control' => 'max-age=315576000',
