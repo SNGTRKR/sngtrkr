@@ -3,7 +3,6 @@ require 'rails/all'
 
 Bundler.require(:default, Rails.env)
 
-
 module SNGTRKR
   class Application < Rails::Application
     config.assets.initialize_on_precompile = false

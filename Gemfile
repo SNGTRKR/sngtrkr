@@ -41,6 +41,7 @@ gem 'dalli'
 
 # MAILER
 gem 'maktoub'
+gem 'rails_email_preview'
 
 # BACKGROUND TASKS
 gem 'sidekiq', :require => false
@@ -60,7 +61,6 @@ gem 'itunes-search-api', github: 'bessey/itunes-search-api', branch: 'multi-look
 gem 'custom_configuration'
 
 group :development do
-  gem 'rails_email_preview'
   gem 'capistrano', "~> 2"
   gem "better_errors"
   gem "binding_of_caller"
