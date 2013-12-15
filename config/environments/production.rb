@@ -20,11 +20,12 @@ SNGTRKR::Application.configure do
 
   config.action_controller.asset_host = "http://cdn%d.sngtrkr.com"
 
+  config.assets.prefix = "/assets"
   # Compress JavaScripts and CSS
   config.assets.compress = true
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = true
+  config.assets.compile = false
 
   # Debugging on production
   config.assets.debug = false
