@@ -16,6 +16,8 @@ require 'capistrano/ext/multistage'
 # Bundler for remote gem installs
 require "bundler/capistrano"
 
+require 'capistrano-unicorn'
+
 # Only keep the latest 3 releases
 set :keep_releases, 3
 after "deploy:restart", "deploy:cleanup"
@@ -92,3 +94,4 @@ after 'configure:twitter' , 'solr:start'
 after 'solr:start', 'solr:symlink'
 after 'solr:symlink', 'assets:compile'
 after 'assets:compile', 'configure:notify_rollbar'
+after 'configure:notify_rollbar', 'unicorn:restart'
