@@ -57,11 +57,11 @@ end
 namespace :configure do
   desc "Setup database configuration"
   task :database, :roles => :app do
-    run "yes | cp /lib/configs/database.yml /var/www/sngtrkr/current/config"
+    run "yes | cp /lib/configs/sngtrkr/database.yml /var/www/sngtrkr/current/config"
   end
   desc "Setup carrierwave configuration"
   task :carrierwave, :roles => :app do
-      run "yes | cp /lib/configs/carrierwave_config.rb /var/www/sngtrkr/current/config/initializers"
+      run "yes | cp /lib/configs/sngtrkr/carrierwave_config.rb /var/www/sngtrkr/current/config/initializers"
   end
   desc "Setup asset_sync configuration"
   task :asset_sync, :roles => :app do
