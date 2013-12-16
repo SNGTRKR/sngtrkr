@@ -9,7 +9,6 @@ class UsersController < ApplicationController
   def timeline
     @p_param = params[:page]
     @user = current_user
-    binding.pry
     if @user.suggested_artists.count >= 18 || @user.sign_in_count == 1
       @artists = @user.suggested_artists.first(18)
     else

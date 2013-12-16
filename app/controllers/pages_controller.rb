@@ -20,7 +20,7 @@ class PagesController < ApplicationController
 
   def explore
     @recent_releases = Release.includes(:artist).order("date DESC").page(params[:page])
-    @popular_artists = Artist.select("artists.*,count(follows.id) as follow_count").joins(:follows).group("follows.artist_id").having("follow_count > 2").order("follow_count DESC").page(params[:page])
+    @popular_artists = Artist.select("artists.*").joins(:follows).group("follows.artist_id").having("count(follows.id) > 2").order("count(follows.id) DESC").page(params[:page])
   end
 
   def explore_release
@@ -31,7 +31,7 @@ class PagesController < ApplicationController
   end
 
   def explore_artist
-    @popular_artists = Artist.select("artists.*,count(follows.id) as follow_count").joins(:follows).group("follows.artist_id").having("follow_count > 2").order("follow_count DESC").page(params[:page])
+    @popular_artists = Artist.select("artists.*").joins(:follows).group("follows.artist_id").having("count(follows.id) > 2").order("count(follows.id) DESC").page(params[:page])
     respond_to do |format|
       format.js { render :partial => "explore/explore_artist", :formats => [:js] }
     end
