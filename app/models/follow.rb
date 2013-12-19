@@ -9,10 +9,6 @@ class Follow < ActiveRecord::Base
 
   before_destroy :destroy_unfollowed_artist
 
-  def self.search(user_id, artist_id)
-    find(:all, :conditions => ["user_id = '#{user_id}' AND artist_id = '#{artist_id}'"])
-  end
-
   def destroy_unfollowed_artist
     if Follow.where("artist_id = ?", self.artist_id).count == 1
       artist.ignore = true

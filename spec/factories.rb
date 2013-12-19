@@ -13,7 +13,7 @@ FactoryGirl.define do
 
     factory :artist_with_follower do
       after(:create) do |artist|
-        artist.followed_users = [FactoryGirl.create(:user)]
+        artist.followed_users = [create(:user)]
       end
     end
 
@@ -50,8 +50,13 @@ FactoryGirl.define do
   end
 
   factory :suggest do
-    user
-    artist
-    ignore { false }
+    sequence(:user_id) { |n| n }
+    sequence(:artist_id) { |n| n }
+    ignore {false}
+  end
+
+  factory :follow do
+    sequence(:user_id) { |n| n }
+    sequence(:artist_id) { |n| n }
   end
 end

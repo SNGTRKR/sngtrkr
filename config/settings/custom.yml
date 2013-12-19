@@ -15,6 +15,7 @@ production:
         enabled: true
 
 test:
+    domain: "http://dev.sngtrkr.com:3000"
     upload_directory: "cw_test/:class/images/:id_partition/"
     mail_view:
         enabled: false

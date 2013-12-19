@@ -19,7 +19,7 @@ class Trucker
   end
 
   def self.deliver_new_releases_email user
-    releases = user.release_notifications.current.with_artist.all
+    releases = user.release_notifications.current.with_artist.to_a
     return false if releases.empty?
     artist_names = user.release_notifications.artist_names
 

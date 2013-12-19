@@ -26,8 +26,8 @@ class Release < ActiveRecord::Base
 
   after_create :notify_followers
 
-  scope :unsaved_images, where('(image_file_name is null or image_file_name = "") and image_source is not null and image_source != ""')
-  scope :latest_missing_images, includes(:artist).where('image_file_name is null or image_file_name = ""').order('created_at DESC')
+  scope :unsaved_images, -> { where('(image_file_name is null or image_file_name = "") and image_source is not null and image_source != ""') }
+  scope :latest_missing_images, -> { includes(:artist).where('image_file_name is null or image_file_name = ""').order('created_at DESC') }
 
   scope :with_artist, -> {includes(:artist)}
 
@@ -103,7 +103,7 @@ class Release < ActiveRecord::Base
   def self.twitter_update
     @trel = Release.where(:tweet => nil).order("date DESC").first
     @tart = Artist.find(@trel.artist_id)
-    @tdomain = Global.config.domain
+    @tdomain = Global.custom.domain
     @turl = "#{@tdomain}/artists/#{@tart.id}/releases/#{@trel.id}"
     Twitter.update("#{@tart.name} - #{@trel.name}, released #{@trel.date.strftime("#{@trel.date.day.ordinalize} %B %Y ")} #{@turl}")
     @trel.update_attribute(:tweet, true)

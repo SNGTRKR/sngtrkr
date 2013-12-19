@@ -5,3 +5,4 @@ production:
     popular_count: 5
 
 test:
+    popular_count: 1

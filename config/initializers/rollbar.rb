@@ -1,4 +1,4 @@
-if Global.config.rollbar["enabled"]
+if Global.custom.rollbar["enabled"]
   require 'rollbar/rails'
   Rollbar.configure do |config|
     config.access_token = '3bd397eb03da4b5aa1a6afe77b0853db'

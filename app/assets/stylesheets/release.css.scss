@@ -164,7 +164,6 @@
   }
   .info {
     margin-left: 250px;
-    @extend .fade_to_white;
     h1 {
       margin: 0 0 10px !important;
       line-height: 30px !important;
@@ -219,15 +218,18 @@
       span {
         display: block;
         float: left;
-        div {
-          color: $orange;
-          font-family: "MuseoSans-500", Helvetica, Arial, sans-serif !important;
-        }
-        i {
-          position: relative;
-          top: -1px;
-          margin-right: 10px;
-        }
+        @extend .fade_to_white;
+        position: relative;
+        width:50%;
+          div {
+            color: $orange;
+            font-family: "MuseoSans-500", Helvetica, Arial, sans-serif !important;
+          }
+          i {
+            position: relative;
+            top: -1px;
+            margin-right: 10px;
+          }
       }
       .actions {
         float: right;

@@ -1,0 +1,13 @@
+/* ============================= */
+/* ! Layout for tablet  */
+/* ============================= */
+@media only screen and (max-width: 1023px) {
+  body {
+    #related_releases .related .actions {
+        display:block !important;
+    }
+    .profile-tab-content #tab1 table .actions {
+        display: block !important;
+    }
+  }
+}

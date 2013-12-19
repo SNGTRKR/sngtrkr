@@ -29,7 +29,8 @@
   <meta name="description" content="<%= yield :description %>">
   <meta name="google-site-verification" content="ZZsezCrr3vgh_cZwliW6D-0q51Lm_fyvHBm9W2t0gpE"/>
   <link rel="icon" type="image/ico" href="<%= asset_path "icon.png" %>">
-  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= stylesheet_link_tag :application, :media => "all" %>
+  <%= stylesheet_link_tag "font.css" %>
   <!-- Use Html5Shiv in order to allow IE render HTML5 -->
   <!--[if lt IE 9]>
   <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>

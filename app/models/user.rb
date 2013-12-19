@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
 
   before_save :default_values
 
-  scope :ordered, order('first_name, last_name')
+  scope :ordered, -> { order('first_name, last_name') }
 
   def default_values
     self.email_frequency ||= 1

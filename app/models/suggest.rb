@@ -8,7 +8,7 @@ class Suggest < ActiveRecord::Base
   before_save :default_values
   before_create :check_not_following
 
-  scope :relevant, where(ignore: false)
+  scope :relevant, -> { where(ignore: false) }
 
   def default_values
     # Don't ignore new suggestions

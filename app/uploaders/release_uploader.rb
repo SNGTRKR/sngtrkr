@@ -6,7 +6,7 @@ class ReleaseUploader < CarrierWave::Uploader::Base
   include Sprockets::Rails::Helper
 
   def store_dir
-    Global.config.upload_directory
+    Global.custom.upload_directory
   end
 
   def default_url
