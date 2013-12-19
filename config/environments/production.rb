@@ -74,7 +74,7 @@ SNGTRKR::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  config.assets.precompile += ['rails_admin/rails_admin.css', 'rails_admin/rails_admin.js', 'sidekiq/application.js', 'sidekiq/*.css', 'css3-fallback.js', 'font/*']
+  config.assets.precompile += ['rails_admin/rails_admin.css', 'rails_admin/rails_admin.js', 'sidekiq/application.js', 'sidekiq/*.css', 'css3-fallback.js']
 
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
