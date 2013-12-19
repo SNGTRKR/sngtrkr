@@ -10,9 +10,9 @@ class FollowsController < ApplicationController
     @artist = Artist.find(params[:artist_id])
     current_user.followed_artists << @artist
 
-    # @recommended = current_user.suggested_artists.first(18)
-    # @artist = current_user.suggested_artists.where("artists.id NOT IN (?)", @recommended).first
-    # @recommended << @artist
+      # @recommended = current_user.suggested_artists.first(18)
+      # @artist = current_user.suggested_artists.where("artists.id NOT IN (?)", @recommended).first
+      # @recommended << @artist
     respond_to do |format|
       format.html { redirect_to artist_path(:id => params[:artist_id]) }
       format.js { render :partial => 'follows/follow', :format => [:js] }
