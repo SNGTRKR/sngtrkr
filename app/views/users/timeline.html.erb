@@ -3,26 +3,29 @@
 <% content_for :description do %><%= current_user.first_name %>'s personalised timeline of artist releases, where they can view new and old releases while being able to listen to and buy tracks.
 <% end %>
 <div class="g_timeline user_timeline">
+  <% unless @user.suggested_artists.count < 1 %>
     <!-- Recommended artists -->
-	<div class="release recommend_artists pops scene_1">
+  	<div class="release recommend_artists pops scene_1">
     	<h2>Recommended artists</h2>
-    	<div id="recommend_carousel" class="carousel slide carousel-fade">
-		  <div class="carousel-inner">
-          <% @artists.each_slice(6) do |slice| %>
-              <div class="item">
-                  <% slice.each do |artist| %>
-                    <%= render :partial => "timeline/carousel_suggest", :object => artist %>
-                  <% end %>
-              </div>
-          <% end %>
-  		  </div>
-  		  <div class="pins">
-  			  <i data-target="#recommend_carousel" data-slide-to="0" class="active icon-circle" data-tracking="true" data-tracking-category="timeline" data-tracking-name="recommended-pin-1"></i>
-  		    <i data-target="#recommend_carousel" data-slide-to="1" class="icon-circle" data-tracking="true" data-tracking-category="timeline" data-tracking-name="recommended-pin-2"></i>
-  		    <i data-target="#recommend_carousel" data-slide-to="2" class="icon-circle" data-tracking="true" data-tracking-category="timeline" data-tracking-name="recommended-pin-3"></i>
-  		  </div>
-  		</div>
-    </div>
+      	<div id="recommend_carousel" class="carousel slide carousel-fade">
+  		    <div class="carousel-inner">
+            <% @artists.each_slice(6) do |slice| %>
+                <div class="item">
+                    <% slice.each do |artist| %>
+                      <%= render :partial => "timeline/carousel_suggest", :object => artist %>
+                    <% end %>
+                </div>
+            <% end %>
+    		  </div>
+    		  <div class="pins">
+    			  <i data-target="#recommend_carousel" data-slide-to="0" class="active icon-circle" data-tracking="true" data-tracking-category="timeline" data-tracking-name="recommended-pin-1"></i>
+    		    <i data-target="#recommend_carousel" data-slide-to="1" class="icon-circle" data-tracking="true" data-tracking-category="timeline" data-tracking-name="recommended-pin-2"></i>
+    		    <i data-target="#recommend_carousel" data-slide-to="2" class="icon-circle" data-tracking="true" data-tracking-category="timeline" data-tracking-name="recommended-pin-3"></i>
+    		  </div>
+    		</div>
+        
+      </div>
+    <% end %>
     <!-- Hero artists -->
     <% if @user.follows.count >= 20 %>
       <%= render 'timeline/hero_artist' %>
