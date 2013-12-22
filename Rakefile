@@ -6,3 +6,4 @@ require 'rubygems'
 # require 'sitemap_generator/tasks'
 require File.expand_path('../config/application', __FILE__)
 SNGTRKR::Application.load_tasks
+

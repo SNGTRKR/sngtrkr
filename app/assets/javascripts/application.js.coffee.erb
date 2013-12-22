@@ -149,8 +149,6 @@ scrollbar = ->
         scroll_inner.css 'height', scroll_height
       #if window height is not less than scrollbar inner div height, assign its original height
       # Positioning the typeahead results
-      typepos = $('.search-query').offset()
-      $('.search-data-query').css "left", typepos["left"]
       # Add the new attribute to the style tag, while retaining the current style attributes. Used to ensure !important rule is activated
       $(".tt-dropdown-menu").attr "style", (i, s) ->
         s + "left: " + typepos['left'] + "px !important;"
@@ -283,6 +281,9 @@ typeahead_engine = ->
 
     dataquery = $('.search-data-query')
     searchquery = $('.search-query')
+
+    typepos = $('.search-query').offset()
+    $('.search-data-query').css "left", typepos["left"]
 
 
     searchquery.bind "input", ->

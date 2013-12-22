@@ -99,5 +99,5 @@ gem 'kaminari'
 
 gem 'global'
 
-gem 'sunspot_rails' #, :git => "git://github.com/mkrisher/sunspot.git", :branch => "task_warning_bypass"
-gem 'sunspot_solr'
+gem 'sunspot_solr', github: 'sunspot/sunspot', branch: 'master'
+gem 'sunspot_rails', github: 'sunspot/sunspot', branch: 'master'
