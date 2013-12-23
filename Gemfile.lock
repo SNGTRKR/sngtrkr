@@ -403,6 +403,8 @@ DEPENDENCIES
   sitemap_generator
   slim
   sunspot-rails-tester
+  sunspot_rails
+  sunspot_solr
   therubyracer
   twitter
   uglifier (>= 1.0.3)

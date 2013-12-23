@@ -72,7 +72,7 @@ gem 'unf'
 
 # SCRAPING GEMS
 gem 'scrobbler'
-# gem 'itunes-search-api', github: 'bessey/itunes-search-api', branch: 'multi-lookup'
+gem 'itunes-search-api', github: 'bessey/itunes-search-api', branch: 'multi-lookup'
 
 # ADMIN
 gem 'custom_configuration'
@@ -106,5 +106,5 @@ gem 'kaminari'
 # Global variables
 gem 'global'
 
-# gem 'sunspot_solr', github: 'sunspot/sunspot', branch: 'master'
-# gem 'sunspot_rails', github: 'sunspot/sunspot', branch: 'master'
+gem 'sunspot_solr', github: 'sunspot/sunspot', branch: 'master'
+gem 'sunspot_rails', github: 'sunspot/sunspot', branch: 'master'
