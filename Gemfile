@@ -95,8 +95,10 @@ gem 'twitter'
 # URL Shortener
 gem 'shortener'
 
+# Pagination
 gem 'kaminari'
 
+# Global variables
 gem 'global'
 
 gem 'sunspot_solr', github: 'sunspot/sunspot', branch: 'master'

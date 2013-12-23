@@ -583,7 +583,11 @@ recommendation = ->
     $(this).parent().addClass "fadeOutUp"
   ).on "ajax:success", "a.add-trkr-carousel", (xhr, data, response) ->
     artist_id = $(this).data("id")
-    $(this).parent().replaceWith '<div id="suggest_' + data.id + '" class="carousel_suggest animated"><a href="/artists/' + data.id + '"><img src="' + data.image_url + '" alt="Recommendation" height="75" width="75" /></a><span><div><a href="/artists/' + data.id + '">' + data.name + '</div>' + data.label_name + '</span><a href="/artists/' + data.id + '/follow.json" class="add-trkr-carousel btn btn-small follow-' + data.id + '" data-id="' + data.id + '" data-remote="true">Track</a></div>'
+    if (data.label) != '' 
+      label = data.label
+    else
+      ''
+    $(this).parent().replaceWith '<div id="suggest_' + data.id + '" class="carousel_suggest animated"><a href="/artists/' + data.id + '"><img src="' + data.image_url + '" alt="Recommendation" height="75" width="75" /></a><span><div><a href="/artists/' + data.id + '">' + data.name + '</a></div>' +  label + '</span><a href="/artists/' + data.id + '/follow.json" class="add-trkr-carousel btn btn-small follow-' + data.id + '" data-id="' + data.id + '" data-remote="true">Track</a></div>'
     url = "/timeline_releases/populate?timeline_artist=" + artist_id
     $.get url
     FB.api "/me/sngtrkr:track", "post",

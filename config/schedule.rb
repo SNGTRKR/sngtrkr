@@ -27,3 +27,7 @@ end
 every 1.day, :at => '11:30am' do
   runner "Release.twitter_update"
 end
+
+every 1.day, :at => '3:00 am' do
+    runner "Suggest.generate_new_suggests"
+end
