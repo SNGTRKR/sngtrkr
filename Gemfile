@@ -1,27 +1,21 @@
 source 'http://rubygems.org'
 
+# Core
 gem 'rails', '~> 4'
 gem 'protected_attributes'
 gem 'rails-observers'
 gem 'actionpack-action_caching'
 gem 'actionpack-page_caching'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+gem 'mysql2'
 gem 'json'
 
-# VERSION AND DEPLOYMENT
+# Version and deployment
 group :production do
-  gem 'unicorn'
-  gem 'therubyracer'
   gem 'rollbar', '~> 0.9.6'
   gem 'newrelic_rpm'
   gem 'sitemap_generator', :require => false
   gem 'whenever', :require => false
 end
-
-gem 'mysql2'
 
 group :test do
   gem 'rspec-rails'
@@ -36,19 +30,41 @@ group :test, :development do
   gem 'pry'
 end
 
-# CACHING
+group :development do
+  gem 'capistrano', '~> 2.15'
+  gem "better_errors"
+  gem "binding_of_caller"
+  gem 'meta_request' #, '0.2.1'
+  gem 'quiet_assets'
+  gem 'rack-mini-profiler'
+  gem 'ruby-prof'
+end
+
+# Mac only
+platform :ruby do
+  group :production do
+    gem 'unicorn'
+    gem 'therubyracer'
+  end
+  group :development do
+    gem 'capistrano-unicorn', :require => false
+  end
+end
+
+# Caching
 gem 'dalli'
 
-# MAILER
+# Mailer
 gem 'maktoub'
 gem 'rails_email_preview'
 
-# BACKGROUND TASKS
+# Background tasks
 gem 'sidekiq', :require => false
 gem 'sidekiq-failures'
 gem 'slim'
 gem 'sinatra', '>= 1.3.0', :require => nil
 
+# Image management
 gem 'fog'
 gem 'mini_magick'
 gem 'carrierwave'
@@ -56,23 +72,12 @@ gem 'unf'
 
 # SCRAPING GEMS
 gem 'scrobbler'
-gem 'itunes-search-api', github: 'bessey/itunes-search-api', branch: 'multi-lookup'
+# gem 'itunes-search-api', github: 'bessey/itunes-search-api', branch: 'multi-lookup'
 
 # ADMIN
 gem 'custom_configuration'
 
-group :development do
-  gem 'capistrano', '~> 2.15'
-  gem "better_errors"
-  gem "binding_of_caller"
-  gem 'meta_request' #, '0.2.1'
-  gem 'quiet_assets'
-  gem 'capistrano-unicorn', :require => false
-  gem 'rack-mini-profiler'
-  gem 'ruby-prof'
-end
-
-
+# Assets
 gem 'sass-rails', '~> 4'
 gem 'compass-rails'
 gem 'coffee-rails'
@@ -101,5 +106,5 @@ gem 'kaminari'
 # Global variables
 gem 'global'
 
-gem 'sunspot_solr', github: 'sunspot/sunspot', branch: 'master'
-gem 'sunspot_rails', github: 'sunspot/sunspot', branch: 'master'
+# gem 'sunspot_solr', github: 'sunspot/sunspot', branch: 'master'
+# gem 'sunspot_rails', github: 'sunspot/sunspot', branch: 'master'
