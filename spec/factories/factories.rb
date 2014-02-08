@@ -1,16 +1,6 @@
 FactoryGirl.define do
   require 'net/http'
 
-  factory :release do
-    association :artist, factory: :artist
-    sequence(:name) { |n| "#{Faker::Lorem.words(2).map{|w| w.capitalize! }.join(' ')} #{n}" }
-    sequence(:date) { |d| Date.today - d.days }
-
-    trait :with_random_image do
-      image { File.open(File.join(Rails.root, '/spec/sample_data/release_100.jpeg')) }
-    end
-  end
-
   factory :user do
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }
@@ -37,8 +27,4 @@ FactoryGirl.define do
     ignore {false}
   end
 
-  factory :follow do
-    sequence(:user_id) { |n| n }
-    sequence(:artist_id) { |n| n }
-  end
 end
