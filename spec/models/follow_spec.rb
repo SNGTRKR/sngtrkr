@@ -1,15 +1,13 @@
 require 'spec_helper'
 describe Follow do
 
-    # creates new suggest with artist id from the new artist
-    let(:suggest) { create(:suggest, artist_id: [artist]) }
-    # creates new artist
-    let(:artist) { create(:artist_with_follower) }
+    # ActiveRecord relations
+    it { expect(subject).to belong_to(:artist) }
+    it { expect(subject).to belong_to(:user) }
 
-    its(:suggest) { should include(artist) }
- 
-    # method responses
-    it { should respond_to(:destroy_unfollowed_artist) }
-    it { should respond_to(:delete_suggestion) }
+    # Validations
+    it { expect(subject).to validate_presence_of(:artist_id) }
+    it { expect(subject).to validate_presence_of(:user_id) }
+    it { expect(subject).to validate_uniqueness_of(:user_id).scoped_to(:artist_id) }
  
 end

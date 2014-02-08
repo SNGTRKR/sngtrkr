@@ -11,7 +11,7 @@ gem 'json'
 
 # Version and deployment
 group :production do
-  gem 'rollbar', '~> 0.9.6'
+  gem 'rollbar'
   gem 'newrelic_rpm'
   gem 'sitemap_generator', :require => false
   gem 'whenever', :require => false
@@ -19,14 +19,15 @@ end
 
 group :test do
   gem 'rspec-rails'
-  gem 'rake'
   gem 'capybara'
-  gem 'sunspot-rails-tester'
+  gem 'database_cleaner'
+  gem 'shoulda-matchers'
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'faker'
+  gem 'pg'
 end
 
 group :test, :development do
-  gem 'factory_girl_rails', '~> 4.0'
-  gem 'faker'
   gem 'pry'
 end
 
@@ -36,8 +37,12 @@ group :development do
   gem "binding_of_caller"
   gem 'meta_request' #, '0.2.1'
   gem 'quiet_assets'
+  gem 'haml-rails'
   gem 'rack-mini-profiler'
   gem 'ruby-prof'
+  gem 'bullet'
+  gem 'haml'
+  gem 'metric_fu'
 end
 
 # Mac only
