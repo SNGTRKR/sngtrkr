@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140209131650) do
+ActiveRecord::Schema.define(version: 20140209142249) do
 
   create_table "artists", force: true do |t|
-    t.string   "name",                          null: false
+    t.string   "name"
     t.string   "genre"
     t.text     "bio"
     t.string   "hometown"
@@ -91,9 +91,9 @@ ActiveRecord::Schema.define(version: 20140209131650) do
   create_table "suggests", force: true do |t|
     t.integer  "user_id"
     t.integer  "artist_id"
-    t.boolean  "ignore"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "ignore",     default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "suggests", ["user_id", "artist_id"], name: "index_suggests_on_user_id_and_artist_id", using: :btree

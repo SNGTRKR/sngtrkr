@@ -8,7 +8,7 @@
 # Table name: artists
 #
 #  id                     :integer            not null, primary key
-#  name                   :string(255)        not null
+#  name                   :string(255)
 #  genre                  :string(255)
 #  bio                    :text
 #  hometown               :string(255)

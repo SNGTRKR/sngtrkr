@@ -4,15 +4,15 @@ FactoryGirl.define do
         genre { Faker::Lorem.word }
         sequence(:date) { |d| Date.today - d.days }
         cat_no { Faker::Lorem.characters(5) }
-        itunes { Faker::Internet.Url } 
-        sdigital { Faker::Internet.Url } 
-        amazon { Faker::Internet.Url } 
-        juno { Faker::Internet.Url } 
-        youtube { Faker::Internet.Url } 
+        itunes { Faker::Internet.url } 
+        sdigital { Faker::Internet.url } 
+        amazon { Faker::Internet.url } 
+        juno { Faker::Internet.url } 
+        youtube { Faker::Internet.url } 
         label_name { Faker::Lorem.word }
         scraped { true }
         ignore { false }
-        twitter { Faker::Internet.Url } 
+        twitter { Faker::Internet.url } 
         sequence(:itunes_id) { |n| n }
 
         factory :with_image do

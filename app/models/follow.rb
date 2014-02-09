@@ -1,6 +1,7 @@
 # Follow Documentation
 #
 # The follow table is a HABTM relationship handler between the artists and users tables.
+# A user can follow an artist and view their music content on the user's timeline.
 
 # == Schema Information
 #

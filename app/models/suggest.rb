@@ -1,10 +1,28 @@
+# Suggest Documentation
+#
+# The suggest table is a HABTM relationship handler between the artists and users tables.
+# Suggests are generated after a user is created from various sources.
+
+# == Schema Information
+#
+# Table name: suggests
+#
+#  id                 :integer          not null, primary key
+#  user_id            :integer
+#  artist_id          :integer      
+#  ignore             :boolean          default(false)    
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#
 class Suggest < ActiveRecord::Base
+
   attr_accessible :user_id, :artist_id
+
   belongs_to :artist
   belongs_to :user
-  validates :user_id, :presence => true
-  validates :artist_id, :presence => true
-  validates :user_id, :uniqueness => {:scope => :artist_id}
+
+  validates :user_id,                 :presence => true, :uniqueness => { :scope => :artist_id }
+  validates :artist_id,               :presence => true            
 
   before_save :default_values
   before_create :check_not_following
