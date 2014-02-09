@@ -5,12 +5,6 @@ SNGTRKR::Application.routes.draw do
 
   get 'pages/:action' => 'pages#:action'
 
-  get '/timeline_releases/populate' => 'timeline#populate_user_timeline'
-
-  if Global.custom.mail_view["enabled"]
-    mount RailsEmailPreview::Engine, at: 'emails'
-  end
-
   namespace :admin do
     constraints lambda { |request| request.env["warden"].authenticate? and User.find(request.env["warden"].user).roles.first.name == "Admin" } do
       root :to => "admin#overview"
@@ -18,10 +12,6 @@ SNGTRKR::Application.routes.draw do
       get '/:action' => "admin#:action"
     end
   end
-  # Setup explore pages
-  get '/explore' => "pages#explore"
-  get '/explore/release/:page' => 'pages#explore_release'
-  get '/explore/artist/:page' => 'pages#explore_artist'
   
   get '/release_magic/:store/:url' => "releases#magic"
 

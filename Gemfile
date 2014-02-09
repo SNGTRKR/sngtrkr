@@ -6,7 +6,7 @@ gem 'protected_attributes'
 gem 'rails-observers'
 gem 'actionpack-action_caching'
 gem 'actionpack-page_caching'
-gem 'mysql2'
+gem 'pg'
 gem 'json'
 
 # Version and deployment
@@ -34,8 +34,8 @@ end
 
 group :development do
   gem 'capistrano', '~> 2.15'
-  gem "better_errors"
-  gem "binding_of_caller"
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'meta_request' #, '0.2.1'
   gem 'quiet_assets'
   gem 'haml-rails'
@@ -60,9 +60,6 @@ end
 # Caching
 gem 'dalli'
 
-# Mailer
-gem 'maktoub'
-gem 'rails_email_preview'
 
 # Background tasks
 gem 'sidekiq', :require => false
@@ -100,11 +97,6 @@ gem 'cancan'
 gem "koala"
 gem "omniauth-facebook"
 
-# Twitter
-gem 'twitter'
-
-# URL Shortener
-gem 'shortener'
 
 # Pagination
 gem 'kaminari'

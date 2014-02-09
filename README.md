@@ -1,6 +1,6 @@
 # SNGTRKR
 
-[![Build Status](https://travis-ci.org/SNGTRKR/sngtrkr.png?branch=staging)](https://travis-ci.org/SNGTRKR/sngtrkr)
+[![Build Status](https://travis-ci.org/SNGTRKR/sngtrkr.png?branch=master)](https://travis-ci.org/SNGTRKR/sngtrkr)
 
 ## Hosts Configuration
 To enable facebook login during development, you need to change your `/etc/hosts` file
