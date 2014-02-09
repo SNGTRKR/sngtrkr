@@ -10,12 +10,12 @@ FactoryGirl.define do
         juno { Faker::Internet.Url } 
         youtube { Faker::Internet.Url } 
         label_name { Faker::Lorem.word }
-        scraped true
-        ignore false
+        scraped { true }
+        ignore { false }
         twitter { Faker::Internet.Url } 
         sequence(:itunes_id) { |n| n }
 
-        factory :with_random_image do
+        factory :with_image do
           image { File.open(File.join(Rails.root, '/spec/sample_data/release_100.jpeg')) }
         end
 

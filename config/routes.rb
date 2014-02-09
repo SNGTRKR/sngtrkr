@@ -1,13 +1,10 @@
 require 'sidekiq/web'
 SNGTRKR::Application.routes.draw do
 
-  resources :reports
-
   root :to => "pages#home"
 
   get 'pages/:action' => 'pages#:action'
 
-  #get '/:id' => "shortener/shortened_urls#show"
   get '/timeline_releases/populate' => 'timeline#populate_user_timeline'
 
   if Global.custom.mail_view["enabled"]
@@ -25,10 +22,7 @@ SNGTRKR::Application.routes.draw do
   get '/explore' => "pages#explore"
   get '/explore/release/:page' => 'pages#explore_release'
   get '/explore/artist/:page' => 'pages#explore_artist'
-
-  get '/about' => "pages#about"
-  get '/terms' => "pages#terms"
-  get '/privacy' => "pages#privacy"
+  
   get '/release_magic/:store/:url' => "releases#magic"
 
   devise_for :users, :controllers => {

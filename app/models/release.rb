@@ -32,7 +32,7 @@ class Release < ActiveRecord::Base
   has_many :user_notifications,                                 :through => :notifications, :source => :user
   belongs_to :artist
 
-  validates :name, :date, :artist_id, :itunes_id                :presence => true
+  validates :name, :date, :artist_id, :itunes_id,               :presence => true
 
   require 'open-uri'
 

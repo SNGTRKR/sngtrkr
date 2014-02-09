@@ -17,7 +17,7 @@ FactoryGirl.define do
         twitter { Faker::Internet.url }
         sequence(:itunes_id) { |n| n }
 
-        factory :with_random_image do
+        factory :with_profile_image do
           image { File.open(File.join(Rails.root, '/spec/sample_data/release_100.jpeg')) }
         end
 
